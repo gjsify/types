@@ -1,3 +1,4 @@
+
 import type Vips80 from '@girs/vips-8.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

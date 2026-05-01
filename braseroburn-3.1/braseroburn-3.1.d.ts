@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace BraseroBurn {
+
     /**
      * BraseroBurn-3.1
      */
+
 
     /**
      * @gir-type Enum
@@ -53,6 +56,7 @@ export namespace BraseroBurn {
         EJECTING,
         LAST,
     }
+
 
     /**
      * @gir-type Enum
@@ -93,6 +97,7 @@ export namespace BraseroBurn {
         ERROR_ENCRYPTION_KEY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -109,6 +114,7 @@ export namespace BraseroBurn {
         NOT_SUPPORTED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -122,6 +128,7 @@ export namespace BraseroBurn {
         LIBRARY_VERSION,
         MISSING_GSTREAMER_PLUGIN,
     }
+
 
     /**
      * @gir-type Enum
@@ -141,6 +148,7 @@ export namespace BraseroBurn {
         DISC_PROTECTED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -150,6 +158,7 @@ export namespace BraseroBurn {
         QUESTION,
         INFORMATION,
     }
+
 
     /**
      * @gir-type Enum
@@ -171,37 +180,60 @@ export namespace BraseroBurn {
         COL_NUM,
     }
 
+
     const COVER_URI: string;
+
     const DATA_TRACK_SIZE_TAG: string;
+
     const DND_TARGET_DATA_TRACK_REFERENCE_LIST: string;
+
     const DVD_STREAM_FORMAT: string;
+
     const MIN_STREAM_LENGTH: number;
+
     const SESSION_STREAM_AUDIO_FORMAT: string;
+
     const STREAM_TRACK_SIZE_TAG: string;
+
     const TRACK_MEDIUM_ADDRESS_END_TAG: string;
+
     const TRACK_MEDIUM_ADDRESS_START_TAG: string;
+
     const TRACK_MEDIUM_WRONG_CHECKSUM_TAG: string;
+
     const TRACK_STREAM_ALBUM_TAG: string;
+
     const TRACK_STREAM_ARTIST_TAG: string;
+
     const TRACK_STREAM_COMPOSER_TAG: string;
+
     const TRACK_STREAM_ISRC_TAG: string;
+
     const TRACK_STREAM_MIME_TAG: string;
+
     const TRACK_STREAM_THUMBNAIL_TAG: string;
+
     const TRACK_STREAM_TITLE_TAG: string;
+
     const VCD_TYPE: string;
+
     const VIDEO_OUTPUT_ASPECT: string;
+
     const VIDEO_OUTPUT_FRAMERATE: string;
+
     /**
      * Frees `graft`. Do not use `grafts` afterwards.
      * @param graft a {@link BraseroBurn.GraftPt}
      */
     function graft_point_free(graft: GraftPt): void;
+
     /**
      * @gir-type Callback
      */
     interface ForeachPluginErrorCb {
         (type: PluginErrorType, detail: string): BurnResult;
     }
+
     /**
      * @gir-type Flags
      */
@@ -224,6 +256,7 @@ export namespace BraseroBurn {
         LAST,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -237,6 +270,7 @@ export namespace BraseroBurn {
         SHA256,
         SHA256_FILE,
     }
+
 
     /**
      * @gir-type Flags
@@ -253,6 +287,7 @@ export namespace BraseroBurn {
         FS_ANY,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -264,6 +299,7 @@ export namespace BraseroBurn {
         CDRDAO,
         ANY,
     }
+
 
     /**
      * @gir-type Flags
@@ -284,6 +320,7 @@ export namespace BraseroBurn {
         AUDIO_FORMAT_RAW_LITTLE_ENDIAN,
     }
 
+
     namespace Burn {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -291,72 +328,73 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            'action-changed': (arg0: number) => void;
+            "action-changed": (arg0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'blank-failure': () => number;
+            "blank-failure": () => number;
             /**
              * @signal
              * @run-last
              */
-            'disable-joliet': () => number;
+            "disable-joliet": () => number;
             /**
              * @signal
              * @run-last
              */
-            'dummy-success': () => number;
+            "dummy-success": () => number;
             /**
              * @signal
              * @run-last
              */
-            'eject-failure': (arg0: unknown) => number;
+            "eject-failure": (arg0: unknown) => number;
             /**
              * @signal
              * @run-last
              */
-            'insert-media': (arg0: unknown, arg1: number, arg2: number) => number;
+            "insert-media": (arg0: unknown, arg1: number, arg2: number) => number;
             /**
              * @signal
              * @run-last
              */
-            'install-missing': (arg0: number, arg1: string) => number;
+            "install-missing": (arg0: number, arg1: string) => number;
             /**
              * @signal
              * @run-last
              */
-            'location-request': (arg0: any | null, arg1: number) => number;
+            "location-request": (arg0: (any | null), arg1: number) => number;
             /**
              * @signal
              * @run-last
              */
-            'progress-changed': (arg0: number, arg1: number, arg2: number) => void;
+            "progress-changed": (arg0: number, arg1: number, arg2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'warn-audio-to-appendable': () => number;
+            "warn-audio-to-appendable": () => number;
             /**
              * @signal
              * @run-last
              */
-            'warn-data-loss': () => number;
+            "warn-data-loss": () => number;
             /**
              * @signal
              * @run-last
              */
-            'warn-previous-session-loss': () => number;
+            "warn-previous-session-loss": () => number;
             /**
              * @signal
              * @run-last
              */
-            'warn-rewritable': () => number;
+            "warn-rewritable": () => number;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -375,107 +413,110 @@ export namespace BraseroBurn {
         $signals: Burn.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Burn.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Burn;
+        static ["new"](): Burn;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Burn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Burn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Burn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Burn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Burn.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Burn.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Burn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Burn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static library_can_checksum(): boolean;
+
         static library_get_option_group(): GLib.OptionGroup;
+
         /**
-         * @param type
+         * @param type 
          */
         static library_input_supported(type: TrackType): BurnResult;
+
         /**
-         * @param argc
-         * @param argv
+         * @param argc 
+         * @param argv 
          */
         static library_start(argc: number, argv: string): boolean;
+
         static library_stop(): void;
+
         static quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param action
+         * @param action 
          * @virtual
          */
         vfunc_action_changed(action: BurnAction): void;
+
         /**
          * @virtual
          */
         vfunc_ask_disable_joliet(): BurnResult;
+
         /**
          * @virtual
          */
         vfunc_blank_failure(): BurnResult;
+
         /**
          * @virtual
          */
         vfunc_dummy_success(): BurnResult;
+
         /**
-         * @param error
-         * @param detail
+         * @param error 
+         * @param detail 
          * @virtual
          */
         vfunc_install_missing(error: PluginErrorType, detail: string): BurnResult;
+
         /**
-         * @param error
-         * @param is_temporary
+         * @param error 
+         * @param is_temporary 
          * @virtual
          */
         vfunc_location_request(error: GLib.Error, is_temporary: boolean): BurnResult;
+
         /**
-         * @param overall_progress
-         * @param action_progress
-         * @param time_remaining
+         * @param overall_progress 
+         * @param action_progress 
+         * @param time_remaining 
          * @virtual
          */
         vfunc_progress_changed(overall_progress: number, action_progress: number, time_remaining: number): void;
+
         /**
          * @virtual
          */
         vfunc_warn_audio_to_appendable(): BurnResult;
+
         /**
          * @virtual
          */
         vfunc_warn_data_loss(): BurnResult;
+
         /**
          * @virtual
          */
         vfunc_warn_previous_session_loss(): BurnResult;
+
         /**
          * @virtual
          */
         vfunc_warn_rewritable(): BurnResult;
 
         // Methods
-
         /**
          * Blanks a medium according to the parameters
          * set in `session`. The medium must be inserted in the `BraseroDrive`
@@ -484,6 +525,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
          */
         blank(session: BurnSession): BurnResult;
+
         /**
          * Cancels any ongoing operation. If `protect` is TRUE then
          * cancellation will not take place for a "critical" task, a task whose interruption
@@ -492,6 +534,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
          */
         cancel(protect: boolean): BurnResult;
+
         /**
          * Checks the integrity of a medium according to the parameters
          * set in `session`. The medium must be inserted in the `BraseroDrive`
@@ -500,6 +543,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
          */
         check(session: BurnSession): BurnResult;
+
         /**
          * This function returns the current action (in `string`)  of
          * an ongoing operation performed by `burn`.
@@ -510,6 +554,7 @@ export namespace BraseroBurn {
          * @param string a `gchar` **
          */
         get_action_string(action: BurnAction, string: string): void;
+
         /**
          * Burns or creates a disc image according to the parameters
          * set in `session`.
@@ -519,94 +564,92 @@ export namespace BraseroBurn {
         record(session: BurnSession): BurnResult;
     }
 
+
     namespace BurnDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -625,36 +668,26 @@ export namespace BraseroBurn {
         $signals: BurnDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BurnDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BurnDialog;
+        static ["new"](): BurnDialog;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BurnDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BurnDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BurnDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BurnDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BurnDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BurnDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BurnDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancel the ongoing operation run by `dialog`; if `force_cancellation` is FALSE then it can
          * happen that the operation won't be cancelled if there is a risk to make a disc unusable.
@@ -662,17 +695,20 @@ export namespace BraseroBurn {
          * @returns a `gboolean`. TRUE if it was sucessfully cancelled, FALSE otherwise.
          */
         cancel(force_cancellation: boolean): boolean;
+
         /**
          * Start burning the contents of `session`.
          * @param session a {@link BraseroBurn.BurnSession}
          * @returns a `gboolean`. TRUE if the operation was successfully carried out, FALSE otherwise.
          */
         run(session: BurnSession): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Dialog.run
+    // Conflicted with Gtk.Dialog.run
         run(...args: never[]): any;
+
         /**
          * Start burning the contents of `session`. Once a disc is burnt, a dialog
          * will be shown to the user and wait for a new insertion before starting to burn
@@ -683,92 +719,91 @@ export namespace BraseroBurn {
         run_multi(session: BurnSession): boolean;
     }
 
+
     namespace BurnOptions {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::session': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             session: BurnSession;
         }
     }
@@ -780,7 +815,6 @@ export namespace BraseroBurn {
         static $gtype: GObject.GType<BurnOptions>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -796,45 +830,36 @@ export namespace BraseroBurn {
         $signals: BurnOptions.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BurnOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](session: SessionCfg): BurnOptions;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](session: SessionCfg): BurnOptions;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BurnOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BurnOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BurnOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BurnOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnOptions.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BurnOptions.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BurnOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BurnOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds some new options to be displayed in the dialog.
          * @param options a {@link Gtk.Widget}
          */
         add_options(options: Gtk.Widget): void;
     }
+
 
     namespace BurnSession {
         // Signal signatures
@@ -844,42 +869,41 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            'output-changed': (arg0: unknown) => void;
+            "output-changed": (arg0: unknown) => void;
             /**
              * This signal gets emitted when a tag changed for `session` (whether it
              * was removed, added, or it changed).
              * @signal
              * @run-first
              */
-            'tag-changed': (arg0: string) => void;
+            "tag-changed": (arg0: string) => void;
             /**
              * This signal gets emitted when a track is added to `session`.
              * @signal
              * @run-last
              */
-            'track-added': (arg0: Track) => void;
+            "track-added": (arg0: Track) => void;
             /**
              * This signal gets emitted when the contents of a track changed.
              * @signal
              * @run-last
              */
-            'track-changed': (arg0: Track) => void;
+            "track-changed": (arg0: Track) => void;
             /**
              * This signal gets emitted when a track is removed from `session`.
              * @signal
              * @run-last
              */
-            'track-removed': (arg0: Track, arg1: number) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::speed': (pspec: GObject.ParamSpec) => void;
-            'notify::tmpdir': (pspec: GObject.ParamSpec) => void;
+            "track-removed": (arg0: Track, arg1: number) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::speed": (pspec: GObject.ParamSpec) => void;
+            "notify::tmpdir": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             flags: number;
-            speed: bigint | number;
+            speed: (bigint | number);
             tmpdir: string;
         }
     }
@@ -891,17 +915,18 @@ export namespace BraseroBurn {
         static $gtype: GObject.GType<BurnSession>;
 
         // Properties
-
         /**
          * @default 0
          */
         get flags(): number;
         set flags(val: number);
+
         /**
          * @default 0
          */
         get speed(): number;
-        set speed(val: bigint | number);
+        set speed(val: (bigint | number));
+
         /**
          * @default null
          */
@@ -918,88 +943,84 @@ export namespace BraseroBurn {
         $signals: BurnSession.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BurnSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BurnSession;
+        static ["new"](): BurnSession;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BurnSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BurnSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BurnSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BurnSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BurnSession.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BurnSession.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BurnSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BurnSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BurnSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * When the contents of `session` should be written to a
          * file then this function returns the format of the image to write.
-         *
+         * 
          * NOTE: before using this function a `BraseroDrive` should have been
          * set with brasero_burn_session_set_burner () and it should be the
          * fake drive (see brasero_drive_is_fake ()).
          * @virtual
          */
         vfunc_get_output_format(): ImageFormat;
+
         /**
-         * @param image
-         * @param toc
+         * @param image 
+         * @param toc 
          * @virtual
          */
         vfunc_get_output_path(image: string, toc: string): BurnResult;
+
         /**
-         * @param format
-         * @param image
-         * @param toc
+         * @param format 
+         * @param image 
+         * @param toc 
          * @virtual
          */
         vfunc_set_output_image(format: ImageFormat, image: string, toc: string): BurnResult;
+
         /**
-         * @param tag
+         * @param tag 
          * @virtual
          */
         vfunc_tag_changed(tag: string): void;
+
         /**
-         * @param track
+         * @param track 
          * @virtual
          */
         vfunc_track_added(track: Track): void;
+
         /**
-         * @param track
+         * @param track 
          * @virtual
          */
         vfunc_track_changed(track: Track): void;
+
         /**
-         * @param track
-         * @param former_position
+         * @param track 
+         * @param former_position 
          * @virtual
          */
         vfunc_track_removed(track: Track, former_position: number): void;
 
         // Methods
-
         /**
          * Merges the current flags set in `session` with `flags`.
          * @param flags a {@link BraseroBurn.BurnFlag}
          */
         add_flag(flags: BurnFlag): void;
+
         /**
          * Inserts a new track after `sibling` or appended if `sibling` is NULL. If `track` is NULL then all tracks
          * already in `session` will be removed.
@@ -1009,71 +1030,84 @@ export namespace BraseroBurn {
          * @param sibling a {@link BraseroBurn.Track} or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the track was successfully inserted or BRASERO_BURN_ERR otherwise.
          */
-        add_track(new_track: Track | null, sibling: Track | null): BurnResult;
+        add_track(new_track: (Track | null), sibling: (Track | null)): BurnResult;
+
         can_blank(): BurnResult;
+
         /**
-         * @param check_flags
+         * @param check_flags 
          */
         can_burn(check_flags: boolean): BurnResult;
+
         /**
-         * @param supported
-         * @param compulsory
+         * @param supported 
+         * @param compulsory 
          */
         get_blank_flags(supported: BurnFlag, compulsory: BurnFlag): BurnResult;
+
         /**
-         * @param supported
-         * @param compulsory
+         * @param supported 
+         * @param compulsory 
          */
         get_burn_flags(supported: BurnFlag, compulsory: BurnFlag): BurnResult;
+
         get_default_output_format(): ImageFormat;
+
         /**
          * Returns the current flags set for `session`.
          * @returns a {@link BraseroBurn.BurnFlag}.
          */
         get_flags(): BurnFlag;
+
         /**
          * Sets `type` to reflect the type of data contained in `session`
          * @param type a {@link BraseroBurn.TrackType} or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful
          */
         get_input_type(type: TrackType): BurnResult;
+
         /**
          * Returns the label (a string) set for `session`.
          * @returns a `gchar` or NULL. Do not free after use.
          */
         get_label(): string;
+
         /**
          * When the contents of `session` should be written to a
          * file then this function returns the image path (and if
          * necessary a toc path).
          * `image` and `toc` should be freed if not used anymore.
-         *
+         * 
          * NOTE: before using this function a `BraseroDrive` should have been
          * set with brasero_burn_session_set_burner () and it should be the
          * fake drive (see brasero_drive_is_fake ()).
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful; BRASERO_BURN_ERR otherwise.
          */
         get_output(): [BurnResult, string, string];
+
         /**
          * When the contents of `session` should be written to a
          * file then this function returns the format of the image to write.
-         *
+         * 
          * NOTE: before using this function a `BraseroDrive` should have been
          * set with brasero_burn_session_set_burner () and it should be the
          * fake drive (see brasero_drive_is_fake ()).
          * @returns a {@link BraseroBurn.ImageFormat}. The format of the image to be written.
          */
         get_output_format(): ImageFormat;
+
         /**
          * This function returns the type of output set for the session.
          * @param output a {@link BraseroBurn.TrackType} or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful; BRASERO_BURN_NOT_READY if no setting has been set; BRASERO_BURN_ERR otherwise.
          */
         get_output_type(output: TrackType): BurnResult;
+
         /**
-         * @param formats
+         * @param formats 
          */
         get_possible_output_formats(formats: ImageFormat): number;
+
         /**
          * Returns the speed at which the medium should be burnt.
          * NOTE: before using this function a `BraseroDrive` should have been
@@ -1081,19 +1115,22 @@ export namespace BraseroBurn {
          * @returns a `guint64` or 0.
          */
         get_rate(): number;
+
         /**
          * Returns the size of the data contained by `session` in bytes or in sectors
          * @param blocks a `goffset` or NULL
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
+        get_size(blocks: (bigint | number), bytes: (bigint | number)): BurnResult;
+
         /**
          * Sets `status` to reflect whether `session` is ready to be used.
          * @param status a `BraseroTrackStatus`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing BRASERO_BURN_ERR if something is wrong or if it is empty
          */
         get_status(status: Status): BurnResult;
+
         /**
          * For the following functions:
          * brasero_burn_session_can_burn ()
@@ -1105,67 +1142,77 @@ export namespace BraseroBurn {
          * @returns `gboolean`
          */
         get_strict_support(): boolean;
+
         /**
          * Returns the path of the directory in which to write temporary directories and files.
          * @returns a `gchar`. The path to the temporary directory.
          */
         get_tmpdir(): string;
+
         /**
          * Returns the list of {@link BraseroBurn.Track} added to `session`.
          * @returns a {@link GLib.SList} or {@link BraseroBurn.Track} object. Do not unref the objects in the list nor destroy the list.
          */
         get_tracks(): Track[];
+
         /**
-         * @param input
-         * @param check_flags
+         * @param input 
+         * @param check_flags 
          */
         input_supported(input: TrackType, check_flags: boolean): BurnResult;
+
         /**
          * Moves `track` after `sibling`; if `sibling` is NULL then it is appended.
          * @param track a {@link BraseroBurn.Track}.
          * @param sibling a {@link BraseroBurn.Track} or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the track was successfully moved or BRASERO_BURN_ERR otherwise.
          */
-        move_track(track: Track, sibling: Track | null): BurnResult;
+        move_track(track: Track, sibling: (Track | null)): BurnResult;
+
         /**
-         * @param output
+         * @param output 
          */
         output_supported(output: TrackType): BurnResult;
+
         /**
          * Removes `flags` from the current flags set for `session`.
          * @param flags a {@link BraseroBurn.BurnFlag}
          */
         remove_flag(flags: BurnFlag): void;
+
         /**
          * Removes `track` from `session`.
          * @param track a {@link BraseroBurn.Track}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the track was successfully removed or BRASERO_BURN_ERR otherwise.
          */
         remove_track(track: Track): BurnResult;
+
         /**
          * Replaces the current flags set in `session` with `flags`.
          * @param flags a {@link BraseroBurn.BurnFlag}
          */
         set_flags(flags: BurnFlag): void;
+
         /**
          * When the contents of `session` should be written to a
          * file, this function sets format of the image that will be
          * created.
-         *
+         * 
          * NOTE: after a call to this function the `BraseroDrive` for
          * `session` will be the fake `BraseroDrive`.
-         *
+         * 
          * Since 2.29.0
          * @param format a {@link BraseroBurn.ImageFormat}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
         set_image_output_format(format: ImageFormat): BurnResult;
+
         /**
          * When the contents of `session` should be written to a
          * file, this function sets the different parameters of this
          * image like its path (and the one of the associated toc if
          * necessary) and its format.
-         *
+         * 
          * NOTE: after a call to this function the `BraseroDrive` for
          * `session` will be the fake `BraseroDrive`.
          * @param format a {@link BraseroBurn.ImageFormat}.
@@ -1173,12 +1220,14 @@ export namespace BraseroBurn {
          * @param toc a `gchar` or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
-        set_image_output_full(format: ImageFormat, image: string | null, toc: string | null): BurnResult;
+        set_image_output_full(format: ImageFormat, image: (string | null), toc: (string | null)): BurnResult;
+
         /**
          * Sets the label for `session`.
          * @param label a `gchar` or `null`
          */
-        set_label(label: string | null): void;
+        set_label(label: (string | null)): void;
+
         /**
          * Sets the speed at which the medium should be burnt.
          * NOTE: before using this function a `BraseroDrive` should have been
@@ -1186,7 +1235,8 @@ export namespace BraseroBurn {
          * @param rate a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful; BRASERO_BURN_ERR otherwise.
          */
-        set_rate(rate: bigint | number): BurnResult;
+        set_rate(rate: (bigint | number)): BurnResult;
+
         /**
          * For the following functions:
          * brasero_burn_session_supported ()
@@ -1195,9 +1245,10 @@ export namespace BraseroBurn {
          * brasero_burn_session_can_blank ()
          * this function sets whether these functions will
          * ignore the plugins with errors (`true`).
-         * @param strict_check
+         * @param strict_check 
          */
         set_strict_support(strict_check: boolean): void;
+
         /**
          * Sets the path of the directory in which to write temporary directories and files.
          * If set to NULL then the result of g_get_tmp_dir () will be used.
@@ -1205,6 +1256,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
         set_tmpdir(path: string): BurnResult;
+
         /**
          * Associates a new `tag` with `session`. This can be used
          * to pass arbitrary information for plugins, like parameters
@@ -1215,19 +1267,21 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value} *
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        tag_add(tag: string, value: GObject.Value | any): BurnResult;
+        tag_add(tag: string, value: (GObject.Value | any)): BurnResult;
+
         /**
          * Associates a new `tag` with `session`. This can be used
          * to pass arbitrary information for plugins, like parameters
          * for video discs, ...
          * See brasero-tags.h for a list of knowns tags.
-         *
+         * 
          * Since 2.29.0
          * @param tag a `gchar` *
          * @param value a `gint`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
         tag_add_int(tag: string, value: number): BurnResult;
+
         /**
          * Retrieves a value associated with `session` through
          * brasero_session_tag_add () and stores it in `value`. Do
@@ -1236,16 +1290,18 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the retrieval was successful BRASERO_BURN_ERR otherwise
          */
-        tag_lookup(tag: string, value: GObject.Value | any): BurnResult;
+        tag_lookup(tag: string, value: (GObject.Value | any)): BurnResult;
+
         /**
          * Retrieves an int value associated with `session` through
          * brasero_session_tag_add () and returns it.
-         *
+         * 
          * Since 2.29.0
          * @param tag a `gchar`
          * @returns a `gint`.
          */
         tag_lookup_int(tag: string): number;
+
         /**
          * Removes a value associated with `session` through
          * brasero_session_tag_add ().
@@ -1255,6 +1311,7 @@ export namespace BraseroBurn {
         tag_remove(tag: string): BurnResult;
     }
 
+
     namespace SessionCfg {
         // Signal signatures
         interface SignalSignatures extends SessionSpan.SignalSignatures {
@@ -1263,21 +1320,22 @@ export namespace BraseroBurn {
              * @action
              * @run-last
              */
-            'is-valid': () => void;
+            "is-valid": () => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'wrong-extension': () => boolean | void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::speed': (pspec: GObject.ParamSpec) => void;
-            'notify::tmpdir': (pspec: GObject.ParamSpec) => void;
+            "wrong-extension": () => (boolean | void);
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::speed": (pspec: GObject.ParamSpec) => void;
+            "notify::tmpdir": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends SessionSpan.ConstructorProps {
 
-        interface ConstructorProps extends SessionSpan.ConstructorProps {}
+        }
     }
 
     /**
@@ -1296,55 +1354,49 @@ export namespace BraseroBurn {
         $signals: SessionCfg.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SessionCfg.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SessionCfg;
+        static ["new"](): SessionCfg;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SessionCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SessionCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SessionCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SessionCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionCfg.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SessionCfg.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SessionCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SessionCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds all flags from `flags` that are supported.
          * @param flags a {@link BraseroBurn.BurnFlag}
          */
         add_flags(flags: BurnFlag): void;
+
         /**
          * This function disables autoconfiguration
          */
         disable(): void;
+
         /**
          * This function (re)-enables autoconfiguration
          */
         enable(): void;
+
         /**
          * This function returns the current status and if
          * autoconfiguration is/was successful.
          * @returns a {@link BraseroBurn.SessionError}.
          */
         get_error(): SessionError;
+
         /**
          * This function returns whether the path returned
          * by brasero_burn_session_get_output () is an
@@ -1352,18 +1404,21 @@ export namespace BraseroBurn {
          * @returns a `gboolean`. TRUE if the path(s) creation is handled by `session`, FALSE if it was set.
          */
         has_default_output_path(): boolean;
+
         /**
          * Checks whether a particular flag is compulsory.
          * @param flag a {@link BraseroBurn.BurnFlag}
          * @returns a `gboolean`. TRUE if it is compulsory; FALSE otherwise.
          */
         is_compulsory(flag: BurnFlag): boolean;
+
         /**
          * Checks whether a particular flag is supported.
          * @param flag a {@link BraseroBurn.BurnFlag}
          * @returns a `gboolean`. TRUE if it is supported; FALSE otherwise.
          */
         is_supported(flag: BurnFlag): boolean;
+
         /**
          * Removes all flags that are not compulsory.
          * @param flags a {@link BraseroBurn.BurnFlag}
@@ -1371,17 +1426,19 @@ export namespace BraseroBurn {
         remove_flags(flags: BurnFlag): void;
     }
 
+
     namespace SessionSpan {
         // Signal signatures
         interface SignalSignatures extends BurnSession.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::speed': (pspec: GObject.ParamSpec) => void;
-            'notify::tmpdir': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::speed": (pspec: GObject.ParamSpec) => void;
+            "notify::tmpdir": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends BurnSession.ConstructorProps {
 
-        interface ConstructorProps extends BurnSession.ConstructorProps {}
+        }
     }
 
     /**
@@ -1400,41 +1457,32 @@ export namespace BraseroBurn {
         $signals: SessionSpan.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SessionSpan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SessionSpan;
+        static ["new"](): SessionSpan;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SessionSpan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SessionSpan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SessionSpan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SessionSpan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionSpan.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SessionSpan.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SessionSpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SessionSpan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionSpan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Checks whether some data were not included during calls to brasero_session_span_next ().
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
         again(): BurnResult;
+
         /**
          * Returns the maximum required space (in sectors)
          * among all the possible spanned batches.
@@ -1445,6 +1493,7 @@ export namespace BraseroBurn {
          * @returns a `goffset`.
          */
         get_max_space(): number;
+
         /**
          * Sets the next batch of data to be burnt onto the medium inserted in the `BraseroDrive`
          * set for `session` (see brasero_burn_session_set_burner ()). Its free space or it capacity
@@ -1452,6 +1501,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if successful.
          */
         next(): BurnResult;
+
         /**
          * Checks if a new {@link BraseroBurn.TrackData} can be created from the files remaining in the tree
          * after calls to brasero_session_span_next (). The maximum size of the data will be the one
@@ -1459,25 +1509,30 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
         possible(): BurnResult;
+
         /**
          * Get the object ready for spanning a {@link BraseroBurn.BurnSession} object. This function
          * must be called before brasero_session_span_next ().
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if successful.
          */
         start(): BurnResult;
+
         /**
          * Ends and cleans a spanning operation started with brasero_session_span_start ().
          */
         stop(): void;
     }
 
+
     namespace Status {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1496,36 +1551,26 @@ export namespace BraseroBurn {
         $signals: Status.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Status.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Status;
+        static ["new"](): Status;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Status.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Status.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Status.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Status.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Status.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Status.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * If brasero_status_get_result () returned BRASERO_BURN_NOT_READY,
          * this function returns a string describing the operation currently performed.
@@ -1533,33 +1578,39 @@ export namespace BraseroBurn {
          * @returns a `gchar`.
          */
         get_current_action(): string;
+
         /**
          * If brasero_status_get_result () returned BRASERO_BURN_ERR,
          * this function returns the error.
          * @returns a {@link GLib.Error}
          */
         get_error(): GLib.Error;
+
         /**
          * If brasero_status_get_result () returned BRASERO_BURN_NOT_READY,
          * this function returns the progress regarding the operation completion.
          * @returns a `gdouble`
          */
         get_progress(): number;
+
         /**
          * After an object (see brasero_burn_track_get_status ()) has
          * been requested its status, this function returns that status.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the object is ready. BRASERO_BURN_NOT_READY if some time should be given to the object before it is ready. BRASERO_BURN_ERR if there is an error.
          */
         get_result(): BurnResult;
+
         /**
          * Sets the status for a request to BRASERO_BURN_OK.
          */
         set_completed(): void;
+
         /**
          * Sets the status for a request to BRASERO_BURN_ERR.
          * @param error a {@link GLib.Error} or NULL.
          */
         set_error(error: GLib.Error): void;
+
         /**
          * Sets the status for a request to BRASERO_BURN_NOT_READY.
          * Allows to set a string describing the operation currently performed
@@ -1568,6 +1619,7 @@ export namespace BraseroBurn {
          * @param current_action a `gchar` or NULL.
          */
         set_not_ready(progress: number, current_action: string): void;
+
         /**
          * Sets the status for a request to BRASERO_BURN_RUNNING.
          * Allows to set a string describing the operation currently performed
@@ -1578,94 +1630,92 @@ export namespace BraseroBurn {
         set_running(progress: number, current_action: string): void;
     }
 
+
     namespace SumDialog {
         // Signal signatures
         interface SignalSignatures extends ToolDialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ToolDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                ToolDialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1684,123 +1734,112 @@ export namespace BraseroBurn {
         $signals: SumDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SumDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SumDialog;
+        static ["new"](): SumDialog;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SumDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SumDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SumDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SumDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SumDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SumDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SumDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SumDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SumDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ToolDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1819,34 +1858,24 @@ export namespace BraseroBurn {
         $signals: ToolDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ToolDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ToolDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ToolDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ToolDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ToolDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ToolDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ToolDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ToolDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ToolDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ToolDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Cancels any ongoing operation.
          * @virtual
@@ -1854,13 +1883,13 @@ export namespace BraseroBurn {
         vfunc_cancel(): boolean;
 
         // Methods
-
         /**
          * Cancels any ongoing operation.
          * @returns a `gboolean`. TRUE when cancellation was successful. FALSE otherwise.
          */
         cancel(): boolean;
     }
+
 
     namespace Track {
         // Signal signatures
@@ -1873,8 +1902,9 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1893,95 +1923,93 @@ export namespace BraseroBurn {
         $signals: Track.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Track.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Track.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Track.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Track.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Track.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Track.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Track.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Track.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Used internally in {@link BraseroBurn.Track} implementations to
          * signal a {@link BraseroBurn.Track} object has changed.
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Returns the size of the data contained by `track` in bytes or in sectors
          * @param blocks a `goffset` or NULL
-         * @param block_size
+         * @param block_size 
          * @virtual
          */
         vfunc_get_size(blocks: number, block_size: number): BurnResult;
+
         /**
          * Sets `status` to reflect whether `track` is ready to be used
          * @param status a `BraseroTrackStatus`
          * @virtual
          */
         vfunc_get_status(status: Status): BurnResult;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_get_type(type: TrackType): BurnResult;
 
         // Methods
-
         /**
          * Used internally in {@link BraseroBurn.Track} implementations to
          * signal a {@link BraseroBurn.Track} object has changed.
          */
         changed(): void;
+
         /**
          * Get the current checksum (as a string) for the track
          * @returns a `gchar` * (not to be freed) or NULL
          */
         get_checksum(): string;
+
         /**
          * Get the current checksum type for the track if any.
          * @returns a {@link BraseroBurn.ChecksumType}
          */
         get_checksum_type(): ChecksumType;
+
         /**
          * Returns the size of the data contained by `track` in bytes or in sectors
          * @param blocks a `goffset` or NULL
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
+        get_size(blocks: (bigint | number), bytes: (bigint | number)): BurnResult;
+
         /**
          * Sets `status` to reflect whether `track` is ready to be used
          * @param status a `BraseroTrackStatus`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing BRASERO_BURN_ERR if something is wrong or if it is empty
          */
         get_status(status: Status): BurnResult;
+
         /**
          * Sets `type` to reflect the type of data contained in `track`
          * @param type a {@link BraseroBurn.TrackType} or NULL
          * @returns the {@link BraseroBurn.BurnResult} of the track
          */
         get_track_type(type: TrackType): BurnResult;
+
         /**
          * Sets a checksum for the track
          * @param type a {@link BraseroBurn.ChecksumType}
@@ -1989,6 +2017,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the checksum was previously empty or matches the new one BRASERO_BURN_ERR otherwise
          */
         set_checksum(type: ChecksumType, checksum: string): BurnResult;
+
         /**
          * Associates a new `tag` with a track. This can be used
          * to pass arbitrary information for plugins, like parameters
@@ -1998,7 +2027,8 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        tag_add(tag: string, value: GObject.Value | any): BurnResult;
+        tag_add(tag: string, value: (GObject.Value | any)): BurnResult;
+
         /**
          * A wrapper around brasero_track_tag_add () to associate
          * a int value with `track`
@@ -2008,6 +2038,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
         tag_add_int(tag: string, value: number): BurnResult;
+
         /**
          * A wrapper around brasero_track_tag_add () to associate
          * a string with `track`
@@ -2017,12 +2048,14 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
         tag_add_string(tag: string, string: string): BurnResult;
+
         /**
          * Adds all tags of `dest` to `src` provided they do not
          * already exists.
          * @param src a {@link BraseroBurn.Track}
          */
         tag_copy_missing(src: Track): void;
+
         /**
          * Retrieves a value associated with `track` through
          * brasero_track_tag_add () and stores it in `value`. Do
@@ -2031,7 +2064,8 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value} **
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the retrieval was successful BRASERO_BURN_ERR otherwise
          */
-        tag_lookup(tag: string, value: GObject.Value | any): BurnResult;
+        tag_lookup(tag: string, value: (GObject.Value | any)): BurnResult;
+
         /**
          * Retrieves a int value associated with `track`. This
          * is a wrapper around brasero_track_tag_lookup ().
@@ -2039,6 +2073,7 @@ export namespace BraseroBurn {
          * @returns a #int; the value or 0 otherwise
          */
         tag_lookup_int(tag: string): number;
+
         /**
          * Retrieves a string value associated with `track`. This
          * is a wrapper around brasero_track_tag_lookup ().
@@ -2048,13 +2083,16 @@ export namespace BraseroBurn {
         tag_lookup_string(tag: string): string;
     }
 
+
     namespace TrackData {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Track.ConstructorProps {
 
-        interface ConstructorProps extends Track.ConstructorProps {}
+        }
     }
 
     /**
@@ -2073,36 +2111,26 @@ export namespace BraseroBurn {
         $signals: TrackData.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackData;
+        static ["new"](): TrackData;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Adds one or more parameters determining the file system type
          * and various other options to create an image.
@@ -2110,23 +2138,27 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_add_fs(fstype: ImageFS): BurnResult;
+
         /**
          * @virtual
          */
-        vfunc_get_file_num(): bigint | number;
+        vfunc_get_file_num(): (bigint | number);
+
         /**
          * Returns the parameters determining the file system type
          * and various other options to create an image.
          * @virtual
          */
         vfunc_get_fs(): ImageFS;
+
         /**
          * Returns a list of {@link BraseroBurn.GraftPt}.
-         *
+         * 
          * Do not free after usage as `track` retains ownership.
          * @virtual
          */
-        vfunc_get_grafts(): GraftPt[] | null;
+        vfunc_get_grafts(): (GraftPt[] | null);
+
         /**
          * Removes one or more parameters determining the file system type
          * and various other options to create an image.
@@ -2134,20 +2166,20 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_rm_fs(fstype: ImageFS): BurnResult;
+
         /**
          * Sets the lists of grafts points (`grafts`) and excluded
          * URIs (`unreadable`) to be used to create an image.
-         *
+         * 
          * Be careful `track` takes ownership of `grafts` and
          * `unreadable` which must not be freed afterwards.
          * @param grafts a {@link GLib.SList} of {@link BraseroBurn.GraftPt}.
          * @param unreadable a {@link GLib.SList} of URIS as strings or `null`.
          * @virtual
          */
-        vfunc_set_source(grafts: GraftPt[], unreadable: string[] | null): BurnResult;
+        vfunc_set_source(grafts: GraftPt[], unreadable: (string[] | null)): BurnResult;
 
         // Methods
-
         /**
          * Adds one or more parameters determining the file system type
          * and various other options to create an image.
@@ -2155,6 +2187,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
         add_fs(fstype: ImageFS): BurnResult;
+
         /**
          * Returns a list of URIs which must not be included in
          * the image to be created.
@@ -2162,25 +2195,29 @@ export namespace BraseroBurn {
          * usage as `track` retains ownership.
          * @returns a {@link GLib.SList} of `gchar` * or `null` if no URI should be excluded.
          */
-        get_excluded_list(): string[] | null;
+        get_excluded_list(): (string[] | null);
+
         /**
          * Sets the number of files (not directories) in `file_num`.
          * @returns a {@link BraseroBurn.BurnResult}. `true` if `file_num` was set, `false` otherwise.
          */
         get_file_num(): [BurnResult, number];
+
         /**
          * Returns the parameters determining the file system type
          * and various other options to create an image.
          * @returns a {@link BraseroBurn.ImageFS}.
          */
         get_fs(): ImageFS;
+
         /**
          * Returns a list of {@link BraseroBurn.GraftPt}.
-         *
+         * 
          * Do not free after usage as `track` retains ownership.
          * @returns a {@link GLib.SList} of {@link BraseroBurn.GraftPt} or `null` if empty.
          */
-        get_grafts(): GraftPt[] | null;
+        get_grafts(): (GraftPt[] | null);
+
         /**
          * Removes one or more parameters determining the file system type
          * and various other options to create an image.
@@ -2188,29 +2225,33 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
         rm_fs(fstype: ImageFS): BurnResult;
+
         /**
          * Sets the size of the image to be created (in sectors of 2048 bytes).
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_data_blocks(blocks: bigint | number): BurnResult;
+        set_data_blocks(blocks: (bigint | number)): BurnResult;
+
         /**
          * Sets the number of files (not directories) in `track`.
          * @param number a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_file_num(number: bigint | number): BurnResult;
+        set_file_num(number: (bigint | number)): BurnResult;
+
         /**
          * Sets the lists of grafts points (`grafts`) and excluded
          * URIs (`unreadable`) to be used to create an image.
-         *
+         * 
          * Be careful `track` takes ownership of `grafts` and
          * `unreadable` which must not be freed afterwards.
          * @param grafts a {@link GLib.SList} of {@link BraseroBurn.GraftPt}.
          * @param unreadable a {@link GLib.SList} of URIS as strings or `null`.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_source(grafts: GraftPt[], unreadable: string[] | null): BurnResult;
+        set_source(grafts: GraftPt[], unreadable: (string[] | null)): BurnResult;
+
         /**
          * Write to `grafts_path` (a path to a file) the graft points,
          * and to `excluded_path` (a path to a file) the list of paths to
@@ -2218,9 +2259,9 @@ export namespace BraseroBurn {
          * directory to be used for created directories;
          * `videodir` (a path) is a directory to be used to build the
          * the video image.
-         *
+         * 
          * This is mostly for internal use by mkisofs and similar.
-         *
+         * 
          * This function takes care of file name mangling.
          * @param grafts_path a `gchar`.
          * @param excluded_path a `gchar`.
@@ -2228,13 +2269,9 @@ export namespace BraseroBurn {
          * @param videodir a `gchar` or `null`.
          * @returns a {@link BraseroBurn.BurnResult}.
          */
-        write_to_paths(
-            grafts_path: string,
-            excluded_path: string,
-            emptydir: string,
-            videodir: string | null,
-        ): BurnResult;
+        write_to_paths(grafts_path: string, excluded_path: string, emptydir: string, videodir: (string | null)): BurnResult;
     }
+
 
     namespace TrackDataCfg {
         // Signal signatures
@@ -2243,82 +2280,74 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            'deep-directory': (arg0: string) => boolean | void;
+            "deep-directory": (arg0: string) => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            'icon-changed': () => void;
+            "icon-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'image-uri': (arg0: string) => number;
+            "image-uri": (arg0: string) => number;
             /**
              * @signal
              * @run-last
              */
-            'joliet-rename': () => void;
+            "joliet-rename": () => void;
             /**
              * @signal
              * @run-last
              */
-            'name-collision': (arg0: string) => boolean | void;
+            "name-collision": (arg0: string) => (boolean | void);
             /**
              * @signal
              * @run-first
              */
-            'recursive-sym': (arg0: string) => void;
+            "recursive-sym": (arg0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            'session-available': (arg0: GObject.Object, arg1: boolean) => void;
+            "session-available": (arg0: GObject.Object, arg1: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            'session-loaded': (arg0: GObject.Object, arg1: boolean) => void;
+            "session-loaded": (arg0: GObject.Object, arg1: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            'source-loaded': (arg0: any | null) => void;
+            "source-loaded": (arg0: (any | null)) => void;
             /**
              * @signal
              * @run-last
              */
-            'source-loading': (arg0: number) => void;
+            "source-loading": (arg0: number) => void;
             /**
              * @signal
              * @run-first
              */
-            'unknown-uri': (arg0: string) => void;
+            "unknown-uri": (arg0: string) => void;
             /**
              * @signal
              * @run-first
              */
-            'unreadable-uri': (arg0: any | null, arg1: string) => void;
+            "unreadable-uri": (arg0: (any | null), arg1: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends TrackData.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                TrackData.ConstructorProps,
-                Gtk.TreeDragDest.ConstructorProps,
-                Gtk.TreeDragSource.ConstructorProps,
-                Gtk.TreeModel.ConstructorProps,
-                Gtk.TreeSortable.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class TrackDataCfg
-        extends TrackData
-        implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
-    {
+    class TrackDataCfg extends TrackData implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable {
         static $gtype: GObject.GType<TrackDataCfg>;
 
         /**
@@ -2331,36 +2360,26 @@ export namespace BraseroBurn {
         $signals: TrackDataCfg.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackDataCfg.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackDataCfg;
+        static ["new"](): TrackDataCfg;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackDataCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackDataCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDataCfg.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackDataCfg.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackDataCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackDataCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDataCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a new file (with `uri` as URI) under a directory (`parent`).
          * If `parent` is NULL, the file is added to the root.
@@ -2371,6 +2390,7 @@ export namespace BraseroBurn {
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
          */
         add(uri: string, parent: Gtk.TreePath): boolean;
+
         /**
          * Add a new empty directory (with `name` as name) under another directory (`parent`).
          * If `parent` is NULL, the file is added to the root.
@@ -2379,17 +2399,20 @@ export namespace BraseroBurn {
          * @returns a {@link Gtk.TreePath} which should be destroyed when not needed; NULL if the operation was not successful.
          */
         add_empty_directory(name: string, parent: Gtk.TreePath): Gtk.TreePath;
+
         /**
          * Prevents `uri` to be filtered while automatic exploration
          * of added directories is performed.
          * @param uri a `gchar`
          */
         dont_filter_uri(uri: string): void;
+
         /**
          * Returns a path pointing to the currently selected icon file.
          * @returns a `gchar` or NULL.
          */
         get_icon_path(): string;
+
         /**
          * Removes a file or a directory (as well as its children) from the tree.
          * NOTE: some files cannot be removed like files from an imported session.
@@ -2397,6 +2420,7 @@ export namespace BraseroBurn {
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
          */
         remove(treepath: Gtk.TreePath): boolean;
+
         /**
          * Renames the file in the tree pointed by `treepath`.
          * @param newname a `gchar`
@@ -2404,11 +2428,13 @@ export namespace BraseroBurn {
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
          */
         rename(newname: string, treepath: Gtk.TreePath): boolean;
+
         /**
          * Completely empties `track` and unloads any currently loaded session
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
          */
         reset(): boolean;
+
         /**
          * Removes a file from the filtered file list (see brasero_track_data_cfg_get_filtered_model ())
          * and re-adds it wherever it should be in the tree.
@@ -2417,12 +2443,14 @@ export namespace BraseroBurn {
          * @param treepath a {@link Gtk.TreePath}
          */
         restore(treepath: Gtk.TreePath): void;
+
         /**
          * Sets the current icon.
          * @param icon_path a `gchar`
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
          */
         set_icon(icon_path: string): boolean;
+
         /**
          * Creates a new {@link BraseroBurn.TrackData} (stored in `new_track`) from the files contained in `track`. The sum of their sizes
          * does not exceed `sectors`. This allows to burn a tree on multiple discs. This function can be
@@ -2432,12 +2460,14 @@ export namespace BraseroBurn {
          * @param new_track a {@link BraseroBurn.TrackData}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span(sectors: bigint | number, new_track: TrackData): BurnResult;
+        span(sectors: (bigint | number), new_track: TrackData): BurnResult;
+
         /**
          * Checks whether some files were not included during calls to brasero_track_data_cfg_span ().
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
         span_again(): BurnResult;
+
         /**
          * Returns the maximum required space (in sectors)
          * among all the possible spanned batches.
@@ -2448,22 +2478,26 @@ export namespace BraseroBurn {
          * @returns a `goffset`.
          */
         span_max_space(): number;
+
         /**
          * Checks if a new {@link BraseroBurn.TrackData} can be created from the files remaining in the tree
          * after calls to brasero_track_data_cfg_span ().
          * @param sectors a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span_possible(sectors: bigint | number): BurnResult;
+        span_possible(sectors: (bigint | number)): BurnResult;
+
         /**
          * Resets the list of files that were included after calls to brasero_track_data_cfg_span ().
          */
         span_stop(): void;
+
         /**
          * Unload the contents of the last session of the currently loaded medium.
          * See brasero_track_data_cfg_load_medium ().
          */
         unload_current_medium(): void;
+
         /**
          * Asks the {@link Gtk.TreeDragDest} to insert a row before the path `dest`,
          * deriving the contents of the row from `selection_data`. If `dest` is
@@ -2476,6 +2510,7 @@ export namespace BraseroBurn {
          * @returns whether a new row was created before position `dest`
          */
         drag_data_received(dest: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Determines whether a drop is possible before the given `dest_path`,
          * at the same depth as `dest_path`. i.e., can we drop the data in
@@ -2487,6 +2522,7 @@ export namespace BraseroBurn {
          * @returns `true` if a drop is possible before `dest_path`
          */
         row_drop_possible(dest_path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragDest} to insert a row before the path `dest`,
          * deriving the contents of the row from `selection_data`. If `dest` is
@@ -2499,6 +2535,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_drag_data_received(dest: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Determines whether a drop is possible before the given `dest_path`,
          * at the same depth as `dest_path`. i.e., can we drop the data in
@@ -2510,6 +2547,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_row_drop_possible(dest_path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
          * it was moved somewhere else via drag-and-drop. Returns `false`
@@ -2520,6 +2558,7 @@ export namespace BraseroBurn {
          * @returns `true` if the row was successfully deleted
          */
         drag_data_delete(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
          * representation of the row at `path`. `selection_data`->target gives
@@ -2530,6 +2569,7 @@ export namespace BraseroBurn {
          * @returns `true` if data of the required type was provided
          */
         drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
@@ -2538,6 +2578,7 @@ export namespace BraseroBurn {
          * @returns `true` if the row can be dragged
          */
         row_draggable(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
          * it was moved somewhere else via drag-and-drop. Returns `false`
@@ -2548,6 +2589,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_drag_data_delete(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
          * representation of the row at `path`. `selection_data`->target gives
@@ -2558,6 +2600,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
@@ -2566,36 +2609,41 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_row_draggable(path: Gtk.TreePath): boolean;
+
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+
         /**
          * Calls func on each node in model in a depth-first fashion.
-         *
+         * 
          * If `func` returns `true`, then the tree ceases to be walked,
          * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @returns the type of the column
          */
         get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
          */
         get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -2603,6 +2651,7 @@ export namespace BraseroBurn {
          * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Initializes `iter` with the first iterator in the tree
          * (the one at the path "0") and returns `true`. Returns
@@ -2610,6 +2659,7 @@ export namespace BraseroBurn {
          * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to a valid iterator pointing to `path_string`, if it
          * exists. Otherwise, `iter` is left invalid and `false` is returned.
@@ -2617,22 +2667,25 @@ export namespace BraseroBurn {
          * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @returns the number of columns
          */
         get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Generates a string representation of the iter.
-         *
+         * 
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
@@ -2640,55 +2693,61 @@ export namespace BraseroBurn {
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: Gtk.TreeIter | null): number;
+        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -2698,37 +2757,40 @@ export namespace BraseroBurn {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -2737,30 +2799,33 @@ export namespace BraseroBurn {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -2769,49 +2834,55 @@ export namespace BraseroBurn {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
-         *
+         * 
          * This should be called by models when their rows have been
          * reordered.
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -2819,22 +2890,25 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
@@ -2842,46 +2916,51 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -2891,37 +2970,40 @@ export namespace BraseroBurn {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -2930,13 +3012,14 @@ export namespace BraseroBurn {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
@@ -2944,19 +3027,21 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -2966,6 +3051,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
@@ -2973,19 +3059,21 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Fills in `sort_column_id` and `order` with the current sort column and the
          * order. It returns `true` unless the `sort_column_id` is
@@ -2994,6 +3082,7 @@ export namespace BraseroBurn {
          * @returns `true` if the sort column is not one of the special sort   column ids.
          */
         get_sort_column_id(): [boolean, number, Gtk.SortType];
+
         /**
          * Returns `true` if the model has a default sort function. This is used
          * primarily by GtkTreeViewColumns in order to determine if a model can
@@ -3001,12 +3090,13 @@ export namespace BraseroBurn {
          * @returns `true`, if the model has a default sort function
          */
         has_default_sort_func(): boolean;
+
         /**
          * Sets the default comparison function used when sorting to be `sort_func`.
          * If the current sort column id of `sortable` is
          * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
          * this function.
-         *
+         * 
          * If `sort_func` is `null`, then there will be no default comparison function.
          * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
@@ -3014,21 +3104,23 @@ export namespace BraseroBurn {
          * @param sort_func The comparison function
          * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: GLib.DestroyNotify | null): void;
+        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
          * {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal. `sort_column_id` may either be
          * a regular column id, or one of the following special values:
-         *
+         * 
          * - `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`: the default sort function
          *   will be used, if it is set
-         *
+         * 
          * - `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`: no sorting will occur
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
          */
         set_sort_column_id(sort_column_id: number, order: Gtk.SortType): void;
+
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
          * current sort column id of `sortable` is the same as `sort_column_id`, then
@@ -3037,15 +3129,13 @@ export namespace BraseroBurn {
          * @param sort_func The comparison function
          * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(
-            sort_column_id: number,
-            sort_func: Gtk.TreeIterCompareFunc,
-            destroy: GLib.DestroyNotify | null,
-        ): void;
+        set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
          */
         sort_column_changed(): void;
+
         /**
          * Fills in `sort_column_id` and `order` with the current sort column and the
          * order. It returns `true` unless the `sort_column_id` is
@@ -3054,6 +3144,7 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_get_sort_column_id(): [boolean, number, Gtk.SortType];
+
         /**
          * Returns `true` if the model has a default sort function. This is used
          * primarily by GtkTreeViewColumns in order to determine if a model can
@@ -3061,12 +3152,13 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_has_default_sort_func(): boolean;
+
         /**
          * Sets the default comparison function used when sorting to be `sort_func`.
          * If the current sort column id of `sortable` is
          * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
          * this function.
-         *
+         * 
          * If `sort_func` is `null`, then there will be no default comparison function.
          * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
@@ -3075,22 +3167,24 @@ export namespace BraseroBurn {
          * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: GLib.DestroyNotify | null): void;
+        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
          * {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal. `sort_column_id` may either be
          * a regular column id, or one of the following special values:
-         *
+         * 
          * - `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`: the default sort function
          *   will be used, if it is set
-         *
+         * 
          * - `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`: no sorting will occur
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
          * @virtual
          */
         vfunc_set_sort_column_id(sort_column_id: number, order: Gtk.SortType): void;
+
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
          * current sort column id of `sortable` is the same as `sort_column_id`, then
@@ -3100,11 +3194,8 @@ export namespace BraseroBurn {
          * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_sort_func(
-            sort_column_id: number,
-            sort_func: Gtk.TreeIterCompareFunc,
-            destroy: GLib.DestroyNotify | null,
-        ): void;
+        vfunc_set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
          * @virtual
@@ -3112,13 +3203,16 @@ export namespace BraseroBurn {
         vfunc_sort_column_changed(): void;
     }
 
+
     namespace TrackDisc {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Track.ConstructorProps {
 
-        interface ConstructorProps extends Track.ConstructorProps {}
+        }
     }
 
     /**
@@ -3137,42 +3231,33 @@ export namespace BraseroBurn {
         $signals: TrackDisc.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackDisc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackDisc;
+        static ["new"](): TrackDisc;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackDisc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackDisc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackDisc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackDisc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackDisc.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackDisc.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackDisc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackDisc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackDisc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the track number which will be used
          * to copy only one specific session on a multisession disc
          * @returns a `guint`. 0 if none is set, any other number otherwise.
          */
         get_track_num(): number;
+
         /**
          * Sets a track number which can be used
          * to copy only one specific session on a multisession disc
@@ -3182,13 +3267,16 @@ export namespace BraseroBurn {
         set_track_num(num: number): BurnResult;
     }
 
+
     namespace TrackImage {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Track.ConstructorProps {
 
-        interface ConstructorProps extends Track.ConstructorProps {}
+        }
     }
 
     /**
@@ -3207,42 +3295,33 @@ export namespace BraseroBurn {
         $signals: TrackImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackImage;
+        static ["new"](): TrackImage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Sets the image size (in sectors).
          * @param blocks a `goffset`
          * @virtual
          */
         vfunc_set_block_num(blocks: number): BurnResult;
+
         /**
          * Sets the image source path (and its toc if need be)
          * as well as its format.
@@ -3254,13 +3333,13 @@ export namespace BraseroBurn {
         vfunc_set_source(image: string, toc: string, format: ImageFormat): BurnResult;
 
         // Methods
-
         /**
          * This function returns the format of the
          * source image.
          * @returns a {@link BraseroBurn.ImageFormat}
          */
         get_format(): ImageFormat;
+
         /**
          * This function returns the path or the URI (if `uri` is TRUE) of the
          * source image file.
@@ -3268,6 +3347,7 @@ export namespace BraseroBurn {
          * @returns a `gchar`
          */
         get_source(uri: boolean): string;
+
         /**
          * This function returns the path or the URI (if `uri` is TRUE) of the
          * source toc file.
@@ -3275,6 +3355,7 @@ export namespace BraseroBurn {
          * @returns a `gchar`
          */
         get_toc_source(uri: boolean): string;
+
         /**
          * This function returns whether the data bytes need swapping. Some .bin files
          * associated with .cue files are little endian for audio whereas they should
@@ -3282,12 +3363,14 @@ export namespace BraseroBurn {
          * @returns a `gboolean`
          */
         need_byte_swap(): boolean;
+
         /**
          * Sets the image size (in sectors).
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_block_num(blocks: bigint | number): BurnResult;
+        set_block_num(blocks: (bigint | number)): BurnResult;
+
         /**
          * Sets the image source path (and its toc if need be)
          * as well as its format.
@@ -3299,13 +3382,16 @@ export namespace BraseroBurn {
         set_source(image: string, toc: string, format: ImageFormat): BurnResult;
     }
 
+
     namespace TrackImageCfg {
         // Signal signatures
-        interface SignalSignatures extends TrackImage.SignalSignatures {}
+        interface SignalSignatures extends TrackImage.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends TrackImage.ConstructorProps {
 
-        interface ConstructorProps extends TrackImage.ConstructorProps {}
+        }
     }
 
     /**
@@ -3324,36 +3410,26 @@ export namespace BraseroBurn {
         $signals: TrackImageCfg.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackImageCfg.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackImageCfg;
+        static ["new"](): TrackImageCfg;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackImageCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackImageCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackImageCfg.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackImageCfg.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackImageCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackImageCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackImageCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This function allows to prevents the identification of the format of the image.
          * It does not cancel size retrieval.
@@ -3363,12 +3439,14 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
         force_format(format: ImageFormat): BurnResult;
+
         /**
          * This function returns the {@link BraseroBurn.ImageFormat} that was set for the image.
          * See brasero_track_image_cfg_force_format ().
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
         get_forced_format(): ImageFormat;
+
         /**
          * Sets the image uri or path (absolute or relative). `track` will then identify its format and retrieve its size.
          * @param uri a `gchar`
@@ -3377,13 +3455,16 @@ export namespace BraseroBurn {
         set_source(uri: string): BurnResult;
     }
 
+
     namespace TrackStream {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Track.ConstructorProps {
 
-        interface ConstructorProps extends Track.ConstructorProps {}
+        }
     }
 
     /**
@@ -3402,36 +3483,26 @@ export namespace BraseroBurn {
         $signals: TrackStream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackStream;
+        static ["new"](): TrackStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Sets the boundaries of the stream (where it starts, ends in the file;
          * how long is the gap with the next track) in nano seconds.
@@ -3441,15 +3512,17 @@ export namespace BraseroBurn {
          * @virtual
          */
         vfunc_set_boundaries(start: number, end: number, gap: number): BurnResult;
+
         /**
          * Sets the format of the stream.
          * @param format a {@link BraseroBurn.StreamFormat}
          * @virtual
          */
         vfunc_set_format(format: StreamFormat): BurnResult;
+
         /**
          * Sets the stream (song or video) uri.
-         *
+         * 
          * Note: it resets the end point of the track to 0 but keeps start point and gap
          * unchanged.
          * @param uri a `gchar`
@@ -3458,22 +3531,24 @@ export namespace BraseroBurn {
         vfunc_set_source(uri: string): BurnResult;
 
         // Methods
-
         /**
          * This function returns end time in the stream (in nano seconds).
          * @returns a `guint64`.
          */
         get_end(): number;
+
         /**
          * This function returns the format of the stream.
          * @returns a {@link BraseroBurn.StreamFormat}.
          */
         get_format(): StreamFormat;
+
         /**
          * This function returns length of the gap (in nano seconds).
          * @returns a `guint64`.
          */
         get_gap(): number;
+
         /**
          * This function returns the length of the stream (in nano seconds)
          * taking into account the start and end time as well as the length
@@ -3481,21 +3556,24 @@ export namespace BraseroBurn {
          * @param length a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if `length` was set.
          */
-        get_length(length: bigint | number): BurnResult;
+        get_length(length: (bigint | number)): BurnResult;
+
         /**
          * This function returns the path or the URI (if `uri` is TRUE)
          * of the stream (song or video file).
-         *
+         * 
          * Note: this function resets any length previously set to 0.
          * @param uri a `gboolean`
          * @returns a `gchar`.
          */
         get_source(uri: boolean): string;
+
         /**
          * This function returns start time in the stream (in nano seconds).
          * @returns a `guint64`.
          */
         get_start(): number;
+
         /**
          * Sets the boundaries of the stream (where it starts, ends in the file;
          * how long is the gap with the next track) in nano seconds.
@@ -3504,16 +3582,18 @@ export namespace BraseroBurn {
          * @param gap a `gint64` or -1 to ignore
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_boundaries(start: bigint | number, end: bigint | number, gap: bigint | number): BurnResult;
+        set_boundaries(start: (bigint | number), end: (bigint | number), gap: (bigint | number)): BurnResult;
+
         /**
          * Sets the format of the stream.
          * @param format a {@link BraseroBurn.StreamFormat}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
         set_format(format: StreamFormat): BurnResult;
+
         /**
          * Sets the stream (song or video) uri.
-         *
+         * 
          * Note: it resets the end point of the track to 0 but keeps start point and gap
          * unchanged.
          * @param uri a `gchar`
@@ -3522,13 +3602,16 @@ export namespace BraseroBurn {
         set_source(uri: string): BurnResult;
     }
 
+
     namespace TrackStreamCfg {
         // Signal signatures
-        interface SignalSignatures extends TrackStream.SignalSignatures {}
+        interface SignalSignatures extends TrackStream.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends TrackStream.ConstructorProps {
 
-        interface ConstructorProps extends TrackStream.ConstructorProps {}
+        }
     }
 
     /**
@@ -3547,51 +3630,47 @@ export namespace BraseroBurn {
         $signals: TrackStreamCfg.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackStreamCfg.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TrackStreamCfg;
+        static ["new"](): TrackStreamCfg;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackStreamCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackStreamCfg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackStreamCfg.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackStreamCfg.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackStreamCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackStreamCfg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackStreamCfg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type BurnClass = typeof Burn;
+
     /**
      * @gir-type Alias
      */
     type BurnDialogClass = typeof BurnDialog;
+
     /**
      * @gir-type Alias
      */
     type BurnOptionsClass = typeof BurnOptions;
+
     /**
      * @gir-type Alias
      */
     type BurnSessionClass = typeof BurnSession;
+
     /**
      * A pair of strings describing:
      * `uri` the actual current location of the file
@@ -3602,72 +3681,84 @@ export namespace BraseroBurn {
         static $gtype: GObject.GType<GraftPt>;
 
         // Fields
-
         uri: string;
+
         path: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                uri: string;
-                path: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            uri: string;
+            path: string;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type SessionCfgClass = typeof SessionCfg;
+
     /**
      * @gir-type Alias
      */
     type SessionSpanClass = typeof SessionSpan;
+
     /**
      * @gir-type Alias
      */
     type StatusClass = typeof Status;
+
     /**
      * @gir-type Alias
      */
     type SumDialogClass = typeof SumDialog;
+
     /**
      * @gir-type Alias
      */
     type ToolDialogClass = typeof ToolDialog;
+
     /**
      * @gir-type Alias
      */
     type TrackClass = typeof Track;
+
     /**
      * @gir-type Alias
      */
     type TrackDataCfgClass = typeof TrackDataCfg;
+
     /**
      * @gir-type Alias
      */
     type TrackDataClass = typeof TrackData;
+
     /**
      * @gir-type Alias
      */
     type TrackDiscClass = typeof TrackDisc;
+
     /**
      * @gir-type Alias
      */
     type TrackImageCfgClass = typeof TrackImageCfg;
+
     /**
      * @gir-type Alias
      */
     type TrackImageClass = typeof TrackImage;
+
     /**
      * @gir-type Alias
      */
     type TrackStreamCfgClass = typeof TrackStreamCfg;
+
     /**
      * @gir-type Alias
      */
     type TrackStreamClass = typeof TrackStream;
+
     /**
      * @gir-type Struct
      */
@@ -3675,7 +3766,6 @@ export namespace BraseroBurn {
         static $gtype: GObject.GType<TrackType>;
 
         // Methods
-
         /**
          * Returns TRUE if `type_A` and `type_B` represents
          * the same type and subtype.
@@ -3683,10 +3773,12 @@ export namespace BraseroBurn {
          * @returns a `gboolean`
          */
         equal(type_B: TrackType): boolean;
+
         /**
          * Frees {@link BraseroBurn.TrackType} structure.
          */
         free(): void;
+
         /**
          * Returns the parameters for the image generation
          * when brasero_track_type_get_has_data () returned
@@ -3694,26 +3786,31 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.ImageFS}
          */
         get_data_fs(): ImageFS;
+
         /**
          * Returns TRUE if DATA type (see brasero_track_data_new ()) was set.
          * @returns a `gboolean`
          */
         get_has_data(): boolean;
+
         /**
          * Returns TRUE if IMAGE type (see brasero_track_image_new ()) was set.
          * @returns a `gboolean`
          */
         get_has_image(): boolean;
+
         /**
          * Returns TRUE if MEDIUM type (see brasero_track_disc_new ()) was set.
          * @returns a `gboolean`
          */
         get_has_medium(): boolean;
+
         /**
          * This function returns `true` if IMAGE type (see brasero_track_stream_new ()) was set.
          * @returns a `gboolean`
          */
         get_has_stream(): boolean;
+
         /**
          * Returns the format of an image when
          * brasero_track_type_get_has_image () returned
@@ -3721,6 +3818,7 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.ImageFormat}
          */
         get_image_format(): ImageFormat;
+
         /**
          * Returns the format for a stream (song or video)
          * when brasero_track_type_get_has_stream () returned
@@ -3728,39 +3826,47 @@ export namespace BraseroBurn {
          * @returns a {@link BraseroBurn.StreamFormat}
          */
         get_stream_format(): StreamFormat;
+
         /**
          * Returns TRUE if no type was set.
          * @returns a `gboolean`
          */
         is_empty(): boolean;
+
         /**
          * Sets the {@link BraseroBurn.ImageFS}. Must be called
          * after brasero_track_type_set_has_data ().
          * @param fs_type a {@link BraseroBurn.ImageFS}
          */
         set_data_fs(fs_type: ImageFS): void;
+
         /**
          * Set DATA type for `type`.
          */
         set_has_data(): void;
+
         /**
          * Set IMAGE type for `type`.
          */
         set_has_image(): void;
+
         /**
          * Set MEDIUM type for `type`.
          */
         set_has_medium(): void;
+
         /**
          * Set STREAM type for `type`
          */
         set_has_stream(): void;
+
         /**
          * Sets the {@link BraseroBurn.ImageFormat}. Must be called
          * after brasero_track_type_set_has_image ().
          * @param format a {@link BraseroBurn.ImageFormat}
          */
         set_image_format(format: ImageFormat): void;
+
         /**
          * Sets the {@link BraseroBurn.StreamFormat}. Must be called
          * after brasero_track_type_set_has_stream ().
@@ -3769,11 +3875,13 @@ export namespace BraseroBurn {
         set_stream_format(format: StreamFormat): void;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

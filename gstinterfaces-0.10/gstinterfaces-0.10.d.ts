@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstInterfaces {
+
     /**
      * GstInterfaces-0.10
      */
+
 
     /**
      * @gir-type Enum
@@ -39,6 +42,7 @@ export namespace GstInterfaces {
         HARDWARE,
         SOFTWARE,
     }
+
 
     /**
      * @gir-type Enum
@@ -62,6 +66,7 @@ export namespace GstInterfaces {
         MIXER_CHANGED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -76,6 +81,7 @@ export namespace GstInterfaces {
         HARDWARE,
         SOFTWARE,
     }
+
 
     /**
      * @gir-type Enum
@@ -117,6 +123,7 @@ export namespace GstInterfaces {
         NEXT_ANGLE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -140,6 +147,7 @@ export namespace GstInterfaces {
         COMMAND,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -160,6 +168,7 @@ export namespace GstInterfaces {
         ANGLES_CHANGED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -175,6 +184,7 @@ export namespace GstInterfaces {
         COMMANDS,
         ANGLES,
     }
+
 
     /**
      * @gir-type Enum
@@ -197,86 +207,57 @@ export namespace GstInterfaces {
         DB,
     }
 
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function interfaces_marshal_VOID__OBJECT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function interfaces_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function interfaces_marshal_VOID__OBJECT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function interfaces_marshal_VOID__OBJECT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_ULONG(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function interfaces_marshal_VOID__OBJECT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
      * Check a bus message to see if it is a GstMixer notification
      * message and return the GstMixerMessageType identifying which
@@ -287,6 +268,7 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     function mixer_message_get_type(message: Gst.Message): MixerMessageType;
+
     /**
      * Extracts the contents of a mute-toggled bus message. Reads
      * the GstMixerTrack that has changed, and the new value of the mute
@@ -298,6 +280,7 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     function mixer_message_parse_mute_toggled(message: Gst.Message, track: MixerTrack, mute: boolean): void;
+
     /**
      * Extracts the GstMixerOptions and new value from a option-changed bus notification
      * message.
@@ -308,6 +291,7 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     function mixer_message_parse_option_changed(message: Gst.Message, options: MixerOptions, value: string): void;
+
     /**
      * Extracts the GstMixerOptions whose value list has changed from an
      * options-list-changed bus notification message.
@@ -318,9 +302,10 @@ export namespace GstInterfaces {
      * @since 0.10.18
      */
     function mixer_message_parse_options_list_changed(message: Gst.Message, options: MixerOptions): void;
+
     /**
      * Extracts the contents of a record-toggled bus message. Reads
-     * the GstMixerTrack that has changed, and the new value of the
+     * the GstMixerTrack that has changed, and the new value of the 
      * recording flag.
      * The GstMixerTrack remains valid until the message is freed.
      * @param message A record-toggled change notification message.
@@ -329,6 +314,7 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     function mixer_message_parse_record_toggled(message: Gst.Message, track: MixerTrack, record: boolean): void;
+
     /**
      * Parses a volume-changed notification message and extracts the track object
      * it refers to, as well as an array of volumes and the size of the volumes array.
@@ -341,12 +327,8 @@ export namespace GstInterfaces {
      * @param num_channels Result location to receive the number of channels, or NULL.
      * @since 0.10.14
      */
-    function mixer_message_parse_volume_changed(
-        message: Gst.Message,
-        track: MixerTrack,
-        volumes: number,
-        num_channels: number,
-    ): void;
+    function mixer_message_parse_volume_changed(message: Gst.Message, track: MixerTrack, volumes: number, num_channels: number): void;
+
     /**
      * Inspect a {@link Gst.Event} and return the {@link GstInterfaces.NavigationEventType} of the event, or
      * #GST_NAVIGATION_EVENT_INVALID if the event is not a {@link GstInterfaces.Navigation} event.
@@ -354,6 +336,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_event_get_type(event: Gst.Event): NavigationEventType;
+
     /**
      * Inspect a {@link GstInterfaces.Navigation} command event and retrieve the enum value of the
      * associated command.
@@ -363,12 +346,14 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_event_parse_command(event: Gst.Event, command: NavigationCommand): boolean;
+
     /**
      * @param event A {@link Gst.Event} to inspect.
      * @param key A pointer to a location to receive the string identifying the key press. The returned string is owned by the event, and valid only until the event is unreffed.
      * @since 0.10.23
      */
     function navigation_event_parse_key_event(event: Gst.Event, key: string): boolean;
+
     /**
      * Retrieve the details of either a {@link GstInterfaces.Navigation} mouse button press event or
      * a mouse button release event. Determine which type the event is using
@@ -382,6 +367,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_event_parse_mouse_button_event(event: Gst.Event, button: number, x: number, y: number): boolean;
+
     /**
      * Inspect a {@link GstInterfaces.Navigation} mouse movement event and extract the coordinates
      * of the event.
@@ -392,6 +378,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_event_parse_mouse_move_event(event: Gst.Event, x: number, y: number): boolean;
+
     /**
      * Check a bus message to see if it is a {@link GstInterfaces.Navigation} event, and return
      * the {@link GstInterfaces.NavigationMessageType} identifying the type of the message if so.
@@ -402,6 +389,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_message_get_type(message: Gst.Message): NavigationMessageType;
+
     /**
      * Parse a {@link GstInterfaces.Navigation} message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
      * and extract the `cur_angle` and `n_angles` parameters.
@@ -411,11 +399,8 @@ export namespace GstInterfaces {
      * @returns `true` if the message could be successfully parsed. `false` if not.
      * @since 0.10.23
      */
-    function navigation_message_parse_angles_changed(
-        message: Gst.Message,
-        cur_angle: number,
-        n_angles: number,
-    ): boolean;
+    function navigation_message_parse_angles_changed(message: Gst.Message, cur_angle: number, n_angles: number): boolean;
+
     /**
      * Parse a {@link GstInterfaces.Navigation} message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
      * and extract the active/inactive flag. If the mouse over event is marked
@@ -426,6 +411,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_message_parse_mouse_over(message: Gst.Message, active: boolean): boolean;
+
     /**
      * Inspect a {@link Gst.Query} and return the {@link GstInterfaces.NavigationQueryType} associated with
      * it if it is a {@link GstInterfaces.Navigation} query.
@@ -435,6 +421,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_get_type(query: Gst.Query): NavigationQueryType;
+
     /**
      * Parse the current angle number in the {@link GstInterfaces.Navigation} angles `query` into the
      * `guint` pointed to by the `cur_angle` variable, and the number of available
@@ -446,6 +433,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_parse_angles(query: Gst.Query, cur_angle: number, n_angles: number): boolean;
+
     /**
      * Parse the number of commands in the {@link GstInterfaces.Navigation} commands `query`.
      * @param query a {@link Gst.Query}
@@ -454,6 +442,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_parse_commands_length(query: Gst.Query, n_cmds: number): boolean;
+
     /**
      * Parse the {@link GstInterfaces.Navigation} command query and retrieve the `nth` command from
      * it into `cmd`. If the list contains less elements than `nth`, `cmd` will be
@@ -465,6 +454,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_parse_commands_nth(query: Gst.Query, nth: number, cmd: NavigationCommand): boolean;
+
     /**
      * Set the {@link GstInterfaces.Navigation} angles query result field in `query`.
      * @param query a {@link Gst.Query}
@@ -473,6 +463,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_set_angles(query: Gst.Query, cur_angle: number, n_angles: number): void;
+
     /**
      * Set the {@link GstInterfaces.Navigation} command query result fields in `query`. The number
      * of commands passed must be equal to `n_commands`.
@@ -482,6 +473,7 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     function navigation_query_set_commandsv(query: Gst.Query, n_cmds: number, cmds: NavigationCommand): void;
+
     /**
      * @param from {@link GstInterfaces.StreamVolumeFormat} to convert from
      * @param to {@link GstInterfaces.StreamVolumeFormat} to convert to
@@ -490,6 +482,7 @@ export namespace GstInterfaces {
      * @since 0.10.25
      */
     function stream_volume_convert_volume(from: StreamVolumeFormat, to: StreamVolumeFormat, val: number): number;
+
     /**
      * @gir-type Flags
      */
@@ -509,6 +502,7 @@ export namespace GstInterfaces {
         HAS_WHITELIST,
         GROUPING,
     }
+
 
     /**
      * @gir-type Flags
@@ -535,6 +529,7 @@ export namespace GstInterfaces {
         WRITEONLY,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -554,6 +549,7 @@ export namespace GstInterfaces {
         AUDIO,
     }
 
+
     namespace ColorBalanceChannel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -561,12 +557,13 @@ export namespace GstInterfaces {
              * Fired when the value of the indicated channel has changed.
              * @signal
              */
-            'value-changed': (arg0: number) => void;
+            "value-changed": (arg0: number) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -585,56 +582,48 @@ export namespace GstInterfaces {
         $signals: ColorBalanceChannel.SignalSignatures;
 
         // Fields
-
         label: string;
+
         min_value: number;
+
         max_value: number;
 
         // Constructors
-
         constructor(properties?: Partial<ColorBalanceChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ColorBalanceChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorBalanceChannel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorBalanceChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace MixerOptions {
         // Signal signatures
         interface SignalSignatures extends MixerTrack.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::index': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::max-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::min-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::num-channels': (pspec: GObject.ParamSpec) => void;
-            'notify::untranslated-label': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::index": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::max-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::min-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::num-channels": (pspec: GObject.ParamSpec) => void;
+            "notify::untranslated-label": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends MixerTrack.ConstructorProps {
 
-        interface ConstructorProps extends MixerTrack.ConstructorProps {}
+        }
     }
 
     /**
@@ -653,51 +642,41 @@ export namespace GstInterfaces {
         $signals: MixerOptions.SignalSignatures;
 
         // Fields
-
         values: any[];
 
         // Constructors
-
         constructor(properties?: Partial<MixerOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MixerOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MixerOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MixerOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MixerOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerOptions.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MixerOptions.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MixerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MixerOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace MixerTrack {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::index': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::max-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::min-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::num-channels': (pspec: GObject.ParamSpec) => void;
-            'notify::untranslated-label': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::index": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::max-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::min-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::num-channels": (pspec: GObject.ParamSpec) => void;
+            "notify::untranslated-label": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             flags: number;
             index: number;
@@ -720,47 +699,56 @@ export namespace GstInterfaces {
         static $gtype: GObject.GType<MixerTrack>;
 
         // Properties
-
         /**
          * @read-only
          */
         get flags(): number;
+
         /**
          * @construct-only
          */
         get index(): number;
+
         /**
          * @read-only
          */
         get label(): string;
+
         /**
          * @read-only
          */
         get max_volume(): number;
+
         /**
          * @read-only
          */
         get maxVolume(): number;
+
         /**
          * @read-only
          */
         get min_volume(): number;
+
         /**
          * @read-only
          */
         get minVolume(): number;
+
         /**
          * @read-only
          */
         get num_channels(): number;
+
         /**
          * @read-only
          */
         get numChannels(): number;
+
         /**
          * @construct-only
          */
         get untranslated_label(): string;
+
         /**
          * @construct-only
          */
@@ -776,32 +764,24 @@ export namespace GstInterfaces {
         $signals: MixerTrack.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MixerTrack.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MixerTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MixerTrack.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MixerTrack.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MixerTrack.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MixerTrack.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MixerTrack.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MixerTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MixerTrack.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MixerTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TunerChannel {
         // Signal signatures
@@ -810,17 +790,18 @@ export namespace GstInterfaces {
              * Reports that the current frequency has changed.
              * @signal
              */
-            'frequency-changed': (arg0: number) => void;
+            "frequency-changed": (arg0: number) => void;
             /**
              * Reports that the signal strength has changed.
              * @signal
              */
-            'signal-changed': (arg0: number) => void;
+            "signal-changed": (arg0: number) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -839,50 +820,49 @@ export namespace GstInterfaces {
         $signals: TunerChannel.SignalSignatures;
 
         // Fields
-
         label: string;
+
         flags: TunerChannelFlags;
+
         freq_multiplicator: number;
+
         min_frequency: number;
+
         max_frequency: number;
+
         min_signal: number;
+
         max_signal: number;
 
         // Constructors
-
         constructor(properties?: Partial<TunerChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TunerChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TunerChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TunerChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TunerChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerChannel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TunerChannel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TunerChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TunerChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace TunerNorm {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -901,41 +881,33 @@ export namespace GstInterfaces {
         $signals: TunerNorm.SignalSignatures;
 
         // Fields
-
         label: string;
 
         // Constructors
-
         constructor(properties?: Partial<TunerNorm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TunerNorm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TunerNorm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TunerNorm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TunerNorm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TunerNorm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TunerNorm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TunerNorm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ColorBalanceChannelClass = typeof ColorBalanceChannel;
+
     /**
      * @gir-type Struct
      */
@@ -943,9 +915,9 @@ export namespace GstInterfaces {
         static $gtype: GObject.GType<ColorBalanceClass>;
 
         // Fields
-
         balance_type: ColorBalanceType;
     }
+
 
     /**
      * @gir-type Struct
@@ -954,34 +926,40 @@ export namespace GstInterfaces {
         static $gtype: GObject.GType<MixerClass>;
 
         // Fields
-
         mixer_type: MixerType;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MixerOptionsClass = typeof MixerOptions;
+
     /**
      * @gir-type Alias
      */
     type MixerTrackClass = typeof MixerTrack;
+
     /**
      * @gir-type Alias
      */
     type NavigationInterface = typeof Navigation;
+
     /**
      * @gir-type Alias
      */
     type PropertyProbeInterface = typeof PropertyProbe;
+
     /**
      * @gir-type Alias
      */
     type StreamVolumeInterface = typeof StreamVolume;
+
     /**
      * @gir-type Alias
      */
     type TunerChannelClass = typeof TunerChannel;
+
     /**
      * @gir-type Struct
      */
@@ -989,14 +967,17 @@ export namespace GstInterfaces {
         static $gtype: GObject.GType<TunerClass>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TunerNormClass = typeof TunerNorm;
+
     /**
      * @gir-type Alias
      */
     type VideoOrientationInterface = typeof VideoOrientation;
+
     /**
      * {@link GstInterfaces.XOverlay} interface
      * @gir-type Struct
@@ -1005,10 +986,13 @@ export namespace GstInterfaces {
         static $gtype: GObject.GType<XOverlayClass>;
     }
 
-    namespace ColorBalance {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+    namespace ColorBalance {
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
+
+        }
     }
 
     export interface ColorBalanceNamespace {
@@ -1019,13 +1003,14 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface ColorBalance extends Gst.Element {
-        // Methods
 
+        // Methods
         /**
          * Get the {@link GstInterfaces.ColorBalanceType} of this implementation.
          * @returns A the {@link GstInterfaces.ColorBalanceType}.
          */
         get_balance_type(): ColorBalanceType;
+
         /**
          * Retrieve the current value of the indicated channel, between min_value
          * and max_value.
@@ -1035,6 +1020,7 @@ export namespace GstInterfaces {
          * @returns The current value of the channel.
          */
         get_value(channel: ColorBalanceChannel): number;
+
         /**
          * Retrieve a list of the available channels.
          * The list is owned by the {@link GstInterfaces.ColorBalance} instance and must not
@@ -1042,6 +1028,7 @@ export namespace GstInterfaces {
          * @returns A GList containing pointers to {@link GstInterfaces.ColorBalanceChannel} objects.
          */
         list_channels(): any[];
+
         /**
          * Sets the current value of the channel to the passed value, which must
          * be between min_value and max_value.
@@ -1051,6 +1038,7 @@ export namespace GstInterfaces {
          * @param value The new value for the channel.
          */
         set_value(channel: ColorBalanceChannel, value: number): void;
+
         /**
          * A helper function called by implementations of the GstColorBalance
          * interface. It fires the {@link GstInterfaces.ColorBalance.SignalSignatures.value_changed | GstInterfaces.ColorBalance::value-changed} signal on the
@@ -1062,14 +1050,17 @@ export namespace GstInterfaces {
         value_changed(channel: ColorBalanceChannel, value: number): void;
     }
 
+
     export const ColorBalance: ColorBalanceNamespace & {
         new (): ColorBalance; // This allows `obj instanceof ColorBalance`
     };
 
     namespace Mixer {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
+
+        }
     }
 
     export interface MixerNamespace {
@@ -1080,30 +1071,34 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface Mixer extends Gst.Element {
-        // Methods
 
+        // Methods
         /**
          * Get the set of supported flags for this mixer implementation.
          * @returns A set of or-ed GstMixerFlags for supported features.
          */
         get_mixer_flags(): MixerFlags;
+
         /**
          * Get the {@link GstInterfaces.MixerType} of this mixer implementation.
          * @returns A the {@link GstInterfaces.MixerType}.
          */
         get_mixer_type(): MixerType;
+
         /**
          * Get the current value of a name/value option in the mixer.
          * @param opts The {@link GstInterfaces.MixerOptions} that we operate on.
          * @returns current value of the name/value option.
          */
         get_option(opts: MixerOptions): string;
+
         /**
          * Get the current volume(s) on the given track.
          * @param track the GstMixerTrack to get the volume from.
          * @param volumes a pre-allocated array of integers (of size track->num_channels) to store the current volume of each channel in the given track in.
          */
         get_volume(track: MixerTrack, volumes: number): void;
+
         /**
          * Returns a list of available tracks for this mixer/element. Note
          * that it is allowed for sink (output) elements to only provide
@@ -1114,6 +1109,7 @@ export namespace GstInterfaces {
          * @returns A {@link GLib.List} consisting of zero or more `GstMixerTracks`.
          */
         list_tracks(): any[];
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the list of available
@@ -1123,6 +1119,7 @@ export namespace GstInterfaces {
          * GstMixer interface, and the element needs to have been provided a bus.
          */
         mixer_changed(): void;
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the given track
@@ -1133,16 +1130,18 @@ export namespace GstInterfaces {
          * @param mute the new state of the mute flag on the track
          */
         mute_toggled(track: MixerTrack, mute: boolean): void;
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the given options
-         * object has changed state.
+         * object has changed state. 
          * This function only works for GstElements that are implementing the
          * GstMixer interface, and the element needs to have been provided a bus.
          * @param opts the GstMixerOptions that has changed value.
          * @param value the new value of the GstMixerOptions.
          */
         option_changed(opts: MixerOptions, value: string): void;
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the list of possible
@@ -1156,6 +1155,7 @@ export namespace GstInterfaces {
          * @param opts the GstMixerOptions whose list of values has changed
          */
         options_list_changed(opts: MixerOptions): void;
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the given track
@@ -1166,6 +1166,7 @@ export namespace GstInterfaces {
          * @param record the new state of the record flag on the track
          */
         record_toggled(track: MixerTrack, record: boolean): void;
+
         /**
          * Mutes or unmutes the given channel. To find out whether a
          * track is currently muted, use GST_MIXER_TRACK_HAS_FLAG ().
@@ -1173,12 +1174,14 @@ export namespace GstInterfaces {
          * @param mute a boolean value indicating whether to turn on or off muting.
          */
         set_mute(track: MixerTrack, mute: boolean): void;
+
         /**
          * Sets a name/value option in the mixer to the requested value.
          * @param opts The {@link GstInterfaces.MixerOptions} that we operate on.
          * @param value The requested new option value.
          */
         set_option(opts: MixerOptions, value: string): void;
+
         /**
          * Enables or disables recording on the given track. Note that
          * this is only possible on input tracks, not on output tracks
@@ -1188,6 +1191,7 @@ export namespace GstInterfaces {
          * @param record a boolean value that indicates whether to turn on or off recording.
          */
         set_record(track: MixerTrack, record: boolean): void;
+
         /**
          * Sets the volume on each channel in a track. Short note about
          * the mixer/element, such as 'Line-in' or 'Microphone'. A
@@ -1197,6 +1201,7 @@ export namespace GstInterfaces {
          * @param volumes an array of integers (of size track->num_channels) that gives the wanted volume for each channel in this track.
          */
         set_volume(track: MixerTrack, volumes: number): void;
+
         /**
          * This function is called by the mixer implementation to produce
          * a notification message on the bus indicating that the volume(s) for the
@@ -1209,6 +1214,7 @@ export namespace GstInterfaces {
         volume_changed(track: MixerTrack, volumes: number): void;
     }
 
+
     export const Mixer: MixerNamespace & {
         new (): Mixer; // This allows `obj instanceof Mixer`
     };
@@ -1219,18 +1225,20 @@ export namespace GstInterfaces {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param structure
+             * @param structure 
              * @virtual
              */
             vfunc_send_event(structure: Gst.Structure): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface NavigationNamespace {
@@ -1241,22 +1249,25 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface Navigation extends GObject.Object, Navigation.Interface {
-        // Methods
 
+        // Methods
         /**
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
         send_command(command: NavigationCommand): void;
+
         /**
-         * @param structure
+         * @param structure 
          */
         send_event(structure: Gst.Structure): void;
+
         /**
          * @param event The type of the key event. Recognised values are "key-press" and "key-release"
          * @param key Character representation of the key. This is typically as produced by XKeysymToString.
          */
         send_key_event(event: string, key: string): void;
+
         /**
          * Sends a mouse event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
@@ -1270,6 +1281,7 @@ export namespace GstInterfaces {
         send_mouse_event(event: string, button: number, x: number, y: number): void;
     }
 
+
     export const Navigation: NavigationNamespace & {
         new (): Navigation; // This allows `obj instanceof Navigation`
     };
@@ -1280,37 +1292,42 @@ export namespace GstInterfaces {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get a list of properties for which probing is supported.
              * by this element.
              * @virtual
              */
             vfunc_get_properties(): any[];
+
             /**
-             * @param prop_id
-             * @param pspec
+             * @param prop_id 
+             * @param pspec 
              * @virtual
              */
             vfunc_get_values(prop_id: number, pspec: GObject.ParamSpec): GObject.ValueArray;
+
             /**
-             * @param prop_id
-             * @param pspec
+             * @param prop_id 
+             * @param pspec 
              * @virtual
              */
             vfunc_needs_probe(prop_id: number, pspec: GObject.ParamSpec): boolean;
+
             /**
-             * @param prop_id
-             * @param pspec
+             * @param prop_id 
+             * @param pspec 
              * @virtual
              */
             vfunc_probe_property(prop_id: number, pspec: GObject.ParamSpec): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PropertyProbeNamespace {
@@ -1322,25 +1339,28 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface PropertyProbe extends GObject.Object, PropertyProbe.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get a list of properties for which probing is supported.
          * by this element.
          * @returns the list of properties for which probing is supported
          */
         get_properties(): any[];
+
         /**
          * Get {@link GObject.ParamSpec} for a property for which probing is supported.
          * @param name name of the property.
          * @returns the {@link GObject.ParamSpec} of `null`.
          */
         get_property(name: string): GObject.ParamSpec;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Gets the possible (probed) values for the given property,
          * requires the property to have been probed before.
@@ -1348,12 +1368,14 @@ export namespace GstInterfaces {
          * @returns A list of valid values for the given property.
          */
         get_values(pspec: GObject.ParamSpec): GObject.ValueArray;
+
         /**
          * Same as gst_property_probe_get_values ().
          * @param name the name of the property to get values for.
          * @returns A list of valid values for the given property.
          */
         get_values_name(name: string): GObject.ValueArray;
+
         /**
          * Checks whether a property needs a probe. This might be because
          * the property wasn't initialized before, or because host setup
@@ -1364,12 +1386,14 @@ export namespace GstInterfaces {
          * @returns TRUE if the property needs a new probe, FALSE if not.
          */
         needs_probe(pspec: GObject.ParamSpec): boolean;
+
         /**
          * Same as gst_property_probe_needs_probe ().
          * @param name the name of the property to check.
          * @returns TRUE if the property needs a new probe, FALSE if not.
          */
         needs_probe_name(name: string): boolean;
+
         /**
          * Check whether the given property requires a new probe. If so,
          * fo the probe. After that, retrieve a value list. Meant as a
@@ -1378,17 +1402,20 @@ export namespace GstInterfaces {
          * @returns the list of valid values for this property.
          */
         probe_and_get_values(pspec: GObject.ParamSpec): GObject.ValueArray;
+
         /**
          * Same as gst_property_probe_probe_and_get_values ().
          * @param name the name of the property to get values for.
          * @returns the list of valid values for this property.
          */
         probe_and_get_values_name(name: string): GObject.ValueArray;
+
         /**
          * Runs a probe on the property specified by `pspec`
          * @param pspec {@link GObject.ParamSpec} of the property.
          */
         probe_property(pspec: GObject.ParamSpec): void;
+
         /**
          * Runs a probe on the property specified by `name`.
          * @param name name of the property.
@@ -1396,13 +1423,14 @@ export namespace GstInterfaces {
         probe_property_name(name: string): void;
     }
 
+
     export const PropertyProbe: PropertyProbeNamespace & {
         new (): PropertyProbe; // This allows `obj instanceof PropertyProbe`
     };
 
     namespace StreamVolume {
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             mute: boolean;
             volume: number;
@@ -1417,28 +1445,31 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface StreamVolume extends GObject.Object {
-        // Properties
 
+        // Properties
         get mute(): boolean;
         set mute(val: boolean);
+
         get volume(): number;
         set volume(val: number);
 
         // Methods
-
         /**
          * @returns Returns `true` if the stream is muted
          */
         get_mute(): boolean;
+
         /**
          * @param format {@link GstInterfaces.StreamVolumeFormat} which should be returned
          * @returns The current stream volume as linear factor
          */
         get_volume(format: StreamVolumeFormat): number;
+
         /**
          * @param mute Mute state that should be set
          */
         set_mute(mute: boolean): void;
+
         /**
          * @param format {@link GstInterfaces.StreamVolumeFormat} of `val`
          * @param val Linear volume factor that should be set
@@ -1446,14 +1477,17 @@ export namespace GstInterfaces {
         set_volume(format: StreamVolumeFormat, val: number): void;
     }
 
+
     export const StreamVolume: StreamVolumeNamespace & {
         new (): StreamVolume; // This allows `obj instanceof StreamVolume`
     };
 
     namespace Tuner {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
+
+        }
     }
 
     export interface TunerNamespace {
@@ -1464,14 +1498,15 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface Tuner extends Gst.Element {
-        // Methods
 
+        // Methods
         /**
          * Called by elements implementing the {@link GstInterfaces.Tuner} interface when the
          * current channel changes. Fires the {@link GstInterfaces.Tuner.SignalSignatures.channel_changed | GstInterfaces.Tuner::channel-changed} signal.
          * @param channel A {@link GstInterfaces.TunerChannel} instance
          */
         channel_changed(channel: TunerChannel): void;
+
         /**
          * Called by elements implementing the {@link GstInterfaces.Tuner} interface when the
          * configured frequency changes. Fires the {@link GstInterfaces.Tuner.SignalSignatures.frequency_changed | GstInterfaces.Tuner::frequency-changed}
@@ -1480,7 +1515,8 @@ export namespace GstInterfaces {
          * @param channel The current {@link GstInterfaces.TunerChannel}
          * @param frequency The new frequency setting
          */
-        frequency_changed(channel: TunerChannel, frequency: bigint | number): void;
+        frequency_changed(channel: TunerChannel, frequency: (bigint | number)): void;
+
         /**
          * Retrieve the current frequency from the given channel. As for
          * `gst_tuner_set_frequency()`, the {@link GstInterfaces.TunerChannel} must support frequency
@@ -1489,6 +1525,7 @@ export namespace GstInterfaces {
          * @returns The current frequency, or 0 on error.
          */
         get_frequency(channel: TunerChannel): number;
+
         /**
          * Retrieve a {@link GLib.List} of `GstTunerChannels` available
          * (e.g. 'composite', 's-video', ...) from the given tuner object.
@@ -1496,6 +1533,7 @@ export namespace GstInterfaces {
          * @returns A list of channels available on this tuner. The list is
          */
         list_channels(): any[];
+
         /**
          * Retrieve a GList of available {@link GstInterfaces.TunerNorm} settings for the currently
          * tuned channel on the given tuner object.
@@ -1504,59 +1542,66 @@ export namespace GstInterfaces {
          * @returns A list of norms available on the current channel for this
          */
         list_norms(): any[];
+
         /**
          * Called by elements implementing the {@link GstInterfaces.Tuner} interface when the
          * current norm changes. Fires the {@link GstInterfaces.Tuner.SignalSignatures.norm_changed | GstInterfaces.Tuner::norm-changed} signal.
          * @param norm A {@link GstInterfaces.TunerNorm} instance
          */
         norm_changed(norm: TunerNorm): void;
+
         /**
          * Tunes the object to the given channel, which should be one of the
          * channels returned by `gst_tuner_list_channels()`.
          * @param channel the channel to tune to.
          */
         set_channel(channel: TunerChannel): void;
+
         /**
          * Sets a tuning frequency on the given tuner/channel. Note that this
          * requires the given channel to be a "tuning" channel, which can be
          * checked using GST_TUNER_CHANNEL_HAS_FLAG (), with the proper flag
          * being GST_TUNER_CHANNEL_FREQUENCY.
-         * The frequency is in Hz, with minimum steps indicated by the
+         * The frequency is in Hz, with minimum steps indicated by the 
          * frequency_multiplicator provided in the {@link GstInterfaces.TunerChannel}. The
          * valid range is provided in the min_frequency and max_frequency properties
          * of the {@link GstInterfaces.TunerChannel}.
          * @param channel The {@link GstInterfaces.TunerChannel} to set the frequency on.
          * @param frequency The frequency to tune in to.
          */
-        set_frequency(channel: TunerChannel, frequency: bigint | number): void;
+        set_frequency(channel: TunerChannel, frequency: (bigint | number)): void;
+
         /**
          * Changes the video norm on this tuner to the given norm, which should be
          * one of the norms returned by `gst_tuner_list_norms()`.
          * @param norm the norm to use for the current channel.
          */
         set_norm(norm: TunerNorm): void;
+
         /**
          * Called by elements implementing the {@link GstInterfaces.Tuner} interface when the
          * incoming signal strength changes. Fires the {@link GstInterfaces.Tuner.SignalSignatures.signal_changed | GstInterfaces.Tuner::signal-changed}
-         * signal on the tuner and the {@link GstInterfaces.TunerChannel.SignalSignatures.signal_changed | GstInterfaces.TunerChannel::signal-changed} signal on
+         * signal on the tuner and the {@link GstInterfaces.TunerChannel.SignalSignatures.signal_changed | GstInterfaces.TunerChannel::signal-changed} signal on 
          * the channel.
          * @param channel The current {@link GstInterfaces.TunerChannel}
          * @param signal The new signal strength
          */
         signal_changed(channel: TunerChannel, signal: number): void;
+
         /**
          * Get the strength of the signal on this channel. Note that this
          * requires the current channel to be a "tuning" channel, i.e. a
          * channel on which frequency can be set. This can be checked using
          * GST_TUNER_CHANNEL_HAS_FLAG (), and the appropriate flag to check
          * for is GST_TUNER_CHANNEL_FREQUENCY.
-         * The valid range of the signal strength is indicated in the
+         * The valid range of the signal strength is indicated in the 
          * min_signal and max_signal properties of the {@link GstInterfaces.TunerChannel}.
          * @param channel the {@link GstInterfaces.TunerChannel} to get the signal strength from.
          * @returns Signal strength, or 0 on error.
          */
         signal_strength(channel: TunerChannel): number;
     }
+
 
     export const Tuner: TunerNamespace & {
         new (): Tuner; // This allows `obj instanceof Tuner`
@@ -1568,50 +1613,57 @@ export namespace GstInterfaces {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get the horizontal centering offset from the given object.
              * @param center return location for the result
              * @virtual
              */
             vfunc_get_hcenter(center: number): boolean;
+
             /**
              * Get the horizontal flipping state (`true` for flipped) from the given object.
              * @param flip return location for the result
              * @virtual
              */
             vfunc_get_hflip(flip: boolean): boolean;
+
             /**
              * Get the vertical centering offset from the given object.
              * @param center return location for the result
              * @virtual
              */
             vfunc_get_vcenter(center: number): boolean;
+
             /**
              * Get the vertical flipping state (`true` for flipped) from the given object.
              * @param flip return location for the result
              * @virtual
              */
             vfunc_get_vflip(flip: boolean): boolean;
+
             /**
              * Set the horizontal centering offset for the given object.
              * @param center centering offset
              * @virtual
              */
             vfunc_set_hcenter(center: number): boolean;
+
             /**
              * Set the horizontal flipping state (`true` for flipped) for the given object.
              * @param flip use flipping
              * @virtual
              */
             vfunc_set_hflip(flip: boolean): boolean;
+
             /**
              * Set the vertical centering offset for the given object.
              * @param center centering offset
              * @virtual
              */
             vfunc_set_vcenter(center: number): boolean;
+
             /**
              * Set the vertical flipping state (`true` for flipped) for the given object.
              * @param flip use flipping
@@ -1620,9 +1672,11 @@ export namespace GstInterfaces {
             vfunc_set_vflip(flip: boolean): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
+
+        }
     }
 
     export interface VideoOrientationNamespace {
@@ -1634,50 +1688,57 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface VideoOrientation extends Gst.Element, VideoOrientation.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get the horizontal centering offset from the given object.
          * @param center return location for the result
          * @returns `true` in case the element supports centering
          */
         get_hcenter(center: number): boolean;
+
         /**
          * Get the horizontal flipping state (`true` for flipped) from the given object.
          * @param flip return location for the result
          * @returns `true` in case the element supports flipping
          */
         get_hflip(flip: boolean): boolean;
+
         /**
          * Get the vertical centering offset from the given object.
          * @param center return location for the result
          * @returns `true` in case the element supports centering
          */
         get_vcenter(center: number): boolean;
+
         /**
          * Get the vertical flipping state (`true` for flipped) from the given object.
          * @param flip return location for the result
          * @returns `true` in case the element supports flipping
          */
         get_vflip(flip: boolean): boolean;
+
         /**
          * Set the horizontal centering offset for the given object.
          * @param center centering offset
          * @returns `true` in case the element supports centering
          */
         set_hcenter(center: number): boolean;
+
         /**
          * Set the horizontal flipping state (`true` for flipped) for the given object.
          * @param flip use flipping
          * @returns `true` in case the element supports flipping
          */
         set_hflip(flip: boolean): boolean;
+
         /**
          * Set the vertical centering offset for the given object.
          * @param center centering offset
          * @returns `true` in case the element supports centering
          */
         set_vcenter(center: number): boolean;
+
         /**
          * Set the vertical flipping state (`true` for flipped) for the given object.
          * @param flip use flipping
@@ -1686,14 +1747,17 @@ export namespace GstInterfaces {
         set_vflip(flip: boolean): boolean;
     }
 
+
     export const VideoOrientation: VideoOrientationNamespace & {
         new (): VideoOrientation; // This allows `obj instanceof VideoOrientation`
     };
 
     namespace XOverlay {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
+
+        }
     }
 
     export interface XOverlayNamespace {
@@ -1705,19 +1769,21 @@ export namespace GstInterfaces {
      * @gir-type Interface
      */
     interface XOverlay extends Gst.Element {
-        // Methods
 
+        // Methods
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
          * in the drawable even if the pipeline is PAUSED.
          */
         expose(): void;
+
         /**
          * This will post a "have-xwindow-id" element message on the bus.
          * This function should only be used by video overlay plugin developers.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        got_xwindow_id(xwindow_id: bigint | number): void;
+        got_xwindow_id(xwindow_id: (bigint | number)): void;
+
         /**
          * Tell an overlay that it should handle events from the window system. These
          * events are forwared upstream as navigation events. In some window system,
@@ -1727,14 +1793,16 @@ export namespace GstInterfaces {
          * @param handle_events a `gboolean` indicating if events should be handled or not.
          */
         handle_events(handle_events: boolean): void;
+
         /**
          * This will post a "prepare-xwindow-id" element message on the bus
-         * to give applications an opportunity to call
+         * to give applications an opportunity to call 
          * `gst_x_overlay_set_xwindow_id()` before a plugin creates its own
          * window.
          * This function should only be used by video overlay plugin developers.
          */
         prepare_xwindow_id(): void;
+
         /**
          * Configure a subregion as a video target within the window set by
          * `gst_x_overlay_set_window_handle()`. If this is not used or not supported
@@ -1752,6 +1820,7 @@ export namespace GstInterfaces {
          * @returns `false` if not supported by the sink.
          */
         set_render_rectangle(x: number, y: number, width: number, height: number): boolean;
+
         /**
          * This will call the video overlay's set_xwindow_id method. You should
          * use this method to tell to a XOverlay to display video output to a
@@ -1759,8 +1828,9 @@ export namespace GstInterfaces {
          * stop using that window and create an internal one.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        set_xwindow_id(xwindow_id: bigint | number): void;
+        set_xwindow_id(xwindow_id: (bigint | number)): void;
     }
+
 
     export const XOverlay: XOverlayNamespace & {
         new (): XOverlay; // This allows `obj instanceof XOverlay`
@@ -1771,6 +1841,7 @@ export namespace GstInterfaces {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

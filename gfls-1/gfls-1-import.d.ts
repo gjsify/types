@@ -1,3 +1,4 @@
+
 import type Gfls1 from '@girs/gfls-1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

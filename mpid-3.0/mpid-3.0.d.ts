@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace MPID {
+
     /**
      * MPID-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -52,6 +55,7 @@ export namespace MPID {
         DEVICE_INFO_MISSING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -70,6 +74,7 @@ export namespace MPID {
         OVERRIDE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -86,37 +91,40 @@ export namespace MPID {
         OVERRIDE_DEVICE_INFO,
     }
 
+
     const PROTOCOL_GENERIC: string;
+
     const PROTOCOL_IPOD: string;
+
     /**
      * Enables or disables debug output from the MPID library
      * @param debug whether to enable debug output
      */
     function enable_debug(debug: boolean): void;
+
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::access-protocols': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-folders': (pspec: GObject.ParamSpec) => void;
-            'notify::drive-type': (pspec: GObject.ParamSpec) => void;
-            'notify::error': (pspec: GObject.ParamSpec) => void;
-            'notify::folder-depth': (pspec: GObject.ParamSpec) => void;
-            'notify::fs-uuid': (pspec: GObject.ParamSpec) => void;
-            'notify::input-formats': (pspec: GObject.ParamSpec) => void;
-            'notify::input-path': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::mpi-file': (pspec: GObject.ParamSpec) => void;
-            'notify::output-formats': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-formats': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-path': (pspec: GObject.ParamSpec) => void;
-            'notify::requires-eject': (pspec: GObject.ParamSpec) => void;
-            'notify::serial': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor': (pspec: GObject.ParamSpec) => void;
+            "notify::access-protocols": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-folders": (pspec: GObject.ParamSpec) => void;
+            "notify::drive-type": (pspec: GObject.ParamSpec) => void;
+            "notify::error": (pspec: GObject.ParamSpec) => void;
+            "notify::folder-depth": (pspec: GObject.ParamSpec) => void;
+            "notify::fs-uuid": (pspec: GObject.ParamSpec) => void;
+            "notify::input-formats": (pspec: GObject.ParamSpec) => void;
+            "notify::input-path": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::mpi-file": (pspec: GObject.ParamSpec) => void;
+            "notify::output-formats": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-formats": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-path": (pspec: GObject.ParamSpec) => void;
+            "notify::requires-eject": (pspec: GObject.ParamSpec) => void;
+            "notify::serial": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             access_protocols: string[];
             accessProtocols: string[];
@@ -160,131 +168,152 @@ export namespace MPID {
         static $gtype: GObject.GType<Device>;
 
         // Properties
-
         /**
          * Names of access protocols that can be used to access the device contents
          * @read-only
          */
         get access_protocols(): string[];
+
         /**
          * Names of access protocols that can be used to access the device contents
          * @read-only
          */
         get accessProtocols(): string[];
+
         /**
          * A set of folders (relative to the root of the device) containing audio
          * folders.
          * @read-only
          */
         get audio_folders(): string[];
+
         /**
          * A set of folders (relative to the root of the device) containing audio
          * folders.
          * @read-only
          */
         get audioFolders(): string[];
+
         /**
          * The device drive type
          * @read-only
          * @default null
          */
         get drive_type(): string;
+
         /**
          * The device drive type
          * @read-only
          * @default null
          */
         get driveType(): string;
+
         /**
          * MPID error code resulting from device detection (see {@link MPID.Error})
          * @read-only
          * @default MPID.Error.OK
          */
         get error(): Error;
+
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
          * @read-only
          * @default -1
          */
         get folder_depth(): number;
+
         /**
          * The folder nesting level supported by the device.  -1 indicates there is no limit.
          * @read-only
          * @default -1
          */
         get folderDepth(): number;
+
         /**
          * The device filesystem UUID
          * @read-only
          * @default null
          */
         get fs_uuid(): string;
+
         /**
          * The device filesystem UUID
          * @read-only
          * @default null
          */
         get fsUuid(): string;
+
         /**
          * A set of MIME types that the device can record
          * @read-only
          */
         get input_formats(): string[];
+
         /**
          * A set of MIME types that the device can record
          * @read-only
          */
         get inputFormats(): string[];
+
         /**
          * Either the device node path or the mount point path for the device.
          * @construct-only
          * @default null
          */
         get input_path(): string;
+
         /**
          * Either the device node path or the mount point path for the device.
          * @construct-only
          * @default null
          */
         get inputPath(): string;
+
         /**
          * The device model name
          * @read-only
          * @default null
          */
         get model(): string;
+
         /**
          * Path to a .mpi file describing the device
          * @construct-only
          * @default null
          */
         get mpi_file(): string;
+
         /**
          * Path to a .mpi file describing the device
          * @construct-only
          * @default null
          */
         get mpiFile(): string;
+
         /**
          * A set of MIME types that the device can play
          * @read-only
          */
         get output_formats(): string[];
+
         /**
          * A set of MIME types that the device can play
          * @read-only
          */
         get outputFormats(): string[];
+
         /**
          * A set of playlist format MIME types suppored by the device
          * @read-only
          */
         get playlist_formats(): string[];
+
         /**
          * A set of playlist format MIME types suppored by the device
          * @read-only
          */
         get playlistFormats(): string[];
+
         /**
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
@@ -292,6 +321,7 @@ export namespace MPID {
          * @default null
          */
         get playlist_path(): string;
+
         /**
          * Path to playlist files on the device.  May include '%File' to indicate a directory
          * containing any number of playlist files.
@@ -299,30 +329,35 @@ export namespace MPID {
          * @default null
          */
         get playlistPath(): string;
+
         /**
          * If `true`, the device must be ejected rather than unmounted
          * @read-only
          * @default false
          */
         get requires_eject(): boolean;
+
         /**
          * If `true`, the device must be ejected rather than unmounted
          * @read-only
          * @default false
          */
         get requiresEject(): boolean;
+
         /**
          * The device serial ID
          * @read-only
          * @default null
          */
         get serial(): string;
+
         /**
          * The information source used to provide device information (see {@link MPID.Source})
          * @read-only
          * @default MPID.SourceType.NO_DEVICE_INFO
          */
         get source(): SourceType;
+
         /**
          * The device vendor name
          * @read-only
@@ -340,46 +375,40 @@ export namespace MPID {
         $signals: Device.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string): Device;
+        static ["new"](path: string): Device;
 
         static new_from_mpi_file(path: string): Device;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

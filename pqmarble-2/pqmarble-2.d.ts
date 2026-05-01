@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,35 +27,39 @@ import type Gsk from '@girs/gsk-4.0';
 import type Graphene from '@girs/graphene-1.0';
 
 export namespace PQMarble {
+
     /**
      * PQMarble-2
      */
 
+
     /**
-     * @param data
+     * @param data 
      */
-    function get_css_provider_for_data(data: string): Gtk.CssProvider | null;
+    function get_css_provider_for_data(data: string): (Gtk.CssProvider | null);
+
     /**
-     * @param widget
-     * @param data
-     * @param class_name
-     * @param priority
+     * @param widget 
+     * @param data 
+     * @param class_name 
+     * @param priority 
      */
-    function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
+    function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: (string | null), priority: number): void;
+
     /**
-     * @param resource
-     * @param priority
-     * @param display
+     * @param resource 
+     * @param priority 
+     * @param display 
      */
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
+
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
+            "notify::schema": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             schema: Gio.Settings;
         }
@@ -67,7 +72,6 @@ export namespace PQMarble {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
-
         get schema(): Gio.Settings;
         set schema(val: Gio.Settings);
 
@@ -81,45 +85,38 @@ export namespace PQMarble {
         $signals: Settings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_schema(): Gio.Settings;
+
         /**
-         * @param value
+         * @param value 
          */
         set_schema(value: Gio.Settings): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
     /**
      * @gir-type Struct
      */
@@ -127,11 +124,13 @@ export namespace PQMarble {
         static $gtype: GObject.GType<SettingsPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

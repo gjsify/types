@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,17 +15,21 @@ import type xlib from '@girs/xlib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xft {
+
     /**
      * xft-2.0
      */
 
+
     function init(): void;
+
     /**
      * @gir-type Struct
      */
     class Color {
         static $gtype: GObject.GType<Color>;
     }
+
 
     /**
      * @gir-type Struct
@@ -33,12 +38,14 @@ export namespace xft {
         static $gtype: GObject.GType<Draw>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class Font {
         static $gtype: GObject.GType<Font>;
     }
+
 
     /**
      * @gir-type Struct
@@ -47,11 +54,13 @@ export namespace xft {
         static $gtype: GObject.GType<GlyphSpec>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

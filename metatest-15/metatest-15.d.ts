@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -32,9 +33,11 @@ import type Clutter from '@girs/clutter-15';
 import type Atk from '@girs/atk-1.0';
 
 export namespace MetaTest {
+
     /**
      * MetaTest-15
      */
+
 
     /**
      * @gir-type Enum
@@ -45,6 +48,7 @@ export namespace MetaTest {
         TEST,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -54,6 +58,7 @@ export namespace MetaTest {
         NO_X11,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -62,6 +67,7 @@ export namespace MetaTest {
         CAN_SKIP,
     }
 
+
     namespace ContextTest {
         // Signal signatures
         interface SignalSignatures extends Meta.Context.SignalSignatures {
@@ -69,25 +75,26 @@ export namespace MetaTest {
              * @signal
              * @run-last
              */
-            'after-tests': () => void;
+            "after-tests": () => void;
             /**
              * @signal
              * @run-last
              */
-            'before-tests': () => void;
+            "before-tests": () => void;
             /**
              * @signal
              * @run-last
              */
-            'run-tests': () => number;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::nick': (pspec: GObject.ParamSpec) => void;
-            'notify::unsafe-mode': (pspec: GObject.ParamSpec) => void;
+            "run-tests": () => number;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::nick": (pspec: GObject.ParamSpec) => void;
+            "notify::unsafe-mode": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Meta.Context.ConstructorProps {
 
-        interface ConstructorProps extends Meta.Context.ConstructorProps {}
+        }
     }
 
     /**
@@ -106,48 +113,42 @@ export namespace MetaTest {
         $signals: ContextTest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContextTest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContextTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContextTest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContextTest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContextTest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextTest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContextTest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContextTest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param flags
+         * @param flags 
          */
         run_tests(flags: TestRunFlags): number;
+
         wait_for_x11_display(): void;
     }
 
+
     namespace TestMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -166,52 +167,46 @@ export namespace MetaTest {
         $signals: TestMonitor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TestMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
+        static ["new"](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TestMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TestMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TestMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TestMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TestMonitor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TestMonitor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TestMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TestMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         destroy(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ContextTestClass = typeof ContextTest;
+
     /**
      * @gir-type Alias
      */
     type TestMonitorClass = typeof TestMonitor;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

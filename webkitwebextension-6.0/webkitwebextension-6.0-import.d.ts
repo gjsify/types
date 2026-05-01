@@ -1,3 +1,4 @@
+
 import type WebKitWebExtension60 from '@girs/webkitwebextension-6.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

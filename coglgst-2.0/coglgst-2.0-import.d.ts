@@ -1,3 +1,4 @@
+
 import type CoglGst20 from '@girs/coglgst-2.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

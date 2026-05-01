@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
 export namespace GCalc {
+
     /**
      * GCalc-2
      */
+
 
     /**
      * @gir-type Enum
@@ -37,6 +40,7 @@ export namespace GCalc {
         GRADIANS,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -44,13 +48,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_STRUCTURE_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -59,14 +62,14 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_PARAMETERS_ERROR: number;
+
         static INVOCATION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -75,14 +78,14 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_POLYNOMIAL: number;
+
         static INVALID_INTERNAL_TERM: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -91,14 +94,14 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_OPERATOR: number;
+
         static EVALUATION_FAIL: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -107,15 +110,16 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_PARENT: number;
+
         static INVALID_EXPRESSION_DEFINITION: number;
+
         static EVALUATION_FAIL: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -124,14 +128,14 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_TOKEN_ERROR: number;
+
         static INVALID_EXPRESSION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -140,13 +144,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static EXPRESSION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -203,6 +206,7 @@ export namespace GCalc {
         CURRENCY_SYMBOL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -219,18 +223,16 @@ export namespace GCalc {
         THREE,
     }
 
+
     namespace Assign {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathBinaryOperator.ConstructorProps, MathAssign.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathOperator.ConstructorProps,
-                MathBinaryOperator.ConstructorProps,
-                MathAssign.ConstructorProps {}
+        }
     }
 
     /**
@@ -249,43 +251,38 @@ export namespace GCalc {
         $signals: Assign.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Assign.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Assign;
+        static ["new"](): Assign;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Assign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Assign.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Assign.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Assign.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Assign.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Assign.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Assign.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Assign.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Assign.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Assign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Assign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Assign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         evaluate(): MathExpression;
     }
 
+
     namespace Calculator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -304,150 +301,155 @@ export namespace GCalc {
         $signals: Calculator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Calculator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Calculator;
+        static ["new"](): Calculator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Calculator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Calculator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Calculator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Calculator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Calculator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Calculator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Calculator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Calculator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Calculator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Calculator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Calculator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Calculator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static add(c1: MathConstant, c2: MathConstant): MathConstant;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static subtract(c1: MathConstant, c2: MathConstant): MathConstant;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static multiply(c1: MathConstant, c2: MathConstant): MathConstant;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static divide(c1: MathConstant, c2: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         static neg(c: MathConstant): MathConstant;
+
         /**
-         * @param c
-         * @param p
+         * @param c 
+         * @param p 
          */
         static pow(c: MathConstant, p: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         static sqrt(c: MathConstant): MathConstant;
+
         static pi(): MathConstant;
+
         static log2(): MathConstant;
+
         static euler(): MathConstant;
+
         static catalan(): MathConstant;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static eq(c1: MathConstant, c2: MathConstant): boolean;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static gt(c1: MathConstant, c2: MathConstant): boolean;
+
         /**
-         * @param c1
-         * @param c2
+         * @param c1 
+         * @param c2 
          */
         static lt(c1: MathConstant, c2: MathConstant): boolean;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static cos(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static sin(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static tan(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static acos(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static asin(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
-         * @param units
+         * @param c1 
+         * @param units 
          */
         static atan(c1: MathConstant, units: AngleUnit): MathConstant;
+
         /**
-         * @param c1
+         * @param c1 
          */
         static log10(c1: MathConstant): MathConstant;
+
         /**
-         * @param c1
+         * @param c1 
          */
         static exp(c1: MathConstant): MathConstant;
     }
 
+
     namespace Constant {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathConstant.ConstructorProps, MathConstantNumber.ConstructorProps, MathConstantComplex.ConstructorProps, MathConstantVector.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathConstant.ConstructorProps,
-                MathConstantNumber.ConstructorProps,
-                MathConstantComplex.ConstructorProps,
-                MathConstantVector.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class Constant
-        extends Expression
-        implements MathConstant, MathConstantNumber, MathConstantComplex, MathConstantVector
-    {
+    class Constant extends Expression implements MathConstant, MathConstantNumber, MathConstantComplex, MathConstantVector {
         static $gtype: GObject.GType<Constant>;
 
         /**
@@ -460,7 +462,6 @@ export namespace GCalc {
         $signals: Constant.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Constant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -475,132 +476,150 @@ export namespace GCalc {
 
         static assign(c: MathConstant): Constant;
 
-        static ['new'](): Constant;
+        static ["new"](): Constant;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Constant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Constant.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Constant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Constant.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Constant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Constant.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Constant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Constant.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Constant.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Constant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Constant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Constant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
-         * @param c
+         * @param c 
          */
         add(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         subtract(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         multiply(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         divide(c: MathConstant): MathConstant;
+
         neg(): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         pow(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          * @virtual
          */
         vfunc_add(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          * @virtual
          */
         vfunc_subtract(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          * @virtual
          */
         vfunc_multiply(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          * @virtual
          */
         vfunc_divide(c: MathConstant): MathConstant;
+
         /**
          * @virtual
          */
         vfunc_neg(): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          * @virtual
          */
         vfunc_pow(c: MathConstant): MathConstant;
+
         value(): number;
+
         /**
          * @virtual
          */
         vfunc_value(): number;
+
         real(): number;
+
         imag(): number;
+
         zero(): void;
+
         /**
          * @virtual
          */
         vfunc_real(): number;
+
         /**
          * @virtual
          */
         vfunc_imag(): number;
+
         /**
          * @virtual
          */
         vfunc_zero(): void;
+
         mag(): MathConstant;
+
         ang(): MathConstant;
+
         x(): MathConstant;
+
         y(): MathConstant;
+
         /**
          * @virtual
          */
         vfunc_mag(): MathConstant;
+
         /**
          * @virtual
          */
         vfunc_ang(): MathConstant;
+
         /**
          * @virtual
          */
         vfunc_x(): MathConstant;
+
         /**
          * @virtual
          */
         vfunc_y(): MathConstant;
     }
 
+
     namespace Division {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathBinaryOperator.ConstructorProps, MathDivision.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathOperator.ConstructorProps,
-                MathBinaryOperator.ConstructorProps,
-                MathDivision.ConstructorProps {}
+        }
     }
 
     /**
@@ -619,44 +638,37 @@ export namespace GCalc {
         $signals: Division.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Division.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Division;
+        static ["new"](): Division;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Division.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Division.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Division.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Division.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Division.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Division.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Division.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Division.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Division.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Division.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Division.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Division.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Equation {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::variables': (pspec: GObject.ParamSpec) => void;
+            "notify::variables": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathEquation.ConstructorProps {
 
-        interface ConstructorProps extends Expression.ConstructorProps, MathEquation.ConstructorProps {}
+        }
     }
 
     /**
@@ -675,55 +687,51 @@ export namespace GCalc {
         $signals: Equation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Equation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Equation;
+        static ["new"](): Equation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Equation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Equation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Equation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Equation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Equation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Equation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Equation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Equation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Equation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Equation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Equation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Equation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathEquation
+          * @category Inherited from GCalc.MathEquation
          */
         get variables(): ExpressionHashMap;
+
         get_variables(): ExpressionHashMap;
+
         /**
          * @virtual
          */
         vfunc_get_variables(): ExpressionHashMap;
     }
 
+
     namespace EquationManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::equations': (pspec: GObject.ParamSpec) => void;
-            'notify::functions': (pspec: GObject.ParamSpec) => void;
+            "notify::equations": (pspec: GObject.ParamSpec) => void;
+            "notify::functions": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {}
+        }
     }
 
     /**
@@ -742,75 +750,75 @@ export namespace GCalc {
         $signals: EquationManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EquationManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): EquationManager;
+        static ["new"](): EquationManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EquationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EquationManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EquationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EquationManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EquationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EquationManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EquationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EquationManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EquationManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EquationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EquationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EquationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathEquationManager
+          * @category Inherited from GCalc.MathEquationManager
          */
         get equations(): ExpressionContainer;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathEquationManager
+          * @category Inherited from GCalc.MathEquationManager
          */
         get functions(): ExpressionContainer;
+
         /**
-         * @param name
+         * @param name 
          */
         find_variable(name: string): MathVariable;
+
         get_equations(): ExpressionContainer;
+
         get_functions(): ExpressionContainer;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_find_variable(name: string): MathVariable;
+
         /**
          * @virtual
          */
         vfunc_get_equations(): ExpressionContainer;
+
         /**
          * @virtual
          */
         vfunc_get_functions(): ExpressionContainer;
     }
 
+
     namespace ErrorResult {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::expression': (pspec: GObject.ParamSpec) => void;
-            'notify::message': (pspec: GObject.ParamSpec) => void;
+            "notify::expression": (pspec: GObject.ParamSpec) => void;
+            "notify::message": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MathResult.ConstructorProps, MathErrorResult.ConstructorProps {
 
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, MathResult.ConstructorProps, MathErrorResult.ConstructorProps {}
+        }
     }
 
     /**
@@ -829,70 +837,71 @@ export namespace GCalc {
         $signals: ErrorResult.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ErrorResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](msg: string): ErrorResult;
+        static ["new"](msg: string): ErrorResult;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ErrorResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorResult.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ErrorResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorResult.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ErrorResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorResult.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ErrorResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorResult.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ErrorResult.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ErrorResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ErrorResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ErrorResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathResult
+          * @category Inherited from GCalc.MathResult
          */
         get expression(): MathExpression;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathErrorResult
+          * @category Inherited from GCalc.MathErrorResult
          */
         get message(): string;
+
         to_string(): string;
+
         get_expression(): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_get_expression(): MathExpression;
+
         get_message(): string;
+
         /**
          * @virtual
          */
         vfunc_get_message(): string;
     }
 
+
     namespace Expression {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::expressions': (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::expressions": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MathExpression.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MathExpression.ConstructorProps {}
+        }
     }
 
     /**
@@ -911,85 +920,87 @@ export namespace GCalc {
         $signals: Expression.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Expression;
+        static ["new"](): Expression;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_solve(): MathResult;
 
         // Methods
-
         to_string(): string;
+
         solve(): MathResult;
+
         /** @category Inherited from GCalc.MathExpression */
         get parent(): MathExpression;
         set parent(val: MathExpression);
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathExpression
+          * @category Inherited from GCalc.MathExpression
          */
         get expressions(): ExpressionContainer;
+
         get_parent(): MathExpression;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parent(value: MathExpression): void;
+
         get_expressions(): ExpressionContainer;
+
         /**
          * @virtual
          */
         vfunc_get_parent(): MathExpression;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_parent(value: MathExpression): void;
+
         /**
          * @virtual
          */
         vfunc_get_expressions(): ExpressionContainer;
     }
 
+
     namespace ErrorExpression {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps {
 
-        interface ConstructorProps extends Expression.ConstructorProps {}
+        }
     }
 
     /**
@@ -1008,51 +1019,41 @@ export namespace GCalc {
         $signals: ErrorExpression.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ErrorExpression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ErrorExpression;
+        static ["new"](): ErrorExpression;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ErrorExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorExpression.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ErrorExpression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorExpression.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ErrorExpression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorExpression.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ErrorExpression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorExpression.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ErrorExpression.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ErrorExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ErrorExpression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ErrorExpression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ExpressionContainer {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps {
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps {
             parent: MathExpression;
         }
     }
@@ -1060,14 +1061,10 @@ export namespace GCalc {
     /**
      * @gir-type Class
      */
-    class ExpressionContainer<A extends GObject.Object = GObject.Object>
-        extends Gee.ArrayList
-        implements Gio.ListModel<A>
-    {
+    class ExpressionContainer<A extends GObject.Object = GObject.Object> extends Gee.ArrayList implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ExpressionContainer>;
 
         // Properties
-
         get parent(): MathExpression;
         set parent(val: MathExpression);
 
@@ -1081,101 +1078,97 @@ export namespace GCalc {
         $signals: ExpressionContainer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionContainer;
+        static ["new"](): ExpressionContainer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionContainer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionContainer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionContainer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionContainer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionContainer.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param position
+         * @param position 
          */
         get_object<T = GObject.Object>(position: number): T;
+
         /**
-         * @param exp
+         * @param exp 
          */
-        find(exp: MathExpression): MathExpression | null;
+        find(exp: MathExpression): (MathExpression | null);
+
         /**
-         * @param name
+         * @param name 
          */
-        find_named(name: string): MathExpression | null;
+        find_named(name: string): (MathExpression | null);
+
         get_parent(): MathExpression;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parent(value: MathExpression): void;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -1184,7 +1177,7 @@ export namespace GCalc {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -1194,71 +1187,76 @@ export namespace GCalc {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @virtual
          */
         vfunc_get_n_items(): number;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionHashMap {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::k-type': (pspec: GObject.ParamSpec) => void;
-            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-type': (pspec: GObject.ParamSpec) => void;
-            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::k-type": (pspec: GObject.ParamSpec) => void;
+            "notify::k-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::k-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-type": (pspec: GObject.ParamSpec) => void;
+            "notify::v-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gee.HashMap.ConstructorProps {
             parent: MathExpression;
         }
@@ -1271,7 +1269,6 @@ export namespace GCalc {
         static $gtype: GObject.GType<ExpressionHashMap>;
 
         // Properties
-
         get parent(): MathExpression;
         set parent(val: MathExpression);
 
@@ -1285,73 +1282,69 @@ export namespace GCalc {
         $signals: ExpressionHashMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionHashMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionHashMap;
+        static ["new"](): ExpressionHashMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionHashMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionHashMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionHashMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionHashMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionHashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExpressionHashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionHashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param exp
+         * @param exp 
          */
         add(exp: MathExpression): void;
+
         /**
-         * @param exp
+         * @param exp 
          */
         remove(exp: MathExpression): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gee.Map.remove
+    // Conflicted with Gee.Map.remove
         remove(...args: never[]): any;
+
         /**
-         * @param name
+         * @param name 
          */
-        find_named(name: string): MathExpression | null;
+        find_named(name: string): (MathExpression | null);
+
         get_parent(): MathExpression;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parent(value: MathExpression): void;
     }
 
+
     namespace Function {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::param-types': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::n-params': (pspec: GObject.ParamSpec) => void;
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
+            "notify::param-types": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::n-params": (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathFunction.ConstructorProps, Hashable.ConstructorProps {
 
-        interface ConstructorProps
-            extends Expression.ConstructorProps, MathFunction.ConstructorProps, Hashable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1370,134 +1363,150 @@ export namespace GCalc {
         $signals: Function.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Function.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static with_name(name: string, nparams: number): Function;
 
-        static ['new'](): Function;
+        static ["new"](): Function;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Function.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Function.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Function.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_evaluate(): MathExpression;
 
         // Methods
-
         evaluate(): MathExpression;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathFunction
+          * @category Inherited from GCalc.MathFunction
          */
         get param_types(): ExpressionContainer;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathFunction
+          * @category Inherited from GCalc.MathFunction
          */
         get paramTypes(): ExpressionContainer;
+
         /** @category Inherited from GCalc.MathFunction */
         get name(): string;
         set name(val: string);
+
         /** @category Inherited from GCalc.MathFunction */
         get n_params(): number;
         set n_params(val: number);
+
         /** @category Inherited from GCalc.MathFunction */
         get nParams(): number;
         set nParams(val: number);
+
         /** @category Inherited from GCalc.MathFunction */
         get closed(): boolean;
         set closed(val: boolean);
+
         verify_params(): boolean;
+
         get_param_types(): ExpressionContainer;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_n_params(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_n_params(value: number): void;
+
         get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_closed(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_verify_params(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_param_types(): ExpressionContainer;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_n_params(): number;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_n_params(value: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_closed(value: boolean): void;
+
         hash(): number;
+
         /**
          * @virtual
          */
         vfunc_hash(): number;
     }
 
+
     namespace FunctionAcos {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1516,42 +1525,36 @@ export namespace GCalc {
         $signals: FunctionAcos.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAcos.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAcos;
+        static ["new"](): FunctionAcos;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAcos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAcos.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAcos.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAcos.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAcos.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAcos.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAcos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAcos.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAcos.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAcos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAcos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAcos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionAcosh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1570,42 +1573,36 @@ export namespace GCalc {
         $signals: FunctionAcosh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAcosh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAcosh;
+        static ["new"](): FunctionAcosh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAcosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAcosh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAcosh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAcosh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAcosh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAcosh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAcosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAcosh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAcosh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAcosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAcosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAcosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionAsin {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1624,42 +1621,36 @@ export namespace GCalc {
         $signals: FunctionAsin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAsin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAsin;
+        static ["new"](): FunctionAsin;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAsin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAsin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAsin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAsin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAsin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAsin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAsin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAsin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAsin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAsin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAsin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAsin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionAsinh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1678,42 +1669,36 @@ export namespace GCalc {
         $signals: FunctionAsinh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAsinh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAsinh;
+        static ["new"](): FunctionAsinh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAsinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAsinh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAsinh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAsinh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAsinh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAsinh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAsinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAsinh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAsinh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAsinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAsinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAsinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionAtan {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1732,42 +1717,36 @@ export namespace GCalc {
         $signals: FunctionAtan.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAtan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAtan;
+        static ["new"](): FunctionAtan;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAtan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAtan.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAtan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAtan.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAtan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAtan.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAtan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAtan.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAtan.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAtan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAtan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAtan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionAtanh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1786,42 +1765,36 @@ export namespace GCalc {
         $signals: FunctionAtanh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionAtanh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionAtanh;
+        static ["new"](): FunctionAtanh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionAtanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAtanh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionAtanh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAtanh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionAtanh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionAtanh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionAtanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionAtanh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionAtanh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionAtanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionAtanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionAtanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionCos {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1840,42 +1813,36 @@ export namespace GCalc {
         $signals: FunctionCos.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionCos.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionCos;
+        static ["new"](): FunctionCos;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionCos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionCos.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionCos.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionCos.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionCos.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionCos.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionCos.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionCos.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionCos.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionCos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionCos.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionCos.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionCosh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1894,42 +1861,36 @@ export namespace GCalc {
         $signals: FunctionCosh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionCosh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionCosh;
+        static ["new"](): FunctionCosh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionCosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionCosh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionCosh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionCosh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionCosh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionCosh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionCosh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionCosh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionCosh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionCosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionCosh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionCosh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionExp {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -1948,42 +1909,36 @@ export namespace GCalc {
         $signals: FunctionExp.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionExp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionExp;
+        static ["new"](): FunctionExp;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionExp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionExp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionExp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionExp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionExp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionExp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionExp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionLog {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2002,42 +1957,36 @@ export namespace GCalc {
         $signals: FunctionLog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionLog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionLog;
+        static ["new"](): FunctionLog;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionLog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionLog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionLog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionLog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionLog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionLog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionLog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionLog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionLog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionLog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionLog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionLog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionSin {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2056,42 +2005,36 @@ export namespace GCalc {
         $signals: FunctionSin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionSin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionSin;
+        static ["new"](): FunctionSin;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionSin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionSin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionSin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionSin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionSin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionSin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionSin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionSin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionSinh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2110,42 +2053,36 @@ export namespace GCalc {
         $signals: FunctionSinh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionSinh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionSinh;
+        static ["new"](): FunctionSinh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionSinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSinh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionSinh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSinh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionSinh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSinh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionSinh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSinh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionSinh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionSinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionSinh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionSinh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionSqrt {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2164,42 +2101,36 @@ export namespace GCalc {
         $signals: FunctionSqrt.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionSqrt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionSqrt;
+        static ["new"](): FunctionSqrt;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionSqrt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSqrt.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionSqrt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSqrt.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionSqrt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionSqrt.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionSqrt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionSqrt.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionSqrt.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionSqrt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionSqrt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionSqrt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionTan {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2218,42 +2149,36 @@ export namespace GCalc {
         $signals: FunctionTan.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionTan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionTan;
+        static ["new"](): FunctionTan;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionTan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionTan.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionTan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionTan.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionTan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionTan.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionTan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionTan.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionTan.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionTan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionTan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionTan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FunctionTanh {
         // Signal signatures
-        interface SignalSignatures extends Function.SignalSignatures {}
+        interface SignalSignatures extends Function.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Function.ConstructorProps {
 
-        interface ConstructorProps extends Function.ConstructorProps {}
+        }
     }
 
     /**
@@ -2272,45 +2197,38 @@ export namespace GCalc {
         $signals: FunctionTanh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FunctionTanh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FunctionTanh;
+        static ["new"](): FunctionTanh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FunctionTanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionTanh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FunctionTanh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionTanh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FunctionTanh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FunctionTanh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FunctionTanh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FunctionTanh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FunctionTanh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FunctionTanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FunctionTanh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FunctionTanh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Group {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::level': (pspec: GObject.ParamSpec) => void;
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
+            "notify::level": (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathGroup.ConstructorProps {
 
-        interface ConstructorProps extends Expression.ConstructorProps, MathGroup.ConstructorProps {}
+        }
     }
 
     /**
@@ -2329,86 +2247,87 @@ export namespace GCalc {
         $signals: Group.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Group.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Group;
+        static ["new"](): Group;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Group.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Group.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Group.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Group.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Group.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GCalc.MathGroup */
         get level(): MathGroupLevel;
         set level(val: MathGroupLevel);
+
         /** @category Inherited from GCalc.MathGroup */
         get closed(): boolean;
         set closed(val: boolean);
+
         evaluate(): MathExpression;
+
         get_level(): MathGroupLevel;
+
         /**
-         * @param value
+         * @param value 
          */
         set_level(value: MathGroupLevel): void;
+
         get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_closed(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_evaluate(): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_get_level(): MathGroupLevel;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_level(value: MathGroupLevel): void;
+
         /**
          * @virtual
          */
         vfunc_get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_closed(value: boolean): void;
     }
 
+
     namespace Minus {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathBinaryOperator.ConstructorProps, MathMinus.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathOperator.ConstructorProps,
-                MathBinaryOperator.ConstructorProps,
-                MathMinus.ConstructorProps {}
+        }
     }
 
     /**
@@ -2427,47 +2346,36 @@ export namespace GCalc {
         $signals: Minus.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Minus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Minus;
+        static ["new"](): Minus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Minus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Minus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Minus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Minus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Minus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Minus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Minus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Minus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Minus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Minus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Minus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Minus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Multiply {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathBinaryOperator.ConstructorProps, MathMultiply.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathOperator.ConstructorProps,
-                MathBinaryOperator.ConstructorProps,
-                MathMultiply.ConstructorProps {}
+        }
     }
 
     /**
@@ -2486,42 +2394,36 @@ export namespace GCalc {
         $signals: Multiply.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Multiply.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Multiply;
+        static ["new"](): Multiply;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Multiply.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Multiply.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Multiply.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Multiply.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Multiply.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Multiply.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Multiply.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Multiply.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Multiply.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Multiply.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Multiply.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Multiply.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Parameter {
         // Signal signatures
-        interface SignalSignatures extends Variable.SignalSignatures {}
+        interface SignalSignatures extends Variable.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Variable.ConstructorProps, MathParameter.ConstructorProps {
 
-        interface ConstructorProps extends Variable.ConstructorProps, MathParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -2540,81 +2442,83 @@ export namespace GCalc {
         $signals: Parameter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parameter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): Parameter;
-        // Conflicted with GCalc.Expression.new
+        static ["new"](name: string): Parameter;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with GCalc.Expression.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parameter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
-         * @param val
+         * @param val 
          */
-        set_value(val: GObject.Value | null): void;
+        set_value(val: (GObject.Value | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GCalc.MathVariable.set_value
         set_value(...args: never[]): any;
-        get_value(): GObject.Value | null;
+
+        get_value(): (GObject.Value | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GCalc.MathVariable.get_value
         get_value(...args: never[]): any;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
-        vfunc_set_value(val: GObject.Value | null): void;
+        vfunc_set_value(val: (GObject.Value | null)): void;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with GCalc.MathVariable.vfunc_set_value
         vfunc_set_value(...args: never[]): any;
+
         /**
          * @virtual
          */
-        vfunc_get_value(): GObject.Value | null;
+        vfunc_get_value(): (GObject.Value | null);
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with GCalc.MathVariable.vfunc_get_value
         vfunc_get_value(...args: never[]): any;
     }
 
+
     namespace Parser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2633,57 +2537,47 @@ export namespace GCalc {
         $signals: Parser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Parser;
+        static ["new"](): Parser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param str
-         * @param eqman
+         * @param str 
+         * @param eqman 
          */
         parse(str: string, eqman: MathEquationManager): void;
+
         read_token(): ParserTokenType;
+
         token_to_string(): string;
     }
 
+
     namespace Plus {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathBinaryOperator.ConstructorProps, MathPlus.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Expression.ConstructorProps,
-                MathOperator.ConstructorProps,
-                MathBinaryOperator.ConstructorProps,
-                MathPlus.ConstructorProps {}
+        }
     }
 
     /**
@@ -2702,42 +2596,36 @@ export namespace GCalc {
         $signals: Plus.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Plus;
+        static ["new"](): Plus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Polynomial {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathPolynomial.ConstructorProps {
 
-        interface ConstructorProps extends Expression.ConstructorProps, MathPolynomial.ConstructorProps {}
+        }
     }
 
     /**
@@ -2756,48 +2644,43 @@ export namespace GCalc {
         $signals: Polynomial.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Polynomial.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Polynomial;
+        static ["new"](): Polynomial;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Polynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Polynomial.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Polynomial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Polynomial.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Polynomial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Polynomial.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Polynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Polynomial.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Polynomial.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Polynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Polynomial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Polynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         evaluate(): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_evaluate(): MathExpression;
     }
 
+
     namespace Pow {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathPow.ConstructorProps {
 
-        interface ConstructorProps
-            extends Expression.ConstructorProps, MathOperator.ConstructorProps, MathPow.ConstructorProps {}
+        }
     }
 
     /**
@@ -2816,44 +2699,37 @@ export namespace GCalc {
         $signals: Pow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Pow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Pow;
+        static ["new"](): Pow;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Pow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Pow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Pow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Pow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Pow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Pow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Pow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Pow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Pow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Result {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::expression': (pspec: GObject.ParamSpec) => void;
+            "notify::expression": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MathResult.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MathResult.ConstructorProps {}
+        }
     }
 
     /**
@@ -2872,58 +2748,54 @@ export namespace GCalc {
         $signals: Result.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Result.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](exp: MathExpression): Result;
+        static ["new"](exp: MathExpression): Result;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Result.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Result.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Result.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from GCalc.MathResult
+          * @category Inherited from GCalc.MathResult
          */
         get expression(): MathExpression;
+
         to_string(): string;
+
         get_expression(): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_get_expression(): MathExpression;
     }
 
+
     namespace Solver {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::equation-manager': (pspec: GObject.ParamSpec) => void;
+            "notify::equation-manager": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             equation_manager: MathEquationManager;
             equationManager: MathEquationManager;
@@ -2937,9 +2809,9 @@ export namespace GCalc {
         static $gtype: GObject.GType<Solver>;
 
         // Properties
-
         get equation_manager(): MathEquationManager;
         set equation_manager(val: MathEquationManager);
+
         get equationManager(): MathEquationManager;
         set equationManager(val: MathEquationManager);
 
@@ -2953,58 +2825,54 @@ export namespace GCalc {
         $signals: Solver.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Solver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Solver;
+        static ["new"](): Solver;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Solver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Solver.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Solver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Solver.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Solver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Solver.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Solver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Solver.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Solver.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Solver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Solver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Solver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param exp
+         * @param exp 
          */
         add_expression(exp: string): void;
+
         /**
-         * @param str
+         * @param str 
          */
         solve(str: string): MathResult;
+
         get_equation_manager(): MathEquationManager;
+
         /**
-         * @param value
+         * @param value 
          */
         set_equation_manager(value: MathEquationManager): void;
     }
 
+
     namespace Term {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathTerm.ConstructorProps {
 
-        interface ConstructorProps extends Expression.ConstructorProps, MathTerm.ConstructorProps {}
+        }
     }
 
     /**
@@ -3023,56 +2891,54 @@ export namespace GCalc {
         $signals: Term.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Term.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Term;
+        static ["new"](): Term;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Term.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Term.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Term.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Term.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Term.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Term.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Term.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Term.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Term.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Term.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Term.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Term.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
-         * @param t
+         * @param t 
          */
         add(t: MathTerm): MathExpression;
+
         evaluate(): MathExpression;
+
         /**
-         * @param t
+         * @param t 
          * @virtual
          */
         vfunc_add(t: MathTerm): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_evaluate(): MathExpression;
     }
 
+
     namespace UnitConverter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3091,56 +2957,47 @@ export namespace GCalc {
         $signals: UnitConverter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UnitConverter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): UnitConverter;
+        static ["new"](): UnitConverter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UnitConverter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitConverter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UnitConverter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UnitConverter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UnitConverter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UnitConverter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UnitConverter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UnitConverter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UnitConverter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UnitConverter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UnitConverter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UnitConverter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param c
-         * @param ori
-         * @param dst
+         * @param c 
+         * @param ori 
+         * @param dst 
          */
         static angle(c: MathConstant, ori: AngleUnit, dst: AngleUnit): MathConstant;
     }
 
+
     namespace Variable {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::bind': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::bind": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Expression.ConstructorProps, MathVariable.ConstructorProps, Hashable.ConstructorProps {
 
-        interface ConstructorProps
-            extends Expression.ConstructorProps, MathVariable.ConstructorProps, Hashable.ConstructorProps {}
+        }
     }
 
     /**
@@ -3159,103 +3016,117 @@ export namespace GCalc {
         $signals: Variable.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Variable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Variable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Variable.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Variable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Variable.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Variable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Variable.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Variable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Variable.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Variable.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Variable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Variable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Variable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GCalc.MathVariable */
         get name(): string;
         set name(val: string);
+
         /** @category Inherited from GCalc.MathVariable */
         get value(): MathConstant;
         set value(val: MathConstant);
+
         /** @category Inherited from GCalc.MathVariable */
         get bind(): MathVariable;
         set bind(val: MathVariable);
+
         evaluate(): MathExpression;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_value(): MathConstant;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: MathConstant): void;
+
         get_bind(): MathVariable;
+
         /**
-         * @param value
+         * @param value 
          */
         set_bind(value: MathVariable): void;
+
         get_binded(): boolean;
+
         /**
          * @virtual
          */
         vfunc_evaluate(): MathExpression;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_value(): MathConstant;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_value(value: MathConstant): void;
+
         /**
          * @virtual
          */
         vfunc_get_bind(): MathVariable;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_bind(value: MathVariable): void;
+
         /**
          * @virtual
          */
         vfunc_get_binded(): boolean;
+
         hash(): number;
+
         /**
          * @virtual
          */
         vfunc_hash(): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AssignClass = typeof Assign;
+
     /**
      * @gir-type Struct
      */
@@ -3263,10 +3134,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<AssignPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CalculatorClass = typeof Calculator;
+
     /**
      * @gir-type Struct
      */
@@ -3274,10 +3147,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<CalculatorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConstantClass = typeof Constant;
+
     /**
      * @gir-type Struct
      */
@@ -3285,10 +3160,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ConstantPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DivisionClass = typeof Division;
+
     /**
      * @gir-type Struct
      */
@@ -3296,10 +3173,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<DivisionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EquationClass = typeof Equation;
+
     /**
      * @gir-type Struct
      */
@@ -3307,10 +3186,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<EquationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EquationManagerClass = typeof EquationManager;
+
     /**
      * @gir-type Struct
      */
@@ -3318,10 +3199,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<EquationManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ErrorResultClass = typeof ErrorResult;
+
     /**
      * @gir-type Struct
      */
@@ -3329,10 +3212,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ErrorResultPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionClass = typeof Expression;
+
     /**
      * @gir-type Struct
      */
@@ -3340,10 +3225,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ExpressionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ErrorExpressionClass = typeof ErrorExpression;
+
     /**
      * @gir-type Struct
      */
@@ -3351,10 +3238,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ErrorExpressionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionContainerClass = typeof ExpressionContainer;
+
     /**
      * @gir-type Struct
      */
@@ -3362,10 +3251,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ExpressionContainerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionHashMapClass = typeof ExpressionHashMap;
+
     /**
      * @gir-type Struct
      */
@@ -3373,10 +3264,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ExpressionHashMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionClass = typeof Function;
+
     /**
      * @gir-type Struct
      */
@@ -3384,10 +3277,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAcosClass = typeof FunctionAcos;
+
     /**
      * @gir-type Struct
      */
@@ -3395,10 +3290,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAcosPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAcoshClass = typeof FunctionAcosh;
+
     /**
      * @gir-type Struct
      */
@@ -3406,10 +3303,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAcoshPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAsinClass = typeof FunctionAsin;
+
     /**
      * @gir-type Struct
      */
@@ -3417,10 +3316,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAsinPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAsinhClass = typeof FunctionAsinh;
+
     /**
      * @gir-type Struct
      */
@@ -3428,10 +3329,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAsinhPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAtanClass = typeof FunctionAtan;
+
     /**
      * @gir-type Struct
      */
@@ -3439,10 +3342,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAtanPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionAtanhClass = typeof FunctionAtanh;
+
     /**
      * @gir-type Struct
      */
@@ -3450,10 +3355,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionAtanhPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionCosClass = typeof FunctionCos;
+
     /**
      * @gir-type Struct
      */
@@ -3461,10 +3368,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionCosPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionCoshClass = typeof FunctionCosh;
+
     /**
      * @gir-type Struct
      */
@@ -3472,10 +3381,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionCoshPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionExpClass = typeof FunctionExp;
+
     /**
      * @gir-type Struct
      */
@@ -3483,10 +3394,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionExpPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionLogClass = typeof FunctionLog;
+
     /**
      * @gir-type Struct
      */
@@ -3494,10 +3407,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionLogPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionSinClass = typeof FunctionSin;
+
     /**
      * @gir-type Struct
      */
@@ -3505,10 +3420,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionSinPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionSinhClass = typeof FunctionSinh;
+
     /**
      * @gir-type Struct
      */
@@ -3516,10 +3433,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionSinhPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionSqrtClass = typeof FunctionSqrt;
+
     /**
      * @gir-type Struct
      */
@@ -3527,10 +3446,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionSqrtPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionTanClass = typeof FunctionTan;
+
     /**
      * @gir-type Struct
      */
@@ -3538,10 +3459,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionTanPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FunctionTanhClass = typeof FunctionTanh;
+
     /**
      * @gir-type Struct
      */
@@ -3549,10 +3472,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<FunctionTanhPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GroupClass = typeof Group;
+
     /**
      * @gir-type Struct
      */
@@ -3560,10 +3485,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<GroupPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MinusClass = typeof Minus;
+
     /**
      * @gir-type Struct
      */
@@ -3571,10 +3498,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<MinusPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MultiplyClass = typeof Multiply;
+
     /**
      * @gir-type Struct
      */
@@ -3582,10 +3511,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<MultiplyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParameterClass = typeof Parameter;
+
     /**
      * @gir-type Struct
      */
@@ -3593,10 +3524,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ParameterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParserClass = typeof Parser;
+
     /**
      * @gir-type Struct
      */
@@ -3604,10 +3537,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ParserPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlusClass = typeof Plus;
+
     /**
      * @gir-type Struct
      */
@@ -3615,10 +3550,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<PlusPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PolynomialClass = typeof Polynomial;
+
     /**
      * @gir-type Struct
      */
@@ -3626,10 +3563,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<PolynomialPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PowClass = typeof Pow;
+
     /**
      * @gir-type Struct
      */
@@ -3637,10 +3576,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<PowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ResultClass = typeof Result;
+
     /**
      * @gir-type Struct
      */
@@ -3648,10 +3589,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<ResultPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SolverClass = typeof Solver;
+
     /**
      * @gir-type Struct
      */
@@ -3659,10 +3602,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<SolverPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TermClass = typeof Term;
+
     /**
      * @gir-type Struct
      */
@@ -3670,10 +3615,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<TermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UnitConverterClass = typeof UnitConverter;
+
     /**
      * @gir-type Struct
      */
@@ -3681,10 +3628,12 @@ export namespace GCalc {
         static $gtype: GObject.GType<UnitConverterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type VariableClass = typeof Variable;
+
     /**
      * @gir-type Struct
      */
@@ -3692,119 +3641,146 @@ export namespace GCalc {
         static $gtype: GObject.GType<VariablePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashableIface = typeof Hashable;
+
     /**
      * @gir-type Alias
      */
     type MathAssignIface = typeof MathAssign;
+
     /**
      * @gir-type Alias
      */
     type MathBinaryOperatorIface = typeof MathBinaryOperator;
+
     /**
      * @gir-type Alias
      */
     type MathConstantIface = typeof MathConstant;
+
     /**
      * @gir-type Alias
      */
     type MathConstantComplexIface = typeof MathConstantComplex;
+
     /**
      * @gir-type Alias
      */
     type MathConstantNumberIface = typeof MathConstantNumber;
+
     /**
      * @gir-type Alias
      */
     type MathConstantVectorIface = typeof MathConstantVector;
+
     /**
      * @gir-type Alias
      */
     type MathDivisionIface = typeof MathDivision;
+
     /**
      * @gir-type Alias
      */
     type MathEquationIface = typeof MathEquation;
+
     /**
      * @gir-type Alias
      */
     type MathEquationManagerIface = typeof MathEquationManager;
+
     /**
      * @gir-type Alias
      */
     type MathErrorResultIface = typeof MathErrorResult;
+
     /**
      * @gir-type Alias
      */
     type MathExpressionIface = typeof MathExpression;
+
     /**
      * @gir-type Alias
      */
     type MathFunctionIface = typeof MathFunction;
+
     /**
      * @gir-type Alias
      */
     type MathGroupIface = typeof MathGroup;
+
     /**
      * @gir-type Alias
      */
     type MathMinusIface = typeof MathMinus;
+
     /**
      * @gir-type Alias
      */
     type MathMultiplyIface = typeof MathMultiply;
+
     /**
      * @gir-type Alias
      */
     type MathOperatorIface = typeof MathOperator;
+
     /**
      * @gir-type Alias
      */
     type MathParameterIface = typeof MathParameter;
+
     /**
      * @gir-type Alias
      */
     type MathPlusIface = typeof MathPlus;
+
     /**
      * @gir-type Alias
      */
     type MathPolynomialIface = typeof MathPolynomial;
+
     /**
      * @gir-type Alias
      */
     type MathPowIface = typeof MathPow;
+
     /**
      * @gir-type Alias
      */
     type MathResultIface = typeof MathResult;
+
     /**
      * @gir-type Alias
      */
     type MathTermIface = typeof MathTerm;
+
     /**
      * @gir-type Alias
      */
     type MathVariableIface = typeof MathVariable;
+
     namespace Hashable {
         /**
          * Interface for implementing Hashable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_hash(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HashableNamespace {
@@ -3815,19 +3791,22 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface Hashable extends GObject.Object, Hashable.Interface {
-        // Methods
 
+        // Methods
         hash(): number;
     }
+
 
     export const Hashable: HashableNamespace & {
         new (): Hashable; // This allows `obj instanceof Hashable`
     };
 
     namespace MathAssign {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathAssignNamespace {
@@ -3838,19 +3817,22 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathAssign extends GObject.Object {
-        // Methods
 
+        // Methods
         evaluate(): MathExpression;
     }
+
 
     export const MathAssign: MathAssignNamespace & {
         new (): MathAssign; // This allows `obj instanceof MathAssign`
     };
 
     namespace MathBinaryOperator {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathBinaryOperatorNamespace {
@@ -3860,7 +3842,9 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathBinaryOperator extends GObject.Object {}
+    interface MathBinaryOperator extends GObject.Object {
+    }
+
 
     export const MathBinaryOperator: MathBinaryOperatorNamespace & {
         new (): MathBinaryOperator; // This allows `obj instanceof MathBinaryOperator`
@@ -3872,42 +3856,49 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param c
+             * @param c 
              * @virtual
              */
             vfunc_add(c: MathConstant): MathConstant;
+
             /**
-             * @param c
+             * @param c 
              * @virtual
              */
             vfunc_subtract(c: MathConstant): MathConstant;
+
             /**
-             * @param c
+             * @param c 
              * @virtual
              */
             vfunc_multiply(c: MathConstant): MathConstant;
+
             /**
-             * @param c
+             * @param c 
              * @virtual
              */
             vfunc_divide(c: MathConstant): MathConstant;
+
             /**
              * @virtual
              */
             vfunc_neg(): MathConstant;
+
             /**
-             * @param c
+             * @param c 
              * @virtual
              */
             vfunc_pow(c: MathConstant): MathConstant;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathConstantNamespace {
@@ -3918,30 +3909,36 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathConstant extends GObject.Object, MathConstant.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param c
+         * @param c 
          */
         add(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         subtract(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         multiply(c: MathConstant): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         divide(c: MathConstant): MathConstant;
+
         neg(): MathConstant;
+
         /**
-         * @param c
+         * @param c 
          */
         pow(c: MathConstant): MathConstant;
     }
+
 
     export const MathConstant: MathConstantNamespace & {
         new (): MathConstant; // This allows `obj instanceof MathConstant`
@@ -3953,25 +3950,29 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_real(): number;
+
             /**
              * @virtual
              */
             vfunc_imag(): number;
+
             /**
              * @virtual
              */
             vfunc_zero(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathConstantComplexNamespace {
@@ -3982,12 +3983,15 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathConstantComplex extends GObject.Object, MathConstantComplex.Interface {
-        // Methods
 
+        // Methods
         real(): number;
+
         imag(): number;
+
         zero(): void;
     }
+
 
     export const MathConstantComplex: MathConstantComplexNamespace & {
         new (): MathConstantComplex; // This allows `obj instanceof MathConstantComplex`
@@ -3999,17 +4003,19 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_value(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathConstantNumberNamespace {
@@ -4020,10 +4026,11 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathConstantNumber extends GObject.Object, MathConstantNumber.Interface {
-        // Methods
 
+        // Methods
         value(): number;
     }
+
 
     export const MathConstantNumber: MathConstantNumberNamespace & {
         new (): MathConstantNumber; // This allows `obj instanceof MathConstantNumber`
@@ -4035,29 +4042,34 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_mag(): MathConstant;
+
             /**
              * @virtual
              */
             vfunc_ang(): MathConstant;
+
             /**
              * @virtual
              */
             vfunc_x(): MathConstant;
+
             /**
              * @virtual
              */
             vfunc_y(): MathConstant;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathConstantVectorNamespace {
@@ -4068,22 +4080,28 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathConstantVector extends GObject.Object, MathConstantVector.Interface {
-        // Methods
 
+        // Methods
         mag(): MathConstant;
+
         ang(): MathConstant;
+
         x(): MathConstant;
+
         y(): MathConstant;
     }
+
 
     export const MathConstantVector: MathConstantVectorNamespace & {
         new (): MathConstantVector; // This allows `obj instanceof MathConstantVector`
     };
 
     namespace MathDivision {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathDivisionNamespace {
@@ -4093,7 +4111,9 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathDivision extends GObject.Object {}
+    interface MathDivision extends GObject.Object {
+    }
+
 
     export const MathDivision: MathDivisionNamespace & {
         new (): MathDivision; // This allows `obj instanceof MathDivision`
@@ -4105,16 +4125,16 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_variables(): ExpressionHashMap;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             variables: ExpressionHashMap;
         }
@@ -4128,17 +4148,17 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathEquation extends GObject.Object, MathEquation.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get variables(): ExpressionHashMap;
 
         // Methods
-
         get_variables(): ExpressionHashMap;
     }
+
 
     export const MathEquation: MathEquationNamespace & {
         new (): MathEquation; // This allows `obj instanceof MathEquation`
@@ -4150,25 +4170,27 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_find_variable(name: string): MathVariable;
+
             /**
              * @virtual
              */
             vfunc_get_equations(): ExpressionContainer;
+
             /**
              * @virtual
              */
             vfunc_get_functions(): ExpressionContainer;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             equations: ExpressionContainer;
             functions: ExpressionContainer;
@@ -4183,26 +4205,29 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathEquationManager extends GObject.Object, MathEquationManager.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get equations(): ExpressionContainer;
+
         /**
          * @read-only
          */
         get functions(): ExpressionContainer;
 
         // Methods
-
         /**
-         * @param name
+         * @param name 
          */
         find_variable(name: string): MathVariable;
+
         get_equations(): ExpressionContainer;
+
         get_functions(): ExpressionContainer;
     }
+
 
     export const MathEquationManager: MathEquationManagerNamespace & {
         new (): MathEquationManager; // This allows `obj instanceof MathEquationManager`
@@ -4214,16 +4239,16 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_message(): string;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             message: string;
         }
@@ -4237,17 +4262,17 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathErrorResult extends GObject.Object, MathErrorResult.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get message(): string;
 
         // Methods
-
         get_message(): string;
     }
+
 
     export const MathErrorResult: MathErrorResultNamespace & {
         new (): MathErrorResult; // This allows `obj instanceof MathErrorResult`
@@ -4259,33 +4284,37 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_to_string(): string;
+
             /**
              * @virtual
              */
             vfunc_solve(): MathResult;
+
             /**
              * @virtual
              */
             vfunc_get_parent(): MathExpression;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_parent(value: MathExpression): void;
+
             /**
              * @virtual
              */
             vfunc_get_expressions(): ExpressionContainer;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             parent: MathExpression;
             expressions: ExpressionContainer;
@@ -4300,26 +4329,31 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathExpression extends GObject.Object, MathExpression.Interface {
-        // Properties
 
+        // Properties
         get parent(): MathExpression;
         set parent(val: MathExpression);
+
         /**
          * @read-only
          */
         get expressions(): ExpressionContainer;
 
         // Methods
-
         to_string(): string;
+
         solve(): MathResult;
+
         get_parent(): MathExpression;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parent(value: MathExpression): void;
+
         get_expressions(): ExpressionContainer;
     }
+
 
     export const MathExpression: MathExpressionNamespace & {
         new (): MathExpression; // This allows `obj instanceof MathExpression`
@@ -4331,51 +4365,59 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_evaluate(): MathExpression;
+
             /**
              * @virtual
              */
             vfunc_verify_params(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_param_types(): ExpressionContainer;
+
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_n_params(): number;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_n_params(value: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_closed(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_closed(value: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             param_types: ExpressionContainer;
             paramTypes: ExpressionContainer;
@@ -4394,46 +4436,59 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathFunction extends GObject.Object, MathFunction.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get param_types(): ExpressionContainer;
+
         /**
          * @read-only
          */
         get paramTypes(): ExpressionContainer;
+
         get name(): string;
         set name(val: string);
+
         get n_params(): number;
         set n_params(val: number);
+
         get nParams(): number;
         set nParams(val: number);
+
         get closed(): boolean;
         set closed(val: boolean);
 
         // Methods
-
         evaluate(): MathExpression;
+
         verify_params(): boolean;
+
         get_param_types(): ExpressionContainer;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_n_params(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_n_params(value: number): void;
+
         get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_closed(value: boolean): void;
     }
+
 
     export const MathFunction: MathFunctionNamespace & {
         new (): MathFunction; // This allows `obj instanceof MathFunction`
@@ -4445,34 +4500,38 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_evaluate(): MathExpression;
+
             /**
              * @virtual
              */
             vfunc_get_level(): MathGroupLevel;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_level(value: MathGroupLevel): void;
+
             /**
              * @virtual
              */
             vfunc_get_closed(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_closed(value: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             level: MathGroupLevel;
             closed: boolean;
@@ -4487,36 +4546,43 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathGroup extends GObject.Object, MathGroup.Interface {
-        // Properties
 
+        // Properties
         get level(): MathGroupLevel;
         set level(val: MathGroupLevel);
+
         get closed(): boolean;
         set closed(val: boolean);
 
         // Methods
-
         evaluate(): MathExpression;
+
         get_level(): MathGroupLevel;
+
         /**
-         * @param value
+         * @param value 
          */
         set_level(value: MathGroupLevel): void;
+
         get_closed(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_closed(value: boolean): void;
     }
+
 
     export const MathGroup: MathGroupNamespace & {
         new (): MathGroup; // This allows `obj instanceof MathGroup`
     };
 
     namespace MathMinus {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathMinusNamespace {
@@ -4526,16 +4592,20 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathMinus extends GObject.Object {}
+    interface MathMinus extends GObject.Object {
+    }
+
 
     export const MathMinus: MathMinusNamespace & {
         new (): MathMinus; // This allows `obj instanceof MathMinus`
     };
 
     namespace MathMultiply {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathMultiplyNamespace {
@@ -4545,16 +4615,20 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathMultiply extends GObject.Object {}
+    interface MathMultiply extends GObject.Object {
+    }
+
 
     export const MathMultiply: MathMultiplyNamespace & {
         new (): MathMultiply; // This allows `obj instanceof MathMultiply`
     };
 
     namespace MathOperator {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathOperatorNamespace {
@@ -4564,7 +4638,9 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathOperator extends GObject.Object {}
+    interface MathOperator extends GObject.Object {
+    }
+
 
     export const MathOperator: MathOperatorNamespace & {
         new (): MathOperator; // This allows `obj instanceof MathOperator`
@@ -4576,22 +4652,25 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
+
             // Virtual methods
+            /**
+             * @param val 
+             * @virtual
+             */
+            vfunc_set_value(val: (GObject.Value | null)): void;
 
             /**
-             * @param val
              * @virtual
              */
-            vfunc_set_value(val: GObject.Value | null): void;
-            /**
-             * @virtual
-             */
-            vfunc_get_value(): GObject.Value | null;
+            vfunc_get_value(): (GObject.Value | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathParameterNamespace {
@@ -4602,23 +4681,27 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathParameter extends GObject.Object, MathParameter.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param val
+         * @param val 
          */
-        set_value(val: GObject.Value | null): void;
-        get_value(): GObject.Value | null;
+        set_value(val: (GObject.Value | null)): void;
+
+        get_value(): (GObject.Value | null);
     }
+
 
     export const MathParameter: MathParameterNamespace & {
         new (): MathParameter; // This allows `obj instanceof MathParameter`
     };
 
     namespace MathPlus {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathPlusNamespace {
@@ -4628,7 +4711,9 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathPlus extends GObject.Object {}
+    interface MathPlus extends GObject.Object {
+    }
+
 
     export const MathPlus: MathPlusNamespace & {
         new (): MathPlus; // This allows `obj instanceof MathPlus`
@@ -4640,17 +4725,19 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_evaluate(): MathExpression;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathPolynomialNamespace {
@@ -4661,19 +4748,22 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathPolynomial extends GObject.Object, MathPolynomial.Interface {
-        // Methods
 
+        // Methods
         evaluate(): MathExpression;
     }
+
 
     export const MathPolynomial: MathPolynomialNamespace & {
         new (): MathPolynomial; // This allows `obj instanceof MathPolynomial`
     };
 
     namespace MathPow {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathPowNamespace {
@@ -4683,7 +4773,9 @@ export namespace GCalc {
     /**
      * @gir-type Interface
      */
-    interface MathPow extends GObject.Object {}
+    interface MathPow extends GObject.Object {
+    }
+
 
     export const MathPow: MathPowNamespace & {
         new (): MathPow; // This allows `obj instanceof MathPow`
@@ -4695,20 +4787,21 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_to_string(): string;
+
             /**
              * @virtual
              */
             vfunc_get_expression(): MathExpression;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             expression: MathExpression;
         }
@@ -4722,18 +4815,19 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathResult extends GObject.Object, MathResult.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get expression(): MathExpression;
 
         // Methods
-
         to_string(): string;
+
         get_expression(): MathExpression;
     }
+
 
     export const MathResult: MathResultNamespace & {
         new (): MathResult; // This allows `obj instanceof MathResult`
@@ -4745,47 +4839,51 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param t
+             * @param t 
              * @virtual
              */
             vfunc_add(t: MathTerm): MathExpression;
+
             /**
              * @virtual
              */
             vfunc_evaluate(): MathExpression;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MathTermNamespace {
         $gtype: GObject.GType<MathTerm>;
         prototype: MathTerm;
-
         /**
-         * @param c1
-         * @param c2
-         * @param op
-         */
+        * @param c1 
+        * @param c2 
+        * @param op 
+        */
         evaluate_constants(c1: MathConstant, c2: MathConstant, op: MathOperator): MathExpression;
     }
     /**
      * @gir-type Interface
      */
     interface MathTerm extends GObject.Object, MathTerm.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param t
+         * @param t 
          */
         add(t: MathTerm): MathExpression;
+
         evaluate(): MathExpression;
     }
+
 
     export const MathTerm: MathTermNamespace & {
         new (): MathTerm; // This allows `obj instanceof MathTerm`
@@ -4797,47 +4895,54 @@ export namespace GCalc {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_evaluate(): MathExpression;
+
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_value(): MathConstant;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_value(value: MathConstant): void;
+
             /**
              * @virtual
              */
             vfunc_get_bind(): MathVariable;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_bind(value: MathVariable): void;
+
             /**
              * @virtual
              */
             vfunc_get_binded(): boolean;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             value: MathConstant;
@@ -4853,35 +4958,44 @@ export namespace GCalc {
      * @gir-type Interface
      */
     interface MathVariable extends GObject.Object, MathVariable.Interface {
-        // Properties
 
+        // Properties
         get name(): string;
         set name(val: string);
+
         get value(): MathConstant;
         set value(val: MathConstant);
+
         get bind(): MathVariable;
         set bind(val: MathVariable);
 
         // Methods
-
         evaluate(): MathExpression;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_value(): MathConstant;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: MathConstant): void;
+
         get_bind(): MathVariable;
+
         /**
-         * @param value
+         * @param value 
          */
         set_bind(value: MathVariable): void;
+
         get_binded(): boolean;
     }
+
 
     export const MathVariable: MathVariableNamespace & {
         new (): MathVariable; // This allows `obj instanceof MathVariable`
@@ -4892,6 +5006,7 @@ export namespace GCalc {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

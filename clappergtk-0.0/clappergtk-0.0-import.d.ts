@@ -1,3 +1,4 @@
+
 import type ClapperGtk00 from '@girs/clappergtk-0.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

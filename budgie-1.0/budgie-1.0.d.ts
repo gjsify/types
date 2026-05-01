@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,9 +28,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Budgie {
+
     /**
      * Budgie-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -43,7 +46,7 @@ export namespace Budgie {
      * placed on screen. The default policy (AUTOMATIC) will try to place the
      * popover at a sensible location relative to the parent widget, and point
      * the tail accordingly.
-     *
+     * 
      * The TOPLEVEL_HINT policy is designed for use with panels + docks, where the
      * top level window owning the relative-to widget sets a CSS class on itself
      * in accordance with the screen edge, i.e. top, left, bottom, right.
@@ -60,9 +63,13 @@ export namespace Budgie {
         TOPLEVEL_HINT,
     }
 
+
     const APPLET_KEY_ALIGN: string;
+
     const APPLET_KEY_NAME: string;
+
     const APPLET_KEY_POS: string;
+
     /**
      * @gir-type Flags
      */
@@ -84,6 +91,7 @@ export namespace Budgie {
         MENU,
         MAX,
     }
+
 
     /**
      * @gir-type Flags
@@ -121,6 +129,7 @@ export namespace Budgie {
         RIGHT,
     }
 
+
     namespace Applet {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
@@ -132,70 +141,65 @@ export namespace Budgie {
              * @action
              * @run-last
              */
-            'panel-position-changed': (arg0: PanelPosition) => void;
+            "panel-position-changed": (arg0: PanelPosition) => void;
             /**
              * Used to notify this applet of a change in the panel size
              * @signal
              * @action
              * @run-last
              */
-            'panel-size-changed': (arg0: number, arg1: number, arg2: number) => void;
-            'notify::settings-prefix': (pspec: GObject.ParamSpec) => void;
-            'notify::settings-schema': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-actions': (pspec: GObject.ParamSpec) => void;
-            'notify::above-child': (pspec: GObject.ParamSpec) => void;
-            'notify::visible-window': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "panel-size-changed": (arg0: number, arg1: number, arg2: number) => void;
+            "notify::settings-prefix": (pspec: GObject.ParamSpec) => void;
+            "notify::settings-schema": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-actions": (pspec: GObject.ParamSpec) => void;
+            "notify::above-child": (pspec: GObject.ParamSpec) => void;
+            "notify::visible-window": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.EventBox.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             settings_prefix: string;
             settingsPrefix: string;
             settings_schema: string;
@@ -212,87 +216,91 @@ export namespace Budgie {
         static $gtype: GObject.GType<Applet>;
 
         // Properties
-
         /**
          * The GSettings schema path prefix for this applet
-         *
+         * 
          * For applets that require unique instance configuration, the
          * panel management must know where to initialise the settings
          * within the tree. The path takes the form:
-         *
+         * 
          * `$SETTINGS_PREFIX/{$UUID}`
-         *
+         * 
          * As an example, the Budgie Menu Applet set's the `settings-prefix`
          * to:
          * `/com/solus-project/budgie-panel/instance/budgie-menu`.
-         *
+         * 
          * This results in relocatable schemas being created at:
-         *
+         * 
          * `/com/solus-project/budgie-panel/instance/budgie-menu/{$UUID}`
          * @default null
          */
         get settings_prefix(): string;
         set settings_prefix(val: string);
+
         /**
          * The GSettings schema path prefix for this applet
-         *
+         * 
          * For applets that require unique instance configuration, the
          * panel management must know where to initialise the settings
          * within the tree. The path takes the form:
-         *
+         * 
          * `$SETTINGS_PREFIX/{$UUID}`
-         *
+         * 
          * As an example, the Budgie Menu Applet set's the `settings-prefix`
          * to:
          * `/com/solus-project/budgie-panel/instance/budgie-menu`.
-         *
+         * 
          * This results in relocatable schemas being created at:
-         *
+         * 
          * `/com/solus-project/budgie-panel/instance/budgie-menu/{$UUID}`
          * @default null
          */
         get settingsPrefix(): string;
         set settingsPrefix(val: string);
+
         /**
          * The ID of the GSettings schema used by this applet
-         *
+         * 
          * This only takes effect when you've also set {@link Budgie.Applet.settings_prefix},
          * and is used by the panel managemen to both initialise and delete your per-instance
          * settings, respectively.
-         *
+         * 
          * As an example, the Budgie Menu Applet uses the schema:
-         *
+         * 
          * `com.solus-project.budgie-menu`
-         *
+         * 
          * as defined by the accompanying gschema XML file. Providing an incorrect
          * schema ID is considered programmer error.
          * @default null
          */
         get settings_schema(): string;
         set settings_schema(val: string);
+
         /**
          * The ID of the GSettings schema used by this applet
-         *
+         * 
          * This only takes effect when you've also set {@link Budgie.Applet.settings_prefix},
          * and is used by the panel managemen to both initialise and delete your per-instance
          * settings, respectively.
-         *
+         * 
          * As an example, the Budgie Menu Applet uses the schema:
-         *
+         * 
          * `com.solus-project.budgie-menu`
-         *
+         * 
          * as defined by the accompanying gschema XML file. Providing an incorrect
          * schema ID is considered programmer error.
          * @default null
          */
         get settingsSchema(): string;
         set settingsSchema(val: string);
+
         /**
          * The actions supported by this applet instance
          * @default Budgie.PanelAction.NONE
          */
         get supported_actions(): PanelAction;
         set supported_actions(val: PanelAction);
+
         /**
          * The actions supported by this applet instance
          * @default Budgie.PanelAction.NONE
@@ -310,68 +318,59 @@ export namespace Budgie {
         $signals: Applet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Applet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Applet;
+        static ["new"](): Applet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Applet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Applet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Applet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Applet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Applet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * For applets that need to expose settings, they should both override the
          * {@link Budgie.Applet.SignalSignatures.supports_settings | Budgie.Applet::supports_settings} method and return a new widget instance
          * whenever this function is invoked.
-         *
+         * 
          * This UI will live in the Raven sidebar within the Budgie Desktop, and
          * will be destroyed as soon as it's not being used. It's advisable to keep
          * this widget implementation light, and to prefer vertical space.
          * @virtual
          */
-        vfunc_get_settings_ui(): Gtk.Widget | null;
+        vfunc_get_settings_ui(): (Gtk.Widget | null);
+
         /**
          * Invoke the given action on this applet. This action will only be one
          * that has been declared in supported actions bitmask.
-         *
+         * 
          * To allow better integration between the Budgie Desktop, and the applets
          * that live within it, the panel will relay actions to applets that have
          * set their {@link Budgie.Applet.supported_actions} to a matching bitmask.
-         *
+         * 
          * For example, if we wish to listen for Menu Key events, we can simply do
          * the following in C:
-         *
-         *
+         * 
+         * 
          * ```c
-         *
+         * 
          *      static void my_applet_invoke_action(BudgieApplet *applet, BudgiePanelAction action)
          *      {
          *              if (action == BUDGIE_PANEL_ACTION_MENU) {
          *                      my_applet_do_predict_the_lottery(MY_APPLET(applet));
          *              }
          *      }
-         *
+         * 
          *      static void my_class_init(GObjectClass *class)
          *      {
          *              MyClass *mc = MY_CLASS(klass);
@@ -379,12 +378,12 @@ export namespace Budgie {
          *              mc->invoke_action = my_applet_invoke_action;
          *      }
          * ```
-         *
-         *
+         * 
+         * 
          * Likewise, a Vala implementation might look like the following:
-         *
+         * 
          * ```vala
-         *
+         * 
          *      public override void invoke_action(Budgie.PanelAction action)
          *      {
          *          if (action == Budgie.PanelAction.MENU) {
@@ -392,59 +391,62 @@ export namespace Budgie {
          *          }
          *      }
          * ```
-         *
+         * 
          * @param action Action to invoke
          * @virtual
          */
         vfunc_invoke_action(action: PanelAction): void;
+
         /**
-         * @param position
+         * @param position 
          * @virtual
          */
         vfunc_panel_position_changed(position: PanelPosition): void;
+
         /**
          * Virtual panel_size_changed function
-         * @param panel_size
-         * @param icon_size
-         * @param small_icon_size
+         * @param panel_size 
+         * @param icon_size 
+         * @param small_icon_size 
          * @virtual
          */
         vfunc_panel_size_changed(panel_size: number, icon_size: number, small_icon_size: number): void;
+
         /**
          * Implementations should override this to return TRUE if they support
          * a settings UI
          * @virtual
          */
         vfunc_supports_settings(): boolean;
+
         /**
          * This virtual method should be implemented by panel applets that wish
          * to support {@link Gtk.Popover}'s natively. As each Budgie Panel may house multiple
          * GtkPopover widgets, each one must be registered with the `manager`.
-         *
+         * 
          * During this call, it is safe to store a reference to the `manager`. In
          * this call you should invoke {@link Budgie.PopoverManager.SignalSignatures.register_popover | Budgie.PopoverManager::register_popover} to
          * register your popover with the panel manager.
-         *
+         * 
          * Each registered popover joins the global menu system of popovers in the
          * panel. It is a requirement to register, otherwise the panel will not
          * know when to expand and collapse the main panel harness to accommodate
          * the GtkPopover.
-         * @param manager
+         * @param manager 
          * @virtual
          */
-        vfunc_update_popovers(manager: PopoverManager | null): void;
+        vfunc_update_popovers(manager: (PopoverManager | null)): void;
 
         // Methods
-
         /**
          * If your {@link Budgie.Plugin} implementation passes the UUID to your BudgieApplet
          * implementation on construction, you can take advantage of per-instance
          * settings.
-         *
+         * 
          * For most applets, global GSettings keys are more than suffice. However,
          * in some situations, it may be beneficial to enable multiple unique instances
          * of your applet, each with their own configuration.
-         *
+         * 
          * To facilitate this, use this function to create a new relocatable settings
          * instance using your UUID. Make sure you set the {@link Budgie.Applet.settings_schema}
          * and {@link Budgie.Applet.settings_prefix} properties first.
@@ -452,50 +454,55 @@ export namespace Budgie {
          * @returns A newly created {@link Gio.Settings} for this applet instance
          */
         get_applet_settings(uuid: string): Gio.Settings;
+
         /**
          * Utility function for Python usage. See: {@link Budgie.Applet.settings_prefix}
          */
         get_settings_prefix(): string;
+
         /**
          * Utility function for Python usage. See {@link Budgie.Applet.settings_schema}
          */
         get_settings_schema(): string;
+
         /**
          * For applets that need to expose settings, they should both override the
          * {@link Budgie.Applet.SignalSignatures.supports_settings | Budgie.Applet::supports_settings} method and return a new widget instance
          * whenever this function is invoked.
-         *
+         * 
          * This UI will live in the Raven sidebar within the Budgie Desktop, and
          * will be destroyed as soon as it's not being used. It's advisable to keep
          * this widget implementation light, and to prefer vertical space.
          * @returns A GTK Settings UI
          */
-        get_settings_ui(): Gtk.Widget | null;
+        get_settings_ui(): (Gtk.Widget | null);
+
         /**
          * Utility function for Python bindings. See {@link Budgie.Applet.supported_actions}
          */
         get_supported_actions(): PanelAction;
+
         /**
          * Invoke the given action on this applet. This action will only be one
          * that has been declared in supported actions bitmask.
-         *
+         * 
          * To allow better integration between the Budgie Desktop, and the applets
          * that live within it, the panel will relay actions to applets that have
          * set their {@link Budgie.Applet.supported_actions} to a matching bitmask.
-         *
+         * 
          * For example, if we wish to listen for Menu Key events, we can simply do
          * the following in C:
-         *
-         *
+         * 
+         * 
          * ```c
-         *
+         * 
          *      static void my_applet_invoke_action(BudgieApplet *applet, BudgiePanelAction action)
          *      {
          *              if (action == BUDGIE_PANEL_ACTION_MENU) {
          *                      my_applet_do_predict_the_lottery(MY_APPLET(applet));
          *              }
          *      }
-         *
+         * 
          *      static void my_class_init(GObjectClass *class)
          *      {
          *              MyClass *mc = MY_CLASS(klass);
@@ -503,12 +510,12 @@ export namespace Budgie {
          *              mc->invoke_action = my_applet_invoke_action;
          *      }
          * ```
-         *
-         *
+         * 
+         * 
          * Likewise, a Vala implementation might look like the following:
-         *
+         * 
          * ```vala
-         *
+         * 
          *      public override void invoke_action(Budgie.PanelAction action)
          *      {
          *          if (action == Budgie.PanelAction.MENU) {
@@ -516,59 +523,63 @@ export namespace Budgie {
          *          }
          *      }
          * ```
-         *
+         * 
          * @param action Action to invoke
          */
         invoke_action(action: PanelAction): void;
+
         /**
          * Utility function for Python usage. See: {@link Budgie.Applet.settings_prefix}
-         * @param prefix
+         * @param prefix 
          */
         set_settings_prefix(prefix: string): void;
+
         /**
          * Utility function for Python usage. See {@link Budgie.Applet.settings_schema}
-         * @param schema
+         * @param schema 
          */
         set_settings_schema(schema: string): void;
+
         /**
          * Implementations should override this to return TRUE if they support
          * a settings UI
          * @returns true if this implementation supports a Settings UI
          */
         supports_settings(): boolean;
+
         /**
          * This virtual method should be implemented by panel applets that wish
          * to support {@link Gtk.Popover}'s natively. As each Budgie Panel may house multiple
          * GtkPopover widgets, each one must be registered with the `manager`.
-         *
+         * 
          * During this call, it is safe to store a reference to the `manager`. In
          * this call you should invoke {@link Budgie.PopoverManager.SignalSignatures.register_popover | Budgie.PopoverManager::register_popover} to
          * register your popover with the panel manager.
-         *
+         * 
          * Each registered popover joins the global menu system of popovers in the
          * panel. It is a requirement to register, otherwise the panel will not
          * know when to expand and collapse the main panel harness to accommodate
          * the GtkPopover.
-         * @param manager
+         * @param manager 
          */
-        update_popovers(manager: PopoverManager | null): void;
+        update_popovers(manager: (PopoverManager | null)): void;
     }
+
 
     namespace AppletInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::applet': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::applet": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             alignment: string;
             applet: Applet;
@@ -590,36 +601,42 @@ export namespace Budgie {
         static $gtype: GObject.GType<AppletInfo>;
 
         // Properties
-
         /**
          * @default start
          */
         get alignment(): string;
         set alignment(val: string);
+
         get applet(): Applet;
         set applet(val: Applet);
+
         /**
          * @default null
          */
         get description(): string;
         set description(val: string);
+
         /**
          * @default null
          */
         get icon(): string;
         set icon(val: string);
+
         /**
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * @default 0
          */
         get position(): number;
         set position(val: number);
+
         get settings(): Gio.Settings;
         set settings(val: Gio.Settings);
+
         /**
          * @default null
          */
@@ -636,36 +653,28 @@ export namespace Budgie {
         $signals: AppletInfo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AppletInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](plugin_info: Peas.PluginInfo, uuid: string, applet: Applet, settings: Gio.Settings): AppletInfo;
+        static ["new"](plugin_info: Peas.PluginInfo, uuid: string, applet: Applet, settings: Gio.Settings): AppletInfo;
 
         static new_from_uuid(uuid: string): AppletInfo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AppletInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AppletInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AppletInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AppletInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AppletInfo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AppletInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AppletInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AppletInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Popover {
         // Signal signatures
@@ -680,89 +689,87 @@ export namespace Budgie {
              * @run-last
              */
             closed: () => void;
-            'notify::position-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::relative-to': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::position-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::relative-to": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             position_policy: PopoverPositionPolicy;
             positionPolicy: PopoverPositionPolicy;
             relative_to: Gtk.Widget;
@@ -777,21 +784,23 @@ export namespace Budgie {
         static $gtype: GObject.GType<Popover>;
 
         // Properties
-
         /**
          * Control the behavior used to place the popover on screen.
          * @default Budgie.PopoverPositionPolicy.AUTOMATIC
          */
         get position_policy(): PopoverPositionPolicy;
         set position_policy(val: PopoverPositionPolicy);
+
         /**
          * Control the behavior used to place the popover on screen.
          * @default Budgie.PopoverPositionPolicy.AUTOMATIC
          */
         get positionPolicy(): PopoverPositionPolicy;
         set positionPolicy(val: PopoverPositionPolicy);
+
         get relative_to(): Gtk.Widget;
         set relative_to(val: Gtk.Widget);
+
         get relativeTo(): Gtk.Widget;
         set relativeTo(val: Gtk.Widget);
 
@@ -805,39 +814,29 @@ export namespace Budgie {
         $signals: Popover.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Popover.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](relative_to: Gtk.Widget): Popover;
-        // Conflicted with Gtk.Window.new
+        static ["new"](relative_to: Gtk.Widget): Popover;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Window.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Popover.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Popover.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Popover.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Popover.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Popover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Popover.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Popover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Virtual closed signal
          * @virtual
@@ -845,12 +844,12 @@ export namespace Budgie {
         vfunc_closed(): void;
 
         // Methods
-
         /**
          * Retrieve the currently active positioning policy for this popover
          * @returns The {@link Budgie.PopoverPositionPolicy} currently in use
          */
         get_position_policy(): PopoverPositionPolicy;
+
         /**
          * Set the positioning policy employed by the popover
          * @param policy New policy to set
@@ -858,13 +857,16 @@ export namespace Budgie {
         set_position_policy(policy: PopoverPositionPolicy): void;
     }
 
+
     namespace PopoverManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -883,52 +885,44 @@ export namespace Budgie {
         $signals: PopoverManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PopoverManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PopoverManager;
+        static ["new"](): PopoverManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PopoverManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PopoverManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PopoverManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PopoverManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PopoverManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PopoverManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PopoverManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PopoverManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Register a new popover with it's relative-to widget within the popover management
          * system. This will allow the popover to be activated when it's parent widget has
          * been activated by a mouse roll over, when another widget is visible.
-         *
+         * 
          * This allows the panel to provide a "menubar" like functionality for interaction
          * with multiple popovers in a natural fashion.
          * @param parent_widget The widget that "owns" the popover (relative-to)
          * @param popover The popover that will be shown when the `parent_widget` is activated
          */
         register_popover(parent_widget: Gtk.Widget, popover: Popover): void;
+
         /**
          * Show a {@link Budgie.Popover} on screen belonging to the specified `parent_widget`
          * @param parent_widget The widget owning the popover to be shown
          */
         show_popover(parent_widget: Gtk.Widget): void;
+
         /**
          * Unregister a popover so that it is no longer managed by this implementation,
          * and is free to manage itself.
@@ -937,20 +931,24 @@ export namespace Budgie {
         unregister_popover(parent_widget: Gtk.Widget): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AppletClass = typeof Applet;
+
     /**
      * @gir-type Alias
      */
     type AppletInfoClass = typeof AppletInfo;
+
     /**
      * @gir-type Struct
      */
     abstract class AppletInfoPrivate {
         static $gtype: GObject.GType<AppletInfoPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -959,24 +957,29 @@ export namespace Budgie {
         static $gtype: GObject.GType<AppletPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PluginIface = typeof Plugin;
+
     /**
      * @gir-type Alias
      */
     type PopoverClass = typeof Popover;
+
     /**
      * @gir-type Alias
      */
     type PopoverManagerClass = typeof PopoverManager;
+
     /**
      * @gir-type Struct
      */
     abstract class PopoverManagerPrivate {
         static $gtype: GObject.GType<PopoverManagerPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -985,14 +988,15 @@ export namespace Budgie {
         static $gtype: GObject.GType<PopoverPrivate>;
     }
 
+
     namespace Plugin {
         /**
          * Interface for implementing Plugin.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param uuid UUID for this new instance
              * @virtual
@@ -1000,9 +1004,11 @@ export namespace Budgie {
             vfunc_get_panel_widget(uuid: string): Applet;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PluginNamespace {
@@ -1013,14 +1019,15 @@ export namespace Budgie {
      * @gir-type Interface
      */
     interface Plugin extends GObject.Object, Plugin.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param uuid UUID for this new instance
          * @returns A newly initialised panel widget
          */
         get_panel_widget(uuid: string): Applet;
     }
+
 
     export const Plugin: PluginNamespace & {
         new (): Plugin; // This allows `obj instanceof Plugin`
@@ -1031,6 +1038,7 @@ export namespace Budgie {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

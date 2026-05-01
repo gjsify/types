@@ -1,3 +1,4 @@
+
 import type GCab10 from '@girs/gcab-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

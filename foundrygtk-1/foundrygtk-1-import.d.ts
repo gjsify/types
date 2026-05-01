@@ -1,3 +1,4 @@
+
 import type FoundryGtk1 from '@girs/foundrygtk-1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

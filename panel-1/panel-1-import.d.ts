@@ -1,3 +1,4 @@
+
 import type Panel1 from '@girs/panel-1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

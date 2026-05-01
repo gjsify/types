@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,40 +15,44 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gee {
+
     /**
      * Gee-1.0
      */
 
+
     /**
-     * @param t
+     * @param t 
      */
     function functions_get_equal_func_for(t: GObject.Type): GLib.EqualFunc;
+
     /**
-     * @param t
+     * @param t 
      */
     function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
+
     /**
-     * @param t
+     * @param t 
      */
     function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
+
     /**
-     * @param _val1
-     * @param _val2
+     * @param _val1 
+     * @param _val2 
      */
     function direct_compare(_val1: any, _val2: any): number;
+
     namespace AbstractCollection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Iterable.ConstructorProps, Collection.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Iterable.ConstructorProps, Collection.ConstructorProps {
             size: number;
             is_empty: boolean;
             isEmpty: boolean;
@@ -63,23 +68,26 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractCollection>;
 
         // Properties
-
         /**
          * @read-only
          */
         get size(): number;
+
         /**
          * @read-only
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
          */
         get read_only_view(): Collection;
+
         /**
          * @read-only
          */
@@ -95,138 +103,147 @@ export namespace Gee {
         $signals: AbstractCollection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractCollection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractCollection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractCollection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractCollection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractCollection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_remove(item: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
          * @virtual
          */
         vfunc_to_array(): any[];
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_retain_all(collection: Collection): boolean;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
 
         // Methods
-
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         to_array(): any[];
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         iterator(): Iterator;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
     }
 
+
     namespace AbstractList {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractCollection.ConstructorProps, List.ConstructorProps {
             read_only_view: List;
             readOnlyView: List;
@@ -240,11 +257,11 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractList>;
 
         // Properties
-
         /**
          * @read-only
          */
         get read_only_view(): List;
+
         /**
          * @read-only
          */
@@ -260,260 +277,294 @@ export namespace Gee {
         $signals: AbstractList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_list_iterator(): ListIterator;
+
         /**
-         * @param index
+         * @param index 
          * @virtual
          */
         vfunc_get(index: number): any;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          * @virtual
          */
         vfunc_set(index: number, item: any): void;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_index_of(item: any): number;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          * @virtual
          */
         vfunc_insert(index: number, item: any): void;
+
         /**
-         * @param index
+         * @param index 
          * @virtual
          */
         vfunc_remove_at(index: number): any;
+
         /**
-         * @param start
-         * @param stop
+         * @param start 
+         * @param stop 
          * @virtual
          */
         vfunc_slice(start: number, stop: number): List;
+
         /**
          * @virtual
          */
         vfunc_first(): any;
+
         /**
          * @virtual
          */
         vfunc_last(): any;
+
         /**
-         * @param index
-         * @param collection
+         * @param index 
+         * @param collection 
          * @virtual
          */
         vfunc_insert_all(index: number, collection: Collection): void;
 
         // Methods
-
         list_iterator(): ListIterator;
+
         /**
-         * @param index
+         * @param index 
          */
         get(index: number): any;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          */
         set(index: number, item: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param item
+         * @param item 
          */
         index_of(item: any): number;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          */
         insert(index: number, item: any): void;
+
         /**
-         * @param index
+         * @param index 
          */
         remove_at(index: number): any;
+
         /**
-         * @param start
-         * @param stop
+         * @param start 
+         * @param stop 
          */
         slice(start: number, stop: number): List;
+
         first(): any;
+
         last(): any;
+
         /**
-         * @param index
-         * @param collection
+         * @param index 
+         * @param collection 
          */
         insert_all(index: number, collection: Collection): void;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get size(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
+
         /**
-         * @param compare_func
+         * @param compare_func 
          */
         sort(compare_func: GLib.CompareFunc): void;
+
         /**
-         * @param compare_func
+         * @param compare_func 
          * @virtual
          */
         vfunc_sort(compare_func: GLib.CompareFunc): void;
+
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         to_array(): any[];
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_remove(item: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_retain_all(collection: Collection): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_array(): any[];
+
         iterator(): Iterator;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
     }
 
+
     namespace AbstractMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
-            'notify::key-type': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
+            "notify::key-type": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Iterable.ConstructorProps, Map.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Iterable.ConstructorProps, Map.ConstructorProps {
             size: number;
             is_empty: boolean;
             isEmpty: boolean;
@@ -532,35 +583,41 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractMap>;
 
         // Properties
-
         /**
          * @read-only
          */
         get size(): number;
+
         /**
          * @read-only
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
          */
         get keys(): Set;
+
         /**
          * @read-only
          */
         get values(): Collection;
+
         /**
          * @read-only
          */
         get entries(): Set;
+
         /**
          * @read-only
          */
         get read_only_view(): Map;
+
         /**
          * @read-only
          */
@@ -576,210 +633,236 @@ export namespace Gee {
         $signals: AbstractMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_has_key(key: any): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_has(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_get(key: any): any;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_set(key: any, value: any): void;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_unset(key: any): [boolean, any];
+
         /**
          * @virtual
          */
         vfunc_map_iterator(): MapIterator;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
-         * @param map
+         * @param map 
          * @virtual
          */
         vfunc_set_all(map: Map): void;
+
         /**
-         * @param map
+         * @param map 
          * @virtual
          */
         vfunc_unset_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          * @virtual
          */
         vfunc_has_all(map: Map): boolean;
 
         // Methods
-
         /**
-         * @param key
+         * @param key 
          */
         has_key(key: any): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         has(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: any): any;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: any, value: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param key
+         * @param key 
          */
         unset(key: any): [boolean, any];
+
         map_iterator(): MapIterator;
+
         clear(): void;
+
         /**
-         * @param map
+         * @param map 
          */
         set_all(map: Map): void;
+
         /**
-         * @param map
+         * @param map 
          */
         unset_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          */
         has_all(map: Map): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Map
+          * @category Inherited from Gee.Map
          */
         get key_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Map
+          * @category Inherited from Gee.Map
          */
         get keyType(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Map
+          * @category Inherited from Gee.Map
          */
         get value_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Map
+          * @category Inherited from Gee.Map
          */
         get valueType(): GObject.Type;
+
         iterator(): Iterator;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
+
         /**
-         * @param key
+         * @param key 
          */
         contains(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         remove(key: any): [boolean, any];
+
         /**
-         * @param map
+         * @param map 
          */
         remove_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          */
         contains_all(map: Map): boolean;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_contains(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_remove(key: any): [boolean, any];
+
         /**
-         * @param map
+         * @param map 
          * @virtual
          */
         vfunc_remove_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          * @virtual
          */
         vfunc_contains_all(map: Map): boolean;
     }
 
+
     namespace AbstractMultiMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {}
+        }
     }
 
     /**
@@ -798,145 +881,160 @@ export namespace Gee {
         $signals: AbstractMultiMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractMultiMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractMultiMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_create_value_storage(): Collection;
+
         /**
          * @virtual
          */
         vfunc_create_multi_key_set(): MultiSet;
+
         /**
          * @virtual
          */
         vfunc_get_value_equal_func(): GLib.EqualFunc;
 
         // Methods
-
         create_value_storage(): Collection;
+
         create_multi_key_set(): MultiSet;
+
         get_value_equal_func(): GLib.EqualFunc;
+
         /**
          * @read-only
-         * @category Inherited from Gee.MultiMap
+          * @category Inherited from Gee.MultiMap
          */
         get size(): number;
+
         get_keys(): Set;
+
         get_all_keys(): MultiSet;
+
         get_values(): Collection;
+
         /**
-         * @param key
+         * @param key 
          */
         contains(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: any): Collection;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: any, value: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         remove(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         remove_all(key: any): boolean;
+
         clear(): void;
+
         /**
          * @virtual
          */
         vfunc_get_keys(): Set;
+
         /**
          * @virtual
          */
         vfunc_get_all_keys(): MultiSet;
+
         /**
          * @virtual
          */
         vfunc_get_values(): Collection;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_contains(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_get(key: any): Collection;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_set(key: any, value: any): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_remove(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_remove_all(key: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
     }
 
+
     namespace AbstractMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {
 
-        interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {}
+        }
     }
 
     /**
@@ -955,169 +1053,189 @@ export namespace Gee {
         $signals: AbstractMultiSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractMultiSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractMultiSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get size(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get read_only_view(): Collection;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get readOnlyView(): Collection;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
+
         /**
-         * @param item
+         * @param item 
          */
         count(item: any): number;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_count(item: any): number;
+
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         to_array(): any[];
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_remove(item: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_retain_all(collection: Collection): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_array(): any[];
+
         iterator(): Iterator;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
     }
 
+
     namespace AbstractQueue {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::is-full': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::is-full": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Queue.ConstructorProps {
             capacity: number;
             remaining_capacity: number;
@@ -1134,23 +1252,26 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractQueue>;
 
         // Properties
-
         /**
          * @read-only
          */
         get capacity(): number;
+
         /**
          * @read-only
          */
         get remaining_capacity(): number;
+
         /**
          * @read-only
          */
         get remainingCapacity(): number;
+
         /**
          * @read-only
          */
         get is_full(): boolean;
+
         /**
          * @read-only
          */
@@ -1166,193 +1287,215 @@ export namespace Gee {
         $signals: AbstractQueue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractQueue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_offer(element: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_peek(): any;
+
         /**
          * @virtual
          */
         vfunc_poll(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          * @virtual
          */
         vfunc_drain(recipient: Collection, amount: number): number;
 
         // Methods
-
         /**
-         * @param element
+         * @param element 
          */
         offer(element: any): boolean;
+
         peek(): any;
+
         poll(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain(recipient: Collection, amount: number): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get size(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get read_only_view(): Collection;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get readOnlyView(): Collection;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
+
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         to_array(): any[];
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_remove(item: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_retain_all(collection: Collection): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_array(): any[];
+
         iterator(): Iterator;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
     }
 
+
     namespace AbstractSet {
         // Signal signatures
         interface SignalSignatures extends AbstractCollection.SignalSignatures {
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Set.ConstructorProps {
             read_only_view: Set;
             readOnlyView: Set;
@@ -1366,11 +1509,11 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractSet>;
 
         // Properties
-
         /**
          * @read-only
          */
         get read_only_view(): Set;
+
         /**
          * @read-only
          */
@@ -1386,147 +1529,163 @@ export namespace Gee {
         $signals: AbstractSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get size(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Collection
+          * @category Inherited from Gee.Collection
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Iterable
+          * @category Inherited from Gee.Iterable
          */
         get elementType(): GObject.Type;
+
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         to_array(): any[];
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          * @virtual
          */
         vfunc_remove(item: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          * @virtual
          */
         vfunc_retain_all(collection: Collection): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_array(): any[];
+
         iterator(): Iterator;
+
         /**
          * @virtual
          */
         vfunc_iterator(): Iterator;
     }
 
+
     namespace ArrayList {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
-            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            "notify::equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractList.ConstructorProps {
             equal_func: GLib.EqualFunc;
             equalFunc: GLib.EqualFunc;
@@ -1540,9 +1699,9 @@ export namespace Gee {
         static $gtype: GObject.GType<ArrayList>;
 
         // Properties
-
         get equal_func(): GLib.EqualFunc;
         set equal_func(val: GLib.EqualFunc);
+
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
 
@@ -1556,58 +1715,48 @@ export namespace Gee {
         $signals: ArrayList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ArrayList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc): ArrayList;
+        static ["new"](equal_func: GLib.EqualFunc): ArrayList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ArrayList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ArrayList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ArrayList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ArrayList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param compare
+         * @param compare 
          */
         sort_with_data(compare: GLib.CompareDataFunc): void;
     }
 
+
     namespace HashMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
-            'notify::key-hash-func': (pspec: GObject.ParamSpec) => void;
-            'notify::key-equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::key-hash-func": (pspec: GObject.ParamSpec) => void;
+            "notify::key-equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value-equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMap.ConstructorProps {
             key_hash_func: GLib.HashFunc;
             keyHashFunc: GLib.HashFunc;
@@ -1625,17 +1774,21 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMap>;
 
         // Properties
-
         get key_hash_func(): GLib.HashFunc;
         set key_hash_func(val: GLib.HashFunc);
+
         get keyHashFunc(): GLib.HashFunc;
         set keyHashFunc(val: GLib.HashFunc);
+
         get key_equal_func(): GLib.EqualFunc;
         set key_equal_func(val: GLib.EqualFunc);
+
         get keyEqualFunc(): GLib.EqualFunc;
         set keyEqualFunc(val: GLib.EqualFunc);
+
         get value_equal_func(): GLib.EqualFunc;
         set value_equal_func(val: GLib.EqualFunc);
+
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
 
@@ -1649,50 +1802,37 @@ export namespace Gee {
         $signals: HashMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HashMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            key_hash_func: GLib.HashFunc,
-            key_equal_func: GLib.EqualFunc,
-            value_equal_func: GLib.EqualFunc,
-        ): HashMap;
+        static ["new"](key_hash_func: GLib.HashFunc, key_equal_func: GLib.EqualFunc, value_equal_func: GLib.EqualFunc): HashMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HashMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HashMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HashMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HashMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HashMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace HashMultiMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
-            'notify::key-hash-func': (pspec: GObject.ParamSpec) => void;
-            'notify::key-equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value-hash-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
+            "notify::key-hash-func": (pspec: GObject.ParamSpec) => void;
+            "notify::key-equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value-hash-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value-equal-func": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
             key_hash_func: GLib.HashFunc;
             keyHashFunc: GLib.HashFunc;
@@ -1712,29 +1852,35 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMultiMap>;
 
         // Properties
-
         /**
          * @read-only
          */
         get key_hash_func(): GLib.HashFunc;
+
         /**
          * @read-only
          */
         get keyHashFunc(): GLib.HashFunc;
+
         /**
          * @read-only
          */
         get key_equal_func(): GLib.EqualFunc;
+
         /**
          * @read-only
          */
         get keyEqualFunc(): GLib.EqualFunc;
+
         get value_hash_func(): GLib.HashFunc;
         set value_hash_func(val: GLib.HashFunc);
+
         get valueHashFunc(): GLib.HashFunc;
         set valueHashFunc(val: GLib.HashFunc);
+
         get value_equal_func(): GLib.EqualFunc;
         set value_equal_func(val: GLib.EqualFunc);
+
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
 
@@ -1748,52 +1894,38 @@ export namespace Gee {
         $signals: HashMultiMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HashMultiMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            key_hash_func: GLib.HashFunc,
-            key_equal_func: GLib.EqualFunc,
-            value_hash_func: GLib.HashFunc,
-            value_equal_func: GLib.EqualFunc,
-        ): HashMultiMap;
+        static ["new"](key_hash_func: GLib.HashFunc, key_equal_func: GLib.EqualFunc, value_hash_func: GLib.HashFunc, value_equal_func: GLib.EqualFunc): HashMultiMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HashMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HashMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HashMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HashMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HashMultiMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HashMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace HashMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
-            'notify::hash-func': (pspec: GObject.ParamSpec) => void;
-            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::hash-func": (pspec: GObject.ParamSpec) => void;
+            "notify::equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
             hash_func: GLib.HashFunc;
             hashFunc: GLib.HashFunc;
@@ -1809,19 +1941,21 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMultiSet>;
 
         // Properties
-
         /**
          * @read-only
          */
         get hash_func(): GLib.HashFunc;
+
         /**
          * @read-only
          */
         get hashFunc(): GLib.HashFunc;
+
         /**
          * @read-only
          */
         get equal_func(): GLib.EqualFunc;
+
         /**
          * @read-only
          */
@@ -1837,47 +1971,38 @@ export namespace Gee {
         $signals: HashMultiSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HashMultiSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
+        static ["new"](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HashMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HashMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HashMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HashMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HashMultiSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HashMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace HashSet {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
-            'notify::hash-func': (pspec: GObject.ParamSpec) => void;
-            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            "notify::hash-func": (pspec: GObject.ParamSpec) => void;
+            "notify::equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractSet.ConstructorProps {
             hash_func: GLib.HashFunc;
             hashFunc: GLib.HashFunc;
@@ -1893,13 +2018,15 @@ export namespace Gee {
         static $gtype: GObject.GType<HashSet>;
 
         // Properties
-
         get hash_func(): GLib.HashFunc;
         set hash_func(val: GLib.HashFunc);
+
         get hashFunc(): GLib.HashFunc;
         set hashFunc(val: GLib.HashFunc);
+
         get equal_func(): GLib.EqualFunc;
         set equal_func(val: GLib.EqualFunc);
+
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
 
@@ -1913,51 +2040,41 @@ export namespace Gee {
         $signals: HashSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HashSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
+        static ["new"](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HashSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HashSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HashSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HashSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HashSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HashSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace LinkedList {
         // Signal signatures
         interface SignalSignatures extends AbstractList.SignalSignatures {
-            'notify::equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::is-full': (pspec: GObject.ParamSpec) => void;
+            "notify::equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::is-full": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends AbstractList.ConstructorProps, Queue.ConstructorProps, Deque.ConstructorProps {
+        interface ConstructorProps extends AbstractList.ConstructorProps, Queue.ConstructorProps, Deque.ConstructorProps {
             equal_func: GLib.EqualFunc;
             equalFunc: GLib.EqualFunc;
             readOnlyView: LinkedList;
@@ -1972,15 +2089,17 @@ export namespace Gee {
         static $gtype: GObject.GType<LinkedList>;
 
         // Properties
-
         get equal_func(): GLib.EqualFunc;
         set equal_func(val: GLib.EqualFunc);
+
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+
         /**
          * @read-only
          */
         get readOnlyView(): LinkedList;
+
         /**
          * @read-only
          */
@@ -1996,164 +2115,184 @@ export namespace Gee {
         $signals: LinkedList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LinkedList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](equal_func: GLib.EqualFunc): LinkedList;
+        static ["new"](equal_func: GLib.EqualFunc): LinkedList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LinkedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LinkedList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LinkedList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LinkedList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LinkedList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LinkedList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Queue
+          * @category Inherited from Gee.Queue
          */
         get capacity(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Queue
+          * @category Inherited from Gee.Queue
          */
         get remaining_capacity(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Queue
+          * @category Inherited from Gee.Queue
          */
         get remainingCapacity(): number;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Queue
+          * @category Inherited from Gee.Queue
          */
         get is_full(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Queue
+          * @category Inherited from Gee.Queue
          */
         get isFull(): boolean;
+
         /**
-         * @param element
+         * @param element 
          */
         offer(element: any): boolean;
+
         peek(): any;
+
         poll(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_offer(element: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_peek(): any;
+
         /**
          * @virtual
          */
         vfunc_poll(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          * @virtual
          */
         vfunc_drain(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          */
         offer_head(element: any): boolean;
+
         peek_head(): any;
+
         poll_head(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain_head(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          */
         offer_tail(element: any): boolean;
+
         peek_tail(): any;
+
         poll_tail(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain_tail(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_offer_head(element: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_peek_head(): any;
+
         /**
          * @virtual
          */
         vfunc_poll_head(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          * @virtual
          */
         vfunc_drain_head(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_offer_tail(element: any): boolean;
+
         /**
          * @virtual
          */
         vfunc_peek_tail(): any;
+
         /**
          * @virtual
          */
         vfunc_poll_tail(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          * @virtual
          */
         vfunc_drain_tail(recipient: Collection, amount: number): number;
     }
 
+
     namespace PriorityQueue {
         // Signal signatures
         interface SignalSignatures extends AbstractQueue.SignalSignatures {
-            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
-            'notify::capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-capacity': (pspec: GObject.ParamSpec) => void;
-            'notify::is-full': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::compare-func": (pspec: GObject.ParamSpec) => void;
+            "notify::capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-capacity": (pspec: GObject.ParamSpec) => void;
+            "notify::is-full": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractQueue.ConstructorProps {
             compare_func: GLib.CompareFunc;
             compareFunc: GLib.CompareFunc;
@@ -2167,9 +2306,9 @@ export namespace Gee {
         static $gtype: GObject.GType<PriorityQueue>;
 
         // Properties
-
         get compare_func(): GLib.CompareFunc;
         set compare_func(val: GLib.CompareFunc);
+
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
 
@@ -2183,50 +2322,41 @@ export namespace Gee {
         $signals: PriorityQueue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PriorityQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): PriorityQueue;
+        static ["new"](compare_func: GLib.CompareFunc): PriorityQueue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PriorityQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PriorityQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PriorityQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PriorityQueue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PriorityQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMap.SignalSignatures {
-            'notify::key-compare-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value-equal-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::key-compare-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value-equal-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMap.ConstructorProps {
             key_compare_func: GLib.CompareFunc;
             keyCompareFunc: GLib.CompareFunc;
@@ -2242,13 +2372,15 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMap>;
 
         // Properties
-
         get key_compare_func(): GLib.CompareFunc;
         set key_compare_func(val: GLib.CompareFunc);
+
         get keyCompareFunc(): GLib.CompareFunc;
         set keyCompareFunc(val: GLib.CompareFunc);
+
         get value_equal_func(): GLib.EqualFunc;
         set value_equal_func(val: GLib.EqualFunc);
+
         get valueEqualFunc(): GLib.EqualFunc;
         set valueEqualFunc(val: GLib.EqualFunc);
 
@@ -2262,44 +2394,35 @@ export namespace Gee {
         $signals: TreeMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
+        static ["new"](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMultiMap {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
-            'notify::key-compare-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value-compare-func': (pspec: GObject.ParamSpec) => void;
+            "notify::key-compare-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value-compare-func": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
             key_compare_func: GLib.CompareFunc;
             keyCompareFunc: GLib.CompareFunc;
@@ -2315,17 +2438,19 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMultiMap>;
 
         // Properties
-
         /**
          * @read-only
          */
         get key_compare_func(): GLib.CompareFunc;
+
         /**
          * @read-only
          */
         get keyCompareFunc(): GLib.CompareFunc;
+
         get value_compare_func(): GLib.CompareFunc;
         set value_compare_func(val: GLib.CompareFunc);
+
         get valueCompareFunc(): GLib.CompareFunc;
         set valueCompareFunc(val: GLib.CompareFunc);
 
@@ -2339,46 +2464,37 @@ export namespace Gee {
         $signals: TreeMultiMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMultiMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
+        static ["new"](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMultiMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMultiMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMultiMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMultiSet {
         // Signal signatures
         interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
-            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::compare-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
             compare_func: GLib.CompareFunc;
             compareFunc: GLib.CompareFunc;
@@ -2392,11 +2508,11 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMultiSet>;
 
         // Properties
-
         /**
          * @read-only
          */
         get compare_func(): GLib.CompareFunc;
+
         /**
          * @read-only
          */
@@ -2412,46 +2528,37 @@ export namespace Gee {
         $signals: TreeMultiSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMultiSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): TreeMultiSet;
+        static ["new"](compare_func: GLib.CompareFunc): TreeMultiSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMultiSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMultiSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMultiSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeSet {
         // Signal signatures
         interface SignalSignatures extends AbstractSet.SignalSignatures {
-            'notify::compare-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::is-empty': (pspec: GObject.ParamSpec) => void;
+            "notify::compare-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::is-empty": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractSet.ConstructorProps, SortedSet.ConstructorProps {
             compare_func: GLib.CompareFunc;
             compareFunc: GLib.CompareFunc;
@@ -2465,9 +2572,9 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeSet>;
 
         // Properties
-
         get compare_func(): GLib.CompareFunc;
         set compare_func(val: GLib.CompareFunc);
+
         get compareFunc(): GLib.CompareFunc;
         set compareFunc(val: GLib.CompareFunc);
 
@@ -2481,143 +2588,158 @@ export namespace Gee {
         $signals: TreeSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TreeSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](compare_func: GLib.CompareFunc): TreeSet;
+        static ["new"](compare_func: GLib.CompareFunc): TreeSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Set
+          * @category Inherited from Gee.Set
          */
         get read_only_view(): Set;
+
         /**
          * @read-only
-         * @category Inherited from Gee.Set
+          * @category Inherited from Gee.Set
          */
         get readOnlyView(): Set;
+
         first(): any;
+
         last(): any;
+
         bidir_iterator(): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          */
         iterator_at(element: any): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          */
         lower(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         higher(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         floor(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         ceil(element: any): any;
+
         /**
-         * @param before
+         * @param before 
          */
         head_set(before: any): SortedSet;
+
         /**
-         * @param after
+         * @param after 
          */
         tail_set(after: any): SortedSet;
+
         /**
-         * @param from
-         * @param to
+         * @param from 
+         * @param to 
          */
         sub_set(from: any, to: any): SortedSet;
+
         /**
          * @virtual
          */
         vfunc_first(): any;
+
         /**
          * @virtual
          */
         vfunc_last(): any;
+
         /**
          * @virtual
          */
         vfunc_bidir_iterator(): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_iterator_at(element: any): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_lower(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_higher(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_floor(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          * @virtual
          */
         vfunc_ceil(element: any): any;
+
         /**
-         * @param before
+         * @param before 
          * @virtual
          */
         vfunc_head_set(before: any): SortedSet;
+
         /**
-         * @param after
+         * @param after 
          * @virtual
          */
         vfunc_tail_set(after: any): SortedSet;
+
         /**
-         * @param from
-         * @param to
+         * @param from 
+         * @param to 
          * @virtual
          */
         vfunc_sub_set(from: any, to: any): SortedSet;
     }
 
+
     namespace MapEntry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             key: any;
             value: any;
@@ -2631,11 +2753,11 @@ export namespace Gee {
         static $gtype: GObject.GType<MapEntry>;
 
         // Properties
-
         /**
          * @read-only
          */
         get key(): any;
+
         get value(): any;
         set value(val: any);
 
@@ -2649,37 +2771,30 @@ export namespace Gee {
         $signals: MapEntry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapEntry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AbstractCollectionClass = typeof AbstractCollection;
+
     /**
      * @gir-type Struct
      */
@@ -2687,10 +2802,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractCollectionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractListClass = typeof AbstractList;
+
     /**
      * @gir-type Struct
      */
@@ -2698,10 +2815,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractMapClass = typeof AbstractMap;
+
     /**
      * @gir-type Struct
      */
@@ -2709,10 +2828,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractMultiMapClass = typeof AbstractMultiMap;
+
     /**
      * @gir-type Struct
      */
@@ -2720,10 +2841,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractMultiMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractMultiSetClass = typeof AbstractMultiSet;
+
     /**
      * @gir-type Struct
      */
@@ -2731,10 +2854,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractMultiSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractQueueClass = typeof AbstractQueue;
+
     /**
      * @gir-type Struct
      */
@@ -2742,10 +2867,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractQueuePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractSetClass = typeof AbstractSet;
+
     /**
      * @gir-type Struct
      */
@@ -2753,10 +2880,12 @@ export namespace Gee {
         static $gtype: GObject.GType<AbstractSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ArrayListClass = typeof ArrayList;
+
     /**
      * @gir-type Struct
      */
@@ -2764,10 +2893,12 @@ export namespace Gee {
         static $gtype: GObject.GType<ArrayListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashMapClass = typeof HashMap;
+
     /**
      * @gir-type Struct
      */
@@ -2775,10 +2906,12 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashMultiMapClass = typeof HashMultiMap;
+
     /**
      * @gir-type Struct
      */
@@ -2786,10 +2919,12 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMultiMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashMultiSetClass = typeof HashMultiSet;
+
     /**
      * @gir-type Struct
      */
@@ -2797,10 +2932,12 @@ export namespace Gee {
         static $gtype: GObject.GType<HashMultiSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashSetClass = typeof HashSet;
+
     /**
      * @gir-type Struct
      */
@@ -2808,10 +2945,12 @@ export namespace Gee {
         static $gtype: GObject.GType<HashSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LinkedListClass = typeof LinkedList;
+
     /**
      * @gir-type Struct
      */
@@ -2819,10 +2958,12 @@ export namespace Gee {
         static $gtype: GObject.GType<LinkedListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PriorityQueueClass = typeof PriorityQueue;
+
     /**
      * @gir-type Struct
      */
@@ -2830,10 +2971,12 @@ export namespace Gee {
         static $gtype: GObject.GType<PriorityQueuePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMapClass = typeof TreeMap;
+
     /**
      * @gir-type Struct
      */
@@ -2841,10 +2984,12 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMultiMapClass = typeof TreeMultiMap;
+
     /**
      * @gir-type Struct
      */
@@ -2852,10 +2997,12 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMultiMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMultiSetClass = typeof TreeMultiSet;
+
     /**
      * @gir-type Struct
      */
@@ -2863,10 +3010,12 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeMultiSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeSetClass = typeof TreeSet;
+
     /**
      * @gir-type Struct
      */
@@ -2874,42 +3023,52 @@ export namespace Gee {
         static $gtype: GObject.GType<TreeSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BidirIteratorIface = typeof BidirIterator;
+
     /**
      * @gir-type Alias
      */
     type CollectionIface = typeof Collection;
+
     /**
      * @gir-type Alias
      */
     type ComparableIface = typeof Comparable;
+
     /**
      * @gir-type Alias
      */
     type DequeIface = typeof Deque;
+
     /**
      * @gir-type Alias
      */
     type IterableIface = typeof Iterable;
+
     /**
      * @gir-type Alias
      */
     type IteratorIface = typeof Iterator;
+
     /**
      * @gir-type Alias
      */
     type ListIface = typeof List;
+
     /**
      * @gir-type Alias
      */
     type ListIteratorIface = typeof ListIterator;
+
     /**
      * @gir-type Alias
      */
     type MapIface = typeof Map;
+
     /**
      * @gir-type Struct
      */
@@ -2917,55 +3076,66 @@ export namespace Gee {
         static $gtype: GObject.GType<EntryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MapIteratorIface = typeof MapIterator;
+
     /**
      * @gir-type Alias
      */
     type MultiMapIface = typeof MultiMap;
+
     /**
      * @gir-type Alias
      */
     type MultiSetIface = typeof MultiSet;
+
     /**
      * @gir-type Alias
      */
     type QueueIface = typeof Queue;
+
     /**
      * @gir-type Alias
      */
     type SetIface = typeof Set;
+
     /**
      * @gir-type Alias
      */
     type SortedSetIface = typeof SortedSet;
+
     namespace BidirIterator {
         /**
          * Interface for implementing BidirIterator.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Iterator.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_previous(): boolean;
+
             /**
              * @virtual
              */
             vfunc_has_previous(): boolean;
+
             /**
              * @virtual
              */
             vfunc_last(): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Iterator.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Iterator.ConstructorProps {
+
+        }
     }
 
     export interface BidirIteratorNamespace {
@@ -2976,12 +3146,15 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface BidirIterator extends Iterator, BidirIterator.Interface {
-        // Methods
 
+        // Methods
         previous(): boolean;
+
         has_previous(): boolean;
+
         last(): boolean;
     }
+
 
     export const BidirIterator: BidirIteratorNamespace & {
         new (): BidirIterator; // This allows `obj instanceof BidirIterator`
@@ -2993,55 +3166,63 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Iterable.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_contains(item: any): boolean;
+
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_add(item: any): boolean;
+
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_remove(item: any): boolean;
+
             /**
              * @virtual
              */
             vfunc_clear(): void;
+
             /**
-             * @param collection
+             * @param collection 
              * @virtual
              */
             vfunc_add_all(collection: Collection): boolean;
+
             /**
-             * @param collection
+             * @param collection 
              * @virtual
              */
             vfunc_contains_all(collection: Collection): boolean;
+
             /**
-             * @param collection
+             * @param collection 
              * @virtual
              */
             vfunc_remove_all(collection: Collection): boolean;
+
             /**
-             * @param collection
+             * @param collection 
              * @virtual
              */
             vfunc_retain_all(collection: Collection): boolean;
+
             /**
              * @virtual
              */
             vfunc_to_array(): any[];
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Iterable.ConstructorProps {
             size: number;
             is_empty: boolean;
@@ -3054,69 +3235,80 @@ export namespace Gee {
     export interface CollectionNamespace {
         $gtype: GObject.GType<Collection>;
         prototype: Collection;
-
         empty(): Collection;
     }
     /**
      * @gir-type Interface
      */
     interface Collection extends Iterable, Collection.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get size(): number;
+
         /**
          * @read-only
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
          */
         get read_only_view(): Collection;
+
         /**
          * @read-only
          */
         get readOnlyView(): Collection;
 
         // Methods
-
         /**
-         * @param item
+         * @param item 
          */
         contains(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         remove(item: any): boolean;
+
         clear(): void;
+
         /**
-         * @param collection
+         * @param collection 
          */
         add_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         contains_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         remove_all(collection: Collection): boolean;
+
         /**
-         * @param collection
+         * @param collection 
          */
         retain_all(collection: Collection): boolean;
+
         to_array(): any[];
     }
+
 
     export const Collection: CollectionNamespace & {
         new (): Collection; // This allows `obj instanceof Collection`
@@ -3128,18 +3320,20 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param object
+             * @param object 
              * @virtual
              */
             vfunc_compare_to(object: any): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ComparableNamespace {
@@ -3150,13 +3344,14 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface Comparable extends GObject.Object, Comparable.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param object
+         * @param object 
          */
         compare_to(object: any): number;
     }
+
 
     export const Comparable: ComparableNamespace & {
         new (): Comparable; // This allows `obj instanceof Comparable`
@@ -3168,51 +3363,60 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Queue.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_offer_head(element: any): boolean;
+
             /**
              * @virtual
              */
             vfunc_peek_head(): any;
+
             /**
              * @virtual
              */
             vfunc_poll_head(): any;
+
             /**
-             * @param recipient
-             * @param amount
+             * @param recipient 
+             * @param amount 
              * @virtual
              */
             vfunc_drain_head(recipient: Collection, amount: number): number;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_offer_tail(element: any): boolean;
+
             /**
              * @virtual
              */
             vfunc_peek_tail(): any;
+
             /**
              * @virtual
              */
             vfunc_poll_tail(): any;
+
             /**
-             * @param recipient
-             * @param amount
+             * @param recipient 
+             * @param amount 
              * @virtual
              */
             vfunc_drain_tail(recipient: Collection, amount: number): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Queue.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Queue.ConstructorProps {
+
+        }
     }
 
     export interface DequeNamespace {
@@ -3223,31 +3427,39 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface Deque extends Queue, Deque.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param element
+         * @param element 
          */
         offer_head(element: any): boolean;
+
         peek_head(): any;
+
         poll_head(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain_head(recipient: Collection, amount: number): number;
+
         /**
-         * @param element
+         * @param element 
          */
         offer_tail(element: any): boolean;
+
         peek_tail(): any;
+
         poll_tail(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain_tail(recipient: Collection, amount: number): number;
     }
+
 
     export const Deque: DequeNamespace & {
         new (): Deque; // This allows `obj instanceof Deque`
@@ -3259,16 +3471,16 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_iterator(): Iterator;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             element_type: GObject.Type;
             elementType: GObject.Type;
@@ -3283,21 +3495,22 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface Iterable extends GObject.Object, Iterable.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get element_type(): GObject.Type;
+
         /**
          * @read-only
          */
         get elementType(): GObject.Type;
 
         // Methods
-
         iterator(): Iterator;
     }
+
 
     export const Iterable: IterableNamespace & {
         new (): Iterable; // This allows `obj instanceof Iterable`
@@ -3309,33 +3522,39 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_has_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_first(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get(): any;
+
             /**
              * @virtual
              */
             vfunc_remove(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface IteratorNamespace {
@@ -3346,14 +3565,19 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface Iterator extends GObject.Object, Iterator.Interface {
-        // Methods
 
+        // Methods
         next(): boolean;
+
         has_next(): boolean;
+
         first(): boolean;
+
         get(): any;
+
         remove(): void;
     }
+
 
     export const Iterator: IteratorNamespace & {
         new (): Iterator; // This allows `obj instanceof Iterator`
@@ -3365,68 +3589,78 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Collection.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_list_iterator(): ListIterator;
+
             /**
-             * @param index
+             * @param index 
              * @virtual
              */
             vfunc_get(index: number): any;
+
             /**
-             * @param index
-             * @param item
+             * @param index 
+             * @param item 
              * @virtual
              */
             vfunc_set(index: number, item: any): void;
+
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_index_of(item: any): number;
+
             /**
-             * @param index
-             * @param item
+             * @param index 
+             * @param item 
              * @virtual
              */
             vfunc_insert(index: number, item: any): void;
+
             /**
-             * @param index
+             * @param index 
              * @virtual
              */
             vfunc_remove_at(index: number): any;
+
             /**
-             * @param start
-             * @param stop
+             * @param start 
+             * @param stop 
              * @virtual
              */
             vfunc_slice(start: number, stop: number): List;
+
             /**
              * @virtual
              */
             vfunc_first(): any;
+
             /**
              * @virtual
              */
             vfunc_last(): any;
+
             /**
-             * @param index
-             * @param collection
+             * @param index 
+             * @param collection 
              * @virtual
              */
             vfunc_insert_all(index: number, collection: Collection): void;
+
             /**
-             * @param compare_func
+             * @param compare_func 
              * @virtual
              */
             vfunc_sort(compare_func: GLib.CompareFunc): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Collection.ConstructorProps {
             read_only_view: List;
             readOnlyView: List;
@@ -3436,71 +3670,82 @@ export namespace Gee {
     export interface ListNamespace {
         $gtype: GObject.GType<List>;
         prototype: List;
-
         empty(): List;
     }
     /**
      * @gir-type Interface
      */
     interface List extends Collection, List.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get read_only_view(): List;
+
         /**
          * @read-only
          */
         get readOnlyView(): List;
 
         // Methods
-
         list_iterator(): ListIterator;
+
         /**
-         * @param index
+         * @param index 
          */
         get(index: number): any;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          */
         set(index: number, item: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param item
+         * @param item 
          */
         index_of(item: any): number;
+
         /**
-         * @param index
-         * @param item
+         * @param index 
+         * @param item 
          */
         insert(index: number, item: any): void;
+
         /**
-         * @param index
+         * @param index 
          */
         remove_at(index: number): any;
+
         /**
-         * @param start
-         * @param stop
+         * @param start 
+         * @param stop 
          */
         slice(start: number, stop: number): List;
+
         first(): any;
+
         last(): any;
+
         /**
-         * @param index
-         * @param collection
+         * @param index 
+         * @param collection 
          */
         insert_all(index: number, collection: Collection): void;
+
         /**
-         * @param compare_func
+         * @param compare_func 
          */
         sort(compare_func: GLib.CompareFunc): void;
     }
+
 
     export const List: ListNamespace & {
         new (): List; // This allows `obj instanceof List`
@@ -3512,32 +3757,37 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends BidirIterator.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_set(item: any): void;
+
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_insert(item: any): void;
+
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_add(item: any): void;
+
             /**
              * @virtual
              */
             vfunc_index(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends BidirIterator.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends BidirIterator.ConstructorProps {
+
+        }
     }
 
     export interface ListIteratorNamespace {
@@ -3548,27 +3798,32 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface ListIterator extends BidirIterator, ListIterator.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param item
+         * @param item 
          */
         set(item: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param item
+         * @param item 
          */
         insert(item: any): void;
+
         /**
-         * @param item
+         * @param item 
          */
         add(item: any): void;
+
         index(): number;
     }
+
 
     export const ListIterator: ListIteratorNamespace & {
         new (): ListIterator; // This allows `obj instanceof ListIterator`
@@ -3580,82 +3835,95 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_has_key(key: any): boolean;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_contains(key: any): boolean;
+
             /**
-             * @param key
-             * @param value
+             * @param key 
+             * @param value 
              * @virtual
              */
             vfunc_has(key: any, value: any): boolean;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_get(key: any): any;
+
             /**
-             * @param key
-             * @param value
+             * @param key 
+             * @param value 
              * @virtual
              */
             vfunc_set(key: any, value: any): void;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_unset(key: any): [boolean, any];
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_remove(key: any): [boolean, any];
+
             /**
              * @virtual
              */
             vfunc_clear(): void;
+
             /**
              * @virtual
              */
             vfunc_map_iterator(): MapIterator;
+
             /**
-             * @param map
+             * @param map 
              * @virtual
              */
             vfunc_set_all(map: Map): void;
+
             /**
-             * @param map
+             * @param map 
              * @virtual
              */
             vfunc_unset_all(map: Map): boolean;
+
             /**
-             * @param map
+             * @param map 
              * @virtual
              */
             vfunc_remove_all(map: Map): boolean;
+
             /**
-             * @param map
+             * @param map 
              * @virtual
              */
             vfunc_has_all(map: Map): boolean;
+
             /**
-             * @param map
+             * @param map 
              * @virtual
              */
             vfunc_contains_all(map: Map): boolean;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             size: number;
             is_empty: boolean;
@@ -3675,124 +3943,148 @@ export namespace Gee {
     export interface MapNamespace {
         $gtype: GObject.GType<Map>;
         prototype: Map;
-
         empty(): Map;
     }
     /**
      * @gir-type Interface
      */
     interface Map extends GObject.Object, Map.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get size(): number;
+
         /**
          * @read-only
          */
         get is_empty(): boolean;
+
         /**
          * @read-only
          */
         get isEmpty(): boolean;
+
         /**
          * @read-only
          */
         get keys(): Set;
+
         /**
          * @read-only
          */
         get values(): Collection;
+
         /**
          * @read-only
          */
         get entries(): Set;
+
         /**
          * @read-only
          */
         get read_only_view(): Map;
+
         /**
          * @read-only
          */
         get readOnlyView(): Map;
+
         /**
          * @read-only
          */
         get key_type(): GObject.Type;
+
         /**
          * @read-only
          */
         get keyType(): GObject.Type;
+
         /**
          * @read-only
          */
         get value_type(): GObject.Type;
+
         /**
          * @read-only
          */
         get valueType(): GObject.Type;
 
         // Methods
-
         /**
-         * @param key
+         * @param key 
          */
         has_key(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         contains(key: any): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         has(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: any): any;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: any, value: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param key
+         * @param key 
          */
         unset(key: any): [boolean, any];
+
         /**
-         * @param key
+         * @param key 
          */
         remove(key: any): [boolean, any];
+
         clear(): void;
+
         map_iterator(): MapIterator;
+
         /**
-         * @param map
+         * @param map 
          */
         set_all(map: Map): void;
+
         /**
-         * @param map
+         * @param map 
          */
         unset_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          */
         remove_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          */
         has_all(map: Map): boolean;
+
         /**
-         * @param map
+         * @param map 
          */
         contains_all(map: Map): boolean;
     }
+
 
     export const Map: MapNamespace & {
         new (): Map; // This allows `obj instanceof Map`
@@ -3804,42 +4096,50 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_has_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_first(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_key(): any;
+
             /**
              * @virtual
              */
             vfunc_get_value(): any;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_value(value: any): void;
+
             /**
              * @virtual
              */
             vfunc_unset(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MapIteratorNamespace {
@@ -3850,19 +4150,26 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface MapIterator extends GObject.Object, MapIterator.Interface {
-        // Methods
 
+        // Methods
         next(): boolean;
+
         has_next(): boolean;
+
         first(): boolean;
+
         get_key(): any;
+
         get_value(): any;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: any): void;
+
         unset(): void;
     }
+
 
     export const MapIterator: MapIteratorNamespace & {
         new (): MapIterator; // This allows `obj instanceof MapIterator`
@@ -3874,55 +4181,63 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_keys(): Set;
+
             /**
              * @virtual
              */
             vfunc_get_all_keys(): MultiSet;
+
             /**
              * @virtual
              */
             vfunc_get_values(): Collection;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_contains(key: any): boolean;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_get(key: any): Collection;
+
             /**
-             * @param key
-             * @param value
+             * @param key 
+             * @param value 
              * @virtual
              */
             vfunc_set(key: any, value: any): void;
+
             /**
-             * @param key
-             * @param value
+             * @param key 
+             * @param value 
              * @virtual
              */
             vfunc_remove(key: any, value: any): boolean;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_remove_all(key: any): boolean;
+
             /**
              * @virtual
              */
             vfunc_clear(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             size: number;
         }
@@ -3936,47 +4251,56 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface MultiMap extends GObject.Object, MultiMap.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get size(): number;
 
         // Methods
-
         get_keys(): Set;
+
         get_all_keys(): MultiSet;
+
         get_values(): Collection;
+
         /**
-         * @param key
+         * @param key 
          */
         contains(key: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: any): Collection;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: any, value: any): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         remove(key: any, value: any): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         remove_all(key: any): boolean;
+
         clear(): void;
     }
+
 
     export const MultiMap: MultiMapNamespace & {
         new (): MultiMap; // This allows `obj instanceof MultiMap`
@@ -3988,18 +4312,20 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Collection.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param item
+             * @param item 
              * @virtual
              */
             vfunc_count(item: any): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Collection.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Collection.ConstructorProps {
+
+        }
     }
 
     export interface MultiSetNamespace {
@@ -4010,13 +4336,14 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface MultiSet extends Collection, MultiSet.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param item
+         * @param item 
          */
         count(item: any): number;
     }
+
 
     export const MultiSet: MultiSetNamespace & {
         new (): MultiSet; // This allows `obj instanceof MultiSet`
@@ -4028,31 +4355,34 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Collection.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_offer(element: any): boolean;
+
             /**
              * @virtual
              */
             vfunc_peek(): any;
+
             /**
              * @virtual
              */
             vfunc_poll(): any;
+
             /**
-             * @param recipient
-             * @param amount
+             * @param recipient 
+             * @param amount 
              * @virtual
              */
             vfunc_drain(recipient: Collection, amount: number): number;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Collection.ConstructorProps {
             capacity: number;
             remaining_capacity: number;
@@ -4070,51 +4400,58 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface Queue extends Collection, Queue.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get capacity(): number;
+
         /**
          * @read-only
          */
         get remaining_capacity(): number;
+
         /**
          * @read-only
          */
         get remainingCapacity(): number;
+
         /**
          * @read-only
          */
         get is_full(): boolean;
+
         /**
          * @read-only
          */
         get isFull(): boolean;
 
         // Methods
-
         /**
-         * @param element
+         * @param element 
          */
         offer(element: any): boolean;
+
         peek(): any;
+
         poll(): any;
+
         /**
-         * @param recipient
-         * @param amount
+         * @param recipient 
+         * @param amount 
          */
         drain(recipient: Collection, amount: number): number;
     }
+
 
     export const Queue: QueueNamespace & {
         new (): Queue; // This allows `obj instanceof Queue`
     };
 
     namespace Set {
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Collection.ConstructorProps {
             read_only_view: Set;
             readOnlyView: Set;
@@ -4124,24 +4461,25 @@ export namespace Gee {
     export interface SetNamespace {
         $gtype: GObject.GType<Set>;
         prototype: Set;
-
         empty(): Set;
     }
     /**
      * @gir-type Interface
      */
     interface Set extends Collection {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get read_only_view(): Set;
+
         /**
          * @read-only
          */
         get readOnlyView(): Set;
     }
+
 
     export const Set: SetNamespace & {
         new (): Set; // This allows `obj instanceof Set`
@@ -4153,66 +4491,78 @@ export namespace Gee {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_first(): any;
+
             /**
              * @virtual
              */
             vfunc_last(): any;
+
             /**
              * @virtual
              */
             vfunc_bidir_iterator(): BidirIterator;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_iterator_at(element: any): BidirIterator;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_lower(element: any): any;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_higher(element: any): any;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_floor(element: any): any;
+
             /**
-             * @param element
+             * @param element 
              * @virtual
              */
             vfunc_ceil(element: any): any;
+
             /**
-             * @param before
+             * @param before 
              * @virtual
              */
             vfunc_head_set(before: any): SortedSet;
+
             /**
-             * @param after
+             * @param after 
              * @virtual
              */
             vfunc_tail_set(after: any): SortedSet;
+
             /**
-             * @param from
-             * @param to
+             * @param from 
+             * @param to 
              * @virtual
              */
             vfunc_sub_set(from: any, to: any): SortedSet;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Set.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Set.ConstructorProps {
+
+        }
     }
 
     export interface SortedSetNamespace {
@@ -4223,45 +4573,56 @@ export namespace Gee {
      * @gir-type Interface
      */
     interface SortedSet extends Set, SortedSet.Interface {
-        // Methods
 
+        // Methods
         first(): any;
+
         last(): any;
+
         bidir_iterator(): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          */
         iterator_at(element: any): BidirIterator;
+
         /**
-         * @param element
+         * @param element 
          */
         lower(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         higher(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         floor(element: any): any;
+
         /**
-         * @param element
+         * @param element 
          */
         ceil(element: any): any;
+
         /**
-         * @param before
+         * @param before 
          */
         head_set(before: any): SortedSet;
+
         /**
-         * @param after
+         * @param after 
          */
         tail_set(after: any): SortedSet;
+
         /**
-         * @param from
-         * @param to
+         * @param from 
+         * @param to 
          */
         sub_set(from: any, to: any): SortedSet;
     }
+
 
     export const SortedSet: SortedSetNamespace & {
         new (): SortedSet; // This allows `obj instanceof SortedSet`
@@ -4272,6 +4633,7 @@ export namespace Gee {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

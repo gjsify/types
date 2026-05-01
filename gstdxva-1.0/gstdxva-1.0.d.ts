@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -19,9 +20,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstCodecs from '@girs/gstcodecs-1.0';
 
 export namespace GstDxva {
+
     /**
      * GstDxva-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -38,28 +41,31 @@ export namespace GstDxva {
         LAST,
     }
 
+
     /**
      * @param codec a {@link GstDxva.DxvaCodec}
      * @returns the string representation of `codec`
      * @since 1.24
      */
     function dxva_codec_to_string(codec: DxvaCodec): string;
+
     namespace DxvaAV1Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.AV1Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.AV1Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -79,133 +85,120 @@ export namespace GstDxva {
         $signals: DxvaAV1Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaAV1Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaAV1Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaAV1Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaAV1Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaAV1Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaAV1Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaAV1Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaAV1Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param src
-         * @param dst
+         * @param src 
+         * @param dst 
          * @virtual
          */
         vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.AV1Decoder.vfunc_duplicate_picture
+    // Conflicted with GstCodecs.AV1Decoder.vfunc_duplicate_picture
         vfunc_duplicate_picture(...args: never[]): any;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.AV1Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.AV1Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.AV1Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.AV1Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.AV1Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.AV1Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
+
 
     namespace DxvaH264Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.H264Decoder.SignalSignatures {
-            'notify::compliance': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::compliance": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.H264Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.H264Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -225,126 +218,112 @@ export namespace GstDxva {
         $signals: DxvaH264Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaH264Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaH264Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaH264Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaH264Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaH264Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaH264Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaH264Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaH264Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaH264Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaH264Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param src
-         * @param dst
+         * @param src 
+         * @param dst 
          * @virtual
          */
         vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H264Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.H264Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H264Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.H264Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H264Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.H264Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
+
 
     namespace DxvaH265Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.H265Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.H265Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.H265Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -364,120 +343,105 @@ export namespace GstDxva {
         $signals: DxvaH265Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaH265Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaH265Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaH265Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaH265Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaH265Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaH265Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaH265Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaH265Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaH265Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaH265Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H265Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.H265Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H265Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.H265Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.H265Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.H265Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
+
 
     namespace DxvaMpeg2Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Mpeg2Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.Mpeg2Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.Mpeg2Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -497,130 +461,115 @@ export namespace GstDxva {
         $signals: DxvaMpeg2Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaMpeg2Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaMpeg2Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaMpeg2Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaMpeg2Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param src
-         * @param dst
+         * @param src 
+         * @param dst 
          * @virtual
          */
         vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.Mpeg2Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
 
         // Methods
-
         disable_postproc(): void;
     }
+
 
     namespace DxvaVp8Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Vp8Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.Vp8Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.Vp8Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -640,120 +589,105 @@ export namespace GstDxva {
         $signals: DxvaVp8Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaVp8Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaVp8Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaVp8Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaVp8Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaVp8Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaVp8Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaVp8Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaVp8Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp8Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.Vp8Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp8Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.Vp8Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp8Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.Vp8Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
+
 
     namespace DxvaVp9Decoder {
         // Signal signatures
         interface SignalSignatures extends GstCodecs.Vp9Decoder.SignalSignatures {
-            'notify::automatic-request-sync-point-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-request-sync-points': (pspec: GObject.ParamSpec) => void;
-            'notify::discard-corrupted-frames': (pspec: GObject.ParamSpec) => void;
-            'notify::max-errors': (pspec: GObject.ParamSpec) => void;
-            'notify::min-force-key-unit-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-point-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-request-sync-points": (pspec: GObject.ParamSpec) => void;
+            "notify::discard-corrupted-frames": (pspec: GObject.ParamSpec) => void;
+            "notify::max-errors": (pspec: GObject.ParamSpec) => void;
+            "notify::min-force-key-unit-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstCodecs.Vp9Decoder.ConstructorProps {
 
-        interface ConstructorProps extends GstCodecs.Vp9Decoder.ConstructorProps {}
+        }
     }
 
     /**
@@ -773,126 +707,114 @@ export namespace GstDxva {
         $signals: DxvaVp9Decoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DxvaVp9Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DxvaVp9Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DxvaVp9Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DxvaVp9Decoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DxvaVp9Decoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DxvaVp9Decoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DxvaVp9Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DxvaVp9Decoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param input_state
-         * @param info
-         * @param crop_x
-         * @param crop_y
-         * @param coded_width
-         * @param coded_height
-         * @param max_dpb_size
+         * @param input_state 
+         * @param info 
+         * @param crop_x 
+         * @param crop_y 
+         * @param coded_width 
+         * @param coded_height 
+         * @param max_dpb_size 
          * @virtual
          */
-        vfunc_configure(
-            input_state: GstVideo.VideoCodecState,
-            info: GstVideo.VideoInfo,
-            crop_x: number,
-            crop_y: number,
-            coded_width: number,
-            coded_height: number,
-            max_dpb_size: number,
-        ): Gst.FlowReturn;
+        vfunc_configure(input_state: GstVideo.VideoCodecState, info: GstVideo.VideoInfo, crop_x: number, crop_y: number, coded_width: number, coded_height: number, max_dpb_size: number): Gst.FlowReturn;
+
         /**
-         * @param src
-         * @param dst
+         * @param src 
+         * @param dst 
          * @virtual
          */
         vfunc_duplicate_picture(src: never, dst: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp9Decoder.vfunc_duplicate_picture
+    // Conflicted with GstCodecs.Vp9Decoder.vfunc_duplicate_picture
         vfunc_duplicate_picture(...args: never[]): any;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_get_picture_id(picture: never): number;
+
         /**
-         * @param picture
+         * @param picture 
          * @virtual
          */
         vfunc_new_picture(picture: never): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp9Decoder.vfunc_new_picture
+    // Conflicted with GstCodecs.Vp9Decoder.vfunc_new_picture
         vfunc_new_picture(...args: never[]): any;
+
         /**
-         * @param frame
-         * @param picture
-         * @param buffer_flags
-         * @param display_width
-         * @param display_height
+         * @param frame 
+         * @param picture 
+         * @param buffer_flags 
+         * @param display_width 
+         * @param display_height 
          * @virtual
          */
-        vfunc_output_picture(
-            frame: GstVideo.VideoCodecFrame,
-            picture: never,
-            buffer_flags: GstVideo.VideoBufferFlags,
-            display_width: number,
-            display_height: number,
-        ): Gst.FlowReturn;
+        vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: never, buffer_flags: GstVideo.VideoBufferFlags, display_width: number, display_height: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp9Decoder.vfunc_output_picture
+    // Conflicted with GstCodecs.Vp9Decoder.vfunc_output_picture
         vfunc_output_picture(...args: never[]): any;
+
         /**
-         * @param picture
-         * @param picture_id
+         * @param picture 
+         * @param picture_id 
          * @virtual
          */
         vfunc_start_picture(picture: never, picture_id: number): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with GstCodecs.Vp9Decoder.vfunc_start_picture
+    // Conflicted with GstCodecs.Vp9Decoder.vfunc_start_picture
         vfunc_start_picture(...args: never[]): any;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DxvaAV1DecoderClass = typeof DxvaAV1Decoder;
+
     /**
      * @gir-type Struct
      */
     abstract class DxvaAV1DecoderPrivate {
         static $gtype: GObject.GType<DxvaAV1DecoderPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -902,21 +824,29 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaDecodingArgs>;
 
         // Fields
-
         picture_params: any;
+
         picture_params_size: number;
+
         slice_control: any;
+
         slice_control_size: number;
+
         bitstream: any;
+
         bitstream_size: number;
+
         inverse_quantization_matrix: any;
+
         inverse_quantization_matrix_size: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DxvaH264DecoderClass = typeof DxvaH264Decoder;
+
     /**
      * @gir-type Struct
      */
@@ -924,10 +854,12 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaH264DecoderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DxvaH265DecoderClass = typeof DxvaH265Decoder;
+
     /**
      * @gir-type Struct
      */
@@ -935,16 +867,19 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaH265DecoderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DxvaMpeg2DecoderClass = typeof DxvaMpeg2Decoder;
+
     /**
      * @gir-type Struct
      */
     abstract class DxvaMpeg2DecoderPrivate {
         static $gtype: GObject.GType<DxvaMpeg2DecoderPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -954,24 +889,24 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaResolution>;
 
         // Fields
-
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type DxvaVp8DecoderClass = typeof DxvaVp8Decoder;
+
     /**
      * @gir-type Struct
      */
@@ -979,10 +914,12 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaVp8DecoderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DxvaVp9DecoderClass = typeof DxvaVp9Decoder;
+
     /**
      * @gir-type Struct
      */
@@ -990,11 +927,13 @@ export namespace GstDxva {
         static $gtype: GObject.GType<DxvaVp9DecoderPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

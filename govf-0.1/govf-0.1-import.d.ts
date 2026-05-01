@@ -1,3 +1,4 @@
+
 import type Govf01 from '@girs/govf-0.1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

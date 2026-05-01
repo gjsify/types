@@ -1,3 +1,4 @@
+
 import type Shell9 from '@girs/shell-9';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

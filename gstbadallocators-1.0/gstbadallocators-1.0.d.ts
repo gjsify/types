@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstBadAllocators {
+
     /**
      * GstBadAllocators-1.0
      */
+
 
     /**
      * @param mem a {@link Gst.Memory}
@@ -26,34 +29,39 @@ export namespace GstBadAllocators {
      * @since 1.12
      */
     function is_phys_memory(mem: Gst.Memory): boolean;
+
     /**
      * @param mem a {@link Gst.Memory}
      * @returns Physical memory address that is backing `mem`, or 0 if none
      * @since 1.12
      */
     function phys_memory_get_phys_addr(mem: Gst.Memory): number;
+
     /**
      * @gir-type Alias
      */
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
+
     namespace PhysMemoryAllocator {
         /**
          * Interface for implementing PhysMemoryAllocator.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param mem
+             * @param mem 
              * @virtual
              */
-            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
+            vfunc_get_phys_addr(mem: Gst.Memory): (bigint | number);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
+
+        }
     }
 
     export interface PhysMemoryAllocatorNamespace {
@@ -63,7 +71,9 @@ export namespace GstBadAllocators {
     /**
      * @gir-type Interface
      */
-    interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
+    interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {
+    }
+
 
     export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {
         new (): PhysMemoryAllocator; // This allows `obj instanceof PhysMemoryAllocator`
@@ -74,6 +84,7 @@ export namespace GstBadAllocators {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

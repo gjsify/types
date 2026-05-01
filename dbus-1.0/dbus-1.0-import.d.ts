@@ -1,3 +1,4 @@
+
 import type DBus10 from '@girs/dbus-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

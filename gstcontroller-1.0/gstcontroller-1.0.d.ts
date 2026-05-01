@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstController {
+
     /**
      * GstController-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -52,6 +55,7 @@ export namespace GstController {
          */
         CUBIC_MONOTONIC,
     }
+
 
     /**
      * @gir-type Enum
@@ -87,37 +91,40 @@ export namespace GstController {
         TRIANGLE,
     }
 
+
     /**
      * Reset the controlled value cache.
      * @param self the {@link GstController.TimedValueControlSource}
      */
     function timed_value_control_invalidate_cache(self: TimedValueControlSource): void;
+
     /**
      * @gir-type Callback
      */
     interface DirectControlBindingConvertGValue {
         (self: DirectControlBinding, src_value: number, dest_value: unknown): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface DirectControlBindingConvertValue {
-        (self: DirectControlBinding, src_value: number, dest_value: any | null): void;
+        (self: DirectControlBinding, src_value: number, dest_value: (any | null)): void;
     }
+
     namespace ARGBControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::control-source-a': (pspec: GObject.ParamSpec) => void;
-            'notify::control-source-b': (pspec: GObject.ParamSpec) => void;
-            'notify::control-source-g': (pspec: GObject.ParamSpec) => void;
-            'notify::control-source-r': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::object': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::control-source-a": (pspec: GObject.ParamSpec) => void;
+            "notify::control-source-b": (pspec: GObject.ParamSpec) => void;
+            "notify::control-source-g": (pspec: GObject.ParamSpec) => void;
+            "notify::control-source-r": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::object": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
             control_source_a: Gst.ControlSource;
             controlSourceA: Gst.ControlSource;
@@ -140,21 +147,27 @@ export namespace GstController {
         static $gtype: GObject.GType<ARGBControlBinding>;
 
         // Properties
-
         get control_source_a(): Gst.ControlSource;
         set control_source_a(val: Gst.ControlSource);
+
         get controlSourceA(): Gst.ControlSource;
         set controlSourceA(val: Gst.ControlSource);
+
         get control_source_b(): Gst.ControlSource;
         set control_source_b(val: Gst.ControlSource);
+
         get controlSourceB(): Gst.ControlSource;
         set controlSourceB(val: Gst.ControlSource);
+
         get control_source_g(): Gst.ControlSource;
         set control_source_g(val: Gst.ControlSource);
+
         get controlSourceG(): Gst.ControlSource;
         set controlSourceG(val: Gst.ControlSource);
+
         get control_source_r(): Gst.ControlSource;
         set control_source_r(val: Gst.ControlSource);
+
         get controlSourceR(): Gst.ControlSource;
         set controlSourceR(val: Gst.ControlSource);
 
@@ -168,54 +181,38 @@ export namespace GstController {
         $signals: ARGBControlBinding.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ARGBControlBinding.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            object: Gst.Object,
-            property_name: string,
-            cs_a: Gst.ControlSource,
-            cs_r: Gst.ControlSource,
-            cs_g: Gst.ControlSource,
-            cs_b: Gst.ControlSource,
-        ): ARGBControlBinding;
+        static ["new"](object: Gst.Object, property_name: string, cs_a: Gst.ControlSource, cs_r: Gst.ControlSource, cs_g: Gst.ControlSource, cs_b: Gst.ControlSource): ARGBControlBinding;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ARGBControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ARGBControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ARGBControlBinding.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ARGBControlBinding.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ARGBControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ARGBControlBinding.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ARGBControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DirectControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::absolute': (pspec: GObject.ParamSpec) => void;
-            'notify::control-source': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::object': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::absolute": (pspec: GObject.ParamSpec) => void;
+            "notify::control-source": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::object": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
             absolute: boolean;
             control_source: Gst.ControlSource;
@@ -236,14 +233,15 @@ export namespace GstController {
         static $gtype: GObject.GType<DirectControlBinding>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get absolute(): boolean;
+
         get control_source(): Gst.ControlSource;
         set control_source(val: Gst.ControlSource);
+
         get controlSource(): Gst.ControlSource;
         set controlSource(val: Gst.ControlSource);
 
@@ -257,49 +255,38 @@ export namespace GstController {
         $signals: DirectControlBinding.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DirectControlBinding.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
+        static ["new"](object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
 
         static new_absolute(object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DirectControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DirectControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DirectControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DirectControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DirectControlBinding.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DirectControlBinding.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DirectControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof DirectControlBinding.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DirectControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InterpolationControlSource {
         // Signal signatures
         interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
             mode: InterpolationMode;
         }
@@ -308,11 +295,11 @@ export namespace GstController {
     /**
      * {@link GstController.InterpolationControlSource} is a {@link Gst.ControlSource}, that interpolates values between user-given
      * control points. It supports several interpolation modes and property types.
-     *
+     * 
      * To use {@link GstController.InterpolationControlSource} get a new instance by calling
      * `gst_interpolation_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set some
      * control points by calling `gst_timed_value_control_source_set()`.
-     *
+     * 
      * All functions are MT-safe.
      * @gir-type Class
      */
@@ -320,7 +307,6 @@ export namespace GstController {
         static $gtype: GObject.GType<InterpolationControlSource>;
 
         // Properties
-
         /**
          * @default GstController.InterpolationMode.NONE
          */
@@ -337,56 +323,45 @@ export namespace GstController {
         $signals: InterpolationControlSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InterpolationControlSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): InterpolationControlSource;
+        static ["new"](): InterpolationControlSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InterpolationControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InterpolationControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InterpolationControlSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InterpolationControlSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InterpolationControlSource.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof InterpolationControlSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InterpolationControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace LFOControlSource {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
-            'notify::amplitude': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::offset': (pspec: GObject.ParamSpec) => void;
-            'notify::timeshift': (pspec: GObject.ParamSpec) => void;
-            'notify::waveform': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::amplitude": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::offset": (pspec: GObject.ParamSpec) => void;
+            "notify::timeshift": (pspec: GObject.ParamSpec) => void;
+            "notify::waveform": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.ControlSource.ConstructorProps {
             amplitude: number;
             frequency: number;
             offset: number;
-            timeshift: bigint | number;
+            timeshift: (bigint | number);
             waveform: LFOWaveform;
         }
     }
@@ -394,11 +369,11 @@ export namespace GstController {
     /**
      * {@link GstController.LFOControlSource} is a {@link Gst.ControlSource}, that provides several periodic
      * waveforms as control values.
-     *
+     * 
      * To use {@link GstController.LFOControlSource} get a new instance by calling
      * `gst_lfo_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set the relevant
      * properties.
-     *
+     * 
      * All functions are MT-safe.
      * @gir-type Class
      */
@@ -406,13 +381,13 @@ export namespace GstController {
         static $gtype: GObject.GType<LFOControlSource>;
 
         // Properties
-
         /**
          * Specifies the amplitude for the waveform of this {@link GstController.LFOControlSource}.
          * @default 1
          */
         get amplitude(): number;
         set amplitude(val: number);
+
         /**
          * Specifies the frequency that should be used for the waveform
          * of this {@link GstController.LFOControlSource}. It should be large enough
@@ -421,22 +396,25 @@ export namespace GstController {
          */
         get frequency(): number;
         set frequency(val: number);
+
         /**
          * Specifies the value offset for the waveform of this {@link GstController.LFOControlSource}.
          * @default 1
          */
         get offset(): number;
         set offset(val: number);
+
         /**
          * Specifies the timeshift to the right that should be used for the waveform
          * of this {@link GstController.LFOControlSource} in nanoseconds.
-         *
+         * 
          * To get a n nanosecond shift to the left use
          * "(GST_SECOND / frequency) - n".
          * @default 0
          */
         get timeshift(): number;
-        set timeshift(val: bigint | number);
+        set timeshift(val: (bigint | number));
+
         /**
          * Specifies the waveform that should be used for this {@link GstController.LFOControlSource}.
          * @default GstController.LFOWaveform.SINE
@@ -454,46 +432,39 @@ export namespace GstController {
         $signals: LFOControlSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LFOControlSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): LFOControlSource;
+        static ["new"](): LFOControlSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LFOControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LFOControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LFOControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LFOControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LFOControlSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LFOControlSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LFOControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LFOControlSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LFOControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ProxyControlBinding {
         // Signal signatures
         interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::object': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::object": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
 
-        interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {}
+        }
     }
 
     /**
@@ -513,41 +484,26 @@ export namespace GstController {
         $signals: ProxyControlBinding.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProxyControlBinding.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            object: Gst.Object,
-            property_name: string,
-            ref_object: Gst.Object,
-            ref_property_name: string,
-        ): ProxyControlBinding;
+        static ["new"](object: Gst.Object, property_name: string, ref_object: Gst.Object, ref_property_name: string): ProxyControlBinding;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProxyControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProxyControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProxyControlBinding.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProxyControlBinding.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProxyControlBinding.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ProxyControlBinding.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProxyControlBinding.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TimedValueControlSource {
         // Signal signatures
@@ -558,36 +514,37 @@ export namespace GstController {
              * @since 1.6
              * @run-first
              */
-            'value-added': (arg0: ControlPoint) => void;
+            "value-added": (arg0: ControlPoint) => void;
             /**
              * Emitted right after the new value has been set on `timed_signals`
              * @signal
              * @since 1.6
              * @run-first
              */
-            'value-changed': (arg0: ControlPoint) => void;
+            "value-changed": (arg0: ControlPoint) => void;
             /**
              * Emitted when `timed_value` is removed from `self`
              * @signal
              * @since 1.6
              * @run-first
              */
-            'value-removed': (arg0: ControlPoint) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "value-removed": (arg0: ControlPoint) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.ControlSource.ConstructorProps {
 
-        interface ConstructorProps extends Gst.ControlSource.ConstructorProps {}
+        }
     }
 
     /**
      * Base class for {@link Gst.ControlSource} that use time-stamped values.
-     *
+     * 
      * When overriding bind, chain up first to give this bind implementation a
      * chance to setup things.
-     *
+     * 
      * All functions are MT-safe.
      * @gir-type Class
      */
@@ -604,62 +561,53 @@ export namespace GstController {
         $signals: TimedValueControlSource.SignalSignatures;
 
         // Fields
-
         nvalues: number;
+
         valid_cache: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<TimedValueControlSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TimedValueControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TimedValueControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimedValueControlSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TimedValueControlSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TimedValueControlSource.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof TimedValueControlSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimedValueControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Find last value before given timestamp in control point list.
          * If all values in the control point list come after the given
          * timestamp or no values exist, `null` is returned.
-         *
+         * 
          * For use in control source implementations.
          * @param timestamp the search key
          * @returns the found {@link GLib.SequenceIter} or `null`
          */
-        find_control_point_iter(timestamp: Gst.ClockTime): GLib.SequenceIter | null;
+        find_control_point_iter(timestamp: Gst.ClockTime): (GLib.SequenceIter | null);
+
         /**
          * Returns a read-only copy of the list of {@link Gst.TimedValue} for the given property.
          * Free the list after done with it.
          * @returns a copy of the list, or `null` if the property isn't handled by the controller
          */
         get_all(): Gst.TimedValue[];
+
         /**
          * Get the number of control points that are set.
          * @returns the number of control points that are set.
          */
         get_count(): number;
+
         /**
          * Set the value of given controller-handled property at a certain time.
          * @param timestamp the time the control-change is scheduled for
@@ -667,17 +615,20 @@ export namespace GstController {
          * @returns FALSE if the values couldn't be set, TRUE otherwise.
          */
         set(timestamp: Gst.ClockTime, value: number): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Sets multiple timed values at once.
          * @param timedvalues a list with {@link Gst.TimedValue} items
          * @returns FALSE if the values couldn't be set, TRUE otherwise.
          */
         set_from_list(timedvalues: Gst.TimedValue[]): boolean;
+
         /**
          * Used to remove the value of given controller-handled property at a certain
          * time.
@@ -685,35 +636,36 @@ export namespace GstController {
          * @returns FALSE if the value couldn't be unset (i.e. not found, TRUE otherwise.
          */
         unset(timestamp: Gst.ClockTime): boolean;
+
         /**
          * Used to remove all time-stamped values of given controller-handled property
          */
         unset_all(): void;
     }
 
+
     namespace TriggerControlSource {
         // Signal signatures
         interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
-            'notify::tolerance': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::tolerance": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
-            tolerance: bigint | number;
+            tolerance: (bigint | number);
         }
     }
 
     /**
      * {@link GstController.TriggerControlSource} is a {@link Gst.ControlSource}, that returns values from user-given
      * control points. It allows for a tolerance on the time-stamps.
-     *
+     * 
      * To use {@link GstController.TriggerControlSource} get a new instance by calling
      * `gst_trigger_control_source_new()`, bind it to a {@link GObject.ParamSpec} and set some
      * control points by calling `gst_timed_value_control_source_set()`.
-     *
+     * 
      * All functions are MT-safe.
      * @gir-type Class
      */
@@ -721,12 +673,11 @@ export namespace GstController {
         static $gtype: GObject.GType<TriggerControlSource>;
 
         // Properties
-
         /**
          * @default 0
          */
         get tolerance(): number;
-        set tolerance(val: bigint | number);
+        set tolerance(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -738,41 +689,32 @@ export namespace GstController {
         $signals: TriggerControlSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TriggerControlSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TriggerControlSource;
+        static ["new"](): TriggerControlSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TriggerControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TriggerControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TriggerControlSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TriggerControlSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TriggerControlSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TriggerControlSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TriggerControlSource.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof TriggerControlSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TriggerControlSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ARGBControlBindingClass = typeof ARGBControlBinding;
+
     /**
      * An internal structure for value+time and various temporary
      * values used for interpolation. This "inherits" from
@@ -783,31 +725,34 @@ export namespace GstController {
         static $gtype: GObject.GType<ControlPoint>;
 
         // Fields
-
         timestamp: Gst.ClockTime;
+
         value: number;
 
         // Methods
-
         /**
          * Copies a {@link GstController.ControlPoint}
          * @returns A copy of `cp`
          */
         copy(): ControlPoint;
+
         /**
          * Frees all data allocated by a {@link GstController.ControlPoint} instance.
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DirectControlBindingClass = typeof DirectControlBinding;
+
     /**
      * @gir-type Alias
      */
     type InterpolationControlSourceClass = typeof InterpolationControlSource;
+
     /**
      * @gir-type Struct
      */
@@ -815,10 +760,12 @@ export namespace GstController {
         static $gtype: GObject.GType<InterpolationControlSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LFOControlSourceClass = typeof LFOControlSource;
+
     /**
      * @gir-type Struct
      */
@@ -826,14 +773,17 @@ export namespace GstController {
         static $gtype: GObject.GType<LFOControlSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ProxyControlBindingClass = typeof ProxyControlBinding;
+
     /**
      * @gir-type Alias
      */
     type TimedValueControlSourceClass = typeof TimedValueControlSource;
+
     /**
      * @gir-type Struct
      */
@@ -841,10 +791,12 @@ export namespace GstController {
         static $gtype: GObject.GType<TimedValueControlSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TriggerControlSourceClass = typeof TriggerControlSource;
+
     /**
      * @gir-type Struct
      */
@@ -852,11 +804,13 @@ export namespace GstController {
         static $gtype: GObject.GType<TriggerControlSourcePrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

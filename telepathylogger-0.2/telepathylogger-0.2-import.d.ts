@@ -1,3 +1,4 @@
+
 import type TelepathyLogger02 from '@girs/telepathylogger-0.2';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

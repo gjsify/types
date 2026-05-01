@@ -1,3 +1,4 @@
+
 import type Polkit10 from '@girs/polkit-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

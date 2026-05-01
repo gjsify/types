@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace MediaArt {
+
     /**
      * MediaArt-1.0
      */
+
 
     /**
      * Enumeration values used in errors returned by the
@@ -29,31 +32,33 @@ export namespace MediaArt {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Storage information is unknown, we
          * have no knowledge about removable media.
          */
         static NO_STORAGE: number;
+
         /**
          * Title is required, but was not provided,
          * or was empty.
          */
         static NO_TITLE: number;
+
         /**
          * A call to `symlink()` failed
          * resulting in the incorrect storage of media art.
          */
         static SYMLINK_FAILED: number;
+
         /**
          * File could not be renamed.
          */
         static RENAME_FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * This type categorized the type of media art we're dealing with.
@@ -74,6 +79,7 @@ export namespace MediaArt {
         VIDEO,
     }
 
+
     /**
      * This function performs the same operation as
      * `media_art_file_to_jpeg()` with the exception that a raw `buffer` can
@@ -85,12 +91,14 @@ export namespace MediaArt {
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
      */
-    function buffer_to_jpeg(buffer: number, len: bigint | number, buffer_mime: string, target: string): boolean;
+    function buffer_to_jpeg(buffer: number, len: (bigint | number), buffer_mime: string, target: string): boolean;
+
     /**
      * @returns A {@link GLib.Quark} representing the type of {@link GLib.Error} for {@link MediaArt.Process} failures.
      * @since 0.2.0
      */
     function error_quark(): GLib.Quark;
+
     /**
      * Save `filename` to `target` as JPEG format. The `filename` may not be
      * a JPEG in the first place.
@@ -100,13 +108,14 @@ export namespace MediaArt {
      * @since 0.1.0
      */
     function file_to_jpeg(filename: string, target: string): boolean;
+
     /**
      * Gets the files pointing to cache files suitable for storing the media
      * art provided by the `artist`, `title` and `file` arguments. `cache_file`
      * will point to a location in the XDG user cache directory, meanwhile
      * `local_file` will point to a cache file that resides in the same
      * filesystem than `file`.
-     *
+     * 
      * The `file` provided is required if `local_file` is to be returned.
      * The `local_file` relates to a location on the media the local file
      * system or media storage it is found on, so for example, if you have
@@ -114,14 +123,14 @@ export namespace MediaArt {
      * <filename>file:///media/martyn/pendrive</filename>, the `local_file`
      * will point to a URI that looks like
      * <filename>file:///media/martyn/pendrive/.mediaartlocal/...</filename>.
-     *
+     * 
      * The `cache_file` is very different to the `local_file`, the
      * `cache_file` relates to a symlink stored in XDG cache directories
      * for the user. A `cache_file` would be expected to look like
      * <filename>file:///home/martyn/.cache/media-art/...</filename>. This
      * is normally the location that is most useful (assuming the cache
      * has been extracted in the first place).
-     *
+     * 
      * When done, both {@link Gio.File}<!-- -->s must be freed with `g_object_unref()` if
      * non-`null`.
      * @param artist the artist
@@ -131,17 +140,13 @@ export namespace MediaArt {
      * @returns `true` if `cache_file` or `local_file` were returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_file(
-        artist: string | null,
-        title: string | null,
-        prefix: string | null,
-        file: Gio.File | null,
-    ): [boolean, Gio.File | null, Gio.File | null];
+    function get_file(artist: (string | null), title: (string | null), prefix: (string | null), file: (Gio.File | null)): [boolean, Gio.File | null, Gio.File | null];
+
     /**
      * This function calls `media_art_get_file()` by creating a {@link Gio.File} for
      * `uri` and passing the same arguments to `media_art_get_file()`. For more
      * details about what this function does, see `media_art_get_file()`.
-     *
+     * 
      * Get the path to media art for a given resource. Newly allocated
      * data returned in `cache_path` and `local_uri` must be freed with `g_free()`.
      * @param artist the artist
@@ -151,12 +156,8 @@ export namespace MediaArt {
      * @returns `true` if `cache_path` or `local_uri` were returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_path(
-        artist: string | null,
-        title: string | null,
-        prefix: string | null,
-        uri: string | null,
-    ): [boolean, string, string];
+    function get_path(artist: (string | null), title: (string | null), prefix: (string | null), uri: (string | null)): [boolean, string, string];
+
     /**
      * This function facilitates a plugin&apos;s need to create any
      * internal caches before anything else is done. This function must
@@ -167,6 +168,7 @@ export namespace MediaArt {
      * @since 0.1.0
      */
     function plugin_init(max_width: number): void;
+
     /**
      * This function facilitates a plugin&apos;s need to clean up any
      * internal caches. This function must exist in each plugin and is
@@ -175,6 +177,7 @@ export namespace MediaArt {
      * @since 0.1.0
      */
     function plugin_shutdown(): void;
+
     /**
      * Removes media art for given album/artist provided.
      * @param artist artist the media art belongs to
@@ -182,15 +185,16 @@ export namespace MediaArt {
      * @returns `TRUE` on success, otherwise `FALSE`.
      * @since 0.2.0
      */
-    function remove(artist: string, album: string | null): boolean;
+    function remove(artist: string, album: (string | null)): boolean;
+
     /**
      * Strip a albumname or artistname string to prepare it for calculating the
      * media art path with it. Certain characters and charactersets will be stripped
      * and a newly allocated string returned which you must free with `g_free()`.
-     *
+     * 
      * This functions is used internally by `media_art_get_file()` and
      * `media_art_get_path()`. You will not normally need to call it yourself.
-     *
+     * 
      * This function provides the following features:
      * 1. Invalid characters include: ()[]<>{}_!@#$^&*+=|\/"'?~;
      * 2. Text inside brackets of (), {}, [] and <> pairs are removed.
@@ -200,6 +204,7 @@ export namespace MediaArt {
      * @since 0.2.0
      */
     function strip_invalid_entities(original: string): string;
+
     /**
      * This type categorized the flags used when processing media art.
      * @gir-type Flags
@@ -216,13 +221,16 @@ export namespace MediaArt {
         FORCE,
     }
 
+
     namespace Process {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -242,44 +250,34 @@ export namespace MediaArt {
         $signals: Process.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Process.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Process;
+        static ["new"](): Process;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Process.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Process.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Process.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Process.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Process.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Process.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Process.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Process.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Process.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Processes a memory buffer represented by `buffer` and `len`. If you
          * have extracted any embedded media art and passed this in as
          * `buffer`, the image data will be converted to the correct format and
          * saved in the media art cache.
-         *
+         * 
          * Either `artist` OR `title` can be `null`, but they can not both be `null`.
-         *
+         * 
          * If `file` is on a removable filesystem, the media art file will be saved in a
          * cache on the removable file system rather than on the host machine.
          * @param type The type of media
@@ -291,40 +289,33 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        buffer(
-            type: Type,
-            flags: ProcessFlags,
-            related_file: Gio.File,
-            buffer: Uint8Array | null,
-            mime: string,
-            artist: string | null,
-            title: string | null,
-        ): boolean;
+        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: string, artist: (string | null), title: (string | null)): boolean;
+
         /**
          * Process `file` and check if media art exists and if it is up to date
          * with `artist` and `title` provided. Either `artist` OR `title` can be
          * `null`, but they can not both be `null`.
-         *
+         * 
          * NOTE: This function MAY retrieve media art for
          * `artist` and `title` combinations. It is not guaranteed and depends
          * on download services available over DBus at the time.
-         *
+         * 
          * In cases where download is unavailable, `media_art_process_file()`
          * will only try to procure a cache for possible media art found in
          * directories surrounding the location of `file`. If a buffer or
          * memory chunk needs to be saved to disk which has been retrieved
          * from an MP3 (for example), you should use
          * `media_art_process_buffer()`.
-         *
+         * 
          * The modification time (mtime) of `file` is checked against the
          * cached stored for `artist` and `title`. If the cache is old or
          * doesn't exist, it will be updated. What this actually does is
          * update the mtime of the cache (a symlink) on the disk.
-         *
+         * 
          * If there is no actual media art stored locally (for example, it's
          * stored in a directory on a removable device), it is copied locally
          * (usually to an XDG cache directory).
-         *
+         * 
          * If `file` is on a removable filesystem, the media art file will be
          * saved in a cache on the removable file system rather than on the
          * host machine.
@@ -335,7 +326,8 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null): boolean;
+        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null)): boolean;
+
         /**
          * This function calls `media_art_process_file()`, but takes the `uri` as
          * a string rather than a {@link Gio.File} object. Either `artist` OR `title` can be
@@ -347,40 +339,41 @@ export namespace MediaArt {
          * @param title The title for `uri` or `null`
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
          */
-        uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null): boolean;
+        uri(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -390,40 +383,41 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -433,18 +427,21 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ProcessClass = typeof Process;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

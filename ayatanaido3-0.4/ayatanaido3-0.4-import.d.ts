@@ -1,3 +1,4 @@
+
 import type AyatanaIdo304 from '@girs/ayatanaido3-0.4';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

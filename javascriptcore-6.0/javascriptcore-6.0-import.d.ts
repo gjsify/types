@@ -1,3 +1,4 @@
+
 import type JavaScriptCore60 from '@girs/javascriptcore-6.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

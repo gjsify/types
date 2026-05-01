@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace GModule {
+
     /**
      * GModule-2.0
      */
+
 
     /**
      * Errors returned by `g_module_open_full()`.
@@ -26,35 +29,39 @@ export namespace GModule {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * there was an error loading or opening a module file
          */
         static FAILED: number;
+
         /**
          * a module returned an error from its `g_module_check_init()` function
          */
         static CHECK_FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     const MODULE_IMPL_AR: number;
+
     const MODULE_IMPL_DL: number;
+
     const MODULE_IMPL_NONE: number;
+
     const MODULE_IMPL_WIN32: number;
+
     /**
      * A portable way to build the filename of a module. The platform-specific
      * prefix and suffix are added to the filename, if needed, and the result
      * is added to the directory, using the correct separator character.
-     *
+     * 
      * The directory should specify the directory where the module can be found.
      * It can be `null` or an empty string to indicate that the module is in a
      * standard platform-specific directory, though this is not recommended
      * since the wrong module may be found.
-     *
+     * 
      * For example, calling `g_module_build_path()` on a Linux system with a
      * `directory` of `/lib` and a `module_name` of "mylibrary" will return
      * `/lib/libmylibrary.so`. On a Windows system, using `\Windows` as the
@@ -64,30 +71,36 @@ export namespace GModule {
      * @returns the complete path of the module, including the standard library     prefix and suffix. This should be freed when no longer needed
      * @deprecated since 2.76: Use `g_module_open()` instead with `module_name` as the basename of the file_name argument. See `G_MODULE_SUFFIX` for why.
      */
-    function module_build_path(directory: string | null, module_name: string): string;
+    function module_build_path(directory: (string | null), module_name: string): string;
+
     /**
      * Gets a string describing the last module error.
      * @returns a string describing the last module error
      */
     function module_error(): string;
+
     function module_error_quark(): GLib.Quark;
+
     /**
      * Checks if modules are supported on the current platform.
      * @returns `true` if modules are supported
      */
     function module_supported(): boolean;
+
     /**
      * @gir-type Callback
      */
     interface ModuleCheckInit {
         (module: Module): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface ModuleUnload {
         (module: Module): void;
     }
+
     /**
      * Flags passed to `g_module_open()`.
      * Note that these flags are not supported on all platforms.
@@ -113,11 +126,12 @@ export namespace GModule {
         MASK,
     }
 
+
     /**
      * The {@link GModule.Module} struct is an opaque data structure to represent a
      * [dynamically-loaded module](modules.html#dynamic-loading-of-modules).
      * It should only be accessed via the following functions.
-     *
+     * 
      * To ensure correct lock ordering, these functions must not be called from
      * global constructors (for example, those using GCC’s
      * `__attribute__((constructor))` attribute).
@@ -127,17 +141,16 @@ export namespace GModule {
         static $gtype: GObject.GType<Module>;
 
         // Static methods
-
         /**
          * A portable way to build the filename of a module. The platform-specific
          * prefix and suffix are added to the filename, if needed, and the result
          * is added to the directory, using the correct separator character.
-         *
+         * 
          * The directory should specify the directory where the module can be found.
          * It can be `null` or an empty string to indicate that the module is in a
          * standard platform-specific directory, though this is not recommended
          * since the wrong module may be found.
-         *
+         * 
          * For example, calling `g_module_build_path()` on a Linux system with a
          * `directory` of `/lib` and a `module_name` of "mylibrary" will return
          * `/lib/libmylibrary.so`. On a Windows system, using `\Windows` as the
@@ -145,36 +158,41 @@ export namespace GModule {
          * @param directory the directory where the module is. This can be     `null` or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
          * @param module_name the name of the module
          */
-        static build_path(directory: string | null, module_name: string): string;
+        static build_path(directory: (string | null), module_name: string): string;
+
         /**
          * Gets a string describing the last module error.
          */
         static error(): string;
+
         static error_quark(): GLib.Quark;
+
         /**
          * Checks if modules are supported on the current platform.
          */
         static supported(): boolean;
 
         // Methods
-
         /**
          * Closes a module.
          * @returns `true` on success
          */
         close(): boolean;
+
         /**
          * Ensures that a module will never be unloaded.
          * Any future `g_module_close()` calls on the module will be ignored.
          */
         make_resident(): void;
+
         /**
          * Returns the filename that the module was opened with.
-         *
+         * 
          * If `module` refers to the application itself, "main" is returned.
          * @returns the filename of the module
          */
         name(): string;
+
         /**
          * Gets a symbol pointer from a module, such as one exported
          * by `G_MODULE_EXPORT`. Note that a valid symbol can be `null`.
@@ -184,11 +202,13 @@ export namespace GModule {
         symbol(symbol_name: string): [boolean, any];
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

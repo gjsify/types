@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -24,9 +25,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Vte {
+
     /**
      * Vte-0.0
      */
+
 
     /**
      * @gir-type Struct
@@ -35,29 +38,28 @@ export namespace Vte {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * failure when using the GNOME PTY helper to
          *   allocate the PTY
          */
         static PTY_HELPER_FAILED: number;
+
         /**
          * failure when using PTY98 to allocate the PTY
          */
         static PTY98_FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Error domain for VTE PTY errors. Errors in this domain will be from the {@link Vte.PtyError}
          * enumeration. See {@link GLib.Error} for more information on error domains.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -74,6 +76,7 @@ export namespace Vte {
         FORCE_ENABLE,
         FORCE_DISABLE,
     }
+
 
     /**
      * @gir-type Enum
@@ -102,6 +105,7 @@ export namespace Vte {
         OFF,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -129,6 +133,7 @@ export namespace Vte {
          */
         UNDERLINE,
     }
+
 
     /**
      * @gir-type Enum
@@ -166,6 +171,7 @@ export namespace Vte {
         TTY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -185,6 +191,7 @@ export namespace Vte {
         DEFAULT,
     }
 
+
     /**
      * Gets the user's shell, or `null`. In the latter case, the
      * system default (usually "/bin/sh") should be used.
@@ -192,6 +199,7 @@ export namespace Vte {
      * @since 0.28
      */
     function get_user_shell(): string;
+
     /**
      * Error domain for VTE PTY errors. Errors in this domain will be from the {@link Vte.PtyError}
      * enumeration. See {@link GLib.Error} for more information on error domains.
@@ -199,12 +207,14 @@ export namespace Vte {
      * @since 0.26
      */
     function pty_error_quark(): GLib.Quark;
+
     /**
      * @gir-type Callback
      */
     interface SelectionFunc {
-        (terminal: Terminal, column: number, row: number, data: any | null): boolean;
+        (terminal: Terminal, column: number, row: number, data: (any | null)): boolean;
     }
+
     /**
      * @gir-type Flags
      */
@@ -244,16 +254,16 @@ export namespace Vte {
         DEFAULT,
     }
 
+
     namespace Pty {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fd': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::term': (pspec: GObject.ParamSpec) => void;
+            "notify::fd": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::term": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             fd: number;
             flags: PtyFlags;
@@ -269,7 +279,6 @@ export namespace Vte {
         static $gtype: GObject.GType<Pty>;
 
         // Properties
-
         /**
          * The file descriptor of the PTY master.
          * @since 0.26
@@ -277,6 +286,7 @@ export namespace Vte {
          * @default -1
          */
         get fd(): number;
+
         /**
          * Controls how the session is recorded in lastlog, utmp, and wtmp,
          * and whether to use the GNOME PTY helper.
@@ -285,6 +295,7 @@ export namespace Vte {
          * @default Vte.PtyFlags.DEFAULT
          */
         get flags(): PtyFlags;
+
         /**
          * The value to set for the TERM environment variable just after
          * forking.
@@ -304,73 +315,69 @@ export namespace Vte {
         $signals: Pty.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Pty.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](flags: PtyFlags): Pty;
+        static ["new"](flags: PtyFlags): Pty;
 
         static new_foreign(fd: number): Pty;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Pty.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Pty.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Pty.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Pty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Pty.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Pty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * FIXMEchpe
          */
         child_setup(): void;
+
         /**
          * Cleans up the PTY, specifically any logging performed for the session.
          * The file descriptor to the PTY master remains open.
          */
         close(): void;
+
         /**
          * @returns the file descriptor of the PTY master in `pty`. The   file descriptor belongs to `pty` and must not be closed
          */
         get_fd(): number;
+
         /**
          * Reads the pseudo terminal's window size.
-         *
+         * 
          * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @returns `true` on success, `false` on failure with `error` filled in
          */
         get_size(): [boolean, number, number];
+
         /**
          * Attempts to resize the pseudo terminal's window size.  If successful, the
          * OS kernel will send `SIGWINCH` to the child process group.
-         *
+         * 
          * If setting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @param rows the desired number of rows
          * @param columns the desired number of columns
          * @returns `true` on success, `false` on failure with `error` filled in
          */
         set_size(rows: number, columns: number): boolean;
+
         /**
          * Sets what value of the TERM environment variable to set just after forking.
          * @param emulation the name of a terminal description, or `null`
          */
-        set_term(emulation: string | null): void;
+        set_term(emulation: (string | null)): void;
+
         /**
          * Tells the kernel whether the terminal is UTF-8 or not, in case it can make
          * use of the info.  Linux 2.6.5 or so defines IUTF8 to make the line
@@ -379,39 +386,40 @@ export namespace Vte {
          * @returns `true` on success, `false` on failure with `error` filled in
          */
         set_utf8(utf8: boolean): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -421,40 +429,41 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -464,8 +473,9 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Terminal {
         // Signal signatures
@@ -483,14 +493,14 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'char-size-changed': (arg0: number, arg1: number) => void;
+            "char-size-changed": (arg0: number, arg1: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child started
              * using `vte_terminal_fork_command()` has exited.
              * @signal
              * @run-last
              */
-            'child-exited': () => void;
+            "child-exited": () => void;
             /**
              * Emitted whenever the terminal receives input from the user and
              * prepares to send it to the child process.  The signal is emitted even
@@ -505,40 +515,40 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'contents-changed': () => void;
+            "contents-changed": () => void;
             /**
              * Emitted whenever `vte_terminal_copy_clipboard()` is called.
              * @signal
              * @action
              * @run-last
              */
-            'copy-clipboard': () => void;
+            "copy-clipboard": () => void;
             /**
              * Emitted whenever the cursor moves to a new character cell.  Used
              * primarily by `VteTerminalAccessible`.
              * @signal
              * @run-last
              */
-            'cursor-moved': () => void;
+            "cursor-moved": () => void;
             /**
              * Emitted when the user hits the '-' key while holding the Control key.
              * @signal
              * @run-last
              */
-            'decrease-font-size': () => void;
+            "decrease-font-size": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'deiconify-window': () => void;
+            "deiconify-window": () => void;
             /**
              * Emitted whenever the terminal's emulation changes, only possible at
              * the parent application's request.
              * @signal
              * @run-last
              */
-            'emulation-changed': () => void;
+            "emulation-changed": () => void;
             /**
              * Emitted whenever the terminal's current encoding has changed, either
              * as a result of receiving a control sequence which toggled between the
@@ -546,7 +556,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'encoding-changed': () => void;
+            "encoding-changed": () => void;
             /**
              * Emitted when the terminal receives an end-of-file from a child which
              * is running in the terminal.  This signal is frequently (but not
@@ -560,74 +570,74 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'icon-title-changed': () => void;
+            "icon-title-changed": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'iconify-window': () => void;
+            "iconify-window": () => void;
             /**
              * Emitted when the user hits the '+' key while holding the Control key.
              * @signal
              * @run-last
              */
-            'increase-font-size': () => void;
+            "increase-font-size": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'lower-window': () => void;
+            "lower-window": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'maximize-window': () => void;
+            "maximize-window": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'move-window': (arg0: number, arg1: number) => void;
+            "move-window": (arg0: number, arg1: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
              * @action
              * @run-last
              */
-            'paste-clipboard': () => void;
+            "paste-clipboard": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'raise-window': () => void;
+            "raise-window": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'refresh-window': () => void;
+            "refresh-window": () => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'resize-window': (arg0: number, arg1: number) => void;
+            "resize-window": (arg0: number, arg1: number) => void;
             /**
              * Emitted at the child application's request.
              * @signal
              * @run-last
              */
-            'restore-window': () => void;
+            "restore-window": () => void;
             /**
              * Emitted whenever the contents of terminal's selection changes.
              * @signal
              * @run-last
              */
-            'selection-changed': () => void;
+            "selection-changed": () => void;
             /**
              * Set the scroll adjustments for the terminal. Usually scrolled containers
              * like {@link Gtk.ScrolledWindow} will emit this signal to connect two instances
@@ -636,14 +646,14 @@ export namespace Vte {
              * @since 0.17.1
              * @run-last
              */
-            'set-scroll-adjustments': (arg0: Gtk.Adjustment | null, arg1: Gtk.Adjustment | null) => void;
+            "set-scroll-adjustments": (arg0: (Gtk.Adjustment | null), arg1: (Gtk.Adjustment | null)) => void;
             /**
              * Emitted whenever the contents of the status line are modified or
              * cleared.
              * @signal
              * @run-last
              */
-            'status-line-changed': () => void;
+            "status-line-changed": () => void;
             /**
              * An internal signal used for communication between the terminal and
              * its accessibility peer. May not be emitted under certain
@@ -651,7 +661,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'text-deleted': () => void;
+            "text-deleted": () => void;
             /**
              * An internal signal used for communication between the terminal and
              * its accessibility peer. May not be emitted under certain
@@ -659,7 +669,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'text-inserted': () => void;
+            "text-inserted": () => void;
             /**
              * An internal signal used for communication between the terminal and
              * its accessibility peer. May not be emitted under certain
@@ -667,7 +677,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'text-modified': () => void;
+            "text-modified": () => void;
             /**
              * An internal signal used for communication between the terminal and
              * its accessibility peer. May not be emitted under certain
@@ -675,69 +685,67 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            'text-scrolled': (arg0: number) => void;
+            "text-scrolled": (arg0: number) => void;
             /**
              * Emitted when the terminal's %window_title field is modified.
              * @signal
              * @run-last
              */
-            'window-title-changed': () => void;
-            'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
-            'notify::audible-bell': (pspec: GObject.ParamSpec) => void;
-            'notify::background-image-file': (pspec: GObject.ParamSpec) => void;
-            'notify::background-image-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::background-opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::background-saturation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-tint-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-transparent': (pspec: GObject.ParamSpec) => void;
-            'notify::backspace-binding': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor-blink-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor-shape': (pspec: GObject.ParamSpec) => void;
-            'notify::delete-binding': (pspec: GObject.ParamSpec) => void;
-            'notify::emulation': (pspec: GObject.ParamSpec) => void;
-            'notify::encoding': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-title': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-autohide': (pspec: GObject.ParamSpec) => void;
-            'notify::pty': (pspec: GObject.ParamSpec) => void;
-            'notify::pty-object': (pspec: GObject.ParamSpec) => void;
-            'notify::scroll-background': (pspec: GObject.ParamSpec) => void;
-            'notify::scroll-on-keystroke': (pspec: GObject.ParamSpec) => void;
-            'notify::scroll-on-output': (pspec: GObject.ParamSpec) => void;
-            'notify::scrollback-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::visible-bell': (pspec: GObject.ParamSpec) => void;
-            'notify::window-title': (pspec: GObject.ParamSpec) => void;
-            'notify::word-chars': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::extension-events': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::user-data': (pspec: GObject.ParamSpec) => void;
+            "window-title-changed": () => void;
+            "notify::allow-bold": (pspec: GObject.ParamSpec) => void;
+            "notify::audible-bell": (pspec: GObject.ParamSpec) => void;
+            "notify::background-image-file": (pspec: GObject.ParamSpec) => void;
+            "notify::background-image-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::background-opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::background-saturation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-tint-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-transparent": (pspec: GObject.ParamSpec) => void;
+            "notify::backspace-binding": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-blink-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-shape": (pspec: GObject.ParamSpec) => void;
+            "notify::delete-binding": (pspec: GObject.ParamSpec) => void;
+            "notify::emulation": (pspec: GObject.ParamSpec) => void;
+            "notify::encoding": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-title": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-autohide": (pspec: GObject.ParamSpec) => void;
+            "notify::pty": (pspec: GObject.ParamSpec) => void;
+            "notify::pty-object": (pspec: GObject.ParamSpec) => void;
+            "notify::scroll-background": (pspec: GObject.ParamSpec) => void;
+            "notify::scroll-on-keystroke": (pspec: GObject.ParamSpec) => void;
+            "notify::scroll-on-output": (pspec: GObject.ParamSpec) => void;
+            "notify::scrollback-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::visible-bell": (pspec: GObject.ParamSpec) => void;
+            "notify::window-title": (pspec: GObject.ParamSpec) => void;
+            "notify::word-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::extension-events": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::user-data": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             allow_bold: boolean;
             allowBold: boolean;
             audible_bell: boolean;
@@ -798,7 +806,6 @@ export namespace Vte {
         static $gtype: GObject.GType<Terminal>;
 
         // Properties
-
         /**
          * Controls whether or not the terminal will attempt to draw bold text.
          * This may happen either by using a bold font variant, or by
@@ -808,6 +815,7 @@ export namespace Vte {
          */
         get allow_bold(): boolean;
         set allow_bold(val: boolean);
+
         /**
          * Controls whether or not the terminal will attempt to draw bold text.
          * This may happen either by using a bold font variant, or by
@@ -817,6 +825,7 @@ export namespace Vte {
          */
         get allowBold(): boolean;
         set allowBold(val: boolean);
+
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
@@ -825,6 +834,7 @@ export namespace Vte {
          */
         get audible_bell(): boolean;
         set audible_bell(val: boolean);
+
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
@@ -833,6 +843,7 @@ export namespace Vte {
          */
         get audibleBell(): boolean;
         set audibleBell(val: boolean);
+
         /**
          * Sets a background image file for the widget.  If specified by
          * {@link Vte.Terminal.background_saturation}:, the terminal will tint its
@@ -842,6 +853,7 @@ export namespace Vte {
          */
         get background_image_file(): string;
         set background_image_file(val: string);
+
         /**
          * Sets a background image file for the widget.  If specified by
          * {@link Vte.Terminal.background_saturation}:, the terminal will tint its
@@ -851,6 +863,7 @@ export namespace Vte {
          */
         get backgroundImageFile(): string;
         set backgroundImageFile(val: string);
+
         /**
          * Sets a background image for the widget.  Text which would otherwise be
          * drawn using the default background color will instead be drawn over the
@@ -862,6 +875,7 @@ export namespace Vte {
          */
         get background_image_pixbuf(): GdkPixbuf.Pixbuf;
         set background_image_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Sets a background image for the widget.  Text which would otherwise be
          * drawn using the default background color will instead be drawn over the
@@ -873,6 +887,7 @@ export namespace Vte {
          */
         get backgroundImagePixbuf(): GdkPixbuf.Pixbuf;
         set backgroundImagePixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * Sets the opacity of the terminal background, were 0.0 means completely
          * transparent and 1.0 means completely opaque.
@@ -881,6 +896,7 @@ export namespace Vte {
          */
         get background_opacity(): number;
         set background_opacity(val: number);
+
         /**
          * Sets the opacity of the terminal background, were 0.0 means completely
          * transparent and 1.0 means completely opaque.
@@ -889,6 +905,7 @@ export namespace Vte {
          */
         get backgroundOpacity(): number;
         set backgroundOpacity(val: number);
+
         /**
          * If a background image has been set using {@link Vte.Terminal.background_image_file}: or
          * {@link Vte.Terminal.background_image_pixbuf}:, or {@link Vte.Terminal.background_transparent}:,
@@ -901,6 +918,7 @@ export namespace Vte {
          */
         get background_saturation(): number;
         set background_saturation(val: number);
+
         /**
          * If a background image has been set using {@link Vte.Terminal.background_image_file}: or
          * {@link Vte.Terminal.background_image_pixbuf}:, or {@link Vte.Terminal.background_transparent}:,
@@ -913,6 +931,7 @@ export namespace Vte {
          */
         get backgroundSaturation(): number;
         set backgroundSaturation(val: number);
+
         /**
          * If a background image has been set using {@link Vte.Terminal.background_image_file}: or
          * {@link Vte.Terminal.background_image_pixbuf}:, or {@link Vte.Terminal.background_transparent}:, and
@@ -926,6 +945,7 @@ export namespace Vte {
          */
         get background_tint_color(): Gdk.Color;
         set background_tint_color(val: Gdk.Color);
+
         /**
          * If a background image has been set using {@link Vte.Terminal.background_image_file}: or
          * {@link Vte.Terminal.background_image_pixbuf}:, or {@link Vte.Terminal.background_transparent}:, and
@@ -939,11 +959,12 @@ export namespace Vte {
          */
         get backgroundTintColor(): Gdk.Color;
         set backgroundTintColor(val: Gdk.Color);
+
         /**
          * Sets whther the terminal uses the pixmap stored in the root
          * window as the background, adjusted so that if there are no windows
          * below your application, the widget will appear to be transparent.
-         *
+         * 
          * Note: When using a compositing window manager, you should instead
          * set a RGBA colourmap on the toplevel window, so you get real transparency.
          * @since 0.20
@@ -951,11 +972,12 @@ export namespace Vte {
          */
         get background_transparent(): boolean;
         set background_transparent(val: boolean);
+
         /**
          * Sets whther the terminal uses the pixmap stored in the root
          * window as the background, adjusted so that if there are no windows
          * below your application, the widget will appear to be transparent.
-         *
+         * 
          * Note: When using a compositing window manager, you should instead
          * set a RGBA colourmap on the toplevel window, so you get real transparency.
          * @since 0.20
@@ -963,6 +985,7 @@ export namespace Vte {
          */
         get backgroundTransparent(): boolean;
         set backgroundTransparent(val: boolean);
+
         /**
          * *Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
@@ -971,6 +994,7 @@ export namespace Vte {
          */
         get backspace_binding(): TerminalEraseBinding;
         set backspace_binding(val: TerminalEraseBinding);
+
         /**
          * *Controls what string or control sequence the terminal sends to its child
          * when the user presses the backspace key.
@@ -979,6 +1003,7 @@ export namespace Vte {
          */
         get backspaceBinding(): TerminalEraseBinding;
         set backspaceBinding(val: TerminalEraseBinding);
+
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
@@ -987,6 +1012,7 @@ export namespace Vte {
          */
         get cursor_blink_mode(): TerminalCursorBlinkMode;
         set cursor_blink_mode(val: TerminalCursorBlinkMode);
+
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
@@ -995,6 +1021,7 @@ export namespace Vte {
          */
         get cursorBlinkMode(): TerminalCursorBlinkMode;
         set cursorBlinkMode(val: TerminalCursorBlinkMode);
+
         /**
          * Controls the shape of the cursor.
          * @since 0.20
@@ -1002,6 +1029,7 @@ export namespace Vte {
          */
         get cursor_shape(): TerminalCursorShape;
         set cursor_shape(val: TerminalCursorShape);
+
         /**
          * Controls the shape of the cursor.
          * @since 0.20
@@ -1009,6 +1037,7 @@ export namespace Vte {
          */
         get cursorShape(): TerminalCursorShape;
         set cursorShape(val: TerminalCursorShape);
+
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
@@ -1017,6 +1046,7 @@ export namespace Vte {
          */
         get delete_binding(): TerminalEraseBinding;
         set delete_binding(val: TerminalEraseBinding);
+
         /**
          * Controls what string or control sequence the terminal sends to its child
          * when the user presses the delete key.
@@ -1025,6 +1055,7 @@ export namespace Vte {
          */
         get deleteBinding(): TerminalEraseBinding;
         set deleteBinding(val: TerminalEraseBinding);
+
         /**
          * Sets what type of terminal the widget attempts to emulate by scanning for
          * control sequences defined in the system's termcap file.  Unless you
@@ -1034,6 +1065,7 @@ export namespace Vte {
          */
         get emulation(): string;
         set emulation(val: string);
+
         /**
          * Controls the encoding the terminal will expect data from the child to
          * be encoded with.  For certain terminal types, applications executing in the
@@ -1044,6 +1076,7 @@ export namespace Vte {
          */
         get encoding(): string;
         set encoding(val: string);
+
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -1054,6 +1087,7 @@ export namespace Vte {
          */
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
+
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -1064,6 +1098,7 @@ export namespace Vte {
          */
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
+
         /**
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
@@ -1071,6 +1106,7 @@ export namespace Vte {
          * @default null
          */
         get icon_title(): string;
+
         /**
          * The terminal's so-called icon title, or `null` if no icon title has been set.
          * @since 0.20
@@ -1078,6 +1114,7 @@ export namespace Vte {
          * @default null
          */
         get iconTitle(): string;
+
         /**
          * Controls the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
@@ -1087,6 +1124,7 @@ export namespace Vte {
          */
         get pointer_autohide(): boolean;
         set pointer_autohide(val: boolean);
+
         /**
          * Controls the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
@@ -1096,6 +1134,7 @@ export namespace Vte {
          */
         get pointerAutohide(): boolean;
         set pointerAutohide(val: boolean);
+
         /**
          * The file descriptor of the master end of the terminal's PTY.
          * @since 0.20
@@ -1104,18 +1143,21 @@ export namespace Vte {
          */
         get pty(): number;
         set pty(val: number);
+
         /**
          * The PTY object for the terminal.
          * @since 0.26
          */
         get pty_object(): Pty;
         set pty_object(val: Pty);
+
         /**
          * The PTY object for the terminal.
          * @since 0.26
          */
         get ptyObject(): Pty;
         set ptyObject(val: Pty);
+
         /**
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
@@ -1124,6 +1166,7 @@ export namespace Vte {
          */
         get scroll_background(): boolean;
         set scroll_background(val: boolean);
+
         /**
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
@@ -1132,6 +1175,7 @@ export namespace Vte {
          */
         get scrollBackground(): boolean;
         set scrollBackground(val: boolean);
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
@@ -1141,6 +1185,7 @@ export namespace Vte {
          */
         get scroll_on_keystroke(): boolean;
         set scroll_on_keystroke(val: boolean);
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
@@ -1150,6 +1195,7 @@ export namespace Vte {
          */
         get scrollOnKeystroke(): boolean;
         set scrollOnKeystroke(val: boolean);
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
@@ -1158,6 +1204,7 @@ export namespace Vte {
          */
         get scroll_on_output(): boolean;
         set scroll_on_output(val: boolean);
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
@@ -1166,6 +1213,7 @@ export namespace Vte {
          */
         get scrollOnOutput(): boolean;
         set scrollOnOutput(val: boolean);
+
         /**
          * The length of the scrollback buffer used by the terminal.  The size of
          * the scrollback buffer will be set to the larger of this value and the number
@@ -1178,6 +1226,7 @@ export namespace Vte {
          */
         get scrollback_lines(): number;
         set scrollback_lines(val: number);
+
         /**
          * The length of the scrollback buffer used by the terminal.  The size of
          * the scrollback buffer will be set to the larger of this value and the number
@@ -1190,6 +1239,7 @@ export namespace Vte {
          */
         get scrollbackLines(): number;
         set scrollbackLines(val: number);
+
         /**
          * Controls whether the terminal will present a visible bell to the
          * user when the child outputs the "bl" sequence.  The terminal
@@ -1199,6 +1249,7 @@ export namespace Vte {
          */
         get visible_bell(): boolean;
         set visible_bell(val: boolean);
+
         /**
          * Controls whether the terminal will present a visible bell to the
          * user when the child outputs the "bl" sequence.  The terminal
@@ -1208,6 +1259,7 @@ export namespace Vte {
          */
         get visibleBell(): boolean;
         set visibleBell(val: boolean);
+
         /**
          * The terminal's title.
          * @since 0.20
@@ -1215,6 +1267,7 @@ export namespace Vte {
          * @default null
          */
         get window_title(): string;
+
         /**
          * The terminal's title.
          * @since 0.20
@@ -1222,12 +1275,13 @@ export namespace Vte {
          * @default null
          */
         get windowTitle(): string;
+
         /**
          * When the user double-clicks to start selection, the terminal will extend
          * the selection on word boundaries.  It will treat characters the word-chars
          * characters as parts of words, and all other characters as word separators.
          * Ranges of characters can be specified by separating them with a hyphen.
-         *
+         * 
          * As a special case, when setting this to `null` or the empty string, the terminal will
          * treat all graphic non-punctuation non-space characters as word characters.
          * @since 0.20
@@ -1235,12 +1289,13 @@ export namespace Vte {
          */
         get word_chars(): string;
         set word_chars(val: string);
+
         /**
          * When the user double-clicks to start selection, the terminal will extend
          * the selection on word boundaries.  It will treat characters the word-chars
          * characters as parts of words, and all other characters as word separators.
          * Ranges of characters can be specified by separating them with a hyphen.
-         *
+         * 
          * As a special case, when setting this to `null` or the empty string, the terminal will
          * treat all graphic non-punctuation non-space characters as word characters.
          * @since 0.20
@@ -1259,120 +1314,127 @@ export namespace Vte {
         $signals: Terminal.SignalSignatures;
 
         // Fields
-
         widget: Gtk.Widget;
 
         // Constructors
-
         constructor(properties?: Partial<Terminal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Terminal;
+        static ["new"](): Terminal;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Terminal.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Terminal.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Terminal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Terminal.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Terminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Terminal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Terminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_beep(): void;
+
         /**
-         * @param char_width
-         * @param char_height
+         * @param char_width 
+         * @param char_height 
          * @virtual
          */
         vfunc_char_size_changed(char_width: number, char_height: number): void;
+
         /**
          * @virtual
          */
         vfunc_child_exited(): void;
+
         /**
-         * @param text
-         * @param size
+         * @param text 
+         * @param size 
          * @virtual
          */
         vfunc_commit(text: string, size: number): void;
+
         /**
          * @virtual
          */
         vfunc_contents_changed(): void;
+
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
          * @virtual
          */
         vfunc_copy_clipboard(): void;
+
         /**
          * @virtual
          */
         vfunc_cursor_moved(): void;
+
         /**
          * @virtual
          */
         vfunc_decrease_font_size(): void;
+
         /**
          * @virtual
          */
         vfunc_deiconify_window(): void;
+
         /**
          * @virtual
          */
         vfunc_emulation_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_encoding_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_eof(): void;
+
         /**
          * @virtual
          */
         vfunc_icon_title_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_iconify_window(): void;
+
         /**
          * @virtual
          */
         vfunc_increase_font_size(): void;
+
         /**
          * @virtual
          */
         vfunc_lower_window(): void;
+
         /**
          * @virtual
          */
         vfunc_maximize_window(): void;
+
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          * @virtual
          */
         vfunc_move_window(x: number, y: number): void;
+
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child.  If necessary, the data is converted from UTF-8 to the
@@ -1381,99 +1443,114 @@ export namespace Vte {
          * @virtual
          */
         vfunc_paste_clipboard(): void;
+
         /**
          * @virtual
          */
         vfunc_raise_window(): void;
+
         /**
          * @virtual
          */
         vfunc_refresh_window(): void;
+
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          * @virtual
          */
         vfunc_resize_window(width: number, height: number): void;
+
         /**
          * @virtual
          */
         vfunc_restore_window(): void;
+
         /**
          * @virtual
          */
         vfunc_selection_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_status_line_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_text_deleted(): void;
+
         /**
          * @virtual
          */
         vfunc_text_inserted(): void;
+
         /**
          * @virtual
          */
         vfunc_text_modified(): void;
+
         /**
-         * @param delta
+         * @param delta 
          * @virtual
          */
         vfunc_text_scrolled(delta: number): void;
+
         /**
          * @virtual
          */
         vfunc_window_title_changed(): void;
 
         // Methods
-
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
          */
         copy_clipboard(): void;
+
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_PRIMARY
          * selection.
          */
         copy_primary(): void;
+
         /**
          * Interprets `data` as if it were data received from a child process.  This
          * can either be used to drive the terminal without a child process, or just
          * to mess with your users.
          * @param data a string in the terminal's current encoding `length` the length of the string
          */
-        feed(data: Uint8Array | string): void;
+        feed(data: (Uint8Array | string)): void;
+
         /**
          * Sends a block of UTF-8 text to the child as if it were entered by the user
          * at the keyboard.
          * @param text data to send to the child
          * @param length length of `text` in bytes, or -1 if `text` is NUL-terminated
          */
-        feed_child(text: string, length: bigint | number): void;
+        feed_child(text: string, length: (bigint | number)): void;
+
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          * @param length length of `data`
          */
-        feed_child_binary(data: string, length: bigint | number): void;
+        feed_child_binary(data: string, length: (bigint | number)): void;
+
         /**
          * Starts the specified command under a newly-allocated controlling
          * pseudo-terminal.  The `argv` and `envv` lists should be `null`-terminated.
          * The "TERM" environment variable is automatically set to reflect the
          * terminal widget's emulation setting.
          * `pty_flags` controls logging the session to the specified system log files.
-         *
+         * 
          * Note that {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} will always be added to `spawn_flags`.
-         *
+         * 
          * Note that unless `spawn_flags` contains {@link GLib.SpawnFlags.LEAVE_DESCRIPTORS_OPEN}, all file
          * descriptors except stdin/stdout/stderr will be closed before calling `exec()`
          * in the child.
-         *
+         * 
          * See `vte_pty_new()`, `g_spawn_async()` and `vte_terminal_watch_child()` for more information.
          * @param pty_flags flags from {@link Vte.PtyFlags}
          * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
@@ -1483,92 +1560,100 @@ export namespace Vte {
          * @param child_setup function to run in the child just before `exec()`, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
          */
-        fork_command_full(
-            pty_flags: PtyFlags,
-            working_directory: string | null,
-            argv: string[],
-            envv: string[] | null,
-            spawn_flags: GLib.SpawnFlags,
-            child_setup: GLib.SpawnChildSetupFunc | null,
-        ): [boolean, GLib.Pid | null];
+        fork_command_full(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null)): [boolean, GLib.Pid | null];
+
         /**
          * An accessor function provided for the benefit of language bindings.
          * @returns the contents of `terminal`'s adjustment field
          */
         get_adjustment(): Gtk.Adjustment;
+
         /**
          * Checks whether or not the terminal will attempt to draw bold text by
          * repainting text with a one-pixel offset.
          * @returns `true` if bolding is enabled, `false` if not
          */
         get_allow_bold(): boolean;
+
         /**
          * Checks whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
          * @returns `true` if audible bell is enabled, `false` if not
          */
         get_audible_bell(): boolean;
+
         /**
          * @returns the height of a character cell
          */
         get_char_height(): number;
+
         /**
          * @returns the width of a character cell
          */
         get_char_width(): number;
+
         /**
          * Gets the exit status of the command started by `vte_terminal_fork_command()`.
          * See your C library's documentation for more details on how to interpret the
          * exit status.
-         *
+         * 
          * Note that this function may only be called from the signal handler of
          * the {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
          * @returns the child's exit status
          */
         get_child_exit_status(): number;
+
         /**
          * @returns the number of columns
          */
         get_column_count(): number;
+
         /**
          * Returns the currently set cursor blink mode.
          * @returns cursor blink mode.
          */
         get_cursor_blink_mode(): TerminalCursorBlinkMode;
+
         /**
          * Reads the location of the insertion cursor and returns it.  The row
          * coordinate is absolute.
          */
         get_cursor_position(): [number, number];
+
         /**
          * Returns the currently set cursor shape.
          * @returns cursor shape.
          */
         get_cursor_shape(): TerminalCursorShape;
+
         /**
          * Queries the terminal for its default emulation, which is attempted if the
          * terminal type passed to `vte_terminal_set_emulation()` is `null`.
          * @returns an interned string containing the name of the default terminal   type the widget attempts to emulate
          */
         get_default_emulation(): string;
+
         /**
          * Queries the terminal for its current emulation, as last set by a call to
          * `vte_terminal_set_emulation()`.
          * @returns an interned string containing the name of the terminal type the   widget is attempting to emulate
          */
         get_emulation(): string;
+
         /**
          * Determines the name of the encoding in which the terminal expects data to be
          * encoded.
          * @returns the current encoding for the terminal
          */
         get_encoding(): string;
+
         /**
          * Queries the terminal for information about the fonts which will be
          * used to draw text in the terminal.
          * @returns a {@link Pango.FontDescription} describing the font the terminal is   currently using to render text
          */
         get_font(): Pango.FontDescription;
+
         /**
          * Checks if the terminal currently contains selected text.  Note that this
          * is different from determining if the terminal is the owner of any
@@ -1576,10 +1661,12 @@ export namespace Vte {
          * @returns `true` if part of the text in the terminal is selected.
          */
         get_has_selection(): boolean;
+
         /**
          * @returns the icon title
          */
         get_icon_title(): string;
+
         /**
          * Determines the value of the terminal's mouse autohide setting.  When
          * autohiding is enabled, the mouse cursor will be hidden when the user presses
@@ -1588,15 +1675,18 @@ export namespace Vte {
          * @returns `true` if autohiding is enabled, `false` if not
          */
         get_mouse_autohide(): boolean;
+
         /**
          * Returns the {@link Vte.Pty} of `terminal`.
          * @returns a {@link Vte.Pty}, or `null`
          */
         get_pty_object(): Pty;
+
         /**
          * @returns the number of rows
          */
         get_row_count(): number;
+
         /**
          * Some terminal emulations specify a status line which is separate from the
          * main display area, and define a means for applications to move the cursor
@@ -1604,6 +1694,7 @@ export namespace Vte {
          * @returns the current contents of the terminal's status line.   For terminals like "xterm", this will usually be the empty string.  The string   must not be modified or freed by the caller.
          */
         get_status_line(): string;
+
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
          * `null`, characters will only be read if `is_selected` returns `true` after being
@@ -1614,6 +1705,7 @@ export namespace Vte {
          * @returns a newly allocated text string, or `null`.
          */
         get_text(is_selected: SelectionFunc): [string, CharAttributes[]];
+
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
          * `null`, characters will only be read if `is_selected` returns `true` after being
@@ -1626,6 +1718,7 @@ export namespace Vte {
          * @returns a newly allocated text string, or `null`.
          */
         get_text_include_trailing_spaces(is_selected: SelectionFunc): [string, CharAttributes[]];
+
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
          * `null`, characters will only be read if `is_selected` returns `true` after being
@@ -1641,13 +1734,8 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_range(
-            start_row: bigint | number,
-            start_col: bigint | number,
-            end_row: bigint | number,
-            end_col: bigint | number,
-            is_selected: SelectionFunc,
-        ): [string, CharAttributes[]];
+        get_text_range(start_row: (bigint | number), start_col: (bigint | number), end_row: (bigint | number), end_col: (bigint | number), is_selected: SelectionFunc): [string, CharAttributes[]];
+
         /**
          * Checks whether or not the terminal will present a visible bell to the
          * user when the child outputs the "bl" sequence.  The terminal
@@ -1655,10 +1743,12 @@ export namespace Vte {
          * @returns `true` if visible bell is enabled, `false` if not
          */
         get_visible_bell(): boolean;
+
         /**
          * @returns the window title
          */
         get_window_title(): string;
+
         /**
          * Appends menu items for various input methods to the given menu.  The
          * user can select one of these items to modify the input method used by
@@ -1666,6 +1756,7 @@ export namespace Vte {
          * @param menushell a GtkMenuShell
          */
         im_append_menuitems(menushell: Gtk.MenuShell): void;
+
         /**
          * Checks if a particular character is considered to be part of a word or not,
          * based on the values last passed to `vte_terminal_set_word_chars()`.
@@ -1673,6 +1764,7 @@ export namespace Vte {
          * @returns `true` if the character is considered to be part of a word
          */
         is_word_char(c: string): boolean;
+
         /**
          * Adds the regular expression `regex` to the list of matching expressions.  When the
          * user moves the mouse cursor over a section of displayed text which matches
@@ -1682,12 +1774,13 @@ export namespace Vte {
          * @returns an integer associated with this expression
          */
         match_add_gregex(regex: GLib.Regex, flags: GLib.RegexMatchFlags): number;
+
         /**
          * Checks if the text in and around the specified position matches any of the
          * regular expressions previously set using `vte_terminal_match_add()`.  If a
          * match exists, the text string is returned and if `tag` is not `null`, the number
          * associated with the matched regular expression will be stored in `tag`.
-         *
+         * 
          * If more than one regular expression has been set with
          * `vte_terminal_match_add()`, then expressions are checked in the order in
          * which they were added.
@@ -1695,12 +1788,14 @@ export namespace Vte {
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
          */
-        match_check(column: bigint | number, row: bigint | number): [string, number];
+        match_check(column: (bigint | number), row: (bigint | number)): [string, number];
+
         /**
          * Clears the list of regular expressions the terminal uses to highlight text
          * when the user moves the mouse cursor.
          */
         match_clear_all(): void;
+
         /**
          * Removes the regular expression which is associated with the given `tag` from
          * the list of expressions which the terminal will highlight when the user
@@ -1708,13 +1803,15 @@ export namespace Vte {
          * @param tag the tag of the regex to remove
          */
         match_remove(tag: number): void;
+
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.  The terminal keeps a reference to `cursor`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
          */
-        match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
+        match_set_cursor(tag: number, cursor: (Gdk.Cursor | null)): void;
+
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.
@@ -1722,6 +1819,7 @@ export namespace Vte {
          * @param cursor_name the name of the cursor
          */
         match_set_cursor_name(tag: number, cursor_name: string): void;
+
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.
@@ -1729,6 +1827,7 @@ export namespace Vte {
          * @param cursor_type a {@link Gdk.CursorType}
          */
         match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType): void;
+
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child.  If necessary, the data is converted from UTF-8 to the
@@ -1736,6 +1835,7 @@ export namespace Vte {
          * user presses Shift+Insert.
          */
         paste_clipboard(): void;
+
         /**
          * Sends the contents of the #GDK_SELECTION_PRIMARY selection to the terminal's
          * child.  If necessary, the data is converted from UTF-8 to the terminal's
@@ -1744,15 +1844,17 @@ export namespace Vte {
          * mouse button.
          */
         paste_primary(): void;
+
         /**
          * Creates a new {@link Vte.Pty}, and sets the emulation property
          * from {@link Vte.Terminal.emulation}.
-         *
+         * 
          * See `vte_pty_new()` for more information.
          * @param flags flags from {@link Vte.PtyFlags}
          * @returns a new {@link Vte.Pty}
          */
         pty_new(flags: PtyFlags): Pty;
+
         /**
          * Resets as much of the terminal's internal state as possible, discarding any
          * unprocessed input data, resetting character attributes, cursor state,
@@ -1762,45 +1864,54 @@ export namespace Vte {
          * @param clear_history whether to empty the terminal's scrollback buffer
          */
         reset(clear_tabstops: boolean, clear_history: boolean): void;
+
         /**
          * Searches the next string matching the search regex set with
          * `vte_terminal_search_set_gregex()`.
          * @returns `true` if a match was found
          */
         search_find_next(): boolean;
+
         /**
          * Searches the previous string matching the search regex set with
          * `vte_terminal_search_set_gregex()`.
          * @returns `true` if a match was found
          */
         search_find_previous(): boolean;
+
         /**
          * @returns the search {@link GLib.Regex} regex set in `terminal`, or `null`
          */
         search_get_gregex(): GLib.Regex;
+
         /**
          * @returns whether searching will wrap around
          */
         search_get_wrap_around(): boolean;
+
         /**
          * Sets the {@link GLib.Regex} regex to search for. Unsets the search regex when passed `null`.
          * @param regex a {@link GLib.Regex}, or `null`
          */
-        search_set_gregex(regex: GLib.Regex | null): void;
+        search_set_gregex(regex: (GLib.Regex | null)): void;
+
         /**
          * Sets whether search should wrap around to the beginning of the
          * terminal content when reaching its end.
          * @param wrap_around whether search should wrap
          */
         search_set_wrap_around(wrap_around: boolean): void;
+
         /**
          * Selects all text within the terminal (including the scrollback buffer).
          */
         select_all(): void;
+
         /**
          * Clears the current selection.
          */
         select_none(): void;
+
         /**
          * Controls whether or not the terminal will attempt to draw bold text,
          * either by using a bold font variant or by repainting text with a different
@@ -1808,12 +1919,14 @@ export namespace Vte {
          * @param allow_bold `true` if the terminal should attempt to draw bold text
          */
         set_allow_bold(allow_bold: boolean): void;
+
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
          * @param is_audible `true` if the terminal should beep
          */
         set_audible_bell(is_audible: boolean): void;
+
         /**
          * Sets a background image for the widget.  Text which would otherwise be
          * drawn using the default background color will instead be drawn over the
@@ -1823,7 +1936,8 @@ export namespace Vte {
          * in-memory copy of the image before applying it to the terminal.
          * @param image a {@link GdkPixbuf.Pixbuf} to use, or `null` to unset the background
          */
-        set_background_image(image: GdkPixbuf.Pixbuf | null): void;
+        set_background_image(image: (GdkPixbuf.Pixbuf | null)): void;
+
         /**
          * Sets a background image for the widget.  If specified by
          * `vte_terminal_set_background_saturation()`, the terminal will tint its
@@ -1831,6 +1945,7 @@ export namespace Vte {
          * @param path path to an image file
          */
         set_background_image_file(path: string): void;
+
         /**
          * If a background image has been set using
          * `vte_terminal_set_background_image()`,
@@ -1842,6 +1957,7 @@ export namespace Vte {
          * @param saturation a floating point value between 0.0 and 1.0.
          */
         set_background_saturation(saturation: number): void;
+
         /**
          * If a background image has been set using
          * `vte_terminal_set_background_image()`,
@@ -1855,6 +1971,7 @@ export namespace Vte {
          * @param color a color which the terminal background should be tinted to if its   saturation is not 1.0.
          */
         set_background_tint_color(color: Gdk.Color): void;
+
         /**
          * Sets the terminal's background image to the pixmap stored in the root
          * window, adjusted so that if there are no windows below your application,
@@ -1862,6 +1979,7 @@ export namespace Vte {
          * @param transparent whether the terminal should fake transparency
          */
         set_background_transparent(transparent: boolean): void;
+
         /**
          * Modifies the terminal's backspace key binding, which controls what
          * string or control sequence the terminal sends to its child when the user
@@ -1869,6 +1987,7 @@ export namespace Vte {
          * @param binding a {@link Vte.TerminalEraseBinding} for the backspace key
          */
         set_backspace_binding(binding: TerminalEraseBinding): void;
+
         /**
          * Sets the background color for text which does not have a specific background
          * color assigned.  Only has effect when no background image is set and when
@@ -1876,41 +1995,47 @@ export namespace Vte {
          * @param background the new background color
          */
         set_color_background(background: Gdk.Color): void;
+
         /**
          * Sets the color used to draw bold text in the default foreground color.
          * @param bold the new bold color
          */
         set_color_bold(bold: Gdk.Color): void;
+
         /**
          * Sets the background color for text which is under the cursor.  If `null`, text
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_background the new color to use for the text cursor, or `null`
          */
-        set_color_cursor(cursor_background: Gdk.Color | null): void;
+        set_color_cursor(cursor_background: (Gdk.Color | null)): void;
+
         /**
          * Sets the color used to draw dim text in the default foreground color.
          * @param dim the new dim color
          */
         set_color_dim(dim: Gdk.Color): void;
+
         /**
          * Sets the foreground color used to draw normal text
          * @param foreground the new foreground color
          */
         set_color_foreground(foreground: Gdk.Color): void;
+
         /**
          * Sets the background color for text which is highlighted.  If `null`,
          * highlighted text (which is usually highlighted because it is selected) will
          * be drawn with foreground and background colors reversed.
          * @param highlight_background the new color to use for highlighted text, or `null`
          */
-        set_color_highlight(highlight_background: Gdk.Color | null): void;
+        set_color_highlight(highlight_background: (Gdk.Color | null)): void;
+
         /**
          * The terminal widget uses a 28-color model comprised of the default foreground
          * and background colors, the bold foreground color, the dim foreground
          * color, an eight color palette, bold versions of the eight color palette,
          * and a dim version of the the eight color palette.
-         *
+         * 
          * `palette_size` must be either 0, 8, 16, or 24, or between 25 and 255 inclusive.
          * If `foreground` is `null` and
          * `palette_size` is greater than 0, the new foreground color is taken from
@@ -1923,22 +2048,26 @@ export namespace Vte {
          * @param background the new background color, or `null`
          * @param palette the color palette
          */
-        set_colors(foreground: Gdk.Color | null, background: Gdk.Color | null, palette: Gdk.Color[]): void;
+        set_colors(foreground: (Gdk.Color | null), background: (Gdk.Color | null), palette: Gdk.Color[]): void;
+
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
          * @param mode the {@link Vte.TerminalCursorBlinkMode} to use
          */
         set_cursor_blink_mode(mode: TerminalCursorBlinkMode): void;
+
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the {@link Vte.TerminalCursorShape} to use
          */
         set_cursor_shape(shape: TerminalCursorShape): void;
+
         /**
          * Reset the terminal palette to reasonable compiled-in default color.
          */
         set_default_colors(): void;
+
         /**
          * Modifies the terminal's delete key binding, which controls what
          * string or control sequence the terminal sends to its child when the user
@@ -1946,13 +2075,15 @@ export namespace Vte {
          * @param binding a {@link Vte.TerminalEraseBinding} for the delete key
          */
         set_delete_binding(binding: TerminalEraseBinding): void;
+
         /**
          * Sets what type of terminal the widget attempts to emulate by scanning for
          * control sequences defined in the system's termcap file.  Unless you
          * are interested in this feature, always use "xterm".
          * @param emulation the name of a terminal description, or `null` to use the default
          */
-        set_emulation(emulation: string | null): void;
+        set_emulation(emulation: (string | null)): void;
+
         /**
          * Changes the encoding the terminal will expect data from the child to
          * be encoded with.  For certain terminal types, applications executing in the
@@ -1960,7 +2091,8 @@ export namespace Vte {
          * application's locale settings.
          * @param codeset a valid `GIConv` target, or `null` to use the default encoding
          */
-        set_encoding(codeset: string | null): void;
+        set_encoding(codeset: (string | null)): void;
+
         /**
          * Sets the font used for rendering all text displayed by the terminal,
          * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
@@ -1969,13 +2101,15 @@ export namespace Vte {
          * and columns.
          * @param font_desc a {@link Pango.FontDescription} for the desired font, or `null`
          */
-        set_font(font_desc: Pango.FontDescription | null): void;
+        set_font(font_desc: (Pango.FontDescription | null)): void;
+
         /**
          * A convenience function which converts `name` into a {@link Pango.FontDescription} and
          * passes it to `vte_terminal_set_font()`.
          * @param name a pango font description in string form
          */
         set_font_from_string(name: string): void;
+
         /**
          * Changes the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
@@ -1984,24 +2118,28 @@ export namespace Vte {
          * @param setting whether the mouse pointer should autohide
          */
         set_mouse_autohide(setting: boolean): void;
+
         /**
          * Sets the opacity of the terminal background, were 0 means completely
          * transparent and 65535 means completely opaque.
          * @param opacity the new opacity
          */
         set_opacity(opacity: number): void;
+
         /**
          * Sets `pty` as the PTY to use in `terminal`.
          * Use `null` to unset the PTY.
          * @param pty a {@link Vte.Pty}, or `null`
          */
-        set_pty_object(pty: Pty | null): void;
+        set_pty_object(pty: (Pty | null)): void;
+
         /**
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
          * @param scroll whether the terminal should scroll the background image along with   the text
          */
         set_scroll_background(scroll: boolean): void;
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the user presses a key.  Modifier keys do not
@@ -2009,33 +2147,37 @@ export namespace Vte {
          * @param scroll whether the terminal should scroll on keystrokes
          */
         set_scroll_on_keystroke(scroll: boolean): void;
+
         /**
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
          * @param scroll whether the terminal should scroll on output
          */
         set_scroll_on_output(scroll: boolean): void;
+
         /**
          * Sets the length of the scrollback buffer used by the terminal.  The size of
          * the scrollback buffer will be set to the larger of this value and the number
          * of visible rows the widget can display, so 0 can safely be used to disable
          * scrollback.
-         *
+         * 
          * A negative value means "infinite scrollback".
-         *
+         * 
          * Note that this setting only affects the normal screen buffer.
          * For terminal types which have an alternate screen buffer, no scrollback is
          * allowed on the alternate screen buffer.
          * @param lines the length of the history buffer
          */
-        set_scrollback_lines(lines: bigint | number): void;
+        set_scrollback_lines(lines: (bigint | number)): void;
+
         /**
          * Attempts to change the terminal's size in terms of rows and columns.  If
          * the attempt succeeds, the widget will resize itself to the proper size.
          * @param columns the desired number of columns
          * @param rows the desired number of rows
          */
-        set_size(columns: bigint | number, rows: bigint | number): void;
+        set_size(columns: (bigint | number), rows: (bigint | number)): void;
+
         /**
          * Controls whether or not the terminal will present a visible bell to the
          * user when the child outputs the "bl" sequence.  The terminal
@@ -2043,43 +2185,46 @@ export namespace Vte {
          * @param is_visible whether the terminal should flash on bell
          */
         set_visible_bell(is_visible: boolean): void;
+
         /**
          * When the user double-clicks to start selection, the terminal will extend
          * the selection on word boundaries.  It will treat characters included in `spec`
          * as parts of words, and all other characters as word separators.  Ranges of
          * characters can be specified by separating them with a hyphen.
-         *
+         * 
          * As a special case, if `spec` is `null` or the empty string, the terminal will
          * treat all graphic non-punctuation non-space characters as word characters.
          * @param spec a specification
          */
         set_word_chars(spec: string): void;
+
         /**
          * Watches `child_pid`. When the process exists, the `VteReaper::child-exited`
          * signal will be called. Use `vte_terminal_get_child_exit_status()` to
          * retrieve the child's exit status.
-         *
+         * 
          * Prior to calling this function, a {@link Vte.Pty} must have been set in `terminal`
          * using `vte_terminal_set_pty_object()`.
          * When the child exits, the terminal's {@link Vte.Pty} will be set to `null`.
-         *
+         * 
          * Note: `g_child_watch_add()` or `g_child_watch_add_full()` must not have
          * been called for `child_pid`, nor a {@link GLib.Source} for it been created with
          * `g_child_watch_source_new()`.
-         *
+         * 
          * Note: when using the `g_spawn_async()` family of functions,
          * the {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} flag MUST have been passed.
          * @param child_pid a {@link GLib.Pid}
          */
         watch_child(child_pid: GLib.Pid): void;
+
         /**
          * Write contents of the current contents of `terminal` (including any
          * scrollback history) to `stream` according to `flags`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by triggering
          * the cancellable object from another thread. If the operation was cancelled,
          * the error {@link Gio.IOErrorEnum.CANCELLED} will be returned in `error`.
-         *
+         * 
          * This is a synchronous operation and will make the widget (and input
          * processing) during the write operation, which may take a long time
          * depending on scrollback history and `stream` availability for writing.
@@ -2088,11 +2233,8 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
          */
-        write_contents(
-            stream: Gio.OutputStream,
-            flags: TerminalWriteFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_contents(stream: Gio.OutputStream, flags: TerminalWriteFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2100,10 +2242,11 @@ export namespace Vte {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a "constructor" has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -2111,6 +2254,7 @@ export namespace Vte {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2119,7 +2263,8 @@ export namespace Vte {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2128,7 +2273,8 @@ export namespace Vte {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under &lt;child&gt;.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2136,11 +2282,8 @@ export namespace Vte {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2148,15 +2291,17 @@ export namespace Vte {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
@@ -2166,18 +2311,21 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2186,10 +2334,11 @@ export namespace Vte {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a "constructor" has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -2197,6 +2346,7 @@ export namespace Vte {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2206,12 +2356,8 @@ export namespace Vte {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2221,12 +2367,8 @@ export namespace Vte {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under &lt;child&gt;.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2234,11 +2376,8 @@ export namespace Vte {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2246,15 +2385,17 @@ export namespace Vte {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
@@ -2265,6 +2406,7 @@ export namespace Vte {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2273,25 +2415,28 @@ export namespace Vte {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          * @virtual
          */
         vfunc_set_name(name: string): void;
+
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): any | null;
+        get_data(key: string): (any | null);
+
         /**
          * Each object carries around a table of associations from
          * strings to pointers.  This function lets you set an association.
-         *
+         * 
          * If the object already had an association with that name,
          * the old association will be destroyed.
-         *
+         * 
          * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
@@ -2299,11 +2444,12 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: any | null): void;
+        set_data(key: string, data: (any | null)): void;
+
         /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
+         * 
          * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
          * pointer to `null` rather than retain a dangling pointer to a potentially
@@ -2312,6 +2458,7 @@ export namespace Vte {
         unref(): void;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -2319,20 +2466,24 @@ export namespace Vte {
         static $gtype: GObject.GType<CharAttributes>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PtyClass = typeof Pty;
+
     /**
      * @gir-type Alias
      */
     type TerminalClass = typeof Terminal;
+
     /**
      * @gir-type Struct
      */
     abstract class TerminalClassPrivate {
         static $gtype: GObject.GType<TerminalClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -2341,11 +2492,13 @@ export namespace Vte {
         static $gtype: GObject.GType<TerminalPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

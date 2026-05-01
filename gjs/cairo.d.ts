@@ -1,3 +1,5 @@
+
+
 // Cairo 1.0
 import Cairo from '@girs/cairo-1.0';
 import type GObject from '@girs/gobject-2.0';
@@ -64,7 +66,7 @@ declare namespace giCairo {
 
     /**
      * The main Cairo drawing context
-     *
+     * 
      * A Cairo context is used to draw to surfaces and perform drawing operations.
      * When you're done with a context, you must call $dispose() to free memory.
      */
@@ -77,7 +79,7 @@ declare namespace giCairo {
 
         /**
          * Free a Cairo.Context and all associated memory
-         *
+         * 
          * Unlike other objects in GJS, Cairo contexts must be explicitly disposed
          * to avoid memory leaks.
          */
@@ -576,7 +578,12 @@ declare namespace giCairo {
          * @param clusters Cluster mapping (bytes to glyphs)
          * @param clusterFlags Direction of cluster mapping
          */
-        showTextGlyphs(utf8: string, glyphs: Glyph[], clusters: TextCluster[], clusterFlags: TextClusterFlags): void;
+        showTextGlyphs(
+            utf8: string,
+            glyphs: Glyph[],
+            clusters: TextCluster[],
+            clusterFlags: TextClusterFlags,
+        ): void;
 
         /**
          * Computes the extents of an array of glyphs in user-space coordinates
@@ -763,7 +770,8 @@ declare namespace giCairo {
     /**
      * Base class for all Cairo patterns
      */
-    export class Pattern extends Cairo.Pattern {}
+    export class Pattern extends Cairo.Pattern {
+    }
 
     /**
      * Base class for all gradient patterns
@@ -929,3 +937,6 @@ declare namespace giCairo {
 }
 
 export default giCairo;
+
+
+

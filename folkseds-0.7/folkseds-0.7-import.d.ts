@@ -1,3 +1,4 @@
+
 import type FolksEds07 from '@girs/folkseds-0.7';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

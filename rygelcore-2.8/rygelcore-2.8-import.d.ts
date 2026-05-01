@@ -1,3 +1,4 @@
+
 import type RygelCore28 from '@girs/rygelcore-2.8';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 import type Parquet230 from '@girs/parquet-23.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

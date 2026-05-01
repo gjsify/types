@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,9 +19,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstVa {
+
     /**
      * GstVa-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -47,6 +50,7 @@ export namespace GstVa {
          */
         AUTO,
     }
+
 
     /**
      * Types of different VA API implemented drivers. These are the typical and
@@ -77,14 +81,17 @@ export namespace GstVa {
         INVALID,
     }
 
+
     /**
      * @since 1.22
      */
     const ALLOCATOR_VASURFACE: string;
+
     /**
      * @since 1.20
      */
     const CAPS_FEATURE_MEMORY_VA: string;
+
     /**
      * Flag indicating that we should map the VASurfaceID instead of to
      * system memory, so users can use libva primitives to operate with
@@ -92,10 +99,12 @@ export namespace GstVa {
      * @since 1.22
      */
     const MAP_VA: number;
+
     /**
      * @since 1.20
      */
     const VA_DISPLAY_HANDLE_CONTEXT_TYPE_STR: string;
+
     /**
      * Video alignment is not handled as expected by VA since it uses
      * opaque surfaces, not directly mappable memory. Still, decoders
@@ -107,6 +116,7 @@ export namespace GstVa {
      * @since 1.20.2
      */
     function buffer_pool_config_set_va_alignment(config: Gst.Structure, align: GstVideo.VideoAlignment): void;
+
     /**
      * Sets the usage hint for the buffers handled by the buffer pool.
      * @param config the {@link Gst.Structure} with the pool's configuration.
@@ -114,11 +124,8 @@ export namespace GstVa {
      * @param use_derived a {@link GstVa.VaFeature} for derived mapping (only used when     VA allocator).
      * @since 1.22
      */
-    function buffer_pool_config_set_va_allocation_params(
-        config: Gst.Structure,
-        usage_hint: number,
-        use_derived: VaFeature,
-    ): void;
+    function buffer_pool_config_set_va_allocation_params(config: Gst.Structure, usage_hint: number, use_derived: VaFeature): void;
+
     /**
      * @param context a {@link Gst.Context} may contain the display
      * @param type_name a `gchar` string of the element type
@@ -126,11 +133,8 @@ export namespace GstVa {
      * @returns whether we find a valid `display` in the `context`
      * @since 1.22
      */
-    function context_get_va_display(
-        context: Gst.Context,
-        type_name: string,
-        render_device_path: string,
-    ): [boolean, VaDisplay];
+    function context_get_va_display(context: Gst.Context, type_name: string, render_device_path: string): [boolean, VaDisplay];
+
     /**
      * Set the `display` in the `context`
      * @param context a {@link Gst.Context}
@@ -138,22 +142,25 @@ export namespace GstVa {
      * @since 1.22
      */
     function context_set_va_display(context: Gst.Context, display: VaDisplay): void;
+
     /**
      * Creates a new VASurfaceID with `buffer`'s allocator and attached it
      * to it.
-     *
+     * 
      * *This method is used only by plugin's internal VA decoder.*
      * @param buffer a {@link Gst.Buffer}
      * @returns `true` if the new VASurfaceID is attached to `buffer`     correctly; `false`, otherwise.
      * @since 1.22
      */
     function va_buffer_create_aux_surface(buffer: Gst.Buffer): boolean;
+
     /**
      * @param buffer a {@link Gst.Buffer}
      * @returns the display which this     `buffer` belongs to. The reference of the display is unchanged.
      * @since 1.22
      */
     function va_buffer_peek_display(buffer: Gst.Buffer): VaDisplay;
+
     /**
      * Query the specified context type name.
      * @param element a {@link Gst.Element}
@@ -161,6 +168,7 @@ export namespace GstVa {
      * @since 1.22
      */
     function va_context_query(element: Gst.Element, context_type: string): void;
+
     /**
      * Get the underlying modifier for specified `format` and `usage_hint`.
      * @param display a {@link GstVa.VaDisplay}
@@ -169,11 +177,8 @@ export namespace GstVa {
      * @returns the underlying modifier.
      * @since 1.24
      */
-    function va_dmabuf_get_modifier_for_format(
-        display: VaDisplay,
-        format: GstVideo.VideoFormat,
-        usage_hint: number,
-    ): number;
+    function va_dmabuf_get_modifier_for_format(display: VaDisplay, format: GstVideo.VideoFormat, usage_hint: number): number;
+
     /**
      * It imports the array of `mem`, representing a single frame, into a
      * VASurfaceID and it's attached into every `mem`.
@@ -186,14 +191,8 @@ export namespace GstVa {
      * @returns `true` if frame is imported correctly into a VASurfaceID; `false` otherwise.
      * @since 1.22
      */
-    function va_dmabuf_memories_setup(
-        display: VaDisplay,
-        drm_info: GstVideo.VideoInfoDmaDrm,
-        mem: Gst.Memory[],
-        fds: (bigint | number)[],
-        offset: (bigint | number)[],
-        usage_hint: number,
-    ): boolean;
+    function va_dmabuf_memories_setup(display: VaDisplay, drm_info: GstVideo.VideoInfoDmaDrm, mem: Gst.Memory[], fds: (bigint | number)[], offset: (bigint | number)[], usage_hint: number): boolean;
+
     /**
      * Propagate `display` by posting it as {@link Gst.Context} in the pipeline's bus.
      * @param element a {@link Gst.Element}
@@ -201,6 +200,7 @@ export namespace GstVa {
      * @since 1.22
      */
     function va_element_propagate_display_context(element: Gst.Element, display: VaDisplay): void;
+
     /**
      * Called by the va element to ensure a valid {@link GstVa.VaDisplay}.
      * @param element a {@link Gst.Element}
@@ -208,7 +208,8 @@ export namespace GstVa {
      * @returns whether a {@link GstVa.VaDisplay} exists in `display_ptr`
      * @since 1.22
      */
-    function va_ensure_element_data(element: any | null, render_device_path: string): [boolean, VaDisplay];
+    function va_ensure_element_data(element: (any | null), render_device_path: string): [boolean, VaDisplay];
+
     /**
      * Used by elements when processing their pad's queries, propagating
      * element's {@link GstVa.VaDisplay} if the processed query requests it.
@@ -219,6 +220,7 @@ export namespace GstVa {
      * @since 1.22
      */
     function va_handle_context_query(element: Gst.Element, query: Gst.Query, display: VaDisplay): boolean;
+
     /**
      * Called by elements in their {@link Gst.ElementClass.SignalSignatures.set_context | Gst.ElementClass::set_context} vmethod.
      * It gets a valid {@link GstVa.VaDisplay} if `context` has it.
@@ -228,32 +230,31 @@ export namespace GstVa {
      * @returns whether the `display_ptr` could be successfully set to a valid {@link GstVa.VaDisplay} in the `context`
      * @since 1.22
      */
-    function va_handle_set_context(
-        element: Gst.Element,
-        context: Gst.Context,
-        render_device_path: string,
-    ): [boolean, VaDisplay];
+    function va_handle_set_context(element: Gst.Element, context: Gst.Context, render_device_path: string): [boolean, VaDisplay];
+
     /**
      * @param mem a {@link Gst.Memory}
      * @returns the display which     this `mem` belongs to. The reference of the display is unchanged.
      * @since 1.22
      */
     function va_memory_peek_display(mem: Gst.Memory): VaDisplay;
+
     namespace VaAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
 
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+        }
     }
 
     /**
      * There are two types of VA allocators:
-     *
+     * 
      * * {@link GstVa.VaAllocator}
      * * {@link GstVa.VaDmabufAllocator}
      * @gir-type Class
@@ -272,55 +273,49 @@ export namespace GstVa {
         $signals: VaAllocator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: VaDisplay, surface_formats: number[]): VaAllocator;
+        static ["new"](display: VaDisplay, surface_formats: number[]): VaAllocator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaAllocator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Allocate a new VASurfaceID backed {@link Gst.Memory}.
          * @param allocator a {@link Gst.Allocator}
          */
         static alloc(allocator: Gst.Allocator): Gst.Memory;
+
         /**
          * Removes all the memories in `allocator`'s pool.
          * @param allocator a {@link Gst.Allocator}
          */
         static flush(allocator: Gst.Allocator): void;
+
         /**
          * Gets current internal configuration of `allocator`.
          * @param allocator a {@link Gst.Allocator}
          */
         static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfo | null, number, boolean];
+
         /**
          * @param allocator a {@link Gst.Allocator}
          */
         static peek_display(allocator: Gst.Allocator): VaDisplay;
+
         /**
          * This method will populate `buffer` with pooled VASurfaceID
          * memories. It doesn't allocate new VASurfacesID.
@@ -328,11 +323,12 @@ export namespace GstVa {
          * @param buffer an empty {@link Gst.Buffer}
          */
         static prepare_buffer(allocator: Gst.Allocator, buffer: Gst.Buffer): boolean;
+
         /**
          * Sets the configuration defined by `info`, `usage_hint` and
          * `use_derived` for `allocator`, and it tries the configuration, if
          * `allocator` has not allocated memories yet.
-         *
+         * 
          * If `allocator` has memory allocated already, and frame size and
          * format in `info` are the same as currently configured in `allocator`,
          * the rest of `info` parameters are updated internally.
@@ -341,12 +337,8 @@ export namespace GstVa {
          * @param usage_hint VA usage hint
          * @param feat_use_derived a {@link GstVa.VaFeature}
          */
-        static set_format(
-            allocator: Gst.Allocator,
-            info: GstVideo.VideoInfo,
-            usage_hint: number,
-            feat_use_derived: VaFeature,
-        ): [boolean, GstVideo.VideoInfo];
+        static set_format(allocator: Gst.Allocator, info: GstVideo.VideoInfo, usage_hint: number, feat_use_derived: VaFeature): [boolean, GstVideo.VideoInfo];
+
         /**
          * Populates an empty `buffer` with a VASuface backed {@link Gst.Memory}.
          * @param allocator a {@link Gst.Allocator}
@@ -355,17 +347,17 @@ export namespace GstVa {
         static setup_buffer(allocator: Gst.Allocator, buffer: Gst.Buffer): boolean;
     }
 
+
     namespace VaDisplay {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::va-display': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::va-display": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             description: string;
             va_display: any;
@@ -377,7 +369,7 @@ export namespace GstVa {
      * It is a generic wrapper for VADisplay. To create new instances
      * subclasses are required, depending on the display type to use
      * (v.gr. DRM, X11, Wayland, etc.).
-     *
+     * 
      * The purpose of this class is to be shared among pipelines via
      * {@link Gst.Context} so all the VA processing elements will use the same
      * display entry. Application developers can create their own
@@ -390,16 +382,17 @@ export namespace GstVa {
         static $gtype: GObject.GType<VaDisplay>;
 
         // Properties
-
         /**
          * @read-only
          * @default null
          */
         get description(): string;
+
         /**
          * @construct-only
          */
         get va_display(): any;
+
         /**
          * @construct-only
          */
@@ -415,66 +408,58 @@ export namespace GstVa {
         $signals: VaDisplay.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplay.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaDisplay.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * This is called when the subclass has to create the internal
          * VADisplay.
          * @virtual
          */
-        vfunc_create_va_display(): any | null;
+        vfunc_create_va_display(): (any | null);
 
         // Methods
-
         /**
          * @param major major version to check
          * @param minor minor version to check
          * @returns whether driver version is equal or greater than `major`.`minor`
          */
         check_version(major: number, minor: number): boolean;
+
         /**
          * Get the the {@link GstVa.VaImplementation} type of `self`.
          * @returns {@link GstVa.VaImplementation}.
          */
         get_implementation(): VaImplementation;
+
         /**
          * Get the VA display handle of the `self`.
          * @returns the VA display handle.
          */
-        get_va_dpy(): any | null;
+        get_va_dpy(): (any | null);
+
         /**
          * If the display is set by the user (foreign) it is assumed that the
          * driver is already initialized, thus this function is noop.
-         *
+         * 
          * If the display is opened internally, this function will initialize
          * the driver and it will set driver's message callbacks.
-         *
+         * 
          * NOTE: this function is supposed to be private, only used by
          * GstVaDisplay descendants.
          * @returns `true` if the VA driver can be initialized; `false`     otherwise
@@ -482,18 +467,18 @@ export namespace GstVa {
         initialize(): boolean;
     }
 
+
     namespace VaDisplayDrm {
         // Signal signatures
         interface SignalSignatures extends VaDisplay.SignalSignatures {
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::va-display': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::va-display": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends VaDisplay.ConstructorProps {
             path: string;
         }
@@ -508,7 +493,6 @@ export namespace GstVa {
         static $gtype: GObject.GType<VaDisplayDrm>;
 
         // Properties
-
         /**
          * @construct-only
          * @default /dev/dri/renderD128
@@ -525,7 +509,6 @@ export namespace GstVa {
         $signals: VaDisplayDrm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaDisplayDrm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -533,39 +516,33 @@ export namespace GstVa {
         static new_from_path(path: string): VaDisplayDrm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaDisplayDrm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayDrm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaDisplayDrm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaDisplayDrm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaDisplayDrm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayDrm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace VaDisplayWrapped {
         // Signal signatures
         interface SignalSignatures extends VaDisplay.SignalSignatures {
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::va-display': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::va-display": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends VaDisplay.ConstructorProps {
 
-        interface ConstructorProps extends VaDisplay.ConstructorProps {}
+        }
     }
 
     /**
@@ -587,45 +564,38 @@ export namespace GstVa {
         $signals: VaDisplayWrapped.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaDisplayWrapped.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](handle: any | null): VaDisplayWrapped;
+        static ["new"](handle: (any | null)): VaDisplayWrapped;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaDisplayWrapped.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDisplayWrapped.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaDisplayWrapped.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaDisplayWrapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaDisplayWrapped.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDisplayWrapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace VaDmabufAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
 
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+        }
     }
 
     /**
@@ -648,46 +618,38 @@ export namespace GstVa {
         $signals: VaDmabufAllocator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaDmabufAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: VaDisplay): VaDmabufAllocator;
+        static ["new"](display: VaDisplay): VaDmabufAllocator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaDmabufAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaDmabufAllocator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaDmabufAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaDmabufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaDmabufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaDmabufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Removes all the memories in `allocator`'s pool.
          * @param allocator a {@link Gst.Allocator}
          */
         static flush(allocator: Gst.Allocator): void;
+
         /**
          * Gets current internal configuration of `allocator`.
          * @param allocator a {@link Gst.Allocator}
          */
         static get_format(allocator: Gst.Allocator): [boolean, GstVideo.VideoInfoDmaDrm | null, number];
+
         /**
          * This method will populate `buffer` with pooled VASurfaceID/DMABuf
          * memories. It doesn't allocate new VASurfacesID.
@@ -695,11 +657,12 @@ export namespace GstVa {
          * @param buffer an empty {@link Gst.Buffer}
          */
         static prepare_buffer(allocator: Gst.Allocator, buffer: Gst.Buffer): boolean;
+
         /**
          * Sets the configuration defined by `info` and `usage_hint` for
          * `allocator`, and it tries the configuration, if `allocator` has not
          * allocated memories yet.
-         *
+         * 
          * If `allocator` has memory allocated already, and frame size, format
          * and modifier in `info` are the same as currently configured in
          * `allocator`, the rest of `info` parameters are updated internally.
@@ -707,6 +670,7 @@ export namespace GstVa {
          * @param usage_hint VA usage hint
          */
         static set_format(allocator: Gst.Allocator, usage_hint: number): [boolean, GstVideo.VideoInfoDmaDrm];
+
         /**
          * This function creates a new VASurfaceID and exposes its DMABufs,
          * later it populates the `buffer` with those DMABufs.
@@ -716,16 +680,18 @@ export namespace GstVa {
         static setup_buffer(allocator: Gst.Allocator, buffer: Gst.Buffer): boolean;
     }
 
+
     namespace VaPool {
         // Signal signatures
         interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
 
-        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
+        }
     }
 
     /**
@@ -746,51 +712,34 @@ export namespace GstVa {
         $signals: VaPool.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VaPool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): VaPool;
+        static ["new"](): VaPool;
 
-        static new_with_config(
-            caps: Gst.Caps,
-            min_buffers: number,
-            max_buffers: number,
-            usage_hint: number,
-            use_derived: VaFeature,
-            allocator: Gst.Allocator,
-            alloc_params: Gst.AllocationParams,
-        ): VaPool;
+        static new_with_config(caps: Gst.Caps, min_buffers: number, max_buffers: number, usage_hint: number, use_derived: VaFeature, allocator: Gst.Allocator, alloc_params: Gst.AllocationParams): VaPool;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VaPool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VaPool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VaPool.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VaPool.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VaPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VaPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Helper function to retrieve the VA surface size provided by `pool`.
          * @param pool a {@link Gst.BufferPool}
          */
         static get_buffer_size(pool: Gst.BufferPool): [boolean, number];
+
         /**
          * Retuns: `true` if `pool` always add {@link GstVideo.VideoMeta} to its
          *     buffers. Otherwise, `false`.
@@ -799,23 +748,28 @@ export namespace GstVa {
         static requires_video_meta(pool: Gst.BufferPool): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type VaDisplayClass = typeof VaDisplay;
+
     /**
      * @gir-type Alias
      */
     type VaDisplayDrmClass = typeof VaDisplayDrm;
+
     /**
      * @gir-type Alias
      */
     type VaDisplayWrappedClass = typeof VaDisplayWrapped;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

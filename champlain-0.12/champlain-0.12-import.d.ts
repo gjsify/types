@@ -1,3 +1,4 @@
+
 import type Champlain012 from '@girs/champlain-0.12';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

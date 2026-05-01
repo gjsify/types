@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,38 +26,39 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace CambalachePrivate {
+
     /**
      * CambalachePrivate-3.0
      */
 
+
     /**
-     * @param container
-     * @param child
-     * @param property_name
-     * @param value
+     * @param container 
+     * @param child 
+     * @param property_name 
+     * @param value 
      */
-    function container_child_set_property_from_string(
-        container: Gtk.Container,
-        child: Gtk.Widget,
-        property_name: string,
-        value: string | null,
-    ): void;
+    function container_child_set_property_from_string(container: Gtk.Container, child: Gtk.Widget, property_name: string, value: (string | null)): void;
+
     /**
-     * @param object
-     * @param property_name
-     * @param value
+     * @param object 
+     * @param property_name 
+     * @param value 
      */
-    function object_set_property_from_string(object: GObject.Object, property_name: string, value: string | null): void;
+    function object_set_property_from_string(object: GObject.Object, property_name: string, value: (string | null)): void;
+
     /**
-     * @param widget
-     * @param app_id
+     * @param widget 
+     * @param app_id 
      */
     function widget_set_application_id(widget: Gtk.Widget, app_id: string): void;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

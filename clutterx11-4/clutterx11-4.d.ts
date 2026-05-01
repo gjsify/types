@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,9 +29,11 @@ import type Json from '@girs/json-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace ClutterX11 {
+
     /**
      * ClutterX11-4
      */
+
 
     /**
      * @gir-type Enum
@@ -61,28 +64,30 @@ export namespace ClutterX11 {
         REMOVE,
     }
 
+
     /**
      * Disables the internal polling of X11 events in the main loop.
-     *
+     * 
      * Libraries or applications calling this function will be responsible of
      * polling all X11 events.
-     *
+     * 
      * You also must call `clutter_x11_handle_event()` to let Clutter process
      * events and maintain its internal state.
-     *
+     * 
      * This function can only be called before calling `clutter_init()`.
-     *
+     * 
      * Even with event handling disabled, Clutter will still select
      * all the events required to maintain its internal state on the stage
      * Window; compositors using Clutter and input regions to pass events
      * through to application windows should not rely on an empty input
      * region, and should instead clear it themselves explicitly using the
      * XFixes extension.
-     *
+     * 
      * This function should not be normally used by applications.
      * @since 0.8
      */
     function disable_event_retrieval(): void;
+
     /**
      * Retrieves the group for the modifiers set in `event`
      * @param event a {@link Clutter.Event} of type {@link Clutter.EventType.KEY_PRESS} or {@link Clutter.EventType.KEY_RELEASE}
@@ -90,6 +95,7 @@ export namespace ClutterX11 {
      * @since 1.4
      */
     function event_get_key_group(event: Clutter.Event): number;
+
     /**
      * Retrieves the touch detail froma {@link Clutter.EventSequence}.
      * @param sequence a {@link Clutter.EventSequence}
@@ -97,18 +103,21 @@ export namespace ClutterX11 {
      * @since 1.12
      */
     function event_sequence_get_touch_detail(sequence: Clutter.EventSequence): number;
+
     /**
      * Retrieves the pointer to the default display.
      * @returns the default display
      * @since 0.6
      */
     function get_default_display(): xlib.Display;
+
     /**
      * Gets the number of the default X Screen object.
      * @returns the number of the default screen
      * @since 0.6
      */
     function get_default_screen(): number;
+
     /**
      * Gets the stage for a particular X window.
      * @param win an X Window ID
@@ -116,12 +125,14 @@ export namespace ClutterX11 {
      * @since 0.8
      */
     function get_stage_from_window(win: xlib.Window): Clutter.Stage;
+
     /**
      * Retrieves whether the Clutter X11 backend is using ARGB visuals by default
      * @returns `true` if ARGB visuals are queried by default
      * @since 1.2
      */
     function get_use_argb_visual(): boolean;
+
     /**
      * Retrieves whether the Clutter X11 backend will create stereo
      * stages if possible.
@@ -129,11 +140,12 @@ export namespace ClutterX11 {
      * @since 1.22
      */
     function get_use_stereo_stage(): boolean;
+
     /**
      * This function processes a single X event; it can be used to hook
      * into external X11 event processing (for example, a GDK filter
      * function).
-     *
+     * 
      * If `clutter_x11_disable_event_retrieval()` has been called, you must
      * let this function process events to update Clutter's internal state.
      * @param xevent pointer to XEvent structure
@@ -141,29 +153,33 @@ export namespace ClutterX11 {
      * @since 0.8
      */
     function handle_event(xevent: xlib.XEvent): FilterReturn;
+
     /**
      * Retrieves whether Clutter is running on an X11 server with the
      * XComposite extension
      * @returns `true` if the XComposite extension is available
      */
     function has_composite_extension(): boolean;
+
     /**
      * Queries the X11 backend to check if event collection has been disabled.
      * @returns TRUE if event retrival has been disabled. FALSE otherwise.
      * @since 0.8
      */
     function has_event_retrieval(): boolean;
+
     /**
      * Gets whether Clutter has XInput support.
      * @returns `true` if Clutter was compiled with XInput support   and XInput support is available at run time.
      * @since 0.8
      */
     function has_xinput(): boolean;
+
     /**
      * Sets the display connection Clutter should use; must be called
      * before `clutter_init()`, `clutter_init_with_args()` or other functions
      * pertaining Clutter's initialization process.
-     *
+     * 
      * If you are parsing the command line arguments by retrieving Clutter's
      * {@link GLib.OptionGroup} with `clutter_get_option_group()` and calling
      * `g_option_context_parse()` yourself, you should also call
@@ -172,6 +188,7 @@ export namespace ClutterX11 {
      * @since 0.8
      */
     function set_display(xdpy: xlib.Display): void;
+
     /**
      * Target the {@link Clutter.Stage} to use an existing external X Window
      * @param stage a {@link Clutter.Stage}
@@ -180,35 +197,37 @@ export namespace ClutterX11 {
      * @since 0.4
      */
     function set_stage_foreign(stage: Clutter.Stage, xwindow: xlib.Window): boolean;
+
     /**
      * Sets whether the Clutter X11 backend should request ARGB visuals by default
      * or not.
-     *
+     * 
      * By default, Clutter requests RGB visuals.
-     *
+     * 
      * If no ARGB visuals are found, the X11 backend will fall back to
      * requesting a RGB visual instead.
-     *
+     * 
      * ARGB visuals are required for the {@link Clutter.Stage.use_alpha} property to work.
-     *
+     * 
      * This function can only be called once, and before `clutter_init()` is
      * called.
      * @param use_argb `true` if ARGB visuals should be requested by default
      * @since 1.2
      */
     function set_use_argb_visual(use_argb: boolean): void;
+
     /**
      * Sets whether the backend object for Clutter stages, will,
      * if possible, be created with the ability to support stereo drawing
      * (drawing separate images for the left and right eyes).
-     *
+     * 
      * This function must be called before `clutter_init()` is called.
      * During paint callbacks, `cogl_framebuffer_is_stereo()` can be called
      * on the framebuffer retrieved by `cogl_get_draw_framebuffer()` to
      * determine if stereo support was successfully enabled, and
      * `cogl_framebuffer_set_stereo_mode()` to determine which buffers
      * will be drawn to.
-     *
+     * 
      * Note that this function *does not* cause the stage to be drawn
      * multiple times with different perspective transformations and thus
      * appear in 3D, it simply enables individual ClutterActors to paint
@@ -217,23 +236,27 @@ export namespace ClutterX11 {
      * @since 1.22
      */
     function set_use_stereo_stage(use_stereo: boolean): void;
+
     /**
      * Traps every X error until `clutter_x11_untrap_x_errors()` is called.
      * @since 0.6
      */
     function trap_x_errors(): void;
+
     /**
      * Removes the X error trap and returns the current status.
      * @returns the trapped error code, or 0 for success
      * @since 0.4
      */
     function untrap_x_errors(): number;
+
     /**
      * @gir-type Callback
      */
     interface FilterFunc {
         (xev: xlib.XEvent, cev: Clutter.Event): FilterReturn;
     }
+
     /**
      * @gir-type Struct
      */
@@ -241,11 +264,13 @@ export namespace ClutterX11 {
         static $gtype: GObject.GType<XInputDevice>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

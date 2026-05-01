@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,34 +21,39 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace LibvirtSandbox {
+
     /**
      * LibvirtSandbox-1.0
      */
 
+
     /**
      * @param argv pointer to application's argv
      */
-    function init(argv: string[] | null): string[] | null;
+    function init(argv: (string[] | null)): string[] | null;
+
     /**
      * @param argv pointer to application's argv
      */
-    function init_check(argv: string[] | null): [boolean, string[] | null];
+    function init_check(argv: (string[] | null)): [boolean, string[] | null];
+
     /**
-     * @param value
+     * @param value 
      */
     function util_disk_format_from_str(value: string): number;
+
     /**
-     * @param path
+     * @param path 
      */
     function util_guess_image_format(path: string): number;
+
     namespace Builder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: LibvirtGObject.Connection;
         }
@@ -60,7 +66,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<Builder>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -76,34 +81,24 @@ export namespace LibvirtSandbox {
         $signals: Builder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Builder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Find and instantiate a suitable builder for sandboxes to be hosted
          * under the `connection`.
@@ -112,118 +107,130 @@ export namespace LibvirtSandbox {
         static for_connection(connection: LibvirtGObject.Connection): Builder;
 
         // Virtual methods
+        /**
+         * Cleanup temporary files which are not required once the sandbox
+         * has been started.
+         * @param config the sandbox configuration
+         * @param statedir 
+         * @virtual
+         */
+        vfunc_clean_post_start(config: Config, statedir: string): boolean;
 
         /**
          * Cleanup temporary files which are not required once the sandbox
          * has been started.
          * @param config the sandbox configuration
-         * @param statedir
-         * @virtual
-         */
-        vfunc_clean_post_start(config: Config, statedir: string): boolean;
-        /**
-         * Cleanup temporary files which are not required once the sandbox
-         * has been started.
-         * @param config the sandbox configuration
-         * @param statedir
+         * @param statedir 
          * @virtual
          */
         vfunc_clean_post_stop(config: Config, statedir: string): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_basic(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_devices(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_domain(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_features(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_os(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param statedir
-         * @param domain
+         * @param config 
+         * @param statedir 
+         * @param domain 
          * @virtual
          */
         vfunc_construct_security(config: Config, statedir: string, domain: LibvirtGConfig.Domain): boolean;
+
         /**
-         * @param config
-         * @param disk
+         * @param config 
+         * @param disk 
          * @virtual
          */
         vfunc_get_disk_prefix(config: Config, disk: ConfigDisk): string;
 
         // Methods
+        /**
+         * Cleanup temporary files which are not required once the sandbox
+         * has been started.
+         * @param config the sandbox configuration
+         * @param statedir 
+         * @returns TRUE on success, FALSE on error
+         */
+        clean_post_start(config: Config, statedir: string): boolean;
 
         /**
          * Cleanup temporary files which are not required once the sandbox
          * has been started.
          * @param config the sandbox configuration
-         * @param statedir
-         * @returns TRUE on success, FALSE on error
-         */
-        clean_post_start(config: Config, statedir: string): boolean;
-        /**
-         * Cleanup temporary files which are not required once the sandbox
-         * has been started.
-         * @param config the sandbox configuration
-         * @param statedir
+         * @param statedir 
          * @returns TRUE on success, FALSE on error
          */
         clean_post_stop(config: Config, statedir: string): boolean;
+
         /**
          * Create a domain configuration from the sandbox configuration
          * @param config the sandbox configuration
-         * @param statedir
+         * @param statedir 
          * @returns the newly built domain configuration
          */
         construct(config: Config, statedir: string): LibvirtGConfig.Domain;
+
         /**
          * Retrieves the sandbox connection
          * @returns the current connection
          */
         get_connection(): LibvirtGObject.Connection;
+
         /**
-         * @param iface
-         * @param filterref
+         * @param iface 
+         * @param filterref 
          */
         set_filterref(iface: LibvirtGConfig.DomainInterface, filterref: ConfigNetworkFilterref): void;
     }
 
+
     namespace BuilderContainer {
         // Signal signatures
         interface SignalSignatures extends Builder.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Builder.ConstructorProps {
 
-        interface ConstructorProps extends Builder.ConstructorProps {}
+        }
     }
 
     /**
@@ -242,42 +249,36 @@ export namespace LibvirtSandbox {
         $signals: BuilderContainer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BuilderContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](connection: LibvirtGObject.Connection): BuilderContainer;
+        static ["new"](connection: LibvirtGObject.Connection): BuilderContainer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BuilderContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BuilderContainer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BuilderContainer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BuilderContainer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderContainer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BuilderContainer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BuilderContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BuilderContainer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace BuilderInitrd {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -296,52 +297,44 @@ export namespace LibvirtSandbox {
         $signals: BuilderInitrd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BuilderInitrd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BuilderInitrd;
+        static ["new"](): BuilderInitrd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BuilderInitrd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BuilderInitrd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderInitrd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BuilderInitrd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BuilderInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BuilderInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param config
-         * @param outputfile
+         * @param config 
+         * @param outputfile 
          */
         construct(config: ConfigInitrd, outputfile: string): boolean;
     }
 
+
     namespace BuilderMachine {
         // Signal signatures
         interface SignalSignatures extends Builder.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Builder.ConstructorProps {
 
-        interface ConstructorProps extends Builder.ConstructorProps {}
+        }
     }
 
     /**
@@ -360,56 +353,47 @@ export namespace LibvirtSandbox {
         $signals: BuilderMachine.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BuilderMachine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](connection: LibvirtGObject.Connection): BuilderMachine;
+        static ["new"](connection: LibvirtGObject.Connection): BuilderMachine;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BuilderMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BuilderMachine.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BuilderMachine.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BuilderMachine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BuilderMachine.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BuilderMachine.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BuilderMachine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BuilderMachine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BuilderMachine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arch': (pspec: GObject.ParamSpec) => void;
-            'notify::gid': (pspec: GObject.ParamSpec) => void;
-            'notify::homedir': (pspec: GObject.ParamSpec) => void;
-            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
-            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
-            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
-            'notify::security-label': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::arch": (pspec: GObject.ParamSpec) => void;
+            "notify::gid": (pspec: GObject.ParamSpec) => void;
+            "notify::homedir": (pspec: GObject.ParamSpec) => void;
+            "notify::kernpath": (pspec: GObject.ParamSpec) => void;
+            "notify::kernrelease": (pspec: GObject.ParamSpec) => void;
+            "notify::kmodpath": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::security-dynamic": (pspec: GObject.ParamSpec) => void;
+            "notify::security-label": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             arch: string;
             gid: number;
@@ -437,82 +421,96 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<Config>;
 
         // Properties
-
         /**
          * @default null
          */
         get arch(): string;
         set arch(val: string);
+
         /**
          * @default 425
          */
         get gid(): number;
         set gid(val: number);
+
         /**
          * @default /builddir
          */
         get homedir(): string;
         set homedir(val: string);
+
         /**
          * @default null
          */
         get kernpath(): string;
         set kernpath(val: string);
+
         /**
          * @default null
          */
         get kernrelease(): string;
         set kernrelease(val: string);
+
         /**
          * @default null
          */
         get kmodpath(): string;
         set kmodpath(val: string);
+
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @default null
          */
         get root(): string;
         set root(val: string);
+
         /**
          * @default true
          */
         get security_dynamic(): boolean;
         set security_dynamic(val: boolean);
+
         /**
          * @default true
          */
         get securityDynamic(): boolean;
         set securityDynamic(val: boolean);
+
         /**
          * @default null
          */
         get security_label(): string;
         set security_label(val: string);
+
         /**
          * @default null
          */
         get securityLabel(): string;
         set securityLabel(val: string);
+
         /**
          * @default null
          */
         get shell(): string;
         set shell(val: string);
+
         /**
          * @default 1000
          */
         get uid(): number;
         set uid(val: number);
+
         /**
          * @default mockbuild
          */
         get username(): string;
         set username(val: string);
+
         /**
          * @construct-only
          * @default null
@@ -529,112 +527,110 @@ export namespace LibvirtSandbox {
         $signals: Config.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param data the .ini data string to load
          */
         static load_from_data(data: string): Config;
+
         /**
          * @param path the local path to load
          */
         static load_from_path(path: string): Config;
 
         // Virtual methods
-
         /**
          * Retrieve the sandbox command and arguments
          * @virtual
          */
         vfunc_get_command(): string[];
+
         /**
-         * @param file
+         * @param file 
          * @virtual
          */
         vfunc_load_config(file: GLib.KeyFile): boolean;
+
         /**
-         * @param file
+         * @param file 
          * @virtual
          */
         vfunc_save_config(file: GLib.KeyFile): void;
 
         // Methods
-
         /**
          * Adds a new custom disk to the sandbox
          * @param dsk the disk configuration
          */
         add_disk(dsk: ConfigDisk): void;
+
         /**
          * Parses `disk` in the format TYPE:TAG=SOURCE,format=FORMAT
          * creating {@link LibvirtSandbox.ConfigDisk} instances for each element. For
          * example
-         *
+         * 
          * - file:cache=/var/lib/sandbox/demo/tmp.qcow2,format=qcow2
          * @param disk the disk config
          */
         add_disk_opts(disk: string): boolean;
+
         /**
          * Parses `disks` whose elements are in the format TYPE:TAG=SOURCE,format=FORMAT
          * creating {@link LibvirtSandbox.ConfigMount} instances for each element. For
          * example
-         *
+         * 
          * - file:cache=/var/lib/sandbox/demo/tmp.qcow2,format=qcow2
          * @param disks the list of disks
          */
         add_disk_strv(disks: string[]): boolean;
+
         /**
          * Adds a new environment variable to the sandbox
          * @param key the key for environment variable
          * @param value the value for environment variable
          */
         add_env(key: string, value: string): void;
+
         /**
          * Parses `env` in the format KEY=VALUE
          * creating `GVirSandboxConfigEnv` instances for each element. For
          * example
-         *
+         * 
          * --env KEY=VALUE
          * @param env the env config
          */
         add_env_opts(env: string): boolean;
+
         /**
          * Parses `envs` whose elements are in the format KEY=VALUE
-         *
+         * 
          * --env KEY=VALUE
          * @param envs the list of environment variables
          */
         add_env_strv(envs: string[]): boolean;
+
         /**
-         * @param includefile
+         * @param includefile 
          */
         add_host_include_file(includefile: string): boolean;
+
         /**
          * Parses `includes` whose elements are in the format
          * GUEST-TARGET=ROOT-PATH. If ROOT_PATH is omitted,
@@ -642,17 +638,19 @@ export namespace LibvirtSandbox {
          * @param includes the list of includes
          */
         add_host_include_strv(includes: string[]): boolean;
+
         /**
          * Adds a new custom mount to the sandbox, to override part of the
          * host filesystem
          * @param mnt the mount configuration
          */
         add_mount(mnt: ConfigMount): void;
+
         /**
          * Parses `mount` whose elements are in the format TYPE:TARGET=SOURCE
          * creating {@link LibvirtSandbox.ConfigMount} instances for each element. For
          * example
-         *
+         * 
          * - host-bind:/tmp=/var/lib/sandbox/demo/tmp
          * - host-image:/=/var/lib/sandbox/demo.img
          * - host-image:/=/var/lib/sandbox/demo.qcow2,format=qcow2
@@ -661,27 +659,30 @@ export namespace LibvirtSandbox {
          * @param mount the mount config
          */
         add_mount_opts(mount: string): boolean;
+
         /**
          * Parses `mounts` whose elements are in the format TYPE:TARGET=SOURCE
          * creating {@link LibvirtSandbox.ConfigMount} instances for each element. For
          * example
-         *
+         * 
          * - host-bind:/tmp=/var/lib/sandbox/demo/tmp
          * - host-image:/=/var/lib/sandbox/demo.img
          * - guest-bind:/home=/tmp/home
          * @param mounts the list of mounts
          */
         add_mount_strv(mounts: string[]): boolean;
+
         /**
          * Adds a new network connection to the sandbox
          * @param network the network configuration
          */
         add_network(network: ConfigNetwork): void;
+
         /**
          * Parses `network` whose elements are in the format
          * KEY=VALUE, creating {@link LibvirtSandbox.ConfigNetwork}
          * instances for each element.
-         *
+         * 
          *  dhcp,source=default
          *  source=private,address=192.168.122.1/24%192.168.122.255,
          *  address=192.168.122.1/24%192.168.122.255,address=2001:212::204:2/64
@@ -691,6 +692,7 @@ export namespace LibvirtSandbox {
          * @param network the network config
          */
         add_network_opts(network: string): boolean;
+
         /**
          * Parses `networks` whose elements are in the format
          * KEY=VALUE, creating {@link LibvirtSandbox.ConfigNetwork}
@@ -698,173 +700,211 @@ export namespace LibvirtSandbox {
          * @param networks the list of networks
          */
         add_network_strv(networks: string[]): boolean;
+
         /**
          * Finds the {@link LibvirtSandbox.ConfigMount} object corresponding to a guest
          * path of `target`.
          * @param target the guest target path
          * @returns a mount object or NULL
          */
-        find_mount(target: string): ConfigMount | null;
+        find_mount(target: string): (ConfigMount | null);
+
         /**
          * Retrieves the sandbox binary architecture
          * @returns the current architecture
          */
         get_arch(): string;
+
         /**
          * Retrieve the sandbox command and arguments
          * @returns the command path and arguments
          */
         get_command(): string[];
+
         /**
          * Retrieves the sandbox debug flag
          * @returns the debug flag
          */
         get_debug(): boolean;
+
         /**
          * Retrieves the list of custom disks in the sandbox
          * @returns the list of disks
          */
         get_disks(): ConfigMount[];
+
         /**
          * Retrieves the hashtable of custom environment variables in the sandbox
          * @returns the hashtable of environment variables
          */
         get_envs(): GLib.HashTable<number, number>;
+
         /**
          * Get the group ID to invoke the sandbox application under.
          * @returns the group ID
          */
         get_groupid(): number;
+
         /**
          * Get the home directory associated with the sandbox user ID
          * @returns the home directory
          */
         get_homedir(): string;
+
         /**
          * Retrieves the sandbox kernel image path
          * @returns the current kernel image path
          */
         get_kernpath(): string;
+
         /**
          * Retrieves the sandbox kernel release version
          * @returns the current kernel release version
          */
         get_kernrelease(): string;
+
         /**
          * Retrieves the sandbox kernel modules path
          * @returns the current kernel modules path
          */
         get_kmodpath(): string;
+
         /**
          * Retrieves the list of custom mounts in the sandbox
          * @returns the list of mounts
          */
         get_mounts(): ConfigMount[];
+
         /**
          * Retrieves the list of custom mounts in the sandbox
-         * @param type
+         * @param type 
          * @returns the list of mounts
          */
         get_mounts_with_type(type: GObject.GType): ConfigMount[];
+
         /**
          * Retrieves the sandbox name
          * @returns the current name
          */
         get_name(): string;
+
         /**
          * Retrieves the list of custom networks in the sandbox
          * @returns the list of networks
          */
         get_networks(): ConfigNetwork[];
+
         /**
          * Retrieves the sandbox root directory
          * @returns the current root
          */
         get_root(): string;
+
         /**
          * Retrieve the sandbox security mode
          * @returns the security mode
          */
         get_security_dynamic(): boolean;
+
         /**
          * Retrieve the sandbox security label
          * @returns the security label
          */
         get_security_label(): string;
+
         /**
          * Retrieves the sandbox shell flag
          * @returns the shell flag
          */
         get_shell(): boolean;
+
         /**
          * Get the user ID to invoke the sandbox application under.
          * @returns the user ID
          */
         get_userid(): number;
+
         /**
          * Get the user name to invoke the sandbox application under.
          * @returns the user name
          */
         get_username(): string;
+
         /**
          * Retrieves the sandbox UUID
          * @returns the current uuid
          */
         get_uuid(): string;
+
         /**
          * Retrieves the sandbox verbose flag
          * @returns the verbose flag
          */
         get_verbose(): boolean;
+
         has_disks(): boolean;
+
         has_envs(): boolean;
+
         has_mounts(): boolean;
+
         /**
-         * @param type
+         * @param type 
          */
         has_mounts_with_type(type: GObject.GType): boolean;
+
         has_networks(): boolean;
+
         has_root_mount(): boolean;
+
         save_to_data(): string;
+
         /**
-         * @param path
+         * @param path 
          */
         save_to_path(path: string): boolean;
+
         /**
          * Set the architecture to use in the sandbox. If none is provided,
          * it will default to matching the host architecture.
          * @param arch the host directory
          */
         set_arch(arch: string): void;
+
         /**
          * Set whether the container init should print debugging messages.
          * @param debug true if the container init should print debugging messages
          */
         set_debug(debug: boolean): void;
+
         /**
          * Set the group ID to invoke the sandbox application under.
          * Defaults to the group ID of the current program.
          * @param gid the sandbox group ID
          */
         set_groupid(gid: number): void;
+
         /**
          * Set the home directory associated with the sandbox user ID.
          * Defaults to the home directory of the current program.
          * @param homedir the sandbox home directory
          */
         set_homedir(homedir: string): void;
+
         /**
          * Set the kernel image path to use in the sandbox. If none is provided,
          * it will default to matching /boot/vmlinuz-[kernel release].
          * @param kernpath the host directory
          */
         set_kernpath(kernpath: string): void;
+
         /**
          * Set the kernel release version to use in the sandbox. If none is provided,
          * it will default to matching the current running kernel.
          * @param kernrelease the host directory
          */
         set_kernrelease(kernrelease: string): void;
+
         /**
          * Sets the generic path to the kernel modules directory.
          * It will default to "/lib/modules", modules being searched in
@@ -873,18 +913,21 @@ export namespace LibvirtSandbox {
          * @param kmodpath the kernel modules path
          */
         set_kmodpath(kmodpath: string): void;
+
         /**
          * Set the host directory to use as the root for the sandbox. The
          * defualt root is "/".
          * @param hostdir the host directory
          */
         set_root(hostdir: string): void;
+
         /**
          * Set the SELinux security dynamic for the sandbox. The default
          * dynamic is "svirt_sandbox_t"
          * @param dynamic the security mode
          */
         set_security_dynamic(dynamic: boolean): void;
+
         /**
          * Set the sandbox security label. By default a dynamic security label
          * is chosen. A static security label must be specified if any
@@ -892,33 +935,39 @@ export namespace LibvirtSandbox {
          * @param label the host directory
          */
         set_security_label(label: string): void;
+
         /**
-         * @param optstr
+         * @param optstr 
          */
         set_security_opts(optstr: string): boolean;
+
         /**
          * Set whether the container console should have a interactive shell.
          * @param shell true if the container should have a shell
          */
         set_shell(shell: boolean): void;
+
         /**
          * Set the user ID to invoke the sandbox application under.
          * Defaults to the user ID of the current program.
          * @param uid the sandbox user ID
          */
         set_userid(uid: number): void;
+
         /**
          * Set the user name associated with the sandbox user ID.
          * Defaults to the user name of the current program.
          * @param username the sandbox user name
          */
         set_username(username: string): void;
+
         /**
          * Set the UUID for the container, to overide the automatically
          * generated value.
          * @param uuid the uuid in string format
          */
         set_uuid(uuid: string): void;
+
         /**
          * Set whether the container init should be verbose.
          * @param verbose true if the container init should be verbose
@@ -926,17 +975,17 @@ export namespace LibvirtSandbox {
         set_verbose(verbose: boolean): void;
     }
 
+
     namespace ConfigDisk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::format': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::tag': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::tag": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             format: LibvirtGConfig.DomainDiskFormat;
             source: string;
@@ -952,22 +1001,24 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigDisk>;
 
         // Properties
-
         /**
          * @construct-only
          * @default LibvirtGConfig.DomainDiskFormat.RAW
          */
         get format(): LibvirtGConfig.DomainDiskFormat;
+
         /**
          * @construct-only
          * @default null
          */
         get source(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get tag(): string;
+
         /**
          * @construct-only
          * @default LibvirtGConfig.DomainDiskType.FILE
@@ -984,49 +1035,42 @@ export namespace LibvirtSandbox {
         $signals: ConfigDisk.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigDisk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigDisk.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigDisk.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigDisk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigDisk.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigDisk.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigDisk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigDisk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the type property for the custom disk
          * @returns the type property of disk
          */
         get_disk_type(): LibvirtGConfig.DomainDiskType;
+
         /**
          * Retrieves the format property for the custom disk
          * @returns the format property of disk
          */
         get_format(): LibvirtGConfig.DomainDiskFormat;
+
         /**
          * Retrieves the source property for the custom disk
          * @returns the source property
          */
         get_source(): string;
+
         /**
          * Retrieves the tag property for the custom disk
          * @returns the tag property path
@@ -1034,16 +1078,16 @@ export namespace LibvirtSandbox {
         get_tag(): string;
     }
 
+
     namespace ConfigInitrd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::init': (pspec: GObject.ParamSpec) => void;
-            'notify::kmoddir': (pspec: GObject.ParamSpec) => void;
-            'notify::kver': (pspec: GObject.ParamSpec) => void;
+            "notify::init": (pspec: GObject.ParamSpec) => void;
+            "notify::kmoddir": (pspec: GObject.ParamSpec) => void;
+            "notify::kver": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             init: string;
             kmoddir: string;
@@ -1058,17 +1102,18 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigInitrd>;
 
         // Properties
-
         /**
          * @default null
          */
         get init(): string;
         set init(val: string);
+
         /**
          * @default null
          */
         get kmoddir(): string;
         set kmoddir(val: string);
+
         /**
          * @default null
          */
@@ -1085,73 +1130,70 @@ export namespace LibvirtSandbox {
         $signals: ConfigInitrd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigInitrd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConfigInitrd;
+        static ["new"](): ConfigInitrd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigInitrd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigInitrd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInitrd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigInitrd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigInitrd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInitrd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Request that the kernel module `modname` is included in the initrd,
          * along with any depedent modules
          * @param modname the kernel module name
          */
         add_module(modname: string): void;
+
         /**
          * Retrieves the path of the init binary
          * @returns the init binary path
          */
         get_init(): string;
+
         /**
          * Retrieves the current kernel modules directory
          * @returns the full path to the kernel modules directory
          */
         get_kmoddir(): string;
+
         /**
          * Retrieves the path of the kver binary
          * @returns the kver binary path
          */
         get_kver(): string;
+
         /**
          * Retrieves the list of all modules
          * @returns the module names
          */
         get_modules(): string[];
+
         /**
          * Sets the host binary to be used as the init program inside
          * the initrd. This defaults to /usr/bin/libvirt-sandbox-init-qemu
          * @param hostpath the init binary path
          */
         set_init(hostpath: string): void;
+
         /**
          * Sets the full path to where the kernel modules will be looked up
          * @param kmoddir the full path to the kernel modules directory
          */
         set_kmoddir(kmoddir: string): void;
+
         /**
          * Sets the host kernel version to use for populating the initrd with modules.
          * This defaults to the currently running kernel version
@@ -1160,28 +1202,28 @@ export namespace LibvirtSandbox {
         set_kver(version: string): void;
     }
 
+
     namespace ConfigInteractive {
         // Signal signatures
         interface SignalSignatures extends Config.SignalSignatures {
-            'notify::tty': (pspec: GObject.ParamSpec) => void;
-            'notify::arch': (pspec: GObject.ParamSpec) => void;
-            'notify::gid': (pspec: GObject.ParamSpec) => void;
-            'notify::homedir': (pspec: GObject.ParamSpec) => void;
-            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
-            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
-            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
-            'notify::security-label': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::tty": (pspec: GObject.ParamSpec) => void;
+            "notify::arch": (pspec: GObject.ParamSpec) => void;
+            "notify::gid": (pspec: GObject.ParamSpec) => void;
+            "notify::homedir": (pspec: GObject.ParamSpec) => void;
+            "notify::kernpath": (pspec: GObject.ParamSpec) => void;
+            "notify::kernrelease": (pspec: GObject.ParamSpec) => void;
+            "notify::kmodpath": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::security-dynamic": (pspec: GObject.ParamSpec) => void;
+            "notify::security-label": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Config.ConstructorProps {
             tty: string;
         }
@@ -1194,7 +1236,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigInteractive>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -1211,47 +1252,39 @@ export namespace LibvirtSandbox {
         $signals: ConfigInteractive.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigInteractive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): ConfigInteractive;
+        static ["new"](name: string): ConfigInteractive;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigInteractive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigInteractive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigInteractive.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigInteractive.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the sandbox tty flag
          * @returns the tty flag
          */
         get_tty(): boolean;
+
         /**
          * Set the path of the command to be run and its arguments. The `argv` should
          * be a NULL terminated list
          * @param argv the command path and arguments
          */
         set_command(argv: string[]): void;
+
         /**
          * Set whether the container console should have a interactive tty.
          * @param tty true if the container should have a tty
@@ -1259,14 +1292,14 @@ export namespace LibvirtSandbox {
         set_tty(tty: boolean): void;
     }
 
+
     namespace ConfigMount {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             target: string;
         }
@@ -1279,7 +1312,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMount>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
@@ -1296,34 +1328,24 @@ export namespace LibvirtSandbox {
         $signals: ConfigMount.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMount.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMount.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMount.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMount.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMount.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMount.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigMount.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Request that the file `srcpath` from the host OS is to be copied
          * to `dstpath`, relative to the `target` path in the sandbox.
@@ -1331,11 +1353,13 @@ export namespace LibvirtSandbox {
          * @param dstpath a path within the mount
          */
         add_include(srcpath: string, dstpath: string): void;
+
         /**
          * Retrieves the list of all include files
          * @returns the include files
          */
         get_includes(): GLib.HashTable<string, string>;
+
         /**
          * Retrieves the target directory for the custom mount
          * @returns the target directory path
@@ -1343,15 +1367,15 @@ export namespace LibvirtSandbox {
         get_target(): string;
     }
 
+
     namespace ConfigMountFile {
         // Signal signatures
         interface SignalSignatures extends ConfigMount.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends ConfigMount.ConstructorProps {
             source: string;
         }
@@ -1364,7 +1388,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountFile>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -1381,39 +1404,30 @@ export namespace LibvirtSandbox {
         $signals: ConfigMountFile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMountFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMountFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMountFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMountFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMountFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigMountFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the directory mapped to the mount (if any)
          * @returns the source directory
          */
         get_source(): string;
+
         /**
          * Sets the directory to map to the custom mount. If no
          * directory is specified, an empty temporary directory will
@@ -1423,16 +1437,18 @@ export namespace LibvirtSandbox {
         set_source(source: string): void;
     }
 
+
     namespace ConfigMountGuestBind {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConfigMountFile.ConstructorProps {
 
-        interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
+        }
     }
 
     /**
@@ -1451,47 +1467,38 @@ export namespace LibvirtSandbox {
         $signals: ConfigMountGuestBind.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMountGuestBind.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: string, targetdir: string): ConfigMountGuestBind;
+        static ["new"](source: string, targetdir: string): ConfigMountGuestBind;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMountGuestBind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMountGuestBind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountGuestBind.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMountGuestBind.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountGuestBind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConfigMountHostBind {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConfigMountFile.ConstructorProps {
 
-        interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
+        }
     }
 
     /**
@@ -1510,47 +1517,36 @@ export namespace LibvirtSandbox {
         $signals: ConfigMountHostBind.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMountHostBind.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: string, targetdir: string): ConfigMountHostBind;
+        static ["new"](source: string, targetdir: string): ConfigMountHostBind;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMountHostBind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMountHostBind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostBind.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMountHostBind.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMountHostBind.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigMountHostBind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostBind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConfigMountHostImage {
         // Signal signatures
         interface SignalSignatures extends ConfigMountFile.SignalSignatures {
-            'notify::format': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {
             format: LibvirtGConfig.DomainDiskFormat;
         }
@@ -1563,7 +1559,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountHostImage>;
 
         // Properties
-
         /**
          * @construct-only
          * @default LibvirtGConfig.DomainDiskFormat.RAW
@@ -1580,42 +1575,26 @@ export namespace LibvirtSandbox {
         $signals: ConfigMountHostImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMountHostImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            source: string,
-            targetdir: string,
-            format: LibvirtGConfig.DomainDiskFormat,
-        ): ConfigMountHostImage;
+        static ["new"](source: string, targetdir: string, format: LibvirtGConfig.DomainDiskFormat): ConfigMountHostImage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMountHostImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMountHostImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountHostImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMountHostImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMountHostImage.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigMountHostImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountHostImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the image format of the host-image filesystem.
          * @returns the imave format
@@ -1623,17 +1602,17 @@ export namespace LibvirtSandbox {
         get_format(): LibvirtGConfig.DomainDiskFormat;
     }
 
+
     namespace ConfigMountRam {
         // Signal signatures
         interface SignalSignatures extends ConfigMount.SignalSignatures {
-            'notify::usage': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::usage": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends ConfigMount.ConstructorProps {
-            usage: bigint | number;
+            usage: (bigint | number);
         }
     }
 
@@ -1644,7 +1623,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountRam>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 10240
@@ -1661,58 +1639,49 @@ export namespace LibvirtSandbox {
         $signals: ConfigMountRam.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigMountRam.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](targetdir: string, usage: bigint | number): ConfigMountRam;
+        static ["new"](targetdir: string, usage: (bigint | number)): ConfigMountRam;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigMountRam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigMountRam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigMountRam.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigMountRam.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigMountRam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigMountRam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigMountRam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the memory usage limit for the RAM filesystem in Kibibytes
          * @returns the usage limit
          */
         get_usage(): number;
+
         /**
          * Sets the memory usage limit for the RAM filesystem in Kibibytes
          * @param usage the memory usage limit in KiB
          */
-        set_usage(usage: bigint | number): void;
+        set_usage(usage: (bigint | number)): void;
     }
+
 
     namespace ConfigNetwork {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dhcp': (pspec: GObject.ParamSpec) => void;
-            'notify::mac': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp": (pspec: GObject.ParamSpec) => void;
+            "notify::mac": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dhcp: boolean;
             mac: string;
@@ -1727,17 +1696,18 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetwork>;
 
         // Properties
-
         /**
          * @default true
          */
         get dhcp(): boolean;
         set dhcp(val: boolean);
+
         /**
          * @default null
          */
         get mac(): string;
         set mac(val: string);
+
         /**
          * @default null
          */
@@ -1754,95 +1724,96 @@ export namespace LibvirtSandbox {
         $signals: ConfigNetwork.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigNetwork.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConfigNetwork;
+        static ["new"](): ConfigNetwork;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigNetwork.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigNetwork.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetwork.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigNetwork.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigNetwork.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigNetwork.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetwork.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a network interface address. This will be ignored unless
          * DHCP has been disabled
          * @param addr the network address
          */
         add_address(addr: ConfigNetworkAddress): void;
+
         /**
          * Add a network interface route. This will be ignored unless
          * DHCP has been disabled
          * @param addr the network route
          */
         add_route(addr: ConfigNetworkRoute): void;
+
         /**
          * Retrieve the list of network interface addresses
          * @returns the address list
          */
         get_addresses(): ConfigNetworkAddress[];
+
         get_dhcp(): boolean;
+
         /**
          * Retrieve the associated filter reference.
          * @returns The associated filter reference.
          */
         get_filterref(): ConfigNetworkFilterref;
+
         get_mac(): string;
+
         /**
          * Retrieve the list of network interface routes
          * @returns the route list
          */
         get_routes(): ConfigNetworkRoute[];
+
         get_source(): string;
+
         /**
-         * @param dhcp
+         * @param dhcp 
          */
         set_dhcp(dhcp: boolean): void;
+
         /**
          * Set a network filterref for the given network.
          * @param ref the network filterref
          */
         set_filterref(ref: ConfigNetworkFilterref): void;
+
         /**
-         * @param mac
+         * @param mac 
          */
         set_mac(mac: string): void;
+
         /**
-         * @param network
+         * @param network 
          */
         set_source(network: string): void;
     }
 
+
     namespace ConfigNetworkAddress {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::broadcast': (pspec: GObject.ParamSpec) => void;
-            'notify::prefix': (pspec: GObject.ParamSpec) => void;
-            'notify::primary': (pspec: GObject.ParamSpec) => void;
+            "notify::broadcast": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
+            "notify::primary": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             broadcast: Gio.InetAddress;
             prefix: number;
@@ -1857,16 +1828,17 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkAddress>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get broadcast(): Gio.InetAddress;
+
         /**
          * @construct-only
          * @default 24
          */
         get prefix(): number;
+
         /**
          * @construct-only
          */
@@ -1882,63 +1854,56 @@ export namespace LibvirtSandbox {
         $signals: ConfigNetworkAddress.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigNetworkAddress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](primary: Gio.InetAddress, prefix: number, broadcast: Gio.InetAddress): ConfigNetworkAddress;
+        static ["new"](primary: Gio.InetAddress, prefix: number, broadcast: Gio.InetAddress): ConfigNetworkAddress;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigNetworkAddress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigNetworkAddress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkAddress.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigNetworkAddress.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the broadcast address
          * @returns the broadcast address
          */
         get_broadcast(): Gio.InetAddress;
+
         /**
          * Retrieves the network prefix
          * @returns the network prefix
          */
         get_prefix(): number;
+
         /**
          * Retrieves the primary address
          * @returns the primary address
          */
         get_primary(): Gio.InetAddress;
+
         /**
          * Sets the interface broadcast address
          * @param addr the broadcast address
          */
         set_broadcast(addr: Gio.InetAddress): void;
+
         /**
          * Sets the interface network prefix
          * @param prefix the prefix length
          */
         set_prefix(prefix: number): void;
+
         /**
          * Sets the interface primary address
          * @param addr the primary address
@@ -1946,14 +1911,14 @@ export namespace LibvirtSandbox {
         set_primary(addr: Gio.InetAddress): void;
     }
 
+
     namespace ConfigNetworkFilterref {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -1966,7 +1931,6 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkFilterref>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -1983,68 +1947,59 @@ export namespace LibvirtSandbox {
         $signals: ConfigNetworkFilterref.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigNetworkFilterref.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConfigNetworkFilterref;
+        static ["new"](): ConfigNetworkFilterref;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterref.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigNetworkFilterref.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterref.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a parameter to a network filter reference.
          * @param param the filter parameter
          */
         add_parameter(param: ConfigNetworkFilterrefParameter): void;
+
         /**
          * Retrieves the network filter reference name.
          * @returns the network filter reference name.
          */
         get_name(): string;
+
         /**
          * Retrieve the list of parameters associated with a network filter reference
          * @returns the parameter list
          */
         get_parameters(): ConfigNetworkFilterrefParameter[];
+
         /**
-         * @param name
+         * @param name 
          */
         set_name(name: string): void;
     }
 
+
     namespace ConfigNetworkFilterrefParameter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             value: string;
@@ -2058,12 +2013,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameter>;
 
         // Properties
-
         /**
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * @default null
          */
@@ -2080,63 +2035,51 @@ export namespace LibvirtSandbox {
         $signals: ConfigNetworkFilterrefParameter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigNetworkFilterrefParameter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConfigNetworkFilterrefParameter;
+        static ["new"](): ConfigNetworkFilterrefParameter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkFilterrefParameter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_name(): string;
+
         get_value(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         set_name(name: string): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: string): void;
     }
 
+
     namespace ConfigNetworkRoute {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::gateway': (pspec: GObject.ParamSpec) => void;
-            'notify::prefix': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::gateway": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             gateway: Gio.InetAddress;
             prefix: number;
@@ -2151,16 +2094,17 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkRoute>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get gateway(): Gio.InetAddress;
+
         /**
          * @construct-only
          * @default 24
          */
         get prefix(): number;
+
         /**
          * @construct-only
          */
@@ -2176,61 +2120,56 @@ export namespace LibvirtSandbox {
         $signals: ConfigNetworkRoute.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigNetworkRoute.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](target: Gio.InetAddress, prefix: number, gateway: Gio.InetAddress): ConfigNetworkRoute;
+        static ["new"](target: Gio.InetAddress, prefix: number, gateway: Gio.InetAddress): ConfigNetworkRoute;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigNetworkRoute.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigNetworkRoute.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigNetworkRoute.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigNetworkRoute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigNetworkRoute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the network gateway address
          * @returns the gateway address
          */
         get_gateway(): Gio.InetAddress;
+
         /**
          * Retrieves the prefix length of the route
          * @returns the prefix length
          */
         get_prefix(): number;
+
         /**
          * Retrieves the route target address
          * @returns the target address
          */
         get_target(): Gio.InetAddress;
+
         /**
          * Sets the interface gateway device
          * @param addr the gateway device
          */
         set_gateway(addr: Gio.InetAddress): void;
+
         /**
          * Sets the prefix for an interface route
          * @param prefix prefix length
          */
         set_prefix(prefix: number): void;
+
         /**
          * Sets the interface route target address
          * @param addr the target address
@@ -2238,28 +2177,30 @@ export namespace LibvirtSandbox {
         set_target(addr: Gio.InetAddress): void;
     }
 
+
     namespace ConfigService {
         // Signal signatures
         interface SignalSignatures extends Config.SignalSignatures {
-            'notify::arch': (pspec: GObject.ParamSpec) => void;
-            'notify::gid': (pspec: GObject.ParamSpec) => void;
-            'notify::homedir': (pspec: GObject.ParamSpec) => void;
-            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
-            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
-            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
-            'notify::security-label': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::arch": (pspec: GObject.ParamSpec) => void;
+            "notify::gid": (pspec: GObject.ParamSpec) => void;
+            "notify::homedir": (pspec: GObject.ParamSpec) => void;
+            "notify::kernpath": (pspec: GObject.ParamSpec) => void;
+            "notify::kernrelease": (pspec: GObject.ParamSpec) => void;
+            "notify::kmodpath": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::security-dynamic": (pspec: GObject.ParamSpec) => void;
+            "notify::security-label": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Config.ConstructorProps {
 
-        interface ConstructorProps extends Config.ConstructorProps {}
+        }
     }
 
     /**
@@ -2278,55 +2219,48 @@ export namespace LibvirtSandbox {
         $signals: ConfigService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConfigService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConfigServiceGeneric {
         // Signal signatures
         interface SignalSignatures extends ConfigService.SignalSignatures {
-            'notify::arch': (pspec: GObject.ParamSpec) => void;
-            'notify::gid': (pspec: GObject.ParamSpec) => void;
-            'notify::homedir': (pspec: GObject.ParamSpec) => void;
-            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
-            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
-            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
-            'notify::security-label': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::arch": (pspec: GObject.ParamSpec) => void;
+            "notify::gid": (pspec: GObject.ParamSpec) => void;
+            "notify::homedir": (pspec: GObject.ParamSpec) => void;
+            "notify::kernpath": (pspec: GObject.ParamSpec) => void;
+            "notify::kernrelease": (pspec: GObject.ParamSpec) => void;
+            "notify::kmodpath": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::security-dynamic": (pspec: GObject.ParamSpec) => void;
+            "notify::security-label": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConfigService.ConstructorProps {
 
-        interface ConstructorProps extends ConfigService.ConstructorProps {}
+        }
     }
 
     /**
@@ -2345,38 +2279,26 @@ export namespace LibvirtSandbox {
         $signals: ConfigServiceGeneric.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigServiceGeneric.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): ConfigServiceGeneric;
+        static ["new"](name: string): ConfigServiceGeneric;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigServiceGeneric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigServiceGeneric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceGeneric.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigServiceGeneric.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Set the path of the command to be run and its arguments. The `argv` should
          * be a NULL terminated list
@@ -2385,28 +2307,30 @@ export namespace LibvirtSandbox {
         set_command(argv: string[]): void;
     }
 
+
     namespace ConfigServiceSystemd {
         // Signal signatures
         interface SignalSignatures extends ConfigService.SignalSignatures {
-            'notify::arch': (pspec: GObject.ParamSpec) => void;
-            'notify::gid': (pspec: GObject.ParamSpec) => void;
-            'notify::homedir': (pspec: GObject.ParamSpec) => void;
-            'notify::kernpath': (pspec: GObject.ParamSpec) => void;
-            'notify::kernrelease': (pspec: GObject.ParamSpec) => void;
-            'notify::kmodpath': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::security-dynamic': (pspec: GObject.ParamSpec) => void;
-            'notify::security-label': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
+            "notify::arch": (pspec: GObject.ParamSpec) => void;
+            "notify::gid": (pspec: GObject.ParamSpec) => void;
+            "notify::homedir": (pspec: GObject.ParamSpec) => void;
+            "notify::kernpath": (pspec: GObject.ParamSpec) => void;
+            "notify::kernrelease": (pspec: GObject.ParamSpec) => void;
+            "notify::kmodpath": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::security-dynamic": (pspec: GObject.ParamSpec) => void;
+            "notify::security-label": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConfigService.ConstructorProps {
 
-        interface ConstructorProps extends ConfigService.ConstructorProps {}
+        }
     }
 
     /**
@@ -2425,47 +2349,37 @@ export namespace LibvirtSandbox {
         $signals: ConfigServiceSystemd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConfigServiceSystemd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): ConfigServiceSystemd;
+        static ["new"](name: string): ConfigServiceSystemd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConfigServiceSystemd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConfigServiceSystemd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConfigServiceSystemd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConfigServiceSystemd.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConfigServiceSystemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the boot target name
          */
         get_boot_target(): string;
+
         /**
-         * @param target
+         * @param target 
          */
         set_boot_target(target: string): void;
     }
+
 
     namespace Console {
         // Signal signatures
@@ -2475,15 +2389,14 @@ export namespace LibvirtSandbox {
              * @run-first
              */
             closed: (arg0: boolean) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::devname': (pspec: GObject.ParamSpec) => void;
-            'notify::direct': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
-            'notify::escape': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::devname": (pspec: GObject.ParamSpec) => void;
+            "notify::direct": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
+            "notify::escape": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: LibvirtGObject.Connection;
             devname: string;
@@ -2500,25 +2413,28 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<Console>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get connection(): LibvirtGObject.Connection;
+
         /**
          * @construct-only
          * @default null
          */
         get devname(): string;
+
         /**
          * @construct-only
          * @default false
          */
         get direct(): boolean;
+
         /**
          * @construct-only
          */
         get domain(): LibvirtGObject.Domain;
+
         /**
          * @construct-only
          * @default 93
@@ -2535,75 +2451,74 @@ export namespace LibvirtSandbox {
         $signals: Console.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param err
+         * @param err 
          * @virtual
          */
         vfunc_closed(err: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_detach(): boolean;
 
         // Methods
-
         attach_stderr(): boolean;
+
         attach_stdio(): boolean;
+
         detach(): boolean;
+
         get_direct(): boolean;
+
         get_escape(): number;
+
         isolate(): boolean;
+
         /**
-         * @param direct
+         * @param direct 
          */
         set_direct(direct: boolean): void;
+
         /**
-         * @param escape
+         * @param escape 
          */
         set_escape(escape: number): void;
     }
 
+
     namespace ConsoleRaw {
         // Signal signatures
         interface SignalSignatures extends Console.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::devname': (pspec: GObject.ParamSpec) => void;
-            'notify::direct': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
-            'notify::escape': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::devname": (pspec: GObject.ParamSpec) => void;
+            "notify::direct": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
+            "notify::escape": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Console.ConstructorProps {
 
-        interface ConstructorProps extends Console.ConstructorProps {}
+        }
     }
 
     /**
@@ -2622,46 +2537,33 @@ export namespace LibvirtSandbox {
         $signals: ConsoleRaw.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConsoleRaw.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            connection: LibvirtGObject.Connection,
-            domain: LibvirtGObject.Domain,
-            devname: string,
-        ): ConsoleRaw;
+        static ["new"](connection: LibvirtGObject.Connection, domain: LibvirtGObject.Domain, devname: string): ConsoleRaw;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConsoleRaw.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConsoleRaw.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRaw.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConsoleRaw.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConsoleRaw.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConsoleRaw.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRaw.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param err
+         * @param err 
          * @virtual
          */
         vfunc_closed(err: boolean): void;
     }
+
 
     namespace ConsoleRpc {
         // Signal signatures
@@ -2671,16 +2573,17 @@ export namespace LibvirtSandbox {
              * @run-first
              */
             exited: (arg0: number) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::devname': (pspec: GObject.ParamSpec) => void;
-            'notify::direct': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
-            'notify::escape': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::devname": (pspec: GObject.ParamSpec) => void;
+            "notify::direct": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
+            "notify::escape": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Console.ConstructorProps {
 
-        interface ConstructorProps extends Console.ConstructorProps {}
+        }
     }
 
     /**
@@ -2699,62 +2602,49 @@ export namespace LibvirtSandbox {
         $signals: ConsoleRpc.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConsoleRpc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            connection: LibvirtGObject.Connection,
-            domain: LibvirtGObject.Domain,
-            devname: string,
-        ): ConsoleRpc;
+        static ["new"](connection: LibvirtGObject.Connection, domain: LibvirtGObject.Domain, devname: string): ConsoleRpc;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConsoleRpc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConsoleRpc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConsoleRpc.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConsoleRpc.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConsoleRpc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConsoleRpc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConsoleRpc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param err
+         * @param err 
          * @virtual
          */
         vfunc_closed(err: boolean): void;
+
         /**
-         * @param status
+         * @param status 
          * @virtual
          */
         vfunc_exited(status: number): void;
     }
 
+
     namespace Context {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             config: Config;
             connection: LibvirtGObject.Connection;
@@ -2769,15 +2659,16 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<Context>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get config(): Config;
+
         /**
          * @construct-only
          */
         get connection(): LibvirtGObject.Connection;
+
         get domain(): LibvirtGObject.Domain;
         set domain(val: LibvirtGObject.Domain);
 
@@ -2791,94 +2682,97 @@ export namespace LibvirtSandbox {
         $signals: Context.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_attach(): boolean;
+
         /**
          * @virtual
          */
         vfunc_detach(): boolean;
+
         /**
          * @virtual
          */
         vfunc_start(): boolean;
+
         /**
          * @virtual
          */
         vfunc_stop(): boolean;
 
         // Methods
-
         attach(): boolean;
+
         detach(): boolean;
+
         /**
          * Retrieves the sandbox configuration
          * @returns the current configuration
          */
         get_config(): Config;
+
         /**
          * Retrieves the sandbox connection
          * @returns the current connection or NULL
          */
         get_connection(): LibvirtGObject.Connection;
+
         /**
          * Retrieves the sandbox domain (if running)
          * @returns the current domain or NULL
          */
         get_domain(): LibvirtGObject.Domain;
+
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_log_console(): Console | null;
+        get_log_console(): (Console | null);
+
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_shell_console(): Console | null;
+        get_shell_console(): (Console | null);
+
         is_attached(): boolean;
+
         start(): boolean;
+
         stop(): boolean;
     }
+
 
     namespace ContextInteractive {
         // Signal signatures
         interface SignalSignatures extends Context.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Context.ConstructorProps {
 
-        interface ConstructorProps extends Context.ConstructorProps {}
+        }
     }
 
     /**
@@ -2897,53 +2791,45 @@ export namespace LibvirtSandbox {
         $signals: ContextInteractive.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContextInteractive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](connection: LibvirtGObject.Connection, config: ConfigInteractive): ContextInteractive;
+        static ["new"](connection: LibvirtGObject.Connection, config: ConfigInteractive): ContextInteractive;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContextInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContextInteractive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContextInteractive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContextInteractive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextInteractive.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContextInteractive.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContextInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContextInteractive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_app_console(): Console | null;
+        get_app_console(): (Console | null);
     }
+
 
     namespace ContextService {
         // Signal signatures
         interface SignalSignatures extends Context.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Context.ConstructorProps {
 
-        interface ConstructorProps extends Context.ConstructorProps {}
+        }
     }
 
     /**
@@ -2962,59 +2848,53 @@ export namespace LibvirtSandbox {
         $signals: ContextService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContextService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](connection: LibvirtGObject.Connection, config: ConfigService): ContextService;
+        static ["new"](connection: LibvirtGObject.Connection, config: ConfigService): ContextService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContextService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContextService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContextService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContextService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContextService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContextService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContextService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_define(): boolean;
+
         /**
          * @virtual
          */
         vfunc_undefine(): boolean;
 
         // Methods
-
         define(): boolean;
+
         undefine(): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type BuilderClass = typeof Builder;
+
     /**
      * @gir-type Alias
      */
     type BuilderContainerClass = typeof BuilderContainer;
+
     /**
      * @gir-type Struct
      */
@@ -3022,10 +2902,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<BuilderContainerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BuilderInitrdClass = typeof BuilderInitrd;
+
     /**
      * @gir-type Struct
      */
@@ -3033,16 +2915,19 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<BuilderInitrdPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BuilderMachineClass = typeof BuilderMachine;
+
     /**
      * @gir-type Struct
      */
     abstract class BuilderMachinePrivate {
         static $gtype: GObject.GType<BuilderMachinePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3051,14 +2936,17 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<BuilderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigClass = typeof Config;
+
     /**
      * @gir-type Alias
      */
     type ConfigDiskClass = typeof ConfigDisk;
+
     /**
      * @gir-type Struct
      */
@@ -3066,10 +2954,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigDiskPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigInitrdClass = typeof ConfigInitrd;
+
     /**
      * @gir-type Struct
      */
@@ -3077,10 +2967,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigInitrdPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigInteractiveClass = typeof ConfigInteractive;
+
     /**
      * @gir-type Struct
      */
@@ -3088,14 +2980,17 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigInteractivePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigMountClass = typeof ConfigMount;
+
     /**
      * @gir-type Alias
      */
     type ConfigMountFileClass = typeof ConfigMountFile;
+
     /**
      * @gir-type Struct
      */
@@ -3103,10 +2998,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountFilePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigMountGuestBindClass = typeof ConfigMountGuestBind;
+
     /**
      * @gir-type Struct
      */
@@ -3114,10 +3011,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountGuestBindPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigMountHostBindClass = typeof ConfigMountHostBind;
+
     /**
      * @gir-type Struct
      */
@@ -3125,16 +3024,19 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountHostBindPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigMountHostImageClass = typeof ConfigMountHostImage;
+
     /**
      * @gir-type Struct
      */
     abstract class ConfigMountHostImagePrivate {
         static $gtype: GObject.GType<ConfigMountHostImagePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3143,10 +3045,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigMountRamClass = typeof ConfigMountRam;
+
     /**
      * @gir-type Struct
      */
@@ -3154,10 +3058,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigMountRamPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigNetworkAddressClass = typeof ConfigNetworkAddress;
+
     /**
      * @gir-type Struct
      */
@@ -3165,24 +3071,29 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkAddressPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigNetworkClass = typeof ConfigNetwork;
+
     /**
      * @gir-type Alias
      */
     type ConfigNetworkFilterrefClass = typeof ConfigNetworkFilterref;
+
     /**
      * @gir-type Alias
      */
     type ConfigNetworkFilterrefParameterClass = typeof ConfigNetworkFilterrefParameter;
+
     /**
      * @gir-type Struct
      */
     abstract class ConfigNetworkFilterrefParameterPrivate {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameterPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3191,6 +3102,7 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkFilterrefPrivate>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -3198,16 +3110,19 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigNetworkPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigNetworkRouteClass = typeof ConfigNetworkRoute;
+
     /**
      * @gir-type Struct
      */
     abstract class ConfigNetworkRoutePrivate {
         static $gtype: GObject.GType<ConfigNetworkRoutePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3216,20 +3131,24 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigServiceClass = typeof ConfigService;
+
     /**
      * @gir-type Alias
      */
     type ConfigServiceGenericClass = typeof ConfigServiceGeneric;
+
     /**
      * @gir-type Struct
      */
     abstract class ConfigServiceGenericPrivate {
         static $gtype: GObject.GType<ConfigServiceGenericPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3238,10 +3157,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigServicePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigServiceSystemdClass = typeof ConfigServiceSystemd;
+
     /**
      * @gir-type Struct
      */
@@ -3249,10 +3170,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConfigServiceSystemdPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConsoleClass = typeof Console;
+
     /**
      * @gir-type Struct
      */
@@ -3260,10 +3183,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConsolePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConsoleRawClass = typeof ConsoleRaw;
+
     /**
      * @gir-type Struct
      */
@@ -3271,10 +3196,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConsoleRawPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConsoleRpcClass = typeof ConsoleRpc;
+
     /**
      * @gir-type Struct
      */
@@ -3282,20 +3209,24 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ConsoleRpcPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ContextClass = typeof Context;
+
     /**
      * @gir-type Alias
      */
     type ContextInteractiveClass = typeof ContextInteractive;
+
     /**
      * @gir-type Struct
      */
     abstract class ContextInteractivePrivate {
         static $gtype: GObject.GType<ContextInteractivePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3304,10 +3235,12 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ContextPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ContextServiceClass = typeof ContextService;
+
     /**
      * @gir-type Struct
      */
@@ -3315,11 +3248,13 @@ export namespace LibvirtSandbox {
         static $gtype: GObject.GType<ContextServicePrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

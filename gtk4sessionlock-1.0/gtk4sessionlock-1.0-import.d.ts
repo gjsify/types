@@ -1,3 +1,4 @@
+
 import type Gtk4SessionLock10 from '@girs/gtk4sessionlock-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 import type GtkClutter10 from '@girs/gtkclutter-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

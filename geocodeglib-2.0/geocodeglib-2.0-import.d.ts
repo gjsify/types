@@ -1,3 +1,4 @@
+
 import type GeocodeGlib20 from '@girs/geocodeglib-2.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

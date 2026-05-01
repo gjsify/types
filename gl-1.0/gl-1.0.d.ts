@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,17 +14,21 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace GL {
+
     /**
      * GL-1.0
      */
 
+
     function InitNames(): void;
+
     /**
      * @gir-type Struct
      */
     class bitfield {
         static $gtype: GObject.GType<bitfield>;
     }
+
 
     /**
      * @gir-type Struct
@@ -32,12 +37,14 @@ export namespace GL {
         static $gtype: GObject.GType<charARB>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class clampf {
         static $gtype: GObject.GType<clampf>;
     }
+
 
     /**
      * @gir-type Struct
@@ -46,12 +53,14 @@ export namespace GL {
         static $gtype: GObject.GType<__boolean>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class __enum {
         static $gtype: GObject.GType<__enum>;
     }
+
 
     /**
      * @gir-type Struct
@@ -60,12 +69,14 @@ export namespace GL {
         static $gtype: GObject.GType<float>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class handleARB {
         static $gtype: GObject.GType<handleARB>;
     }
+
 
     /**
      * @gir-type Struct
@@ -74,12 +85,14 @@ export namespace GL {
         static $gtype: GObject.GType<int>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class intptr {
         static $gtype: GObject.GType<intptr>;
     }
+
 
     /**
      * @gir-type Struct
@@ -88,12 +101,14 @@ export namespace GL {
         static $gtype: GObject.GType<sizei>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class sizeiptr {
         static $gtype: GObject.GType<sizeiptr>;
     }
+
 
     /**
      * @gir-type Struct
@@ -102,6 +117,7 @@ export namespace GL {
         static $gtype: GObject.GType<uint>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -109,11 +125,13 @@ export namespace GL {
         static $gtype: GObject.GType<__void>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

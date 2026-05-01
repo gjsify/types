@@ -1,3 +1,4 @@
+
 import type GExiv2016 from '@girs/gexiv2-0.16';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

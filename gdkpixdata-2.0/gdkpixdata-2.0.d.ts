@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,22 +18,26 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GdkPixdata {
+
     /**
      * GdkPixdata-2.0
      */
+
 
     /**
      * Magic number for {@link GdkPixdata.Pixdata} structures.
      */
     const PIXBUF_MAGIC_NUMBER: number;
+
     /**
      * The length of a {@link GdkPixdata.Pixdata} structure without the `pixel_data` pointer.
      * @deprecated since 2.32
      */
     const PIXDATA_HEADER_LENGTH: number;
+
     /**
      * Converts a {@link GdkPixdata.Pixdata} to a {@link GdkPixbuf.Pixbuf}.
-     *
+     * 
      * If `copy_pixels` is `TRUE` or if the pixel data is run-length-encoded,
      * the pixel data is copied into newly-allocated memory; otherwise it is
      * reused.
@@ -42,6 +47,7 @@ export namespace GdkPixdata {
      * @deprecated since 2.32: Use {@link Gio.Resource} instead.
      */
     function pixbuf_from_pixdata(pixdata: Pixdata, copy_pixels: boolean): GdkPixbuf.Pixbuf;
+
     /**
      * An enumeration which is used by `gdk_pixdata_to_csource()` to
      * determine the form of C source to be generated. The three values
@@ -97,6 +103,7 @@ export namespace GdkPixdata {
         RLE_DECODER,
     }
 
+
     /**
      * An enumeration containing three sets of flags for a {@link GdkPixdata.Pixdata} struct:
      * one for the used colorspace, one for the width of the samples and one
@@ -144,12 +151,13 @@ export namespace GdkPixdata {
         ENCODING_MASK,
     }
 
+
     /**
      * A pixel buffer suitable for serialization and streaming.
-     *
+     * 
      * Using {@link GdkPixdata.Pixdata}, images can be compiled into an application,
      * making it unnecessary to refer to external image files at runtime.
-     *
+     * 
      * {@link GdkPixbuf.Pixbuf} includes a utility named `gdk-pixbuf-csource`, which
      * can be used to convert image files into {@link GdkPixdata.Pixdata} structures suitable
      * for inclusion in C sources. To convert the {@link GdkPixdata.Pixdata} structures back
@@ -161,47 +169,50 @@ export namespace GdkPixdata {
         static $gtype: GObject.GType<Pixdata>;
 
         // Fields
-
         magic: number;
+
         length: number;
+
         pixdata_type: number;
+
         rowstride: number;
+
         width: number;
+
         height: number;
+
         pixel_data: Uint8Array;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                magic: number;
-                length: number;
-                pixdata_type: number;
-                rowstride: number;
-                width: number;
-                height: number;
-                pixel_data: Uint8Array;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            magic: number;
+            length: number;
+            pixdata_type: number;
+            rowstride: number;
+            width: number;
+            height: number;
+            pixel_data: Uint8Array;
+        }>);
 
         // Methods
-
         /**
          * Deserializes (reconstruct) a {@link GdkPixdata.Pixdata} structure from a byte stream.
-         *
+         * 
          * The byte stream consists of a straightforward writeout of the
          * {@link GdkPixdata.Pixdata} fields in network byte order, plus the `pixel_data`
          * bytes the structure points to.
-         *
+         * 
          * The `pixdata` contents are reconstructed byte by byte and are checked
          * for validity.
-         *
+         * 
          * This function may fail with `GDK_PIXBUF_ERROR_CORRUPT_IMAGE`
          * or `GDK_PIXBUF_ERROR_UNKNOWN_TYPE`.
          * @param stream stream of bytes containing a   serialized {@link GdkPixdata.Pixdata} structure.
          * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
          */
-        deserialize(stream: Uint8Array | string): boolean;
+        deserialize(stream: (Uint8Array | string)): boolean;
+
         /**
          * Serializes a {@link GdkPixdata.Pixdata} structure into a byte stream.
          * The byte stream consists of a straightforward writeout of the
@@ -210,10 +221,11 @@ export namespace GdkPixdata {
          * @returns A newly-allocated string containing the serialized {@link GdkPixdata.Pixdata} structure.
          */
         serialize(): Uint8Array;
+
         /**
          * Generates C source code suitable for compiling images directly
          * into programs.
-         *
+         * 
          * GdkPixbuf ships with a program called `gdk-pixbuf-csource`, which offers
          * a command line interface to this function.
          * @param name used for naming generated data structures or macros
@@ -223,11 +235,13 @@ export namespace GdkPixdata {
         to_csource(name: string, dump_type: PixdataDumpType): GLib.String;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

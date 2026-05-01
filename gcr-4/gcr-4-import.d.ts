@@ -1,3 +1,4 @@
+
 import type Gcr4 from '@girs/gcr-4';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

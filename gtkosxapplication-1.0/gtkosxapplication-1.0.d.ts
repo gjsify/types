@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GtkosxApplication {
+
     /**
      * GtkosxApplication-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -43,6 +46,7 @@ export namespace GtkosxApplication {
         NFO_REQUEST,
     }
 
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -50,7 +54,7 @@ export namespace GtkosxApplication {
              * @signal
              * @action
              */
-            NSApplicationBlockTermination: () => boolean | void;
+            NSApplicationBlockTermination: () => (boolean | void);
             /**
              * @signal
              * @action
@@ -60,7 +64,7 @@ export namespace GtkosxApplication {
              * @signal
              * @action
              */
-            NSApplicationOpenFile: (arg0: string) => boolean | void;
+            NSApplicationOpenFile: (arg0: string) => (boolean | void);
             /**
              * @signal
              * @action
@@ -74,8 +78,9 @@ export namespace GtkosxApplication {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -83,29 +88,29 @@ export namespace GtkosxApplication {
      * OS X's NSApplication class for use by Gtk+ applications running with
      * the quartz Gdk backend and provides addtional functions for
      * integrating a Gtk+ program into the OS X user environment.
-     *
+     * 
      * Using GtkosxApplication is pretty simple.
      * First, create an instance at startup:
-     *
-     *
+     * 
+     * 
      * ```c
      * GtkosxApplication *theApp = g_object_new(GTKOSX_TYPE_APPLICATION, NULL);
      * ```
-     *
-     *
+     * 
+     * 
      * Do this early in your program, shortly after you run
-     *
+     * 
      * ```
      * `gtk_init()`
      * ```
-     *
+     * 
      * Don't forget to guard it, and all other calls into the library, with
-     *
+     * 
      * ```
      * #ifdef MAC_INTEGRATION
      * ```
-     *
-     *
+     * 
+     * 
      * You don't want your Linux users' builds failing because of this.
      * The application object is a singleton, so you can call g_object_new
      * as often as you like. You'll always get the same pointer
@@ -114,7 +119,7 @@ export namespace GtkosxApplication {
      * argument, even if they don't use it. This seems silly in C, and
      * perhaps it is, but it's needed to make the Python binding logic
      * recognize that they're class methods.
-     *
+     * 
      * Just having the application object created will get you some
      * benefits, like having the Quit menu item in the dock menu work. But
      * you'll obviously want more. So the next place to visit is your main
@@ -127,9 +132,9 @@ export namespace GtkosxApplication {
      * more-or-less set up on the Gtk+ side, you need only hide the menu
      * and call `gtkosx_application_set_main_menu()`. Here's an example with
      * GtkBuilder:
-     *
+     * 
      * ## Setting the MenuBar
-     *
+     * 
      * ```c
      *   GtkUIManager *mgr = `gtk_ui_manager_new()`;
      *   GtkosxApplication *theApp = g_object_new(GTKOSX_TYPE_APPLICATION, NULL);
@@ -140,8 +145,8 @@ export namespace GtkosxApplication {
      *   gtk_widget_hide (menubar);
      *   gtkosx_application_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
      * ```
-     *
-     *
+     * 
+     * 
      * There are a couple of wrinkles, though, if you use
      * accelerators. First off, there are two event paths for
      * accelerators: Quartz, where the keystroke is processed by OS X and
@@ -154,12 +159,12 @@ export namespace GtkosxApplication {
      * - It works without any extra steps
      * - It changes stock accelerators (like Ctrl-O for open file) to
      * the stock OS X keyEquivalent (Cmd-O in that case).
-     *
+     * 
      * If you need to use Gtk+ keyboard accelerator handling *and*
      * you're using GtkMenuItems instead of GtkActions, you'll need to
      * connect a special handler as shown in the following example:
      * ## Enabling Accelerators on Hidden Menus
-     *
+     * 
      * ```c
      * static gboolean
      * can_activate_cb(GtkWidget* widget, guint signal_id, gpointer data)
@@ -170,8 +175,8 @@ export namespace GtkosxApplication {
      *   g_signal_connect(menubar, "can-activate-accel",
      *                    G_CALLBACK(can_activate_cb), NULL);
      * ```
-     *
-     *
+     * 
+     * 
      * The next task to make your application appear more normal for Mac
      * users is to move some menu items from their normal Gtk locations to
      * the so-called "App" menu. That's the menu all the way at the left
@@ -180,61 +185,61 @@ export namespace GtkosxApplication {
      * - Help|About
      * - Edit|Preferences
      * - File|Quit
-     *
+     * 
      * File|Quit is a special case, because OS X handles it itself and
      * automatically includes it, so the only thing you need do is hide it
      * on the File menu so that it doesn't show up twice:
-     *
+     * 
      * ```
      * gtk_widget_hide(GTK_WIDGET(file_quit_menu_item));
      * ```
-     *
+     * 
      * The other two must be moved in code, and there are two functions
      * for doing that. The first one creates "goups", which is just an
      * easy way to manage separators, and the second adds the actual menu
      * items to the groups. Here's an example:
-     *
+     * 
      * ```
      *  GtkosxApplicationMenuGroup *group;
      *  GtkMenuItem *about_item, *preferences_item;
      *  about_item = gtk_ui_manager_get_widget(mgr, "/menubar/Help/About");
      *  preferences_item = gtk_ui_manager_get_widget(mgr, "/menubar/Edit/Preferences");
-     *
+     * 
      *  group = gtkosx_application_add_app_menu_group (theApp);
      *  gtkosx_application_add_app_menu_item  (theApp, group,
      *                                         GTK_MENU_ITEM (about_item));
-     *
+     * 
      *  group = gtkosx_application_add_app_menu_group (theApp);
      *  gtkosx_application_add_app_menu_item  (theApp, group,
      *                                         GTK_MENU_ITEM (preferences_item));
      * ```
-     *
+     * 
      * Once we have everything set up for as many windows as we're going
      * to open before we call `gtk_main_loop()`, we need to tell OS X that
      * we're ready:
-     *
+     * 
      * ```
      * gtkosx_application_ready(theApp);
      * ```
-     *
-     *
+     * 
+     * 
      * If you add other windows later, you must do everything above for
      * each one's menubar. Most of the time the internal notifictations
      * will ensure that the GtkosxApplication is able to keep everything
      * in sync. However, if you at any time disconnect or block signals
      * and change the menu (perhaps because of a context change within a
      * window, as with changing pages in a GtkNotebook) you need to call
-     *
+     * 
      * ```
      * gtkosx_application_sync_menubar(theApp)
      * ```
-     *
-     *
+     * 
+     * 
      * N.B.: One GtkMenu function, `gtk_menu_reorder_child()`, changes the
      * menu appearance without emitting a signal, so if you use that
      * function in your code you'll need to call
      * `gtkosx_application_sync_menubar()` afterwards.
-     *
+     * 
      * ## Dock Support
      * The dock is that bar of icons that normally lives at the bottom of
      * the display on a Mac (though it can be moved to one of the other
@@ -256,7 +261,7 @@ export namespace GtkosxApplication {
      * - `gtkosx_application_set_dock_icon_resource()`
      * - `gtkosx_application_attention_request()`
      * - `gtkosx_application_cancel_attention_request()`
-     *
+     * 
      * ## Bundle Support
      * The last feature to which GtkosxApplication provides an interface
      * is the bundle. Normally in OS X, graphical applications are packaged
@@ -265,7 +270,7 @@ export namespace GtkosxApplication {
      * structures called "bundles". To easily package your Gtk+
      * application, have a look at gtk-mac-bundler, also available from
      * the Gtk-OSX project.
-     *
+     * 
      * OS X provides a variety of functions pertaining to bundles, most of
      * which are not likely to interest someone porting a Gtk+
      * application. GtkosxApplication has wrapped a few that might be:
@@ -274,7 +279,7 @@ export namespace GtkosxApplication {
      * - `gtkosx_application_get_executable_path()`
      * - `gtkosx_application_get_bundle_id()`
      * - `gtkosx_application_get_bundle_info()`
-     *
+     * 
      * The first three just get a UTF8-encoded path. An interesting note
      * is that they'll return the path to the executable or the folder
      * it's in regardless of whether it's actually in a bundle. To find
@@ -285,21 +290,21 @@ export namespace GtkosxApplication {
      * opening the bundle. (In other words, even if you have your
      * application installed in Foo.app, if you launch it from the command
      * line as
-     *
+     * 
      * ```
      * $ Foo.app/Contents/MacOS/Foo
      * ```
-     *
+     * 
      * the Info.plist won't have been opened and
      * `gtkosx_application_get_bundle_id()` will return "". Of course, it
      * will also return "" if you didn't set %CFBundleIdentifier in the
      * Info.plist, so make sure that you do!
-     *
+     * 
      * The last function, `gtkosx_application_get_bundle_info()`, will
      * return the value associated with an arbitrary key from Info.plist
      * as long as that value is a string. If it isn't, then the function
      * returns a null string ("").
-     *
+     * 
      * ## Notifications
      * Finally, notice the signals. These are emitted in response to the
      * indicated OS X notifications. Except for
@@ -326,82 +331,85 @@ export namespace GtkosxApplication {
         $signals: Application.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get(): Application;
+
         static get_bundle_id(): string;
+
         /**
-         * @param key
+         * @param key 
          */
         static get_bundle_info(key: string): string;
+
         static get_bundle_path(): string;
+
         static get_executable_path(): string;
+
         static get_resource_path(): string;
 
         // Methods
-
         /**
-         * @param type
+         * @param type 
          */
         attention_request(type: ApplicationAttentionType): number;
+
         /**
-         * @param id
+         * @param id 
          */
         cancel_attention_request(id: number): void;
+
         /**
-         * @param menu_item
-         * @param index
+         * @param menu_item 
+         * @param index 
          */
         insert_app_menu_item(menu_item: Gtk.Widget, index: number): void;
+
         ready(): void;
+
         /**
-         * @param pixbuf
+         * @param pixbuf 
          */
         set_dock_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
-         * @param name
-         * @param type
-         * @param subdir
+         * @param name 
+         * @param type 
+         * @param subdir 
          */
         set_dock_icon_resource(name: string, type: string, subdir: string): void;
+
         /**
-         * @param menu_shell
+         * @param menu_shell 
          */
         set_dock_menu(menu_shell: Gtk.MenuShell): void;
+
         /**
-         * @param menu_item
+         * @param menu_item 
          */
         set_help_menu(menu_item: Gtk.MenuItem): void;
+
         /**
-         * @param menu_shell
+         * @param menu_shell 
          */
         set_menu_bar(menu_shell: Gtk.MenuShell): void;
+
         /**
          * Set quartz accelerator handling; TRUE (default) uses quartz; FALSE
          * uses Gtk+. Quartz accelerator handling is required for normal OS X
@@ -409,11 +417,14 @@ export namespace GtkosxApplication {
          * @param use_quartz_accelerators Gboolean
          */
         set_use_quartz_accelerators(use_quartz_accelerators: boolean): void;
+
         /**
-         * @param menu_item
+         * @param menu_item 
          */
         set_window_menu(menu_item: Gtk.MenuItem): void;
+
         sync_menubar(): void;
+
         /**
          * Are we using Quartz or Gtk+ accelerator handling?
          * @returns a gboolean
@@ -421,10 +432,12 @@ export namespace GtkosxApplication {
         use_quartz_accelerators(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
+
     /**
      * A menu group is used to collect menu items between separators in
      * the Application menu.
@@ -434,13 +447,15 @@ export namespace GtkosxApplication {
         static $gtype: GObject.GType<ApplicationMenuGroup>;
 
         // Fields
-
         items: any[];
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -449,11 +464,13 @@ export namespace GtkosxApplication {
         static $gtype: GObject.GType<ApplicationPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

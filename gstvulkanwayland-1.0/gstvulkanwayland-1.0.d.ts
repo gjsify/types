@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,20 +21,23 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstVulkanWayland {
+
     /**
      * GstVulkanWayland-1.0
      */
 
+
     namespace VulkanDisplayWayland {
         // Signal signatures
         interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {
 
-        interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {}
+        }
     }
 
     /**
@@ -55,59 +59,54 @@ export namespace GstVulkanWayland {
         $signals: VulkanDisplayWayland.SignalSignatures;
 
         // Fields
-
         display: any;
+
         registry: any;
+
         compositor: any;
+
         subcompositor: any;
+
         shell: any;
 
         // Constructors
-
         constructor(properties?: Partial<VulkanDisplayWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string | null): VulkanDisplayWayland;
+        static ["new"](name: (string | null)): VulkanDisplayWayland;
+
         // Conflicted with GstVulkan.VulkanDisplay.new
+        static ["new"](...args: never[]): any;
 
-        static ['new'](...args: never[]): any;
-
-        static new_with_display(display: any | null): VulkanDisplayWayland;
+        static new_with_display(display: (any | null)): VulkanDisplayWayland;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VulkanDisplayWayland.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VulkanDisplayWayland.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VulkanDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VulkanDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type VulkanDisplayWaylandClass = typeof VulkanDisplayWayland;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,18 +27,19 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GCi {
+
     /**
      * GCi-1
      */
 
+
     namespace EntryController {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::entry': (pspec: GObject.ParamSpec) => void;
+            "notify::entry": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             entry: Gtk.Entry;
         }
@@ -50,7 +52,6 @@ export namespace GCi {
         static $gtype: GObject.GType<EntryController>;
 
         // Properties
-
         get entry(): Gtk.Entry;
         set entry(val: Gtk.Entry);
 
@@ -64,49 +65,42 @@ export namespace GCi {
         $signals: EntryController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EntryController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static for_entry(entry: Gtk.Entry): EntryController;
 
-        static ['new'](): EntryController;
+        static ["new"](): EntryController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EntryController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EntryController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EntryController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EntryController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EntryController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EntryController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EntryController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_entry(): Gtk.Entry;
+
         /**
-         * @param value
+         * @param value 
          */
         set_entry(value: Gtk.Entry): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type EntryControllerClass = typeof EntryController;
+
     /**
      * @gir-type Struct
      */
@@ -114,11 +108,13 @@ export namespace GCi {
         static $gtype: GObject.GType<EntryControllerPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

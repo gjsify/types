@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Atk {
+
     /**
      * Atk-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -47,6 +50,7 @@ export namespace Atk {
         PARENT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -73,6 +77,7 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -82,7 +87,7 @@ export namespace Atk {
 
     /**
      * Describes the layer of a component
-     *
+     * 
      * These enumerated "layer values" are used when determining which UI
      * rendering layer a component is drawn into, which can help in making
      * determinations of when components occlude one another.
@@ -123,6 +128,7 @@ export namespace Atk {
         WINDOW,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -152,6 +158,7 @@ export namespace Atk {
          */
         ASSERTIVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -285,6 +292,7 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -294,7 +302,7 @@ export namespace Atk {
 
     /**
      * Describes the role of an object
-     *
+     * 
      * These are the built-in enumerated roles that UI components can have
      * in ATK.  Other roles may be added at runtime, so an AtkRole >=
      * {@link Atk.Role.LAST_DEFINED} is not necessarily an error.
@@ -915,6 +923,7 @@ export namespace Atk {
         PUSH_BUTTON,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -965,6 +974,7 @@ export namespace Atk {
          */
         ANYWHERE,
     }
+
 
     /**
      * @gir-type Enum
@@ -1225,6 +1235,7 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1367,6 +1378,7 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1418,6 +1430,7 @@ export namespace Atk {
         LINE_END,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1447,6 +1460,7 @@ export namespace Atk {
          */
         BOTH,
     }
+
 
     /**
      * @gir-type Enum
@@ -1492,6 +1506,7 @@ export namespace Atk {
         PARAGRAPH,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1524,6 +1539,7 @@ export namespace Atk {
         LAST_DEFINED,
     }
 
+
     /**
      * Like `atk_get_binary_age()`, but from the headers used at
      * application compile time, rather than from the library linked
@@ -1531,6 +1547,7 @@ export namespace Atk {
      * @since 2.7.4
      */
     const BINARY_AGE: number;
+
     /**
      * Like `atk_get_interface_age()`, but from the headers used at
      * application compile time, rather than from the library linked
@@ -1538,6 +1555,7 @@ export namespace Atk {
      * @since 2.7.4
      */
     const INTERFACE_AGE: number;
+
     /**
      * Like `atk_get_major_version()`, but from the headers used at
      * application compile time, rather than from the library linked
@@ -1545,6 +1563,7 @@ export namespace Atk {
      * @since 2.7.4
      */
     const MAJOR_VERSION: number;
+
     /**
      * Like `atk_get_micro_version()`, but from the headers used at
      * application compile time, rather than from the library linked
@@ -1552,6 +1571,7 @@ export namespace Atk {
      * @since 2.7.4
      */
     const MICRO_VERSION: number;
+
     /**
      * Like `atk_get_minor_version()`, but from the headers used at
      * application compile time, rather than from the library linked
@@ -1559,15 +1579,16 @@ export namespace Atk {
      * @since 2.7.4
      */
     const MINOR_VERSION: number;
+
     /**
      * A macro that should be defined by the user prior to including
      * the atk/atk.h header.
      * The definition should be one of the predefined ATK version
      * macros: `ATK_VERSION_2_12`, `ATK_VERSION_2_14`,...
-     *
+     * 
      * This macro defines the earliest version of ATK that the package is
      * required to be able to compile against.
-     *
+     * 
      * If the compiler is configured to warn about the use of deprecated
      * functions, then using functions that were deprecated in version
      * `ATK_VERSION_MIN_REQUIRED` or earlier will cause warnings (but
@@ -1575,12 +1596,14 @@ export namespace Atk {
      * @since 2.14
      */
     const VERSION_MIN_REQUIRED: number;
+
     /**
      * Frees the memory used by an {@link Atk.AttributeSet}, including all its
      * `AtkAttributes`.
      * @param attrib_set The {@link Atk.AttributeSet} to free
      */
     function attribute_set_free(attrib_set: AttributeSet): void;
+
     /**
      * Cause the focus tracker functions which have been specified to be
      * executed for the object.
@@ -1588,6 +1611,7 @@ export namespace Atk {
      * @deprecated since 2.9.4: Focus tracking has been dropped as a feature to be implemented by ATK itself. As {@link Atk.Object.SignalSignatures.focus_event | Atk.Object::focus-event} was deprecated in favor of a {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} signal, in order to notify a focus change on your implementation, you can use `atk_object_notify_state_change()` instead.
      */
     function focus_tracker_notify(object: Object): void;
+
     /**
      * Returns the binary age as passed to libtool when building the ATK
      * library the process is running against.
@@ -1595,6 +1619,7 @@ export namespace Atk {
      * @since 2.8
      */
     function get_binary_age(): number;
+
     /**
      * Gets a default implementation of the {@link Atk.ObjectFactory}/type
      * registry.
@@ -1606,12 +1631,14 @@ export namespace Atk {
      * @returns a default implementation of the {@link Atk.ObjectFactory}/type registry
      */
     function get_default_registry(): Registry;
+
     /**
      * Gets the currently focused object.
      * @returns the currently focused object for the current application
      * @since 1.6
      */
     function get_focus_object(): Object;
+
     /**
      * Returns the interface age as passed to libtool when building the
      * ATK library the process is running against.
@@ -1619,10 +1646,11 @@ export namespace Atk {
      * @since 2.8
      */
     function get_interface_age(): number;
+
     /**
      * Returns the major version number of the ATK library.  (e.g. in ATK
      * version 2.7.4 this is 2.)
-     *
+     * 
      * This function is in the library, so it represents the ATK library
      * your code is running against. In contrast, the #ATK_MAJOR_VERSION
      * macro represents the major version of the ATK headers you have
@@ -1631,10 +1659,11 @@ export namespace Atk {
      * @since 2.8
      */
     function get_major_version(): number;
+
     /**
      * Returns the micro version number of the ATK library.  (e.g. in ATK
      * version 2.7.4 this is 4.)
-     *
+     * 
      * This function is in the library, so it represents the ATK library
      * your code is are running against. In contrast, the
      * #ATK_MICRO_VERSION macro represents the micro version of the ATK
@@ -1643,10 +1672,11 @@ export namespace Atk {
      * @since 2.8
      */
     function get_micro_version(): number;
+
     /**
      * Returns the minor version number of the ATK library.  (e.g. in ATK
      * version 2.7.4 this is 7.)
-     *
+     * 
      * This function is in the library, so it represents the ATK library
      * your code is are running against. In contrast, the
      * #ATK_MINOR_VERSION macro represents the minor version of the ATK
@@ -1655,45 +1685,53 @@ export namespace Atk {
      * @since 2.8
      */
     function get_minor_version(): number;
+
     /**
      * Gets the root accessible container for the current application.
      * @returns the root accessible container for the current application
      */
     function get_root(): Object;
+
     /**
      * Gets name string for the GUI toolkit implementing ATK for this application.
      * @returns name string for the GUI toolkit implementing ATK for this application
      */
     function get_toolkit_name(): string;
+
     /**
      * Gets version string for the GUI toolkit implementing ATK for this application.
      * @returns version string for the GUI toolkit implementing ATK for this application
      */
     function get_toolkit_version(): string;
+
     /**
      * Gets the current version for ATK.
      * @returns version string for ATK
      * @since 1.20
      */
     function get_version(): string;
+
     /**
      * Get the {@link Atk.RelationType} type corresponding to a relation name.
      * @param name a string which is the (non-localized) name of an ATK relation type.
      * @returns the {@link Atk.RelationType} enumerated type corresponding to the specified name,          or #ATK_RELATION_NULL if no matching relation type is found.
      */
     function relation_type_for_name(name: string): RelationType;
+
     /**
      * Gets the description string describing the {@link Atk.RelationType} `type`.
      * @param type The {@link Atk.RelationType} whose name is required
      * @returns the string describing the AtkRelationType
      */
     function relation_type_get_name(type: RelationType): string;
+
     /**
      * Associate `name` with a new {@link Atk.RelationType}
      * @param name a name string
      * @returns an {@link Atk.RelationType} associated with `name`
      */
     function relation_type_register(name: string): RelationType;
+
     /**
      * Removes the specified focus tracker from the list of functions
      * to be called when any object receives focus.
@@ -1701,47 +1739,53 @@ export namespace Atk {
      * @deprecated since 2.9.4: Focus tracking has been dropped as a feature   to be implemented by ATK itself. If you need focus tracking on your   implementation, subscribe to the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused"   signal.
      */
     function remove_focus_tracker(tracker_id: number): void;
+
     /**
      * `listener_id` is the value returned by `atk_add_global_event_listener`
      * when you registered that event listener.
-     *
+     * 
      * Toolkit implementor note: ATK provides a default implementation for
      * this virtual method. ATK implementors are discouraged from
      * reimplementing this method.
-     *
+     * 
      * Toolkit implementor note: this method is not intended to be used by
      * ATK implementors but by ATK consumers.
-     *
+     * 
      * Removes the specified event listener
      * @param listener_id the id of the event listener to remove
      */
     function remove_global_event_listener(listener_id: number): void;
+
     /**
      * `listener_id` is the value returned by `atk_add_key_event_listener`
      * when you registered that event listener.
-     *
+     * 
      * Removes the specified event listener.
      * @param listener_id the id of the event listener to remove
      */
     function remove_key_event_listener(listener_id: number): void;
+
     /**
      * Get the {@link Atk.Role} type corresponding to a rolew name.
      * @param name a string which is the (non-localized) name of an ATK role.
      * @returns the {@link Atk.Role} enumerated type corresponding to the specified name,          or #ATK_ROLE_INVALID if no matching role is found.
      */
     function role_for_name(name: string): Role;
+
     /**
      * Gets the localized description string describing the {@link Atk.Role} `role`.
      * @param role The {@link Atk.Role} whose localized name is required
      * @returns the localized string describing the AtkRole
      */
     function role_get_localized_name(role: Role): string;
+
     /**
      * Gets the description string describing the {@link Atk.Role} `role`.
      * @param role The {@link Atk.Role} whose name is required
      * @returns the string describing the AtkRole
      */
     function role_get_name(role: Role): string;
+
     /**
      * Registers the role specified by `name`. `name` must be a meaningful
      * name. So it should not be empty, or consisting on whitespaces.
@@ -1750,49 +1794,57 @@ export namespace Atk {
      * @deprecated Since 2.12. If your application/toolkit doesn't find a suitable role for a specific object defined at {@link Atk.Role}, please submit a bug in order to add a new role to the specification.
      */
     function role_register(name: string): Role;
+
     /**
      * Gets the {@link Atk.StateType} corresponding to the description string `name`.
      * @param name a character string state name
      * @returns an {@link Atk.StateType} corresponding to `name`
      */
     function state_type_for_name(name: string): StateType;
+
     /**
      * Gets the description string describing the {@link Atk.StateType} `type`.
      * @param type The {@link Atk.StateType} whose name is required
      * @returns the string describing the AtkStateType
      */
     function state_type_get_name(type: StateType): string;
+
     /**
      * Register a new object state.
      * @param name a character string describing the new state.
      * @returns an {@link Atk.State} value for the new state.
      */
     function state_type_register(name: string): StateType;
+
     /**
      * Get the {@link Atk.TextAttribute} type corresponding to a text attribute name.
      * @param name a string which is the (non-localized) name of an ATK text attribute.
      * @returns the {@link Atk.TextAttribute} enumerated type corresponding to the specified          name, or #ATK_TEXT_ATTRIBUTE_INVALID if no matching text attribute          is found.
      */
     function text_attribute_for_name(name: string): TextAttribute;
+
     /**
      * Gets the name corresponding to the {@link Atk.TextAttribute}
      * @param attr The {@link Atk.TextAttribute} whose name is required
      * @returns a string containing the name; this string should not be freed
      */
     function text_attribute_get_name(attr: TextAttribute): string;
+
     /**
      * Gets the value for the index of the {@link Atk.TextAttribute}
      * @param attr The {@link Atk.TextAttribute} for which a value is required
      * @param index_ The index of the required value
      * @returns a string containing the value; this string should not be freed; `null` is returned if there are no values maintained for the attr value.
      */
-    function text_attribute_get_value(attr: TextAttribute, index_: number): string | null;
+    function text_attribute_get_value(attr: TextAttribute, index_: number): (string | null);
+
     /**
      * Associate `name` with a new {@link Atk.TextAttribute}
      * @param name a name string
      * @returns an {@link Atk.TextAttribute} associated with `name`
      */
     function text_attribute_register(name: string): TextAttribute;
+
     /**
      * Frees the memory associated with an array of AtkTextRange. It is assumed
      * that the array was returned by the function atk_text_get_bounded_ranges
@@ -1801,54 +1853,63 @@ export namespace Atk {
      * @since 1.3
      */
     function text_free_ranges(ranges: TextRange[]): void;
+
     /**
      * Gets the localized description string describing the {@link Atk.ValueType} `value_type`.
      * @param value_type The {@link Atk.ValueType} whose localized name is required
      * @returns the localized string describing the {@link Atk.ValueType}
      */
     function value_type_get_localized_name(value_type: ValueType): string;
+
     /**
      * Gets the description string describing the {@link Atk.ValueType} `value_type`.
      * @param value_type The {@link Atk.ValueType} whose name is required
      * @returns the string describing the {@link Atk.ValueType}
      */
     function value_type_get_name(value_type: ValueType): string;
+
     /**
      * @gir-type Callback
      */
     interface EventListener {
         (obj: Object): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface EventListenerInit {
         (): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface FocusHandler {
         (object: Object, focus_in: boolean): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface Function {
-        (user_data: any | null): boolean;
+        (user_data: (any | null)): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface KeySnoopFunc {
         (event: KeyEventStruct): number;
     }
+
     /**
      * @gir-type Callback
      */
     interface PropertyChangeHandler {
         (obj: Object, vals: PropertyValues): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -1867,36 +1928,38 @@ export namespace Atk {
         INLINE,
     }
 
+
     namespace GObjectAccessible {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps {
 
-        interface ConstructorProps extends Object.ConstructorProps {}
+        }
     }
 
     /**
      * This object class is derived from AtkObject and can be used as a basis implementing accessible objects.
-     *
+     * 
      * This object class is derived from AtkObject. It can be used as a
      * basis for implementing accessible objects for GObjects which are
      * not derived from GtkWidget. One example of its use is in providing
@@ -1916,34 +1979,24 @@ export namespace Atk {
         $signals: GObjectAccessible.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GObjectAccessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GObjectAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GObjectAccessible.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GObjectAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GObjectAccessible.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GObjectAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GObjectAccessible.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GObjectAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GObjectAccessible.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GObjectAccessible.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GObjectAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GObjectAccessible.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GObjectAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the accessible object for the specified `obj`.
          * @param obj a {@link GObject.Object}
@@ -1951,13 +2004,13 @@ export namespace Atk {
         static for_object(obj: GObject.Object): Object;
 
         // Methods
-
         /**
          * Gets the GObject for which `obj` is the accessible object.
          * @returns a {@link GObject.Object} which is the object for which `obj` is the accessible object
          */
         get_object<T = GObject.Object>(): T;
     }
+
 
     namespace Hyperlink {
         // Signal signatures
@@ -1967,15 +2020,14 @@ export namespace Atk {
              * @signal
              * @run-last
              */
-            'link-activated': () => void;
-            'notify::end-index': (pspec: GObject.ParamSpec) => void;
-            'notify::number-of-anchors': (pspec: GObject.ParamSpec) => void;
-            'notify::selected-link': (pspec: GObject.ParamSpec) => void;
-            'notify::start-index': (pspec: GObject.ParamSpec) => void;
+            "link-activated": () => void;
+            "notify::end-index": (pspec: GObject.ParamSpec) => void;
+            "notify::number-of-anchors": (pspec: GObject.ParamSpec) => void;
+            "notify::selected-link": (pspec: GObject.ParamSpec) => void;
+            "notify::start-index": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Action.ConstructorProps {
             end_index: number;
             endIndex: number;
@@ -1990,7 +2042,7 @@ export namespace Atk {
 
     /**
      * An ATK object which encapsulates a link or set of links in a hypertext document.
-     *
+     * 
      * An ATK object which encapsulates a link or set of links (for
      * instance in the case of client-side image maps) in a hypertext
      * document.  It may implement the AtkAction interface.  AtkHyperlink
@@ -2003,27 +2055,30 @@ export namespace Atk {
         static $gtype: GObject.GType<Hyperlink>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get end_index(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get endIndex(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get number_of_anchors(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get numberOfAnchors(): number;
+
         /**
          * Selected link
          * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
@@ -2031,6 +2086,7 @@ export namespace Atk {
          * @default false
          */
         get selected_link(): boolean;
+
         /**
          * Selected link
          * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
@@ -2038,11 +2094,13 @@ export namespace Atk {
          * @default false
          */
         get selectedLink(): boolean;
+
         /**
          * @read-only
          * @default 0
          */
         get start_index(): number;
+
         /**
          * @read-only
          * @default 0
@@ -2059,74 +2117,70 @@ export namespace Atk {
         $signals: Hyperlink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Hyperlink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Hyperlink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Hyperlink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Gets the index with the hypertext document at which this link ends.
          * @virtual
          */
         vfunc_get_end_index(): number;
+
         /**
          * Gets the number of anchors associated with this hyperlink.
          * @virtual
          */
         vfunc_get_n_anchors(): number;
+
         /**
          * Returns the item associated with this hyperlinks nth anchor.
          * For instance, the returned {@link Atk.Object} will implement {@link Atk.Text}
          * if `link_` is a text hyperlink, {@link Atk.Image} if `link_` is an image
          * hyperlink etc.
-         *
+         * 
          * Multiple anchors are primarily used by client-side image maps.
          * @param i a (zero-index) integer specifying the desired anchor
          * @virtual
          */
         vfunc_get_object(i: number): Object;
+
         /**
          * Gets the index with the hypertext document at which this link begins.
          * @virtual
          */
         vfunc_get_start_index(): number;
+
         /**
          * Get a the URI associated with the anchor specified
          * by `i` of `link_`.
-         *
+         * 
          * Multiple anchors are primarily used by client-side image maps.
          * @param i a (zero-index) integer specifying the desired anchor
          * @virtual
          */
         vfunc_get_uri(i: number): string;
+
         /**
          * Determines whether this AtkHyperlink is selected
          * @virtual
          */
         vfunc_is_selected_link(): boolean;
+
         /**
          * Since the document that a link is associated with may have changed
          * this method returns `true` if the link is still valid (with
@@ -2134,52 +2188,58 @@ export namespace Atk {
          * @virtual
          */
         vfunc_is_valid(): boolean;
+
         /**
          * @virtual
          */
         vfunc_link_activated(): void;
+
         /**
          * @virtual
          */
         vfunc_link_state(): number;
 
         // Methods
-
         /**
          * Gets the index with the hypertext document at which this link ends.
          * @returns the index with the hypertext document at which this link ends
          */
         get_end_index(): number;
+
         /**
          * Gets the number of anchors associated with this hyperlink.
          * @returns the number of anchors associated with this hyperlink
          */
         get_n_anchors(): number;
+
         /**
          * Returns the item associated with this hyperlinks nth anchor.
          * For instance, the returned {@link Atk.Object} will implement {@link Atk.Text}
          * if `link_` is a text hyperlink, {@link Atk.Image} if `link_` is an image
          * hyperlink etc.
-         *
+         * 
          * Multiple anchors are primarily used by client-side image maps.
          * @param i a (zero-index) integer specifying the desired anchor
          * @returns an {@link Atk.Object} associated with this hyperlinks i-th anchor
          */
         get_object(i: number): Object;
+
         /**
          * Gets the index with the hypertext document at which this link begins.
          * @returns the index with the hypertext document at which this link begins
          */
         get_start_index(): number;
+
         /**
          * Get a the URI associated with the anchor specified
          * by `i` of `link_`.
-         *
+         * 
          * Multiple anchors are primarily used by client-side image maps.
          * @param i a (zero-index) integer specifying the desired anchor
          * @returns a string specifying the URI
          */
         get_uri(i: number): string;
+
         /**
          * Indicates whether the link currently displays some or all of its
          *           content inline.  Ordinary HTML links will usually return
@@ -2188,11 +2248,13 @@ export namespace Atk {
          * @returns whether or not this link displays its content inline.
          */
         is_inline(): boolean;
+
         /**
          * Determines whether this AtkHyperlink is selected
          * @returns True if the AtkHyperlink is selected, False otherwise
          */
         is_selected_link(): boolean;
+
         /**
          * Since the document that a link is associated with may have changed
          * this method returns `true` if the link is still valid (with
@@ -2200,24 +2262,27 @@ export namespace Atk {
          * @returns whether or not this link is still valid
          */
         is_valid(): boolean;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @returns `true` if success, `false` otherwise
          */
         do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): string | null;
+        get_description(i: number): (string | null);
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -2230,7 +2295,7 @@ export namespace Atk {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -2238,13 +2303,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): string | null;
+        get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): string | null;
+        get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -2252,6 +2319,7 @@ export namespace Atk {
          * @returns a the number of actions, or 0 if `action` does not implement this interface.
          */
         get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -2262,7 +2330,7 @@ export namespace Atk {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -2270,7 +2338,8 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): string | null;
+        get_name(i: number): (string | null);
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -2278,24 +2347,27 @@ export namespace Atk {
          * @returns a gboolean representing if the description was successfully set;
          */
         set_description(i: number, desc: string): boolean;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
         vfunc_do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): string | null;
+        vfunc_get_description(i: number): (string | null);
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -2308,7 +2380,7 @@ export namespace Atk {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -2316,13 +2388,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): string | null;
+        vfunc_get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): string | null;
+        vfunc_get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -2330,6 +2404,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -2340,7 +2415,7 @@ export namespace Atk {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -2348,7 +2423,8 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): string | null;
+        vfunc_get_name(i: number): (string | null);
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -2358,18 +2434,21 @@ export namespace Atk {
         vfunc_set_description(i: number, desc: string): boolean;
     }
 
+
     namespace Misc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A set of ATK utility functions for thread locking
-     *
+     * 
      * A set of utility functions for thread locking. This interface and
      * all his related methods are deprecated since 2.12.
      * @gir-type Class
@@ -2387,41 +2466,30 @@ export namespace Atk {
         $signals: Misc.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Misc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Misc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Misc.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Misc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Misc.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Misc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Misc.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Misc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Misc.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Misc.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Misc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Misc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Misc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Obtain the singleton instance of AtkMisc for this application.
          */
         static get_instance(): Misc;
 
         // Virtual methods
-
         /**
          * Take the thread mutex for the GUI toolkit,
          * if one exists.
@@ -2430,6 +2498,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_threads_enter(): void;
+
         /**
          * Release the thread mutex for the GUI toolkit,
          * if one exists. This method, and atk_misc_threads_enter,
@@ -2445,7 +2514,6 @@ export namespace Atk {
         vfunc_threads_leave(): void;
 
         // Methods
-
         /**
          * Take the thread mutex for the GUI toolkit,
          * if one exists.
@@ -2453,6 +2521,7 @@ export namespace Atk {
          *  for instance, for GTK+, GAIL implements this via GDK_THREADS_ENTER).
          */
         threads_enter(): void;
+
         /**
          * Release the thread mutex for the GUI toolkit,
          * if one exists. This method, and atk_misc_threads_enter,
@@ -2467,72 +2536,45 @@ export namespace Atk {
         threads_leave(): void;
     }
 
+
     namespace NoOpObject {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps, Action.ConstructorProps, Component.ConstructorProps, Document.ConstructorProps, EditableText.ConstructorProps, Hypertext.ConstructorProps, Image.ConstructorProps, Selection.ConstructorProps, Table.ConstructorProps, TableCell.ConstructorProps, Text.ConstructorProps, Value.ConstructorProps, Window.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Object.ConstructorProps,
-                Action.ConstructorProps,
-                Component.ConstructorProps,
-                Document.ConstructorProps,
-                EditableText.ConstructorProps,
-                Hypertext.ConstructorProps,
-                Image.ConstructorProps,
-                Selection.ConstructorProps,
-                Table.ConstructorProps,
-                TableCell.ConstructorProps,
-                Text.ConstructorProps,
-                Value.ConstructorProps,
-                Window.ConstructorProps {}
+        }
     }
 
     /**
      * An AtkObject which purports to implement all ATK interfaces.
-     *
+     * 
      * An AtkNoOpObject is an AtkObject which purports to implement all
      * ATK interfaces. It is the type of AtkObject which is created if an
      * accessible object is requested for an object type for which no
      * factory type is specified.
      * @gir-type Class
      */
-    class NoOpObject
-        extends Object
-        implements
-            Action,
-            Component,
-            Document,
-            EditableText,
-            Hypertext,
-            Image,
-            Selection,
-            Table,
-            TableCell,
-            Text,
-            Value,
-            Window
-    {
+    class NoOpObject extends Object implements Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
         static $gtype: GObject.GType<NoOpObject>;
 
         /**
@@ -2545,56 +2587,51 @@ export namespace Atk {
         $signals: NoOpObject.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NoOpObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](obj: GObject.Object): NoOpObject;
+        static ["new"](obj: GObject.Object): NoOpObject;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NoOpObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoOpObject.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NoOpObject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoOpObject.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NoOpObject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoOpObject.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NoOpObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoOpObject.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NoOpObject.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NoOpObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NoOpObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoOpObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @returns `true` if success, `false` otherwise
          */
         do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): string | null;
+        get_description(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.get_description
         get_description(...args: never[]): any;
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -2607,7 +2644,7 @@ export namespace Atk {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -2615,13 +2652,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): string | null;
+        get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): string | null;
+        get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -2629,6 +2668,7 @@ export namespace Atk {
          * @returns a the number of actions, or 0 if `action` does not implement this interface.
          */
         get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -2639,7 +2679,7 @@ export namespace Atk {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -2647,12 +2687,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): string | null;
+        get_name(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.get_name
         get_name(...args: never[]): any;
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -2660,35 +2702,40 @@ export namespace Atk {
          * @returns a gboolean representing if the description was successfully set;
          */
         set_description(i: number, desc: string): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.set_description
         set_description(...args: never[]): any;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
         vfunc_do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): string | null;
+        vfunc_get_description(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_get_description
         vfunc_get_description(...args: never[]): any;
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -2701,7 +2748,7 @@ export namespace Atk {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -2709,13 +2756,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): string | null;
+        vfunc_get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): string | null;
+        vfunc_get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -2723,6 +2772,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -2733,7 +2783,7 @@ export namespace Atk {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -2741,13 +2791,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): string | null;
+        vfunc_get_name(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_get_name
         vfunc_get_name(...args: never[]): any;
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -2755,15 +2807,17 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_description(i: number, desc: string): boolean;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_set_description
         vfunc_set_description(...args: never[]): any;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -2773,6 +2827,7 @@ export namespace Atk {
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
         contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -2780,51 +2835,59 @@ export namespace Atk {
          * @returns An alpha value from 0 to 1.0, inclusive.
          */
         get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
          */
         get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: CoordType): [number, number];
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.TableCell.get_position
         get_position(...args: never[]): any;
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          */
         get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @returns `true` if successful, `false` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -2833,7 +2896,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -2841,9 +2905,10 @@ export namespace Atk {
          * @param handler_id the handler id of the focus handler to be removed from `component`
          */
         remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -2851,6 +2916,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -2860,6 +2926,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -2870,9 +2937,10 @@ export namespace Atk {
          * @returns `true` or `false` whether the extents were set or not
          */
         set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -2881,6 +2949,7 @@ export namespace Atk {
          * @returns `true` or `false` whether or not the position was set or not
          */
         set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -2888,14 +2957,16 @@ export namespace Atk {
          * @returns `true` or `false` whether the size was set or not
          */
         set_size(width: number, height: number): boolean;
+
         /**
-         * @param bounds
+         * @param bounds 
          * @virtual
          */
         vfunc_bounds_changed(bounds: Rectangle): void;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -2905,6 +2976,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -2912,55 +2984,63 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @virtual
          */
         vfunc_get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.TableCell.vfunc_get_position
         vfunc_get_position(...args: never[]): any;
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          * @virtual
          */
         vfunc_get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @virtual
          */
         vfunc_grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -2969,7 +3049,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -2978,9 +3059,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -2988,6 +3070,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -2997,6 +3080,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -3007,9 +3091,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -3018,6 +3103,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -3025,35 +3111,41 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_size(width: number, height: number): boolean;
+
         /**
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
          */
-        get_attribute_value(attribute_name: string): string | null;
+        get_attribute_value(attribute_name: string): (string | null);
+
         /**
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
          * @returns An AtkAttributeSet containing the explicitly          set name-value-pair attributes associated with this document          as a whole.
          */
         get_attributes(): AttributeSet;
+
         /**
          * Retrieves the current page number inside `document`.
          * @returns the current page number inside `document`, or -1 if   not implemented, not know by the implementor, or irrelevant.
          */
         get_current_page_number(): number;
+
         /**
          * Gets a %gpointer that points to an instance of the DOM.  It is
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
          * @returns a %gpointer that points to an instance of the DOM.
          */
-        get_document(): any | null;
+        get_document(): (any | null);
+
         /**
          * Gets a string indicating the document type.
          * @returns a string indicating the document type
          */
         get_document_type(): string;
+
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          *          of the content of this document instance.  Individual
@@ -3063,16 +3155,19 @@ export namespace Atk {
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
          */
         get_locale(): string;
+
         /**
          * Retrieves the total number of pages inside `document`.
          * @returns total page count of `document`, or -1 if not implemented,   not know by the implementor or irrelevant.
          */
         get_page_count(): number;
+
         /**
          * Returns an array of AtkTextSelections within this document.
          * @returns a GArray of AtkTextSelection structures representing the selection.
          */
         get_text_selections(): TextSelection[];
+
         /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
@@ -3080,6 +3175,7 @@ export namespace Atk {
          * @returns `true` if `attribute_value` is successfully associated   with `attribute_name` for this `document`, and `false` if if the   document does not allow the attribute to be modified
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
+
         /**
          * Makes 1 or more selections within this document denoted by the given
          * array of AtkTextSelections. Any existing physical selection (inside or
@@ -3090,30 +3186,35 @@ export namespace Atk {
          * @returns TRUE if the selection was made successfully; FALSE otherwise.
          */
         set_text_selections(selections: TextSelection[]): boolean;
+
         /**
          * Retrieves the current page number inside `document`.
          * @virtual
          */
         vfunc_get_current_page_number(): number;
+
         /**
          * Gets a %gpointer that points to an instance of the DOM.  It is
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
          * @virtual
          */
-        vfunc_get_document(): any | null;
+        vfunc_get_document(): (any | null);
+
         /**
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @virtual
          */
-        vfunc_get_document_attribute_value(attribute_name: string): string | null;
+        vfunc_get_document_attribute_value(attribute_name: string): (string | null);
+
         /**
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
          * @virtual
          */
         vfunc_get_document_attributes(): AttributeSet;
+
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          *          of the content of this document instance.  Individual
@@ -3123,21 +3224,25 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_document_locale(): string;
+
         /**
          * Gets a string indicating the document type.
          * @virtual
          */
         vfunc_get_document_type(): string;
+
         /**
          * Retrieves the total number of pages inside `document`.
          * @virtual
          */
         vfunc_get_page_count(): number;
+
         /**
          * Returns an array of AtkTextSelections within this document.
          * @virtual
          */
         vfunc_get_text_selections(): TextSelection[];
+
         /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
@@ -3145,6 +3250,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
+
         /**
          * Makes 1 or more selections within this document denoted by the given
          * array of AtkTextSelections. Any existing physical selection (inside or
@@ -3155,6 +3261,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_text_selections(selections: TextSelection[]): boolean;
+
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard.
@@ -3162,6 +3269,7 @@ export namespace Atk {
          * @param end_pos end position
          */
         copy_text(start_pos: number, end_pos: number): void;
+
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard and then delete from the widget.
@@ -3169,12 +3277,14 @@ export namespace Atk {
          * @param end_pos end position
          */
         cut_text(start_pos: number, end_pos: number): void;
+
         /**
          * Delete text `start_pos` up to, but not including `end_pos`.
          * @param start_pos start position
          * @param end_pos end position
          */
         delete_text(start_pos: number, end_pos: number): void;
+
         /**
          * Insert text at a given position.
          * @param string the text to insert
@@ -3182,11 +3292,13 @@ export namespace Atk {
          * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
          */
         insert_text(string: string, length: number, position: number): void;
+
         /**
          * Paste text from clipboard to specified `position`.
          * @param position position to paste
          */
         paste_text(position: number): void;
+
         /**
          * Sets the attributes for a specified range. See the ATK_ATTRIBUTE
          * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
@@ -3198,11 +3310,13 @@ export namespace Atk {
          * @returns `true` if attributes successfully set for the specified range, otherwise `false`
          */
         set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean;
+
         /**
          * Set text contents of `text`.
          * @param string string to set for text contents of `text`
          */
         set_text_contents(string: string): void;
+
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard.
@@ -3211,6 +3325,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_copy_text(start_pos: number, end_pos: number): void;
+
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard and then delete from the widget.
@@ -3219,6 +3334,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_cut_text(start_pos: number, end_pos: number): void;
+
         /**
          * Delete text `start_pos` up to, but not including `end_pos`.
          * @param start_pos start position
@@ -3226,6 +3342,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_delete_text(start_pos: number, end_pos: number): void;
+
         /**
          * Insert text at a given position.
          * @param string the text to insert
@@ -3234,12 +3351,14 @@ export namespace Atk {
          * @virtual
          */
         vfunc_insert_text(string: string, length: number, position: number): void;
+
         /**
          * Paste text from clipboard to specified `position`.
          * @param position position to paste
          * @virtual
          */
         vfunc_paste_text(position: number): void;
+
         /**
          * Sets the attributes for a specified range. See the ATK_ATTRIBUTE
          * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
@@ -3251,12 +3370,14 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean;
+
         /**
          * Set text contents of `text`.
          * @param string string to set for text contents of `text`
          * @virtual
          */
         vfunc_set_text_contents(string: string): void;
+
         /**
          * Gets the link in this hypertext document at index
          * `link_index`
@@ -3264,6 +3385,7 @@ export namespace Atk {
          * @returns the link in this hypertext document at index `link_index`
          */
         get_link(link_index: number): Hyperlink;
+
         /**
          * Gets the index into the array of hyperlinks that is associated with
          * the character specified by `char_index`.
@@ -3271,11 +3393,13 @@ export namespace Atk {
          * @returns an index into the array of hyperlinks in `hypertext`, or -1 if there is no hyperlink associated with this character.
          */
         get_link_index(char_index: number): number;
+
         /**
          * Gets the number of links within this hypertext document.
          * @returns the number of links within this hypertext document
          */
         get_n_links(): number;
+
         /**
          * Gets the link in this hypertext document at index
          * `link_index`
@@ -3283,6 +3407,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_link(link_index: number): Hyperlink;
+
         /**
          * Gets the index into the array of hyperlinks that is associated with
          * the character specified by `char_index`.
@@ -3290,86 +3415,99 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_link_index(char_index: number): number;
+
         /**
          * Gets the number of links within this hypertext document.
          * @virtual
          */
         vfunc_get_n_links(): number;
+
         /**
-         * @param link_index
+         * @param link_index 
          * @virtual
          */
         vfunc_link_selected(link_index: number): void;
+
         /**
          * Get a textual description of this image.
          * @returns a string representing the image description
          */
         get_image_description(): string;
+
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
          */
-        get_image_locale(): string | null;
+        get_image_locale(): (string | null);
+
         /**
          * Gets the position of the image in the form of a point specifying the
          * images top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. missing support), x and y are set
          * to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_image_position(coord_type: CoordType): [number, number];
+
         /**
          * Get the width and height in pixels for the specified image.
          * The values of `width` and `height` are returned as -1 if the
          * values cannot be obtained (for instance, if the object is not onscreen).
-         *
+         * 
          * If the size can not be obtained (e.g. missing support), x and y are set
          * to -1.
          */
         get_image_size(): [number, number];
+
         /**
          * Sets the textual description for this image.
          * @param description a string description to set for `image`
          * @returns boolean TRUE, or FALSE if operation could not be completed.
          */
         set_image_description(description: string): boolean;
+
         /**
          * Get a textual description of this image.
          * @virtual
          */
         vfunc_get_image_description(): string;
+
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @virtual
          */
-        vfunc_get_image_locale(): string | null;
+        vfunc_get_image_locale(): (string | null);
+
         /**
          * Gets the position of the image in the form of a point specifying the
          * images top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. missing support), x and y are set
          * to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_image_position(coord_type: CoordType): [number, number];
+
         /**
          * Get the width and height in pixels for the specified image.
          * The values of `width` and `height` are returned as -1 if the
          * values cannot be obtained (for instance, if the object is not onscreen).
-         *
+         * 
          * If the size can not be obtained (e.g. missing support), x and y are set
          * to -1.
          * @virtual
          */
         vfunc_get_image_size(): [number, number];
+
         /**
          * Sets the textual description for this image.
          * @param description a string description to set for `image`
          * @virtual
          */
         vfunc_set_image_description(description: string): boolean;
+
         /**
          * Adds the specified accessible child of the object to the
          * object's selection.
@@ -3377,12 +3515,14 @@ export namespace Atk {
          * @returns TRUE if success, FALSE otherwise.
          */
         add_selection(i: number): boolean;
+
         /**
          * Clears the selection in the object so that no children in the object
          * are selected.
          * @returns TRUE if success, FALSE otherwise.
          */
         clear_selection(): boolean;
+
         /**
          * Gets the number of accessible children currently selected.
          * Note: callers should not rely on `null` or on a zero value for
@@ -3392,6 +3532,7 @@ export namespace Atk {
          * @returns a gint representing the number of items selected, or 0 if `selection` does not implement this interface.
          */
         get_selection_count(): number;
+
         /**
          * Determines if the current child of this object is selected
          * Note: callers should not rely on `null` or on a zero value for
@@ -3402,6 +3543,7 @@ export namespace Atk {
          * @returns a gboolean representing the specified child is selected, or 0 if `selection` does not implement this interface.
          */
         is_child_selected(i: number): boolean;
+
         /**
          * Gets a reference to the accessible object representing the specified
          * selected child of the object.
@@ -3412,19 +3554,22 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns an {@link Atk.Object} representing the selected accessible, or `null` if `selection` does not implement this interface.
          */
-        ref_selection(i: number): Object | null;
+        ref_selection(i: number): (Object | null);
+
         /**
          * Removes the specified child of the object from the object's selection.
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns TRUE if success, FALSE otherwise.
          */
         remove_selection(i: number): boolean;
+
         /**
          * Causes every child of the object to be selected if the object
          * supports multiple selections.
          * @returns TRUE if success, FALSE otherwise.
          */
         select_all_selection(): boolean;
+
         /**
          * Adds the specified accessible child of the object to the
          * object's selection.
@@ -3432,12 +3577,14 @@ export namespace Atk {
          * @virtual
          */
         vfunc_add_selection(i: number): boolean;
+
         /**
          * Clears the selection in the object so that no children in the object
          * are selected.
          * @virtual
          */
         vfunc_clear_selection(): boolean;
+
         /**
          * Gets the number of accessible children currently selected.
          * Note: callers should not rely on `null` or on a zero value for
@@ -3447,6 +3594,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_selection_count(): number;
+
         /**
          * Determines if the current child of this object is selected
          * Note: callers should not rely on `null` or on a zero value for
@@ -3457,6 +3605,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_is_child_selected(i: number): boolean;
+
         /**
          * Gets a reference to the accessible object representing the specified
          * selected child of the object.
@@ -3467,52 +3616,61 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @virtual
          */
-        vfunc_ref_selection(i: number): Object | null;
+        vfunc_ref_selection(i: number): (Object | null);
+
         /**
          * Removes the specified child of the object from the object's selection.
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @virtual
          */
         vfunc_remove_selection(i: number): boolean;
+
         /**
          * Causes every child of the object to be selected if the object
          * supports multiple selections.
          * @virtual
          */
         vfunc_select_all_selection(): boolean;
+
         /**
          * @virtual
          */
         vfunc_selection_changed(): void;
+
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @returns a gboolean representing if the column was successfully added to the selection, or 0 if value does not implement this interface.
          */
         add_column_selection(column: number): boolean;
+
         /**
          * Adds the specified `row` to the selection.
          * @param row a `gint` representing a row in `table`
          * @returns a gboolean representing if row was successfully added to selection, or 0 if value does not implement this interface.
          */
         add_row_selection(row: number): boolean;
+
         /**
          * Gets the caption for the `table`.
          * @returns a AtkObject* representing the table caption, or `null` if value does not implement this interface.
          */
-        get_caption(): Object | null;
+        get_caption(): (Object | null);
+
         /**
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the column at the specified index, or -1 if the table does not implement this method.
          */
         get_column_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified `column` in the table
          * @param column a `gint` representing a column in `table`
          * @returns a gchar* representing the column description, or `null` if value does not implement this interface.
          */
         get_column_description(column: number): string;
+
         /**
          * Gets the number of columns occupied by the accessible object
          * at the specified `row` and `column` in the `table`.
@@ -3521,12 +3679,14 @@ export namespace Atk {
          * @returns a gint representing the column extent at specified position, or 0 if value does not implement this interface.
          */
         get_column_extent_at(row: number, column: number): number;
+
         /**
          * Gets the column header of a specified column in an accessible table.
          * @param column a `gint` representing a column in the table
          * @returns a AtkObject* representing the specified column header, or `null` if value does not implement this interface.
          */
-        get_column_header(column: number): Object | null;
+        get_column_header(column: number): (Object | null);
+
         /**
          * Gets a `gint` representing the index at the specified `row` and
          * `column`.
@@ -3535,28 +3695,33 @@ export namespace Atk {
          * @returns a `gint` representing the index at specified position. The value -1 is returned if the object at row,column is not a child of table or table does not implement this interface.
          */
         get_index_at(row: number, column: number): number;
+
         /**
          * Gets the number of columns in the table.
          * @returns a gint representing the number of columns, or 0 if value does not implement this interface.
          */
         get_n_columns(): number;
+
         /**
          * Gets the number of rows in the table.
          * @returns a gint representing the number of rows, or 0 if value does not implement this interface.
          */
         get_n_rows(): number;
+
         /**
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the row at the specified index, or -1 if the table does not implement this method.
          */
         get_row_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified row in the table
          * @param row a `gint` representing a row in `table`
          * @returns a gchar* representing the row description, or `null` if value does not implement this interface.
          */
-        get_row_description(row: number): string | null;
+        get_row_description(row: number): (string | null);
+
         /**
          * Gets the number of rows occupied by the accessible object
          * at a specified `row` and `column` in the `table`.
@@ -3565,12 +3730,14 @@ export namespace Atk {
          * @returns a gint representing the row extent at specified position, or 0 if value does not implement this interface.
          */
         get_row_extent_at(row: number, column: number): number;
+
         /**
          * Gets the row header of a specified row in an accessible table.
          * @param row a `gint` representing a row in the table
          * @returns a AtkObject* representing the specified row header, or `null` if value does not implement this interface.
          */
-        get_row_header(row: number): Object | null;
+        get_row_header(row: number): (Object | null);
+
         /**
          * Gets the selected columns of the table by initializing **selected with
          * the selected column numbers. This array should be freed by the caller.
@@ -3578,6 +3745,7 @@ export namespace Atk {
          * @returns a gint representing the number of selected columns, or %0 if value does not implement this interface.
          */
         get_selected_columns(selected: number): number;
+
         /**
          * Gets the selected rows of the table by initializing **selected with
          * the selected row numbers. This array should be freed by the caller.
@@ -3585,11 +3753,13 @@ export namespace Atk {
          * @returns a gint representing the number of selected rows, or zero if value does not implement this interface.
          */
         get_selected_rows(selected: number): number;
+
         /**
          * Gets the summary description of the table.
          * @returns a AtkObject* representing a summary description of the table, or zero if value does not implement this interface.
          */
         get_summary(): Object;
+
         /**
          * Gets a boolean value indicating whether the specified `column`
          * is selected
@@ -3597,6 +3767,7 @@ export namespace Atk {
          * @returns a gboolean representing if the column is selected, or 0 if value does not implement this interface.
          */
         is_column_selected(column: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the specified `row`
          * is selected
@@ -3604,6 +3775,7 @@ export namespace Atk {
          * @returns a gboolean representing if the row is selected, or 0 if value does not implement this interface.
          */
         is_row_selected(row: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the accessible object
          * at the specified `row` and `column` is selected
@@ -3612,6 +3784,7 @@ export namespace Atk {
          * @returns a gboolean representing if the cell is selected, or 0 if value does not implement this interface.
          */
         is_selected(row: number, column: number): boolean;
+
         /**
          * Get a reference to the table cell at `row`, `column`. This cell
          * should implement the interface {@link Atk.TableCell}
@@ -3620,97 +3793,114 @@ export namespace Atk {
          * @returns an {@link Atk.Object} representing the referred to accessible
          */
         ref_at(row: number, column: number): Object;
+
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @returns a gboolean representing if the column was successfully removed from the selection, or 0 if value does not implement this interface.
          */
         remove_column_selection(column: number): boolean;
+
         /**
          * Removes the specified `row` from the selection.
          * @param row a `gint` representing a row in `table`
          * @returns a gboolean representing if the row was successfully removed from the selection, or 0 if value does not implement this interface.
          */
         remove_row_selection(row: number): boolean;
+
         /**
          * Sets the caption for the table.
          * @param caption a {@link Atk.Object} representing the caption to set for `table`
          */
         set_caption(caption: Object): void;
+
         /**
          * Sets the description text for the specified `column` of the `table`.
          * @param column a `gint` representing a column in `table`
          * @param description a `gchar` representing the description text to set for the specified `column` of the `table`
          */
         set_column_description(column: number, description: string): void;
+
         /**
          * Sets the specified column header to `header`.
          * @param column a `gint` representing a column in `table`
          * @param header an {@link Atk.Table}
          */
         set_column_header(column: number, header: Object): void;
+
         /**
          * Sets the description text for the specified `row` of `table`.
          * @param row a `gint` representing a row in `table`
          * @param description a `gchar` representing the description text to set for the specified `row` of `table`
          */
         set_row_description(row: number, description: string): void;
+
         /**
          * Sets the specified row header to `header`.
          * @param row a `gint` representing a row in `table`
          * @param header an {@link Atk.Table}
          */
         set_row_header(row: number, header: Object): void;
+
         /**
          * Sets the summary description of the table.
          * @param accessible an {@link Atk.Object} representing the summary description to set for `table`
          */
         set_summary(accessible: Object): void;
+
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @virtual
          */
         vfunc_add_column_selection(column: number): boolean;
+
         /**
          * Adds the specified `row` to the selection.
          * @param row a `gint` representing a row in `table`
          * @virtual
          */
         vfunc_add_row_selection(row: number): boolean;
+
         /**
-         * @param column
-         * @param num_deleted
+         * @param column 
+         * @param num_deleted 
          * @virtual
          */
         vfunc_column_deleted(column: number, num_deleted: number): void;
+
         /**
-         * @param column
-         * @param num_inserted
+         * @param column 
+         * @param num_inserted 
          * @virtual
          */
         vfunc_column_inserted(column: number, num_inserted: number): void;
+
         /**
          * @virtual
          */
         vfunc_column_reordered(): void;
+
         /**
          * Gets the caption for the `table`.
          * @virtual
          */
-        vfunc_get_caption(): Object | null;
+        vfunc_get_caption(): (Object | null);
+
         /**
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @virtual
          */
         vfunc_get_column_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified `column` in the table
          * @param column a `gint` representing a column in `table`
          * @virtual
          */
         vfunc_get_column_description(column: number): string;
+
         /**
          * Gets the number of columns occupied by the accessible object
          * at the specified `row` and `column` in the `table`.
@@ -3719,12 +3909,14 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_column_extent_at(row: number, column: number): number;
+
         /**
          * Gets the column header of a specified column in an accessible table.
          * @param column a `gint` representing a column in the table
          * @virtual
          */
-        vfunc_get_column_header(column: number): Object | null;
+        vfunc_get_column_header(column: number): (Object | null);
+
         /**
          * Gets a `gint` representing the index at the specified `row` and
          * `column`.
@@ -3733,28 +3925,33 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_index_at(row: number, column: number): number;
+
         /**
          * Gets the number of columns in the table.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Gets the number of rows in the table.
          * @virtual
          */
         vfunc_get_n_rows(): number;
+
         /**
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @virtual
          */
         vfunc_get_row_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified row in the table
          * @param row a `gint` representing a row in `table`
          * @virtual
          */
-        vfunc_get_row_description(row: number): string | null;
+        vfunc_get_row_description(row: number): (string | null);
+
         /**
          * Gets the number of rows occupied by the accessible object
          * at a specified `row` and `column` in the `table`.
@@ -3763,12 +3960,14 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_row_extent_at(row: number, column: number): number;
+
         /**
          * Gets the row header of a specified row in an accessible table.
          * @param row a `gint` representing a row in the table
          * @virtual
          */
-        vfunc_get_row_header(row: number): Object | null;
+        vfunc_get_row_header(row: number): (Object | null);
+
         /**
          * Gets the selected columns of the table by initializing **selected with
          * the selected column numbers. This array should be freed by the caller.
@@ -3776,6 +3975,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_selected_columns(selected: number): number;
+
         /**
          * Gets the selected rows of the table by initializing **selected with
          * the selected row numbers. This array should be freed by the caller.
@@ -3783,11 +3983,13 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_selected_rows(selected: number): number;
+
         /**
          * Gets the summary description of the table.
          * @virtual
          */
         vfunc_get_summary(): Object;
+
         /**
          * Gets a boolean value indicating whether the specified `column`
          * is selected
@@ -3795,6 +3997,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_is_column_selected(column: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the specified `row`
          * is selected
@@ -3802,6 +4005,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_is_row_selected(row: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the accessible object
          * at the specified `row` and `column` is selected
@@ -3810,10 +4014,12 @@ export namespace Atk {
          * @virtual
          */
         vfunc_is_selected(row: number, column: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_model_changed(): void;
+
         /**
          * Get a reference to the table cell at `row`, `column`. This cell
          * should implement the interface {@link Atk.TableCell}
@@ -3822,40 +4028,47 @@ export namespace Atk {
          * @virtual
          */
         vfunc_ref_at(row: number, column: number): Object;
+
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @virtual
          */
         vfunc_remove_column_selection(column: number): boolean;
+
         /**
          * Removes the specified `row` from the selection.
          * @param row a `gint` representing a row in `table`
          * @virtual
          */
         vfunc_remove_row_selection(row: number): boolean;
+
         /**
-         * @param row
-         * @param num_deleted
+         * @param row 
+         * @param num_deleted 
          * @virtual
          */
         vfunc_row_deleted(row: number, num_deleted: number): void;
+
         /**
-         * @param row
-         * @param num_inserted
+         * @param row 
+         * @param num_inserted 
          * @virtual
          */
         vfunc_row_inserted(row: number, num_inserted: number): void;
+
         /**
          * @virtual
          */
         vfunc_row_reordered(): void;
+
         /**
          * Sets the caption for the table.
          * @param caption a {@link Atk.Object} representing the caption to set for `table`
          * @virtual
          */
         vfunc_set_caption(caption: Object): void;
+
         /**
          * Sets the description text for the specified `column` of the `table`.
          * @param column a `gint` representing a column in `table`
@@ -3863,6 +4076,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_column_description(column: number, description: string): void;
+
         /**
          * Sets the specified column header to `header`.
          * @param column a `gint` representing a column in `table`
@@ -3870,6 +4084,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_column_header(column: number, header: Object): void;
+
         /**
          * Sets the description text for the specified `row` of `table`.
          * @param row a `gint` representing a row in `table`
@@ -3877,6 +4092,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_row_description(row: number, description: string): void;
+
         /**
          * Sets the specified row header to `header`.
          * @param row a `gint` representing a row in `table`
@@ -3884,80 +4100,94 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_row_header(row: number, header: Object): void;
+
         /**
          * Sets the summary description of the table.
          * @param accessible an {@link Atk.Object} representing the summary description to set for `table`
          * @virtual
          */
         vfunc_set_summary(accessible: Object): void;
+
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the column header cells.
          */
         get_column_header_cells(): Object[];
+
         /**
          * Returns the number of columns occupied by this cell accessible.
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_column_span(): number;
+
         /**
          * Gets the row and column indexes and span of this cell accessible.
-         *
+         * 
          * Note: If the object does not implement this function, then, by default, atk
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
          * @returns TRUE if successful; FALSE otherwise.
          */
         get_row_column_span(): [boolean, number, number, number, number];
+
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the row header cells.
          */
         get_row_header_cells(): Object[];
+
         /**
          * Returns the number of rows occupied by this cell accessible.
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_row_span(): number;
+
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the atk object for the containing table.
          */
         get_table(): Object;
+
         /**
          * Returns the column headers as an array of cell accessibles.
          * @virtual
          */
         vfunc_get_column_header_cells(): Object[];
+
         /**
          * Returns the number of columns occupied by this cell accessible.
          * @virtual
          */
         vfunc_get_column_span(): number;
+
         /**
          * Gets the row and column indexes and span of this cell accessible.
-         *
+         * 
          * Note: If the object does not implement this function, then, by default, atk
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
          * @virtual
          */
         vfunc_get_row_column_span(): [boolean, number, number, number, number];
+
         /**
          * Returns the row headers as an array of cell accessibles.
          * @virtual
          */
         vfunc_get_row_header_cells(): Object[];
+
         /**
          * Returns the number of rows occupied by this cell accessible.
          * @virtual
          */
         vfunc_get_row_span(): number;
+
         /**
          * Returns a reference to the accessible of the containing table.
          * @virtual
          */
         vfunc_get_table(): Object;
+
         /**
          * Get the ranges of text in the specified bounding box.
          * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
@@ -3966,38 +4196,38 @@ export namespace Atk {
          * @param y_clip_type Specify the vertical clip type.
          * @returns Array of AtkTextRange. The last          element of the array returned by this function will be NULL.
          */
-        get_bounded_ranges(
-            rect: TextRectangle,
-            coord_type: CoordType,
-            x_clip_type: TextClipType,
-            y_clip_type: TextClipType,
-        ): TextRange[];
+        get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
+
         /**
          * Gets the offset of the position of the caret (cursor).
          * @returns the character offset of the position of the caret or -1 if          the caret is not located inside the element or in the case of          any other failure.
          */
         get_caret_offset(): number;
+
         /**
          * Gets the specified text.
          * @param offset a character offset within `text`
          * @returns the character at `offset` or 0 in the case of failure.
          */
         get_character_at_offset(offset: number): string;
+
         /**
          * Gets the character count.
          * @returns the number of characters or -1 in case of failure.
          */
         get_character_count(): number;
+
         /**
          * If the extent can not be obtained (e.g. missing support), all of x, y, width,
          * height are set to -1.
-         *
+         * 
          * Get the bounding box containing the glyph representing the character at
          *     a particular text offset.
          * @param offset The offset of the text character for which bounding information is required.
          * @param coords specify whether coordinates are relative to the screen or widget window
          */
         get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the default values of
          * attributes for the text. See the enum AtkTextAttribute for types of text
@@ -4006,11 +4236,13 @@ export namespace Atk {
          * @returns an {@link Atk.AttributeSet} which contains the default text          attributes for this {@link Atk.Text}. This {@link Atk.AttributeSet} should be freed by          a call to `atk_attribute_set_free()`.
          */
         get_default_attributes(): AttributeSet;
+
         /**
          * Gets the number of selected regions.
          * @returns The number of selected regions, or -1 in the case of failure.
          */
         get_n_selections(): number;
+
         /**
          * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
          * are interpreted as being relative to the screen or this widget's window
@@ -4021,9 +4253,10 @@ export namespace Atk {
          * @returns the offset to the character which is located at  the specified          `x` and `y` coordinates of -1 in case of failure.
          */
         get_offset_at_point(x: number, y: number, coords: CoordType): number;
+
         /**
          * Get the bounding box for text within the specified range.
-         *
+         * 
          * If the extents can not be obtained (e.g. or missing support), the rectangle
          * fields are set to -1.
          * @param start_offset The offset of the first text character for which boundary        information is required.
@@ -4031,6 +4264,7 @@ export namespace Atk {
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
          */
         get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the attributes explicitly
          * set at the position `offset` in the text. `start_offset` and `end_offset` are
@@ -4043,40 +4277,42 @@ export namespace Atk {
          * @returns an {@link Atk.AttributeSet} which contains the attributes         explicitly set at `offset`. This {@link Atk.AttributeSet} should be freed by         a call to `atk_attribute_set_free()`.
          */
         get_run_attributes(offset: number): [AttributeSet, number, number];
+
         /**
          * Gets the text from the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
          * @returns a newly allocated string containing the selected text. Use `g_free()`          to free the returned string.
          */
         get_selection(selection_num: number): [string, number, number];
+
         /**
          * Gets a portion of the text exposed through an {@link Atk.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_WORD the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_SENTENCE the returned string
          * is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_LINE the returned string
          * is from the line start at or before the offset to the line
          * start after the offset.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
          * is from the start of the paragraph at or before the offset to the start
          * of the following paragraph after the offset.
@@ -4084,7 +4320,8 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
+        get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+
         /**
          * Gets the specified text.
          * @param start_offset a starting character offset within `text`
@@ -4092,6 +4329,7 @@ export namespace Atk {
          * @returns a newly allocated string containing the text from `start_offset` up          to, but not including `end_offset`. Use `g_free()` to free the returned          string.
          */
         get_text(start_offset: number, end_offset: number): string;
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -4099,28 +4337,29 @@ export namespace Atk {
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
-         *
+         * 
          * If the boundary_type if ATK_TEXT_BOUNDARY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If the boundary_type is ATK_TEXT_BOUNDARY_WORD_START the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_SENTENCE_START the returned
          * string is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
          * string is from the line start at or before the offset to the line
          * start after the offset.
@@ -4129,6 +4368,7 @@ export namespace Atk {
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -4136,6 +4376,7 @@ export namespace Atk {
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
          * @param start_offset start offset in the `text`
@@ -4144,6 +4385,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
         /**
          * Move the top-left of a substring of `text` to a given position of the screen
          * by scrolling all necessary parents.
@@ -4154,16 +4396,11 @@ export namespace Atk {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_substring_to_point(
-            start_offset: number,
-            end_offset: number,
-            coords: CoordType,
-            x: number,
-            y: number,
-        ): boolean;
+        scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the caret (cursor) position to the specified `offset`.
-         *
+         * 
          * In the case of rich-text content, this method should either grab focus
          * or move the sequential focus navigation starting point (if the application
          * supports this concept) as if the user had clicked on the new caret position.
@@ -4171,7 +4408,7 @@ export namespace Atk {
          * the new caret position or one of its ancestors. In other words, after this
          * method is called, if the user advances focus, it should move to the first
          * focusable node following the new caret position.
-         *
+         * 
          * Calling this method should also scroll the application viewport in a way
          * that matches the behavior of the application's typical caret motion or tab
          * navigation as closely as possible. This also means that if the application's
@@ -4183,6 +4420,7 @@ export namespace Atk {
          * @returns `true` if successful, `false` otherwise.
          */
         set_caret_offset(offset: number): boolean;
+
         /**
          * Changes the start and end offset of the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
@@ -4191,6 +4429,7 @@ export namespace Atk {
          * @returns `true` if successful, `false` otherwise
          */
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
+
         /**
          * Get the ranges of text in the specified bounding box.
          * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
@@ -4199,32 +4438,31 @@ export namespace Atk {
          * @param y_clip_type Specify the vertical clip type.
          * @virtual
          */
-        vfunc_get_bounded_ranges(
-            rect: TextRectangle,
-            coord_type: CoordType,
-            x_clip_type: TextClipType,
-            y_clip_type: TextClipType,
-        ): TextRange[];
+        vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
+
         /**
          * Gets the offset of the position of the caret (cursor).
          * @virtual
          */
         vfunc_get_caret_offset(): number;
+
         /**
          * Gets the specified text.
          * @param offset a character offset within `text`
          * @virtual
          */
         vfunc_get_character_at_offset(offset: number): string;
+
         /**
          * Gets the character count.
          * @virtual
          */
         vfunc_get_character_count(): number;
+
         /**
          * If the extent can not be obtained (e.g. missing support), all of x, y, width,
          * height are set to -1.
-         *
+         * 
          * Get the bounding box containing the glyph representing the character at
          *     a particular text offset.
          * @param offset The offset of the text character for which bounding information is required.
@@ -4232,6 +4470,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the default values of
          * attributes for the text. See the enum AtkTextAttribute for types of text
@@ -4240,11 +4479,13 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_default_attributes(): AttributeSet;
+
         /**
          * Gets the number of selected regions.
          * @virtual
          */
         vfunc_get_n_selections(): number;
+
         /**
          * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
          * are interpreted as being relative to the screen or this widget's window
@@ -4255,9 +4496,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number;
+
         /**
          * Get the bounding box for text within the specified range.
-         *
+         * 
          * If the extents can not be obtained (e.g. or missing support), the rectangle
          * fields are set to -1.
          * @param start_offset The offset of the first text character for which boundary        information is required.
@@ -4266,6 +4508,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the attributes explicitly
          * set at the position `offset` in the text. `start_offset` and `end_offset` are
@@ -4278,40 +4521,42 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_run_attributes(offset: number): [AttributeSet, number, number];
+
         /**
          * Gets the text from the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
          * @virtual
          */
         vfunc_get_selection(selection_num: number): [string, number, number];
+
         /**
          * Gets a portion of the text exposed through an {@link Atk.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_WORD the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_SENTENCE the returned string
          * is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_LINE the returned string
          * is from the line start at or before the offset to the line
          * start after the offset.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
          * is from the start of the paragraph at or before the offset to the start
          * of the following paragraph after the offset.
@@ -4319,7 +4564,8 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @virtual
          */
-        vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
+        vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+
         /**
          * Gets the specified text.
          * @param start_offset a starting character offset within `text`
@@ -4327,6 +4573,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_text(start_offset: number, end_offset: number): string;
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -4334,28 +4581,29 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
-         *
+         * 
          * If the boundary_type if ATK_TEXT_BOUNDARY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If the boundary_type is ATK_TEXT_BOUNDARY_WORD_START the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_SENTENCE_START the returned
          * string is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
          * string is from the line start at or before the offset to the line
          * start after the offset.
@@ -4364,6 +4612,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -4371,6 +4620,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
          * @param start_offset start offset in the `text`
@@ -4379,6 +4629,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
         /**
          * Move the top-left of a substring of `text` to a given position of the screen
          * by scrolling all necessary parents.
@@ -4389,16 +4640,11 @@ export namespace Atk {
          * @param y y-position where to scroll to
          * @virtual
          */
-        vfunc_scroll_substring_to_point(
-            start_offset: number,
-            end_offset: number,
-            coords: CoordType,
-            x: number,
-            y: number,
-        ): boolean;
+        vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the caret (cursor) position to the specified `offset`.
-         *
+         * 
          * In the case of rich-text content, this method should either grab focus
          * or move the sequential focus navigation starting point (if the application
          * supports this concept) as if the user had clicked on the new caret position.
@@ -4406,7 +4652,7 @@ export namespace Atk {
          * the new caret position or one of its ancestors. In other words, after this
          * method is called, if the user advances focus, it should move to the first
          * focusable node following the new caret position.
-         *
+         * 
          * Calling this method should also scroll the application viewport in a way
          * that matches the behavior of the application's typical caret motion or tab
          * navigation as closely as possible. This also means that if the application's
@@ -4418,6 +4664,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_caret_offset(offset: number): boolean;
+
         /**
          * Changes the start and end offset of the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
@@ -4426,32 +4673,38 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_text_attributes_changed(): void;
+
         /**
-         * @param location
+         * @param location 
          * @virtual
          */
         vfunc_text_caret_moved(location: number): void;
+
         /**
          * the signal handler which is executed when there is a
          *   text change. This virtual function is deprecated sice 2.9.4 and
          *   it should not be overriden.
-         * @param position
-         * @param length
+         * @param position 
+         * @param length 
          * @virtual
          */
         vfunc_text_changed(position: number, length: number): void;
+
         /**
          * @virtual
          */
         vfunc_text_selection_changed(): void;
+
         /**
          * Gets the value of this object.
          */
         get_current_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be
          * changed.  If zero, the minimum increment is undefined, which may
@@ -4460,52 +4713,60 @@ export namespace Atk {
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
          */
         get_increment(): number;
+
         /**
          * Gets the maximum value of this object.
          */
         get_maximum_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
          */
         get_minimum_increment(): unknown;
+
         /**
          * Gets the minimum value of this object.
          */
         get_minimum_value(): unknown;
+
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): Range | null;
+        get_range(): (Range | null);
+
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
          */
         get_sub_ranges(): Range[];
+
         /**
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
          */
         get_value_and_text(): [number, string];
+
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: GObject.Value | any): boolean;
+        set_current_value(value: (GObject.Value | any)): boolean;
+
         /**
          * Sets the value of this object.
-         *
+         * 
          * This method is intended to provide a way to change the value of the
          * object. In any case, it is possible that the value can't be
          * modified (ie: a read-only component). If the value changes due this
          * call, it is possible that the text could change, and will trigger
          * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-         *
+         * 
          * Note for implementors: the deprecated `atk_value_set_current_value()`
          * method returned TRUE or FALSE depending if the value was assigned
          * or not. In the practice several implementors were not able to
@@ -4515,11 +4776,13 @@ export namespace Atk {
          * @param new_value a double which is the desired new accessible value.
          */
         set_value(new_value: number): void;
+
         /**
          * Gets the value of this object.
          * @virtual
          */
         vfunc_get_current_value(): GObject.Value | any;
+
         /**
          * Gets the minimum increment by which the value of this object may be
          * changed.  If zero, the minimum increment is undefined, which may
@@ -4528,11 +4791,13 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_increment(): number;
+
         /**
          * Gets the maximum value of this object.
          * @virtual
          */
         vfunc_get_maximum_value(): GObject.Value | any;
+
         /**
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
@@ -4540,22 +4805,26 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_minimum_increment(): GObject.Value | any;
+
         /**
          * Gets the minimum value of this object.
          * @virtual
          */
         vfunc_get_minimum_value(): GObject.Value | any;
+
         /**
          * Gets the range of this object.
          * @virtual
          */
-        vfunc_get_range(): Range | null;
+        vfunc_get_range(): (Range | null);
+
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @virtual
          */
         vfunc_get_sub_ranges(): Range[];
+
         /**
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
@@ -4563,21 +4832,23 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_value_and_text(): [number, string];
+
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @virtual
          */
         vfunc_set_current_value(value: unknown): boolean;
+
         /**
          * Sets the value of this object.
-         *
+         * 
          * This method is intended to provide a way to change the value of the
          * object. In any case, it is possible that the value can't be
          * modified (ie: a read-only component). If the value changes due this
          * call, it is possible that the text could change, and will trigger
          * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-         *
+         * 
          * Note for implementors: the deprecated `atk_value_set_current_value()`
          * method returned TRUE or FALSE depending if the value was assigned
          * or not. In the practice several implementors were not able to
@@ -4590,18 +4861,21 @@ export namespace Atk {
         vfunc_set_value(new_value: number): void;
     }
 
+
     namespace NoOpObjectFactory {
         // Signal signatures
-        interface SignalSignatures extends ObjectFactory.SignalSignatures {}
+        interface SignalSignatures extends ObjectFactory.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ObjectFactory.ConstructorProps {
 
-        interface ConstructorProps extends ObjectFactory.ConstructorProps {}
+        }
     }
 
     /**
      * The AtkObjectFactory which creates an AtkNoOpObject.
-     *
+     * 
      * The AtkObjectFactory which creates an AtkNoOpObject. An instance of
      * this is created by an AtkRegistry if no factory type has not been
      * specified to create an accessible object of a particular type.
@@ -4620,34 +4894,26 @@ export namespace Atk {
         $signals: NoOpObjectFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NoOpObjectFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): NoOpObjectFactory;
+        static ["new"](): NoOpObjectFactory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NoOpObjectFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoOpObjectFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NoOpObjectFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoOpObjectFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NoOpObjectFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoOpObjectFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NoOpObjectFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoOpObjectFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NoOpObjectFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NoOpObjectFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NoOpObjectFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoOpObjectFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Object {
         // Signal signatures
@@ -4661,11 +4927,11 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed': (arg0: Object) => void;
+            "active-descendant-changed": (arg0: Object) => void;
             /**
              * The "announcement" signal can be emitted to pass an announcement on to
              * be read by a screen reader.
-             *
+             * 
              * Depcrecated (2.50): Use AtkObject::notification instead.
              * @signal
              * @since 2.46
@@ -4679,7 +4945,7 @@ export namespace Atk {
              * @since 2.52
              * @run-last
              */
-            'attribute-changed': (arg0: string, arg1: string) => void;
+            "attribute-changed": (arg0: string, arg1: string) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4688,7 +4954,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed': (arg0: number, arg1: Object) => void;
+            "children-changed": (arg0: number, arg1: Object) => void;
             /**
              * The signal "focus-event" is emitted when an object gained or lost
              * focus.
@@ -4696,7 +4962,7 @@ export namespace Atk {
              * @deprecated since 2.9.4: Use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} signal instead.
              * @run-last
              */
-            'focus-event': (arg0: boolean) => void;
+            "focus-event": (arg0: boolean) => void;
             /**
              * The "notification" signal can be emitted to pass an announcement on to
              * be read by a screen reader.
@@ -4713,7 +4979,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -4723,7 +4989,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change': (arg0: PropertyValues) => void;
+            "property-change": (arg0: PropertyValues) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -4732,31 +4998,31 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change': (arg0: string, arg1: boolean) => void;
+            "state-change": (arg0: string, arg1: boolean) => void;
             /**
              * The "visible-data-changed" signal is emitted when the visual
              * appearance of the object changed.
              * @signal
              * @run-last
              */
-            'visible-data-changed': () => void;
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "visible-data-changed": () => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4766,7 +5032,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-component-layer': (arg0: Object) => void;
+            "active-descendant-changed::accessible-component-layer": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4776,7 +5042,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-component-mdi-zorder': (arg0: Object) => void;
+            "active-descendant-changed::accessible-component-mdi-zorder": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4786,7 +5052,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-description': (arg0: Object) => void;
+            "active-descendant-changed::accessible-description": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4796,7 +5062,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-help-text': (arg0: Object) => void;
+            "active-descendant-changed::accessible-help-text": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4806,7 +5072,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-hypertext-nlinks': (arg0: Object) => void;
+            "active-descendant-changed::accessible-hypertext-nlinks": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4816,7 +5082,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-id': (arg0: Object) => void;
+            "active-descendant-changed::accessible-id": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4826,7 +5092,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-name': (arg0: Object) => void;
+            "active-descendant-changed::accessible-name": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4836,7 +5102,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-parent': (arg0: Object) => void;
+            "active-descendant-changed::accessible-parent": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4846,7 +5112,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-role': (arg0: Object) => void;
+            "active-descendant-changed::accessible-role": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4856,7 +5122,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-caption': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-caption": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4866,7 +5132,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-caption-object': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-caption-object": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4876,7 +5142,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-column-description': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-column-description": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4886,7 +5152,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-column-header': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-column-header": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4896,7 +5162,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-row-description': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-row-description": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4906,7 +5172,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-row-header': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-row-header": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4916,7 +5182,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-table-summary': (arg0: Object) => void;
+            "active-descendant-changed::accessible-table-summary": (arg0: Object) => void;
             /**
              * The "active-descendant-changed" signal is emitted by an object
              * which has the state ATK_STATE_MANAGES_DESCENDANTS when the focus
@@ -4926,7 +5192,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'active-descendant-changed::accessible-value': (arg0: Object) => void;
+            "active-descendant-changed::accessible-value": (arg0: Object) => void;
             [key: `active-descendant-changed::${string}`]: (arg0: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
@@ -4936,7 +5202,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-component-layer': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-component-layer": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4945,7 +5211,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-component-mdi-zorder': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-component-mdi-zorder": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4954,7 +5220,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-description': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-description": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4963,7 +5229,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-help-text': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-help-text": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4972,7 +5238,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-hypertext-nlinks': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-hypertext-nlinks": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4981,7 +5247,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-id': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-id": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4990,7 +5256,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-name': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-name": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -4999,7 +5265,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-parent': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-parent": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5008,7 +5274,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-role': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-role": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5017,7 +5283,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-caption': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-caption": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5026,7 +5292,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-caption-object': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-caption-object": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5035,7 +5301,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-column-description': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-column-description": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5044,7 +5310,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-column-header': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-column-header": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5053,7 +5319,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-row-description': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-row-description": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5062,7 +5328,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-row-header': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-row-header": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5071,7 +5337,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-table-summary': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-table-summary": (arg0: number, arg1: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -5080,7 +5346,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'children-changed::accessible-value': (arg0: number, arg1: Object) => void;
+            "children-changed::accessible-value": (arg0: number, arg1: Object) => void;
             [key: `children-changed::${string}`]: (arg0: number, arg1: Object) => void;
             /**
              * The signal "property-change" is emitted when an object's property
@@ -5090,7 +5356,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5100,7 +5366,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-component-layer': (arg0: PropertyValues) => void;
+            "property-change::accessible-component-layer": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5109,7 +5375,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5119,7 +5385,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-component-mdi-zorder': (arg0: PropertyValues) => void;
+            "property-change::accessible-component-mdi-zorder": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5128,7 +5394,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5138,7 +5404,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-description': (arg0: PropertyValues) => void;
+            "property-change::accessible-description": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5147,7 +5413,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5157,7 +5423,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-help-text': (arg0: PropertyValues) => void;
+            "property-change::accessible-help-text": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5166,7 +5432,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5176,7 +5442,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-hypertext-nlinks': (arg0: PropertyValues) => void;
+            "property-change::accessible-hypertext-nlinks": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5185,7 +5451,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5195,7 +5461,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-id': (arg0: PropertyValues) => void;
+            "property-change::accessible-id": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5204,7 +5470,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5214,7 +5480,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-name': (arg0: PropertyValues) => void;
+            "property-change::accessible-name": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5223,7 +5489,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5233,7 +5499,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-parent': (arg0: PropertyValues) => void;
+            "property-change::accessible-parent": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5242,7 +5508,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5252,7 +5518,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-role': (arg0: PropertyValues) => void;
+            "property-change::accessible-role": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5261,7 +5527,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5271,7 +5537,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-caption': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-caption": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5280,7 +5546,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5290,7 +5556,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-caption-object': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-caption-object": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5299,7 +5565,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5309,7 +5575,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-column-description': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-column-description": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5318,7 +5584,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5328,7 +5594,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-column-header': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-column-header": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5337,7 +5603,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5347,7 +5613,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-row-description': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-row-description": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5356,7 +5622,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5366,7 +5632,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-row-header': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-row-header": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5375,7 +5641,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5385,7 +5651,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-table-summary': (arg0: PropertyValues) => void;
+            "property-change::accessible-table-summary": (arg0: PropertyValues) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -5394,7 +5660,7 @@ export namespace Atk {
              * guarantee that the value of the property has actually changed; it
              * may also be emitted when the setter of the property is called to
              * reinstate the previous value.
-             *
+             * 
              * Toolkit implementor note: ATK implementors should use
              * `g_object_notify()` to emit property-changed
              * notifications. {@link Atk.Object.SignalSignatures.property_changed | Atk.Object::property-changed} is needed by the
@@ -5404,7 +5670,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'property-change::accessible-value': (arg0: PropertyValues) => void;
+            "property-change::accessible-value": (arg0: PropertyValues) => void;
             [key: `property-change::${string}`]: (arg0: PropertyValues) => void;
             /**
              * The "state-change" signal is emitted when an object's state
@@ -5414,7 +5680,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-component-layer': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-component-layer": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5423,7 +5689,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-component-mdi-zorder': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-component-mdi-zorder": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5432,7 +5698,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-description': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-description": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5441,7 +5707,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-help-text': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-help-text": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5450,7 +5716,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-hypertext-nlinks': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-hypertext-nlinks": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5459,7 +5725,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-id': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-id": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5468,7 +5734,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-name': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-name": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5477,7 +5743,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-parent': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-parent": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5486,7 +5752,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-role': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-role": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5495,7 +5761,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-caption': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-caption": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5504,7 +5770,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-caption-object': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-caption-object": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5513,7 +5779,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-column-description': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-column-description": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5522,7 +5788,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-column-header': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-column-header": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5531,7 +5797,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-row-description': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-row-description": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5540,7 +5806,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-row-header': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-row-header": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5549,7 +5815,7 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-table-summary': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-table-summary": (arg0: string, arg1: boolean) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -5558,12 +5824,11 @@ export namespace Atk {
              * @detailed
              * @run-last
              */
-            'state-change::accessible-value': (arg0: string, arg1: boolean) => void;
+            "state-change::accessible-value": (arg0: string, arg1: boolean) => void;
             [key: `state-change::${string}`]: (arg0: string, arg1: boolean) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accessible_component_layer: number;
             accessibleComponentLayer: number;
@@ -5604,7 +5869,7 @@ export namespace Atk {
 
     /**
      * The base object class for the Accessibility Toolkit API.
-     *
+     * 
      * This class is the primary class for accessibility support via the
      * Accessibility ToolKit (ATK).  Objects which are instances of
      * {@link Atk.Object} (or instances of AtkObject-derived types) are queried
@@ -5613,7 +5878,7 @@ export namespace Atk {
      * may also be queried as to whether they implement other ATK
      * interfaces (e.g. {@link Atk.Action}, {@link Atk.Component}, etc.), as appropriate
      * to the role which a given UI component plays in a user interface.
-     *
+     * 
      * All UI components in an application which provide useful
      * information or services to the user must provide corresponding
      * {@link Atk.Object} instances on request (in GTK+, for instance, usually on
@@ -5622,7 +5887,7 @@ export namespace Atk {
      * in the case of custom widgets, if the inherited {@link Atk.Object}
      * implementation is insufficient, via instances of a new {@link Atk.Object}
      * subclass.
-     *
+     * 
      * See {@link AtkObjectFactory}, {@link AtkRegistry}.  (GTK+ users see also
      * `GtkAccessible`).
      * @gir-type Class
@@ -5631,91 +5896,108 @@ export namespace Atk {
         static $gtype: GObject.GType<Object>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get accessible_component_layer(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get accessibleComponentLayer(): number;
+
         /**
          * @read-only
          * @default -2147483648
          */
         get accessible_component_mdi_zorder(): number;
+
         /**
          * @read-only
          * @default -2147483648
          */
         get accessibleComponentMdiZorder(): number;
+
         /**
          * @default null
          */
         get accessible_description(): string;
         set accessible_description(val: string);
+
         /**
          * @default null
          */
         get accessibleDescription(): string;
         set accessibleDescription(val: string);
+
         /**
          * @default null
          */
         get accessible_help_text(): string;
         set accessible_help_text(val: string);
+
         /**
          * @default null
          */
         get accessibleHelpText(): string;
         set accessibleHelpText(val: string);
+
         /**
          * @read-only
          * @default 0
          */
         get accessible_hypertext_nlinks(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get accessibleHypertextNlinks(): number;
+
         /**
          * @default null
          */
         get accessible_id(): string;
         set accessible_id(val: string);
+
         /**
          * @default null
          */
         get accessibleId(): string;
         set accessibleId(val: string);
+
         /**
          * @default null
          */
         get accessible_name(): string;
         set accessible_name(val: string);
+
         /**
          * @default null
          */
         get accessibleName(): string;
         set accessibleName(val: string);
+
         get accessible_parent(): Object;
         set accessible_parent(val: Object);
+
         get accessibleParent(): Object;
         set accessibleParent(val: Object);
+
         /**
          * @default Atk.Role.UNKNOWN
          */
         get accessible_role(): Role;
         set accessible_role(val: Role);
+
         /**
          * @default Atk.Role.UNKNOWN
          */
         get accessibleRole(): Role;
         set accessibleRole(val: Role);
+
         /**
          * Table caption.
          * @deprecated Since 1.3. Use table-caption-object instead.
@@ -5723,6 +6005,7 @@ export namespace Atk {
          */
         get accessible_table_caption(): string;
         set accessible_table_caption(val: string);
+
         /**
          * Table caption.
          * @deprecated Since 1.3. Use table-caption-object instead.
@@ -5730,10 +6013,13 @@ export namespace Atk {
          */
         get accessibleTableCaption(): string;
         set accessibleTableCaption(val: string);
+
         get accessible_table_caption_object(): Object;
         set accessible_table_caption_object(val: Object);
+
         get accessibleTableCaptionObject(): Object;
         set accessibleTableCaptionObject(val: Object);
+
         /**
          * Accessible table column description.
          * @deprecated Since 2.12. Use `atk_table_get_column_description()` and `atk_table_set_column_description()` instead.
@@ -5741,6 +6027,7 @@ export namespace Atk {
          */
         get accessible_table_column_description(): string;
         set accessible_table_column_description(val: string);
+
         /**
          * Accessible table column description.
          * @deprecated Since 2.12. Use `atk_table_get_column_description()` and `atk_table_set_column_description()` instead.
@@ -5748,18 +6035,21 @@ export namespace Atk {
          */
         get accessibleTableColumnDescription(): string;
         set accessibleTableColumnDescription(val: string);
+
         /**
          * Accessible table column header.
          * @deprecated Since 2.12. Use `atk_table_get_column_header()` and `atk_table_set_column_header()` instead.
          */
         get accessible_table_column_header(): Object;
         set accessible_table_column_header(val: Object);
+
         /**
          * Accessible table column header.
          * @deprecated Since 2.12. Use `atk_table_get_column_header()` and `atk_table_set_column_header()` instead.
          */
         get accessibleTableColumnHeader(): Object;
         set accessibleTableColumnHeader(val: Object);
+
         /**
          * Accessible table row description.
          * @deprecated Since 2.12. Use `atk_table_get_row_description()` and `atk_table_set_row_description()` instead.
@@ -5767,6 +6057,7 @@ export namespace Atk {
          */
         get accessible_table_row_description(): string;
         set accessible_table_row_description(val: string);
+
         /**
          * Accessible table row description.
          * @deprecated Since 2.12. Use `atk_table_get_row_description()` and `atk_table_set_row_description()` instead.
@@ -5774,22 +6065,27 @@ export namespace Atk {
          */
         get accessibleTableRowDescription(): string;
         set accessibleTableRowDescription(val: string);
+
         /**
          * Accessible table row header.
          * @deprecated Since 2.12. Use `atk_table_get_row_header()` and `atk_table_set_row_header()` instead.
          */
         get accessible_table_row_header(): Object;
         set accessible_table_row_header(val: Object);
+
         /**
          * Accessible table row header.
          * @deprecated Since 2.12. Use `atk_table_get_row_header()` and `atk_table_set_row_header()` instead.
          */
         get accessibleTableRowHeader(): Object;
         set accessibleTableRowHeader(val: Object);
+
         get accessible_table_summary(): Object;
         set accessible_table_summary(val: Object);
+
         get accessibleTableSummary(): Object;
         set accessibleTableSummary(val: Object);
+
         /**
          * Numeric value of this object, in case being and AtkValue.
          * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` to get the value, and value-changed signal to be notified on their value changes.
@@ -5797,6 +6093,7 @@ export namespace Atk {
          */
         get accessible_value(): number;
         set accessible_value(val: number);
+
         /**
          * Numeric value of this object, in case being and AtkValue.
          * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` to get the value, and value-changed signal to be notified on their value changes.
@@ -5815,62 +6112,58 @@ export namespace Atk {
         $signals: Object.SignalSignatures;
 
         // Fields
-
         description: string;
+
         name: string;
+
         role: Role;
+
         relation_set: RelationSet;
+
         layer: Layer;
 
         // Constructors
-
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
+        /**
+         * @param child 
+         * @virtual
+         */
+        vfunc_active_descendant_changed(child: (any | null)): void;
 
         /**
-         * @param child
+         * @param change_index 
+         * @param changed_child 
          * @virtual
          */
-        vfunc_active_descendant_changed(child: any | null): void;
-        /**
-         * @param change_index
-         * @param changed_child
-         * @virtual
-         */
-        vfunc_children_changed(change_index: number, changed_child: any | null): void;
+        vfunc_children_changed(change_index: number, changed_child: (any | null)): void;
+
         /**
          * The signal handler which is executed when there is a
          *   focus event for an object. This virtual function is deprecated
          *   since 2.9.4 and it should not be overriden. Use
          *   the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" signal instead.
-         * @param focus_in
+         * @param focus_in 
          * @virtual
          */
         vfunc_focus_event(focus_in: boolean): void;
+
         /**
          * Get a list of properties applied to this object as a whole, as an {@link Atk.AttributeSet} consisting of
          * name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
@@ -5879,60 +6172,70 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_attributes(): AttributeSet;
+
         /**
          * Gets the accessible description of the accessible.
          * @virtual
          */
         vfunc_get_description(): string;
+
         /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @virtual
          */
         vfunc_get_index_in_parent(): number;
+
         /**
          * Gets the layer of the accessible.
          * @virtual
          */
         vfunc_get_layer(): Layer;
+
         /**
          * Gets the zorder of the accessible. The value G_MININT will be returned
          * if the layer of the accessible is not ATK_LAYER_MDI.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
+
         /**
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the accessible name of the accessible.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          * of `accessible`.
          * @virtual
          */
         vfunc_get_object_locale(): string;
+
         /**
          * Gets the accessible parent of the accessible. By default this is
          * the one assigned with `atk_object_set_parent()`, but it is assumed
          * that ATK implementors have ways to get the parent of the object
          * without the need of assigning it manually with
          * `atk_object_set_parent()`, and will return it with this method.
-         *
+         * 
          * If you are only interested on the parent assigned with
          * `atk_object_set_parent()`, use `atk_object_peek_parent()`.
          * @virtual
          */
         vfunc_get_parent(): Object;
+
         /**
          * Gets the role of the accessible.
          * @virtual
          */
         vfunc_get_role(): Role;
+
         /**
          * This function is called when implementing subclasses of {@link Atk.Object}.
          * It does initialization required for the new object. It is intended
@@ -5941,29 +6244,34 @@ export namespace Atk {
          * @param data a `gpointer` which identifies the object for which the AtkObject was created.
          * @virtual
          */
-        vfunc_initialize(data: any | null): void;
+        vfunc_initialize(data: (any | null)): void;
+
         /**
-         * @param values
+         * @param values 
          * @virtual
          */
         vfunc_property_change(values: PropertyValues): void;
+
         /**
          * Gets the {@link Atk.RelationSet} associated with the object.
          * @virtual
          */
         vfunc_ref_relation_set(): RelationSet;
+
         /**
          * Gets a reference to the state set of the accessible; the caller must
          * unreference it when it is no longer needed.
          * @virtual
          */
         vfunc_ref_state_set(): StateSet;
+
         /**
          * Removes a property change handler.
          * @param handler_id a guint which identifies the handler to be removed.
          * @virtual
          */
         vfunc_remove_property_change_handler(handler_id: number): void;
+
         /**
          * Sets the accessible description of the accessible. You can't set
          * the description to NULL. This is reserved for the initial value. In
@@ -5973,6 +6281,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_description(description: string): void;
+
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -5982,31 +6291,34 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_name(name: string): void;
+
         /**
          * Sets the accessible parent of the accessible. `parent` can be NULL.
          * @param parent an {@link Atk.Object} to be set as the accessible parent
          * @virtual
          */
         vfunc_set_parent(parent: Object): void;
+
         /**
          * Sets the role of the accessible.
          * @param role an {@link Atk.Role} to be set as the role
          * @virtual
          */
         vfunc_set_role(role: Role): void;
+
         /**
-         * @param name
-         * @param state_set
+         * @param name 
+         * @param state_set 
          * @virtual
          */
         vfunc_state_change(name: string, state_set: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_visible_data_changed(): void;
 
         // Methods
-
         /**
          * Adds a relationship of the specified type with the specified target.
          * @param relationship The {@link Atk.RelationType} of the relation
@@ -6014,11 +6326,13 @@ export namespace Atk {
          * @returns TRUE if the relationship is added.
          */
         add_relationship(relationship: RelationType, target: Object): boolean;
+
         /**
          * Gets the accessible id of the accessible.
          * @returns a character string representing the accessible id of the object, or NULL if no such string was set.
          */
         get_accessible_id(): string;
+
         /**
          * Get a list of properties applied to this object as a whole, as an {@link Atk.AttributeSet} consisting of
          * name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
@@ -6027,66 +6341,77 @@ export namespace Atk {
          * @returns an {@link Atk.AttributeSet} consisting of all explicit properties/annotations applied to the object, or an empty set if the object has no name-value pair attributes assigned to it. This #atkattributeset should be freed by a call to `atk_attribute_set_free()`.
          */
         get_attributes(): AttributeSet;
+
         /**
          * Gets the accessible description of the accessible.
          * @returns a character string representing the accessible description of the accessible.
          */
         get_description(): string;
+
         /**
          * Gets the help text associated with the accessible.
          * @returns a character string representing the help text or the object, or NULL if no such string was set.
          */
         get_help_text(): string;
+
         /**
          * Gets the 0-based index of this accessible in its parent; returns -1 if the
          * accessible does not have an accessible parent.
          * @returns an integer which is the index of the accessible in its parent
          */
         get_index_in_parent(): number;
+
         /**
          * Gets the layer of the accessible.
          * @returns an {@link Atk.Layer} which is the layer of the accessible
          */
         get_layer(): Layer;
+
         /**
          * Gets the zorder of the accessible. The value G_MININT will be returned
          * if the layer of the accessible is not ATK_LAYER_MDI.
          * @returns a gint which is the zorder of the accessible, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the number of accessible children of the accessible.
          * @returns an integer representing the number of accessible children of the accessible.
          */
         get_n_accessible_children(): number;
+
         /**
          * Gets the accessible name of the accessible.
          * @returns a character string representing the accessible name of the object.
          */
         get_name(): string;
+
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          * of `accessible`.
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of `accessible`.
          */
         get_object_locale(): string;
+
         /**
          * Gets the accessible parent of the accessible. By default this is
          * the one assigned with `atk_object_set_parent()`, but it is assumed
          * that ATK implementors have ways to get the parent of the object
          * without the need of assigning it manually with
          * `atk_object_set_parent()`, and will return it with this method.
-         *
+         * 
          * If you are only interested on the parent assigned with
          * `atk_object_set_parent()`, use `atk_object_peek_parent()`.
          * @returns an {@link Atk.Object} representing the accessible parent of the accessible
          */
         get_parent(): Object;
+
         /**
          * Gets the role of the accessible.
          * @returns an {@link Atk.Role} which is the role of the accessible
          */
         get_role(): Role;
+
         /**
          * This function is called when implementing subclasses of {@link Atk.Object}.
          * It does initialization required for the new object. It is intended
@@ -6094,27 +6419,30 @@ export namespace Atk {
          * to create an instance of a subclass of {@link Atk.Object}
          * @param data a `gpointer` which identifies the object for which the AtkObject was created.
          */
-        initialize(data: any | null): void;
+        initialize(data: (any | null)): void;
+
         /**
          * Emits a state-change signal for the specified state.
-         *
+         * 
          * Note that as a general rule when the state of an existing object changes,
          * emitting a notification is expected.
          * @param state an {@link Atk.State} whose state is changed
          * @param value a gboolean which indicates whether the state is being set on or off
          */
         notify_state_change(state: State, value: boolean): void;
+
         /**
          * Gets the accessible parent of the accessible, if it has been
          * manually assigned with atk_object_set_parent. Otherwise, this
          * function returns `null`.
-         *
+         * 
          * This method is intended as an utility for ATK implementors, and not
          * to be exposed to accessible tools. See `atk_object_get_parent()` for
          * further reference.
          * @returns an {@link Atk.Object} representing the accessible parent of the accessible if assigned
          */
         peek_parent(): Object;
+
         /**
          * Gets a reference to the specified accessible child of the object.
          * The accessible children are 0-based so the first accessible child is
@@ -6123,22 +6451,26 @@ export namespace Atk {
          * @returns an {@link Atk.Object} representing the specified accessible child of the accessible.
          */
         ref_accessible_child(i: number): Object;
+
         /**
          * Gets the {@link Atk.RelationSet} associated with the object.
          * @returns an {@link Atk.RelationSet} representing the relation set of the object.
          */
         ref_relation_set(): RelationSet;
+
         /**
          * Gets a reference to the state set of the accessible; the caller must
          * unreference it when it is no longer needed.
          * @returns a reference to an {@link Atk.StateSet} which is the state set of the accessible
          */
         ref_state_set(): StateSet;
+
         /**
          * Removes a property change handler.
          * @param handler_id a guint which identifies the handler to be removed.
          */
         remove_property_change_handler(handler_id: number): void;
+
         /**
          * Removes a relationship of the specified type with the specified target.
          * @param relationship The {@link Atk.RelationType} of the relation
@@ -6146,6 +6478,7 @@ export namespace Atk {
          * @returns TRUE if the relationship is removed.
          */
         remove_relationship(relationship: RelationType, target: Object): boolean;
+
         /**
          * Sets the accessible ID of the accessible.  This is not meant to be presented
          * to the user, but to be an ID which is stable over application development.
@@ -6155,6 +6488,7 @@ export namespace Atk {
          * @param id a character string to be set as the accessible id
          */
         set_accessible_id(id: string): void;
+
         /**
          * Sets the accessible description of the accessible. You can't set
          * the description to NULL. This is reserved for the initial value. In
@@ -6163,6 +6497,7 @@ export namespace Atk {
          * @param description a character string to be set as the accessible description
          */
         set_description(description: string): void;
+
         /**
          * Sets the help text associated with the accessible. This can be used to
          * expose context-sensitive information to help a user understand how to
@@ -6172,6 +6507,7 @@ export namespace Atk {
          * @param help_text a character string to be set as the accessible's help text
          */
         set_help_text(help_text: string): void;
+
         /**
          * Sets the accessible name of the accessible. You can't set the name
          * to NULL. This is reserved for the initial value. In this aspect
@@ -6180,11 +6516,13 @@ export namespace Atk {
          * @param name a character string to be set as the accessible name
          */
         set_name(name: string): void;
+
         /**
          * Sets the accessible parent of the accessible. `parent` can be NULL.
          * @param parent an {@link Atk.Object} to be set as the accessible parent
          */
         set_parent(parent: Object): void;
+
         /**
          * Sets the role of the accessible.
          * @param role an {@link Atk.Role} to be set as the role
@@ -6192,19 +6530,22 @@ export namespace Atk {
         set_role(role: Role): void;
     }
 
+
     namespace ObjectFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * The base object class for a factory used to
      *  create accessible objects for objects of a specific GType.
-     *
+     * 
      * This class is the base object class for a factory used to create an
      * accessible object for a specific GType. The function
      * `atk_registry_set_factory_type()` is normally called to store in the
@@ -6225,34 +6566,24 @@ export namespace Atk {
         $signals: ObjectFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ObjectFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ObjectFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ObjectFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ObjectFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ObjectFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ObjectFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ObjectFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Inform `factory` that it is no longer being used to create
          * accessibles. When called, `factory` may need to inform
@@ -6264,7 +6595,6 @@ export namespace Atk {
         vfunc_invalidate(): void;
 
         // Methods
-
         /**
          * Provides an {@link Atk.Object} that implements an accessibility interface
          * on behalf of `obj`
@@ -6272,11 +6602,13 @@ export namespace Atk {
          * @returns an {@link Atk.Object} that implements an accessibility interface on behalf of `obj`
          */
         create_accessible(obj: GObject.Object): Object;
+
         /**
          * Gets the GType of the accessible which is created by the factory.
          * @returns the type of the accessible which is created by the `factory`. The value G_TYPE_INVALID is returned if no type if found.
          */
         get_accessible_type(): GObject.GType;
+
         /**
          * Inform `factory` that it is no longer being used to create
          * accessibles. When called, `factory` may need to inform
@@ -6287,36 +6619,38 @@ export namespace Atk {
         invalidate(): void;
     }
 
+
     namespace Plug {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {
 
-        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
+        }
     }
 
     /**
      * Toplevel for embedding into other processes
-     *
+     * 
      * See {@link AtkSocket}
      * @gir-type Class
      */
@@ -6333,47 +6667,36 @@ export namespace Atk {
         $signals: Plug.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plug.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Plug;
+        static ["new"](): Plug;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plug.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plug.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plug.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plug.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_get_object_id(): string;
 
         // Methods
-
         /**
          * Gets the unique ID of an {@link Atk.Plug} object, which can be used to
          * embed inside of an {@link Atk.Socket} using `atk_socket_embed()`.
-         *
+         * 
          * Internally, this calls a class function that should be registered
          * by the IPC layer (usually at-spi2-atk). The implementor of an
          * {@link Atk.Plug} object should call this function (after atk-bridge is
@@ -6382,10 +6705,11 @@ export namespace Atk {
          * @returns the unique ID for the plug
          */
         get_id(): string;
+
         /**
          * Sets `child` as accessible child of `plug` and `plug` as accessible parent of
          * `child`. `child` can be NULL.
-         *
+         * 
          * In some cases, one can not use the AtkPlug type directly as accessible
          * object for the toplevel widget of the application. For instance in the gtk
          * case, GtkPlugAccessible can not inherit both from GtkWindowAccessible and
@@ -6395,9 +6719,10 @@ export namespace Atk {
          * @param child an {@link Atk.Object} to be set as accessible child of `plug`.
          */
         set_child(child: Object): void;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -6407,6 +6732,7 @@ export namespace Atk {
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
         contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -6414,46 +6740,53 @@ export namespace Atk {
          * @returns An alpha value from 0 to 1.0, inclusive.
          */
         get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
          */
         get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          */
         get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @returns `true` if successful, `false` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -6462,7 +6795,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -6470,9 +6804,10 @@ export namespace Atk {
          * @param handler_id the handler id of the focus handler to be removed from `component`
          */
         remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -6480,6 +6815,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -6489,6 +6825,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -6499,9 +6836,10 @@ export namespace Atk {
          * @returns `true` or `false` whether the extents were set or not
          */
         set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -6510,6 +6848,7 @@ export namespace Atk {
          * @returns `true` or `false` whether or not the position was set or not
          */
         set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -6517,14 +6856,16 @@ export namespace Atk {
          * @returns `true` or `false` whether the size was set or not
          */
         set_size(width: number, height: number): boolean;
+
         /**
-         * @param bounds
+         * @param bounds 
          * @virtual
          */
         vfunc_bounds_changed(bounds: Rectangle): void;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -6534,6 +6875,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -6541,49 +6883,56 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @virtual
          */
         vfunc_get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          * @virtual
          */
         vfunc_get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @virtual
          */
         vfunc_grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -6592,7 +6941,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -6601,9 +6951,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -6611,6 +6962,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -6620,6 +6972,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -6630,9 +6983,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -6641,6 +6995,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -6650,20 +7005,23 @@ export namespace Atk {
         vfunc_set_size(width: number, height: number): boolean;
     }
 
+
     namespace Registry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * An object used to store the GType of the
      * factories used to create an accessible object for an object of a
      * particular GType.
-     *
+     * 
      * The AtkRegistry is normally used to create appropriate ATK "peers"
      * for user interface components.  Application developers usually need
      * only interact with the AtkRegistry by associating appropriate ATK
@@ -6685,34 +7043,24 @@ export namespace Atk {
         $signals: Registry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Registry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Registry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Registry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Registry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets an {@link Atk.ObjectFactory} appropriate for creating `AtkObjects`
          * appropriate for `type`.
@@ -6720,6 +7068,7 @@ export namespace Atk {
          * @returns an {@link Atk.ObjectFactory} appropriate for creating `AtkObjects` appropriate for `type`.
          */
         get_factory(type: GObject.GType): ObjectFactory;
+
         /**
          * Provides a {@link GObject.GType} indicating the {@link Atk.ObjectFactory} subclass
          * associated with `type`.
@@ -6727,6 +7076,7 @@ export namespace Atk {
          * @returns a {@link GObject.GType} associated with type `type`
          */
         get_factory_type(type: GObject.GType): GObject.GType;
+
         /**
          * Associate an {@link Atk.ObjectFactory} subclass with a {@link GObject.GType}. Note:
          * The associated `factory_type` will thereafter be responsible for
@@ -6738,15 +7088,15 @@ export namespace Atk {
         set_factory_type(type: GObject.GType, factory_type: GObject.GType): void;
     }
 
+
     namespace Relation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::relation-type': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
+            "notify::relation-type": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             relation_type: RelationType;
             relationType: RelationType;
@@ -6757,7 +7107,7 @@ export namespace Atk {
     /**
      * An object used to describe a relation between a
      *  object and one or more other objects.
-     *
+     * 
      * An AtkRelation describes a relation between an object and one or
      * more other objects. The actual relations that an object has with
      * other objects are defined as an AtkRelationSet, which is a set of
@@ -6768,17 +7118,18 @@ export namespace Atk {
         static $gtype: GObject.GType<Relation>;
 
         // Properties
-
         /**
          * @default Atk.RelationType.NULL
          */
         get relation_type(): RelationType;
         set relation_type(val: RelationType);
+
         /**
          * @default Atk.RelationType.NULL
          */
         get relationType(): RelationType;
         set relationType(val: RelationType);
+
         get target(): GObject.ValueArray;
         set target(val: GObject.ValueArray);
 
@@ -6792,56 +7143,48 @@ export namespace Atk {
         $signals: Relation.SignalSignatures;
 
         // Fields
-
         relationship: RelationType;
 
         // Constructors
-
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](targets: Object[], relationship: RelationType): Relation;
+        static ["new"](targets: Object[], relationship: RelationType): Relation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Relation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Relation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Relation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Relation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the specified AtkObject to the target for the relation, if it is
          * not already present.  See also `atk_object_add_relationship()`.
          * @param target an {@link Atk.Object}
          */
         add_target(target: Object): void;
+
         /**
          * Gets the type of `relation`
          * @returns the type of `relation`
          */
         get_relation_type(): RelationType;
+
         /**
          * Gets the target list of `relation`
          * @returns the target list of `relation`
          */
         get_target(): Object[];
+
         /**
          * Remove the specified AtkObject from the target for the relation.
          * @param target an {@link Atk.Object}
@@ -6850,19 +7193,22 @@ export namespace Atk {
         remove_target(target: Object): boolean;
     }
 
+
     namespace RelationSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A set of AtkRelations, normally the set of
      *  AtkRelations which an AtkObject has.
-     *
+     * 
      * The AtkRelationSet held by an object establishes its relationships
      * with objects beyond the normal "parent/child" hierarchical
      * relationships that all user interface objects have.
@@ -6886,40 +7232,29 @@ export namespace Atk {
         $signals: RelationSet.SignalSignatures;
 
         // Fields
-
         relations: any[];
 
         // Constructors
-
         constructor(properties?: Partial<RelationSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RelationSet;
+        static ["new"](): RelationSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RelationSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelationSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RelationSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RelationSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RelationSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RelationSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RelationSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelationSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RelationSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RelationSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RelationSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RelationSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a new relation to the current relation set if it is not already
          * present.
@@ -6929,6 +7264,7 @@ export namespace Atk {
          * @param relation an {@link Atk.Relation}
          */
         add(relation: Relation): void;
+
         /**
          * Add a new relation of the specified type with the specified target to
          * the current relation set if the relation set does not contain a relation
@@ -6938,6 +7274,7 @@ export namespace Atk {
          * @param target an {@link Atk.Object}
          */
         add_relation_by_type(relationship: RelationType, target: Object): void;
+
         /**
          * Determines whether the relation set contains a relation that matches the
          * specified type.
@@ -6945,6 +7282,7 @@ export namespace Atk {
          * @returns `true` if `relationship` is the relationship type of a relation in `set`, `false` otherwise
          */
         contains(relationship: RelationType): boolean;
+
         /**
          * Determines whether the relation set contains a relation that
          * matches the specified pair formed by type `relationship` and object
@@ -6954,23 +7292,27 @@ export namespace Atk {
          * @returns `true` if `set` contains a relation with the relationship type `relationship` with an object `target`, `false` otherwise
          */
         contains_target(relationship: RelationType, target: Object): boolean;
+
         /**
          * Determines the number of relations in a relation set.
          * @returns an integer representing the number of relations in the set.
          */
         get_n_relations(): number;
+
         /**
          * Determines the relation at the specified position in the relation set.
          * @param i a gint representing a position in the set, starting from 0.
          * @returns a {@link Atk.Relation}, which is the relation at position i in the set.
          */
         get_relation(i: number): Relation;
+
         /**
          * Finds a relation that matches the specified type.
          * @param relationship an {@link Atk.RelationType}
          * @returns an {@link Atk.Relation}, which is a relation matching the specified type.
          */
         get_relation_by_type(relationship: RelationType): Relation;
+
         /**
          * Removes a relation from the relation set.
          * This function unref's the {@link Atk.Relation} so it will be deleted unless there
@@ -6980,36 +7322,38 @@ export namespace Atk {
         remove(relation: Relation): void;
     }
 
+
     namespace Socket {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {
 
-        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
+        }
     }
 
     /**
      * Container for AtkPlug objects from other processes
-     *
+     * 
      * Together with {@link Atk.Plug}, {@link Atk.Socket} provides the ability to embed
      * accessibles from one process into another in a fashion that is
      * transparent to assistive technologies. {@link Atk.Socket} works as the
@@ -7017,7 +7361,7 @@ export namespace Atk {
      * `atk_socket_embed()`. Any accessible contained in the {@link Atk.Plug} will
      * appear to the assistive technologies as being inside the
      * application that created the {@link Atk.Socket}.
-     *
+     * 
      * The communication between a {@link Atk.Socket} and a {@link Atk.Plug} is done by
      * the IPC layer of the accessibility framework, normally implemented
      * by the D-Bus based implementation of AT-SPI (at-spi2). If that is
@@ -7027,12 +7371,12 @@ export namespace Atk {
      * the {@link Atk.Plug} is responsible to send the ID returned by
      * `atk_plug_id()` to the process that contains the {@link Atk.Socket}, so it
      * could call the method `atk_socket_embed()` in order to embed it.
-     *
+     * 
      * For the same reasons, an implementor doesn't need to implement
      * `atk_object_get_n_accessible_children()` and
      * `atk_object_ref_accessible_child()`. All the logic related to those
      * functions will be implemented by the IPC layer.
-     *
+     * 
      * See {@link AtkPlug}
      * @gir-type Class
      */
@@ -7049,41 +7393,31 @@ export namespace Atk {
         $signals: Socket.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Socket.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Socket;
+        static ["new"](): Socket;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Socket.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Socket.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Socket.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Socket.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Socket.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Socket.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Socket.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Socket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Socket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Embeds the children of an {@link Atk.Plug} as the children of the
          * {@link Atk.Socket}. The plug may be in the same process or in a different
          * process.
-         *
+         * 
          * The class item used by this function should be filled in by the IPC
          * layer (usually at-spi2-atk). The implementor of the AtkSocket
          * should call this function and pass the id for the plug as returned
@@ -7096,12 +7430,11 @@ export namespace Atk {
         vfunc_embed(plug_id: string): void;
 
         // Methods
-
         /**
          * Embeds the children of an {@link Atk.Plug} as the children of the
          * {@link Atk.Socket}. The plug may be in the same process or in a different
          * process.
-         *
+         * 
          * The class item used by this function should be filled in by the IPC
          * layer (usually at-spi2-atk). The implementor of the AtkSocket
          * should call this function and pass the id for the plug as returned
@@ -7111,14 +7444,16 @@ export namespace Atk {
          * @param plug_id the ID of an {@link Atk.Plug}
          */
         embed(plug_id: string): void;
+
         /**
          * Determines whether or not the socket has an embedded plug.
          * @returns TRUE if a plug is embedded in the socket
          */
         is_occupied(): boolean;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -7128,6 +7463,7 @@ export namespace Atk {
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
         contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -7135,46 +7471,53 @@ export namespace Atk {
          * @returns An alpha value from 0 to 1.0, inclusive.
          */
         get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
          */
         get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          */
         get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @returns `true` if successful, `false` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -7183,7 +7526,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -7191,9 +7535,10 @@ export namespace Atk {
          * @param handler_id the handler id of the focus handler to be removed from `component`
          */
         remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -7201,6 +7546,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -7210,6 +7556,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -7220,9 +7567,10 @@ export namespace Atk {
          * @returns `true` or `false` whether the extents were set or not
          */
         set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -7231,6 +7579,7 @@ export namespace Atk {
          * @returns `true` or `false` whether or not the position was set or not
          */
         set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -7238,14 +7587,16 @@ export namespace Atk {
          * @returns `true` or `false` whether the size was set or not
          */
         set_size(width: number, height: number): boolean;
+
         /**
-         * @param bounds
+         * @param bounds 
          * @virtual
          */
         vfunc_bounds_changed(bounds: Rectangle): void;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -7255,6 +7606,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -7262,49 +7614,56 @@ export namespace Atk {
          * @virtual
          */
         vfunc_get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @virtual
          */
         vfunc_get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          * @virtual
          */
         vfunc_get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @virtual
          */
         vfunc_grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -7313,7 +7672,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -7322,9 +7682,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -7332,6 +7693,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -7341,6 +7703,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -7351,9 +7714,10 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -7362,6 +7726,7 @@ export namespace Atk {
          * @virtual
          */
         vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -7371,18 +7736,21 @@ export namespace Atk {
         vfunc_set_size(width: number, height: number): boolean;
     }
 
+
     namespace StateSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * An AtkStateSet contains the states of an object.
-     *
+     * 
      * An AtkStateSet is a read-only representation of the full set of `AtkStates`
      * that apply to an object at a given time. This set is not meant to be
      * modified, but rather created when `atk_object_ref_state_set`() is called.
@@ -7401,40 +7769,30 @@ export namespace Atk {
         $signals: StateSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StateSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): StateSet;
+        static ["new"](): StateSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StateSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StateSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StateSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StateSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the state of the specified type to the state set if it is not already
          * present.
-         *
+         * 
          * Note that because an {@link Atk.StateSet} is a read-only object, this method should
          * be used to add a state to a newly-created set which will then be returned by
          * `atk_object_ref_state_set`. It should not be used to modify the existing state
@@ -7443,9 +7801,10 @@ export namespace Atk {
          * @returns `true` if  the state for `type` is not already in `set`.
          */
         add_state(type: StateType): boolean;
+
         /**
          * Adds the states of the specified types to the state set.
-         *
+         * 
          * Note that because an {@link Atk.StateSet} is a read-only object, this method should
          * be used to add states to a newly-created set which will then be returned by
          * `atk_object_ref_state_set`. It should not be used to modify the existing state
@@ -7453,6 +7812,7 @@ export namespace Atk {
          * @param types an array of {@link Atk.StateType}
          */
         add_states(types: StateType[]): void;
+
         /**
          * Constructs the intersection of the two sets, returning `null` if the
          * intersection is empty.
@@ -7460,16 +7820,19 @@ export namespace Atk {
          * @returns a new {@link Atk.StateSet} which is the intersection of the two sets.
          */
         and_sets(compare_set: StateSet): StateSet;
+
         /**
          * Removes all states from the state set.
          */
         clear_states(): void;
+
         /**
          * Checks whether the state for the specified type is in the specified set.
          * @param type an {@link Atk.StateType}
          * @returns `true` if `type` is the state type is in `set`.
          */
         contains_state(type: StateType): boolean;
+
         /**
          * Checks whether the states for all the specified types are in the
          * specified set.
@@ -7477,20 +7840,23 @@ export namespace Atk {
          * @returns `true` if all the states for `type` are in `set`.
          */
         contains_states(types: StateType[]): boolean;
+
         /**
          * Checks whether the state set is empty, i.e. has no states set.
          * @returns `true` if `set` has no states set, otherwise `false`
          */
         is_empty(): boolean;
+
         /**
          * Constructs the union of the two sets.
          * @param compare_set another {@link Atk.StateSet}
          * @returns a new {@link Atk.StateSet} which is the union of the two sets, returning `null` is empty.
          */
-        or_sets(compare_set: StateSet): StateSet | null;
+        or_sets(compare_set: StateSet): (StateSet | null);
+
         /**
          * Removes the state for the specified type from the state set.
-         *
+         * 
          * Note that because an {@link Atk.StateSet} is a read-only object, this method should
          * be used to remove a state to a newly-created set which will then be returned
          * by `atk_object_ref_state_set`. It should not be used to modify the existing
@@ -7499,6 +7865,7 @@ export namespace Atk {
          * @returns `true` if `type` was the state type is in `set`.
          */
         remove_state(type: StateType): boolean;
+
         /**
          * Constructs the exclusive-or of the two sets, returning `null` is empty.
          * The set returned by this operation contains the states in exactly
@@ -7509,18 +7876,21 @@ export namespace Atk {
         xor_sets(compare_set: StateSet): StateSet;
     }
 
+
     namespace Util {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A set of ATK utility functions for event and toolkit support.
-     *
+     * 
      * A set of ATK utility functions which are used to support event
      * registration of various types, and obtaining the 'root' accessible
      * of a process and information about the current ATK implementation
@@ -7540,37 +7910,30 @@ export namespace Atk {
         $signals: Util.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Util.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Util.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Util.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Util.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Util.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Util.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Util.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ActionIface = typeof Action;
+
     /**
      * AtkAttribute is a string name/value pair representing a generic
      * attribute. This can be used to expose additional information from
@@ -7581,7 +7944,7 @@ export namespace Atk {
      * names. You can use `atk_text_attribute_get_name()` to get the string
      * name from the enum value. See also `atk_text_attribute_for_name()`
      * and `atk_text_attribute_get_value()` for more information.
-     *
+     * 
      * A string name/value pair representing a generic attribute.
      * @gir-type Struct
      */
@@ -7589,21 +7952,18 @@ export namespace Atk {
         static $gtype: GObject.GType<Attribute>;
 
         // Fields
-
         name: string;
+
         value: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                value: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            name: string;
+            value: string;
+        }>);
 
         // Static methods
-
         /**
          * Frees the memory used by an {@link Atk.AttributeSet}, including all its
          * `AtkAttributes`.
@@ -7612,38 +7972,47 @@ export namespace Atk {
         static set_free(attrib_set: AttributeSet): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ComponentIface = typeof Component;
+
     /**
      * @gir-type Alias
      */
     type DocumentIface = typeof Document;
+
     /**
      * @gir-type Alias
      */
     type EditableTextIface = typeof EditableText;
+
     /**
      * @gir-type Alias
      */
     type GObjectAccessibleClass = typeof GObjectAccessible;
+
     /**
      * @gir-type Alias
      */
     type HyperlinkClass = typeof Hyperlink;
+
     /**
      * @gir-type Alias
      */
     type HyperlinkImplIface = typeof HyperlinkImpl;
+
     /**
      * @gir-type Alias
      */
     type HypertextIface = typeof Hypertext;
+
     /**
      * @gir-type Alias
      */
     type ImageIface = typeof Image;
+
     /**
      * @gir-type Struct
      */
@@ -7651,7 +8020,6 @@ export namespace Atk {
         static $gtype: GObject.GType<Implementor>;
 
         // Methods
-
         /**
          * Gets a reference to an object's {@link Atk.Object} implementation, if
          * the object implements `AtkObjectIface`
@@ -7659,6 +8027,7 @@ export namespace Atk {
          */
         ref_accessible(): Object;
     }
+
 
     /**
      * Encapsulates information about a key event.
@@ -7668,54 +8037,64 @@ export namespace Atk {
         static $gtype: GObject.GType<KeyEventStruct>;
 
         // Fields
-
         type: number;
+
         state: number;
+
         keyval: number;
+
         length: number;
+
         string: string;
+
         keycode: number;
+
         timestamp: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                type: number;
-                state: number;
-                keyval: number;
-                length: number;
-                string: string;
-                keycode: number;
-                timestamp: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            type: number;
+            state: number;
+            keyval: number;
+            length: number;
+            string: string;
+            keycode: number;
+            timestamp: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type MiscClass = typeof Misc;
+
     /**
      * @gir-type Alias
      */
     type NoOpObjectClass = typeof NoOpObject;
+
     /**
      * @gir-type Alias
      */
     type NoOpObjectFactoryClass = typeof NoOpObjectFactory;
+
     /**
      * @gir-type Alias
      */
     type ObjectClass = typeof Object;
+
     /**
      * @gir-type Alias
      */
     type ObjectFactoryClass = typeof ObjectFactory;
+
     /**
      * @gir-type Alias
      */
     type PlugClass = typeof Plug;
+
     /**
      * Note: `old_value` field of {@link Atk.PropertyValues} will not contain a
      * valid value. This is a field defined with the purpose of contain
@@ -7726,13 +8105,13 @@ export namespace Atk {
         static $gtype: GObject.GType<PropertyValues>;
 
         // Fields
-
         property_name: string;
     }
 
+
     /**
      * A given range or subrange, to be used with {@link Atk.Value}
-     *
+     * 
      * {@link Atk.Range} are used on {@link Atk.Value}, in order to represent the full
      * range of a given component (for example an slider or a range
      * control), or to define each individual subrange this full range is
@@ -7744,38 +8123,41 @@ export namespace Atk {
         static $gtype: GObject.GType<Range>;
 
         // Constructors
-
         constructor(lower_limit: number, upper_limit: number, description: string);
 
-        static ['new'](lower_limit: number, upper_limit: number, description: string): Range;
+        static ["new"](lower_limit: number, upper_limit: number, description: string): Range;
 
         // Methods
-
         /**
          * Returns a new {@link Atk.Range} that is a exact copy of `src`
          * @returns a new {@link Atk.Range} copy of `src`
          */
         copy(): Range;
+
         /**
          * Free `range`
          */
         free(): void;
+
         /**
          * Returns the human readable description of `range`
          * @returns the human-readable description of `range`
          */
         get_description(): string;
+
         /**
          * Returns the lower limit of `range`
          * @returns the lower limit of `range`
          */
         get_lower_limit(): number;
+
         /**
          * Returns the upper limit of `range`
          * @returns the upper limit of `range`
          */
         get_upper_limit(): number;
     }
+
 
     /**
      * A data structure for holding a rectangle. Those coordinates are
@@ -7786,64 +8168,75 @@ export namespace Atk {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type RegistryClass = typeof Registry;
+
     /**
      * @gir-type Alias
      */
     type RelationClass = typeof Relation;
+
     /**
      * @gir-type Alias
      */
     type RelationSetClass = typeof RelationSet;
+
     /**
      * @gir-type Alias
      */
     type SelectionIface = typeof Selection;
+
     /**
      * @gir-type Alias
      */
     type SocketClass = typeof Socket;
+
     /**
      * @gir-type Alias
      */
     type StateSetClass = typeof StateSet;
+
     /**
      * @gir-type Alias
      */
     type StreamableContentIface = typeof StreamableContent;
+
     /**
      * @gir-type Alias
      */
     type TableCellIface = typeof TableCell;
+
     /**
      * @gir-type Alias
      */
     type TableIface = typeof Table;
+
     /**
      * @gir-type Alias
      */
     type TextIface = typeof Text;
+
     /**
      * A structure used to describe a text range.
      * @gir-type Struct
@@ -7852,23 +8245,24 @@ export namespace Atk {
         static $gtype: GObject.GType<TextRange>;
 
         // Fields
-
         bounds: TextRectangle;
+
         start_offset: number;
+
         end_offset: number;
+
         content: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                bounds: TextRectangle;
-                start_offset: number;
-                end_offset: number;
-                content: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            bounds: TextRectangle;
+            start_offset: number;
+            end_offset: number;
+            content: string;
+        }>);
     }
+
 
     /**
      * A structure used to store a rectangle used by AtkText.
@@ -7878,37 +8272,38 @@ export namespace Atk {
         static $gtype: GObject.GType<TextRectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * This structure represents a single  text selection within a document. This
      * selection is defined by two points in the content, where each one is defined
      * by an AtkObject supporting the AtkText interface and a character offset
      * relative to it.
-     *
+     * 
      * The end object must appear after the start object in the accessibility tree,
      * i.e. the end object must be reachable from the start object by navigating
      * forward (next, first child etc).
-     *
+     * 
      * This struct also contains a `start_is_active` boolean, to communicate if the
      * start of the selection is the active point or not.
-     *
+     * 
      * The active point corresponds to the user's focus or point of interest. The
      * user moves the active point to expand or collapse the range. The anchor
      * point is the other point of the range and typically remains constant. In
@@ -7923,52 +8318,61 @@ export namespace Atk {
         static $gtype: GObject.GType<TextSelection>;
 
         // Fields
-
         start_object: Object;
+
         start_offset: number;
+
         end_object: Object;
+
         end_offset: number;
+
         start_is_active: boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type UtilClass = typeof Util;
+
     /**
      * @gir-type Alias
      */
     type ValueIface = typeof Value;
+
     /**
      * @gir-type Alias
      */
     type WindowIface = typeof Window;
+
     namespace Action {
         /**
          * Interface for implementing Action.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Perform the specified action on the object.
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
             vfunc_do_action(i: number): boolean;
+
             /**
              * Returns a description of the specified action of the object.
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_description(i: number): string | null;
+            vfunc_get_description(i: number): (string | null);
+
             /**
              * Gets the keybinding which can be used to activate this action, if one
              * exists. The string returned should contain localized, human-readable,
              * key sequences as they would appear when displayed on screen. It must
              * be in the format "mnemonic;sequence;shortcut".
-             *
+             * 
              * - The mnemonic key activates the object if it is presently enabled onscreen.
              *   This typically corresponds to the underlined letter within the widget.
              *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -7981,7 +8385,7 @@ export namespace Atk {
              * - The shortcut, if it exists, will invoke the same action without showing
              *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
              *   traditional "New..." menu item.
-             *
+             * 
              * Example: For a traditional "New..." menu item, the expected return value
              * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
              * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -7989,13 +8393,15 @@ export namespace Atk {
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_keybinding(i: number): string | null;
+            vfunc_get_keybinding(i: number): (string | null);
+
             /**
              * Returns the localized name of the specified action of the object.
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_localized_name(i: number): string | null;
+            vfunc_get_localized_name(i: number): (string | null);
+
             /**
              * Gets the number of accessible actions available on the object.
              * If there are more than one, the first one is considered the
@@ -8003,6 +8409,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_n_actions(): number;
+
             /**
              * Returns a non-localized string naming the specified action of the
              * object. This name is generally not descriptive of the end result
@@ -8013,7 +8420,7 @@ export namespace Atk {
              * "click", "press", "release", "drag", "drop", "popup", etc.
              * The "popup" action should be used to pop up a context menu for the
              * object, if one exists.
-             *
+             * 
              * For technical reasons, some toolkits cannot guarantee that the
              * reported action is actually 'bound' to a nontrivial user event;
              * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -8021,7 +8428,8 @@ export namespace Atk {
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_name(i: number): string | null;
+            vfunc_get_name(i: number): (string | null);
+
             /**
              * Sets a description of the specified action of the object.
              * @param i the action index corresponding to the action to be performed
@@ -8031,9 +8439,11 @@ export namespace Atk {
             vfunc_set_description(i: number, desc: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ActionNamespace {
@@ -8043,17 +8453,17 @@ export namespace Atk {
     /**
      * The ATK interface provided by UI components
      * which the user can activate/interact with.
-     *
+     * 
      * {@link Atk.Action} should be implemented by instances of {@link Atk.Object} classes
      * with which the user can interact directly, i.e. buttons,
      * checkboxes, scrollbars, e.g. components which are not "passive"
      * providers of UI information.
-     *
+     * 
      * Exceptions: when the user interaction is already covered by another
      * appropriate interface such as {@link Atk.EditableText} (insert/delete text,
      * etc.) or {@link Atk.Value} (set value) then these actions should not be
      * exposed by {@link Atk.Action} as well.
-     *
+     * 
      * Though most UI interactions on components should be invocable via
      * keyboard as well as mouse, there will generally be a close mapping
      * between "mouse actions" that are possible on a component and the
@@ -8064,26 +8474,28 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Action extends GObject.Object, Action.Interface {
-        // Methods
 
+        // Methods
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @returns `true` if success, `false` otherwise
          */
         do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): string | null;
+        get_description(i: number): (string | null);
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -8096,7 +8508,7 @@ export namespace Atk {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -8104,13 +8516,15 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): string | null;
+        get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): string | null;
+        get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -8118,6 +8532,7 @@ export namespace Atk {
          * @returns a the number of actions, or 0 if `action` does not implement this interface.
          */
         get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -8128,7 +8543,7 @@ export namespace Atk {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -8136,7 +8551,8 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): string | null;
+        get_name(i: number): (string | null);
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -8145,6 +8561,7 @@ export namespace Atk {
          */
         set_description(i: number, desc: string): boolean;
     }
+
 
     export const Action: ActionNamespace & {
         new (): Action; // This allows `obj instanceof Action`
@@ -8156,16 +8573,17 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param bounds
+             * @param bounds 
              * @virtual
              */
             vfunc_bounds_changed(bounds: Rectangle): void;
+
             /**
              * Checks whether the specified point is within the extent of the `component`.
-             *
+             * 
              * Toolkit implementor note: ATK provides a default implementation for
              * this virtual method. In general there are little reason to
              * re-implement it.
@@ -8175,6 +8593,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_contains(x: number, y: number, coord_type: CoordType): boolean;
+
             /**
              * Returns the alpha value (i.e. the opacity) for this
              * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -8182,49 +8601,56 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_alpha(): number;
+
             /**
              * Gets the rectangle which gives the extent of the `component`.
-             *
+             * 
              * If the extent can not be obtained (e.g. a non-embedded plug or missing
              * support), all of x, y, width, height are set to -1.
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
              * @virtual
              */
             vfunc_get_extents(coord_type: CoordType): [number, number, number, number];
+
             /**
              * Gets the layer of the component.
              * @virtual
              */
             vfunc_get_layer(): Layer;
+
             /**
              * Gets the zorder of the component. The value G_MININT will be returned
              * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
              * @virtual
              */
             vfunc_get_mdi_zorder(): number;
+
             /**
              * Gets the position of `component` in the form of
              * a point specifying `component`'s top-left corner.
-             *
+             * 
              * If the position can not be obtained (e.g. a non-embedded plug or missing
              * support), x and y are set to -1.
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
              * @virtual
              */
             vfunc_get_position(coord_type: CoordType): [number, number];
+
             /**
              * Gets the size of the `component` in terms of width and height.
-             *
+             * 
              * If the size can not be obtained (e.g. a non-embedded plug or missing
              * support), width and height are set to -1.
              * @virtual
              */
             vfunc_get_size(): [number, number];
+
             /**
              * Grabs focus for this `component`.
              * @virtual
              */
             vfunc_grab_focus(): boolean;
+
             /**
              * Gets a reference to the accessible child, if one exists, at the
              * coordinate point specified by `x` and `y`.
@@ -8233,7 +8659,8 @@ export namespace Atk {
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
              * @virtual
              */
-            vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+            vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
             /**
              * Remove the handler specified by `handler_id` from the list of
              * functions to be executed when this object receives focus events
@@ -8242,9 +8669,10 @@ export namespace Atk {
              * @virtual
              */
             vfunc_remove_focus_handler(handler_id: number): void;
+
             /**
              * Makes `component` visible on the screen by scrolling all necessary parents.
-             *
+             * 
              * Contrary to atk_component_set_position, this does not actually move
              * `component` in its parent, this only makes the parents scroll so that the
              * object shows up on the screen, given its current position within the parents.
@@ -8252,6 +8680,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_scroll_to(type: ScrollType): boolean;
+
             /**
              * Move the top-left of `component` to a given position of the screen by
              * scrolling all necessary parents.
@@ -8261,6 +8690,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
             /**
              * Sets the extents of `component`.
              * @param x x coordinate
@@ -8271,9 +8701,10 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
             /**
              * Sets the position of `component`.
-             *
+             * 
              * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
              * this just moves `component` in its parent.
              * @param x x coordinate
@@ -8282,6 +8713,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_position(x: number, y: number, coord_type: CoordType): boolean;
+
             /**
              * Set the size of the `component` in terms of width and height.
              * @param width width to set for `component`
@@ -8291,9 +8723,11 @@ export namespace Atk {
             vfunc_set_size(width: number, height: number): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ComponentNamespace {
@@ -8304,25 +8738,25 @@ export namespace Atk {
      * The ATK interface provided by UI components
      * which occupy a physical area on the screen.
      * which the user can activate/interact with.
-     *
+     * 
      * {@link Atk.Component} should be implemented by most if not all UI elements
      * with an actual on-screen presence, i.e. components which can be
      * said to have a screen-coordinate bounding box.  Virtually all
      * widgets will need to have {@link Atk.Component} implementations provided
      * for their corresponding {@link Atk.Object} class.  In short, only UI
      * elements which are *not* GUI elements will omit this ATK interface.
-     *
+     * 
      * A possible exception might be textual information with a
      * transparent background, in which case text glyph bounding box
      * information is provided by {@link Atk.Text}.
      * @gir-type Interface
      */
     interface Component extends GObject.Object, Component.Interface {
-        // Methods
 
+        // Methods
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -8332,6 +8766,7 @@ export namespace Atk {
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
         contains(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -8339,46 +8774,53 @@ export namespace Atk {
          * @returns An alpha value from 0 to 1.0, inclusive.
          */
         get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_extents(coord_type: CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
          */
         get_layer(): Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          */
         get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @returns `true` if successful, `false` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -8387,7 +8829,8 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -8395,9 +8838,10 @@ export namespace Atk {
          * @param handler_id the handler id of the focus handler to be removed from `component`
          */
         remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -8405,6 +8849,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -8414,6 +8859,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -8424,9 +8870,10 @@ export namespace Atk {
          * @returns `true` or `false` whether the extents were set or not
          */
         set_extents(x: number, y: number, width: number, height: number, coord_type: CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -8435,6 +8882,7 @@ export namespace Atk {
          * @returns `true` or `false` whether or not the position was set or not
          */
         set_position(x: number, y: number, coord_type: CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -8443,6 +8891,7 @@ export namespace Atk {
          */
         set_size(width: number, height: number): boolean;
     }
+
 
     export const Component: ComponentNamespace & {
         new (): Component; // This allows `obj instanceof Component`
@@ -8454,32 +8903,36 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Retrieves the current page number inside `document`.
              * @virtual
              */
             vfunc_get_current_page_number(): number;
+
             /**
              * Gets a %gpointer that points to an instance of the DOM.  It is
              * up to the caller to check atk_document_get_type to determine
              * how to cast this pointer.
              * @virtual
              */
-            vfunc_get_document(): any | null;
+            vfunc_get_document(): (any | null);
+
             /**
              * Retrieves the value of the given `attribute_name` inside `document`.
              * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
              * @virtual
              */
-            vfunc_get_document_attribute_value(attribute_name: string): string | null;
+            vfunc_get_document_attribute_value(attribute_name: string): (string | null);
+
             /**
              * Gets an AtkAttributeSet which describes document-wide
              *          attributes as name-value pairs.
              * @virtual
              */
             vfunc_get_document_attributes(): AttributeSet;
+
             /**
              * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
              *          of the content of this document instance.  Individual
@@ -8489,21 +8942,25 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_document_locale(): string;
+
             /**
              * Gets a string indicating the document type.
              * @virtual
              */
             vfunc_get_document_type(): string;
+
             /**
              * Retrieves the total number of pages inside `document`.
              * @virtual
              */
             vfunc_get_page_count(): number;
+
             /**
              * Returns an array of AtkTextSelections within this document.
              * @virtual
              */
             vfunc_get_text_selections(): TextSelection[];
+
             /**
              * Sets the value for the given `attribute_name` inside `document`.
              * @param attribute_name a character string representing the name of the attribute   whose value is being set.
@@ -8511,6 +8968,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
+
             /**
              * Makes 1 or more selections within this document denoted by the given
              * array of AtkTextSelections. Any existing physical selection (inside or
@@ -8523,9 +8981,11 @@ export namespace Atk {
             vfunc_set_text_selections(selections: TextSelection[]): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentNamespace {
@@ -8535,7 +8995,7 @@ export namespace Atk {
     /**
      * The ATK interface which represents the toplevel
      *  container for document content.
-     *
+     * 
      * The AtkDocument interface should be supported by any object whose
      * content is a representation or view of a document.  The AtkDocument
      * interface should appear on the toplevel container for the document
@@ -8546,37 +9006,42 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Document extends GObject.Object, Document.Interface {
-        // Methods
 
+        // Methods
         /**
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
          */
-        get_attribute_value(attribute_name: string): string | null;
+        get_attribute_value(attribute_name: string): (string | null);
+
         /**
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
          * @returns An AtkAttributeSet containing the explicitly          set name-value-pair attributes associated with this document          as a whole.
          */
         get_attributes(): AttributeSet;
+
         /**
          * Retrieves the current page number inside `document`.
          * @returns the current page number inside `document`, or -1 if   not implemented, not know by the implementor, or irrelevant.
          */
         get_current_page_number(): number;
+
         /**
          * Gets a %gpointer that points to an instance of the DOM.  It is
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
          * @returns a %gpointer that points to an instance of the DOM.
          */
-        get_document(): any | null;
+        get_document(): (any | null);
+
         /**
          * Gets a string indicating the document type.
          * @returns a string indicating the document type
          */
         get_document_type(): string;
+
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          *          of the content of this document instance.  Individual
@@ -8586,16 +9051,19 @@ export namespace Atk {
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
          */
         get_locale(): string;
+
         /**
          * Retrieves the total number of pages inside `document`.
          * @returns total page count of `document`, or -1 if not implemented,   not know by the implementor or irrelevant.
          */
         get_page_count(): number;
+
         /**
          * Returns an array of AtkTextSelections within this document.
          * @returns a GArray of AtkTextSelection structures representing the selection.
          */
         get_text_selections(): TextSelection[];
+
         /**
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
@@ -8603,6 +9071,7 @@ export namespace Atk {
          * @returns `true` if `attribute_value` is successfully associated   with `attribute_name` for this `document`, and `false` if if the   document does not allow the attribute to be modified
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
+
         /**
          * Makes 1 or more selections within this document denoted by the given
          * array of AtkTextSelections. Any existing physical selection (inside or
@@ -8615,6 +9084,7 @@ export namespace Atk {
         set_text_selections(selections: TextSelection[]): boolean;
     }
 
+
     export const Document: DocumentNamespace & {
         new (): Document; // This allows `obj instanceof Document`
     };
@@ -8625,8 +9095,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Copy text from `start_pos` up to, but not including `end_pos`
              * to the clipboard.
@@ -8635,6 +9105,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_copy_text(start_pos: number, end_pos: number): void;
+
             /**
              * Copy text from `start_pos` up to, but not including `end_pos`
              * to the clipboard and then delete from the widget.
@@ -8643,6 +9114,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_cut_text(start_pos: number, end_pos: number): void;
+
             /**
              * Delete text `start_pos` up to, but not including `end_pos`.
              * @param start_pos start position
@@ -8650,6 +9122,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_delete_text(start_pos: number, end_pos: number): void;
+
             /**
              * Insert text at a given position.
              * @param string the text to insert
@@ -8658,12 +9131,14 @@ export namespace Atk {
              * @virtual
              */
             vfunc_insert_text(string: string, length: number, position: number): void;
+
             /**
              * Paste text from clipboard to specified `position`.
              * @param position position to paste
              * @virtual
              */
             vfunc_paste_text(position: number): void;
+
             /**
              * Sets the attributes for a specified range. See the ATK_ATTRIBUTE
              * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
@@ -8675,6 +9150,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean;
+
             /**
              * Set text contents of `text`.
              * @param string string to set for text contents of `text`
@@ -8683,9 +9159,11 @@ export namespace Atk {
             vfunc_set_text_contents(string: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface EditableTextNamespace {
@@ -8694,21 +9172,21 @@ export namespace Atk {
     }
     /**
      * The ATK interface implemented by components containing user-editable text content.
-     *
+     * 
      * {@link Atk.EditableText} should be implemented by UI components which
      * contain text which the user can edit, via the {@link Atk.Object}
      * corresponding to that component (see {@link Atk.Object}).
-     *
+     * 
      * {@link Atk.EditableText} is a subclass of {@link Atk.Text}, and as such, an object
      * which implements {@link Atk.EditableText} is by definition an {@link Atk.Text}
      * implementor as well.
-     *
+     * 
      * See {@link AtkText}
      * @gir-type Interface
      */
     interface EditableText extends GObject.Object, EditableText.Interface {
-        // Methods
 
+        // Methods
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard.
@@ -8716,6 +9194,7 @@ export namespace Atk {
          * @param end_pos end position
          */
         copy_text(start_pos: number, end_pos: number): void;
+
         /**
          * Copy text from `start_pos` up to, but not including `end_pos`
          * to the clipboard and then delete from the widget.
@@ -8723,12 +9202,14 @@ export namespace Atk {
          * @param end_pos end position
          */
         cut_text(start_pos: number, end_pos: number): void;
+
         /**
          * Delete text `start_pos` up to, but not including `end_pos`.
          * @param start_pos start position
          * @param end_pos end position
          */
         delete_text(start_pos: number, end_pos: number): void;
+
         /**
          * Insert text at a given position.
          * @param string the text to insert
@@ -8736,11 +9217,13 @@ export namespace Atk {
          * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
          */
         insert_text(string: string, length: number, position: number): void;
+
         /**
          * Paste text from clipboard to specified `position`.
          * @param position position to paste
          */
         paste_text(position: number): void;
+
         /**
          * Sets the attributes for a specified range. See the ATK_ATTRIBUTE
          * macros (such as #ATK_ATTRIBUTE_LEFT_MARGIN) for examples of attributes
@@ -8752,12 +9235,14 @@ export namespace Atk {
          * @returns `true` if attributes successfully set for the specified range, otherwise `false`
          */
         set_run_attributes(attrib_set: AttributeSet, start_offset: number, end_offset: number): boolean;
+
         /**
          * Set text contents of `text`.
          * @param string string to set for text contents of `text`
          */
         set_text_contents(string: string): void;
     }
+
 
     export const EditableText: EditableTextNamespace & {
         new (): EditableText; // This allows `obj instanceof EditableText`
@@ -8769,8 +9254,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the hyperlink associated with this object.
              * @virtual
@@ -8778,9 +9263,11 @@ export namespace Atk {
             vfunc_get_hyperlink(): Hyperlink;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HyperlinkImplNamespace {
@@ -8796,14 +9283,15 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface HyperlinkImpl extends GObject.Object, HyperlinkImpl.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the hyperlink associated with this object.
          * @returns an AtkHyperlink object which points to this implementing AtkObject.
          */
         get_hyperlink(): Hyperlink;
     }
+
 
     export const HyperlinkImpl: HyperlinkImplNamespace & {
         new (): HyperlinkImpl; // This allows `obj instanceof HyperlinkImpl`
@@ -8815,8 +9303,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the link in this hypertext document at index
              * `link_index`
@@ -8824,6 +9312,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_link(link_index: number): Hyperlink;
+
             /**
              * Gets the index into the array of hyperlinks that is associated with
              * the character specified by `char_index`.
@@ -8831,21 +9320,25 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_link_index(char_index: number): number;
+
             /**
              * Gets the number of links within this hypertext document.
              * @virtual
              */
             vfunc_get_n_links(): number;
+
             /**
-             * @param link_index
+             * @param link_index 
              * @virtual
              */
             vfunc_link_selected(link_index: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HypertextNamespace {
@@ -8854,7 +9347,7 @@ export namespace Atk {
     }
     /**
      * The ATK interface which provides standard mechanism for manipulating hyperlinks.
-     *
+     * 
      * An interface used for objects which implement linking between
      * multiple resource or content locations, or multiple 'markers'
      * within a single document.  A Hypertext instance is associated with
@@ -8866,8 +9359,8 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Hypertext extends GObject.Object, Hypertext.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the link in this hypertext document at index
          * `link_index`
@@ -8875,6 +9368,7 @@ export namespace Atk {
          * @returns the link in this hypertext document at index `link_index`
          */
         get_link(link_index: number): Hyperlink;
+
         /**
          * Gets the index into the array of hyperlinks that is associated with
          * the character specified by `char_index`.
@@ -8882,12 +9376,14 @@ export namespace Atk {
          * @returns an index into the array of hyperlinks in `hypertext`, or -1 if there is no hyperlink associated with this character.
          */
         get_link_index(char_index: number): number;
+
         /**
          * Gets the number of links within this hypertext document.
          * @returns the number of links within this hypertext document
          */
         get_n_links(): number;
     }
+
 
     export const Hypertext: HypertextNamespace & {
         new (): Hypertext; // This allows `obj instanceof Hypertext`
@@ -8899,38 +9395,42 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get a textual description of this image.
              * @virtual
              */
             vfunc_get_image_description(): string;
+
             /**
              * Retrieves the locale identifier associated to the {@link Atk.Image}.
              * @virtual
              */
-            vfunc_get_image_locale(): string | null;
+            vfunc_get_image_locale(): (string | null);
+
             /**
              * Gets the position of the image in the form of a point specifying the
              * images top-left corner.
-             *
+             * 
              * If the position can not be obtained (e.g. missing support), x and y are set
              * to -1.
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
              * @virtual
              */
             vfunc_get_image_position(coord_type: CoordType): [number, number];
+
             /**
              * Get the width and height in pixels for the specified image.
              * The values of `width` and `height` are returned as -1 if the
              * values cannot be obtained (for instance, if the object is not onscreen).
-             *
+             * 
              * If the size can not be obtained (e.g. missing support), x and y are set
              * to -1.
              * @virtual
              */
             vfunc_get_image_size(): [number, number];
+
             /**
              * Sets the textual description for this image.
              * @param description a string description to set for `image`
@@ -8939,9 +9439,11 @@ export namespace Atk {
             vfunc_set_image_description(description: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ImageNamespace {
@@ -8951,14 +9453,14 @@ export namespace Atk {
     /**
      * The ATK Interface implemented by components
      *  which expose image or pixmap content on-screen.
-     *
+     * 
      * {@link Atk.Image} should be implemented by {@link Atk.Object} subtypes on behalf of
      * components which display image/pixmap information onscreen, and
      * which provide information (other than just widget borders, etc.)
      * via that image content.  For instance, icons, buttons with icons,
      * toolbar elements, and image viewing panes typically should
      * implement {@link Atk.Image}.
-     *
+     * 
      * {@link Atk.Image} primarily provides two types of information: coordinate
      * information (useful for screen review mode of screenreaders, and
      * for use by onscreen magnifiers), and descriptive information.  The
@@ -8968,36 +9470,40 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Image extends GObject.Object, Image.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get a textual description of this image.
          * @returns a string representing the image description
          */
         get_image_description(): string;
+
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
          */
-        get_image_locale(): string | null;
+        get_image_locale(): (string | null);
+
         /**
          * Gets the position of the image in the form of a point specifying the
          * images top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. missing support), x and y are set
          * to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_image_position(coord_type: CoordType): [number, number];
+
         /**
          * Get the width and height in pixels for the specified image.
          * The values of `width` and `height` are returned as -1 if the
          * values cannot be obtained (for instance, if the object is not onscreen).
-         *
+         * 
          * If the size can not be obtained (e.g. missing support), x and y are set
          * to -1.
          */
         get_image_size(): [number, number];
+
         /**
          * Sets the textual description for this image.
          * @param description a string description to set for `image`
@@ -9006,14 +9512,17 @@ export namespace Atk {
         set_image_description(description: string): boolean;
     }
 
+
     export const Image: ImageNamespace & {
         new (): Image; // This allows `obj instanceof Image`
     };
 
     namespace ImplementorIface {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ImplementorIfaceNamespace {
@@ -9026,7 +9535,9 @@ export namespace Atk {
      * iface->(ref_accessible)(implementor);
      * @gir-type Interface
      */
-    interface ImplementorIface extends GObject.Object {}
+    interface ImplementorIface extends GObject.Object {
+    }
+
 
     export const ImplementorIface: ImplementorIfaceNamespace & {
         new (): ImplementorIface; // This allows `obj instanceof ImplementorIface`
@@ -9038,8 +9549,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds the specified accessible child of the object to the
              * object's selection.
@@ -9047,12 +9558,14 @@ export namespace Atk {
              * @virtual
              */
             vfunc_add_selection(i: number): boolean;
+
             /**
              * Clears the selection in the object so that no children in the object
              * are selected.
              * @virtual
              */
             vfunc_clear_selection(): boolean;
+
             /**
              * Gets the number of accessible children currently selected.
              * Note: callers should not rely on `null` or on a zero value for
@@ -9062,6 +9575,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_selection_count(): number;
+
             /**
              * Determines if the current child of this object is selected
              * Note: callers should not rely on `null` or on a zero value for
@@ -9072,6 +9586,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_is_child_selected(i: number): boolean;
+
             /**
              * Gets a reference to the accessible object representing the specified
              * selected child of the object.
@@ -9082,28 +9597,33 @@ export namespace Atk {
              * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
              * @virtual
              */
-            vfunc_ref_selection(i: number): Object | null;
+            vfunc_ref_selection(i: number): (Object | null);
+
             /**
              * Removes the specified child of the object from the object's selection.
              * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
              * @virtual
              */
             vfunc_remove_selection(i: number): boolean;
+
             /**
              * Causes every child of the object to be selected if the object
              * supports multiple selections.
              * @virtual
              */
             vfunc_select_all_selection(): boolean;
+
             /**
              * @virtual
              */
             vfunc_selection_changed(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SelectionNamespace {
@@ -9112,22 +9632,22 @@ export namespace Atk {
     }
     /**
      * The ATK interface implemented by container objects whose {@link Atk.Object} children can be selected.
-     *
+     * 
      * {@link Atk.Selection} should be implemented by UI components with children
      * which are exposed by `atk_object_ref_child` and
      * `atk_object_get_n_children`, if the use of the parent UI component
      * ordinarily involves selection of one or more of the objects
      * corresponding to those {@link Atk.Object} children - for example,
      * selectable lists.
-     *
+     * 
      * Note that other types of "selection" (for instance text selection)
      * are accomplished a other ATK interfaces - {@link Atk.Selection} is limited
      * to the selection/deselection of children.
      * @gir-type Interface
      */
     interface Selection extends GObject.Object, Selection.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds the specified accessible child of the object to the
          * object's selection.
@@ -9135,12 +9655,14 @@ export namespace Atk {
          * @returns TRUE if success, FALSE otherwise.
          */
         add_selection(i: number): boolean;
+
         /**
          * Clears the selection in the object so that no children in the object
          * are selected.
          * @returns TRUE if success, FALSE otherwise.
          */
         clear_selection(): boolean;
+
         /**
          * Gets the number of accessible children currently selected.
          * Note: callers should not rely on `null` or on a zero value for
@@ -9150,6 +9672,7 @@ export namespace Atk {
          * @returns a gint representing the number of items selected, or 0 if `selection` does not implement this interface.
          */
         get_selection_count(): number;
+
         /**
          * Determines if the current child of this object is selected
          * Note: callers should not rely on `null` or on a zero value for
@@ -9160,6 +9683,7 @@ export namespace Atk {
          * @returns a gboolean representing the specified child is selected, or 0 if `selection` does not implement this interface.
          */
         is_child_selected(i: number): boolean;
+
         /**
          * Gets a reference to the accessible object representing the specified
          * selected child of the object.
@@ -9170,13 +9694,15 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns an {@link Atk.Object} representing the selected accessible, or `null` if `selection` does not implement this interface.
          */
-        ref_selection(i: number): Object | null;
+        ref_selection(i: number): (Object | null);
+
         /**
          * Removes the specified child of the object from the object's selection.
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns TRUE if success, FALSE otherwise.
          */
         remove_selection(i: number): boolean;
+
         /**
          * Causes every child of the object to be selected if the object
          * supports multiple selections.
@@ -9184,6 +9710,7 @@ export namespace Atk {
          */
         select_all_selection(): boolean;
     }
+
 
     export const Selection: SelectionNamespace & {
         new (): Selection; // This allows `obj instanceof Selection`
@@ -9195,8 +9722,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the character string of the specified mime type. The first mime
              * type is at position 0, the second at position 1, and so on.
@@ -9204,35 +9731,40 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_mime_type(i: number): string;
+
             /**
              * Gets the number of mime types supported by this object.
              * @virtual
              */
             vfunc_get_n_mime_types(): number;
+
             /**
              * Gets the content in the specified mime type.
              * @param mime_type a gchar* representing the mime type
              * @virtual
              */
             vfunc_get_stream(mime_type: string): GLib.IOChannel;
+
             /**
              * Get a string representing a URI in IETF standard format
              * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
              * may be streamed in the specified mime-type, if one is available.
              * If mime_type is NULL, the URI for the default (and possibly only) mime-type is
              * returned.
-             *
+             * 
              * Note that it is possible for get_uri to return NULL but for
              * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
              * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
              * @virtual
              */
-            vfunc_get_uri(mime_type: string): string | null;
+            vfunc_get_uri(mime_type: string): (string | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface StreamableContentNamespace {
@@ -9241,15 +9773,15 @@ export namespace Atk {
     }
     /**
      * The ATK interface which provides access to streamable content.
-     *
+     * 
      * An interface whereby an object allows its backing content to be
      * streamed to clients.  Typical implementors would be images or
      * icons, HTML content, or multimedia display/rendering widgets.
-     *
+     * 
      * Negotiation of content type is allowed. Clients may examine the
      * backing data and transform, convert, or parse the content in order
      * to present it in an alternate form to end-users.
-     *
+     * 
      * The AtkStreamableContent interface is particularly useful for
      * saving, printing, or post-processing entire documents, or for
      * persisting alternate views of a document. If document content
@@ -9261,8 +9793,8 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface StreamableContent extends GObject.Object, StreamableContent.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the character string of the specified mime type. The first mime
          * type is at position 0, the second at position 1, and so on.
@@ -9270,31 +9802,35 @@ export namespace Atk {
          * @returns a gchar* representing the specified mime type; the caller should not free the character string.
          */
         get_mime_type(i: number): string;
+
         /**
          * Gets the number of mime types supported by this object.
          * @returns a gint which is the number of mime types supported by the object.
          */
         get_n_mime_types(): number;
+
         /**
          * Gets the content in the specified mime type.
          * @param mime_type a gchar* representing the mime type
          * @returns A {@link GLib.IOChannel} which contains the content in the specified mime type.
          */
         get_stream(mime_type: string): GLib.IOChannel;
+
         /**
          * Get a string representing a URI in IETF standard format
          * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
          * may be streamed in the specified mime-type, if one is available.
          * If mime_type is NULL, the URI for the default (and possibly only) mime-type is
          * returned.
-         *
+         * 
          * Note that it is possible for get_uri to return NULL but for
          * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
          * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
          * @returns Returns a string representing a URI, or `null` if no corresponding URI can be constructed.
          */
-        get_uri(mime_type: string): string | null;
+        get_uri(mime_type: string): (string | null);
     }
+
 
     export const StreamableContent: StreamableContentNamespace & {
         new (): StreamableContent; // This allows `obj instanceof StreamableContent`
@@ -9306,53 +9842,61 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds the specified `column` to the selection.
              * @param column a `gint` representing a column in `table`
              * @virtual
              */
             vfunc_add_column_selection(column: number): boolean;
+
             /**
              * Adds the specified `row` to the selection.
              * @param row a `gint` representing a row in `table`
              * @virtual
              */
             vfunc_add_row_selection(row: number): boolean;
+
             /**
-             * @param column
-             * @param num_deleted
+             * @param column 
+             * @param num_deleted 
              * @virtual
              */
             vfunc_column_deleted(column: number, num_deleted: number): void;
+
             /**
-             * @param column
-             * @param num_inserted
+             * @param column 
+             * @param num_inserted 
              * @virtual
              */
             vfunc_column_inserted(column: number, num_inserted: number): void;
+
             /**
              * @virtual
              */
             vfunc_column_reordered(): void;
+
             /**
              * Gets the caption for the `table`.
              * @virtual
              */
-            vfunc_get_caption(): Object | null;
+            vfunc_get_caption(): (Object | null);
+
             /**
              * Gets a `gint` representing the column at the specified `index_`.
              * @param index_ a `gint` representing an index in `table`
              * @virtual
              */
             vfunc_get_column_at_index(index_: number): number;
+
             /**
              * Gets the description text of the specified `column` in the table
              * @param column a `gint` representing a column in `table`
              * @virtual
              */
             vfunc_get_column_description(column: number): string;
+
             /**
              * Gets the number of columns occupied by the accessible object
              * at the specified `row` and `column` in the `table`.
@@ -9361,12 +9905,14 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_column_extent_at(row: number, column: number): number;
+
             /**
              * Gets the column header of a specified column in an accessible table.
              * @param column a `gint` representing a column in the table
              * @virtual
              */
-            vfunc_get_column_header(column: number): Object | null;
+            vfunc_get_column_header(column: number): (Object | null);
+
             /**
              * Gets a `gint` representing the index at the specified `row` and
              * `column`.
@@ -9375,28 +9921,33 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_index_at(row: number, column: number): number;
+
             /**
              * Gets the number of columns in the table.
              * @virtual
              */
             vfunc_get_n_columns(): number;
+
             /**
              * Gets the number of rows in the table.
              * @virtual
              */
             vfunc_get_n_rows(): number;
+
             /**
              * Gets a `gint` representing the row at the specified `index_`.
              * @param index_ a `gint` representing an index in `table`
              * @virtual
              */
             vfunc_get_row_at_index(index_: number): number;
+
             /**
              * Gets the description text of the specified row in the table
              * @param row a `gint` representing a row in `table`
              * @virtual
              */
-            vfunc_get_row_description(row: number): string | null;
+            vfunc_get_row_description(row: number): (string | null);
+
             /**
              * Gets the number of rows occupied by the accessible object
              * at a specified `row` and `column` in the `table`.
@@ -9405,12 +9956,14 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_row_extent_at(row: number, column: number): number;
+
             /**
              * Gets the row header of a specified row in an accessible table.
              * @param row a `gint` representing a row in the table
              * @virtual
              */
-            vfunc_get_row_header(row: number): Object | null;
+            vfunc_get_row_header(row: number): (Object | null);
+
             /**
              * Gets the selected columns of the table by initializing **selected with
              * the selected column numbers. This array should be freed by the caller.
@@ -9418,6 +9971,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_selected_columns(selected: number): number;
+
             /**
              * Gets the selected rows of the table by initializing **selected with
              * the selected row numbers. This array should be freed by the caller.
@@ -9425,11 +9979,13 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_selected_rows(selected: number): number;
+
             /**
              * Gets the summary description of the table.
              * @virtual
              */
             vfunc_get_summary(): Object;
+
             /**
              * Gets a boolean value indicating whether the specified `column`
              * is selected
@@ -9437,6 +9993,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_is_column_selected(column: number): boolean;
+
             /**
              * Gets a boolean value indicating whether the specified `row`
              * is selected
@@ -9444,6 +10001,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_is_row_selected(row: number): boolean;
+
             /**
              * Gets a boolean value indicating whether the accessible object
              * at the specified `row` and `column` is selected
@@ -9452,10 +10010,12 @@ export namespace Atk {
              * @virtual
              */
             vfunc_is_selected(row: number, column: number): boolean;
+
             /**
              * @virtual
              */
             vfunc_model_changed(): void;
+
             /**
              * Get a reference to the table cell at `row`, `column`. This cell
              * should implement the interface {@link Atk.TableCell}
@@ -9464,40 +10024,47 @@ export namespace Atk {
              * @virtual
              */
             vfunc_ref_at(row: number, column: number): Object;
+
             /**
              * Adds the specified `column` to the selection.
              * @param column a `gint` representing a column in `table`
              * @virtual
              */
             vfunc_remove_column_selection(column: number): boolean;
+
             /**
              * Removes the specified `row` from the selection.
              * @param row a `gint` representing a row in `table`
              * @virtual
              */
             vfunc_remove_row_selection(row: number): boolean;
+
             /**
-             * @param row
-             * @param num_deleted
+             * @param row 
+             * @param num_deleted 
              * @virtual
              */
             vfunc_row_deleted(row: number, num_deleted: number): void;
+
             /**
-             * @param row
-             * @param num_inserted
+             * @param row 
+             * @param num_inserted 
              * @virtual
              */
             vfunc_row_inserted(row: number, num_inserted: number): void;
+
             /**
              * @virtual
              */
             vfunc_row_reordered(): void;
+
             /**
              * Sets the caption for the table.
              * @param caption a {@link Atk.Object} representing the caption to set for `table`
              * @virtual
              */
             vfunc_set_caption(caption: Object): void;
+
             /**
              * Sets the description text for the specified `column` of the `table`.
              * @param column a `gint` representing a column in `table`
@@ -9505,6 +10072,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_column_description(column: number, description: string): void;
+
             /**
              * Sets the specified column header to `header`.
              * @param column a `gint` representing a column in `table`
@@ -9512,6 +10080,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_column_header(column: number, header: Object): void;
+
             /**
              * Sets the description text for the specified `row` of `table`.
              * @param row a `gint` representing a row in `table`
@@ -9519,6 +10088,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_row_description(row: number, description: string): void;
+
             /**
              * Sets the specified row header to `header`.
              * @param row a `gint` representing a row in `table`
@@ -9526,6 +10096,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_row_header(row: number, header: Object): void;
+
             /**
              * Sets the summary description of the table.
              * @param accessible an {@link Atk.Object} representing the summary description to set for `table`
@@ -9534,9 +10105,11 @@ export namespace Atk {
             vfunc_set_summary(accessible: Object): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TableNamespace {
@@ -9545,7 +10118,7 @@ export namespace Atk {
     }
     /**
      * The ATK interface implemented for UI components which contain tabular or row/column information.
-     *
+     * 
      * {@link Atk.Table} should be implemented by components which present
      * elements ordered via rows and columns.  It may also be used to
      * present tree-structured information if the nodes of the trees can
@@ -9556,18 +10129,18 @@ export namespace Atk {
      * grand-children, grand-grand-children etc. {@link Atk.Table} provides the
      * API needed to get a individual cell based on the row and column
      * numbers.
-     *
+     * 
      * Children of {@link Atk.Table} are frequently "lightweight" objects, that
      * is, they may not have backing widgets in the host UI toolkit.  They
      * are therefore often transient.
-     *
+     * 
      * Since tables are often very complex, {@link Atk.Table} includes provision
      * for offering simplified summary information, as well as row and
      * column headers and captions.  Headers and captions are `AtkObjects`
      * which may implement other interfaces ({@link Atk.Text}, {@link Atk.Image}, etc.) as
      * appropriate.  {@link Atk.Table} summaries may themselves be (simplified)
      * `AtkTables`, etc.
-     *
+     * 
      * Note for implementors: in the past, {@link Atk.Table} required that all the
      * cells should be direct children of {@link Atk.Table}, and provided some
      * index based methods to request the cells. The practice showed that
@@ -9577,37 +10150,42 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Table extends GObject.Object, Table.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @returns a gboolean representing if the column was successfully added to the selection, or 0 if value does not implement this interface.
          */
         add_column_selection(column: number): boolean;
+
         /**
          * Adds the specified `row` to the selection.
          * @param row a `gint` representing a row in `table`
          * @returns a gboolean representing if row was successfully added to selection, or 0 if value does not implement this interface.
          */
         add_row_selection(row: number): boolean;
+
         /**
          * Gets the caption for the `table`.
          * @returns a AtkObject* representing the table caption, or `null` if value does not implement this interface.
          */
-        get_caption(): Object | null;
+        get_caption(): (Object | null);
+
         /**
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the column at the specified index, or -1 if the table does not implement this method.
          */
         get_column_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified `column` in the table
          * @param column a `gint` representing a column in `table`
          * @returns a gchar* representing the column description, or `null` if value does not implement this interface.
          */
         get_column_description(column: number): string;
+
         /**
          * Gets the number of columns occupied by the accessible object
          * at the specified `row` and `column` in the `table`.
@@ -9616,12 +10194,14 @@ export namespace Atk {
          * @returns a gint representing the column extent at specified position, or 0 if value does not implement this interface.
          */
         get_column_extent_at(row: number, column: number): number;
+
         /**
          * Gets the column header of a specified column in an accessible table.
          * @param column a `gint` representing a column in the table
          * @returns a AtkObject* representing the specified column header, or `null` if value does not implement this interface.
          */
-        get_column_header(column: number): Object | null;
+        get_column_header(column: number): (Object | null);
+
         /**
          * Gets a `gint` representing the index at the specified `row` and
          * `column`.
@@ -9630,28 +10210,33 @@ export namespace Atk {
          * @returns a `gint` representing the index at specified position. The value -1 is returned if the object at row,column is not a child of table or table does not implement this interface.
          */
         get_index_at(row: number, column: number): number;
+
         /**
          * Gets the number of columns in the table.
          * @returns a gint representing the number of columns, or 0 if value does not implement this interface.
          */
         get_n_columns(): number;
+
         /**
          * Gets the number of rows in the table.
          * @returns a gint representing the number of rows, or 0 if value does not implement this interface.
          */
         get_n_rows(): number;
+
         /**
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the row at the specified index, or -1 if the table does not implement this method.
          */
         get_row_at_index(index_: number): number;
+
         /**
          * Gets the description text of the specified row in the table
          * @param row a `gint` representing a row in `table`
          * @returns a gchar* representing the row description, or `null` if value does not implement this interface.
          */
-        get_row_description(row: number): string | null;
+        get_row_description(row: number): (string | null);
+
         /**
          * Gets the number of rows occupied by the accessible object
          * at a specified `row` and `column` in the `table`.
@@ -9660,12 +10245,14 @@ export namespace Atk {
          * @returns a gint representing the row extent at specified position, or 0 if value does not implement this interface.
          */
         get_row_extent_at(row: number, column: number): number;
+
         /**
          * Gets the row header of a specified row in an accessible table.
          * @param row a `gint` representing a row in the table
          * @returns a AtkObject* representing the specified row header, or `null` if value does not implement this interface.
          */
-        get_row_header(row: number): Object | null;
+        get_row_header(row: number): (Object | null);
+
         /**
          * Gets the selected columns of the table by initializing **selected with
          * the selected column numbers. This array should be freed by the caller.
@@ -9673,6 +10260,7 @@ export namespace Atk {
          * @returns a gint representing the number of selected columns, or %0 if value does not implement this interface.
          */
         get_selected_columns(selected: number): number;
+
         /**
          * Gets the selected rows of the table by initializing **selected with
          * the selected row numbers. This array should be freed by the caller.
@@ -9680,11 +10268,13 @@ export namespace Atk {
          * @returns a gint representing the number of selected rows, or zero if value does not implement this interface.
          */
         get_selected_rows(selected: number): number;
+
         /**
          * Gets the summary description of the table.
          * @returns a AtkObject* representing a summary description of the table, or zero if value does not implement this interface.
          */
         get_summary(): Object;
+
         /**
          * Gets a boolean value indicating whether the specified `column`
          * is selected
@@ -9692,6 +10282,7 @@ export namespace Atk {
          * @returns a gboolean representing if the column is selected, or 0 if value does not implement this interface.
          */
         is_column_selected(column: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the specified `row`
          * is selected
@@ -9699,6 +10290,7 @@ export namespace Atk {
          * @returns a gboolean representing if the row is selected, or 0 if value does not implement this interface.
          */
         is_row_selected(row: number): boolean;
+
         /**
          * Gets a boolean value indicating whether the accessible object
          * at the specified `row` and `column` is selected
@@ -9707,6 +10299,7 @@ export namespace Atk {
          * @returns a gboolean representing if the cell is selected, or 0 if value does not implement this interface.
          */
         is_selected(row: number, column: number): boolean;
+
         /**
          * Get a reference to the table cell at `row`, `column`. This cell
          * should implement the interface {@link Atk.TableCell}
@@ -9715,53 +10308,62 @@ export namespace Atk {
          * @returns an {@link Atk.Object} representing the referred to accessible
          */
         ref_at(row: number, column: number): Object;
+
         /**
          * Adds the specified `column` to the selection.
          * @param column a `gint` representing a column in `table`
          * @returns a gboolean representing if the column was successfully removed from the selection, or 0 if value does not implement this interface.
          */
         remove_column_selection(column: number): boolean;
+
         /**
          * Removes the specified `row` from the selection.
          * @param row a `gint` representing a row in `table`
          * @returns a gboolean representing if the row was successfully removed from the selection, or 0 if value does not implement this interface.
          */
         remove_row_selection(row: number): boolean;
+
         /**
          * Sets the caption for the table.
          * @param caption a {@link Atk.Object} representing the caption to set for `table`
          */
         set_caption(caption: Object): void;
+
         /**
          * Sets the description text for the specified `column` of the `table`.
          * @param column a `gint` representing a column in `table`
          * @param description a `gchar` representing the description text to set for the specified `column` of the `table`
          */
         set_column_description(column: number, description: string): void;
+
         /**
          * Sets the specified column header to `header`.
          * @param column a `gint` representing a column in `table`
          * @param header an {@link Atk.Table}
          */
         set_column_header(column: number, header: Object): void;
+
         /**
          * Sets the description text for the specified `row` of `table`.
          * @param row a `gint` representing a row in `table`
          * @param description a `gchar` representing the description text to set for the specified `row` of `table`
          */
         set_row_description(row: number, description: string): void;
+
         /**
          * Sets the specified row header to `header`.
          * @param row a `gint` representing a row in `table`
          * @param header an {@link Atk.Table}
          */
         set_row_header(row: number, header: Object): void;
+
         /**
          * Sets the summary description of the table.
          * @param accessible an {@link Atk.Object} representing the summary description to set for `table`
          */
         set_summary(accessible: Object): void;
     }
+
 
     export const Table: TableNamespace & {
         new (): Table; // This allows `obj instanceof Table`
@@ -9773,42 +10375,48 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Returns the column headers as an array of cell accessibles.
              * @virtual
              */
             vfunc_get_column_header_cells(): Object[];
+
             /**
              * Returns the number of columns occupied by this cell accessible.
              * @virtual
              */
             vfunc_get_column_span(): number;
+
             /**
              * Retrieves the tabular position of this cell.
              * @virtual
              */
             vfunc_get_position(): [boolean, number, number];
+
             /**
              * Gets the row and column indexes and span of this cell accessible.
-             *
+             * 
              * Note: If the object does not implement this function, then, by default, atk
              * will implement this function by calling get_row_span and get_column_span
              * on the object.
              * @virtual
              */
             vfunc_get_row_column_span(): [boolean, number, number, number, number];
+
             /**
              * Returns the row headers as an array of cell accessibles.
              * @virtual
              */
             vfunc_get_row_header_cells(): Object[];
+
             /**
              * Returns the number of rows occupied by this cell accessible.
              * @virtual
              */
             vfunc_get_row_span(): number;
+
             /**
              * Returns a reference to the accessible of the containing table.
              * @virtual
@@ -9816,9 +10424,11 @@ export namespace Atk {
             vfunc_get_table(): Object;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps {
+
+        }
     }
 
     export interface TableCellNamespace {
@@ -9827,57 +10437,64 @@ export namespace Atk {
     }
     /**
      * The ATK interface implemented for a cell inside a two-dimentional {@link Atk.Table}
-     *
+     * 
      * Being {@link Atk.Table} a component which present elements ordered via rows
      * and columns, an {@link Atk.TableCell} is the interface which each of those
      * elements, so "cells" should implement.
-     *
+     * 
      * See {@link AtkTable}
      * @gir-type Interface
      */
     interface TableCell extends Object, TableCell.Interface {
-        // Methods
 
+        // Methods
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the column header cells.
          */
         get_column_header_cells(): Object[];
+
         /**
          * Returns the number of columns occupied by this cell accessible.
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_column_span(): number;
+
         /**
          * Retrieves the tabular position of this cell.
          * @returns TRUE if successful; FALSE otherwise.
          */
         get_position(): [boolean, number, number];
+
         /**
          * Gets the row and column indexes and span of this cell accessible.
-         *
+         * 
          * Note: If the object does not implement this function, then, by default, atk
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
          * @returns TRUE if successful; FALSE otherwise.
          */
         get_row_column_span(): [boolean, number, number, number, number];
+
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the row header cells.
          */
         get_row_header_cells(): Object[];
+
         /**
          * Returns the number of rows occupied by this cell accessible.
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_row_span(): number;
+
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the atk object for the containing table.
          */
         get_table(): Object;
     }
+
 
     export const TableCell: TableCellNamespace & {
         new (): TableCell; // This allows `obj instanceof TableCell`
@@ -9889,8 +10506,8 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds a selection bounded by the specified offsets.
              * @param start_offset the starting character offset of the selected region
@@ -9898,6 +10515,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_add_selection(start_offset: number, end_offset: number): boolean;
+
             /**
              * Get the ranges of text in the specified bounding box.
              * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
@@ -9906,32 +10524,31 @@ export namespace Atk {
              * @param y_clip_type Specify the vertical clip type.
              * @virtual
              */
-            vfunc_get_bounded_ranges(
-                rect: TextRectangle,
-                coord_type: CoordType,
-                x_clip_type: TextClipType,
-                y_clip_type: TextClipType,
-            ): TextRange[];
+            vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
+
             /**
              * Gets the offset of the position of the caret (cursor).
              * @virtual
              */
             vfunc_get_caret_offset(): number;
+
             /**
              * Gets the specified text.
              * @param offset a character offset within `text`
              * @virtual
              */
             vfunc_get_character_at_offset(offset: number): string;
+
             /**
              * Gets the character count.
              * @virtual
              */
             vfunc_get_character_count(): number;
+
             /**
              * If the extent can not be obtained (e.g. missing support), all of x, y, width,
              * height are set to -1.
-             *
+             * 
              * Get the bounding box containing the glyph representing the character at
              *     a particular text offset.
              * @param offset The offset of the text character for which bounding information is required.
@@ -9939,6 +10556,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
+
             /**
              * Creates an {@link Atk.AttributeSet} which consists of the default values of
              * attributes for the text. See the enum AtkTextAttribute for types of text
@@ -9947,11 +10565,13 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_default_attributes(): AttributeSet;
+
             /**
              * Gets the number of selected regions.
              * @virtual
              */
             vfunc_get_n_selections(): number;
+
             /**
              * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
              * are interpreted as being relative to the screen or this widget's window
@@ -9962,9 +10582,10 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_offset_at_point(x: number, y: number, coords: CoordType): number;
+
             /**
              * Get the bounding box for text within the specified range.
-             *
+             * 
              * If the extents can not be obtained (e.g. or missing support), the rectangle
              * fields are set to -1.
              * @param start_offset The offset of the first text character for which boundary        information is required.
@@ -9973,6 +10594,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
+
             /**
              * Creates an {@link Atk.AttributeSet} which consists of the attributes explicitly
              * set at the position `offset` in the text. `start_offset` and `end_offset` are
@@ -9985,40 +10607,42 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_run_attributes(offset: number): [AttributeSet, number, number];
+
             /**
              * Gets the text from the specified selection.
              * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
              * @virtual
              */
             vfunc_get_selection(selection_num: number): [string, number, number];
+
             /**
              * Gets a portion of the text exposed through an {@link Atk.Text} according to a given `offset`
              * and a specific `granularity`, along with the start and end offsets defining the
              * boundaries of such a portion of text.
-             *
+             * 
              * If `granularity` is ATK_TEXT_GRANULARITY_CHAR the character at the
              * offset is returned.
-             *
+             * 
              * If `granularity` is ATK_TEXT_GRANULARITY_WORD the returned string
              * is from the word start at or before the offset to the word start after
              * the offset.
-             *
+             * 
              * The returned string will contain the word at the offset if the offset
              * is inside a word and will contain the word before the offset if the
              * offset is not inside a word.
-             *
+             * 
              * If `granularity` is ATK_TEXT_GRANULARITY_SENTENCE the returned string
              * is from the sentence start at or before the offset to the sentence
              * start after the offset.
-             *
+             * 
              * The returned string will contain the sentence at the offset if the offset
              * is inside a sentence and will contain the sentence before the offset
              * if the offset is not inside a sentence.
-             *
+             * 
              * If `granularity` is ATK_TEXT_GRANULARITY_LINE the returned string
              * is from the line start at or before the offset to the line
              * start after the offset.
-             *
+             * 
              * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
              * is from the start of the paragraph at or before the offset to the start
              * of the following paragraph after the offset.
@@ -10026,7 +10650,8 @@ export namespace Atk {
              * @param granularity An {@link Atk.TextGranularity}
              * @virtual
              */
-            vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
+            vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+
             /**
              * Gets the specified text.
              * @param start_offset a starting character offset within `text`
@@ -10034,6 +10659,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_text(start_offset: number, end_offset: number): string;
+
             /**
              * Gets the specified text.
              * @param offset position
@@ -10041,28 +10667,29 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
             /**
              * Gets the specified text.
-             *
+             * 
              * If the boundary_type if ATK_TEXT_BOUNDARY_CHAR the character at the
              * offset is returned.
-             *
+             * 
              * If the boundary_type is ATK_TEXT_BOUNDARY_WORD_START the returned string
              * is from the word start at or before the offset to the word start after
              * the offset.
-             *
+             * 
              * The returned string will contain the word at the offset if the offset
              * is inside a word and will contain the word before the offset if the
              * offset is not inside a word.
-             *
+             * 
              * If the boundary type is ATK_TEXT_BOUNDARY_SENTENCE_START the returned
              * string is from the sentence start at or before the offset to the sentence
              * start after the offset.
-             *
+             * 
              * The returned string will contain the sentence at the offset if the offset
              * is inside a sentence and will contain the sentence before the offset
              * if the offset is not inside a sentence.
-             *
+             * 
              * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
              * string is from the line start at or before the offset to the line
              * start after the offset.
@@ -10071,6 +10698,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
             /**
              * Gets the specified text.
              * @param offset position
@@ -10078,12 +10706,14 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
             /**
              * Removes the specified selection.
              * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
              * @virtual
              */
             vfunc_remove_selection(selection_num: number): boolean;
+
             /**
              * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
              * @param start_offset start offset in the `text`
@@ -10092,6 +10722,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
             /**
              * Move the top-left of a substring of `text` to a given position of the screen
              * by scrolling all necessary parents.
@@ -10102,16 +10733,11 @@ export namespace Atk {
              * @param y y-position where to scroll to
              * @virtual
              */
-            vfunc_scroll_substring_to_point(
-                start_offset: number,
-                end_offset: number,
-                coords: CoordType,
-                x: number,
-                y: number,
-            ): boolean;
+            vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
             /**
              * Sets the caret (cursor) position to the specified `offset`.
-             *
+             * 
              * In the case of rich-text content, this method should either grab focus
              * or move the sequential focus navigation starting point (if the application
              * supports this concept) as if the user had clicked on the new caret position.
@@ -10119,7 +10745,7 @@ export namespace Atk {
              * the new caret position or one of its ancestors. In other words, after this
              * method is called, if the user advances focus, it should move to the first
              * focusable node following the new caret position.
-             *
+             * 
              * Calling this method should also scroll the application viewport in a way
              * that matches the behavior of the application's typical caret motion or tab
              * navigation as closely as possible. This also means that if the application's
@@ -10131,6 +10757,7 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_caret_offset(offset: number): boolean;
+
             /**
              * Changes the start and end offset of the specified selection.
              * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
@@ -10139,50 +10766,55 @@ export namespace Atk {
              * @virtual
              */
             vfunc_set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
+
             /**
              * @virtual
              */
             vfunc_text_attributes_changed(): void;
+
             /**
-             * @param location
+             * @param location 
              * @virtual
              */
             vfunc_text_caret_moved(location: number): void;
+
             /**
              * the signal handler which is executed when there is a
              *   text change. This virtual function is deprecated sice 2.9.4 and
              *   it should not be overriden.
-             * @param position
-             * @param length
+             * @param position 
+             * @param length 
              * @virtual
              */
             vfunc_text_changed(position: number, length: number): void;
+
             /**
              * @virtual
              */
             vfunc_text_selection_changed(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TextNamespace {
         $gtype: GObject.GType<Text>;
         prototype: Text;
-
         /**
-         * Frees the memory associated with an array of AtkTextRange. It is assumed
-         * that the array was returned by the function atk_text_get_bounded_ranges
-         * and is NULL terminated.
-         * @param ranges A pointer to an array of {@link Atk.TextRange} which is   to be freed.
-         */
+        * Frees the memory associated with an array of AtkTextRange. It is assumed
+        * that the array was returned by the function atk_text_get_bounded_ranges
+        * and is NULL terminated.
+        * @param ranges A pointer to an array of {@link Atk.TextRange} which is   to be freed.
+        */
         free_ranges(ranges: TextRange[]): void;
     }
     /**
      * The ATK interface implemented by components with text content.
-     *
+     * 
      * {@link Atk.Text} should be implemented by `AtkObjects` on behalf of widgets
      * that have text content which is either attributed or otherwise
      * non-trivial.  `AtkObjects` whose text content is simple,
@@ -10194,7 +10826,7 @@ export namespace Atk {
      * expose the text content.  In the case of editable text content,
      * {@link Atk.EditableText} (a subtype of the {@link Atk.Text} interface) should be
      * implemented instead.
-     *
+     * 
      *  {@link Atk.Text} provides not only traversal facilities and change
      * notification for text content, but also caret tracking and glyph
      * bounding box calculations.  Note that the text strings are exposed
@@ -10205,8 +10837,8 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Text extends GObject.Object, Text.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds a selection bounded by the specified offsets.
          * @param start_offset the starting character offset of the selected region
@@ -10214,6 +10846,7 @@ export namespace Atk {
          * @returns `true` if successful, `false` otherwise
          */
         add_selection(start_offset: number, end_offset: number): boolean;
+
         /**
          * Get the ranges of text in the specified bounding box.
          * @param rect An AtkTextRectangle giving the dimensions of the bounding box.
@@ -10222,38 +10855,38 @@ export namespace Atk {
          * @param y_clip_type Specify the vertical clip type.
          * @returns Array of AtkTextRange. The last          element of the array returned by this function will be NULL.
          */
-        get_bounded_ranges(
-            rect: TextRectangle,
-            coord_type: CoordType,
-            x_clip_type: TextClipType,
-            y_clip_type: TextClipType,
-        ): TextRange[];
+        get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
+
         /**
          * Gets the offset of the position of the caret (cursor).
          * @returns the character offset of the position of the caret or -1 if          the caret is not located inside the element or in the case of          any other failure.
          */
         get_caret_offset(): number;
+
         /**
          * Gets the specified text.
          * @param offset a character offset within `text`
          * @returns the character at `offset` or 0 in the case of failure.
          */
         get_character_at_offset(offset: number): string;
+
         /**
          * Gets the character count.
          * @returns the number of characters or -1 in case of failure.
          */
         get_character_count(): number;
+
         /**
          * If the extent can not be obtained (e.g. missing support), all of x, y, width,
          * height are set to -1.
-         *
+         * 
          * Get the bounding box containing the glyph representing the character at
          *     a particular text offset.
          * @param offset The offset of the text character for which bounding information is required.
          * @param coords specify whether coordinates are relative to the screen or widget window
          */
         get_character_extents(offset: number, coords: CoordType): [number, number, number, number];
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the default values of
          * attributes for the text. See the enum AtkTextAttribute for types of text
@@ -10262,11 +10895,13 @@ export namespace Atk {
          * @returns an {@link Atk.AttributeSet} which contains the default text          attributes for this {@link Atk.Text}. This {@link Atk.AttributeSet} should be freed by          a call to `atk_attribute_set_free()`.
          */
         get_default_attributes(): AttributeSet;
+
         /**
          * Gets the number of selected regions.
          * @returns The number of selected regions, or -1 in the case of failure.
          */
         get_n_selections(): number;
+
         /**
          * Gets the offset of the character located at coordinates `x` and `y`. `x` and `y`
          * are interpreted as being relative to the screen or this widget's window
@@ -10277,9 +10912,10 @@ export namespace Atk {
          * @returns the offset to the character which is located at  the specified          `x` and `y` coordinates of -1 in case of failure.
          */
         get_offset_at_point(x: number, y: number, coords: CoordType): number;
+
         /**
          * Get the bounding box for text within the specified range.
-         *
+         * 
          * If the extents can not be obtained (e.g. or missing support), the rectangle
          * fields are set to -1.
          * @param start_offset The offset of the first text character for which boundary        information is required.
@@ -10287,6 +10923,7 @@ export namespace Atk {
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
          */
         get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
+
         /**
          * Creates an {@link Atk.AttributeSet} which consists of the attributes explicitly
          * set at the position `offset` in the text. `start_offset` and `end_offset` are
@@ -10299,40 +10936,42 @@ export namespace Atk {
          * @returns an {@link Atk.AttributeSet} which contains the attributes         explicitly set at `offset`. This {@link Atk.AttributeSet} should be freed by         a call to `atk_attribute_set_free()`.
          */
         get_run_attributes(offset: number): [AttributeSet, number, number];
+
         /**
          * Gets the text from the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
          * @returns a newly allocated string containing the selected text. Use `g_free()`          to free the returned string.
          */
         get_selection(selection_num: number): [string, number, number];
+
         /**
          * Gets a portion of the text exposed through an {@link Atk.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_WORD the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_SENTENCE the returned string
          * is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_LINE the returned string
          * is from the line start at or before the offset to the line
          * start after the offset.
-         *
+         * 
          * If `granularity` is ATK_TEXT_GRANULARITY_PARAGRAPH the returned string
          * is from the start of the paragraph at or before the offset to the start
          * of the following paragraph after the offset.
@@ -10340,7 +10979,8 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
+        get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+
         /**
          * Gets the specified text.
          * @param start_offset a starting character offset within `text`
@@ -10348,6 +10988,7 @@ export namespace Atk {
          * @returns a newly allocated string containing the text from `start_offset` up          to, but not including `end_offset`. Use `g_free()` to free the returned          string.
          */
         get_text(start_offset: number, end_offset: number): string;
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -10355,28 +10996,29 @@ export namespace Atk {
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
-         *
+         * 
          * If the boundary_type if ATK_TEXT_BOUNDARY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If the boundary_type is ATK_TEXT_BOUNDARY_WORD_START the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_SENTENCE_START the returned
          * string is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
          * string is from the line start at or before the offset to the line
          * start after the offset.
@@ -10385,6 +11027,7 @@ export namespace Atk {
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Gets the specified text.
          * @param offset position
@@ -10392,12 +11035,14 @@ export namespace Atk {
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
          */
         get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
+
         /**
          * Removes the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
          * @returns `true` if successful, `false` otherwise
          */
         remove_selection(selection_num: number): boolean;
+
         /**
          * Makes a substring of `text` visible on the screen by scrolling all necessary parents.
          * @param start_offset start offset in the `text`
@@ -10406,6 +11051,7 @@ export namespace Atk {
          * @returns whether scrolling was successful.
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
         /**
          * Move the top-left of a substring of `text` to a given position of the screen
          * by scrolling all necessary parents.
@@ -10416,16 +11062,11 @@ export namespace Atk {
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
          */
-        scroll_substring_to_point(
-            start_offset: number,
-            end_offset: number,
-            coords: CoordType,
-            x: number,
-            y: number,
-        ): boolean;
+        scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the caret (cursor) position to the specified `offset`.
-         *
+         * 
          * In the case of rich-text content, this method should either grab focus
          * or move the sequential focus navigation starting point (if the application
          * supports this concept) as if the user had clicked on the new caret position.
@@ -10433,7 +11074,7 @@ export namespace Atk {
          * the new caret position or one of its ancestors. In other words, after this
          * method is called, if the user advances focus, it should move to the first
          * focusable node following the new caret position.
-         *
+         * 
          * Calling this method should also scroll the application viewport in a way
          * that matches the behavior of the application's typical caret motion or tab
          * navigation as closely as possible. This also means that if the application's
@@ -10445,6 +11086,7 @@ export namespace Atk {
          * @returns `true` if successful, `false` otherwise.
          */
         set_caret_offset(offset: number): boolean;
+
         /**
          * Changes the start and end offset of the specified selection.
          * @param selection_num The selection number.  The selected regions are assigned numbers that correspond to how far the region is from the start of the text.  The selected region closest to the beginning of the text region is assigned the number 0, etc.  Note that adding, moving or deleting a selected region can change the numbering.
@@ -10454,6 +11096,7 @@ export namespace Atk {
          */
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
     }
+
 
     export const Text: TextNamespace & {
         new (): Text; // This allows `obj instanceof Text`
@@ -10465,13 +11108,14 @@ export namespace Atk {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the value of this object.
              * @virtual
              */
             vfunc_get_current_value(): GObject.Value | any;
+
             /**
              * Gets the minimum increment by which the value of this object may be
              * changed.  If zero, the minimum increment is undefined, which may
@@ -10480,11 +11124,13 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_increment(): number;
+
             /**
              * Gets the maximum value of this object.
              * @virtual
              */
             vfunc_get_maximum_value(): GObject.Value | any;
+
             /**
              * Gets the minimum increment by which the value of this object may be changed.  If zero,
              * the minimum increment is undefined, which may mean that it is limited only by the
@@ -10492,22 +11138,26 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_minimum_increment(): GObject.Value | any;
+
             /**
              * Gets the minimum value of this object.
              * @virtual
              */
             vfunc_get_minimum_value(): GObject.Value | any;
+
             /**
              * Gets the range of this object.
              * @virtual
              */
-            vfunc_get_range(): Range | null;
+            vfunc_get_range(): (Range | null);
+
             /**
              * Gets the list of subranges defined for this object. See {@link Atk.Value}
              * introduction for examples of subranges and when to expose them.
              * @virtual
              */
             vfunc_get_sub_ranges(): Range[];
+
             /**
              * Gets the current value and the human readable text alternative of
              * `obj`. `text` is a newly created string, that must be freed by the
@@ -10515,21 +11165,23 @@ export namespace Atk {
              * @virtual
              */
             vfunc_get_value_and_text(): [number, string];
+
             /**
              * Sets the value of this object.
              * @param value a {@link GObject.Value} which is the desired new accessible value.
              * @virtual
              */
             vfunc_set_current_value(value: unknown): boolean;
+
             /**
              * Sets the value of this object.
-             *
+             * 
              * This method is intended to provide a way to change the value of the
              * object. In any case, it is possible that the value can't be
              * modified (ie: a read-only component). If the value changes due this
              * call, it is possible that the text could change, and will trigger
              * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-             *
+             * 
              * Note for implementors: the deprecated `atk_value_set_current_value()`
              * method returned TRUE or FALSE depending if the value was assigned
              * or not. In the practice several implementors were not able to
@@ -10542,9 +11194,11 @@ export namespace Atk {
             vfunc_set_value(new_value: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ValueNamespace {
@@ -10553,7 +11207,7 @@ export namespace Atk {
     }
     /**
      * The ATK interface implemented by valuators and components which display or select a value from a bounded range of values.
-     *
+     * 
      * {@link Atk.Value} should be implemented for components which either display
      * a value from a bounded range, or which allow the user to specify a
      * value from a bounded range, or both. For instance, most sliders and
@@ -10561,7 +11215,7 @@ export namespace Atk {
      * representations which implement {@link Atk.Value} on the component's
      * behalf. `AtKValues` may be read-only, in which case attempts to
      * alter the value return would fail.
-     *
+     * 
      * <refsect1 id="current-value-text">
      * <title>On the subject of current value text</title>
      * <para>
@@ -10571,7 +11225,7 @@ export namespace Atk {
      * when the numeric value fails to convey the full, on-screen
      * representation seen by users.
      * </para>
-     *
+     * 
      * <example>
      * <title>Password strength</title>
      * A password strength meter whose value changes as the user types
@@ -10581,14 +11235,14 @@ export namespace Atk {
      * implementor. Appropriate value text would be "weak", "acceptable,"
      * and "strong" respectively.
      * </example>
-     *
+     * 
      * A level bar whose value changes to reflect the battery charge. The
      * color remains the same regardless of the charge and there is no
      * on-screen text reflecting the fullness of the battery. In this
      * case, because the position within the bar is the only indication
      * the user has of the current charge, value text should not be
      * provided by the implementor.
-     *
+     * 
      * <refsect2 id="implementor-notes">
      * <title>Implementor Notes</title>
      * <para>
@@ -10602,7 +11256,7 @@ export namespace Atk {
      * expected that implementors will expose the value text using the
      * above API.
      * </para>
-     *
+     * 
      * <para>
      * {@link Atk.Value} should NOT be implemented for widgets whose displayed
      * value is not reflective of a meaningful amount. For instance, a
@@ -10613,7 +11267,7 @@ export namespace Atk {
      * </para>
      * </refsect2>
      * </refsect1>
-     *
+     * 
      * <refsect1 id="ranges">
      * <title>On the subject of ranges</title>
      * <para>
@@ -10637,7 +11291,7 @@ export namespace Atk {
      * sufficient to expose the numeric value, along with the value text
      * if appropriate, to make the widget accessible.
      * </para>
-     *
+     * 
      * <refsect2 id="ranges-implementor-notes">
      * <title>Implementor Notes</title>
      * <para>
@@ -10647,7 +11301,7 @@ export namespace Atk {
      * </para>
      * </refsect2>
      * </refsect1>
-     *
+     * 
      * <refsect1 id="localization">
      * <title>On the subject of localization of end-user-consumable text
      * values</title>
@@ -10659,7 +11313,7 @@ export namespace Atk {
      * `atk_value_type_get_localized_name()` with the following
      * already-localized constants for commonly-needed values can be used:
      * </para>
-     *
+     * 
      * <itemizedlist>
      *   <listitem>ATK_VALUE_VERY_WEAK</listitem>
      *   <listitem>ATK_VALUE_WEAK</listitem>
@@ -10685,7 +11339,7 @@ export namespace Atk {
      * should be submitted to the GNOME Accessibility Team.
      * </para>
      * </refsect1>
-     *
+     * 
      * <refsect1 id="changes">
      * <title>On the subject of changes</title>
      * <para>
@@ -10697,12 +11351,13 @@ export namespace Atk {
      * @gir-type Interface
      */
     interface Value extends GObject.Object, Value.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the value of this object.
          */
         get_current_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be
          * changed.  If zero, the minimum increment is undefined, which may
@@ -10711,52 +11366,60 @@ export namespace Atk {
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
          */
         get_increment(): number;
+
         /**
          * Gets the maximum value of this object.
          */
         get_maximum_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
          */
         get_minimum_increment(): unknown;
+
         /**
          * Gets the minimum value of this object.
          */
         get_minimum_value(): unknown;
+
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): Range | null;
+        get_range(): (Range | null);
+
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
          */
         get_sub_ranges(): Range[];
+
         /**
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
          */
         get_value_and_text(): [number, string];
+
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: GObject.Value | any): boolean;
+        set_current_value(value: (GObject.Value | any)): boolean;
+
         /**
          * Sets the value of this object.
-         *
+         * 
          * This method is intended to provide a way to change the value of the
          * object. In any case, it is possible that the value can't be
          * modified (ie: a read-only component). If the value changes due this
          * call, it is possible that the text could change, and will trigger
          * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-         *
+         * 
          * Note for implementors: the deprecated `atk_value_set_current_value()`
          * method returned TRUE or FALSE depending if the value was assigned
          * or not. In the practice several implementors were not able to
@@ -10768,14 +11431,17 @@ export namespace Atk {
         set_value(new_value: number): void;
     }
 
+
     export const Value: ValueNamespace & {
         new (): Value; // This allows `obj instanceof Value`
     };
 
     namespace Window {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps {
+
+        }
     }
 
     export interface WindowNamespace {
@@ -10784,15 +11450,17 @@ export namespace Atk {
     }
     /**
      * The ATK Interface provided by UI components that represent a top-level window.
-     *
+     * 
      * {@link Atk.Window} should be implemented by the UI elements that represent
      * a top-level window, such as the main window of an application or
      * dialog.
-     *
+     * 
      * See {@link AtkObject}
      * @gir-type Interface
      */
-    interface Window extends Object {}
+    interface Window extends Object {
+    }
+
 
     export const Window: WindowNamespace & {
         new (): Window; // This allows `obj instanceof Window`
@@ -10807,21 +11475,24 @@ export namespace Atk {
      * @gir-type Alias
      */
     type AttributeSet = GLib.SList;
+
     /**
      * An AtkState describes a single state of an object.
-     *
+     * 
      * An AtkState describes a single state of an object. The full set of states
      * that apply to an object at a given time are contained in its {@link Atk.StateSet}.
-     *
+     * 
      * See `atk_object_ref_state_set` and `atk_object_notify_state_change`
      * @gir-type Alias
      */
-    type State = bigint | number;
+    type State = (bigint | number);
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

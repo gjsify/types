@@ -1,3 +1,4 @@
+
 import type PanelApplet40 from '@girs/panelapplet-4.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

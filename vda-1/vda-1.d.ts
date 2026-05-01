@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -21,9 +22,11 @@ import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
 export namespace Vda {
+
     /**
      * Vda-1
      */
+
 
     /**
      * @gir-type Enum
@@ -41,6 +44,7 @@ export namespace Vda {
         RELATIVE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -48,16 +52,18 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static APPEND: number;
+
         static UPDATE: number;
+
         static SAVE: number;
+
         static DROP: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -66,15 +72,16 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static NO_DATABASE_NAME_ERROR: number;
+
         static SERVER_ERROR: number;
+
         static QUERY_CREATION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -83,18 +90,22 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static SELECT_ERROR: number;
+
         static INSERT_ERROR: number;
+
         static DELETE_ERROR: number;
+
         static UPDATE_ERROR: number;
+
         static PARAMETERS_ERROR: number;
+
         static NO_CONNECTION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -103,13 +114,12 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_PROPERTY_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -118,14 +128,14 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_TOKEN_ERROR: number;
+
         static INVALID_EXPRESSION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -134,15 +144,16 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_QUERY_ERROR: number;
+
         static INVALID_CONNECTION_ERROR: number;
+
         static GENERAL_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -151,13 +162,12 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static PROVILAGE_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -166,14 +176,14 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_COLUMN_NAME_ERROR: number;
+
         static INVALID_COLUMN_NUMBER_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -182,13 +192,12 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_STRUCTURE_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -197,13 +206,12 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_FIELDS_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -212,13 +220,12 @@ export namespace Vda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_EXPRESSION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -239,6 +246,7 @@ export namespace Vda {
         TIMEOUT,
         CONNECTED,
     }
+
 
     /**
      * @gir-type Enum
@@ -296,6 +304,7 @@ export namespace Vda {
         ILIKE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -320,16 +329,17 @@ export namespace Vda {
         PRIVILEGES,
     }
 
+
     namespace AffectedRows {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::number': (pspec: GObject.ParamSpec) => void;
+            "notify::number": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps, SqlAffectedRows.ConstructorProps {
 
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Result.ConstructorProps, SqlAffectedRows.ConstructorProps {}
+        }
     }
 
     /**
@@ -348,81 +358,60 @@ export namespace Vda {
         $signals: AffectedRows.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AffectedRows.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](rows: number): AffectedRows;
+        static ["new"](rows: number): AffectedRows;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AffectedRows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AffectedRows.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AffectedRows.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AffectedRows.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AffectedRows.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AffectedRows.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AffectedRows.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AffectedRows.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlAffectedRows
+          * @category Inherited from Vda.SqlAffectedRows
          */
         get number(): number;
+
         get_number(): number;
+
         /**
          * @virtual
          */
         vfunc_get_number(): number;
     }
 
+
     namespace CommandDelete {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::table': (pspec: GObject.ParamSpec) => void;
-            'notify::allias': (pspec: GObject.ParamSpec) => void;
-            'notify::condition': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::table": (pspec: GObject.ParamSpec) => void;
+            "notify::allias": (pspec: GObject.ParamSpec) => void;
+            "notify::condition": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlCommand.ConstructorProps, SqlCommandTableRelated.ConstructorProps, SqlCommandConditional.ConstructorProps, Stringifiable.ConstructorProps, SqlCommandParametrized.ConstructorProps, SqlCommandDelete.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                SqlCommand.ConstructorProps,
-                SqlCommandTableRelated.ConstructorProps,
-                SqlCommandConditional.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlCommandParametrized.ConstructorProps,
-                SqlCommandDelete.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class CommandDelete
-        extends GObject.Object
-        implements
-            SqlCommand,
-            SqlCommandTableRelated,
-            SqlCommandConditional,
-            Stringifiable,
-            SqlCommandParametrized,
-            SqlCommandDelete
-    {
+    class CommandDelete extends GObject.Object implements SqlCommand, SqlCommandTableRelated, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandDelete {
         static $gtype: GObject.GType<CommandDelete>;
 
         /**
@@ -435,138 +424,155 @@ export namespace Vda {
         $signals: CommandDelete.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandDelete.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): CommandDelete;
+        static ["new"](cnc: Connection): CommandDelete;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandDelete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandDelete.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandDelete.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandDelete.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandDelete.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandDelete.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommandDelete.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandDelete.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommand
+          * @category Inherited from Vda.SqlCommand
          */
         get connection(): Connection;
+
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get table(): string;
         set table(val: string);
+
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get allias(): string;
         set allias(val: string);
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandConditional
+          * @category Inherited from Vda.SqlCommandConditional
          */
         get condition(): SqlExpression;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandParametrized
+          * @category Inherited from Vda.SqlCommandParametrized
          */
         get parameters(): SqlParameters;
+
         get_connection(): Connection;
+
         /**
          * @virtual
          */
         vfunc_get_connection(): Connection;
+
         get_table(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_table(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_table(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_table(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_allias(value: string): void;
+
         get_condition(): SqlExpression;
+
         /**
          * @virtual
          */
         vfunc_get_condition(): SqlExpression;
+
         to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         get_parameters(): SqlParameters;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): SqlParameters;
+
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
+
         /**
          * @virtual
          */
         vfunc_stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          * @virtual
          */
         vfunc_parse(sql: string): void;
     }
 
+
     namespace CommandInsert {
         // Signal signatures
-        interface SignalSignatures extends CommandModification.SignalSignatures {}
+        interface SignalSignatures extends CommandModification.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends CommandModification.ConstructorProps, Stringifiable.ConstructorProps, SqlCommandInsert.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                CommandModification.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlCommandInsert.ConstructorProps {}
+        }
     }
 
     /**
@@ -585,92 +591,84 @@ export namespace Vda {
         $signals: CommandInsert.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandInsert.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): CommandInsert;
+        static ["new"](cnc: Connection): CommandInsert;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandInsert.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandInsert.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandInsert.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandInsert.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandInsert.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandInsert.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandInsert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommandInsert.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandInsert.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
+
         /**
          * @virtual
          */
         vfunc_stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          * @virtual
          */
         vfunc_parse(sql: string): void;
     }
 
+
     namespace CommandModification {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::table': (pspec: GObject.ParamSpec) => void;
-            'notify::allias': (pspec: GObject.ParamSpec) => void;
-            'notify::fields': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::table": (pspec: GObject.ParamSpec) => void;
+            "notify::allias": (pspec: GObject.ParamSpec) => void;
+            "notify::fields": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlCommand.ConstructorProps, SqlCommandTableRelated.ConstructorProps, SqlCommandModification.ConstructorProps, SqlCommandParametrized.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                SqlCommand.ConstructorProps,
-                SqlCommandTableRelated.ConstructorProps,
-                SqlCommandModification.ConstructorProps,
-                SqlCommandParametrized.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class CommandModification
-        extends GObject.Object
-        implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
-    {
+    class CommandModification extends GObject.Object implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized {
         static $gtype: GObject.GType<CommandModification>;
 
         /**
@@ -683,193 +681,206 @@ export namespace Vda {
         $signals: CommandModification.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandModification.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): CommandModification;
+        static ["new"](cnc: Connection): CommandModification;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandModification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandModification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandModification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandModification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandModification.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandModification.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandModification.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CommandModification.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandModification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommand
+          * @category Inherited from Vda.SqlCommand
          */
         get connection(): Connection;
+
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get table(): string;
         set table(val: string);
+
         /** @category Inherited from Vda.SqlCommandTableRelated */
         get allias(): string;
         set allias(val: string);
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandModification
+          * @category Inherited from Vda.SqlCommandModification
          */
         get fields(): HashModel;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandModification
+          * @category Inherited from Vda.SqlCommandModification
          */
         get values(): HashModel;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandParametrized
+          * @category Inherited from Vda.SqlCommandParametrized
          */
         get parameters(): SqlParameters;
+
         get_connection(): Connection;
+
         /**
          * @virtual
          */
         vfunc_get_connection(): Connection;
+
         get_table(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_table(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_table(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_table(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_allias(value: string): void;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          */
-        add_field_value(name: string, val: GObject.Value | any): void;
+        add_field_value(name: string, val: (GObject.Value | any)): void;
+
         /**
-         * @param name
+         * @param name 
          */
         add_field(name: string): void;
+
         /**
-         * @param val
+         * @param val 
          */
-        add_value(val: GObject.Value | any): void;
+        add_value(val: (GObject.Value | any)): void;
+
         /**
-         * @param field
-         * @param par
-         * @param gtype
+         * @param field 
+         * @param par 
+         * @param gtype 
          */
         add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
+
         /**
-         * @param par
-         * @param gtype
+         * @param par 
+         * @param gtype 
          */
         add_parameter(par: string, gtype: GObject.GType): void;
+
         get_fields(): HashModel;
+
         get_values(): HashModel;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          * @virtual
          */
         vfunc_add_field_value(name: string, val: unknown): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_add_field(name: string): void;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_add_value(val: unknown): void;
+
         /**
-         * @param field
-         * @param par
-         * @param gtype
+         * @param field 
+         * @param par 
+         * @param gtype 
          * @virtual
          */
         vfunc_add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
+
         /**
-         * @param par
-         * @param gtype
+         * @param par 
+         * @param gtype 
          * @virtual
          */
         vfunc_add_parameter(par: string, gtype: GObject.GType): void;
+
         /**
          * @virtual
          */
         vfunc_get_fields(): HashModel;
+
         /**
          * @virtual
          */
         vfunc_get_values(): HashModel;
+
         get_parameters(): SqlParameters;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): SqlParameters;
     }
 
+
     namespace CommandSelect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::condition': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::fields': (pspec: GObject.ParamSpec) => void;
-            'notify::tables': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::condition": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::fields": (pspec: GObject.ParamSpec) => void;
+            "notify::tables": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlCommand.ConstructorProps, SqlCommandConditional.ConstructorProps, Stringifiable.ConstructorProps, SqlCommandParametrized.ConstructorProps, SqlCommandSelect.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                SqlCommand.ConstructorProps,
-                SqlCommandConditional.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlCommandParametrized.ConstructorProps,
-                SqlCommandSelect.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class CommandSelect
-        extends GObject.Object
-        implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
-    {
+    class CommandSelect extends GObject.Object implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect {
         static $gtype: GObject.GType<CommandSelect>;
 
         /**
@@ -882,173 +893,192 @@ export namespace Vda {
         $signals: CommandSelect.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandSelect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): CommandSelect;
+        static ["new"](cnc: Connection): CommandSelect;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandSelect.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandSelect.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommandSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommand
+          * @category Inherited from Vda.SqlCommand
          */
         get connection(): Connection;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandConditional
+          * @category Inherited from Vda.SqlCommandConditional
          */
         get condition(): SqlExpression;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandParametrized
+          * @category Inherited from Vda.SqlCommandParametrized
          */
         get parameters(): SqlParameters;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandSelect
+          * @category Inherited from Vda.SqlCommandSelect
          */
         get fields(): HashModel;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandSelect
+          * @category Inherited from Vda.SqlCommandSelect
          */
         get tables(): HashModel;
+
         get_connection(): Connection;
+
         /**
          * @virtual
          */
         vfunc_get_connection(): Connection;
+
         get_condition(): SqlExpression;
+
         /**
          * @virtual
          */
         vfunc_get_condition(): SqlExpression;
+
         to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         get_parameters(): SqlParameters;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): SqlParameters;
+
         /**
-         * @param field
-         * @param table_ref
-         * @param alias
+         * @param field 
+         * @param table_ref 
+         * @param alias 
          */
         add_field(field: string, table_ref: string, alias: string): void;
+
         /**
-         * @param name
-         * @param allias
+         * @param name 
+         * @param allias 
          */
         add_table(name: string, allias: string): void;
+
         /**
-         * @param val
-         * @param allias
+         * @param val 
+         * @param allias 
          */
-        add_value_field(val: GObject.Value | any, allias: string): void;
+        add_value_field(val: (GObject.Value | any), allias: string): void;
+
         /**
-         * @param exp
-         * @param allias
+         * @param exp 
+         * @param allias 
          */
         add_math_exp_field(exp: string, allias: string): void;
+
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): PreparedQuery;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
+
         get_fields(): HashModel;
+
         get_tables(): HashModel;
+
         /**
-         * @param field
-         * @param table_ref
-         * @param alias
+         * @param field 
+         * @param table_ref 
+         * @param alias 
          * @virtual
          */
         vfunc_add_field(field: string, table_ref: string, alias: string): void;
+
         /**
-         * @param name
-         * @param allias
+         * @param name 
+         * @param allias 
          * @virtual
          */
         vfunc_add_table(name: string, allias: string): void;
+
         /**
-         * @param val
-         * @param allias
+         * @param val 
+         * @param allias 
          * @virtual
          */
         vfunc_add_value_field(val: unknown, allias: string): void;
+
         /**
-         * @param exp
-         * @param allias
+         * @param exp 
+         * @param allias 
          * @virtual
          */
         vfunc_add_math_exp_field(exp: string, allias: string): void;
+
         /**
          * @virtual
          */
         vfunc_stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_to_query(name: string): PreparedQuery;
+
         /**
-         * @param sql
+         * @param sql 
          * @virtual
          */
         vfunc_parse(sql: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_fields(): HashModel;
+
         /**
          * @virtual
          */
         vfunc_get_tables(): HashModel;
     }
 
+
     namespace CommandUpdate {
         // Signal signatures
         interface SignalSignatures extends CommandModification.SignalSignatures {
-            'notify::condition': (pspec: GObject.ParamSpec) => void;
+            "notify::condition": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends CommandModification.ConstructorProps, SqlCommandConditional.ConstructorProps, Stringifiable.ConstructorProps, SqlCommandUpdate.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                CommandModification.ConstructorProps,
-                SqlCommandConditional.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlCommandUpdate.ConstructorProps {}
+        }
     }
 
     /**
@@ -1067,82 +1097,84 @@ export namespace Vda {
         $signals: CommandUpdate.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandUpdate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): CommandUpdate;
+        static ["new"](cnc: Connection): CommandUpdate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandUpdate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandUpdate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandUpdate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandUpdate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandUpdate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommandUpdate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandUpdate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlCommandConditional
+          * @category Inherited from Vda.SqlCommandConditional
          */
         get condition(): SqlExpression;
+
         get_condition(): SqlExpression;
+
         /**
          * @virtual
          */
         vfunc_get_condition(): SqlExpression;
+
         to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
+
         /**
          * @virtual
          */
         vfunc_stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          * @virtual
          */
         vfunc_parse(sql: string): void;
     }
 
+
     namespace ConnectionParameter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             value: string;
@@ -1156,9 +1188,9 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameter>;
 
         // Properties
-
         get name(): string;
         set name(val: string);
+
         get value(): string;
         set value(val: string);
 
@@ -1172,60 +1204,53 @@ export namespace Vda {
         $signals: ConnectionParameter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameter;
+        static ["new"](): ConnectionParameter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameter.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_value(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: string): void;
     }
 
+
     namespace ConnectionParameterDbName {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConnectionParameter.ConstructorProps {
 
-        interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -1244,47 +1269,38 @@ export namespace Vda {
         $signals: ConnectionParameterDbName.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameterDbName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameterDbName;
+        static ["new"](): ConnectionParameterDbName;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameterDbName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterDbName.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameterDbName.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterDbName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConnectionParameterHost {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConnectionParameter.ConstructorProps {
 
-        interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -1303,47 +1319,38 @@ export namespace Vda {
         $signals: ConnectionParameterHost.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameterHost.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameterHost;
+        static ["new"](): ConnectionParameterHost;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameterHost.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterHost.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameterHost.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameterHost.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameterHost.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterHost.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConnectionParameterPort {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConnectionParameter.ConstructorProps {
 
-        interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -1362,47 +1369,38 @@ export namespace Vda {
         $signals: ConnectionParameterPort.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameterPort.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameterPort;
+        static ["new"](): ConnectionParameterPort;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameterPort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPort.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameterPort.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameterPort.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameterPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConnectionParameterUserName {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConnectionParameter.ConstructorProps {
 
-        interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -1421,47 +1419,38 @@ export namespace Vda {
         $signals: ConnectionParameterUserName.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameterUserName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameterUserName;
+        static ["new"](): ConnectionParameterUserName;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameterUserName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterUserName.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameterUserName.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterUserName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConnectionParameterPassword {
         // Signal signatures
         interface SignalSignatures extends ConnectionParameter.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ConnectionParameter.ConstructorProps {
 
-        interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
+        }
     }
 
     /**
@@ -1480,57 +1469,48 @@ export namespace Vda {
         $signals: ConnectionParameterPassword.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameterPassword.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ConnectionParameterPassword;
+        static ["new"](): ConnectionParameterPassword;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameterPassword.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameterPassword.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameterPassword.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameterPassword.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ConnectionParameters {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::k-type': (pspec: GObject.ParamSpec) => void;
-            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-type': (pspec: GObject.ParamSpec) => void;
-            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::k-type": (pspec: GObject.ParamSpec) => void;
+            "notify::k-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::k-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-type": (pspec: GObject.ParamSpec) => void;
+            "notify::v-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gee.HashMap.ConstructorProps {
 
-        interface ConstructorProps extends Gee.HashMap.ConstructorProps {}
+        }
     }
 
     /**
@@ -1549,84 +1529,71 @@ export namespace Vda {
         $signals: ConnectionParameters.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionParameters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc_str: string): ConnectionParameters;
-        // Conflicted with Gee.HashMap.new
+        static ["new"](cnc_str: string): ConnectionParameters;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gee.HashMap.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionParameters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionParameters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionParameters.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionParameters.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionParameters.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ConnectionParameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionParameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param cnstring
+         * @param cnstring 
          * @virtual
          */
         vfunc_parse(cnstring: string): void;
 
         // Methods
-
         /**
-         * @param cnstring
+         * @param cnstring 
          */
         parse(cnstring: string): void;
+
         to_string(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         has_param(name: string): boolean;
     }
 
+
     namespace Expression {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, SqlExpression.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, SqlExpression.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class Expression<A extends GObject.Object = GObject.Object>
-        extends Gee.ArrayList
-        implements Gio.ListModel<A>, SqlExpression
-    {
+    class Expression<A extends GObject.Object = GObject.Object> extends Gee.ArrayList implements Gio.ListModel<A>, SqlExpression {
         static $gtype: GObject.GType<Expression>;
 
         /**
@@ -1639,90 +1606,83 @@ export namespace Vda {
         $signals: Expression.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Expression;
+        static ["new"](): Expression;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Expression.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Expression.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Expression.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Expression.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_to_string(): string;
 
         // Methods
-
         to_string(): string;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -1731,7 +1691,7 @@ export namespace Vda {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -1741,109 +1701,118 @@ export namespace Vda {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @virtual
          */
         vfunc_get_n_items(): number;
+
         /**
-         * @param exp
+         * @param exp 
          */
         add_expression(exp: SqlExpression): void;
+
         /**
-         * @param exp
+         * @param exp 
          */
         remove_expression(exp: SqlExpression): void;
+
         /**
-         * @param str
-         * @param cnc
-         * @param params
+         * @param str 
+         * @param cnc 
+         * @param params 
          */
         add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
+
         /**
-         * @param exp
+         * @param exp 
          * @virtual
          */
         vfunc_add_expression(exp: SqlExpression): void;
+
         /**
-         * @param exp
+         * @param exp 
          * @virtual
          */
         vfunc_remove_expression(exp: SqlExpression): void;
+
         /**
-         * @param str
-         * @param cnc
-         * @param params
+         * @param str 
+         * @param cnc 
+         * @param params 
          * @virtual
          */
         vfunc_add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionField {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::table-ref': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::allias': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::table-ref": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::allias": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Expression.ConstructorProps<A>, SqlExpressionField.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>, SqlExpressionField.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionField<A extends GObject.Object = GObject.Object>
-        extends Expression<A>
-        implements SqlExpressionField
-    {
+    class ExpressionField<A extends GObject.Object = GObject.Object> extends Expression<A> implements SqlExpressionField {
         static $gtype: GObject.GType<ExpressionField>;
 
         /**
@@ -1856,124 +1825,131 @@ export namespace Vda {
         $signals: ExpressionField.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionField;
+        static ["new"](): ExpressionField;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionField.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionField.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionField.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionField.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExpressionField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Vda.SqlExpressionField */
         get table_ref(): string;
         set table_ref(val: string);
+
         /** @category Inherited from Vda.SqlExpressionField */
         get tableRef(): string;
         set tableRef(val: string);
+
         /** @category Inherited from Vda.SqlExpressionField */
         get name(): string;
         set name(val: string);
+
         /** @category Inherited from Vda.SqlExpressionField */
         get allias(): string;
         set allias(val: string);
+
         get_table_ref(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_table_ref(value: string): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_table_ref(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_table_ref(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_allias(value: string): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperator {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::operator-type': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::operator-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Expression.ConstructorProps<A>, SqlExpressionOperator.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>, SqlExpressionOperator.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperator<A extends GObject.Object = GObject.Object>
-        extends Expression<A>
-        implements SqlExpressionOperator
-    {
+    class ExpressionOperator<A extends GObject.Object = GObject.Object> extends Expression<A> implements SqlExpressionOperator {
         static $gtype: GObject.GType<ExpressionOperator>;
 
         /**
@@ -1986,481 +1962,522 @@ export namespace Vda {
         $signals: ExpressionOperator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperator;
+        static ["new"](): ExpressionOperator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExpressionOperator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlExpressionOperator
+          * @category Inherited from Vda.SqlExpressionOperator
          */
         get operator_type(): SqlExpressionOperatorType;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlExpressionOperator
+          * @category Inherited from Vda.SqlExpressionOperator
          */
         get operatorType(): SqlExpressionOperatorType;
+
         /**
-         * @param name
+         * @param name 
          */
         create_field_expression(name: string): SqlExpressionField;
+
         /**
-         * @param val
-         * @param cnc
+         * @param val 
+         * @param cnc 
          */
-        create_value_expression(val: GObject.Value | any, cnc: Connection): SqlExpressionValue;
+        create_value_expression(val: (GObject.Value | any), cnc: Connection): SqlExpressionValue;
+
         /**
-         * @param name
-         * @param gtype
+         * @param name 
+         * @param gtype 
          */
         create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp
+         * @param exp 
          */
         add_not_operator(exp: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
         add_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
         add_not_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
-        add_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        add_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
-        add_not_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        add_not_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         get_operator_type(): SqlExpressionOperatorType;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_create_field_expression(name: string): SqlExpressionField;
+
         /**
-         * @param val
-         * @param cnc
+         * @param val 
+         * @param cnc 
          * @virtual
          */
         vfunc_create_value_expression(val: unknown, cnc: Connection): SqlExpressionValue;
+
         /**
-         * @param name
-         * @param gtype
+         * @param name 
+         * @param gtype 
          * @virtual
          */
         vfunc_create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp
+         * @param exp 
          * @virtual
          */
         vfunc_add_not_operator(exp: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          * @virtual
          */
         vfunc_add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          * @virtual
          */
-        vfunc_add_between_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        vfunc_add_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          * @virtual
          */
-        vfunc_add_not_between_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        vfunc_add_not_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          * @virtual
          */
-        vfunc_add_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        vfunc_add_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          * @virtual
          */
-        vfunc_add_not_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        vfunc_add_not_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          * @virtual
          */
         vfunc_add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
          * @virtual
          */
         vfunc_get_operator_type(): SqlExpressionOperatorType;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorGroup {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorGroup.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorGroup.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorGroup<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorGroup
-    {
+    class ExpressionOperatorGroup<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorGroup {
         static $gtype: GObject.GType<ExpressionOperatorGroup>;
 
         /**
@@ -2473,71 +2490,60 @@ export namespace Vda {
         $signals: ExpressionOperatorGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorGroup;
+        static ["new"](): ExpressionOperatorGroup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorGroup.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorMultiterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorMultiterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorMultiterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorMultiterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorMultiterm
-    {
+    class ExpressionOperatorMultiterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorMultiterm {
         static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
 
         /**
@@ -2550,71 +2556,60 @@ export namespace Vda {
         $signals: ExpressionOperatorMultiterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorMultiterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorMultiterm;
+        static ["new"](): ExpressionOperatorMultiterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMultiterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorMultiterm.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMultiterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorAnd.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorAnd.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorAnd<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorMultiterm<A>
-        implements SqlExpressionOperatorAnd
-    {
+    class ExpressionOperatorAnd<A extends GObject.Object = GObject.Object> extends ExpressionOperatorMultiterm<A> implements SqlExpressionOperatorAnd {
         static $gtype: GObject.GType<ExpressionOperatorAnd>;
 
         /**
@@ -2627,71 +2622,60 @@ export namespace Vda {
         $signals: ExpressionOperatorAnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorAnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorAnd;
+        static ["new"](): ExpressionOperatorAnd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorAnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorAnd.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorOr {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorOr.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorMultiterm.ConstructorProps<A>, SqlExpressionOperatorOr.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorOr<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorMultiterm<A>
-        implements SqlExpressionOperatorOr
-    {
+    class ExpressionOperatorOr<A extends GObject.Object = GObject.Object> extends ExpressionOperatorMultiterm<A> implements SqlExpressionOperatorOr {
         static $gtype: GObject.GType<ExpressionOperatorOr>;
 
         /**
@@ -2704,71 +2688,60 @@ export namespace Vda {
         $signals: ExpressionOperatorOr.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorOr.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorOr;
+        static ["new"](): ExpressionOperatorOr;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorOr.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorOr.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorOr.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorOr.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBinaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBinaryterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorBinaryterm
-    {
+    class ExpressionOperatorBinaryterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorBinaryterm {
         static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
 
         /**
@@ -2781,71 +2754,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBinaryterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBinaryterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBinaryterm;
+        static ["new"](): ExpressionOperatorBinaryterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBinaryterm.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorEq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorEq.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorEq.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorEq<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorEq
-    {
+    class ExpressionOperatorEq<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorEq {
         static $gtype: GObject.GType<ExpressionOperatorEq>;
 
         /**
@@ -2858,71 +2820,60 @@ export namespace Vda {
         $signals: ExpressionOperatorEq.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorEq.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorEq;
+        static ["new"](): ExpressionOperatorEq;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorEq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorEq.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorEq.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorEq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotEq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotEq.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotEq.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotEq<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorNotEq
-    {
+    class ExpressionOperatorNotEq<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorNotEq {
         static $gtype: GObject.GType<ExpressionOperatorNotEq>;
 
         /**
@@ -2935,71 +2886,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotEq.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotEq.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotEq;
+        static ["new"](): ExpressionOperatorNotEq;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotEq.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotEq.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotEq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorDiff {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiff.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiff.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorDiff<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorDiff
-    {
+    class ExpressionOperatorDiff<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorDiff {
         static $gtype: GObject.GType<ExpressionOperatorDiff>;
 
         /**
@@ -3012,71 +2952,60 @@ export namespace Vda {
         $signals: ExpressionOperatorDiff.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorDiff.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorDiff;
+        static ["new"](): ExpressionOperatorDiff;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiff.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorDiff.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorGt {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGt.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGt.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorGt<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorGt
-    {
+    class ExpressionOperatorGt<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorGt {
         static $gtype: GObject.GType<ExpressionOperatorGt>;
 
         /**
@@ -3089,71 +3018,60 @@ export namespace Vda {
         $signals: ExpressionOperatorGt.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorGt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorGt;
+        static ["new"](): ExpressionOperatorGt;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorGt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGt.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorGt.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorLt {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLt.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLt.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorLt<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorLt
-    {
+    class ExpressionOperatorLt<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorLt {
         static $gtype: GObject.GType<ExpressionOperatorLt>;
 
         /**
@@ -3166,71 +3084,60 @@ export namespace Vda {
         $signals: ExpressionOperatorLt.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorLt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorLt;
+        static ["new"](): ExpressionOperatorLt;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorLt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLt.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorLt.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorGeq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGeq.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorGeq.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorGeq<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorGeq
-    {
+    class ExpressionOperatorGeq<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorGeq {
         static $gtype: GObject.GType<ExpressionOperatorGeq>;
 
         /**
@@ -3243,71 +3150,60 @@ export namespace Vda {
         $signals: ExpressionOperatorGeq.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorGeq.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorGeq;
+        static ["new"](): ExpressionOperatorGeq;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorGeq.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorGeq.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorGeq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorLeq {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLeq.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLeq.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorLeq<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorLeq
-    {
+    class ExpressionOperatorLeq<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorLeq {
         static $gtype: GObject.GType<ExpressionOperatorLeq>;
 
         /**
@@ -3320,71 +3216,60 @@ export namespace Vda {
         $signals: ExpressionOperatorLeq.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorLeq.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorLeq;
+        static ["new"](): ExpressionOperatorLeq;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLeq.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorLeq.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLeq.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorRegexp {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorRegexp.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorRegexp.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorRegexp<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorRegexp
-    {
+    class ExpressionOperatorRegexp<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorRegexp {
         static $gtype: GObject.GType<ExpressionOperatorRegexp>;
 
         /**
@@ -3397,71 +3282,60 @@ export namespace Vda {
         $signals: ExpressionOperatorRegexp.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorRegexp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorRegexp;
+        static ["new"](): ExpressionOperatorRegexp;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorRegexp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorRegexp.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorRegexp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorStar {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorStar.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorStar.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorStar<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorStar
-    {
+    class ExpressionOperatorStar<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorStar {
         static $gtype: GObject.GType<ExpressionOperatorStar>;
 
         /**
@@ -3474,71 +3348,60 @@ export namespace Vda {
         $signals: ExpressionOperatorStar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorStar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorStar;
+        static ["new"](): ExpressionOperatorStar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorStar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorStar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorStar.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorStar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorDiv {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiv.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorDiv.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorDiv<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorDiv
-    {
+    class ExpressionOperatorDiv<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorDiv {
         static $gtype: GObject.GType<ExpressionOperatorDiv>;
 
         /**
@@ -3551,71 +3414,60 @@ export namespace Vda {
         $signals: ExpressionOperatorDiv.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorDiv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorDiv;
+        static ["new"](): ExpressionOperatorDiv;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorDiv.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorDiv.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorDiv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIn {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIn.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIn.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIn<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorIn
-    {
+    class ExpressionOperatorIn<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorIn {
         static $gtype: GObject.GType<ExpressionOperatorIn>;
 
         /**
@@ -3628,71 +3480,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIn.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIn.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIn;
+        static ["new"](): ExpressionOperatorIn;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIn.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIn.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotIn {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIn.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIn.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotIn<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorNotIn
-    {
+    class ExpressionOperatorNotIn<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorNotIn {
         static $gtype: GObject.GType<ExpressionOperatorNotIn>;
 
         /**
@@ -3705,73 +3546,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotIn.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotIn.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotIn;
+        static ["new"](): ExpressionOperatorNotIn;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIn.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotIn.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorConcatenate {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorConcatenate.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorConcatenate.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorConcatenate<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorConcatenate
-    {
+    class ExpressionOperatorConcatenate<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorConcatenate {
         static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
 
         /**
@@ -3784,71 +3612,60 @@ export namespace Vda {
         $signals: ExpressionOperatorConcatenate.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorConcatenate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorConcatenate;
+        static ["new"](): ExpressionOperatorConcatenate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorConcatenate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorConcatenate.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorConcatenate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorSimilarTo {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorSimilarTo.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorSimilarTo.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorSimilarTo<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorSimilarTo
-    {
+    class ExpressionOperatorSimilarTo<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorSimilarTo {
         static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
 
         /**
@@ -3861,71 +3678,60 @@ export namespace Vda {
         $signals: ExpressionOperatorSimilarTo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorSimilarTo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorSimilarTo;
+        static ["new"](): ExpressionOperatorSimilarTo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorSimilarTo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorSimilarTo.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorSimilarTo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorLike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLike.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorLike.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorLike<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorLike
-    {
+    class ExpressionOperatorLike<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorLike {
         static $gtype: GObject.GType<ExpressionOperatorLike>;
 
         /**
@@ -3938,71 +3744,60 @@ export namespace Vda {
         $signals: ExpressionOperatorLike.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorLike.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorLike;
+        static ["new"](): ExpressionOperatorLike;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorLike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorLike.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorLike.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorLike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotLike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotLike.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotLike.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotLike<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorNotLike
-    {
+    class ExpressionOperatorNotLike<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorNotLike {
         static $gtype: GObject.GType<ExpressionOperatorNotLike>;
 
         /**
@@ -4015,71 +3810,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotLike.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotLike.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotLike;
+        static ["new"](): ExpressionOperatorNotLike;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotLike.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotLike.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotLike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIlike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIlike.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIlike.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIlike<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorIlike
-    {
+    class ExpressionOperatorIlike<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorIlike {
         static $gtype: GObject.GType<ExpressionOperatorIlike>;
 
         /**
@@ -4092,71 +3876,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIlike.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIlike.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIlike;
+        static ["new"](): ExpressionOperatorIlike;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIlike.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIlike.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIlike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotIlike {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIlike.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorNotIlike.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotIlike<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorNotIlike
-    {
+    class ExpressionOperatorNotIlike<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorNotIlike {
         static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
 
         /**
@@ -4169,71 +3942,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotIlike.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotIlike.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotIlike;
+        static ["new"](): ExpressionOperatorNotIlike;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotIlike.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotIlike.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotIlike.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBinaryUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryUnaryterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorBinaryUnaryterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBinaryUnaryterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorBinaryUnaryterm
-    {
+    class ExpressionOperatorBinaryUnaryterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorBinaryUnaryterm {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
 
         /**
@@ -4246,76 +4008,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBinaryUnaryterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBinaryUnaryterm;
+        static ["new"](): ExpressionOperatorBinaryUnaryterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorMinus {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>, SqlExpressionOperatorMinus.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorMinus.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorMinus<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryUnaryterm<A>
-        implements SqlExpressionOperatorMinus
-    {
+    class ExpressionOperatorMinus<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryUnaryterm<A> implements SqlExpressionOperatorMinus {
         static $gtype: GObject.GType<ExpressionOperatorMinus>;
 
         /**
@@ -4328,71 +4074,60 @@ export namespace Vda {
         $signals: ExpressionOperatorMinus.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorMinus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorMinus;
+        static ["new"](): ExpressionOperatorMinus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorMinus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorMinus.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorMinus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorPlus {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>, SqlExpressionOperatorPlus.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBinaryUnaryterm.ConstructorProps<A>, SqlExpressionOperatorPlus.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorPlus<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryUnaryterm<A>
-        implements SqlExpressionOperatorPlus
-    {
+    class ExpressionOperatorPlus<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryUnaryterm<A> implements SqlExpressionOperatorPlus {
         static $gtype: GObject.GType<ExpressionOperatorPlus>;
 
         /**
@@ -4405,71 +4140,60 @@ export namespace Vda {
         $signals: ExpressionOperatorPlus.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorPlus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorPlus;
+        static ["new"](): ExpressionOperatorPlus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorPlus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorPlus.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorPlus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorInitialUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorInitialUnaryterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorInitialUnaryterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorInitialUnaryterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorInitialUnaryterm
-    {
+    class ExpressionOperatorInitialUnaryterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorInitialUnaryterm {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
 
         /**
@@ -4482,74 +4206,60 @@ export namespace Vda {
         $signals: ExpressionOperatorInitialUnaryterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorInitialUnaryterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorInitialUnaryterm;
+        static ["new"](): ExpressionOperatorInitialUnaryterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNot {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorInitialUnaryterm.ConstructorProps<A>, SqlExpressionOperatorNot.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorInitialUnaryterm.ConstructorProps<A>, SqlExpressionOperatorNot.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNot<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorInitialUnaryterm<A>
-        implements SqlExpressionOperatorNot
-    {
+    class ExpressionOperatorNot<A extends GObject.Object = GObject.Object> extends ExpressionOperatorInitialUnaryterm<A> implements SqlExpressionOperatorNot {
         static $gtype: GObject.GType<ExpressionOperatorNot>;
 
         /**
@@ -4562,71 +4272,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNot.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNot;
+        static ["new"](): ExpressionOperatorNot;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNot.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorFinalUnaryterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorFinalUnaryterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorFinalUnaryterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorFinalUnaryterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorFinalUnaryterm
-    {
+    class ExpressionOperatorFinalUnaryterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorFinalUnaryterm {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
 
         /**
@@ -4639,74 +4338,60 @@ export namespace Vda {
         $signals: ExpressionOperatorFinalUnaryterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorFinalUnaryterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorFinalUnaryterm;
+        static ["new"](): ExpressionOperatorFinalUnaryterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIs {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorFinalUnaryterm.ConstructorProps<A>, SqlExpressionOperatorIs.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorFinalUnaryterm.ConstructorProps<A>, SqlExpressionOperatorIs.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIs<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorFinalUnaryterm<A>
-        implements SqlExpressionOperatorIs
-    {
+    class ExpressionOperatorIs<A extends GObject.Object = GObject.Object> extends ExpressionOperatorFinalUnaryterm<A> implements SqlExpressionOperatorIs {
         static $gtype: GObject.GType<ExpressionOperatorIs>;
 
         /**
@@ -4719,71 +4404,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIs.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIs;
+        static ["new"](): ExpressionOperatorIs;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIs.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIs.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIs.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNot {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNot.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNot.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNot<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIs<A>
-        implements SqlExpressionOperatorIsNot
-    {
+    class ExpressionOperatorIsNot<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs<A> implements SqlExpressionOperatorIsNot {
         static $gtype: GObject.GType<ExpressionOperatorIsNot>;
 
         /**
@@ -4796,71 +4470,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNot.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNot;
+        static ["new"](): ExpressionOperatorIsNot;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNot.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNull {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNull.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsNull.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNull<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIs<A>
-        implements SqlExpressionOperatorIsNull
-    {
+    class ExpressionOperatorIsNull<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs<A> implements SqlExpressionOperatorIsNull {
         static $gtype: GObject.GType<ExpressionOperatorIsNull>;
 
         /**
@@ -4873,71 +4536,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNull.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNull.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNull;
+        static ["new"](): ExpressionOperatorIsNull;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNull.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNull.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotNull {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotNull.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotNull.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotNull<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsNot<A>
-        implements SqlExpressionOperatorIsNotNull
-    {
+    class ExpressionOperatorIsNotNull<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot<A> implements SqlExpressionOperatorIsNotNull {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
 
         /**
@@ -4950,71 +4602,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotNull.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotNull.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotNull;
+        static ["new"](): ExpressionOperatorIsNotNull;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotNull.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotNull.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsTrue {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsTrue.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsTrue.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsTrue<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIs<A>
-        implements SqlExpressionOperatorIsTrue
-    {
+    class ExpressionOperatorIsTrue<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs<A> implements SqlExpressionOperatorIsTrue {
         static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
 
         /**
@@ -5027,71 +4668,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsTrue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsTrue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsTrue;
+        static ["new"](): ExpressionOperatorIsTrue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsTrue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsTrue.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsTrue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotTrue {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotTrue.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotTrue.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotTrue<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsNot<A>
-        implements SqlExpressionOperatorIsNotTrue
-    {
+    class ExpressionOperatorIsNotTrue<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot<A> implements SqlExpressionOperatorIsNotTrue {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
 
         /**
@@ -5104,71 +4734,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotTrue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotTrue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotTrue;
+        static ["new"](): ExpressionOperatorIsNotTrue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotTrue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsFalse {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsFalse.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsFalse.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsFalse<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIs<A>
-        implements SqlExpressionOperatorIsFalse
-    {
+    class ExpressionOperatorIsFalse<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs<A> implements SqlExpressionOperatorIsFalse {
         static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
 
         /**
@@ -5181,71 +4800,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsFalse.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsFalse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsFalse;
+        static ["new"](): ExpressionOperatorIsFalse;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsFalse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsFalse.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsFalse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotFalse {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotFalse.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotFalse.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotFalse<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsNot<A>
-        implements SqlExpressionOperatorIsNotFalse
-    {
+    class ExpressionOperatorIsNotFalse<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot<A> implements SqlExpressionOperatorIsNotFalse {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
 
         /**
@@ -5258,71 +4866,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotFalse.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotFalse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotFalse;
+        static ["new"](): ExpressionOperatorIsNotFalse;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotFalse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotUnknown {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotUnknown.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIsNot.ConstructorProps<A>, SqlExpressionOperatorIsNotUnknown.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotUnknown<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsNot<A>
-        implements SqlExpressionOperatorIsNotUnknown
-    {
+    class ExpressionOperatorIsNotUnknown<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNot<A> implements SqlExpressionOperatorIsNotUnknown {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
 
         /**
@@ -5335,71 +4932,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotUnknown.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotUnknown.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotUnknown;
+        static ["new"](): ExpressionOperatorIsNotUnknown;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotUnknown.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsUnknown {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsUnknown.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorIs.ConstructorProps<A>, SqlExpressionOperatorIsUnknown.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsUnknown<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIs<A>
-        implements SqlExpressionOperatorIsUnknown
-    {
+    class ExpressionOperatorIsUnknown<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIs<A> implements SqlExpressionOperatorIsUnknown {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
 
         /**
@@ -5412,73 +4998,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsUnknown.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsUnknown.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsUnknown;
+        static ["new"](): ExpressionOperatorIsUnknown;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsUnknown.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsUnknown.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsUnknown.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsDistinct {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm.ConstructorProps<A>, SqlExpressionOperatorIsDistinct.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBinaryterm.ConstructorProps<A>,
-                SqlExpressionOperatorIsDistinct.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsDistinct<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBinaryterm<A>
-        implements SqlExpressionOperatorIsDistinct
-    {
+    class ExpressionOperatorIsDistinct<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBinaryterm<A> implements SqlExpressionOperatorIsDistinct {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
 
         /**
@@ -5491,73 +5064,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsDistinct.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsDistinct.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsDistinct;
+        static ["new"](): ExpressionOperatorIsDistinct;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinct.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsDistinct.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotDistinct {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsDistinct.ConstructorProps<A>, SqlExpressionOperatorIsNotDistinct.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorIsDistinct.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotDistinct.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotDistinct<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsDistinct<A>
-        implements SqlExpressionOperatorIsNotDistinct
-    {
+    class ExpressionOperatorIsNotDistinct<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsDistinct<A> implements SqlExpressionOperatorIsNotDistinct {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
 
         /**
@@ -5570,76 +5130,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotDistinct.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotDistinct.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotDistinct;
+        static ["new"](): ExpressionOperatorIsNotDistinct;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinct.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsDistinctFrom {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsDistinct.ConstructorProps<A>, SqlExpressionOperatorIsDistinctFrom.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorIsDistinct.ConstructorProps<A>,
-                SqlExpressionOperatorIsDistinctFrom.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsDistinctFrom<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsDistinct<A>
-        implements SqlExpressionOperatorIsDistinctFrom
-    {
+    class ExpressionOperatorIsDistinctFrom<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsDistinct<A> implements SqlExpressionOperatorIsDistinctFrom {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
 
         /**
@@ -5652,76 +5196,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsDistinctFrom.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsDistinctFrom.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsDistinctFrom;
+        static ["new"](): ExpressionOperatorIsDistinctFrom;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorIsNotDistinctFrom {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNotDistinct.ConstructorProps<A>, SqlExpressionOperatorIsNotDistinctFrom.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorIsNotDistinct.ConstructorProps<A>,
-                SqlExpressionOperatorIsNotDistinctFrom.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorIsNotDistinctFrom<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorIsNotDistinct<A>
-        implements SqlExpressionOperatorIsNotDistinctFrom
-    {
+    class ExpressionOperatorIsNotDistinctFrom<A extends GObject.Object = GObject.Object> extends ExpressionOperatorIsNotDistinct<A> implements SqlExpressionOperatorIsNotDistinctFrom {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
 
         /**
@@ -5734,74 +5262,60 @@ export namespace Vda {
         $signals: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorIsNotDistinctFrom.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorIsNotDistinctFrom;
+        static ["new"](): ExpressionOperatorIsNotDistinctFrom;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorThreeterm {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperator.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorThreeterm.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperator.ConstructorProps<A>, SqlExpressionOperatorThreeterm.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorThreeterm<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperator<A>
-        implements SqlExpressionOperatorThreeterm
-    {
+    class ExpressionOperatorThreeterm<A extends GObject.Object = GObject.Object> extends ExpressionOperator<A> implements SqlExpressionOperatorThreeterm {
         static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
 
         /**
@@ -5814,71 +5328,60 @@ export namespace Vda {
         $signals: ExpressionOperatorThreeterm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorThreeterm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorThreeterm;
+        static ["new"](): ExpressionOperatorThreeterm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorThreeterm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorThreeterm.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorThreeterm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBetween {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorThreeterm.ConstructorProps<A>, SqlExpressionOperatorBetween.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorThreeterm.ConstructorProps<A>, SqlExpressionOperatorBetween.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBetween<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorThreeterm<A>
-        implements SqlExpressionOperatorBetween
-    {
+    class ExpressionOperatorBetween<A extends GObject.Object = GObject.Object> extends ExpressionOperatorThreeterm<A> implements SqlExpressionOperatorBetween {
         static $gtype: GObject.GType<ExpressionOperatorBetween>;
 
         /**
@@ -5891,71 +5394,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBetween.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBetween.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBetween;
+        static ["new"](): ExpressionOperatorBetween;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetween.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBetween.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetween.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBetweenAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorBetweenAnd.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorBetweenAnd.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBetweenAnd<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBetween<A>
-        implements SqlExpressionOperatorBetweenAnd
-    {
+    class ExpressionOperatorBetweenAnd<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween<A> implements SqlExpressionOperatorBetweenAnd {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
 
         /**
@@ -5968,71 +5460,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBetweenAnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBetweenAnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBetweenAnd;
+        static ["new"](): ExpressionOperatorBetweenAnd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenAnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotBetween {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorNotBetween.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorNotBetween.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotBetween<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBetween<A>
-        implements SqlExpressionOperatorNotBetween
-    {
+    class ExpressionOperatorNotBetween<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween<A> implements SqlExpressionOperatorNotBetween {
         static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
 
         /**
@@ -6045,73 +5526,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotBetween.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotBetween.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotBetween;
+        static ["new"](): ExpressionOperatorNotBetween;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetween.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotBetween.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetween.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotBetweenAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorNotBetween.ConstructorProps<A>, SqlExpressionOperatorNotBetweenAnd.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorNotBetween.ConstructorProps<A>,
-                SqlExpressionOperatorNotBetweenAnd.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotBetweenAnd<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorNotBetween<A>
-        implements SqlExpressionOperatorNotBetweenAnd
-    {
+    class ExpressionOperatorNotBetweenAnd<A extends GObject.Object = GObject.Object> extends ExpressionOperatorNotBetween<A> implements SqlExpressionOperatorNotBetweenAnd {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
 
         /**
@@ -6124,76 +5592,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotBetweenAnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotBetweenAnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotBetweenAnd;
+        static ["new"](): ExpressionOperatorNotBetweenAnd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBetweenSymmetric {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween.ConstructorProps<A>, SqlExpressionOperatorBetweenSymmetric.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBetween.ConstructorProps<A>,
-                SqlExpressionOperatorBetweenSymmetric.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBetweenSymmetric<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBetween<A>
-        implements SqlExpressionOperatorBetweenSymmetric
-    {
+    class ExpressionOperatorBetweenSymmetric<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetween<A> implements SqlExpressionOperatorBetweenSymmetric {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
 
         /**
@@ -6206,76 +5658,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBetweenSymmetric.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBetweenSymmetric.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBetweenSymmetric;
+        static ["new"](): ExpressionOperatorBetweenSymmetric;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorBetweenSymmetricAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetweenSymmetric.ConstructorProps<A>, SqlExpressionOperatorBetweenSymmetricAnd.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
-                SqlExpressionOperatorBetweenSymmetricAnd.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorBetweenSymmetricAnd<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBetweenSymmetric<A>
-        implements SqlExpressionOperatorBetweenSymmetricAnd
-    {
+    class ExpressionOperatorBetweenSymmetricAnd<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetweenSymmetric<A> implements SqlExpressionOperatorBetweenSymmetricAnd {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
 
         /**
@@ -6288,76 +5724,60 @@ export namespace Vda {
         $signals: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorBetweenSymmetricAnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorBetweenSymmetricAnd;
+        static ["new"](): ExpressionOperatorBetweenSymmetricAnd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotBetweenSymmetric {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetweenSymmetric.ConstructorProps<A>, SqlExpressionOperatorNotBetweenSymmetric.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorBetweenSymmetric.ConstructorProps<A>,
-                SqlExpressionOperatorNotBetweenSymmetric.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotBetweenSymmetric<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorBetweenSymmetric<A>
-        implements SqlExpressionOperatorNotBetweenSymmetric
-    {
+    class ExpressionOperatorNotBetweenSymmetric<A extends GObject.Object = GObject.Object> extends ExpressionOperatorBetweenSymmetric<A> implements SqlExpressionOperatorNotBetweenSymmetric {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
 
         /**
@@ -6370,76 +5790,60 @@ export namespace Vda {
         $signals: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotBetweenSymmetric.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotBetweenSymmetric;
+        static ["new"](): ExpressionOperatorNotBetweenSymmetric;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionOperatorNotBetweenSymmetricAnd {
         // Signal signatures
         interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionOperatorNotBetweenSymmetric.ConstructorProps<A>, SqlExpressionOperatorNotBetweenSymmetricAnd.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                ExpressionOperatorNotBetweenSymmetric.ConstructorProps<A>,
-                SqlExpressionOperatorNotBetweenSymmetricAnd.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionOperatorNotBetweenSymmetricAnd<A extends GObject.Object = GObject.Object>
-        extends ExpressionOperatorNotBetweenSymmetric<A>
-        implements SqlExpressionOperatorNotBetweenSymmetricAnd
-    {
+    class ExpressionOperatorNotBetweenSymmetricAnd<A extends GObject.Object = GObject.Object> extends ExpressionOperatorNotBetweenSymmetric<A> implements SqlExpressionOperatorNotBetweenSymmetricAnd {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
 
         /**
@@ -6452,76 +5856,62 @@ export namespace Vda {
         $signals: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionOperatorNotBetweenSymmetricAnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionOperatorNotBetweenSymmetricAnd;
+        static ["new"](): ExpressionOperatorNotBetweenSymmetricAnd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionValue {
         // Signal signatures
         interface SignalSignatures extends Expression.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Expression.ConstructorProps<A>, SqlExpressionValue.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Expression.ConstructorProps<A>, SqlExpressionValue.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionValue<A extends GObject.Object = GObject.Object>
-        extends Expression<A>
-        implements SqlExpressionValue
-    {
+    class ExpressionValue<A extends GObject.Object = GObject.Object> extends Expression<A> implements SqlExpressionValue {
         static $gtype: GObject.GType<ExpressionValue>;
 
         /**
@@ -6534,117 +5924,120 @@ export namespace Vda {
         $signals: ExpressionValue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionValue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionValue;
+        static ["new"](): ExpressionValue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionValue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionValue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionValue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionValue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionValue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExpressionValue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Vda.SqlExpressionValue */
         get connection(): Connection;
         set connection(val: Connection);
+
         /** @category Inherited from Vda.SqlExpressionValue */
         get value(): SqlValue;
         set value(val: SqlValue);
+
         /**
-         * @param str
-         * @param params
+         * @param str 
+         * @param params 
          */
         set_math_expression_value(str: string, params: SqlParameters): void;
+
         get_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_connection(value: Connection): void;
+
         get_value(): SqlValue;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: SqlValue): void;
+
         /**
-         * @param str
-         * @param params
+         * @param str 
+         * @param params 
          * @virtual
          */
         vfunc_set_math_expression_value(str: string, params: SqlParameters): void;
+
         /**
          * @virtual
          */
         vfunc_get_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_connection(value: Connection): void;
+
         /**
          * @virtual
          */
         vfunc_get_value(): SqlValue;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_value(value: SqlValue): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace ExpressionValueParameter {
         // Signal signatures
         interface SignalSignatures extends ExpressionValue.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::gtype': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::gtype": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends ExpressionValue.ConstructorProps<A>, SqlExpressionValueParameter.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends ExpressionValue.ConstructorProps<A>, SqlExpressionValueParameter.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ExpressionValueParameter<A extends GObject.Object = GObject.Object>
-        extends ExpressionValue<A>
-        implements SqlExpressionValueParameter
-    {
+    class ExpressionValueParameter<A extends GObject.Object = GObject.Object> extends ExpressionValue<A> implements SqlExpressionValueParameter {
         static $gtype: GObject.GType<ExpressionValueParameter>;
 
         /**
@@ -6657,131 +6050,137 @@ export namespace Vda {
         $signals: ExpressionValueParameter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExpressionValueParameter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ExpressionValueParameter;
+        static ["new"](): ExpressionValueParameter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExpressionValueParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExpressionValueParameter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExpressionValueParameter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExpressionValueParameter.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExpressionValueParameter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExpressionValueParameter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Vda.SqlExpressionValueParameter */
         get parameters(): SqlParameters;
         set parameters(val: SqlParameters);
+
         /** @category Inherited from Vda.SqlExpressionValueParameter */
         get name(): string;
         set name(val: string);
+
         /** @category Inherited from Vda.SqlExpressionValueParameter */
         get gtype(): GObject.GType;
         set gtype(val: GObject.GType);
+
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): void;
+
         get_parameters(): SqlParameters;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: SqlParameters): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_gtype(): GObject.GType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_gtype(value: GObject.GType): void;
+
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_parse(str: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): SqlParameters;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_parameters(value: SqlParameters): void;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_gtype(): GObject.GType;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_gtype(value: GObject.GType): void;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace HashList {
         // Signal signatures
         interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::g-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, HashModel.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends Gee.ArrayList.ConstructorProps, Gio.ListModel.ConstructorProps, HashModel.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class HashList<A extends GObject.Object = GObject.Object>
-        extends Gee.ArrayList
-        implements Gio.ListModel<A>, HashModel
-    {
+    class HashList<A extends GObject.Object = GObject.Object> extends Gee.ArrayList implements Gio.ListModel<A>, HashModel {
         static $gtype: GObject.GType<HashList>;
 
         /**
@@ -6794,79 +6193,74 @@ export namespace Vda {
         $signals: HashList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HashList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): HashList;
+        static ["new"](): HashList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HashList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HashList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HashList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HashList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HashList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HashList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HashList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HashList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -6875,7 +6269,7 @@ export namespace Vda {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -6885,110 +6279,125 @@ export namespace Vda {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @virtual
          */
         vfunc_get_n_items(): number;
+
         /**
-         * @param object
+         * @param object 
          */
         add(object: GObject.Object): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractCollection.add
         add(...args: never[]): any;
+
         /**
-         * @param key
+         * @param key 
          */
         find<T = GObject.Object>(key: GObject.Object): T;
+
         /**
-         * @param object
+         * @param object 
          */
         remove(object: GObject.Object): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractCollection.remove
         remove(...args: never[]): any;
+
         /**
-         * @param object
+         * @param object 
          * @virtual
          */
         vfunc_add(object: GObject.Object): void;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Gee.AbstractCollection.vfunc_add
         vfunc_add(...args: never[]): any;
+
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_find<T = GObject.Object>(key: GObject.Object): T;
+
         /**
-         * @param object
+         * @param object 
          * @virtual
          */
         vfunc_remove(object: GObject.Object): void;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Gee.AbstractCollection.vfunc_remove
         vfunc_remove(...args: never[]): any;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
     }
 
+
     namespace InvalidQuery {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::message': (pspec: GObject.ParamSpec) => void;
-            'notify::sql': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
+            "notify::message": (pspec: GObject.ParamSpec) => void;
+            "notify::sql": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Query.ConstructorProps {
             message: string;
         }
@@ -7001,7 +6410,6 @@ export namespace Vda {
         static $gtype: GObject.GType<InvalidQuery>;
 
         // Properties
-
         get message(): string;
         set message(val: string);
 
@@ -7015,134 +6423,144 @@ export namespace Vda {
         $signals: InvalidQuery.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InvalidQuery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](msg: string): InvalidQuery;
+        static ["new"](msg: string): InvalidQuery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InvalidQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InvalidQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InvalidQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InvalidQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidQuery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InvalidQuery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InvalidQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InvalidQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_message(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_message(value: string): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Query
+          * @category Inherited from Vda.Query
          */
         get sql(): string;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Query
+          * @category Inherited from Vda.Query
          */
         get connection(): Connection;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         execute(cancellable: Gio.Cancellable): globalThis.Promise<Result>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        execute(
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Result> | void;
+        execute(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Result> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         execute_finish(_res_: Gio.AsyncResult): Result;
+
         cancel(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        cancel(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        cancel(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         cancel_finish(_res_: Gio.AsyncResult): void;
+
         render_sql(): string;
+
         get_sql(): string;
+
         get_connection(): Connection;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_execute_finish(_res_: Gio.AsyncResult): Result;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_render_sql(): string;
+
         /**
          * @virtual
          */
         vfunc_get_sql(): string;
+
         /**
          * @virtual
          */
         vfunc_get_connection(): Connection;
     }
 
+
     namespace InvalidPreparedQuery {
         // Signal signatures
         interface SignalSignatures extends InvalidQuery.SignalSignatures {
-            'notify::message': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::message": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends InvalidQuery.ConstructorProps, PreparedQuery.ConstructorProps {
 
-        interface ConstructorProps extends InvalidQuery.ConstructorProps, PreparedQuery.ConstructorProps {}
+        }
     }
 
     /**
@@ -7161,65 +6579,60 @@ export namespace Vda {
         $signals: InvalidPreparedQuery.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InvalidPreparedQuery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](msg: string): InvalidPreparedQuery;
+        static ["new"](msg: string): InvalidPreparedQuery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InvalidPreparedQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidPreparedQuery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InvalidPreparedQuery.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidPreparedQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.PreparedQuery
+          * @category Inherited from Vda.PreparedQuery
          */
         get name(): string;
+
         /**
          * @read-only
-         * @category Inherited from Vda.PreparedQuery
+          * @category Inherited from Vda.PreparedQuery
          */
         get parameters(): SqlParameters;
+
         get_name(): string;
+
         get_parameters(): SqlParameters;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): SqlParameters;
     }
 
+
     namespace InvalidResult {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::message': (pspec: GObject.ParamSpec) => void;
+            "notify::message": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {
             message: string;
         }
@@ -7232,7 +6645,6 @@ export namespace Vda {
         static $gtype: GObject.GType<InvalidResult>;
 
         // Properties
-
         get message(): string;
         set message(val: string);
 
@@ -7246,63 +6658,56 @@ export namespace Vda {
         $signals: InvalidResult.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InvalidResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](msg: string): InvalidResult;
+        static ["new"](msg: string): InvalidResult;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InvalidResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InvalidResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InvalidResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InvalidResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InvalidResult.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InvalidResult.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InvalidResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InvalidResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InvalidResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_message(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_message(value: string): void;
     }
 
+
     namespace Parameters {
         // Signal signatures
         interface SignalSignatures extends Gee.HashMap.SignalSignatures {
-            'notify::k-type': (pspec: GObject.ParamSpec) => void;
-            'notify::k-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::k-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-type': (pspec: GObject.ParamSpec) => void;
-            'notify::v-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::v-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::keys': (pspec: GObject.ParamSpec) => void;
-            'notify::values': (pspec: GObject.ParamSpec) => void;
-            'notify::entries': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only-view': (pspec: GObject.ParamSpec) => void;
+            "notify::k-type": (pspec: GObject.ParamSpec) => void;
+            "notify::k-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::k-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-type": (pspec: GObject.ParamSpec) => void;
+            "notify::v-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::v-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::keys": (pspec: GObject.ParamSpec) => void;
+            "notify::values": (pspec: GObject.ParamSpec) => void;
+            "notify::entries": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gee.HashMap.ConstructorProps, SqlParameters.ConstructorProps {
 
-        interface ConstructorProps extends Gee.HashMap.ConstructorProps, SqlParameters.ConstructorProps {}
+        }
     }
 
     /**
@@ -7321,101 +6726,107 @@ export namespace Vda {
         $signals: Parameters.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parameters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Parameters;
+        static ["new"](): Parameters;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parameters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parameters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parameters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parameters.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parameters.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parameters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parameters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          */
-        set_value(name: string, val: GObject.Value | any): void;
+        set_value(name: string, val: (GObject.Value | any)): void;
+
         /**
-         * @param name
+         * @param name 
          */
         get_value(name: string): unknown;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          */
         set_sql_value(name: string, val: SqlValue): void;
+
         /**
-         * @param name
+         * @param name 
          */
         get_sql_value(name: string): SqlValue;
+
         /**
-         * @param name
+         * @param name 
          */
         has_param(name: string): boolean;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          * @virtual
          */
         vfunc_set_value(name: string, val: unknown): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
-        vfunc_get_value(name: string): GObject.Value | any;
+        vfunc_get_value(name: string): (GObject.Value | any);
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          * @virtual
          */
         vfunc_set_sql_value(name: string, val: SqlValue): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_get_sql_value(name: string): SqlValue;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_has_param(name: string): boolean;
+
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
     }
 
+
     namespace Parser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlParser.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlParser.ConstructorProps {}
+        }
     }
 
     /**
@@ -7434,56 +6845,51 @@ export namespace Vda {
         $signals: Parser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Parser;
+        static ["new"](): Parser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
-         * @param str
-         * @param cnc
+         * @param str 
+         * @param cnc 
          */
         parse(str: string, cnc: Connection): SqlCommandParametrized;
+
         /**
-         * @param str
-         * @param cnc
+         * @param str 
+         * @param cnc 
          * @virtual
          */
         vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized;
     }
 
+
     namespace TableReference {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::allias': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::allias": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlTableReference.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SqlTableReference.ConstructorProps {}
+        }
     }
 
     /**
@@ -7502,79 +6908,81 @@ export namespace Vda {
         $signals: TableReference.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TableReference.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TableReference;
+        static ["new"](): TableReference;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TableReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TableReference.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TableReference.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TableReference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TableReference.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TableReference.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TableReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TableReference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TableReference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Vda.SqlTableReference */
         get name(): string;
         set name(val: string);
+
         /** @category Inherited from Vda.SqlTableReference */
         get allias(): string;
         set allias(val: string);
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_allias(value: string): void;
     }
 
+
     namespace Value {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Stringifiable.ConstructorProps, SqlValue.ConstructorProps {
 
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Stringifiable.ConstructorProps, SqlValue.ConstructorProps {}
+        }
     }
 
     /**
@@ -7593,123 +7001,134 @@ export namespace Vda {
         $signals: Value.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Value.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Value;
+        static ["new"](): Value;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Value.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Value.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Value.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Value.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Value.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Value.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_force_value(val: unknown): boolean;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_from_value(val: unknown): boolean;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_is_compatible(type: GObject.GType): boolean;
+
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_parse(str: string): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_gvalue(): GObject.Value | any;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string_quoted(): string;
+
         /**
          * @virtual
          */
         vfunc_to_sql_expression(): string;
 
         // Methods
+        /**
+         * @param val 
+         */
+        force_value(val: (GObject.Value | any)): boolean;
 
         /**
-         * @param val
+         * @param val 
          */
-        force_value(val: GObject.Value | any): boolean;
+        from_value(val: (GObject.Value | any)): boolean;
+
         /**
-         * @param val
-         */
-        from_value(val: GObject.Value | any): boolean;
-        /**
-         * @param type
+         * @param type 
          */
         cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          */
         is_compatible(type: GObject.GType): boolean;
+
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): boolean;
+
         to_gvalue(): unknown;
+
         to_string(): string;
+
         to_string_quoted(): string;
+
         to_sql_expression(): string;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValue
+          * @category Inherited from Vda.SqlValue
          */
         get name(): string;
+
         get_name(): string;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
     }
 
+
     namespace ValueNull {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueNull.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueNull.ConstructorProps {}
+        }
     }
 
     /**
@@ -7728,42 +7147,36 @@ export namespace Vda {
         $signals: ValueNull.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueNull.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueNull;
+        static ["new"](): ValueNull;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueNull.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNull.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueNull.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueNull.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNull.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueString {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueString.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueString.ConstructorProps {}
+        }
     }
 
     /**
@@ -7782,44 +7195,37 @@ export namespace Vda {
         $signals: ValueString.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueString.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueString;
+        static ["new"](): ValueString;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueString.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueString.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueString.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueString.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ValueXml {
         // Signal signatures
         interface SignalSignatures extends ValueString.SignalSignatures {
-            'notify::document': (pspec: GObject.ParamSpec) => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueXml.ConstructorProps {
 
-        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueXml.ConstructorProps {}
+        }
     }
 
     /**
@@ -7838,54 +7244,50 @@ export namespace Vda {
         $signals: ValueXml.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueXml.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueXml;
+        static ["new"](): ValueXml;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueXml.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueXml.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueXml.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueXml.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueXml.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueXml.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValueXml
+          * @category Inherited from Vda.SqlValueXml
          */
         get document(): GXml.DomDocument;
+
         get_document(): GXml.DomDocument;
+
         /**
          * @virtual
          */
         vfunc_get_document(): GXml.DomDocument;
     }
 
+
     namespace ValueJson {
         // Signal signatures
         interface SignalSignatures extends ValueString.SignalSignatures {
-            'notify::document': (pspec: GObject.ParamSpec) => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueJson.ConstructorProps {
 
-        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueJson.ConstructorProps {}
+        }
     }
 
     /**
@@ -7904,52 +7306,49 @@ export namespace Vda {
         $signals: ValueJson.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueJson.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueJson;
+        static ["new"](): ValueJson;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueJson.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueJson.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueJson.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueJson.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueJson.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueJson.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValueJson
+          * @category Inherited from Vda.SqlValueJson
          */
         get document(): Json.Node;
+
         get_document(): Json.Node;
+
         /**
          * @virtual
          */
         vfunc_get_document(): Json.Node;
     }
 
+
     namespace ValueText {
         // Signal signatures
-        interface SignalSignatures extends ValueString.SignalSignatures {}
+        interface SignalSignatures extends ValueString.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueText.ConstructorProps {
 
-        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueText.ConstructorProps {}
+        }
     }
 
     /**
@@ -7968,42 +7367,36 @@ export namespace Vda {
         $signals: ValueText.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueText;
+        static ["new"](): ValueText;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueName {
         // Signal signatures
-        interface SignalSignatures extends ValueString.SignalSignatures {}
+        interface SignalSignatures extends ValueString.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueName.ConstructorProps {
 
-        interface ConstructorProps extends ValueString.ConstructorProps, SqlValueName.ConstructorProps {}
+        }
     }
 
     /**
@@ -8022,42 +7415,36 @@ export namespace Vda {
         $signals: ValueName.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueName;
+        static ["new"](): ValueName;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueName.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueName.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueBool {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueBool.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueBool.ConstructorProps {}
+        }
     }
 
     /**
@@ -8076,42 +7463,36 @@ export namespace Vda {
         $signals: ValueBool.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueBool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueBool;
+        static ["new"](): ValueBool;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueBool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueBool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBool.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueBool.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueBool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueBool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueBit {
         // Signal signatures
-        interface SignalSignatures extends ValueBool.SignalSignatures {}
+        interface SignalSignatures extends ValueBool.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueBool.ConstructorProps, SqlValueBit.ConstructorProps {
 
-        interface ConstructorProps extends ValueBool.ConstructorProps, SqlValueBit.ConstructorProps {}
+        }
     }
 
     /**
@@ -8130,45 +7511,37 @@ export namespace Vda {
         $signals: ValueBit.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueBit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueBit;
+        static ["new"](): ValueBit;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueBit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueBit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBit.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueBit.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueBit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueBit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ValueInteger {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueInteger.ConstructorProps {
 
-        interface ConstructorProps
-            extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueInteger.ConstructorProps {}
+        }
     }
 
     /**
@@ -8187,103 +7560,114 @@ export namespace Vda {
         $signals: ValueInteger.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueInteger.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueInteger;
+        static ["new"](): ValueInteger;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueInteger.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueInteger.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInteger.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueInteger.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValue
+          * @category Inherited from Vda.SqlValue
          */
         get name(): string;
+
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          */
-        from_value(val: GObject.Value | any): boolean;
+        from_value(val: (GObject.Value | any)): boolean;
+
         /**
-         * @param type
+         * @param type 
          */
         cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          */
         is_compatible(type: GObject.GType): boolean;
+
         to_gvalue(): unknown;
+
         to_string_quoted(): string;
+
         to_sql_expression(): string;
+
         get_name(): string;
+
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_from_value(val: unknown): boolean;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_is_compatible(type: GObject.GType): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_gvalue(): GObject.Value | any;
+
         /**
          * @virtual
          */
         vfunc_to_string_quoted(): string;
+
         /**
          * @virtual
          */
         vfunc_to_sql_expression(): string;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
     }
 
+
     namespace ValueByte {
         // Signal signatures
-        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueByte.ConstructorProps {
 
-        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueByte.ConstructorProps {}
+        }
     }
 
     /**
@@ -8302,42 +7686,36 @@ export namespace Vda {
         $signals: ValueByte.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueByte.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueByte;
+        static ["new"](): ValueByte;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueByte.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueByte.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueByte.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueByte.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueInt2 {
         // Signal signatures
-        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt2.ConstructorProps {
 
-        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt2.ConstructorProps {}
+        }
     }
 
     /**
@@ -8356,42 +7734,36 @@ export namespace Vda {
         $signals: ValueInt2.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueInt2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueInt2;
+        static ["new"](): ValueInt2;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueInt2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueInt2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt2.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueInt2.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueInt4 {
         // Signal signatures
-        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt4.ConstructorProps {
 
-        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt4.ConstructorProps {}
+        }
     }
 
     /**
@@ -8410,42 +7782,36 @@ export namespace Vda {
         $signals: ValueInt4.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueInt4.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueInt4;
+        static ["new"](): ValueInt4;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueInt4.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueInt4.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt4.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueInt4.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueInt8 {
         // Signal signatures
-        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt8.ConstructorProps {
 
-        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt8.ConstructorProps {}
+        }
     }
 
     /**
@@ -8464,45 +7830,37 @@ export namespace Vda {
         $signals: ValueInt8.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueInt8.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueInt8;
+        static ["new"](): ValueInt8;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueInt8.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueInt8.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueInt8.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueInt8.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ValueUnsignedInteger {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueUnsignedInteger.ConstructorProps {
 
-        interface ConstructorProps
-            extends Value.ConstructorProps, SqlValue.ConstructorProps, SqlValueUnsignedInteger.ConstructorProps {}
+        }
     }
 
     /**
@@ -8521,106 +7879,114 @@ export namespace Vda {
         $signals: ValueUnsignedInteger.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueUnsignedInteger.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueUnsignedInteger;
+        static ["new"](): ValueUnsignedInteger;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueUnsignedInteger.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInteger.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueUnsignedInteger.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInteger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValue
+          * @category Inherited from Vda.SqlValue
          */
         get name(): string;
+
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          */
-        from_value(val: GObject.Value | any): boolean;
+        from_value(val: (GObject.Value | any)): boolean;
+
         /**
-         * @param type
+         * @param type 
          */
         cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          */
         is_compatible(type: GObject.GType): boolean;
+
         to_gvalue(): unknown;
+
         to_string_quoted(): string;
+
         to_sql_expression(): string;
+
         get_name(): string;
+
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_from_value(val: unknown): boolean;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_is_compatible(type: GObject.GType): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_gvalue(): GObject.Value | any;
+
         /**
          * @virtual
          */
         vfunc_to_string_quoted(): string;
+
         /**
          * @virtual
          */
         vfunc_to_sql_expression(): string;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
     }
 
+
     namespace ValueUnsignedByte {
         // Signal signatures
-        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedByte.ConstructorProps {
 
-        interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedByte.ConstructorProps {}
+        }
     }
 
     /**
@@ -8639,43 +8005,36 @@ export namespace Vda {
         $signals: ValueUnsignedByte.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueUnsignedByte.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueUnsignedByte;
+        static ["new"](): ValueUnsignedByte;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueUnsignedByte.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedByte.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueUnsignedByte.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueUnsignedByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueUnsignedByte.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedByte.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueUnsignedInt2 {
         // Signal signatures
-        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt2.ConstructorProps {
 
-        interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt2.ConstructorProps {}
+        }
     }
 
     /**
@@ -8694,43 +8053,36 @@ export namespace Vda {
         $signals: ValueUnsignedInt2.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueUnsignedInt2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueUnsignedInt2;
+        static ["new"](): ValueUnsignedInt2;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueUnsignedInt2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt2.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueUnsignedInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueUnsignedInt4 {
         // Signal signatures
-        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt4.ConstructorProps {
 
-        interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt4.ConstructorProps {}
+        }
     }
 
     /**
@@ -8749,43 +8101,36 @@ export namespace Vda {
         $signals: ValueUnsignedInt4.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueUnsignedInt4.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueUnsignedInt4;
+        static ["new"](): ValueUnsignedInt4;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueUnsignedInt4.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt4.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueUnsignedInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt4.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueUnsignedInt8 {
         // Signal signatures
-        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt8.ConstructorProps {
 
-        interface ConstructorProps
-            extends ValueUnsignedInteger.ConstructorProps, SqlValueUnsignedInt8.ConstructorProps {}
+        }
     }
 
     /**
@@ -8804,42 +8149,36 @@ export namespace Vda {
         $signals: ValueUnsignedInt8.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueUnsignedInt8.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueUnsignedInt8;
+        static ["new"](): ValueUnsignedInt8;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueUnsignedInt8.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueUnsignedInt8.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueUnsignedInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueUnsignedInt8.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueOid {
         // Signal signatures
-        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+        interface SignalSignatures extends ValueInteger.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueOid.ConstructorProps {
 
-        interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueOid.ConstructorProps {}
+        }
     }
 
     /**
@@ -8858,42 +8197,36 @@ export namespace Vda {
         $signals: ValueOid.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueOid.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueOid;
+        static ["new"](): ValueOid;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueOid.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueOid.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueOid.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueOid.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueOid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueOid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueOid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueNumeric {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueNumeric.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueNumeric.ConstructorProps {}
+        }
     }
 
     /**
@@ -8912,113 +8245,121 @@ export namespace Vda {
         $signals: ValueNumeric.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueNumeric.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueNumeric;
+        static ["new"](): ValueNumeric;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueNumeric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueNumeric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueNumeric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueNumeric.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueNumeric.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueNumeric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueNumeric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueNumeric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_format(str: string): string;
 
         // Methods
-
         /**
-         * @param str
+         * @param str 
          */
         format(str: string): string;
+
         /**
-         * @param p
+         * @param p 
          */
         set_precision(p: number): void;
+
         get_precision(): number;
+
         get_double(): number;
+
         /**
-         * @param v
+         * @param v 
          */
         set_double(v: number): void;
+
         get_real(): number;
+
         /**
-         * @param r
+         * @param r 
          */
         set_real(r: number): void;
+
         get_imaginary(): number;
+
         /**
-         * @param img
+         * @param img 
          */
         set_imaginary(img: number): void;
+
         /**
-         * @param p
+         * @param p 
          * @virtual
          */
         vfunc_set_precision(p: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_precision(): number;
+
         /**
          * @virtual
          */
         vfunc_get_double(): number;
+
         /**
-         * @param v
+         * @param v 
          * @virtual
          */
         vfunc_set_double(v: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_real(): number;
+
         /**
-         * @param r
+         * @param r 
          * @virtual
          */
         vfunc_set_real(r: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_imaginary(): number;
+
         /**
-         * @param img
+         * @param img 
          * @virtual
          */
         vfunc_set_imaginary(img: number): void;
     }
 
+
     namespace ValueFloat {
         // Signal signatures
-        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueFloat.ConstructorProps {
 
-        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueFloat.ConstructorProps {}
+        }
     }
 
     /**
@@ -9037,47 +8378,43 @@ export namespace Vda {
         $signals: ValueFloat.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueFloat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueFloat;
+        static ["new"](): ValueFloat;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueFloat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueFloat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueFloat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueFloat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueFloat.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueFloat.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueFloat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueFloat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueFloat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         get_float(): number;
+
         /**
          * @virtual
          */
         vfunc_get_float(): number;
     }
 
+
     namespace ValueDouble {
         // Signal signatures
-        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueDouble.ConstructorProps {
 
-        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueDouble.ConstructorProps {}
+        }
     }
 
     /**
@@ -9096,42 +8433,36 @@ export namespace Vda {
         $signals: ValueDouble.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueDouble.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueDouble;
+        static ["new"](): ValueDouble;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueDouble.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueDouble.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueDouble.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueDouble.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDouble.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueDouble.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueDouble.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueDouble.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDouble.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueMoney {
         // Signal signatures
-        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueMoney.ConstructorProps {
 
-        interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueMoney.ConstructorProps {}
+        }
     }
 
     /**
@@ -9150,66 +8481,68 @@ export namespace Vda {
         $signals: ValueMoney.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueMoney.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueMoney;
+        static ["new"](): ValueMoney;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueMoney.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueMoney.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueMoney.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueMoney.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMoney.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueMoney.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueMoney.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueMoney.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMoney.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         locale(): string;
+
         int_locale(): string;
+
         get_int_precision(): number;
+
         /**
-         * @param p
+         * @param p 
          */
         set_int_precision(p: number): void;
+
         /**
          * @virtual
          */
         vfunc_locale(): string;
+
         /**
          * @virtual
          */
         vfunc_int_locale(): string;
+
         /**
          * @virtual
          */
         vfunc_get_int_precision(): number;
+
         /**
-         * @param p
+         * @param p 
          * @virtual
          */
         vfunc_set_int_precision(p: number): void;
     }
 
+
     namespace ValueTimestamp {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueTimestamp.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueTimestamp.ConstructorProps {}
+        }
     }
 
     /**
@@ -9228,102 +8561,112 @@ export namespace Vda {
         $signals: ValueTimestamp.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueTimestamp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueTimestamp;
+        static ["new"](): ValueTimestamp;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueTimestamp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueTimestamp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestamp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueTimestamp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueTimestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueTimestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_format_local(): string;
+
         /**
          * @virtual
          */
         vfunc_format_utc(): string;
+
         /**
          * @virtual
          */
         vfunc_format_locale(): string;
 
         // Methods
-
         format_local(): string;
+
         format_utc(): string;
+
         format_locale(): string;
+
         format_date(): string;
+
         format_date_locale(): string;
+
         format_time(): string;
+
         format_time_local(): string;
+
         format_time_local_ntz(): string;
+
         get_timestamp(): GLib.DateTime;
+
         /**
-         * @param ts
+         * @param ts 
          */
         set_timestamp(ts: GLib.DateTime): void;
+
         /**
          * @virtual
          */
         vfunc_format_date(): string;
+
         /**
          * @virtual
          */
         vfunc_format_date_locale(): string;
+
         /**
          * @virtual
          */
         vfunc_format_time(): string;
+
         /**
          * @virtual
          */
         vfunc_format_time_local(): string;
+
         /**
          * @virtual
          */
         vfunc_format_time_local_ntz(): string;
+
         /**
          * @virtual
          */
         vfunc_get_timestamp(): GLib.DateTime;
+
         /**
-         * @param ts
+         * @param ts 
          * @virtual
          */
         vfunc_set_timestamp(ts: GLib.DateTime): void;
     }
 
+
     namespace ValueTimestampNtz {
         // Signal signatures
-        interface SignalSignatures extends ValueTimestamp.SignalSignatures {}
+        interface SignalSignatures extends ValueTimestamp.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTimestampNtz.ConstructorProps {
 
-        interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTimestampNtz.ConstructorProps {}
+        }
     }
 
     /**
@@ -9342,42 +8685,36 @@ export namespace Vda {
         $signals: ValueTimestampNtz.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueTimestampNtz.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueTimestampNtz;
+        static ["new"](): ValueTimestampNtz;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueTimestampNtz.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimestampNtz.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueTimestampNtz.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueTimestampNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueTimestampNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimestampNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueTime {
         // Signal signatures
-        interface SignalSignatures extends ValueTimestamp.SignalSignatures {}
+        interface SignalSignatures extends ValueTimestamp.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTime.ConstructorProps {
 
-        interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTime.ConstructorProps {}
+        }
     }
 
     /**
@@ -9396,42 +8733,36 @@ export namespace Vda {
         $signals: ValueTime.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueTime.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueTime;
+        static ["new"](): ValueTime;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueTime.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueTime.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTime.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueTime.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueTimeNtz {
         // Signal signatures
-        interface SignalSignatures extends ValueTimestampNtz.SignalSignatures {}
+        interface SignalSignatures extends ValueTimestampNtz.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends ValueTimestampNtz.ConstructorProps, SqlValueTimeNtz.ConstructorProps {
 
-        interface ConstructorProps extends ValueTimestampNtz.ConstructorProps, SqlValueTimeNtz.ConstructorProps {}
+        }
     }
 
     /**
@@ -9450,42 +8781,36 @@ export namespace Vda {
         $signals: ValueTimeNtz.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueTimeNtz.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueTimeNtz;
+        static ["new"](): ValueTimeNtz;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueTimeNtz.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueTimeNtz.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueTimeNtz.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueTimeNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueTimeNtz.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueTimeNtz.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace ValueDate {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueDate.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueDate.ConstructorProps {}
+        }
     }
 
     /**
@@ -9504,62 +8829,58 @@ export namespace Vda {
         $signals: ValueDate.SignalSignatures;
 
         // Fields
-
         d: GLib.Date;
 
         // Constructors
-
         constructor(properties?: Partial<ValueDate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueDate;
+        static ["new"](): ValueDate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueDate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueDate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueDate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueDate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         get_date(): GLib.Date;
+
         /**
-         * @param ts
+         * @param ts 
          */
         set_date(ts: GLib.Date): void;
+
         /**
          * @virtual
          */
         vfunc_get_date(): GLib.Date;
+
         /**
-         * @param ts
+         * @param ts 
          * @virtual
          */
         vfunc_set_date(ts: GLib.Date): void;
     }
 
+
     namespace ValueBinary {
         // Signal signatures
         interface SignalSignatures extends Value.SignalSignatures {
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Value.ConstructorProps, SqlValueBinary.ConstructorProps {
 
-        interface ConstructorProps extends Value.ConstructorProps, SqlValueBinary.ConstructorProps {}
+        }
     }
 
     /**
@@ -9578,80 +8899,75 @@ export namespace Vda {
         $signals: ValueBinary.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueBinary.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static with_data(d: Uint8Array | string): ValueBinary;
+        static with_data(d: (Uint8Array | string)): ValueBinary;
 
-        static take(d: Uint8Array | string): ValueBinary;
+        static take(d: (Uint8Array | string)): ValueBinary;
 
-        static ['new'](): ValueBinary;
+        static ["new"](): ValueBinary;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueBinary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueBinary.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueBinary.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueBinary.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueBinary.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueBinary.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueBinary.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueBinary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValueBinary
+          * @category Inherited from Vda.SqlValueBinary
          */
         get size(): number;
+
         get_bytes(): GLib.Bytes;
+
         get_out_stream(): Gio.OutputStream;
+
         get_input_stream(): Gio.InputStream;
+
         get_size(): number;
+
         /**
          * @virtual
          */
-        vfunc_get_bytes(): GLib.Bytes | Uint8Array;
+        vfunc_get_bytes(): (GLib.Bytes | Uint8Array);
+
         /**
          * @virtual
          */
         vfunc_get_out_stream(): Gio.OutputStream;
+
         /**
          * @virtual
          */
         vfunc_get_input_stream(): Gio.InputStream;
+
         /**
          * @virtual
          */
         vfunc_get_size(): number;
     }
 
+
     namespace ValueMathExp {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::math': (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::math": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                Stringifiable.ConstructorProps,
-                SqlValue.ConstructorProps,
-                SqlValueMathExp.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Stringifiable.ConstructorProps, SqlValue.ConstructorProps, SqlValueMathExp.ConstructorProps {
             parameters: SqlParameters;
         }
     }
@@ -9663,7 +8979,6 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueMathExp>;
 
         // Properties
-
         get parameters(): SqlParameters;
         set parameters(val: SqlParameters);
 
@@ -9677,130 +8992,147 @@ export namespace Vda {
         $signals: ValueMathExp.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ValueMathExp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ValueMathExp;
+        static ["new"](): ValueMathExp;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ValueMathExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ValueMathExp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ValueMathExp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ValueMathExp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ValueMathExp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ValueMathExp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ValueMathExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ValueMathExp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ValueMathExp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_parameters(): SqlParameters;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: SqlParameters): void;
+
         /**
          * @read-only
-         * @category Inherited from Vda.SqlValue
+          * @category Inherited from Vda.SqlValue
          */
         get name(): string;
+
         /** @category Inherited from Vda.SqlValueMathExp */
         get math(): GCalc.MathEquationManager;
         set math(val: GCalc.MathEquationManager);
+
         to_string(): string;
+
         /**
          * @virtual
          */
         vfunc_to_string(): string;
+
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          */
-        from_value(val: GObject.Value | any): boolean;
+        from_value(val: (GObject.Value | any)): boolean;
+
         /**
-         * @param type
+         * @param type 
          */
         cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          */
         is_compatible(type: GObject.GType): boolean;
+
         to_gvalue(): unknown;
+
         to_string_quoted(): string;
+
         to_sql_expression(): string;
+
         get_name(): string;
+
         /**
-         * @param str
+         * @param str 
          * @virtual
          */
         vfunc_parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          * @virtual
          */
         vfunc_from_value(val: unknown): boolean;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_is_compatible(type: GObject.GType): boolean;
+
         /**
          * @virtual
          */
         vfunc_to_gvalue(): GObject.Value | any;
+
         /**
          * @virtual
          */
         vfunc_to_string_quoted(): string;
+
         /**
          * @virtual
          */
         vfunc_to_sql_expression(): string;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         get_math(): GCalc.MathEquationManager;
+
         /**
-         * @param value
+         * @param value 
          */
         set_math(value: GCalc.MathEquationManager): void;
+
         /**
          * @virtual
          */
         vfunc_get_math(): GCalc.MathEquationManager;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_math(value: GCalc.MathEquationManager): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AffectedRowsClass = typeof AffectedRows;
+
     /**
      * @gir-type Struct
      */
@@ -9808,10 +9140,12 @@ export namespace Vda {
         static $gtype: GObject.GType<AffectedRowsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommandDeleteClass = typeof CommandDelete;
+
     /**
      * @gir-type Struct
      */
@@ -9819,10 +9153,12 @@ export namespace Vda {
         static $gtype: GObject.GType<CommandDeletePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommandInsertClass = typeof CommandInsert;
+
     /**
      * @gir-type Struct
      */
@@ -9830,10 +9166,12 @@ export namespace Vda {
         static $gtype: GObject.GType<CommandInsertPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommandModificationClass = typeof CommandModification;
+
     /**
      * @gir-type Struct
      */
@@ -9841,10 +9179,12 @@ export namespace Vda {
         static $gtype: GObject.GType<CommandModificationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommandSelectClass = typeof CommandSelect;
+
     /**
      * @gir-type Struct
      */
@@ -9852,10 +9192,12 @@ export namespace Vda {
         static $gtype: GObject.GType<CommandSelectPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommandUpdateClass = typeof CommandUpdate;
+
     /**
      * @gir-type Struct
      */
@@ -9863,10 +9205,12 @@ export namespace Vda {
         static $gtype: GObject.GType<CommandUpdatePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterClass = typeof ConnectionParameter;
+
     /**
      * @gir-type Struct
      */
@@ -9874,10 +9218,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterDbNameClass = typeof ConnectionParameterDbName;
+
     /**
      * @gir-type Struct
      */
@@ -9885,10 +9231,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterDbNamePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterHostClass = typeof ConnectionParameterHost;
+
     /**
      * @gir-type Struct
      */
@@ -9896,10 +9244,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterHostPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterPortClass = typeof ConnectionParameterPort;
+
     /**
      * @gir-type Struct
      */
@@ -9907,10 +9257,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterPortPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterUserNameClass = typeof ConnectionParameterUserName;
+
     /**
      * @gir-type Struct
      */
@@ -9918,10 +9270,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterUserNamePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParameterPasswordClass = typeof ConnectionParameterPassword;
+
     /**
      * @gir-type Struct
      */
@@ -9929,10 +9283,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParameterPasswordPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionParametersClass = typeof ConnectionParameters;
+
     /**
      * @gir-type Struct
      */
@@ -9940,10 +9296,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ConnectionParametersPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionClass = typeof Expression;
+
     /**
      * @gir-type Struct
      */
@@ -9951,10 +9309,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionFieldClass = typeof ExpressionField;
+
     /**
      * @gir-type Struct
      */
@@ -9962,10 +9322,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionFieldPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorClass = typeof ExpressionOperator;
+
     /**
      * @gir-type Struct
      */
@@ -9973,10 +9335,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorGroupClass = typeof ExpressionOperatorGroup;
+
     /**
      * @gir-type Struct
      */
@@ -9984,10 +9348,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorGroupPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorMultitermClass = typeof ExpressionOperatorMultiterm;
+
     /**
      * @gir-type Struct
      */
@@ -9995,10 +9361,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorMultitermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorAndClass = typeof ExpressionOperatorAnd;
+
     /**
      * @gir-type Struct
      */
@@ -10006,10 +9374,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorAndPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorOrClass = typeof ExpressionOperatorOr;
+
     /**
      * @gir-type Struct
      */
@@ -10017,10 +9387,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorOrPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBinarytermClass = typeof ExpressionOperatorBinaryterm;
+
     /**
      * @gir-type Struct
      */
@@ -10028,10 +9400,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBinarytermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorEqClass = typeof ExpressionOperatorEq;
+
     /**
      * @gir-type Struct
      */
@@ -10039,10 +9413,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorEqPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotEqClass = typeof ExpressionOperatorNotEq;
+
     /**
      * @gir-type Struct
      */
@@ -10050,10 +9426,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotEqPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorDiffClass = typeof ExpressionOperatorDiff;
+
     /**
      * @gir-type Struct
      */
@@ -10061,10 +9439,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorDiffPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorGtClass = typeof ExpressionOperatorGt;
+
     /**
      * @gir-type Struct
      */
@@ -10072,10 +9452,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorGtPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorLtClass = typeof ExpressionOperatorLt;
+
     /**
      * @gir-type Struct
      */
@@ -10083,10 +9465,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorLtPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorGeqClass = typeof ExpressionOperatorGeq;
+
     /**
      * @gir-type Struct
      */
@@ -10094,10 +9478,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorGeqPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorLeqClass = typeof ExpressionOperatorLeq;
+
     /**
      * @gir-type Struct
      */
@@ -10105,10 +9491,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorLeqPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorRegexpClass = typeof ExpressionOperatorRegexp;
+
     /**
      * @gir-type Struct
      */
@@ -10116,10 +9504,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorRegexpPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorStarClass = typeof ExpressionOperatorStar;
+
     /**
      * @gir-type Struct
      */
@@ -10127,10 +9517,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorStarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorDivClass = typeof ExpressionOperatorDiv;
+
     /**
      * @gir-type Struct
      */
@@ -10138,10 +9530,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorDivPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorInClass = typeof ExpressionOperatorIn;
+
     /**
      * @gir-type Struct
      */
@@ -10149,10 +9543,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorInPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotInClass = typeof ExpressionOperatorNotIn;
+
     /**
      * @gir-type Struct
      */
@@ -10160,10 +9556,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotInPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorConcatenateClass = typeof ExpressionOperatorConcatenate;
+
     /**
      * @gir-type Struct
      */
@@ -10171,10 +9569,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorConcatenatePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorSimilarToClass = typeof ExpressionOperatorSimilarTo;
+
     /**
      * @gir-type Struct
      */
@@ -10182,10 +9582,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorSimilarToPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorLikeClass = typeof ExpressionOperatorLike;
+
     /**
      * @gir-type Struct
      */
@@ -10193,10 +9595,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorLikePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotLikeClass = typeof ExpressionOperatorNotLike;
+
     /**
      * @gir-type Struct
      */
@@ -10204,10 +9608,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotLikePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIlikeClass = typeof ExpressionOperatorIlike;
+
     /**
      * @gir-type Struct
      */
@@ -10215,10 +9621,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIlikePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotIlikeClass = typeof ExpressionOperatorNotIlike;
+
     /**
      * @gir-type Struct
      */
@@ -10226,10 +9634,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotIlikePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBinaryUnarytermClass = typeof ExpressionOperatorBinaryUnaryterm;
+
     /**
      * @gir-type Struct
      */
@@ -10237,10 +9647,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnarytermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorMinusClass = typeof ExpressionOperatorMinus;
+
     /**
      * @gir-type Struct
      */
@@ -10248,10 +9660,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorMinusPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorPlusClass = typeof ExpressionOperatorPlus;
+
     /**
      * @gir-type Struct
      */
@@ -10259,10 +9673,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorPlusPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorInitialUnarytermClass = typeof ExpressionOperatorInitialUnaryterm;
+
     /**
      * @gir-type Struct
      */
@@ -10270,10 +9686,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnarytermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotClass = typeof ExpressionOperatorNot;
+
     /**
      * @gir-type Struct
      */
@@ -10281,10 +9699,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorFinalUnarytermClass = typeof ExpressionOperatorFinalUnaryterm;
+
     /**
      * @gir-type Struct
      */
@@ -10292,10 +9712,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnarytermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsClass = typeof ExpressionOperatorIs;
+
     /**
      * @gir-type Struct
      */
@@ -10303,10 +9725,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotClass = typeof ExpressionOperatorIsNot;
+
     /**
      * @gir-type Struct
      */
@@ -10314,10 +9738,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNullClass = typeof ExpressionOperatorIsNull;
+
     /**
      * @gir-type Struct
      */
@@ -10325,10 +9751,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNullPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotNullClass = typeof ExpressionOperatorIsNotNull;
+
     /**
      * @gir-type Struct
      */
@@ -10336,10 +9764,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNullPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsTrueClass = typeof ExpressionOperatorIsTrue;
+
     /**
      * @gir-type Struct
      */
@@ -10347,10 +9777,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsTruePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotTrueClass = typeof ExpressionOperatorIsNotTrue;
+
     /**
      * @gir-type Struct
      */
@@ -10358,10 +9790,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTruePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsFalseClass = typeof ExpressionOperatorIsFalse;
+
     /**
      * @gir-type Struct
      */
@@ -10369,10 +9803,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsFalsePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotFalseClass = typeof ExpressionOperatorIsNotFalse;
+
     /**
      * @gir-type Struct
      */
@@ -10380,10 +9816,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalsePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotUnknownClass = typeof ExpressionOperatorIsNotUnknown;
+
     /**
      * @gir-type Struct
      */
@@ -10391,10 +9829,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknownPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsUnknownClass = typeof ExpressionOperatorIsUnknown;
+
     /**
      * @gir-type Struct
      */
@@ -10402,10 +9842,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknownPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsDistinctClass = typeof ExpressionOperatorIsDistinct;
+
     /**
      * @gir-type Struct
      */
@@ -10413,10 +9855,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotDistinctClass = typeof ExpressionOperatorIsNotDistinct;
+
     /**
      * @gir-type Struct
      */
@@ -10424,10 +9868,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsDistinctFromClass = typeof ExpressionOperatorIsDistinctFrom;
+
     /**
      * @gir-type Struct
      */
@@ -10435,10 +9881,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFromPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorIsNotDistinctFromClass = typeof ExpressionOperatorIsNotDistinctFrom;
+
     /**
      * @gir-type Struct
      */
@@ -10446,10 +9894,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFromPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorThreetermClass = typeof ExpressionOperatorThreeterm;
+
     /**
      * @gir-type Struct
      */
@@ -10457,10 +9907,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorThreetermPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBetweenClass = typeof ExpressionOperatorBetween;
+
     /**
      * @gir-type Struct
      */
@@ -10468,10 +9920,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBetweenPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBetweenAndClass = typeof ExpressionOperatorBetweenAnd;
+
     /**
      * @gir-type Struct
      */
@@ -10479,10 +9933,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAndPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotBetweenClass = typeof ExpressionOperatorNotBetween;
+
     /**
      * @gir-type Struct
      */
@@ -10490,10 +9946,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotBetweenAndClass = typeof ExpressionOperatorNotBetweenAnd;
+
     /**
      * @gir-type Struct
      */
@@ -10501,10 +9959,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAndPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBetweenSymmetricClass = typeof ExpressionOperatorBetweenSymmetric;
+
     /**
      * @gir-type Struct
      */
@@ -10512,10 +9972,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorBetweenSymmetricAndClass = typeof ExpressionOperatorBetweenSymmetricAnd;
+
     /**
      * @gir-type Struct
      */
@@ -10523,10 +9985,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAndPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotBetweenSymmetricClass = typeof ExpressionOperatorNotBetweenSymmetric;
+
     /**
      * @gir-type Struct
      */
@@ -10534,10 +9998,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionOperatorNotBetweenSymmetricAndClass = typeof ExpressionOperatorNotBetweenSymmetricAnd;
+
     /**
      * @gir-type Struct
      */
@@ -10545,10 +10011,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAndPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionValueClass = typeof ExpressionValue;
+
     /**
      * @gir-type Struct
      */
@@ -10556,10 +10024,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionValuePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExpressionValueParameterClass = typeof ExpressionValueParameter;
+
     /**
      * @gir-type Struct
      */
@@ -10567,10 +10037,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ExpressionValueParameterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HashListClass = typeof HashList;
+
     /**
      * @gir-type Struct
      */
@@ -10578,10 +10050,12 @@ export namespace Vda {
         static $gtype: GObject.GType<HashListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InvalidQueryClass = typeof InvalidQuery;
+
     /**
      * @gir-type Struct
      */
@@ -10589,10 +10063,12 @@ export namespace Vda {
         static $gtype: GObject.GType<InvalidQueryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InvalidPreparedQueryClass = typeof InvalidPreparedQuery;
+
     /**
      * @gir-type Struct
      */
@@ -10600,10 +10076,12 @@ export namespace Vda {
         static $gtype: GObject.GType<InvalidPreparedQueryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InvalidResultClass = typeof InvalidResult;
+
     /**
      * @gir-type Struct
      */
@@ -10611,10 +10089,12 @@ export namespace Vda {
         static $gtype: GObject.GType<InvalidResultPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParametersClass = typeof Parameters;
+
     /**
      * @gir-type Struct
      */
@@ -10622,10 +10102,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ParametersPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParserClass = typeof Parser;
+
     /**
      * @gir-type Struct
      */
@@ -10633,10 +10115,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ParserPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TableReferenceClass = typeof TableReference;
+
     /**
      * @gir-type Struct
      */
@@ -10644,10 +10128,12 @@ export namespace Vda {
         static $gtype: GObject.GType<TableReferencePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueClass = typeof Value;
+
     /**
      * @gir-type Struct
      */
@@ -10655,10 +10141,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValuePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueNullClass = typeof ValueNull;
+
     /**
      * @gir-type Struct
      */
@@ -10666,10 +10154,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueNullPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueStringClass = typeof ValueString;
+
     /**
      * @gir-type Struct
      */
@@ -10677,10 +10167,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueStringPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueXmlClass = typeof ValueXml;
+
     /**
      * @gir-type Struct
      */
@@ -10688,10 +10180,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueXmlPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueJsonClass = typeof ValueJson;
+
     /**
      * @gir-type Struct
      */
@@ -10699,10 +10193,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueJsonPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueTextClass = typeof ValueText;
+
     /**
      * @gir-type Struct
      */
@@ -10710,10 +10206,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueTextPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueNameClass = typeof ValueName;
+
     /**
      * @gir-type Struct
      */
@@ -10721,10 +10219,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueNamePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueBoolClass = typeof ValueBool;
+
     /**
      * @gir-type Struct
      */
@@ -10732,10 +10232,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueBoolPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueBitClass = typeof ValueBit;
+
     /**
      * @gir-type Struct
      */
@@ -10743,10 +10245,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueBitPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueIntegerClass = typeof ValueInteger;
+
     /**
      * @gir-type Struct
      */
@@ -10754,10 +10258,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueIntegerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueByteClass = typeof ValueByte;
+
     /**
      * @gir-type Struct
      */
@@ -10765,10 +10271,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueBytePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueInt2Class = typeof ValueInt2;
+
     /**
      * @gir-type Struct
      */
@@ -10776,10 +10284,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueInt2Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueInt4Class = typeof ValueInt4;
+
     /**
      * @gir-type Struct
      */
@@ -10787,10 +10297,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueInt4Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueInt8Class = typeof ValueInt8;
+
     /**
      * @gir-type Struct
      */
@@ -10798,10 +10310,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueInt8Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueUnsignedIntegerClass = typeof ValueUnsignedInteger;
+
     /**
      * @gir-type Struct
      */
@@ -10809,10 +10323,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueUnsignedIntegerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueUnsignedByteClass = typeof ValueUnsignedByte;
+
     /**
      * @gir-type Struct
      */
@@ -10820,10 +10336,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueUnsignedBytePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueUnsignedInt2Class = typeof ValueUnsignedInt2;
+
     /**
      * @gir-type Struct
      */
@@ -10831,10 +10349,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueUnsignedInt2Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueUnsignedInt4Class = typeof ValueUnsignedInt4;
+
     /**
      * @gir-type Struct
      */
@@ -10842,10 +10362,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueUnsignedInt4Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueUnsignedInt8Class = typeof ValueUnsignedInt8;
+
     /**
      * @gir-type Struct
      */
@@ -10853,10 +10375,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueUnsignedInt8Private>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueOidClass = typeof ValueOid;
+
     /**
      * @gir-type Struct
      */
@@ -10864,10 +10388,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueOidPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueNumericClass = typeof ValueNumeric;
+
     /**
      * @gir-type Struct
      */
@@ -10875,10 +10401,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueNumericPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueFloatClass = typeof ValueFloat;
+
     /**
      * @gir-type Struct
      */
@@ -10886,10 +10414,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueFloatPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueDoubleClass = typeof ValueDouble;
+
     /**
      * @gir-type Struct
      */
@@ -10897,10 +10427,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueDoublePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueMoneyClass = typeof ValueMoney;
+
     /**
      * @gir-type Struct
      */
@@ -10908,10 +10440,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueMoneyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueTimestampClass = typeof ValueTimestamp;
+
     /**
      * @gir-type Struct
      */
@@ -10919,10 +10453,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueTimestampPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueTimestampNtzClass = typeof ValueTimestampNtz;
+
     /**
      * @gir-type Struct
      */
@@ -10930,10 +10466,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueTimestampNtzPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueTimeClass = typeof ValueTime;
+
     /**
      * @gir-type Struct
      */
@@ -10941,10 +10479,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueTimePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueTimeNtzClass = typeof ValueTimeNtz;
+
     /**
      * @gir-type Struct
      */
@@ -10952,10 +10492,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueTimeNtzPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueDateClass = typeof ValueDate;
+
     /**
      * @gir-type Struct
      */
@@ -10963,10 +10505,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueDatePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueBinaryClass = typeof ValueBinary;
+
     /**
      * @gir-type Struct
      */
@@ -10974,10 +10518,12 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueBinaryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ValueMathExpClass = typeof ValueMathExp;
+
     /**
      * @gir-type Struct
      */
@@ -10985,523 +10531,649 @@ export namespace Vda {
         static $gtype: GObject.GType<ValueMathExpPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MetaObjectIface = typeof MetaObject;
+
     /**
      * @gir-type Alias
      */
     type MetaNamedObjectIface = typeof MetaNamedObject;
+
     /**
      * @gir-type Alias
      */
     type ColumnModelIface = typeof ColumnModel;
+
     /**
      * @gir-type Alias
      */
     type ConnectionIface = typeof Connection;
+
     /**
      * @gir-type Alias
      */
     type ConnectionBlobIface = typeof ConnectionBlob;
+
     /**
      * @gir-type Alias
      */
     type ConnectionRolebasedIface = typeof ConnectionRolebased;
+
     /**
      * @gir-type Alias
      */
     type ConnectionTransactionalIface = typeof ConnectionTransactional;
+
     /**
      * @gir-type Alias
      */
     type DataObjectIface = typeof DataObject;
+
     /**
      * @gir-type Alias
      */
     type DataCollectionIface = typeof DataCollection;
+
     /**
      * @gir-type Alias
      */
     type HashModelIface = typeof HashModel;
+
     /**
      * @gir-type Alias
      */
     type InsertedIface = typeof Inserted;
+
     /**
      * @gir-type Alias
      */
     type ParsedQueryIface = typeof ParsedQuery;
+
     /**
      * @gir-type Alias
      */
     type PreparedQueryIface = typeof PreparedQuery;
+
     /**
      * @gir-type Alias
      */
     type QueryIface = typeof Query;
+
     /**
      * @gir-type Alias
      */
     type ResultIface = typeof Result;
+
     /**
      * @gir-type Alias
      */
     type RoleIface = typeof Role;
+
     /**
      * @gir-type Alias
      */
     type RowModelIface = typeof RowModel;
+
     /**
      * @gir-type Alias
      */
     type SqlAffectedRowsIface = typeof SqlAffectedRows;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandIface = typeof SqlCommand;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandConditionalIface = typeof SqlCommandConditional;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandDeleteIface = typeof SqlCommandDelete;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandInsertIface = typeof SqlCommandInsert;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandModificationIface = typeof SqlCommandModification;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandParametrizedIface = typeof SqlCommandParametrized;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandSelectIface = typeof SqlCommandSelect;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandTableRelatedIface = typeof SqlCommandTableRelated;
+
     /**
      * @gir-type Alias
      */
     type SqlCommandUpdateIface = typeof SqlCommandUpdate;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionIface = typeof SqlExpression;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionFieldIface = typeof SqlExpressionField;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIface = typeof SqlExpressionOperator;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorGroupIface = typeof SqlExpressionOperatorGroup;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorMultitermIface = typeof SqlExpressionOperatorMultiterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorAndIface = typeof SqlExpressionOperatorAnd;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorOrIface = typeof SqlExpressionOperatorOr;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBinarytermIface = typeof SqlExpressionOperatorBinaryterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorEqIface = typeof SqlExpressionOperatorEq;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotEqIface = typeof SqlExpressionOperatorNotEq;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorDiffIface = typeof SqlExpressionOperatorDiff;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorGtIface = typeof SqlExpressionOperatorGt;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorLtIface = typeof SqlExpressionOperatorLt;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorGeqIface = typeof SqlExpressionOperatorGeq;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorLeqIface = typeof SqlExpressionOperatorLeq;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorRegexpIface = typeof SqlExpressionOperatorRegexp;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorStarIface = typeof SqlExpressionOperatorStar;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorDivIface = typeof SqlExpressionOperatorDiv;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorInIface = typeof SqlExpressionOperatorIn;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotInIface = typeof SqlExpressionOperatorNotIn;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorConcatenateIface = typeof SqlExpressionOperatorConcatenate;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorSimilarToIface = typeof SqlExpressionOperatorSimilarTo;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorLikeIface = typeof SqlExpressionOperatorLike;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotLikeIface = typeof SqlExpressionOperatorNotLike;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIlikeIface = typeof SqlExpressionOperatorIlike;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotIlikeIface = typeof SqlExpressionOperatorNotIlike;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBinaryUnarytermIface = typeof SqlExpressionOperatorBinaryUnaryterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorMinusIface = typeof SqlExpressionOperatorMinus;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorPlusIface = typeof SqlExpressionOperatorPlus;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorInitialUnarytermIface = typeof SqlExpressionOperatorInitialUnaryterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotIface = typeof SqlExpressionOperatorNot;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorFinalUnarytermIface = typeof SqlExpressionOperatorFinalUnaryterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsIface = typeof SqlExpressionOperatorIs;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotIface = typeof SqlExpressionOperatorIsNot;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNullIface = typeof SqlExpressionOperatorIsNull;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotNullIface = typeof SqlExpressionOperatorIsNotNull;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsTrueIface = typeof SqlExpressionOperatorIsTrue;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotTrueIface = typeof SqlExpressionOperatorIsNotTrue;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsFalseIface = typeof SqlExpressionOperatorIsFalse;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotFalseIface = typeof SqlExpressionOperatorIsNotFalse;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsUnknownIface = typeof SqlExpressionOperatorIsUnknown;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotUnknownIface = typeof SqlExpressionOperatorIsNotUnknown;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsDistinctIface = typeof SqlExpressionOperatorIsDistinct;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotDistinctIface = typeof SqlExpressionOperatorIsNotDistinct;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsDistinctFromIface = typeof SqlExpressionOperatorIsDistinctFrom;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorIsNotDistinctFromIface = typeof SqlExpressionOperatorIsNotDistinctFrom;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorThreetermIface = typeof SqlExpressionOperatorThreeterm;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBetweenIface = typeof SqlExpressionOperatorBetween;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBetweenAndIface = typeof SqlExpressionOperatorBetweenAnd;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotBetweenIface = typeof SqlExpressionOperatorNotBetween;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotBetweenAndIface = typeof SqlExpressionOperatorNotBetweenAnd;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBetweenSymmetricIface = typeof SqlExpressionOperatorBetweenSymmetric;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorBetweenSymmetricAndIface = typeof SqlExpressionOperatorBetweenSymmetricAnd;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotBetweenSymmetricIface = typeof SqlExpressionOperatorNotBetweenSymmetric;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionOperatorNotBetweenSymmetricAndIface = typeof SqlExpressionOperatorNotBetweenSymmetricAnd;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionValueIface = typeof SqlExpressionValue;
+
     /**
      * @gir-type Alias
      */
     type SqlExpressionValueParameterIface = typeof SqlExpressionValueParameter;
+
     /**
      * @gir-type Alias
      */
     type SqlParametersIface = typeof SqlParameters;
+
     /**
      * @gir-type Alias
      */
     type SqlParserIface = typeof SqlParser;
+
     /**
      * @gir-type Alias
      */
     type SqlTableReferenceIface = typeof SqlTableReference;
+
     /**
      * @gir-type Alias
      */
     type StringifiableIface = typeof Stringifiable;
+
     /**
      * @gir-type Alias
      */
     type SqlValueIface = typeof SqlValue;
+
     /**
      * @gir-type Alias
      */
     type SqlValueNullIface = typeof SqlValueNull;
+
     /**
      * @gir-type Alias
      */
     type SqlValueBoolIface = typeof SqlValueBool;
+
     /**
      * @gir-type Alias
      */
     type SqlValueBitIface = typeof SqlValueBit;
+
     /**
      * @gir-type Alias
      */
     type SqlValueStringIface = typeof SqlValueString;
+
     /**
      * @gir-type Alias
      */
     type SqlValueXmlIface = typeof SqlValueXml;
+
     /**
      * @gir-type Alias
      */
     type SqlValueJsonIface = typeof SqlValueJson;
+
     /**
      * @gir-type Alias
      */
     type SqlValueTextIface = typeof SqlValueText;
+
     /**
      * @gir-type Alias
      */
     type SqlValueNameIface = typeof SqlValueName;
+
     /**
      * @gir-type Alias
      */
     type SqlValueIntegerIface = typeof SqlValueInteger;
+
     /**
      * @gir-type Alias
      */
     type SqlValueByteIface = typeof SqlValueByte;
+
     /**
      * @gir-type Alias
      */
     type SqlValueInt2Iface = typeof SqlValueInt2;
+
     /**
      * @gir-type Alias
      */
     type SqlValueInt4Iface = typeof SqlValueInt4;
+
     /**
      * @gir-type Alias
      */
     type SqlValueInt8Iface = typeof SqlValueInt8;
+
     /**
      * @gir-type Alias
      */
     type SqlValueUnsignedIntegerIface = typeof SqlValueUnsignedInteger;
+
     /**
      * @gir-type Alias
      */
     type SqlValueUnsignedByteIface = typeof SqlValueUnsignedByte;
+
     /**
      * @gir-type Alias
      */
     type SqlValueUnsignedInt2Iface = typeof SqlValueUnsignedInt2;
+
     /**
      * @gir-type Alias
      */
     type SqlValueUnsignedInt4Iface = typeof SqlValueUnsignedInt4;
+
     /**
      * @gir-type Alias
      */
     type SqlValueUnsignedInt8Iface = typeof SqlValueUnsignedInt8;
+
     /**
      * @gir-type Alias
      */
     type SqlValueOidIface = typeof SqlValueOid;
+
     /**
      * @gir-type Alias
      */
     type SqlValueNumericIface = typeof SqlValueNumeric;
+
     /**
      * @gir-type Alias
      */
     type SqlValueFloatIface = typeof SqlValueFloat;
+
     /**
      * @gir-type Alias
      */
     type SqlValueDoubleIface = typeof SqlValueDouble;
+
     /**
      * @gir-type Alias
      */
     type SqlValueMoneyIface = typeof SqlValueMoney;
+
     /**
      * @gir-type Alias
      */
     type SqlValueDateIface = typeof SqlValueDate;
+
     /**
      * @gir-type Alias
      */
     type SqlValueTimestampIface = typeof SqlValueTimestamp;
+
     /**
      * @gir-type Alias
      */
     type SqlValueTimestampNtzIface = typeof SqlValueTimestampNtz;
+
     /**
      * @gir-type Alias
      */
     type SqlValueTimeIface = typeof SqlValueTime;
+
     /**
      * @gir-type Alias
      */
     type SqlValueTimeNtzIface = typeof SqlValueTimeNtz;
+
     /**
      * @gir-type Alias
      */
     type SqlValueBinaryIface = typeof SqlValueBinary;
+
     /**
      * @gir-type Alias
      */
     type SqlValueBlobIface = typeof SqlValueBlob;
+
     /**
      * @gir-type Alias
      */
     type SqlValueBlobOidIface = typeof SqlValueBlobOid;
+
     /**
      * @gir-type Alias
      */
     type SqlValueGeometricPointIface = typeof SqlValueGeometricPoint;
+
     /**
      * @gir-type Alias
      */
     type SqlValueMathExpIface = typeof SqlValueMathExp;
+
     /**
      * @gir-type Alias
      */
     type TableModelIface = typeof TableModel;
+
     /**
      * @gir-type Alias
      */
     type TableModelSequentialIface = typeof TableModelSequential;
+
     namespace MetaObject {
         /**
          * Interface for implementing MetaObject.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_connection(value: Connection): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
         }
@@ -11515,19 +11187,20 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface MetaObject extends GObject.Object, MetaObject.Interface {
-        // Properties
 
+        // Properties
         get connection(): Connection;
         set connection(val: Connection);
 
         // Methods
-
         get_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_connection(value: Connection): void;
     }
+
 
     export const MetaObject: MetaObjectNamespace & {
         new (): MetaObject; // This allows `obj instanceof MetaObject`
@@ -11539,21 +11212,22 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -11567,19 +11241,20 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface MetaNamedObject extends GObject.Object, MetaNamedObject.Interface {
-        // Properties
 
+        // Properties
         get name(): string;
         set name(val: string);
 
         // Methods
-
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
     }
+
 
     export const MetaNamedObject: MetaNamedObjectNamespace & {
         new (): MetaNamedObject; // This allows `obj instanceof MetaNamedObject`
@@ -11591,20 +11266,21 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
              * @virtual
              */
             vfunc_get_data_type(): GObject.GType;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             data_type: GObject.GTypeInput;
@@ -11620,26 +11296,29 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface ColumnModel extends GObject.Object, ColumnModel.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get name(): string;
+
         /**
          * @read-only
          */
         get data_type(): GObject.GType;
+
         /**
          * @read-only
          */
         get dataType(): GObject.GType;
 
         // Methods
-
         get_name(): string;
+
         get_data_type(): GObject.GType;
     }
+
 
     export const ColumnModel: ColumnModelNamespace & {
         new (): ColumnModel; // This allows `obj instanceof ColumnModel`
@@ -11651,96 +11330,112 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_close(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_close_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_open(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+
             /**
-             * @param cnc_string
-             * @param _callback_
+             * @param cnc_string 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+
             /**
-             * @param sql
+             * @param sql 
              * @virtual
              */
             vfunc_parse_string(sql: string): Query;
+
             /**
-             * @param name
-             * @param sql
+             * @param name 
+             * @param sql 
              * @virtual
              */
             vfunc_parse_string_prepared(name: string, sql: string): PreparedQuery;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_prepared_query(name: string): PreparedQuery;
+
             /**
-             * @param cmd
-             * @param name
+             * @param cmd 
+             * @param name 
              * @virtual
              */
             vfunc_query_from_command(cmd: SqlCommand, name: string): PreparedQuery;
+
             /**
-             * @param v
+             * @param v 
              * @virtual
              */
             vfunc_value_to_quoted_string(v: SqlValue): string;
+
             /**
-             * @param category
+             * @param category 
              * @virtual
              */
             vfunc_locale(category: string): string;
+
             /**
              * @virtual
              */
             vfunc_get_status(): ConnectionStatus;
+
             /**
              * @virtual
              */
             vfunc_get_parameters(): ConnectionParameters;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_parameters(value: ConnectionParameters): void;
+
             /**
              * @virtual
              */
             vfunc_get_is_opened(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_connection_string(): string;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             status: ConnectionStatus;
             parameters: ConnectionParameters;
@@ -11759,115 +11454,139 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface Connection extends GObject.Object, Connection.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get status(): ConnectionStatus;
+
         get parameters(): ConnectionParameters;
         set parameters(val: ConnectionParameters);
+
         /**
          * @read-only
          */
         get is_opened(): boolean;
+
         /**
          * @read-only
          */
         get isOpened(): boolean;
+
         /**
          * @read-only
          */
         get connection_string(): string;
+
         /**
          * @read-only
          */
         get connectionString(): string;
 
         // Methods
-
         close(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         close(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        close(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         close_finish(_res_: Gio.AsyncResult): void;
+
         open(): globalThis.Promise<ConnectionStatus>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         open(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        open(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<ConnectionStatus> | void;
+        open(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<ConnectionStatus> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+
         /**
-         * @param cnc_string
+         * @param cnc_string 
          */
         open_from_string(cnc_string: string): globalThis.Promise<ConnectionStatus>;
+
         /**
-         * @param cnc_string
-         * @param _callback_
+         * @param cnc_string 
+         * @param _callback_ 
          */
         open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cnc_string
-         * @param _callback_
+         * @param cnc_string 
+         * @param _callback_ 
          */
-        open_from_string(
-            cnc_string: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<ConnectionStatus> | void;
+        open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<ConnectionStatus> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse_string(sql: string): Query;
+
         /**
-         * @param name
-         * @param sql
+         * @param name 
+         * @param sql 
          */
         parse_string_prepared(name: string, sql: string): PreparedQuery;
+
         /**
-         * @param name
+         * @param name 
          */
         get_prepared_query(name: string): PreparedQuery;
+
         /**
-         * @param cmd
-         * @param name
+         * @param cmd 
+         * @param name 
          */
         query_from_command(cmd: SqlCommand, name: string): PreparedQuery;
+
         /**
-         * @param v
+         * @param v 
          */
         value_to_quoted_string(v: SqlValue): string;
+
         /**
-         * @param category
+         * @param category 
          */
         locale(category: string): string;
+
         get_status(): ConnectionStatus;
+
         get_parameters(): ConnectionParameters;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: ConnectionParameters): void;
+
         get_is_opened(): boolean;
+
         get_connection_string(): string;
     }
+
 
     export const Connection: ConnectionNamespace & {
         new (): Connection; // This allows `obj instanceof Connection`
@@ -11879,23 +11598,26 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param stream
+             * @param stream 
              * @virtual
              */
             vfunc_create(stream: Gio.InputStream): SqlValueBlob;
+
             /**
-             * @param val
+             * @param val 
              * @virtual
              */
             vfunc_delete(val: SqlValueBlob): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConnectionBlobNamespace {
@@ -11906,17 +11628,19 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface ConnectionBlob extends GObject.Object, ConnectionBlob.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param stream
+         * @param stream 
          */
         create(stream: Gio.InputStream): SqlValueBlob;
+
         /**
-         * @param val
+         * @param val 
          */
-        ['delete'](val: SqlValueBlob): void;
+        ["delete"](val: SqlValueBlob): void;
     }
+
 
     export const ConnectionBlob: ConnectionBlobNamespace & {
         new (): ConnectionBlob; // This allows `obj instanceof ConnectionBlob`
@@ -11928,23 +11652,26 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_current_role(): Role;
+
             /**
-             * @param name
-             * @param params
+             * @param name 
+             * @param params 
              * @virtual
              */
             vfunc_create_role(name: string, params: Parameters): Role;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConnectionRolebasedNamespace {
@@ -11955,15 +11682,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface ConnectionRolebased extends GObject.Object, ConnectionRolebased.Interface {
-        // Methods
 
+        // Methods
         current_role(): Role;
+
         /**
-         * @param name
-         * @param params
+         * @param name 
+         * @param params 
          */
         create_role(name: string, params: Parameters): Role;
     }
+
 
     export const ConnectionRolebased: ConnectionRolebasedNamespace & {
         new (): ConnectionRolebased; // This allows `obj instanceof ConnectionRolebased`
@@ -11975,43 +11704,50 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_add_savepoint(name: string): boolean;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_delete_savepoint(name: string): boolean;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_rollback_savepoint(name: string): boolean;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_begin_transaction(name: string): boolean;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_commit_transaction(name: string): boolean;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_rollback_transaction(name: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConnectionTransactionalNamespace {
@@ -12022,33 +11758,39 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface ConnectionTransactional extends GObject.Object, ConnectionTransactional.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param name
+         * @param name 
          */
         add_savepoint(name: string): boolean;
+
         /**
-         * @param name
+         * @param name 
          */
         delete_savepoint(name: string): boolean;
+
         /**
-         * @param name
+         * @param name 
          */
         rollback_savepoint(name: string): boolean;
+
         /**
-         * @param name
+         * @param name 
          */
         begin_transaction(name: string): boolean;
+
         /**
-         * @param name
+         * @param name 
          */
         commit_transaction(name: string): boolean;
+
         /**
-         * @param name
+         * @param name 
          */
         rollback_transaction(name: string): boolean;
     }
+
 
     export const ConnectionTransactional: ConnectionTransactionalNamespace & {
         new (): ConnectionTransactional; // This allows `obj instanceof ConnectionTransactional`
@@ -12060,148 +11802,174 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_from_db_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param use_pkey
-             * @param _callback_
+             * @param use_pkey 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_insert_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_delete_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_delete_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param use_pkey
-             * @param _callback_
+             * @param use_pkey 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_delete_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_into_db_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_into_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param use_pkey
-             * @param _callback_
+             * @param use_pkey 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_update_data_into_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param table
-             * @param nrow
+             * @param table 
+             * @param nrow 
              * @virtual
              */
             vfunc_update_from_row(table: TableModel, nrow: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_database_connection(): Connection;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_database_connection(value: Connection): void;
+
             /**
              * @virtual
              */
             vfunc_get_database_table_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_database_table_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_cancellable(): Gio.Cancellable;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_cancellable(value: Gio.Cancellable): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             database_connection: Connection;
             databaseConnection: Connection;
@@ -12214,225 +11982,265 @@ export namespace Vda {
     export interface DataObjectNamespace {
         $gtype: GObject.GType<DataObject>;
         prototype: DataObject;
-
         /**
-         * @param obj
-         * @param use_pkey
-         */
+        * @param obj 
+        * @param use_pkey 
+        */
         create_select_query(obj: DataObject, use_pkey: boolean): SqlCommandSelect;
         /**
-         * @param obj
-         */
+        * @param obj 
+        */
         create_select_all(obj: DataObject): SqlCommandSelect;
         /**
-         * @param obj
-         */
+        * @param obj 
+        */
         create_insert_query(obj: DataObject): SqlCommandInsert;
         /**
-         * @param obj
-         * @param use_pkey
-         */
+        * @param obj 
+        * @param use_pkey 
+        */
         create_delete_query(obj: DataObject, use_pkey: boolean): SqlCommandDelete;
         /**
-         * @param obj
-         * @param use_pkey
-         */
+        * @param obj 
+        * @param use_pkey 
+        */
         create_update_query(obj: DataObject, use_pkey: boolean): SqlCommandUpdate;
     }
     /**
      * @gir-type Interface
      */
     interface DataObject extends GObject.Object, DataObject.Interface {
-        // Properties
 
+        // Properties
         get database_connection(): Connection;
         set database_connection(val: Connection);
+
         get databaseConnection(): Connection;
         set databaseConnection(val: Connection);
+
         get database_table_name(): string;
         set database_table_name(val: string);
+
         get databaseTableName(): string;
         set databaseTableName(val: string);
+
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
 
         // Methods
-
         update_data_from_db(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         update_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        update_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        update_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_from_db_finish(_res_: Gio.AsyncResult): void;
+
         update_data_from_db_pkey(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         update_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        update_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        update_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param use_pkey
+         * @param use_pkey 
          */
         update_data_from_db_full(use_pkey: boolean): globalThis.Promise<void>;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
         update_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
-        update_data_from_db_full(
-            use_pkey: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        update_data_from_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+
         insert_data_into_db(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         insert_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        insert_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        insert_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
+
         delete_data_from_db(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         delete_data_from_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        delete_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        delete_data_from_db(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
+
         delete_data_from_db_pkey(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         delete_data_from_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        delete_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        delete_data_from_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param use_pkey
+         * @param use_pkey 
          */
         delete_data_from_db_full(use_pkey: boolean): globalThis.Promise<void>;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
         delete_data_from_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
-        delete_data_from_db_full(
-            use_pkey: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        delete_data_from_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
+
         update_data_into_db(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         update_data_into_db(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        update_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        update_data_into_db(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_into_db_finish(_res_: Gio.AsyncResult): void;
+
         update_data_into_db_pkey(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         update_data_into_db_pkey(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        update_data_into_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        update_data_into_db_pkey(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param use_pkey
+         * @param use_pkey 
          */
         update_data_into_db_full(use_pkey: boolean): globalThis.Promise<void>;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
         update_data_into_db_full(use_pkey: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param use_pkey
-         * @param _callback_
+         * @param use_pkey 
+         * @param _callback_ 
          */
-        update_data_into_db_full(
-            use_pkey: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        update_data_into_db_full(use_pkey: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param table
-         * @param nrow
+         * @param table 
+         * @param nrow 
          */
         update_from_row(table: TableModel, nrow: number): void;
+
         get_database_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_database_connection(value: Connection): void;
+
         get_database_table_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_database_table_name(value: string): void;
+
         get_cancellable(): Gio.Cancellable;
+
         /**
-         * @param value
+         * @param value 
          */
         set_cancellable(value: Gio.Cancellable): void;
     }
+
 
     export const DataObject: DataObjectNamespace & {
         new (): DataObject; // This allows `obj instanceof DataObject`
@@ -12444,56 +12252,65 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_get_objects(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_get_objects_finish(_res_: Gio.AsyncResult): TableModel;
+
             /**
              * @virtual
              */
             vfunc_get_database_connection(): Connection;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_database_connection(value: Connection): void;
+
             /**
              * @virtual
              */
             vfunc_get_parent_property(): string;
+
             /**
              * @virtual
              */
             vfunc_get_parent(): DataObject;
+
             /**
              * @virtual
              */
             vfunc_get_object_type(): GObject.GType;
+
             /**
              * @virtual
              */
             vfunc_get_ref_field(): string;
+
             /**
              * @virtual
              */
             vfunc_get_cancellable(): Gio.Cancellable;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_cancellable(value: Gio.Cancellable): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             database_connection: Connection;
             databaseConnection: Connection;
@@ -12516,73 +12333,93 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface DataCollection extends GObject.Object, DataCollection.Interface {
-        // Properties
 
+        // Properties
         get database_connection(): Connection;
         set database_connection(val: Connection);
+
         get databaseConnection(): Connection;
         set databaseConnection(val: Connection);
+
         /**
          * @read-only
          */
         get parent_property(): string;
+
         /**
          * @read-only
          */
         get parentProperty(): string;
+
         /**
          * @read-only
          */
         get parent(): DataObject;
+
         /**
          * @read-only
          */
         get object_type(): GObject.GType;
+
         /**
          * @read-only
          */
         get objectType(): GObject.GType;
+
         /**
          * @read-only
          */
         get ref_field(): string;
+
         /**
          * @read-only
          */
         get refField(): string;
+
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
 
         // Methods
-
         get_objects(): globalThis.Promise<TableModel>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         get_objects(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        get_objects(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<TableModel> | void;
+        get_objects(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<TableModel> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         get_objects_finish(_res_: Gio.AsyncResult): TableModel;
+
         get_database_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_database_connection(value: Connection): void;
+
         get_parent_property(): string;
+
         get_parent(): DataObject;
+
         get_object_type(): GObject.GType;
+
         get_ref_field(): string;
+
         get_cancellable(): Gio.Cancellable;
+
         /**
-         * @param value
+         * @param value 
          */
         set_cancellable(value: Gio.Cancellable): void;
     }
+
 
     export const DataCollection: DataCollectionNamespace & {
         new (): DataCollection; // This allows `obj instanceof DataCollection`
@@ -12594,28 +12431,32 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param object
+             * @param object 
              * @virtual
              */
             vfunc_add(object: GObject.Object): void;
+
             /**
-             * @param key
+             * @param key 
              * @virtual
              */
             vfunc_find<T = GObject.Object>(key: GObject.Object): T;
+
             /**
-             * @param object
+             * @param object 
              * @virtual
              */
             vfunc_remove(object: GObject.Object): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HashModelNamespace {
@@ -12626,21 +12467,24 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface HashModel extends GObject.Object, HashModel.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param object
+         * @param object 
          */
         add(object: GObject.Object): void;
+
         /**
-         * @param key
+         * @param key 
          */
         find<T = GObject.Object>(key: GObject.Object): T;
+
         /**
-         * @param object
+         * @param object 
          */
         remove(object: GObject.Object): void;
     }
+
 
     export const HashModel: HashModelNamespace & {
         new (): HashModel; // This allows `obj instanceof HashModel`
@@ -12652,20 +12496,21 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_number(): number;
+
             /**
              * @virtual
              */
             vfunc_get_last_inserted(): RowModel;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             number: number;
             last_inserted: RowModel;
@@ -12681,26 +12526,29 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface Inserted extends GObject.Object, Inserted.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get number(): number;
+
         /**
          * @read-only
          */
         get last_inserted(): RowModel;
+
         /**
          * @read-only
          */
         get lastInserted(): RowModel;
 
         // Methods
-
         get_number(): number;
+
         get_last_inserted(): RowModel;
     }
+
 
     export const Inserted: InsertedNamespace & {
         new (): Inserted; // This allows `obj instanceof Inserted`
@@ -12712,16 +12560,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_command(): SqlCommand;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             command: SqlCommand;
         }
@@ -12735,17 +12583,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface ParsedQuery extends GObject.Object, ParsedQuery.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get command(): SqlCommand;
 
         // Methods
-
         get_command(): SqlCommand;
     }
+
 
     export const ParsedQuery: ParsedQueryNamespace & {
         new (): ParsedQuery; // This allows `obj instanceof ParsedQuery`
@@ -12757,20 +12605,21 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
              * @virtual
              */
             vfunc_get_parameters(): SqlParameters;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             parameters: SqlParameters;
@@ -12785,22 +12634,24 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface PreparedQuery extends GObject.Object, PreparedQuery.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get name(): string;
+
         /**
          * @read-only
          */
         get parameters(): SqlParameters;
 
         // Methods
-
         get_name(): string;
+
         get_parameters(): SqlParameters;
     }
+
 
     export const PreparedQuery: PreparedQueryNamespace & {
         new (): PreparedQuery; // This allows `obj instanceof PreparedQuery`
@@ -12812,45 +12663,51 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param cancellable
-             * @param _callback_
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_execute_finish(_res_: Gio.AsyncResult): Result;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_cancel_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_render_sql(): string;
+
             /**
              * @virtual
              */
             vfunc_get_sql(): string;
+
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             sql: string;
             connection: Connection;
@@ -12865,66 +12722,76 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface Query extends GObject.Object, Query.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get sql(): string;
+
         /**
          * @read-only
          */
         get connection(): Connection;
 
         // Methods
-
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         execute(cancellable: Gio.Cancellable): globalThis.Promise<Result>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         execute(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        execute(
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Result> | void;
+        execute(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Result> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         execute_finish(_res_: Gio.AsyncResult): Result;
+
         cancel(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         cancel(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        cancel(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        cancel(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         cancel_finish(_res_: Gio.AsyncResult): void;
+
         render_sql(): string;
+
         get_sql(): string;
+
         get_connection(): Connection;
     }
+
 
     export const Query: QueryNamespace & {
         new (): Query; // This allows `obj instanceof Query`
     };
 
     namespace Result {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ResultNamespace {
@@ -12934,7 +12801,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface Result extends GObject.Object {}
+    interface Result extends GObject.Object {
+    }
+
 
     export const Result: ResultNamespace & {
         new (): Result; // This allows `obj instanceof Result`
@@ -12946,63 +12815,67 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_name(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_name_finish(_res_: Gio.AsyncResult): string;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
             vfunc_membership(_callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_membership_finish(_res_: Gio.AsyncResult): HashModel;
+
             /**
-             * @param object
-             * @param _callback_
+             * @param object 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
+
             /**
-             * @param object
-             * @param grant
-             * @param _callback_
+             * @param object 
+             * @param grant 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_change_privilages(
-                object: MetaObject,
-                grant: RoleGrant,
-                _callback_: Gio.AsyncReadyCallback<this>,
-            ): void;
+            vfunc_change_privilages(object: MetaObject, grant: RoleGrant, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_privilages_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
         }
@@ -13016,86 +12889,98 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface Role extends GObject.Object, Role.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get connection(): Connection;
 
         // Methods
-
         name(): globalThis.Promise<string>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         name(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        name(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
+        name(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         name_finish(_res_: Gio.AsyncResult): string;
+
         membership(): globalThis.Promise<HashModel>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         membership(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        membership(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<HashModel> | void;
+        membership(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<HashModel> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         membership_finish(_res_: Gio.AsyncResult): HashModel;
+
         /**
-         * @param object
+         * @param object 
          */
         privilages(object: MetaObject): globalThis.Promise<RoleGrant>;
+
         /**
-         * @param object
-         * @param _callback_
+         * @param object 
+         * @param _callback_ 
          */
         privilages(object: MetaObject, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param object
-         * @param _callback_
+         * @param object 
+         * @param _callback_ 
          */
-        privilages(object: MetaObject, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<RoleGrant> | void;
+        privilages(object: MetaObject, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<RoleGrant> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
+
         /**
-         * @param object
-         * @param grant
+         * @param object 
+         * @param grant 
          */
         change_privilages(object: MetaObject, grant: RoleGrant): globalThis.Promise<void>;
+
         /**
-         * @param object
-         * @param grant
-         * @param _callback_
+         * @param object 
+         * @param grant 
+         * @param _callback_ 
          */
         change_privilages(object: MetaObject, grant: RoleGrant, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param object
-         * @param grant
-         * @param _callback_
+         * @param object 
+         * @param grant 
+         * @param _callback_ 
          */
-        change_privilages(
-            object: MetaObject,
-            grant: RoleGrant,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_privilages(object: MetaObject, grant: RoleGrant, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_privilages_finish(_res_: Gio.AsyncResult): void;
+
         get_connection(): Connection;
     }
+
 
     export const Role: RoleNamespace & {
         new (): Role; // This allows `obj instanceof Role`
@@ -13107,46 +12992,52 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_column(name: string): ColumnModel;
+
             /**
-             * @param col
+             * @param col 
              * @virtual
              */
             vfunc_get_column_at(col: number): ColumnModel;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_value(name: string): SqlValue;
+
             /**
-             * @param col
+             * @param col 
              * @virtual
              */
             vfunc_get_value_at(col: number): SqlValue;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_string(name: string): string;
+
             /**
-             * @param col
+             * @param col 
              * @virtual
              */
             vfunc_get_string_at(col: number): string;
+
             /**
              * @virtual
              */
             vfunc_get_n_columns(): number;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             n_columns: number;
             nColumns: number;
@@ -13161,45 +13052,52 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface RowModel extends GObject.Object, RowModel.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get n_columns(): number;
+
         /**
          * @read-only
          */
         get nColumns(): number;
 
         // Methods
-
         /**
-         * @param name
+         * @param name 
          */
         get_column(name: string): ColumnModel;
+
         /**
-         * @param col
+         * @param col 
          */
         get_column_at(col: number): ColumnModel;
+
         /**
-         * @param name
+         * @param name 
          */
         get_value(name: string): SqlValue;
+
         /**
-         * @param col
+         * @param col 
          */
         get_value_at(col: number): SqlValue;
+
         /**
-         * @param name
+         * @param name 
          */
         get_string(name: string): string;
+
         /**
-         * @param col
+         * @param col 
          */
         get_string_at(col: number): string;
+
         get_n_columns(): number;
     }
+
 
     export const RowModel: RowModelNamespace & {
         new (): RowModel; // This allows `obj instanceof RowModel`
@@ -13211,16 +13109,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_number(): number;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             number: number;
         }
@@ -13234,17 +13132,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlAffectedRows extends GObject.Object, SqlAffectedRows.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get number(): number;
 
         // Methods
-
         get_number(): number;
     }
+
 
     export const SqlAffectedRows: SqlAffectedRowsNamespace & {
         new (): SqlAffectedRows; // This allows `obj instanceof SqlAffectedRows`
@@ -13256,16 +13154,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
         }
@@ -13279,17 +13177,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommand extends GObject.Object, SqlCommand.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get connection(): Connection;
 
         // Methods
-
         get_connection(): Connection;
     }
+
 
     export const SqlCommand: SqlCommandNamespace & {
         new (): SqlCommand; // This allows `obj instanceof SqlCommand`
@@ -13301,16 +13199,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_condition(): SqlExpression;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             condition: SqlExpression;
         }
@@ -13324,17 +13222,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandConditional extends GObject.Object, SqlCommandConditional.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get condition(): SqlExpression;
 
         // Methods
-
         get_condition(): SqlExpression;
     }
+
 
     export const SqlCommandConditional: SqlCommandConditionalNamespace & {
         new (): SqlCommandConditional; // This allows `obj instanceof SqlCommandConditional`
@@ -13346,27 +13244,31 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_stringify(): string;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_to_query(name: string): Query;
+
             /**
-             * @param sql
+             * @param sql 
              * @virtual
              */
             vfunc_parse(sql: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlCommandDeleteNamespace {
@@ -13377,18 +13279,21 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandDelete extends GObject.Object, SqlCommandDelete.Interface {
-        // Methods
 
+        // Methods
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
     }
+
 
     export const SqlCommandDelete: SqlCommandDeleteNamespace & {
         new (): SqlCommandDelete; // This allows `obj instanceof SqlCommandDelete`
@@ -13400,27 +13305,31 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_stringify(): string;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_to_query(name: string): Query;
+
             /**
-             * @param sql
+             * @param sql 
              * @virtual
              */
             vfunc_parse(sql: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlCommandInsertNamespace {
@@ -13431,18 +13340,21 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandInsert extends GObject.Object, SqlCommandInsert.Interface {
-        // Methods
 
+        // Methods
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
     }
+
 
     export const SqlCommandInsert: SqlCommandInsertNamespace & {
         new (): SqlCommandInsert; // This allows `obj instanceof SqlCommandInsert`
@@ -13454,49 +13366,55 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
-             * @param val
+             * @param name 
+             * @param val 
              * @virtual
              */
             vfunc_add_field_value(name: string, val: unknown): void;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_add_field(name: string): void;
+
             /**
-             * @param val
+             * @param val 
              * @virtual
              */
             vfunc_add_value(val: unknown): void;
+
             /**
-             * @param field
-             * @param par
-             * @param gtype
+             * @param field 
+             * @param par 
+             * @param gtype 
              * @virtual
              */
             vfunc_add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
+
             /**
-             * @param par
-             * @param gtype
+             * @param par 
+             * @param gtype 
              * @virtual
              */
             vfunc_add_parameter(par: string, gtype: GObject.GType): void;
+
             /**
              * @virtual
              */
             vfunc_get_fields(): HashModel;
+
             /**
              * @virtual
              */
             vfunc_get_values(): HashModel;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fields: HashModel;
             values: HashModel;
@@ -13511,46 +13429,53 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandModification extends GObject.Object, SqlCommandModification.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get fields(): HashModel;
+
         /**
          * @read-only
          */
         get values(): HashModel;
 
         // Methods
+        /**
+         * @param name 
+         * @param val 
+         */
+        add_field_value(name: string, val: (GObject.Value | any)): void;
 
         /**
-         * @param name
-         * @param val
-         */
-        add_field_value(name: string, val: GObject.Value | any): void;
-        /**
-         * @param name
+         * @param name 
          */
         add_field(name: string): void;
+
         /**
-         * @param val
+         * @param val 
          */
-        add_value(val: GObject.Value | any): void;
+        add_value(val: (GObject.Value | any)): void;
+
         /**
-         * @param field
-         * @param par
-         * @param gtype
+         * @param field 
+         * @param par 
+         * @param gtype 
          */
         add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void;
+
         /**
-         * @param par
-         * @param gtype
+         * @param par 
+         * @param gtype 
          */
         add_parameter(par: string, gtype: GObject.GType): void;
+
         get_fields(): HashModel;
+
         get_values(): HashModel;
     }
+
 
     export const SqlCommandModification: SqlCommandModificationNamespace & {
         new (): SqlCommandModification; // This allows `obj instanceof SqlCommandModification`
@@ -13562,16 +13487,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_parameters(): SqlParameters;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             parameters: SqlParameters;
         }
@@ -13585,17 +13510,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandParametrized extends GObject.Object, SqlCommandParametrized.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get parameters(): SqlParameters;
 
         // Methods
-
         get_parameters(): SqlParameters;
     }
+
 
     export const SqlCommandParametrized: SqlCommandParametrizedNamespace & {
         new (): SqlCommandParametrized; // This allows `obj instanceof SqlCommandParametrized`
@@ -13607,59 +13532,67 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param field
-             * @param table_ref
-             * @param alias
+             * @param field 
+             * @param table_ref 
+             * @param alias 
              * @virtual
              */
             vfunc_add_field(field: string, table_ref: string, alias: string): void;
+
             /**
-             * @param name
-             * @param allias
+             * @param name 
+             * @param allias 
              * @virtual
              */
             vfunc_add_table(name: string, allias: string): void;
+
             /**
-             * @param val
-             * @param allias
+             * @param val 
+             * @param allias 
              * @virtual
              */
             vfunc_add_value_field(val: unknown, allias: string): void;
+
             /**
-             * @param exp
-             * @param allias
+             * @param exp 
+             * @param allias 
              * @virtual
              */
             vfunc_add_math_exp_field(exp: string, allias: string): void;
+
             /**
              * @virtual
              */
             vfunc_stringify(): string;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_to_query(name: string): PreparedQuery;
+
             /**
-             * @param sql
+             * @param sql 
              * @virtual
              */
             vfunc_parse(sql: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_fields(): HashModel;
+
             /**
              * @virtual
              */
             vfunc_get_tables(): HashModel;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fields: HashModel;
             tables: HashModel;
@@ -13674,52 +13607,61 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandSelect extends GObject.Object, SqlCommandSelect.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get fields(): HashModel;
+
         /**
          * @read-only
          */
         get tables(): HashModel;
 
         // Methods
-
         /**
-         * @param field
-         * @param table_ref
-         * @param alias
+         * @param field 
+         * @param table_ref 
+         * @param alias 
          */
         add_field(field: string, table_ref: string, alias: string): void;
+
         /**
-         * @param name
-         * @param allias
+         * @param name 
+         * @param allias 
          */
         add_table(name: string, allias: string): void;
+
         /**
-         * @param val
-         * @param allias
+         * @param val 
+         * @param allias 
          */
-        add_value_field(val: GObject.Value | any, allias: string): void;
+        add_value_field(val: (GObject.Value | any), allias: string): void;
+
         /**
-         * @param exp
-         * @param allias
+         * @param exp 
+         * @param allias 
          */
         add_math_exp_field(exp: string, allias: string): void;
+
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): PreparedQuery;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
+
         get_fields(): HashModel;
+
         get_tables(): HashModel;
     }
+
 
     export const SqlCommandSelect: SqlCommandSelectNamespace & {
         new (): SqlCommandSelect; // This allows `obj instanceof SqlCommandSelect`
@@ -13731,30 +13673,33 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_table(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_table(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_allias(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_allias(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             table: string;
             allias: string;
@@ -13769,26 +13714,30 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandTableRelated extends GObject.Object, SqlCommandTableRelated.Interface {
-        // Properties
 
+        // Properties
         get table(): string;
         set table(val: string);
+
         get allias(): string;
         set allias(val: string);
 
         // Methods
-
         get_table(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_table(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
     }
+
 
     export const SqlCommandTableRelated: SqlCommandTableRelatedNamespace & {
         new (): SqlCommandTableRelated; // This allows `obj instanceof SqlCommandTableRelated`
@@ -13800,27 +13749,31 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_stringify(): string;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_to_query(name: string): Query;
+
             /**
-             * @param sql
+             * @param sql 
              * @virtual
              */
             vfunc_parse(sql: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlCommandUpdateNamespace {
@@ -13831,18 +13784,21 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlCommandUpdate extends GObject.Object, SqlCommandUpdate.Interface {
-        // Methods
 
+        // Methods
         stringify(): string;
+
         /**
-         * @param name
+         * @param name 
          */
         to_query(name: string): Query;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse(sql: string): void;
     }
+
 
     export const SqlCommandUpdate: SqlCommandUpdateNamespace & {
         new (): SqlCommandUpdate; // This allows `obj instanceof SqlCommandUpdate`
@@ -13854,69 +13810,77 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param exp
+             * @param exp 
              * @virtual
              */
             vfunc_add_expression(exp: SqlExpression): void;
+
             /**
-             * @param exp
+             * @param exp 
              * @virtual
              */
             vfunc_remove_expression(exp: SqlExpression): void;
+
             /**
              * @virtual
              */
             vfunc_to_string(): string;
+
             /**
-             * @param str
-             * @param cnc
-             * @param params
+             * @param str 
+             * @param cnc 
+             * @param params 
              * @virtual
              */
             vfunc_add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionNamespace {
         $gtype: GObject.GType<SqlExpression>;
         prototype: SqlExpression;
-
         /**
-         * @param str
-         * @param cnc
-         * @param params
-         */
+        * @param str 
+        * @param cnc 
+        * @param params 
+        */
         parse(str: string, cnc: Connection, params: SqlParameters): SqlExpression;
     }
     /**
      * @gir-type Interface
      */
     interface SqlExpression extends GObject.Object, SqlExpression.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param exp
+         * @param exp 
          */
         add_expression(exp: SqlExpression): void;
+
         /**
-         * @param exp
+         * @param exp 
          */
         remove_expression(exp: SqlExpression): void;
+
         to_string(): string;
+
         /**
-         * @param str
-         * @param cnc
-         * @param params
+         * @param str 
+         * @param cnc 
+         * @param params 
          */
         add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
     }
+
 
     export const SqlExpression: SqlExpressionNamespace & {
         new (): SqlExpression; // This allows `obj instanceof SqlExpression`
@@ -13928,39 +13892,44 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_table_ref(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_table_ref(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_allias(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_allias(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             table_ref: string;
             tableRef: string;
@@ -13977,35 +13946,43 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlExpressionField extends GObject.Object, SqlExpressionField.Interface {
-        // Properties
 
+        // Properties
         get table_ref(): string;
         set table_ref(val: string);
+
         get tableRef(): string;
         set tableRef(val: string);
+
         get name(): string;
         set name(val: string);
+
         get allias(): string;
         set allias(val: string);
 
         // Methods
-
         get_table_ref(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_table_ref(value: string): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
     }
+
 
     export const SqlExpressionField: SqlExpressionFieldNamespace & {
         new (): SqlExpressionField; // This allows `obj instanceof SqlExpressionField`
@@ -14017,236 +13994,255 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_create_field_expression(name: string): SqlExpressionField;
+
             /**
-             * @param val
-             * @param cnc
+             * @param val 
+             * @param cnc 
              * @virtual
              */
             vfunc_create_value_expression(val: unknown, cnc: Connection): SqlExpressionValue;
+
             /**
-             * @param name
-             * @param gtype
+             * @param name 
+             * @param gtype 
              * @virtual
              */
             vfunc_create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp
+             * @param exp 
              * @virtual
              */
             vfunc_add_not_operator(exp: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
+             * @param exp1 
              * @virtual
              */
             vfunc_add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
-             * @param exp3
+             * @param exp1 
+             * @param exp2 
+             * @param exp3 
              * @virtual
              */
-            vfunc_add_between_operator(
-                exp1: SqlExpression,
-                exp2: SqlExpression,
-                exp3: SqlExpression,
-            ): SqlExpressionOperator;
+            vfunc_add_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
-             * @param exp3
+             * @param exp1 
+             * @param exp2 
+             * @param exp3 
              * @virtual
              */
-            vfunc_add_not_between_operator(
-                exp1: SqlExpression,
-                exp2: SqlExpression,
-                exp3: SqlExpression,
-            ): SqlExpressionOperator;
+            vfunc_add_not_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
-             * @param exp3
+             * @param exp1 
+             * @param exp2 
+             * @param exp3 
              * @virtual
              */
-            vfunc_add_between_symmetric_operator(
-                exp1: SqlExpression,
-                exp2: SqlExpression,
-                exp3: SqlExpression,
-            ): SqlExpressionOperator;
+            vfunc_add_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
-             * @param exp3
+             * @param exp1 
+             * @param exp2 
+             * @param exp3 
              * @virtual
              */
-            vfunc_add_not_between_symmetric_operator(
-                exp1: SqlExpression,
-                exp2: SqlExpression,
-                exp3: SqlExpression,
-            ): SqlExpressionOperator;
+            vfunc_add_not_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
-             * @param exp1
-             * @param exp2
+             * @param exp1 
+             * @param exp2 
              * @virtual
              */
             vfunc_add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
             /**
              * @virtual
              */
             vfunc_get_operator_type(): SqlExpressionOperatorType;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             operator_type: SqlExpressionOperatorType;
             operatorType: SqlExpressionOperatorType;
@@ -14261,207 +14257,237 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlExpressionOperator extends GObject.Object, SqlExpressionOperator.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get operator_type(): SqlExpressionOperatorType;
+
         /**
          * @read-only
          */
         get operatorType(): SqlExpressionOperatorType;
 
         // Methods
-
         /**
-         * @param name
+         * @param name 
          */
         create_field_expression(name: string): SqlExpressionField;
+
         /**
-         * @param val
-         * @param cnc
+         * @param val 
+         * @param cnc 
          */
-        create_value_expression(val: GObject.Value | any, cnc: Connection): SqlExpressionValue;
+        create_value_expression(val: (GObject.Value | any), cnc: Connection): SqlExpressionValue;
+
         /**
-         * @param name
-         * @param gtype
+         * @param name 
+         * @param gtype 
          */
         create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_diff_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_like_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_gt_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_geq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_leq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_similar_to_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_null_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp
+         * @param exp 
          */
         add_not_operator(exp: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_true_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_false_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
+         * @param exp1 
          */
         add_is_not_unknown_operator(exp1: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_not_in_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_concatenate_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_plus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_minus_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_star_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_div_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_regexp_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
         add_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
         add_not_between_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
-        add_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        add_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
-         * @param exp3
+         * @param exp1 
+         * @param exp2 
+         * @param exp3 
          */
-        add_not_between_symmetric_operator(
-            exp1: SqlExpression,
-            exp2: SqlExpression,
-            exp3: SqlExpression,
-        ): SqlExpressionOperator;
+        add_not_between_symmetric_operator(exp1: SqlExpression, exp2: SqlExpression, exp3: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_is_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         /**
-         * @param exp1
-         * @param exp2
+         * @param exp1 
+         * @param exp2 
          */
         add_is_not_distinct_from_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator;
+
         get_operator_type(): SqlExpressionOperatorType;
     }
+
 
     export const SqlExpressionOperator: SqlExpressionOperatorNamespace & {
         new (): SqlExpressionOperator; // This allows `obj instanceof SqlExpressionOperator`
     };
 
     namespace SqlExpressionOperatorGroup {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorGroupNamespace {
@@ -14471,16 +14497,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorGroup extends GObject.Object {}
+    interface SqlExpressionOperatorGroup extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorGroup: SqlExpressionOperatorGroupNamespace & {
         new (): SqlExpressionOperatorGroup; // This allows `obj instanceof SqlExpressionOperatorGroup`
     };
 
     namespace SqlExpressionOperatorMultiterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorMultitermNamespace {
@@ -14490,16 +14520,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorMultiterm extends GObject.Object {}
+    interface SqlExpressionOperatorMultiterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorMultiterm: SqlExpressionOperatorMultitermNamespace & {
         new (): SqlExpressionOperatorMultiterm; // This allows `obj instanceof SqlExpressionOperatorMultiterm`
     };
 
     namespace SqlExpressionOperatorAnd {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorAndNamespace {
@@ -14509,16 +14543,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorAnd extends GObject.Object {}
+    interface SqlExpressionOperatorAnd extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorAnd: SqlExpressionOperatorAndNamespace & {
         new (): SqlExpressionOperatorAnd; // This allows `obj instanceof SqlExpressionOperatorAnd`
     };
 
     namespace SqlExpressionOperatorOr {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorOrNamespace {
@@ -14528,16 +14566,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorOr extends GObject.Object {}
+    interface SqlExpressionOperatorOr extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorOr: SqlExpressionOperatorOrNamespace & {
         new (): SqlExpressionOperatorOr; // This allows `obj instanceof SqlExpressionOperatorOr`
     };
 
     namespace SqlExpressionOperatorBinaryterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBinarytermNamespace {
@@ -14547,16 +14589,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBinaryterm extends GObject.Object {}
+    interface SqlExpressionOperatorBinaryterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBinaryterm: SqlExpressionOperatorBinarytermNamespace & {
         new (): SqlExpressionOperatorBinaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryterm`
     };
 
     namespace SqlExpressionOperatorEq {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorEqNamespace {
@@ -14566,16 +14612,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorEq extends GObject.Object {}
+    interface SqlExpressionOperatorEq extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorEq: SqlExpressionOperatorEqNamespace & {
         new (): SqlExpressionOperatorEq; // This allows `obj instanceof SqlExpressionOperatorEq`
     };
 
     namespace SqlExpressionOperatorNotEq {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotEqNamespace {
@@ -14585,16 +14635,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotEq extends GObject.Object {}
+    interface SqlExpressionOperatorNotEq extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotEq: SqlExpressionOperatorNotEqNamespace & {
         new (): SqlExpressionOperatorNotEq; // This allows `obj instanceof SqlExpressionOperatorNotEq`
     };
 
     namespace SqlExpressionOperatorDiff {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorDiffNamespace {
@@ -14604,16 +14658,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorDiff extends GObject.Object {}
+    interface SqlExpressionOperatorDiff extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorDiff: SqlExpressionOperatorDiffNamespace & {
         new (): SqlExpressionOperatorDiff; // This allows `obj instanceof SqlExpressionOperatorDiff`
     };
 
     namespace SqlExpressionOperatorGt {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorGtNamespace {
@@ -14623,16 +14681,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorGt extends GObject.Object {}
+    interface SqlExpressionOperatorGt extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorGt: SqlExpressionOperatorGtNamespace & {
         new (): SqlExpressionOperatorGt; // This allows `obj instanceof SqlExpressionOperatorGt`
     };
 
     namespace SqlExpressionOperatorLt {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorLtNamespace {
@@ -14642,16 +14704,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorLt extends GObject.Object {}
+    interface SqlExpressionOperatorLt extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorLt: SqlExpressionOperatorLtNamespace & {
         new (): SqlExpressionOperatorLt; // This allows `obj instanceof SqlExpressionOperatorLt`
     };
 
     namespace SqlExpressionOperatorGeq {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorGeqNamespace {
@@ -14661,16 +14727,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorGeq extends GObject.Object {}
+    interface SqlExpressionOperatorGeq extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorGeq: SqlExpressionOperatorGeqNamespace & {
         new (): SqlExpressionOperatorGeq; // This allows `obj instanceof SqlExpressionOperatorGeq`
     };
 
     namespace SqlExpressionOperatorLeq {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorLeqNamespace {
@@ -14680,16 +14750,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorLeq extends GObject.Object {}
+    interface SqlExpressionOperatorLeq extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorLeq: SqlExpressionOperatorLeqNamespace & {
         new (): SqlExpressionOperatorLeq; // This allows `obj instanceof SqlExpressionOperatorLeq`
     };
 
     namespace SqlExpressionOperatorRegexp {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorRegexpNamespace {
@@ -14699,16 +14773,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorRegexp extends GObject.Object {}
+    interface SqlExpressionOperatorRegexp extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorRegexp: SqlExpressionOperatorRegexpNamespace & {
         new (): SqlExpressionOperatorRegexp; // This allows `obj instanceof SqlExpressionOperatorRegexp`
     };
 
     namespace SqlExpressionOperatorStar {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorStarNamespace {
@@ -14718,16 +14796,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorStar extends GObject.Object {}
+    interface SqlExpressionOperatorStar extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorStar: SqlExpressionOperatorStarNamespace & {
         new (): SqlExpressionOperatorStar; // This allows `obj instanceof SqlExpressionOperatorStar`
     };
 
     namespace SqlExpressionOperatorDiv {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorDivNamespace {
@@ -14737,16 +14819,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorDiv extends GObject.Object {}
+    interface SqlExpressionOperatorDiv extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorDiv: SqlExpressionOperatorDivNamespace & {
         new (): SqlExpressionOperatorDiv; // This allows `obj instanceof SqlExpressionOperatorDiv`
     };
 
     namespace SqlExpressionOperatorIn {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorInNamespace {
@@ -14756,16 +14842,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIn extends GObject.Object {}
+    interface SqlExpressionOperatorIn extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIn: SqlExpressionOperatorInNamespace & {
         new (): SqlExpressionOperatorIn; // This allows `obj instanceof SqlExpressionOperatorIn`
     };
 
     namespace SqlExpressionOperatorNotIn {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotInNamespace {
@@ -14775,16 +14865,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotIn extends GObject.Object {}
+    interface SqlExpressionOperatorNotIn extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotIn: SqlExpressionOperatorNotInNamespace & {
         new (): SqlExpressionOperatorNotIn; // This allows `obj instanceof SqlExpressionOperatorNotIn`
     };
 
     namespace SqlExpressionOperatorConcatenate {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorConcatenateNamespace {
@@ -14794,16 +14888,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorConcatenate extends GObject.Object {}
+    interface SqlExpressionOperatorConcatenate extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorConcatenate: SqlExpressionOperatorConcatenateNamespace & {
         new (): SqlExpressionOperatorConcatenate; // This allows `obj instanceof SqlExpressionOperatorConcatenate`
     };
 
     namespace SqlExpressionOperatorSimilarTo {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorSimilarToNamespace {
@@ -14813,16 +14911,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorSimilarTo extends GObject.Object {}
+    interface SqlExpressionOperatorSimilarTo extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorSimilarTo: SqlExpressionOperatorSimilarToNamespace & {
         new (): SqlExpressionOperatorSimilarTo; // This allows `obj instanceof SqlExpressionOperatorSimilarTo`
     };
 
     namespace SqlExpressionOperatorLike {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorLikeNamespace {
@@ -14832,16 +14934,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorLike extends GObject.Object {}
+    interface SqlExpressionOperatorLike extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorLike: SqlExpressionOperatorLikeNamespace & {
         new (): SqlExpressionOperatorLike; // This allows `obj instanceof SqlExpressionOperatorLike`
     };
 
     namespace SqlExpressionOperatorNotLike {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotLikeNamespace {
@@ -14851,16 +14957,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotLike extends GObject.Object {}
+    interface SqlExpressionOperatorNotLike extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotLike: SqlExpressionOperatorNotLikeNamespace & {
         new (): SqlExpressionOperatorNotLike; // This allows `obj instanceof SqlExpressionOperatorNotLike`
     };
 
     namespace SqlExpressionOperatorIlike {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIlikeNamespace {
@@ -14870,16 +14980,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIlike extends GObject.Object {}
+    interface SqlExpressionOperatorIlike extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIlike: SqlExpressionOperatorIlikeNamespace & {
         new (): SqlExpressionOperatorIlike; // This allows `obj instanceof SqlExpressionOperatorIlike`
     };
 
     namespace SqlExpressionOperatorNotIlike {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotIlikeNamespace {
@@ -14889,16 +15003,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotIlike extends GObject.Object {}
+    interface SqlExpressionOperatorNotIlike extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotIlike: SqlExpressionOperatorNotIlikeNamespace & {
         new (): SqlExpressionOperatorNotIlike; // This allows `obj instanceof SqlExpressionOperatorNotIlike`
     };
 
     namespace SqlExpressionOperatorBinaryUnaryterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBinaryUnarytermNamespace {
@@ -14908,16 +15026,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBinaryUnaryterm extends GObject.Object {}
+    interface SqlExpressionOperatorBinaryUnaryterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBinaryUnaryterm: SqlExpressionOperatorBinaryUnarytermNamespace & {
         new (): SqlExpressionOperatorBinaryUnaryterm; // This allows `obj instanceof SqlExpressionOperatorBinaryUnaryterm`
     };
 
     namespace SqlExpressionOperatorMinus {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorMinusNamespace {
@@ -14927,16 +15049,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorMinus extends GObject.Object {}
+    interface SqlExpressionOperatorMinus extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorMinus: SqlExpressionOperatorMinusNamespace & {
         new (): SqlExpressionOperatorMinus; // This allows `obj instanceof SqlExpressionOperatorMinus`
     };
 
     namespace SqlExpressionOperatorPlus {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorPlusNamespace {
@@ -14946,16 +15072,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorPlus extends GObject.Object {}
+    interface SqlExpressionOperatorPlus extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorPlus: SqlExpressionOperatorPlusNamespace & {
         new (): SqlExpressionOperatorPlus; // This allows `obj instanceof SqlExpressionOperatorPlus`
     };
 
     namespace SqlExpressionOperatorInitialUnaryterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorInitialUnarytermNamespace {
@@ -14965,16 +15095,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorInitialUnaryterm extends GObject.Object {}
+    interface SqlExpressionOperatorInitialUnaryterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorInitialUnaryterm: SqlExpressionOperatorInitialUnarytermNamespace & {
         new (): SqlExpressionOperatorInitialUnaryterm; // This allows `obj instanceof SqlExpressionOperatorInitialUnaryterm`
     };
 
     namespace SqlExpressionOperatorNot {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotNamespace {
@@ -14984,16 +15118,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNot extends GObject.Object {}
+    interface SqlExpressionOperatorNot extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNot: SqlExpressionOperatorNotNamespace & {
         new (): SqlExpressionOperatorNot; // This allows `obj instanceof SqlExpressionOperatorNot`
     };
 
     namespace SqlExpressionOperatorFinalUnaryterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorFinalUnarytermNamespace {
@@ -15003,16 +15141,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorFinalUnaryterm extends GObject.Object {}
+    interface SqlExpressionOperatorFinalUnaryterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorFinalUnaryterm: SqlExpressionOperatorFinalUnarytermNamespace & {
         new (): SqlExpressionOperatorFinalUnaryterm; // This allows `obj instanceof SqlExpressionOperatorFinalUnaryterm`
     };
 
     namespace SqlExpressionOperatorIs {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNamespace {
@@ -15022,16 +15164,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIs extends GObject.Object {}
+    interface SqlExpressionOperatorIs extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIs: SqlExpressionOperatorIsNamespace & {
         new (): SqlExpressionOperatorIs; // This allows `obj instanceof SqlExpressionOperatorIs`
     };
 
     namespace SqlExpressionOperatorIsNot {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotNamespace {
@@ -15041,16 +15187,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNot extends GObject.Object {}
+    interface SqlExpressionOperatorIsNot extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNot: SqlExpressionOperatorIsNotNamespace & {
         new (): SqlExpressionOperatorIsNot; // This allows `obj instanceof SqlExpressionOperatorIsNot`
     };
 
     namespace SqlExpressionOperatorIsNull {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNullNamespace {
@@ -15060,16 +15210,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNull extends GObject.Object {}
+    interface SqlExpressionOperatorIsNull extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNull: SqlExpressionOperatorIsNullNamespace & {
         new (): SqlExpressionOperatorIsNull; // This allows `obj instanceof SqlExpressionOperatorIsNull`
     };
 
     namespace SqlExpressionOperatorIsNotNull {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotNullNamespace {
@@ -15079,16 +15233,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotNull extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotNull extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotNull: SqlExpressionOperatorIsNotNullNamespace & {
         new (): SqlExpressionOperatorIsNotNull; // This allows `obj instanceof SqlExpressionOperatorIsNotNull`
     };
 
     namespace SqlExpressionOperatorIsTrue {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsTrueNamespace {
@@ -15098,16 +15256,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsTrue extends GObject.Object {}
+    interface SqlExpressionOperatorIsTrue extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsTrue: SqlExpressionOperatorIsTrueNamespace & {
         new (): SqlExpressionOperatorIsTrue; // This allows `obj instanceof SqlExpressionOperatorIsTrue`
     };
 
     namespace SqlExpressionOperatorIsNotTrue {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotTrueNamespace {
@@ -15117,16 +15279,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotTrue extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotTrue extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotTrue: SqlExpressionOperatorIsNotTrueNamespace & {
         new (): SqlExpressionOperatorIsNotTrue; // This allows `obj instanceof SqlExpressionOperatorIsNotTrue`
     };
 
     namespace SqlExpressionOperatorIsFalse {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsFalseNamespace {
@@ -15136,16 +15302,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsFalse extends GObject.Object {}
+    interface SqlExpressionOperatorIsFalse extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsFalse: SqlExpressionOperatorIsFalseNamespace & {
         new (): SqlExpressionOperatorIsFalse; // This allows `obj instanceof SqlExpressionOperatorIsFalse`
     };
 
     namespace SqlExpressionOperatorIsNotFalse {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotFalseNamespace {
@@ -15155,16 +15325,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotFalse extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotFalse extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotFalse: SqlExpressionOperatorIsNotFalseNamespace & {
         new (): SqlExpressionOperatorIsNotFalse; // This allows `obj instanceof SqlExpressionOperatorIsNotFalse`
     };
 
     namespace SqlExpressionOperatorIsUnknown {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsUnknownNamespace {
@@ -15174,16 +15348,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsUnknown extends GObject.Object {}
+    interface SqlExpressionOperatorIsUnknown extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsUnknown: SqlExpressionOperatorIsUnknownNamespace & {
         new (): SqlExpressionOperatorIsUnknown; // This allows `obj instanceof SqlExpressionOperatorIsUnknown`
     };
 
     namespace SqlExpressionOperatorIsNotUnknown {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotUnknownNamespace {
@@ -15193,16 +15371,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotUnknown extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotUnknown extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotUnknown: SqlExpressionOperatorIsNotUnknownNamespace & {
         new (): SqlExpressionOperatorIsNotUnknown; // This allows `obj instanceof SqlExpressionOperatorIsNotUnknown`
     };
 
     namespace SqlExpressionOperatorIsDistinct {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsDistinctNamespace {
@@ -15212,16 +15394,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsDistinct extends GObject.Object {}
+    interface SqlExpressionOperatorIsDistinct extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsDistinct: SqlExpressionOperatorIsDistinctNamespace & {
         new (): SqlExpressionOperatorIsDistinct; // This allows `obj instanceof SqlExpressionOperatorIsDistinct`
     };
 
     namespace SqlExpressionOperatorIsNotDistinct {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotDistinctNamespace {
@@ -15231,16 +15417,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotDistinct extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotDistinct extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotDistinct: SqlExpressionOperatorIsNotDistinctNamespace & {
         new (): SqlExpressionOperatorIsNotDistinct; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinct`
     };
 
     namespace SqlExpressionOperatorIsDistinctFrom {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsDistinctFromNamespace {
@@ -15250,16 +15440,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsDistinctFrom extends GObject.Object {}
+    interface SqlExpressionOperatorIsDistinctFrom extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsDistinctFrom: SqlExpressionOperatorIsDistinctFromNamespace & {
         new (): SqlExpressionOperatorIsDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsDistinctFrom`
     };
 
     namespace SqlExpressionOperatorIsNotDistinctFrom {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorIsNotDistinctFromNamespace {
@@ -15269,16 +15463,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorIsNotDistinctFrom extends GObject.Object {}
+    interface SqlExpressionOperatorIsNotDistinctFrom extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorIsNotDistinctFrom: SqlExpressionOperatorIsNotDistinctFromNamespace & {
         new (): SqlExpressionOperatorIsNotDistinctFrom; // This allows `obj instanceof SqlExpressionOperatorIsNotDistinctFrom`
     };
 
     namespace SqlExpressionOperatorThreeterm {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorThreetermNamespace {
@@ -15288,16 +15486,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorThreeterm extends GObject.Object {}
+    interface SqlExpressionOperatorThreeterm extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorThreeterm: SqlExpressionOperatorThreetermNamespace & {
         new (): SqlExpressionOperatorThreeterm; // This allows `obj instanceof SqlExpressionOperatorThreeterm`
     };
 
     namespace SqlExpressionOperatorBetween {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBetweenNamespace {
@@ -15307,16 +15509,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBetween extends GObject.Object {}
+    interface SqlExpressionOperatorBetween extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBetween: SqlExpressionOperatorBetweenNamespace & {
         new (): SqlExpressionOperatorBetween; // This allows `obj instanceof SqlExpressionOperatorBetween`
     };
 
     namespace SqlExpressionOperatorBetweenAnd {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBetweenAndNamespace {
@@ -15326,16 +15532,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBetweenAnd extends GObject.Object {}
+    interface SqlExpressionOperatorBetweenAnd extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBetweenAnd: SqlExpressionOperatorBetweenAndNamespace & {
         new (): SqlExpressionOperatorBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenAnd`
     };
 
     namespace SqlExpressionOperatorNotBetween {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotBetweenNamespace {
@@ -15345,16 +15555,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotBetween extends GObject.Object {}
+    interface SqlExpressionOperatorNotBetween extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotBetween: SqlExpressionOperatorNotBetweenNamespace & {
         new (): SqlExpressionOperatorNotBetween; // This allows `obj instanceof SqlExpressionOperatorNotBetween`
     };
 
     namespace SqlExpressionOperatorNotBetweenAnd {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotBetweenAndNamespace {
@@ -15364,16 +15578,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotBetweenAnd extends GObject.Object {}
+    interface SqlExpressionOperatorNotBetweenAnd extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotBetweenAnd: SqlExpressionOperatorNotBetweenAndNamespace & {
         new (): SqlExpressionOperatorNotBetweenAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenAnd`
     };
 
     namespace SqlExpressionOperatorBetweenSymmetric {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBetweenSymmetricNamespace {
@@ -15383,16 +15601,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBetweenSymmetric extends GObject.Object {}
+    interface SqlExpressionOperatorBetweenSymmetric extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBetweenSymmetric: SqlExpressionOperatorBetweenSymmetricNamespace & {
         new (): SqlExpressionOperatorBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetric`
     };
 
     namespace SqlExpressionOperatorBetweenSymmetricAnd {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorBetweenSymmetricAndNamespace {
@@ -15402,16 +15624,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorBetweenSymmetricAnd extends GObject.Object {}
+    interface SqlExpressionOperatorBetweenSymmetricAnd extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorBetweenSymmetricAnd: SqlExpressionOperatorBetweenSymmetricAndNamespace & {
         new (): SqlExpressionOperatorBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorBetweenSymmetricAnd`
     };
 
     namespace SqlExpressionOperatorNotBetweenSymmetric {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotBetweenSymmetricNamespace {
@@ -15421,16 +15647,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotBetweenSymmetric extends GObject.Object {}
+    interface SqlExpressionOperatorNotBetweenSymmetric extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotBetweenSymmetric: SqlExpressionOperatorNotBetweenSymmetricNamespace & {
         new (): SqlExpressionOperatorNotBetweenSymmetric; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetric`
     };
 
     namespace SqlExpressionOperatorNotBetweenSymmetricAnd {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlExpressionOperatorNotBetweenSymmetricAndNamespace {
@@ -15440,7 +15670,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlExpressionOperatorNotBetweenSymmetricAnd extends GObject.Object {}
+    interface SqlExpressionOperatorNotBetweenSymmetricAnd extends GObject.Object {
+    }
+
 
     export const SqlExpressionOperatorNotBetweenSymmetricAnd: SqlExpressionOperatorNotBetweenSymmetricAndNamespace & {
         new (): SqlExpressionOperatorNotBetweenSymmetricAnd; // This allows `obj instanceof SqlExpressionOperatorNotBetweenSymmetricAnd`
@@ -15452,36 +15684,40 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param str
-             * @param params
+             * @param str 
+             * @param params 
              * @virtual
              */
             vfunc_set_math_expression_value(str: string, params: SqlParameters): void;
+
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_connection(value: Connection): void;
+
             /**
              * @virtual
              */
             vfunc_get_value(): SqlValue;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_value(value: SqlValue): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
             value: SqlValue;
@@ -15496,31 +15732,36 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlExpressionValue extends GObject.Object, SqlExpressionValue.Interface {
-        // Properties
 
+        // Properties
         get connection(): Connection;
         set connection(val: Connection);
+
         get value(): SqlValue;
         set value(val: SqlValue);
 
         // Methods
-
         /**
-         * @param str
-         * @param params
+         * @param str 
+         * @param params 
          */
         set_math_expression_value(str: string, params: SqlParameters): void;
+
         get_connection(): Connection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_connection(value: Connection): void;
+
         get_value(): SqlValue;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: SqlValue): void;
     }
+
 
     export const SqlExpressionValue: SqlExpressionValueNamespace & {
         new (): SqlExpressionValue; // This allows `obj instanceof SqlExpressionValue`
@@ -15532,44 +15773,50 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param str
+             * @param str 
              * @virtual
              */
             vfunc_parse(str: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_parameters(): SqlParameters;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_parameters(value: SqlParameters): void;
+
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_gtype(): GObject.GType;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_gtype(value: GObject.GType): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             parameters: SqlParameters;
             name: string;
@@ -15580,47 +15827,54 @@ export namespace Vda {
     export interface SqlExpressionValueParameterNamespace {
         $gtype: GObject.GType<SqlExpressionValueParameter>;
         prototype: SqlExpressionValueParameter;
-
         /**
-         * @param str
-         */
+        * @param str 
+        */
         gtype_from_string(str: string): GObject.GType;
     }
     /**
      * @gir-type Interface
      */
     interface SqlExpressionValueParameter extends GObject.Object, SqlExpressionValueParameter.Interface {
-        // Properties
 
+        // Properties
         get parameters(): SqlParameters;
         set parameters(val: SqlParameters);
+
         get name(): string;
         set name(val: string);
+
         get gtype(): GObject.GType;
         set gtype(val: GObject.GType);
 
         // Methods
-
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): void;
+
         get_parameters(): SqlParameters;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: SqlParameters): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_gtype(): GObject.GType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_gtype(value: GObject.GType): void;
     }
+
 
     export const SqlExpressionValueParameter: SqlExpressionValueParameterNamespace & {
         new (): SqlExpressionValueParameter; // This allows `obj instanceof SqlExpressionValueParameter`
@@ -15632,40 +15886,46 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
-             * @param val
+             * @param name 
+             * @param val 
              * @virtual
              */
             vfunc_set_value(name: string, val: unknown): void;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
-            vfunc_get_value(name: string): GObject.Value | any;
+            vfunc_get_value(name: string): (GObject.Value | any);
+
             /**
-             * @param name
-             * @param val
+             * @param name 
+             * @param val 
              * @virtual
              */
             vfunc_set_sql_value(name: string, val: SqlValue): void;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_sql_value(name: string): SqlValue;
+
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_has_param(name: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlParametersNamespace {
@@ -15676,31 +15936,36 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlParameters extends GObject.Object, SqlParameters.Interface {
+
         // Methods
+        /**
+         * @param name 
+         * @param val 
+         */
+        set_value(name: string, val: (GObject.Value | any)): void;
 
         /**
-         * @param name
-         * @param val
-         */
-        set_value(name: string, val: GObject.Value | any): void;
-        /**
-         * @param name
+         * @param name 
          */
         get_value(name: string): unknown;
+
         /**
-         * @param name
-         * @param val
+         * @param name 
+         * @param val 
          */
         set_sql_value(name: string, val: SqlValue): void;
+
         /**
-         * @param name
+         * @param name 
          */
         get_sql_value(name: string): SqlValue;
+
         /**
-         * @param name
+         * @param name 
          */
         has_param(name: string): boolean;
     }
+
 
     export const SqlParameters: SqlParametersNamespace & {
         new (): SqlParameters; // This allows `obj instanceof SqlParameters`
@@ -15712,19 +15977,21 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param str
-             * @param cnc
+             * @param str 
+             * @param cnc 
              * @virtual
              */
             vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlParserNamespace {
@@ -15735,14 +16002,15 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlParser extends GObject.Object, SqlParser.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param str
-         * @param cnc
+         * @param str 
+         * @param cnc 
          */
         parse(str: string, cnc: Connection): SqlCommandParametrized;
     }
+
 
     export const SqlParser: SqlParserNamespace & {
         new (): SqlParser; // This allows `obj instanceof SqlParser`
@@ -15754,30 +16022,33 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_allias(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_allias(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             allias: string;
@@ -15792,26 +16063,30 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlTableReference extends GObject.Object, SqlTableReference.Interface {
-        // Properties
 
+        // Properties
         get name(): string;
         set name(val: string);
+
         get allias(): string;
         set allias(val: string);
 
         // Methods
-
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_allias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_allias(value: string): void;
     }
+
 
     export const SqlTableReference: SqlTableReferenceNamespace & {
         new (): SqlTableReference; // This allows `obj instanceof SqlTableReference`
@@ -15823,17 +16098,19 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_to_string(): string;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface StringifiableNamespace {
@@ -15844,10 +16121,11 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface Stringifiable extends GObject.Object, Stringifiable.Interface {
-        // Methods
 
+        // Methods
         to_string(): string;
     }
+
 
     export const Stringifiable: StringifiableNamespace & {
         new (): Stringifiable; // This allows `obj instanceof Stringifiable`
@@ -15859,48 +16137,55 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param str
+             * @param str 
              * @virtual
              */
             vfunc_parse(str: string): boolean;
+
             /**
-             * @param val
+             * @param val 
              * @virtual
              */
             vfunc_from_value(val: unknown): boolean;
+
             /**
-             * @param type
+             * @param type 
              * @virtual
              */
             vfunc_cast(type: GObject.GType): SqlValue;
+
             /**
-             * @param type
+             * @param type 
              * @virtual
              */
             vfunc_is_compatible(type: GObject.GType): boolean;
+
             /**
              * @virtual
              */
             vfunc_to_gvalue(): GObject.Value | any;
+
             /**
              * @virtual
              */
             vfunc_to_string_quoted(): string;
+
             /**
              * @virtual
              */
             vfunc_to_sql_expression(): string;
+
             /**
              * @virtual
              */
             vfunc_get_name(): string;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -15909,59 +16194,67 @@ export namespace Vda {
     export interface SqlValueNamespace {
         $gtype: GObject.GType<SqlValue>;
         prototype: SqlValue;
-
         /**
-         * @param val
-         */
-        new_from_gvalue(val: GObject.Value | any): SqlValue;
+        * @param val 
+        */
+        new_from_gvalue(val: (GObject.Value | any)): SqlValue;
         /**
-         * @param type
-         */
+        * @param type 
+        */
         new_from_gtype(type: GObject.GType): SqlValue;
     }
     /**
      * @gir-type Interface
      */
     interface SqlValue extends GObject.Object, SqlValue.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get name(): string;
 
         // Methods
-
         /**
-         * @param str
+         * @param str 
          */
         parse(str: string): boolean;
+
         /**
-         * @param val
+         * @param val 
          */
-        from_value(val: GObject.Value | any): boolean;
+        from_value(val: (GObject.Value | any)): boolean;
+
         /**
-         * @param type
+         * @param type 
          */
         cast(type: GObject.GType): SqlValue;
+
         /**
-         * @param type
+         * @param type 
          */
         is_compatible(type: GObject.GType): boolean;
+
         to_gvalue(): unknown;
+
         to_string_quoted(): string;
+
         to_sql_expression(): string;
+
         get_name(): string;
     }
+
 
     export const SqlValue: SqlValueNamespace & {
         new (): SqlValue; // This allows `obj instanceof SqlValue`
     };
 
     namespace SqlValueNull {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueNullNamespace {
@@ -15971,16 +16264,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueNull extends GObject.Object {}
+    interface SqlValueNull extends GObject.Object {
+    }
+
 
     export const SqlValueNull: SqlValueNullNamespace & {
         new (): SqlValueNull; // This allows `obj instanceof SqlValueNull`
     };
 
     namespace SqlValueBool {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueBoolNamespace {
@@ -15990,16 +16287,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueBool extends GObject.Object {}
+    interface SqlValueBool extends GObject.Object {
+    }
+
 
     export const SqlValueBool: SqlValueBoolNamespace & {
         new (): SqlValueBool; // This allows `obj instanceof SqlValueBool`
     };
 
     namespace SqlValueBit {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueBitNamespace {
@@ -16009,16 +16310,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueBit extends GObject.Object {}
+    interface SqlValueBit extends GObject.Object {
+    }
+
 
     export const SqlValueBit: SqlValueBitNamespace & {
         new (): SqlValueBit; // This allows `obj instanceof SqlValueBit`
     };
 
     namespace SqlValueString {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueStringNamespace {
@@ -16028,7 +16333,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueString extends GObject.Object {}
+    interface SqlValueString extends GObject.Object {
+    }
+
 
     export const SqlValueString: SqlValueStringNamespace & {
         new (): SqlValueString; // This allows `obj instanceof SqlValueString`
@@ -16040,16 +16347,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_document(): GXml.DomDocument;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             document: GXml.DomDocument;
         }
@@ -16063,17 +16370,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueXml extends GObject.Object, SqlValueXml.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get document(): GXml.DomDocument;
 
         // Methods
-
         get_document(): GXml.DomDocument;
     }
+
 
     export const SqlValueXml: SqlValueXmlNamespace & {
         new (): SqlValueXml; // This allows `obj instanceof SqlValueXml`
@@ -16085,16 +16392,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_document(): Json.Node;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             document: Json.Node;
         }
@@ -16108,26 +16415,28 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueJson extends GObject.Object, SqlValueJson.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get document(): Json.Node;
 
         // Methods
-
         get_document(): Json.Node;
     }
+
 
     export const SqlValueJson: SqlValueJsonNamespace & {
         new (): SqlValueJson; // This allows `obj instanceof SqlValueJson`
     };
 
     namespace SqlValueText {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueTextNamespace {
@@ -16137,16 +16446,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueText extends GObject.Object {}
+    interface SqlValueText extends GObject.Object {
+    }
+
 
     export const SqlValueText: SqlValueTextNamespace & {
         new (): SqlValueText; // This allows `obj instanceof SqlValueText`
     };
 
     namespace SqlValueName {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueNameNamespace {
@@ -16156,16 +16469,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueName extends GObject.Object {}
+    interface SqlValueName extends GObject.Object {
+    }
+
 
     export const SqlValueName: SqlValueNameNamespace & {
         new (): SqlValueName; // This allows `obj instanceof SqlValueName`
     };
 
     namespace SqlValueInteger {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueIntegerNamespace {
@@ -16175,16 +16492,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueInteger extends GObject.Object {}
+    interface SqlValueInteger extends GObject.Object {
+    }
+
 
     export const SqlValueInteger: SqlValueIntegerNamespace & {
         new (): SqlValueInteger; // This allows `obj instanceof SqlValueInteger`
     };
 
     namespace SqlValueByte {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueByteNamespace {
@@ -16194,16 +16515,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueByte extends GObject.Object {}
+    interface SqlValueByte extends GObject.Object {
+    }
+
 
     export const SqlValueByte: SqlValueByteNamespace & {
         new (): SqlValueByte; // This allows `obj instanceof SqlValueByte`
     };
 
     namespace SqlValueInt2 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueInt2Namespace {
@@ -16213,16 +16538,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueInt2 extends GObject.Object {}
+    interface SqlValueInt2 extends GObject.Object {
+    }
+
 
     export const SqlValueInt2: SqlValueInt2Namespace & {
         new (): SqlValueInt2; // This allows `obj instanceof SqlValueInt2`
     };
 
     namespace SqlValueInt4 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueInt4Namespace {
@@ -16232,16 +16561,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueInt4 extends GObject.Object {}
+    interface SqlValueInt4 extends GObject.Object {
+    }
+
 
     export const SqlValueInt4: SqlValueInt4Namespace & {
         new (): SqlValueInt4; // This allows `obj instanceof SqlValueInt4`
     };
 
     namespace SqlValueInt8 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueInt8Namespace {
@@ -16251,16 +16584,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueInt8 extends GObject.Object {}
+    interface SqlValueInt8 extends GObject.Object {
+    }
+
 
     export const SqlValueInt8: SqlValueInt8Namespace & {
         new (): SqlValueInt8; // This allows `obj instanceof SqlValueInt8`
     };
 
     namespace SqlValueUnsignedInteger {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueUnsignedIntegerNamespace {
@@ -16270,16 +16607,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueUnsignedInteger extends GObject.Object {}
+    interface SqlValueUnsignedInteger extends GObject.Object {
+    }
+
 
     export const SqlValueUnsignedInteger: SqlValueUnsignedIntegerNamespace & {
         new (): SqlValueUnsignedInteger; // This allows `obj instanceof SqlValueUnsignedInteger`
     };
 
     namespace SqlValueUnsignedByte {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueUnsignedByteNamespace {
@@ -16289,16 +16630,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueUnsignedByte extends GObject.Object {}
+    interface SqlValueUnsignedByte extends GObject.Object {
+    }
+
 
     export const SqlValueUnsignedByte: SqlValueUnsignedByteNamespace & {
         new (): SqlValueUnsignedByte; // This allows `obj instanceof SqlValueUnsignedByte`
     };
 
     namespace SqlValueUnsignedInt2 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueUnsignedInt2Namespace {
@@ -16308,16 +16653,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueUnsignedInt2 extends GObject.Object {}
+    interface SqlValueUnsignedInt2 extends GObject.Object {
+    }
+
 
     export const SqlValueUnsignedInt2: SqlValueUnsignedInt2Namespace & {
         new (): SqlValueUnsignedInt2; // This allows `obj instanceof SqlValueUnsignedInt2`
     };
 
     namespace SqlValueUnsignedInt4 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueUnsignedInt4Namespace {
@@ -16327,16 +16676,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueUnsignedInt4 extends GObject.Object {}
+    interface SqlValueUnsignedInt4 extends GObject.Object {
+    }
+
 
     export const SqlValueUnsignedInt4: SqlValueUnsignedInt4Namespace & {
         new (): SqlValueUnsignedInt4; // This allows `obj instanceof SqlValueUnsignedInt4`
     };
 
     namespace SqlValueUnsignedInt8 {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueUnsignedInt8Namespace {
@@ -16346,16 +16699,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueUnsignedInt8 extends GObject.Object {}
+    interface SqlValueUnsignedInt8 extends GObject.Object {
+    }
+
 
     export const SqlValueUnsignedInt8: SqlValueUnsignedInt8Namespace & {
         new (): SqlValueUnsignedInt8; // This allows `obj instanceof SqlValueUnsignedInt8`
     };
 
     namespace SqlValueOid {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueOidNamespace {
@@ -16365,7 +16722,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueOid extends GObject.Object {}
+    interface SqlValueOid extends GObject.Object {
+    }
+
 
     export const SqlValueOid: SqlValueOidNamespace & {
         new (): SqlValueOid; // This allows `obj instanceof SqlValueOid`
@@ -16377,54 +16736,64 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param p
+             * @param p 
              * @virtual
              */
             vfunc_set_precision(p: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_precision(): number;
+
             /**
-             * @param str
+             * @param str 
              * @virtual
              */
             vfunc_format(str: string): string;
+
             /**
              * @virtual
              */
             vfunc_get_double(): number;
+
             /**
-             * @param v
+             * @param v 
              * @virtual
              */
             vfunc_set_double(v: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_real(): number;
+
             /**
-             * @param r
+             * @param r 
              * @virtual
              */
             vfunc_set_real(r: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_imaginary(): number;
+
             /**
-             * @param img
+             * @param img 
              * @virtual
              */
             vfunc_set_imaginary(img: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueNumericNamespace {
@@ -16435,33 +16804,42 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueNumeric extends GObject.Object, SqlValueNumeric.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param p
+         * @param p 
          */
         set_precision(p: number): void;
+
         get_precision(): number;
+
         /**
-         * @param str
+         * @param str 
          */
         format(str: string): string;
+
         get_double(): number;
+
         /**
-         * @param v
+         * @param v 
          */
         set_double(v: number): void;
+
         get_real(): number;
+
         /**
-         * @param r
+         * @param r 
          */
         set_real(r: number): void;
+
         get_imaginary(): number;
+
         /**
-         * @param img
+         * @param img 
          */
         set_imaginary(img: number): void;
     }
+
 
     export const SqlValueNumeric: SqlValueNumericNamespace & {
         new (): SqlValueNumeric; // This allows `obj instanceof SqlValueNumeric`
@@ -16473,17 +16851,19 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_float(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueFloatNamespace {
@@ -16494,19 +16874,22 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueFloat extends GObject.Object, SqlValueFloat.Interface {
-        // Methods
 
+        // Methods
         get_float(): number;
     }
+
 
     export const SqlValueFloat: SqlValueFloatNamespace & {
         new (): SqlValueFloat; // This allows `obj instanceof SqlValueFloat`
     };
 
     namespace SqlValueDouble {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueDoubleNamespace {
@@ -16516,7 +16899,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueDouble extends GObject.Object {}
+    interface SqlValueDouble extends GObject.Object {
+    }
+
 
     export const SqlValueDouble: SqlValueDoubleNamespace & {
         new (): SqlValueDouble; // This allows `obj instanceof SqlValueDouble`
@@ -16528,30 +16913,35 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_locale(): string;
+
             /**
              * @virtual
              */
             vfunc_int_locale(): string;
+
             /**
              * @virtual
              */
             vfunc_get_int_precision(): number;
+
             /**
-             * @param p
+             * @param p 
              * @virtual
              */
             vfunc_set_int_precision(p: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueMoneyNamespace {
@@ -16562,16 +16952,20 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueMoney extends GObject.Object, SqlValueMoney.Interface {
-        // Methods
 
+        // Methods
         locale(): string;
+
         int_locale(): string;
+
         get_int_precision(): number;
+
         /**
-         * @param p
+         * @param p 
          */
         set_int_precision(p: number): void;
     }
+
 
     export const SqlValueMoney: SqlValueMoneyNamespace & {
         new (): SqlValueMoney; // This allows `obj instanceof SqlValueMoney`
@@ -16583,22 +16977,25 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_date(): GLib.Date;
+
             /**
-             * @param ts
+             * @param ts 
              * @virtual
              */
             vfunc_set_date(ts: GLib.Date): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueDateNamespace {
@@ -16609,14 +17006,16 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueDate extends GObject.Object, SqlValueDate.Interface {
-        // Methods
 
+        // Methods
         get_date(): GLib.Date;
+
         /**
-         * @param ts
+         * @param ts 
          */
         set_date(ts: GLib.Date): void;
     }
+
 
     export const SqlValueDate: SqlValueDateNamespace & {
         new (): SqlValueDate; // This allows `obj instanceof SqlValueDate`
@@ -16628,54 +17027,65 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_format_local(): string;
+
             /**
              * @virtual
              */
             vfunc_format_utc(): string;
+
             /**
              * @virtual
              */
             vfunc_format_locale(): string;
+
             /**
              * @virtual
              */
             vfunc_format_date(): string;
+
             /**
              * @virtual
              */
             vfunc_format_date_locale(): string;
+
             /**
              * @virtual
              */
             vfunc_format_time(): string;
+
             /**
              * @virtual
              */
             vfunc_format_time_local(): string;
+
             /**
              * @virtual
              */
             vfunc_format_time_local_ntz(): string;
+
             /**
              * @virtual
              */
             vfunc_get_timestamp(): GLib.DateTime;
+
             /**
-             * @param ts
+             * @param ts 
              * @virtual
              */
             vfunc_set_timestamp(ts: GLib.DateTime): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueTimestampNamespace {
@@ -16686,31 +17096,43 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueTimestamp extends GObject.Object, SqlValueTimestamp.Interface {
-        // Methods
 
+        // Methods
         format_local(): string;
+
         format_utc(): string;
+
         format_locale(): string;
+
         format_date(): string;
+
         format_date_locale(): string;
+
         format_time(): string;
+
         format_time_local(): string;
+
         format_time_local_ntz(): string;
+
         get_timestamp(): GLib.DateTime;
+
         /**
-         * @param ts
+         * @param ts 
          */
         set_timestamp(ts: GLib.DateTime): void;
     }
+
 
     export const SqlValueTimestamp: SqlValueTimestampNamespace & {
         new (): SqlValueTimestamp; // This allows `obj instanceof SqlValueTimestamp`
     };
 
     namespace SqlValueTimestampNtz {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueTimestampNtzNamespace {
@@ -16720,16 +17142,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueTimestampNtz extends GObject.Object {}
+    interface SqlValueTimestampNtz extends GObject.Object {
+    }
+
 
     export const SqlValueTimestampNtz: SqlValueTimestampNtzNamespace & {
         new (): SqlValueTimestampNtz; // This allows `obj instanceof SqlValueTimestampNtz`
     };
 
     namespace SqlValueTime {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueTimeNamespace {
@@ -16739,16 +17165,20 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueTime extends GObject.Object {}
+    interface SqlValueTime extends GObject.Object {
+    }
+
 
     export const SqlValueTime: SqlValueTimeNamespace & {
         new (): SqlValueTime; // This allows `obj instanceof SqlValueTime`
     };
 
     namespace SqlValueTimeNtz {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SqlValueTimeNtzNamespace {
@@ -16758,7 +17188,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface SqlValueTimeNtz extends GObject.Object {}
+    interface SqlValueTimeNtz extends GObject.Object {
+    }
+
 
     export const SqlValueTimeNtz: SqlValueTimeNtzNamespace & {
         new (): SqlValueTimeNtz; // This allows `obj instanceof SqlValueTimeNtz`
@@ -16770,28 +17202,31 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
+
             // Virtual methods
+            /**
+             * @virtual
+             */
+            vfunc_get_bytes(): (GLib.Bytes | Uint8Array);
 
             /**
              * @virtual
              */
-            vfunc_get_bytes(): GLib.Bytes | Uint8Array;
-            /**
-             * @virtual
-             */
             vfunc_get_out_stream(): Gio.OutputStream;
+
             /**
              * @virtual
              */
             vfunc_get_input_stream(): Gio.InputStream;
+
             /**
              * @virtual
              */
             vfunc_get_size(): number;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             size: number;
         }
@@ -16805,20 +17240,23 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueBinary extends GObject.Object, SqlValueBinary.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get size(): number;
 
         // Methods
-
         get_bytes(): GLib.Bytes;
+
         get_out_stream(): Gio.OutputStream;
+
         get_input_stream(): Gio.InputStream;
+
         get_size(): number;
     }
+
 
     export const SqlValueBinary: SqlValueBinaryNamespace & {
         new (): SqlValueBinary; // This allows `obj instanceof SqlValueBinary`
@@ -16830,35 +17268,39 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param stream
+             * @param stream 
              * @virtual
              */
             vfunc_create(stream: Gio.InputStream): void;
+
             /**
              * @virtual
              */
             vfunc_delete(): void;
+
             /**
-             * @param file
+             * @param file 
              * @virtual
              */
             vfunc_write(file: Gio.File): void;
+
             /**
-             * @param file
+             * @param file 
              * @virtual
              */
             vfunc_read(file: Gio.File): void;
+
             /**
              * @virtual
              */
             vfunc_get_connection(): Connection;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
         }
@@ -16872,30 +17314,34 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueBlob extends GObject.Object, SqlValueBlob.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get connection(): Connection;
 
         // Methods
-
         /**
-         * @param stream
+         * @param stream 
          */
         create(stream: Gio.InputStream): void;
-        ['delete'](): void;
+
+        ["delete"](): void;
+
         /**
-         * @param file
+         * @param file 
          */
         write(file: Gio.File): void;
+
         /**
-         * @param file
+         * @param file 
          */
         read(file: Gio.File): void;
+
         get_connection(): Connection;
     }
+
 
     export const SqlValueBlob: SqlValueBlobNamespace & {
         new (): SqlValueBlob; // This allows `obj instanceof SqlValueBlob`
@@ -16907,16 +17353,16 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_identification(): number;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             identification: number;
         }
@@ -16930,17 +17376,17 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueBlobOid extends GObject.Object, SqlValueBlobOid.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get identification(): number;
 
         // Methods
-
         get_identification(): number;
     }
+
 
     export const SqlValueBlobOid: SqlValueBlobOidNamespace & {
         new (): SqlValueBlobOid; // This allows `obj instanceof SqlValueBlobOid`
@@ -16952,30 +17398,33 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_x(): number;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_x(value: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_y(): number;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_y(value: number): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             x: number;
             y: number;
@@ -16990,26 +17439,30 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueGeometricPoint extends GObject.Object, SqlValueGeometricPoint.Interface {
-        // Properties
 
+        // Properties
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
         // Methods
-
         get_x(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_x(value: number): void;
+
         get_y(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_y(value: number): void;
     }
+
 
     export const SqlValueGeometricPoint: SqlValueGeometricPointNamespace & {
         new (): SqlValueGeometricPoint; // This allows `obj instanceof SqlValueGeometricPoint`
@@ -17021,21 +17474,22 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_math(): GCalc.MathEquationManager;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_math(value: GCalc.MathEquationManager): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             math: GCalc.MathEquationManager;
         }
@@ -17049,28 +17503,31 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface SqlValueMathExp extends GObject.Object, SqlValueMathExp.Interface {
-        // Properties
 
+        // Properties
         get math(): GCalc.MathEquationManager;
         set math(val: GCalc.MathEquationManager);
 
         // Methods
-
         get_math(): GCalc.MathEquationManager;
+
         /**
-         * @param value
+         * @param value 
          */
         set_math(value: GCalc.MathEquationManager): void;
     }
+
 
     export const SqlValueMathExp: SqlValueMathExpNamespace & {
         new (): SqlValueMathExp; // This allows `obj instanceof SqlValueMathExp`
     };
 
     namespace TableModel {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TableModelNamespace {
@@ -17080,7 +17537,9 @@ export namespace Vda {
     /**
      * @gir-type Interface
      */
-    interface TableModel extends GObject.Object {}
+    interface TableModel extends GObject.Object {
+    }
+
 
     export const TableModel: TableModelNamespace & {
         new (): TableModel; // This allows `obj instanceof TableModel`
@@ -17092,35 +17551,41 @@ export namespace Vda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_current(): RowModel;
+
             /**
              * @virtual
              */
             vfunc_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_back(): boolean;
+
             /**
-             * @param direction
-             * @param relative
+             * @param direction 
+             * @param relative 
              * @virtual
              */
             vfunc_move(direction: MoveDirection, relative: number): boolean;
+
             /**
              * @virtual
              */
             vfunc_copy_current(): RowModel;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TableModelSequentialNamespace {
@@ -17131,18 +17596,23 @@ export namespace Vda {
      * @gir-type Interface
      */
     interface TableModelSequential extends GObject.Object, TableModelSequential.Interface {
-        // Methods
 
+        // Methods
         current(): RowModel;
+
         next(): boolean;
+
         back(): boolean;
+
         /**
-         * @param direction
-         * @param relative
+         * @param direction 
+         * @param relative 
          */
         move(direction: MoveDirection, relative: number): boolean;
+
         copy_current(): RowModel;
     }
+
 
     export const TableModelSequential: TableModelSequentialNamespace & {
         new (): TableModelSequential; // This allows `obj instanceof TableModelSequential`
@@ -17153,6 +17623,7 @@ export namespace Vda {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

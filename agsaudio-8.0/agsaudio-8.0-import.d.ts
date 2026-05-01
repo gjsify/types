@@ -1,3 +1,4 @@
+
 import type AgsAudio80 from '@girs/agsaudio-8.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

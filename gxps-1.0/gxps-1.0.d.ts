@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Gxps {
+
     /**
      * Gxps-1.0
      */
+
 
     /**
      * Error codes returned by GXPS functions.
@@ -29,24 +32,25 @@ export namespace Gxps {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Internal source file not found in XPS file
          */
         static SOURCE_NOT_FOUND: number;
+
         /**
          * Error loading fonts
          */
         static FONT: number;
+
         /**
          * Error loading images
          */
         static IMAGE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * Error codes returned by {@link Gxps.File} functions.
@@ -58,6 +62,7 @@ export namespace Gxps {
          */
         FILE_ERROR_INVALID,
     }
+
 
     /**
      * Error codes returned by {@link Gxps.Page} functions
@@ -78,35 +83,40 @@ export namespace Gxps {
         INVALID_ANCHOR,
     }
 
+
     /**
      * The major version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 0.)
      */
     const MAJOR_VERSION: number;
+
     /**
      * The micro version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 2.)
      */
     const MICRO_VERSION: number;
+
     /**
      * The major version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 1.)
      */
     const MINOR_VERSION: number;
+
     /**
      * The version number of the GXPS library as a string
      * @since 0.2.1
      */
     const VERSION_STRING: string;
+
     function error_quark(): GLib.Quark;
+
     namespace CoreProperties {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             source: string;
         }
@@ -121,7 +131,6 @@ export namespace Gxps {
         static $gtype: GObject.GType<CoreProperties>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -137,148 +146,154 @@ export namespace Gxps {
         $signals: CoreProperties.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CoreProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CoreProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CoreProperties.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CoreProperties.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CoreProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreProperties.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CoreProperties.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CoreProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CoreProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the category.
          * @returns a string containing the category or `null`
          */
         get_category(): string;
+
         /**
          * Get the status of the content (e.g. Draft, Reviewed, Final)
          * @returns a string containing the status of the content or `null`
          */
         get_content_status(): string;
+
         /**
          * Get the type of content represented, generally defined by a
          * specific use and intended audience. This is not the MIME-Type.
          * @returns a string containing the type of content or `null`
          */
         get_content_type(): string;
+
         /**
          * Get the creating date.
          * @returns the creating date as a <type>time_t</type> or -1.
          */
         get_created(): number;
+
         /**
          * Get the creator.
          * @returns a string containing the creator or `null`
          */
         get_creator(): string;
+
         /**
          * Get the description.
          * @returns a string containing the description or `null`
          */
         get_description(): string;
+
         /**
          * Get the unique identifier.
          * @returns a string containing the identifier or `null`
          */
         get_identifier(): string;
+
         /**
          * Get the keywords.
          * @returns a string containing the keywords or `null`
          */
         get_keywords(): string;
+
         /**
          * Get the language.
          * @returns a string containing the language or `null`
          */
         get_language(): string;
+
         /**
          * Get the user who performed the last modification.
          * @returns a string containing the user who performed the    last modification or `null`
          */
         get_last_modified_by(): string;
+
         /**
          * Get the date of the last printing.
          * @returns the date of the last printing as a <type>time_t</type> or -1.
          */
         get_last_printed(): number;
+
         /**
          * Get the last modification date.
          * @returns the modification date as a <type>time_t</type> or -1.
          */
         get_modified(): number;
+
         /**
          * Get the revision number.
          * @returns a string containing the revision number or `null`
          */
         get_revision(): string;
+
         /**
          * Get the subject.
          * @returns a string containing the subject or `null`
          */
         get_subject(): string;
+
         /**
          * Get the title.
          * @returns a string containing the title or `null`
          */
         get_title(): string;
+
         /**
          * Get the version number.
          * @returns a string containing the version number or `null`
          */
         get_version(): string;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -288,40 +303,41 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -331,17 +347,17 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             source: string;
         }
@@ -356,7 +372,6 @@ export namespace Gxps {
         static $gtype: GObject.GType<Document>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -372,39 +387,30 @@ export namespace Gxps {
         $signals: Document.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the number of pages in `doc`.
          * @returns the number of pages.
          */
         get_n_pages(): number;
+
         /**
          * Creates a new {@link Gxps.Page} representing the page at
          * index `n_doc` in `doc` document.
@@ -412,6 +418,7 @@ export namespace Gxps {
          * @returns a new {@link Gxps.Page} or `null` on error.     Free the returned object with `g_object_unref()`.
          */
         get_page(n_page: number): Page;
+
         /**
          * Gets the index of the page in `doc` where the given
          * anchor is.
@@ -419,6 +426,7 @@ export namespace Gxps {
          * @returns the page index of the given anchor.
          */
         get_page_for_anchor(anchor: string): number;
+
         /**
          * Gets the typical size of the page at index `n_page` in `doc` document.
          * This function is useful to get the advisory size of pages in a document
@@ -432,45 +440,47 @@ export namespace Gxps {
          * @returns `true` if the page size information is available in `doc`,     `false` otherwise.
          */
         get_page_size(n_page: number): [boolean, number, number];
+
         /**
          * Creates a new {@link Gxps.DocumentStructure} representing the document
          * structure of `doc`.
          * @returns a new {@link Gxps.DocumentStructure} or `null` if document doesn't have a structure.     Free the returned object with `g_object_unref()`.
          */
         get_structure(): DocumentStructure;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -480,40 +490,41 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -523,17 +534,17 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace DocumentStructure {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             source: string;
         }
@@ -548,7 +559,6 @@ export namespace Gxps {
         static $gtype: GObject.GType<DocumentStructure>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -564,40 +574,30 @@ export namespace Gxps {
         $signals: DocumentStructure.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DocumentStructure.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DocumentStructure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DocumentStructure.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DocumentStructure.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DocumentStructure.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentStructure.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DocumentStructure.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DocumentStructure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DocumentStructure.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentStructure.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Initializes `iter` to the root item of the outline contained by `structure`
          * and a associates it with `structure`.
-         *
+         * 
          * Here is a simple example of some code that walks the full outline:
-         *
+         * 
          * <informalexample><programlisting>
          * static void
          * walk_outline (GXPSOutlineIter *iter)
@@ -606,7 +606,7 @@ export namespace Gxps {
          *         GXPSOutlineIter child_iter;
          *         const gchar    *description = gxps_outline_iter_get_description (iter);
          *         GXPSLinkTarget *target = gxps_outline_iter_get_target (iter);
-         *
+         * 
          *         /<!-- -->* Do something with description and taregt *<!-- -->/
          *         if (gxps_outline_iter_children (&child_iter, iter))
          *             walk_outline (&child_iter);
@@ -625,7 +625,6 @@ export namespace Gxps {
         static outline_iter_init(iter: OutlineIter, structure: DocumentStructure): boolean;
 
         // Methods
-
         /**
          * Whether `structure` has an outline or not.
          * @returns `true` if `structure` has an outline, `false` otherwise.
@@ -633,14 +632,14 @@ export namespace Gxps {
         has_outline(): boolean;
     }
 
+
     namespace File {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file': (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             file: Gio.File;
         }
@@ -655,7 +654,6 @@ export namespace Gxps {
         static $gtype: GObject.GType<File>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -671,40 +669,29 @@ export namespace Gxps {
         $signals: File.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: Gio.File): File;
+        static ["new"](filename: Gio.File): File;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Create a {@link Gxps.CoreProperties} object containing the metadata
          * of `xpsm`, or `null` in case of error or if the {@link Gxps.File}
@@ -712,6 +699,7 @@ export namespace Gxps {
          * @returns a new {@link Gxps.CoreProperties} or `null`.    Free the returned object with `g_object_unref()`.
          */
         get_core_properties(): CoreProperties;
+
         /**
          * Creates a new {@link Gxps.Document} representing the document at
          * index `n_doc` in `xps` file.
@@ -719,6 +707,7 @@ export namespace Gxps {
          * @returns a new {@link Gxps.Document} or `null` on error.     Free the returned object with `g_object_unref()`.
          */
         get_document(n_doc: number): Document;
+
         /**
          * Gets the index of the document in `xps` pointed by `target`.
          * If the {@link Gxps.LinkTarget} does not reference a document, or
@@ -731,44 +720,46 @@ export namespace Gxps {
          * @returns the index of the document pointed by the given     {@link Gxps.LinkTarget} or -1.
          */
         get_document_for_link_target(target: LinkTarget): number;
+
         /**
          * Gets the number of documents in `xps`.
          * @returns the number of documents.
          */
         get_n_documents(): number;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -778,40 +769,41 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -821,17 +813,17 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Page {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             source: string;
         }
@@ -846,7 +838,6 @@ export namespace Gxps {
         static $gtype: GObject.GType<Page>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -862,38 +853,27 @@ export namespace Gxps {
         $signals: Page.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Gets a list of {@link Gxps.Link} items that map from a location
          * in `page` to a {@link Gxps.LinkTarget}. Items in the list should
@@ -902,10 +882,12 @@ export namespace Gxps {
          * @returns a {@link GLib.List}     of {@link Gxps.Link} items.
          */
         get_links(): Link[];
+
         /**
          * Gets the size of the page.
          */
         get_size(): [number, number];
+
         /**
          * Render the page to the given cairo context. In case of
          * error, `false` is returned and `error` is filled with
@@ -914,39 +896,40 @@ export namespace Gxps {
          * @returns `true` if page was successfully rendered,     `false` otherwise.
          */
         render(cr: cairo.Context): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -956,40 +939,41 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -999,13 +983,15 @@ export namespace Gxps {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CorePropertiesClass = typeof CoreProperties;
+
     /**
      * @gir-type Struct
      */
@@ -1013,10 +999,12 @@ export namespace Gxps {
         static $gtype: GObject.GType<CorePropertiesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DocumentClass = typeof Document;
+
     /**
      * @gir-type Struct
      */
@@ -1024,10 +1012,12 @@ export namespace Gxps {
         static $gtype: GObject.GType<DocumentPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DocumentStructureClass = typeof DocumentStructure;
+
     /**
      * @gir-type Struct
      */
@@ -1035,16 +1025,19 @@ export namespace Gxps {
         static $gtype: GObject.GType<DocumentStructurePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileClass = typeof File;
+
     /**
      * @gir-type Struct
      */
     abstract class FilePrivate {
         static $gtype: GObject.GType<FilePrivate>;
     }
+
 
     /**
      * GXPSLink maps a location in a page to a {@link Gxps.LinkTarget}.
@@ -1054,22 +1047,24 @@ export namespace Gxps {
         static $gtype: GObject.GType<Link>;
 
         // Methods
-
         /**
          * Creates a copy of a {@link Gxps.Link}.
          * @returns a copy of `link`.     Free the returned object with `gxps_link_free()`.
          */
         copy(): Link;
+
         /**
          * Frees a {@link Gxps.Link}.
          */
         free(): void;
+
         /**
          * Gets the {@link Gxps.LinkTarget} mapped by `link`.
          * @returns the {@link Gxps.LinkTarget} of `link`.
          */
         get_target(): LinkTarget;
     }
+
 
     /**
      * GXPSLinkTarget represents a hyperlink source.
@@ -1079,16 +1074,17 @@ export namespace Gxps {
         static $gtype: GObject.GType<LinkTarget>;
 
         // Methods
-
         /**
          * Creates a copy of a {@link Gxps.LinkTarget}
          * @returns a copy of `target`.     Free the returned object with `gxps_link_target_free()`
          */
         copy(): LinkTarget;
+
         /**
          * Frees a {@link Gxps.LinkTarget}.
          */
         free(): void;
+
         /**
          * Gets the anchor name `target` links to. If `target` is
          * an internal {@link Gxps.LinkTarget} this function always returns
@@ -1097,17 +1093,20 @@ export namespace Gxps {
          * @returns the name of the anchor of `target`.
          */
         get_anchor(): string;
+
         /**
          * Gets the URI `target` links to.
          * @returns the URI of `target`.
          */
         get_uri(): string;
+
         /**
          * Gets whether `target` destination is internal or not.
          * @returns `true` if the {@link Gxps.LinkTarget} points to an internal location,     `false` if it points to a external one.
          */
         is_internal(): boolean;
     }
+
 
     /**
      * GXPSOutlineIter represents an iterator that can be
@@ -1120,10 +1119,11 @@ export namespace Gxps {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         // Methods
-
         /**
          * Initializes `iter` to the first child item of `parent`.
          * See `gxps_document_structure_outline_iter_init()` for
@@ -1132,6 +1132,7 @@ export namespace Gxps {
          * @returns `true` if `iter` was set to the first child of `parent`,     `false` if `parent` does not have children.
          */
         children(parent: OutlineIter): boolean;
+
         /**
          * Gets the description of the outline item associated with `iter`.
          * See `gxps_document_structure_outline_iter_init()` for
@@ -1139,6 +1140,7 @@ export namespace Gxps {
          * @returns the description of the outline item
          */
         get_description(): string;
+
         /**
          * Gets the {@link Gxps.LinkTarget} of the outline item associated with `iter`.
          * See `gxps_document_structure_outline_iter_init()` for
@@ -1146,6 +1148,7 @@ export namespace Gxps {
          * @returns a new allocated {@link Gxps.LinkTarget}.     Free the returned object with `gxps_link_target_free()`.
          */
         get_target(): LinkTarget;
+
         /**
          * Advances `iter` to the next item at the current level.
          * See `gxps_document_structure_outline_iter_init()` for
@@ -1155,10 +1158,12 @@ export namespace Gxps {
         next(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PageClass = typeof Page;
+
     /**
      * @gir-type Struct
      */
@@ -1166,11 +1171,13 @@ export namespace Gxps {
         static $gtype: GObject.GType<PagePrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

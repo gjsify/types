@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,9 +29,11 @@ import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GitgExt {
+
     /**
      * GitgExt-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -47,24 +50,28 @@ export namespace GitgExt {
         SELECTION,
     }
 
+
     /**
      * @gir-type Callback
      */
     interface ForeachCommitSelectionFunc {
         (object: Ggit.Commit): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface MessageCallback {
         (message: Message): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface RefNameEditingDone {
         (new_name: string, cancelled: boolean): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -81,13 +88,16 @@ export namespace GitgExt {
         INDEX,
     }
 
+
     namespace CommandLines {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -106,47 +116,40 @@ export namespace GitgExt {
         $signals: CommandLines.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommandLines.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](command_lines: CommandLine[]): CommandLines;
+        static ["new"](command_lines: CommandLine[]): CommandLines;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommandLines.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandLines.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommandLines.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandLines.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommandLines.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommandLines.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommandLines.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommandLines.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommandLines.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommandLines.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommandLines.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommandLines.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param t_type 
+         * @param t_dup_func 
+         */
+        get_for(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): (any | null);
+
+        parse_finished(): void;
 
         /**
-         * @param t_type
-         * @param t_dup_func
-         */
-        get_for(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): any | null;
-        parse_finished(): void;
-        /**
-         * @param application
+         * @param application 
          */
         apply(application: Application): void;
     }
+
 
     namespace MessageBus {
         // Signal signatures
@@ -166,8 +169,9 @@ export namespace GitgExt {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -186,106 +190,104 @@ export namespace GitgExt {
         $signals: MessageBus.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MessageBus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MessageBus;
+        static ["new"](): MessageBus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageBus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageBus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageBus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageBus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageBus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageBus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageBus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageBus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageBus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageBus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): MessageBus;
 
         // Virtual methods
-
         /**
-         * @param message
+         * @param message 
          * @virtual
          */
         vfunc_dispatch(message: Message): void;
 
         // Methods
-
         /**
-         * @param id
+         * @param id 
          */
         lookup(id: MessageId): GObject.GType;
+
         /**
-         * @param message_type
-         * @param id
+         * @param message_type 
+         * @param id 
          */
         register(message_type: GObject.GType, id: MessageId): void;
+
         /**
-         * @param id
+         * @param id 
          */
         unregister(id: MessageId): void;
+
         /**
-         * @param object_path
+         * @param object_path 
          */
         unregister_all(object_path: string): void;
+
         /**
-         * @param id
+         * @param id 
          */
         is_registered(id: MessageId): boolean;
+
         /**
-         * @param id
-         * @param callback
+         * @param id 
+         * @param callback 
          */
         connect(id: MessageId, callback: MessageCallback): number;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
-         * @param id
+         * @param id 
          */
         disconnect(id: number): void;
+
         /**
-         * @param id
+         * @param id 
          */
         block(id: number): void;
+
         /**
-         * @param id
+         * @param id 
          */
         unblock(id: number): void;
+
         /**
-         * @param message
+         * @param message 
          */
         send_message(message: Message): Message;
     }
 
+
     namespace MessageId {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::object-path': (pspec: GObject.ParamSpec) => void;
-            'notify::method': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::object-path": (pspec: GObject.ParamSpec) => void;
+            "notify::method": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             object_path: string;
             objectPath: string;
@@ -301,13 +303,15 @@ export namespace GitgExt {
         static $gtype: GObject.GType<MessageId>;
 
         // Properties
-
         get object_path(): string;
         set object_path(val: string);
+
         get objectPath(): string;
         set objectPath(val: string);
+
         get method(): string;
         set method(val: string);
+
         /**
          * @read-only
          */
@@ -323,70 +327,66 @@ export namespace GitgExt {
         $signals: MessageId.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MessageId.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](object_path: string, method: string): MessageId;
+        static ["new"](object_path: string, method: string): MessageId;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageId.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageId.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageId.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageId.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageId.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageId.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageId.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageId.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageId.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageId.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageId.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageId.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param path
+         * @param path 
          */
         static valid_object_path(path: string): boolean;
 
         // Methods
-
         hash(): number;
+
         /**
-         * @param other
+         * @param other 
          */
         equal(other: MessageId): boolean;
+
         copy(): MessageId;
+
         get_object_path(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_object_path(value: string): void;
+
         get_method(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_method(value: string): void;
+
         get_id(): string;
     }
+
 
     namespace Message {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: MessageId;
         }
@@ -399,7 +399,6 @@ export namespace GitgExt {
         static $gtype: GObject.GType<Message>;
 
         // Properties
-
         get id(): MessageId;
         set id(val: MessageId);
 
@@ -413,62 +412,56 @@ export namespace GitgExt {
         $signals: Message.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param type
-         * @param propname
+         * @param type 
+         * @param propname 
          */
         static type_has(type: GObject.GType, propname: string): boolean;
+
         /**
-         * @param type
-         * @param propname
-         * @param value_type
+         * @param type 
+         * @param propname 
+         * @param value_type 
          */
         static type_check(type: GObject.GType, propname: string, value_type: GObject.GType): boolean;
 
         // Methods
-
         /**
-         * @param propname
+         * @param propname 
          */
         has(propname: string): boolean;
+
         get_id(): MessageId;
+
         /**
-         * @param value
+         * @param value 
          */
         set_id(value: MessageId): void;
     }
 
+
     namespace UI {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -478,44 +471,37 @@ export namespace GitgExt {
         static $gtype: GObject.GType<UI>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): UI;
+        static ["new"](): UI;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UI.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UI.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UI.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UI.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace UserQueryResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -534,39 +520,31 @@ export namespace GitgExt {
         $signals: UserQueryResponse.SignalSignatures;
 
         // Fields
-
         text: string;
+
         response_type: Gtk.ResponseType;
 
         // Constructors
-
         constructor(properties?: Partial<UserQueryResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string, response_type: Gtk.ResponseType): UserQueryResponse;
+        static ["new"](text: string, response_type: Gtk.ResponseType): UserQueryResponse;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserQueryResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserQueryResponse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserQueryResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserQueryResponse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserQueryResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserQueryResponse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserQueryResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserQueryResponse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserQueryResponse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserQueryResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserQueryResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserQueryResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace UserQuery {
         // Signal signatures
@@ -578,17 +556,16 @@ export namespace GitgExt {
             /**
              * @signal
              */
-            response: (arg0: Gtk.ResponseType) => boolean | void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::message': (pspec: GObject.ParamSpec) => void;
-            'notify::message-type': (pspec: GObject.ParamSpec) => void;
-            'notify::default-response': (pspec: GObject.ParamSpec) => void;
-            'notify::default-is-destructive': (pspec: GObject.ParamSpec) => void;
-            'notify::message-use-markup': (pspec: GObject.ParamSpec) => void;
+            response: (arg0: Gtk.ResponseType) => (boolean | void);
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::message": (pspec: GObject.ParamSpec) => void;
+            "notify::message-type": (pspec: GObject.ParamSpec) => void;
+            "notify::default-response": (pspec: GObject.ParamSpec) => void;
+            "notify::default-is-destructive": (pspec: GObject.ParamSpec) => void;
+            "notify::message-use-markup": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             title: string;
             message: string;
@@ -610,25 +587,33 @@ export namespace GitgExt {
         static $gtype: GObject.GType<UserQuery>;
 
         // Properties
-
         get title(): string;
         set title(val: string);
+
         get message(): string;
         set message(val: string);
+
         get message_type(): Gtk.MessageType;
         set message_type(val: Gtk.MessageType);
+
         get messageType(): Gtk.MessageType;
         set messageType(val: Gtk.MessageType);
+
         get default_response(): Gtk.ResponseType;
         set default_response(val: Gtk.ResponseType);
+
         get defaultResponse(): Gtk.ResponseType;
         set defaultResponse(val: Gtk.ResponseType);
+
         get default_is_destructive(): boolean;
         set default_is_destructive(val: boolean);
+
         get defaultIsDestructive(): boolean;
         set defaultIsDestructive(val: boolean);
+
         get message_use_markup(): boolean;
         set message_use_markup(val: boolean);
+
         get messageUseMarkup(): boolean;
         set messageUseMarkup(val: boolean);
 
@@ -642,77 +627,82 @@ export namespace GitgExt {
         $signals: UserQuery.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserQuery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): UserQuery;
+        static ["new"](): UserQuery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserQuery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserQuery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserQuery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserQuery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserQuery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_responses(): UserQueryResponse[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_responses(value: UserQueryResponse[]): void;
+
         get_title(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_title(value: string): void;
+
         get_message(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_message(value: string): void;
+
         get_message_type(): Gtk.MessageType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_message_type(value: Gtk.MessageType): void;
+
         get_default_response(): Gtk.ResponseType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_default_response(value: Gtk.ResponseType): void;
+
         get_default_is_destructive(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_default_is_destructive(value: boolean): void;
+
         get_message_use_markup(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_message_use_markup(value: boolean): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CommandLinesClass = typeof CommandLines;
+
     /**
      * @gir-type Struct
      */
@@ -720,10 +710,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<CommandLinesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MessageBusClass = typeof MessageBus;
+
     /**
      * @gir-type Struct
      */
@@ -731,10 +723,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<MessageBusPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MessageIdClass = typeof MessageId;
+
     /**
      * @gir-type Struct
      */
@@ -742,10 +736,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<MessageIdPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MessageClass = typeof Message;
+
     /**
      * @gir-type Struct
      */
@@ -753,10 +749,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<MessagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UIClass = typeof UI;
+
     /**
      * @gir-type Struct
      */
@@ -764,10 +762,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<UIPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UserQueryResponseClass = typeof UserQueryResponse;
+
     /**
      * @gir-type Struct
      */
@@ -775,10 +775,12 @@ export namespace GitgExt {
         static $gtype: GObject.GType<UserQueryResponsePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UserQueryClass = typeof UserQuery;
+
     /**
      * @gir-type Struct
      */
@@ -786,98 +788,119 @@ export namespace GitgExt {
         static $gtype: GObject.GType<UserQueryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ActionIface = typeof Action;
+
     /**
      * @gir-type Alias
      */
     type ActivityIface = typeof Activity;
+
     /**
      * @gir-type Alias
      */
     type ApplicationIface = typeof Application;
+
     /**
      * @gir-type Alias
      */
     type CommandLineIface = typeof CommandLine;
+
     /**
      * @gir-type Alias
      */
     type CommitActionIface = typeof CommitAction;
+
     /**
      * @gir-type Alias
      */
     type HistoryPanelIface = typeof HistoryPanel;
+
     /**
      * @gir-type Alias
      */
     type HistoryIface = typeof History;
+
     /**
      * @gir-type Alias
      */
     type NotificationIface = typeof Notification;
+
     /**
      * @gir-type Alias
      */
     type NotificationsIface = typeof Notifications;
+
     /**
      * @gir-type Alias
      */
     type PreferencesIface = typeof Preferences;
+
     /**
      * @gir-type Alias
      */
     type RefActionInterfaceIface = typeof RefActionInterface;
+
     /**
      * @gir-type Alias
      */
     type RefActionIface = typeof RefAction;
+
     /**
      * @gir-type Alias
      */
     type RemoteLookupIface = typeof RemoteLookup;
+
     /**
      * @gir-type Alias
      */
     type SearchableIface = typeof Searchable;
+
     /**
      * @gir-type Alias
      */
     type SelectableIface = typeof Selectable;
+
     /**
      * @gir-type Alias
      */
     type UIElementIface = typeof UIElement;
+
     namespace Action {
         /**
          * Interface for implementing Action.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends UIElement.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param menu
+             * @param menu 
              * @virtual
              */
             vfunc_populate_menu(menu: Gtk.Menu): void;
+
             /**
-             * @param _callback_
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_fetch(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_fetch(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_fetch_finish(_res_: Gio.AsyncResult): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends UIElement.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends UIElement.ConstructorProps {
+
+        }
     }
 
     export interface ActionNamespace {
@@ -888,26 +911,31 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Action extends UIElement, Action.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param menu
+         * @param menu 
          */
         populate_menu(menu: Gtk.Menu): void;
+
         fetch(): globalThis.Promise<boolean>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        fetch(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        fetch(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        fetch(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        fetch(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         fetch_finish(_res_: Gio.AsyncResult): boolean;
     }
+
 
     export const Action: ActionNamespace & {
         new (): Action; // This allows `obj instanceof Action`
@@ -919,23 +947,26 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param action
+             * @param action 
              * @virtual
              */
             vfunc_is_default_for(action: string): boolean;
+
             /**
-             * @param event
+             * @param event 
              * @virtual
              */
             vfunc_on_key_pressed(event: Gdk.EventKey): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ActivityNamespace {
@@ -946,17 +977,19 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Activity extends GObject.Object, Activity.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param action
+         * @param action 
          */
         is_default_for(action: string): boolean;
+
         /**
-         * @param event
+         * @param event 
          */
         on_key_pressed(event: Gdk.EventKey): boolean;
     }
+
 
     export const Activity: ActivityNamespace & {
         new (): Activity; // This allows `obj instanceof Activity`
@@ -968,103 +1001,120 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
+
             // Virtual methods
+            /**
+             * @virtual
+             */
+            vfunc_get_verified_committer(): (Ggit.Signature | null);
+
+            /**
+             * @param id 
+             * @virtual
+             */
+            vfunc_get_activity_by_id(id: string): (Activity | null);
+
+            /**
+             * @param id 
+             * @virtual
+             */
+            vfunc_set_activity_by_id(id: string): (Activity | null);
+
+            /**
+             * @param query 
+             * @virtual
+             */
+            vfunc_user_query(query: UserQuery): void;
+
+            /**
+             * @param query 
+             * @param _callback_ 
+             * @virtual
+             */
+            vfunc_user_query_async(query: UserQuery, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
+            /**
+             * @param _res_ 
+             * @virtual
+             */
+            vfunc_user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
+
+            /**
+             * @param primary_msg 
+             * @param secondary_msg 
+             * @param type 
+             * @virtual
+             */
+            vfunc_show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
+
+            /**
+             * @param repository 
+             * @param hint 
+             * @virtual
+             */
+            vfunc_open_new(repository: Ggit.Repository, hint: (string | null)): Application;
+
+            /**
+             * @param path 
+             * @virtual
+             */
+            vfunc_open_repository(path: Gio.File): void;
 
             /**
              * @virtual
              */
-            vfunc_get_verified_committer(): Ggit.Signature | null;
+            vfunc_get_repository(): (Gitg.Repository | null);
+
             /**
-             * @param id
+             * @param value 
              * @virtual
              */
-            vfunc_get_activity_by_id(id: string): Activity | null;
-            /**
-             * @param id
-             * @virtual
-             */
-            vfunc_set_activity_by_id(id: string): Activity | null;
-            /**
-             * @param query
-             * @virtual
-             */
-            vfunc_user_query(query: UserQuery): void;
-            /**
-             * @param query
-             * @param _callback_
-             * @virtual
-             */
-            vfunc_user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-            /**
-             * @param _res_
-             * @virtual
-             */
-            vfunc_user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
-            /**
-             * @param primary_msg
-             * @param secondary_msg
-             * @param type
-             * @virtual
-             */
-            vfunc_show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
-            /**
-             * @param repository
-             * @param hint
-             * @virtual
-             */
-            vfunc_open_new(repository: Ggit.Repository, hint: string | null): Application;
-            /**
-             * @param path
-             * @virtual
-             */
-            vfunc_open_repository(path: Gio.File): void;
-            /**
-             * @virtual
-             */
-            vfunc_get_repository(): Gitg.Repository | null;
-            /**
-             * @param value
-             * @virtual
-             */
-            vfunc_set_repository(value: Gitg.Repository | null): void;
+            vfunc_set_repository(value: (Gitg.Repository | null)): void;
+
             /**
              * @virtual
              */
             vfunc_get_message_bus(): MessageBus;
+
             /**
              * @virtual
              */
-            vfunc_get_current_activity(): Activity | null;
+            vfunc_get_current_activity(): (Activity | null);
+
             /**
              * @virtual
              */
             vfunc_get_environment(): Gee.Map;
+
             /**
              * @virtual
              */
             vfunc_get_notifications(): Notifications;
+
             /**
              * @virtual
              */
             vfunc_get_busy(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_busy(value: boolean): void;
+
             /**
              * @virtual
              */
             vfunc_get_remote_lookup(): RemoteLookup;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            repository: Gitg.Repository | null;
+            repository: (Gitg.Repository | null);
             message_bus: MessageBus;
             messageBus: MessageBus;
-            current_activity: Activity | null;
+            current_activity: (Activity | null);
             currentActivity: Activity;
             environment: Gee.Map;
             notifications: Notifications;
@@ -1082,112 +1132,137 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Application extends GObject.Object, Application.Interface {
-        // Properties
 
-        get repository(): Gitg.Repository | null;
-        set repository(val: Gitg.Repository | null);
+        // Properties
+        get repository(): (Gitg.Repository | null);
+        set repository(val: (Gitg.Repository | null));
+
         /**
          * @read-only
          */
         get message_bus(): MessageBus;
+
         /**
          * @read-only
          */
         get messageBus(): MessageBus;
+
         /**
          * @read-only
          */
-        get current_activity(): Activity | null;
+        get current_activity(): (Activity | null);
+
         /**
          * @read-only
          */
         get currentActivity(): Activity;
+
         /**
          * @read-only
          */
         get environment(): Gee.Map;
+
         /**
          * @read-only
          */
         get notifications(): Notifications;
+
         get busy(): boolean;
         set busy(val: boolean);
+
         /**
          * @read-only
          */
         get remote_lookup(): RemoteLookup;
+
         /**
          * @read-only
          */
         get remoteLookup(): RemoteLookup;
 
         // Methods
+        get_verified_committer(): (Ggit.Signature | null);
 
-        get_verified_committer(): Ggit.Signature | null;
         /**
-         * @param id
+         * @param id 
          */
-        get_activity_by_id(id: string): Activity | null;
+        get_activity_by_id(id: string): (Activity | null);
+
         /**
-         * @param id
+         * @param id 
          */
-        set_activity_by_id(id: string): Activity | null;
+        set_activity_by_id(id: string): (Activity | null);
+
         /**
-         * @param query
+         * @param query 
          */
         user_query(query: UserQuery): void;
+
         /**
-         * @param query
+         * @param query 
          */
         user_query_async(query: UserQuery): globalThis.Promise<Gtk.ResponseType>;
+
         /**
-         * @param query
-         * @param _callback_
+         * @param query 
+         * @param _callback_ 
          */
-        user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        user_query_async(query: UserQuery, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param query
-         * @param _callback_
+         * @param query 
+         * @param _callback_ 
          */
-        user_query_async(
-            query: UserQuery,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gtk.ResponseType> | void;
+        user_query_async(query: UserQuery, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gtk.ResponseType> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType;
+
         /**
-         * @param primary_msg
-         * @param secondary_msg
-         * @param type
+         * @param primary_msg 
+         * @param secondary_msg 
+         * @param type 
          */
         show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void;
+
         /**
-         * @param repository
-         * @param hint
+         * @param repository 
+         * @param hint 
          */
-        open_new(repository: Ggit.Repository, hint: string | null): Application;
+        open_new(repository: Ggit.Repository, hint: (string | null)): Application;
+
         /**
-         * @param path
+         * @param path 
          */
         open_repository(path: Gio.File): void;
-        get_repository(): Gitg.Repository | null;
+
+        get_repository(): (Gitg.Repository | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_repository(value: Gitg.Repository | null): void;
+        set_repository(value: (Gitg.Repository | null)): void;
+
         get_message_bus(): MessageBus;
-        get_current_activity(): Activity | null;
+
+        get_current_activity(): (Activity | null);
+
         get_environment(): Gee.Map;
+
         get_notifications(): Notifications;
+
         get_busy(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_busy(value: boolean): void;
+
         get_remote_lookup(): RemoteLookup;
     }
+
 
     export const Application: ApplicationNamespace & {
         new (): Application; // This allows `obj instanceof Application`
@@ -1199,26 +1274,30 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_option_group(): GLib.OptionGroup;
+
             /**
              * @virtual
              */
             vfunc_parse_finished(): void;
+
             /**
-             * @param application
+             * @param application 
              * @virtual
              */
             vfunc_apply(application: Application): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CommandLineNamespace {
@@ -1229,15 +1308,18 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface CommandLine extends GObject.Object, CommandLine.Interface {
-        // Methods
 
+        // Methods
         get_option_group(): GLib.OptionGroup;
+
         parse_finished(): void;
+
         /**
-         * @param application
+         * @param application 
          */
         apply(application: Application): void;
     }
+
 
     export const CommandLine: CommandLineNamespace & {
         new (): CommandLine; // This allows `obj instanceof CommandLine`
@@ -1249,30 +1331,33 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Action.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_action_interface(): RefActionInterface;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_action_interface(value: RefActionInterface): void;
+
             /**
              * @virtual
              */
             vfunc_get_commit(): Gitg.Commit;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_commit(value: Gitg.Commit): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Action.ConstructorProps {
             action_interface: RefActionInterface;
             actionInterface: RefActionInterface;
@@ -1288,28 +1373,33 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface CommitAction extends Action, CommitAction.Interface {
-        // Properties
 
+        // Properties
         get action_interface(): RefActionInterface;
         set action_interface(val: RefActionInterface);
+
         get actionInterface(): RefActionInterface;
         set actionInterface(val: RefActionInterface);
+
         get commit(): Gitg.Commit;
         set commit(val: Gitg.Commit);
 
         // Methods
-
         get_action_interface(): RefActionInterface;
+
         /**
-         * @param value
+         * @param value 
          */
         set_action_interface(value: RefActionInterface): void;
+
         get_commit(): Gitg.Commit;
+
         /**
-         * @param value
+         * @param value 
          */
         set_commit(value: Gitg.Commit): void;
     }
+
 
     export const CommitAction: CommitActionNamespace & {
         new (): CommitAction; // This allows `obj instanceof CommitAction`
@@ -1321,23 +1411,24 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
+
             // Virtual methods
+            /**
+             * @virtual
+             */
+            vfunc_get_history(): (History | null);
 
             /**
+             * @param value 
              * @virtual
              */
-            vfunc_get_history(): History | null;
-            /**
-             * @param value
-             * @virtual
-             */
-            vfunc_set_history(value: History | null): void;
+            vfunc_set_history(value: (History | null)): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            history: History | null;
+            history: (History | null);
         }
     }
 
@@ -1349,19 +1440,20 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface HistoryPanel extends GObject.Object, HistoryPanel.Interface {
-        // Properties
 
-        get history(): History | null;
-        set history(val: History | null);
+        // Properties
+        get history(): (History | null);
+        set history(val: (History | null));
 
         // Methods
+        get_history(): (History | null);
 
-        get_history(): History | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_history(value: History | null): void;
+        set_history(value: (History | null)): void;
     }
+
 
     export const HistoryPanel: HistoryPanelNamespace & {
         new (): HistoryPanel; // This allows `obj instanceof HistoryPanel`
@@ -1373,23 +1465,26 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param func
+             * @param func 
              * @virtual
              */
             vfunc_foreach_selected(func: ForeachCommitSelectionFunc): void;
+
             /**
-             * @param commit
+             * @param commit 
              * @virtual
              */
             vfunc_select(commit: Gitg.Commit): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HistoryNamespace {
@@ -1400,17 +1495,19 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface History extends GObject.Object, History.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param func
+         * @param func 
          */
         foreach_selected(func: ForeachCommitSelectionFunc): void;
+
         /**
-         * @param commit
+         * @param commit 
          */
         select(commit: Gitg.Commit): void;
     }
+
 
     export const History: HistoryNamespace & {
         new (): History; // This allows `obj instanceof History`
@@ -1422,18 +1519,18 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
-            vfunc_get_widget(): Gtk.Widget | null;
+            vfunc_get_widget(): (Gtk.Widget | null);
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            widget: Gtk.Widget | null;
+            widget: (Gtk.Widget | null);
         }
     }
 
@@ -1445,17 +1542,17 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Notification extends GObject.Object, Notification.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
-        get widget(): Gtk.Widget | null;
+        get widget(): (Gtk.Widget | null);
 
         // Methods
-
-        get_widget(): Gtk.Widget | null;
+        get_widget(): (Gtk.Widget | null);
     }
+
 
     export const Notification: NotificationNamespace & {
         new (): Notification; // This allows `obj instanceof Notification`
@@ -1467,24 +1564,27 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param notification
+             * @param notification 
              * @virtual
              */
             vfunc_add(notification: Notification): void;
+
             /**
-             * @param notification
-             * @param delay
+             * @param notification 
+             * @param delay 
              * @virtual
              */
             vfunc_remove(notification: Notification, delay: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface NotificationsNamespace {
@@ -1495,18 +1595,20 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Notifications extends GObject.Object, Notifications.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param notification
+         * @param notification 
          */
         add(notification: Notification): void;
+
         /**
-         * @param notification
-         * @param delay
+         * @param notification 
+         * @param delay 
          */
         remove(notification: Notification, delay: number): void;
     }
+
 
     export const Notifications: NotificationsNamespace & {
         new (): Notifications; // This allows `obj instanceof Notifications`
@@ -1518,24 +1620,26 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_id(): string;
+
             /**
              * @virtual
              */
             vfunc_get_display_name(): string;
+
             /**
              * @virtual
              */
             vfunc_get_widget(): Gtk.Widget;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
             display_name: string;
@@ -1552,31 +1656,36 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Preferences extends GObject.Object, Preferences.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get id(): string;
+
         /**
          * @read-only
          */
         get display_name(): string;
+
         /**
          * @read-only
          */
         get displayName(): string;
+
         /**
          * @read-only
          */
         get widget(): Gtk.Widget;
 
         // Methods
-
         get_id(): string;
+
         get_display_name(): string;
+
         get_widget(): Gtk.Widget;
     }
+
 
     export const Preferences: PreferencesNamespace & {
         new (): Preferences; // This allows `obj instanceof Preferences`
@@ -1588,57 +1697,65 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param reference
+             * @param reference 
              * @virtual
              */
             vfunc_add_ref(reference: Gitg.Ref): void;
+
             /**
-             * @param reference
+             * @param reference 
              * @virtual
              */
             vfunc_remove_ref(reference: Gitg.Ref): void;
+
             /**
-             * @param old_ref
-             * @param new_ref
+             * @param old_ref 
+             * @param new_ref 
              * @virtual
              */
             vfunc_replace_ref(old_ref: Gitg.Ref, new_ref: Gitg.Ref): void;
+
             /**
-             * @param reference
-             * @param busy
+             * @param reference 
+             * @param busy 
              * @virtual
              */
             vfunc_set_busy(reference: Gitg.Ref, busy: boolean): void;
+
             /**
-             * @param reference
-             * @param callback
+             * @param reference 
+             * @param callback 
              * @virtual
              */
             vfunc_edit_ref_name(reference: Gitg.Ref, callback: RefNameEditingDone): void;
+
             /**
              * @virtual
              */
             vfunc_refresh(): void;
+
             /**
              * @virtual
              */
             vfunc_get_application(): Application;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_application(value: Application): void;
+
             /**
              * @virtual
              */
             vfunc_get_references(): Gee.List;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application: Application;
             references: Gee.List;
@@ -1653,48 +1770,57 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface RefActionInterface extends GObject.Object, RefActionInterface.Interface {
-        // Properties
 
+        // Properties
         get application(): Application;
         set application(val: Application);
+
         /**
          * @read-only
          */
         get references(): Gee.List;
 
         // Methods
-
         /**
-         * @param reference
+         * @param reference 
          */
         add_ref(reference: Gitg.Ref): void;
+
         /**
-         * @param reference
+         * @param reference 
          */
         remove_ref(reference: Gitg.Ref): void;
+
         /**
-         * @param old_ref
-         * @param new_ref
+         * @param old_ref 
+         * @param new_ref 
          */
         replace_ref(old_ref: Gitg.Ref, new_ref: Gitg.Ref): void;
+
         /**
-         * @param reference
-         * @param busy
+         * @param reference 
+         * @param busy 
          */
         set_busy(reference: Gitg.Ref, busy: boolean): void;
+
         /**
-         * @param reference
-         * @param callback
+         * @param reference 
+         * @param callback 
          */
         edit_ref_name(reference: Gitg.Ref, callback: RefNameEditingDone): void;
+
         refresh(): void;
+
         get_application(): Application;
+
         /**
-         * @param value
+         * @param value 
          */
         set_application(value: Application): void;
+
         get_references(): Gee.List;
     }
+
 
     export const RefActionInterface: RefActionInterfaceNamespace & {
         new (): RefActionInterface; // This allows `obj instanceof RefActionInterface`
@@ -1706,30 +1832,33 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Action.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_action_interface(): RefActionInterface;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_action_interface(value: RefActionInterface): void;
+
             /**
              * @virtual
              */
             vfunc_get_reference(): Gitg.Ref;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_reference(value: Gitg.Ref): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Action.ConstructorProps {
             action_interface: RefActionInterface;
             actionInterface: RefActionInterface;
@@ -1745,28 +1874,33 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface RefAction extends Action, RefAction.Interface {
-        // Properties
 
+        // Properties
         get action_interface(): RefActionInterface;
         set action_interface(val: RefActionInterface);
+
         get actionInterface(): RefActionInterface;
         set actionInterface(val: RefActionInterface);
+
         get reference(): Gitg.Ref;
         set reference(val: Gitg.Ref);
 
         // Methods
-
         get_action_interface(): RefActionInterface;
+
         /**
-         * @param value
+         * @param value 
          */
         set_action_interface(value: RefActionInterface): void;
+
         get_reference(): Gitg.Ref;
+
         /**
-         * @param value
+         * @param value 
          */
         set_reference(value: Gitg.Ref): void;
     }
+
 
     export const RefAction: RefActionNamespace & {
         new (): RefAction; // This allows `obj instanceof RefAction`
@@ -1778,18 +1912,20 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
-            vfunc_lookup(name: string | null): Gitg.Remote | null;
+            vfunc_lookup(name: (string | null)): (Gitg.Remote | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RemoteLookupNamespace {
@@ -1800,13 +1936,14 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface RemoteLookup extends GObject.Object, RemoteLookup.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param name
+         * @param name 
          */
-        lookup(name: string | null): Gitg.Remote | null;
+        lookup(name: (string | null)): (Gitg.Remote | null);
     }
+
 
     export const RemoteLookup: RemoteLookupNamespace & {
         new (): RemoteLookup; // This allows `obj instanceof RemoteLookup`
@@ -1818,49 +1955,56 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param key
-             * @param up
+             * @param key 
+             * @param up 
              * @virtual
              */
             vfunc_search_move(key: string, up: boolean): void;
+
             /**
              * @virtual
              */
             vfunc_show_buttons(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_search_text(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_search_text(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_search_visible(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_search_visible(value: boolean): void;
+
             /**
              * @virtual
              */
             vfunc_get_search_available(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
-            vfunc_set_search_entry(value: Gtk.Entry | null): void;
+            vfunc_set_search_entry(value: (Gtk.Entry | null)): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             search_text: string;
             searchText: string;
@@ -1881,57 +2025,71 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Searchable extends GObject.Object, Searchable.Interface {
-        // Properties
 
+        // Properties
         get search_text(): string;
         set search_text(val: string);
+
         get searchText(): string;
         set searchText(val: string);
+
         get search_visible(): boolean;
         set search_visible(val: boolean);
+
         get searchVisible(): boolean;
         set searchVisible(val: boolean);
+
         /**
          * @read-only
          */
         get search_available(): boolean;
+
         /**
          * @read-only
          */
         get searchAvailable(): boolean;
+
         /**
          * @write-only
          */
         set search_entry(val: Gtk.Entry);
+
         /**
          * @write-only
          */
         set searchEntry(val: Gtk.Entry);
 
         // Methods
-
         /**
-         * @param key
-         * @param up
+         * @param key 
+         * @param up 
          */
         search_move(key: string, up: boolean): void;
+
         show_buttons(): boolean;
+
         get_search_text(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_search_text(value: string): void;
+
         get_search_visible(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_search_visible(value: boolean): void;
+
         get_search_available(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
-        set_search_entry(value: Gtk.Entry | null): void;
+        set_search_entry(value: (Gtk.Entry | null)): void;
     }
+
 
     export const Searchable: SearchableNamespace & {
         new (): Searchable; // This allows `obj instanceof Searchable`
@@ -1943,33 +2101,37 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_selectable_mode(): SelectionMode;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_selectable_mode(value: SelectionMode): void;
+
             /**
              * @virtual
              */
             vfunc_get_selectable_available(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_selectable_mode_tooltip(): string;
+
             /**
              * @virtual
              */
-            vfunc_get_action_widget(): Gtk.Widget | null;
+            vfunc_get_action_widget(): (Gtk.Widget | null);
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             selectable_mode: SelectionMode;
             selectableMode: SelectionMode;
@@ -1977,7 +2139,7 @@ export namespace GitgExt {
             selectableAvailable: boolean;
             selectable_mode_tooltip: string;
             selectableModeTooltip: string;
-            action_widget: Gtk.Widget | null;
+            action_widget: (Gtk.Widget | null);
             actionWidget: Gtk.Widget;
         }
     }
@@ -1990,48 +2152,59 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface Selectable extends GObject.Object, Selectable.Interface {
-        // Properties
 
+        // Properties
         get selectable_mode(): SelectionMode;
         set selectable_mode(val: SelectionMode);
+
         get selectableMode(): SelectionMode;
         set selectableMode(val: SelectionMode);
+
         /**
          * @read-only
          */
         get selectable_available(): boolean;
+
         /**
          * @read-only
          */
         get selectableAvailable(): boolean;
+
         /**
          * @read-only
          */
         get selectable_mode_tooltip(): string;
+
         /**
          * @read-only
          */
         get selectableModeTooltip(): string;
+
         /**
          * @read-only
          */
-        get action_widget(): Gtk.Widget | null;
+        get action_widget(): (Gtk.Widget | null);
+
         /**
          * @read-only
          */
         get actionWidget(): Gtk.Widget;
 
         // Methods
-
         get_selectable_mode(): SelectionMode;
+
         /**
-         * @param value
+         * @param value 
          */
         set_selectable_mode(value: SelectionMode): void;
+
         get_selectable_available(): boolean;
+
         get_selectable_mode_tooltip(): string;
-        get_action_widget(): Gtk.Widget | null;
+
+        get_action_widget(): (Gtk.Widget | null);
     }
+
 
     export const Selectable: SelectableNamespace & {
         new (): Selectable; // This allows `obj instanceof Selectable`
@@ -2043,64 +2216,75 @@ export namespace GitgExt {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param other
+             * @param other 
              * @virtual
              */
             vfunc_negotiate_order(other: UIElement): number;
+
             /**
              * @virtual
              */
-            vfunc_get_application(): Application | null;
+            vfunc_get_application(): (Application | null);
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
-            vfunc_set_application(value: Application | null): void;
+            vfunc_set_application(value: (Application | null)): void;
+
             /**
              * @virtual
              */
             vfunc_get_id(): string;
+
             /**
              * @virtual
              */
             vfunc_get_display_name(): string;
+
             /**
              * @virtual
              */
             vfunc_get_description(): string;
+
             /**
              * @virtual
              */
-            vfunc_get_icon(): string | null;
+            vfunc_get_icon(): (string | null);
+
             /**
              * @virtual
              */
-            vfunc_get_widget(): Gtk.Widget | null;
+            vfunc_get_widget(): (Gtk.Widget | null);
+
             /**
              * @virtual
              */
-            vfunc_get_shortcut(): number | null;
+            vfunc_get_shortcut(): (number | null);
+
             /**
              * @virtual
              */
             vfunc_get_available(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_enabled(): boolean;
+
             /**
              * @virtual
              */
             vfunc_activate(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: Application | null;
+            application: (Application | null);
             id: string;
             display_name: string;
             displayName: string;
@@ -2116,47 +2300,61 @@ export namespace GitgExt {
      * @gir-type Interface
      */
     interface UIElement extends GObject.Object, UIElement.Interface {
-        // Properties
 
-        get application(): Application | null;
-        set application(val: Application | null);
+        // Properties
+        get application(): (Application | null);
+        set application(val: (Application | null));
+
         /**
          * @read-only
          */
         get id(): string;
+
         /**
          * @read-only
          */
         get display_name(): string;
+
         /**
          * @read-only
          */
         get displayName(): string;
+
         /**
          * @read-only
          */
         get description(): string;
 
         // Methods
-
         /**
-         * @param other
+         * @param other 
          */
         negotiate_order(other: UIElement): number;
-        get_application(): Application | null;
+
+        get_application(): (Application | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_application(value: Application | null): void;
+        set_application(value: (Application | null)): void;
+
         get_id(): string;
+
         get_display_name(): string;
+
         get_description(): string;
-        get_icon(): string | null;
-        get_widget(): Gtk.Widget | null;
-        get_shortcut(): number | null;
+
+        get_icon(): (string | null);
+
+        get_widget(): (Gtk.Widget | null);
+
+        get_shortcut(): (number | null);
+
         get_available(): boolean;
+
         get_enabled(): boolean;
     }
+
 
     export const UIElement: UIElementNamespace & {
         new (): UIElement; // This allows `obj instanceof UIElement`
@@ -2167,6 +2365,7 @@ export namespace GitgExt {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

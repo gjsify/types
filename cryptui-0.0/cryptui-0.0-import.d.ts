@@ -1,3 +1,4 @@
+
 import type CryptUI00 from '@girs/cryptui-0.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

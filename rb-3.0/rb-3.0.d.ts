@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -32,9 +33,11 @@ import type Gst from '@girs/gst-1.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
 export namespace RB {
+
     /**
      * RB-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -47,6 +50,7 @@ export namespace RB {
         TOOLS,
         LAST,
     }
+
 
     /**
      * @gir-type Enum
@@ -83,6 +87,7 @@ export namespace RB {
         TOOLS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -105,6 +110,7 @@ export namespace RB {
         PAGE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -112,22 +118,25 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static FORMAT_UNSUPPORTED: number;
+
         static INTERNAL_ERROR: number;
+
         static FILE_ACCESS_ERROR: number;
+
         static OUT_OF_SPACE: number;
+
         static DESTINATION_READ_ONLY: number;
+
         static DESTINATION_EXISTS: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -218,6 +227,7 @@ export namespace RB {
         COMPOSER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -233,6 +243,7 @@ export namespace RB {
         PLAYING,
         PAUSED,
     }
+
 
     /**
      * @gir-type Enum
@@ -252,6 +263,7 @@ export namespace RB {
         USER_EXPLICIT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -262,6 +274,7 @@ export namespace RB {
         VIDEO,
         OTHER,
     }
+
 
     /**
      * @gir-type Enum
@@ -275,6 +288,7 @@ export namespace RB {
         INTERNAL,
         EMPTY_FILE,
     }
+
 
     /**
      * Metadata fields that can be read from and written to files.
@@ -435,6 +449,7 @@ export namespace RB {
         LAST,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -442,23 +457,27 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static IO_ERROR: number;
+
         static MISSING_PLUGINS: number;
+
         static IDENTIFY_FAILED: number;
+
         static UNSUPPORTED_FILETYPE: number;
+
         static GENERAL_ERROR: number;
+
         static INTERNAL_ERROR: number;
+
         static EMPTY_FILE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -510,6 +529,7 @@ export namespace RB {
         COMPOSER_SORTNAME,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -517,32 +537,33 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Audio playback not available
          */
         static NO_AUDIO: number;
+
         /**
          * Nonspecific error
          */
         static GENERAL_ERROR: number;
+
         /**
          * Internal error
          */
         static INTERNAL_ERROR: number;
+
         /**
          * The resource could not be found
          */
         static NOT_FOUND: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -569,6 +590,7 @@ export namespace RB {
         CROSSFADE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -579,6 +601,7 @@ export namespace RB {
         XSPF,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -587,6 +610,7 @@ export namespace RB {
         PLAYLIST_EXISTS,
         PLAYLIST_NOT_FOUND,
     }
+
 
     /**
      * @gir-type Enum
@@ -609,6 +633,7 @@ export namespace RB {
         UPDATED,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -616,16 +641,18 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static FILE_INFO: number;
+
         static MIME_TYPE: number;
+
         static XML_PARSE: number;
+
         static NO_ITEMS: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -635,6 +662,7 @@ export namespace RB {
         SUCCESS,
         ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -665,6 +693,7 @@ export namespace RB {
          */
         NOT_FOUND,
     }
+
 
     /**
      * @gir-type Enum
@@ -697,12 +726,14 @@ export namespace RB {
         VIRTUAL,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum RhythmDBError {
         RHYTHMDB_ERROR_ACCESS_FAILED,
     }
+
 
     /**
      * @gir-type Enum
@@ -793,6 +824,7 @@ export namespace RB {
         COMPOSER_SORTNAME_FOLDED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -808,6 +840,7 @@ export namespace RB {
         VALUE_PRIORITY,
         TRACK_COUNT,
     }
+
 
     /**
      * @gir-type Enum
@@ -825,6 +858,7 @@ export namespace RB {
         LIMIT_SIZE,
         LIMIT_DURATION,
     }
+
 
     /**
      * @gir-type Enum
@@ -856,6 +890,7 @@ export namespace RB {
         YEAR_LESS_THAN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -872,6 +907,7 @@ export namespace RB {
         ALWAYS_PLAY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -883,6 +919,7 @@ export namespace RB {
         NO_SOURCE_FOR_URI,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -890,24 +927,26 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static NO_SUCH_URI: number;
+
         static NO_SUCH_PROPERTY: number;
+
         static IMMUTABLE_PROPERTY: number;
+
         static INVALID_PROPERTY_TYPE: number;
+
         static NO_SOURCE_FOR_URI: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Returns the {@link GLib.Quark} used for {@link RB.Shell} errors
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -916,21 +955,23 @@ export namespace RB {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static PLAYLIST_PARSE_FAILED: number;
+
         static END_OF_PLAYLIST: number;
+
         static NOT_PLAYING: number;
+
         static NOT_SEEKABLE: number;
+
         static POSITION_NOT_AVAILABLE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -954,6 +995,7 @@ export namespace RB {
         PLAYBACK,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -970,6 +1012,7 @@ export namespace RB {
         MAIN_TOP,
         MAIN_BOTTOM,
     }
+
 
     /**
      * @gir-type Enum
@@ -988,6 +1031,7 @@ export namespace RB {
         NEXT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1005,6 +1049,7 @@ export namespace RB {
         LOADED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1021,51 +1066,88 @@ export namespace RB {
         CANCELLED,
     }
 
+
     const ENABLE_PROFILING: number;
+
     const ENCODER_DEST_TEMPFILE: string;
+
     const ENCODING_STYLE_CBR: string;
+
     const ENCODING_STYLE_VBR: string;
+
     const FFWD_OFFSET: number;
+
     const GST_MEDIA_TYPE_AAC: string;
+
     const GST_MEDIA_TYPE_FLAC: string;
+
     const GST_MEDIA_TYPE_MP3: string;
+
     const GST_MEDIA_TYPE_OGG_VORBIS: string;
+
     const PLAYER_SECOND: number;
+
     const PLAYLIST_AUTOMATIC: string;
+
     const PLAYLIST_BROWSER_POSITION: string;
+
     const PLAYLIST_LIMIT: string;
+
     const PLAYLIST_LIMIT_COUNT: string;
+
     const PLAYLIST_LIMIT_SIZE: string;
+
     const PLAYLIST_LIMIT_TIME: string;
+
     const PLAYLIST_LOCATION: string;
+
     const PLAYLIST_NAME: string;
+
     const PLAYLIST_PLAYLIST: string;
+
     const PLAYLIST_QUEUE: string;
+
     const PLAYLIST_SEARCH_TYPE: string;
+
     const PLAYLIST_SHOW_BROWSER: string;
+
     const PLAYLIST_SORT_DIRECTION: string;
+
     const PLAYLIST_SORT_KEY: string;
+
     const PLAYLIST_STATIC: string;
+
     const PLAYLIST_TYPE: string;
+
     const PLAYLIST_XML_VERSION: string;
+
     const PROFILE_INDENTATION: number;
+
     const RHYTHMDB_PROP_COVER_ART: string;
+
     const RHYTHMDB_PROP_COVER_ART_URI: string;
+
     const RHYTHMDB_PROP_STREAM_SONG_ALBUM: string;
+
     const RHYTHMDB_PROP_STREAM_SONG_ARTIST: string;
+
     const RHYTHMDB_PROP_STREAM_SONG_TITLE: string;
+
     const RHYTHMDB_QUERY_MODEL_SUGGESTED_UPDATE_CHUNK: number;
+
     const RWD_OFFSET: number;
+
     /**
      * Makes a label built from a GtkBuilder file bold.
      * @param builder a {@link Gtk.Builder} instance
      * @param name name of the label to boldify
      */
     function builder_boldify_label(builder: Gtk.Builder, name: string): void;
+
     /**
      * Locates and reads a GtkBuilder file, automatically connecting
      * signal handlers where possible.
-     *
+     * 
      * The caller can specify an absolute path to the file, a resource path
      * starting with /org/gnome/Rhythmbox/ or just a filename.
      * The file will be loaded from GResources.
@@ -1073,7 +1155,8 @@ export namespace RB {
      * @param user_data user data to pass to autoconnected signal handlers
      * @returns {@link Gtk.Builder} object built from the file
      */
-    function builder_load(file: string, user_data: any | null): Gtk.Builder;
+    function builder_load(file: string, user_data: (any | null)): Gtk.Builder;
+
     /**
      * Like `rb_builder_load`, except it finds files associated with
      * plugins as well as those in the core data directories.
@@ -1082,7 +1165,8 @@ export namespace RB {
      * @param user_data user data to pass to autoconnected signal handlers
      * @returns {@link Gtk.Builder} object built from the file
      */
-    function builder_load_plugin_file(plugin: GObject.Object, file: string, user_data: any | null): Gtk.Builder;
+    function builder_load_plugin_file(plugin: GObject.Object, file: string, user_data: (any | null)): Gtk.Builder;
+
     /**
      * Converts `uri` to canonical URI form, ensuring it doesn't contain
      * any redundant directory fragments or unnecessarily escaped characters.
@@ -1091,6 +1175,7 @@ export namespace RB {
      * @returns canonical URI, must be freed by caller
      */
     function canonicalise_uri(uri: string): string;
+
     /**
      * Checks that the filesystem holding `file` has at least `bytes_needed`
      * bytes available.
@@ -1098,7 +1183,8 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space(dir: Gio.File, bytes_needed: bigint | number): boolean;
+    function check_dir_has_space(dir: Gio.File, bytes_needed: (bigint | number)): boolean;
+
     /**
      * Checks that the filesystem holding `uri` has at least `bytes_needed`
      * bytes available.
@@ -1106,7 +1192,8 @@ export namespace RB {
      * @param bytes_needed number of bytes to check for
      * @returns `true` if enough space is available.
      */
-    function check_dir_has_space_uri(uri: string, bytes_needed: bigint | number): boolean;
+    function check_dir_has_space_uri(uri: string, bytes_needed: (bigint | number)): boolean;
+
     /**
      * A row separator function to use for GtkComboBox widgets.
      * It expects the model to contain a string in its first column,
@@ -1117,7 +1204,8 @@ export namespace RB {
      * @param data nothing
      * @returns `true` if the row pointed to by `iter` is a separator
      */
-    function combo_box_hyphen_separator_func(model: Gtk.TreeModel, iter: Gtk.TreeIter, data: any | null): boolean;
+    function combo_box_hyphen_separator_func(model: Gtk.TreeModel, iter: Gtk.TreeIter, data: (any | null)): boolean;
+
     /**
      * Compares two {@link GLib.TimeVal} structures for sorting.
      * @param a left hand side
@@ -1125,6 +1213,7 @@ export namespace RB {
      * @returns -1 if `a` < `b`, 0 if `a` == `b`, 1 if `a` > `b`
      */
     function compare_gtimeval(a: GLib.TimeVal, b: GLib.TimeVal): number;
+
     /**
      * Constructs arguments to pass to another process using
      * this debug output code that will produce the same debug output
@@ -1132,22 +1221,25 @@ export namespace RB {
      * @returns debug output arguments, must be freed with `g_strfreev`()
      */
     function debug_get_args(): string[];
+
     /**
      * Sets up debug output, with either all debug enabled
      * or none.
      * @param debug if TRUE, enable all debug output
      */
     function debug_init(debug: boolean): void;
+
     /**
      * Sets up debug output, enabling debug output from file and function
      * names that contain the specified match string.
-     *
+     * 
      * Also sets up a GLib log handler that will trigger a debugger
      * break for critical or warning level output if any debug output
      * at all is enabled.
      * @param match string to match functions and filenames against
      */
     function debug_init_match(match: string): void;
+
     /**
      * Checks if `file` or `func` matches the current debug output settings.
      * @param func function to check
@@ -1155,6 +1247,7 @@ export namespace RB {
      * @returns `true` if matched
      */
     function debug_matches(func: string, file: string): boolean;
+
     /**
      * If the debug output settings match the function or file names,
      * the debug message will be formatted and written to standard error.
@@ -1165,12 +1258,14 @@ export namespace RB {
      * @param message the debug message
      */
     function debug_real(func: string, file: string, line: number, newline: boolean, message: string): void;
+
     /**
      * Raises a SIGINT signal to get the attention of the debugger.
      * When not running under the debugger, we don't want to stop,
      * so we ignore the signal for just the moment that we raise it.
      */
     function debug_stop_in_debugger(): void;
+
     /**
      * Returns `true` if `uri` matches `source`.  This should be
      * used to implement the uri_is_source {@link RB.Source} method.
@@ -1179,6 +1274,7 @@ export namespace RB {
      * @returns `true` if `uri` matches `source`
      */
     function device_source_uri_is_source(source: Source, uri: string): boolean;
+
     /**
      * Checks whether `uri` identifies a path underneath the
      * device's mount point.  Should be used to implement
@@ -1188,12 +1284,15 @@ export namespace RB {
      * @returns URI match strength
      */
     function device_source_want_uri(source: Source, uri: string): number;
+
     function encoder_error_quark(): GLib.Quark;
+
     /**
      * Creates a new {@link RB.Encoder} instance.
      * @returns the new {@link RB.Encoder}
      */
     function encoder_new(): Encoder;
+
     /**
      * Creates a new metadata lookup key with a single field.
      * Use `rb_ext_db_key_add_field` to add more.
@@ -1202,6 +1301,7 @@ export namespace RB {
      * @returns the new key
      */
     function ext_db_key_create_lookup(field: string, value: string): ExtDBKey;
+
     /**
      * Creates a new metadata storage key with a single field.
      * Use `rb_ext_db_key_add_field` to add more.
@@ -1210,6 +1310,7 @@ export namespace RB {
      * @returns the new key
      */
     function ext_db_key_create_storage(field: string, value: string): ExtDBKey;
+
     /**
      * Searches for an installed file, returning the full path name
      * if found, NULL otherwise.
@@ -1217,13 +1318,14 @@ export namespace RB {
      * @returns Full file name, if found.  Must not be freed.
      */
     function file(filename: string): string;
+
     /**
      * Creates and shows a regular gtk+ file chooser dialog with
      * a given title.  The user's music directory (typically ~/Music) is
      * added as a shortcut.
-     *
+     * 
      * For consistency, this should be used anywhere a file chooser is required.
-     *
+     * 
      * After creating the dialog, the caller should connect a handler to its
      * 'response' signal to process the user's selected files or folders.
      * @param title title for the file chooser
@@ -1232,12 +1334,8 @@ export namespace RB {
      * @param local_only if TRUE, don't show network locations
      * @returns the file chooser {@link Gtk.Widget}
      */
-    function file_chooser_new(
-        title: string,
-        parent: Gtk.Window,
-        action: Gtk.FileChooserAction,
-        local_only: boolean,
-    ): Gtk.Widget;
+    function file_chooser_new(title: string, parent: Gtk.Window, action: Gtk.FileChooserAction, local_only: boolean): Gtk.Widget;
+
     /**
      * Walks up the filesystem hierarchy to find a {@link Gio.File} representing
      * the nearest extant ancestor of the specified file, which may be
@@ -1246,21 +1344,25 @@ export namespace RB {
      * @returns {@link Gio.File} for the nearest extant ancestor
      */
     function file_find_extant_parent(file: Gio.File): Gio.File;
+
     /**
      * Sets up file search paths for `rb_file`.  Must be called on startup.
      */
     function file_helpers_init(): void;
+
     /**
      * Frees various data allocated by file helper functions.
      * Should be called on shutdown.
      */
     function file_helpers_shutdown(): void;
+
     /**
      * Attempts to resolve symlinks leading to `file` and return a canonical location.
      * @param file the file to process
      * @returns a {@link Gio.File} representing the canonical location, or NULL on error
      */
     function file_resolve_symlink(file: Gio.File): Gio.File;
+
     /**
      * Locates a file under the plugin's data directory.
      * @param plugin the plugin object
@@ -1268,6 +1370,7 @@ export namespace RB {
      * @returns allocated string containing the location of the file
      */
     function find_plugin_data_file(plugin: GObject.Object, name: string): string;
+
     /**
      * Constructs a resource path for a plugin data file.
      * @param plugin the plugin object
@@ -1275,6 +1378,7 @@ export namespace RB {
      * @returns allocated string containing the resource path
      */
     function find_plugin_resource(plugin: GObject.Object, name: string): string;
+
     /**
      * Determines the full path to use for user-specific cached files
      * within the user cache directory.
@@ -1282,6 +1386,7 @@ export namespace RB {
      * @returns allocated string containing the location of the file to use, even if  an error occurred.
      */
     function find_user_cache_file(name: string): string;
+
     /**
      * Determines the full path to use for user-specific files, such as rhythmdb.xml,
      * within the user data directory (see `rb_user_data_dir`).
@@ -1289,6 +1394,7 @@ export namespace RB {
      * @returns allocated string containing the location of the file to use, even if  an error occurred.
      */
     function find_user_data_file(name: string): string;
+
     /**
      * Inserts a filter into the filter bin, using pad blocking (if requested) to
      * avoid breaking the data flow.  Pad blocking should be used when the pipeline
@@ -1299,12 +1405,8 @@ export namespace RB {
      * @param element the filter to add
      * @param use_pad_block if `true`, block the src pad connected to the filter bin
      */
-    function gst_add_filter(
-        player: Player,
-        filterbin: Gst.Element,
-        element: Gst.Element,
-        use_pad_block: boolean,
-    ): boolean;
+    function gst_add_filter(player: Player, filterbin: Gst.Element, element: Gst.Element, use_pad_block: boolean): boolean;
+
     /**
      * Attaches a branch to the tee, using pad blocking (if requested) to
      * avoid breaking the data flow.  Pad blocking should be used when the pipeline
@@ -1316,40 +1418,48 @@ export namespace RB {
      * @param use_pad_block if `true`, block the src pad connected to the filter bin
      */
     function gst_add_tee(player: Player, tee: Gst.Element, element: Gst.Element, use_pad_block: boolean): boolean;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function gst_caps_to_media_type(caps: Gst.Caps): string;
+
     /**
      * Creates an initial bin to use for dynamically plugging filter elements into the
      * pipeline.
      * @returns filter bin
      */
     function gst_create_filter_bin(): Gst.Element;
+
     /**
-     * @param element
-     * @param style
+     * @param element 
+     * @param style 
      */
     function gst_encoder_set_encoding_style(element: Gst.Element, style: string): boolean;
+
     /**
      * @param profile a {@link GstPbutils.EncodingProfile}
      * @returns an encoder element instance
      */
     function gst_encoding_profile_get_encoder(profile: GstPbutils.EncodingProfile): Gst.Element;
+
     /**
      * @param profile a {@link GstPbutils.EncodingProfile}
      * @returns output caps for the encoder
      */
     function gst_encoding_profile_get_encoder_caps(profile: GstPbutils.EncodingProfile): Gst.Caps;
+
     /**
-     * @param profile
+     * @param profile 
      */
     function gst_encoding_profile_get_media_type(profile: GstPbutils.EncodingProfile): string;
+
     /**
      * @param profile profile to return presets for
      * @returns preset names
      */
     function gst_encoding_profile_get_presets(profile: GstPbutils.EncodingProfile): number[];
+
     /**
      * Returns a list of settings for the profile `profile` that can usefully
      * be exposed to a user.  This usually means just bitrate/quality settings.
@@ -1360,56 +1470,68 @@ export namespace RB {
      * @returns list of settings
      */
     function gst_encoding_profile_get_settings(profile: GstPbutils.EncodingProfile, style: string): string[];
+
     /**
      * Applies the preset `preset` to the audio encoding profile within `profile`.
      * @param profile a {@link GstPbutils.EncodingProfile}
      * @param preset preset to apply
      */
     function gst_encoding_profile_set_preset(profile: GstPbutils.EncodingProfile, preset: string): void;
+
     /**
      * Maps a GStreamer error to an {@link RB.PlayerError} error code.
      * @param error error received from GStreamer
      * @returns the {@link RB.PlayerError} value to use
      */
     function gst_error_get_error_code(error: GLib.Error): number;
+
     /**
      * @returns default encoding target
      */
     function gst_get_default_encoding_target(): GstPbutils.EncodingTarget;
+
     /**
      * @param media_type media type to get a profile for
      * @returns encoding profile
      */
     function gst_get_encoding_profile(media_type: string): GstPbutils.EncodingProfile;
+
     /**
-     * @param structure
+     * @param structure 
      */
     function gst_get_missing_plugin_type(structure: Gst.Structure): GstMediaType;
+
     /**
-     * @param media_type
+     * @param media_type 
      */
     function gst_media_type_is_lossless(media_type: string): boolean;
+
     /**
-     * @param profile
-     * @param media_type
+     * @param profile 
+     * @param media_type 
      */
     function gst_media_type_matches_profile(profile: GstPbutils.EncodingProfile, media_type: string): boolean;
+
     /**
-     * @param media_type
+     * @param media_type 
      */
     function gst_media_type_to_caps(media_type: string): Gst.Caps;
+
     /**
-     * @param media_type
+     * @param media_type 
      */
     function gst_media_type_to_extension(media_type: string): string;
+
     /**
-     * @param media_type
+     * @param media_type 
      */
     function gst_media_type_to_mime_type(media_type: string): string;
+
     /**
-     * @param mime_type
+     * @param mime_type 
      */
     function gst_mime_type_to_media_type(mime_type: string): string;
+
     /**
      * Converts embedded image data extracted from a tag list into
      * a {@link GdkPixbuf.Pixbuf}.  The returned {@link GdkPixbuf.Pixbuf} is owned by the caller.
@@ -1418,6 +1540,7 @@ export namespace RB {
      * @returns a {@link GdkPixbuf.Pixbuf}, or NULL.
      */
     function gst_process_embedded_image(taglist: Gst.TagList, tag: string): GdkPixbuf.Pixbuf;
+
     /**
      * Processes a tag string, determining the metadata field identifier
      * corresponding to the tag name, and converting the tag data into the
@@ -1428,12 +1551,8 @@ export namespace RB {
      * @param value returns the tag value
      * @returns `true` if the tag was successfully converted.
      */
-    function gst_process_tag_string(
-        taglist: Gst.TagList,
-        tag: string,
-        field: MetaDataField,
-        value: GObject.Value | any,
-    ): boolean;
+    function gst_process_tag_string(taglist: Gst.TagList, tag: string, field: MetaDataField, value: (GObject.Value | any)): boolean;
+
     /**
      * Removes a filter from the filter bin, using pad blocking (if requested) to
      * avoid breaking the data flow.  Pad blocking should be used when the pipeline
@@ -1444,12 +1563,8 @@ export namespace RB {
      * @param element the filter to remove
      * @param use_pad_block if `true`, block the src pad connected to the filter bin
      */
-    function gst_remove_filter(
-        player: Player,
-        filterbin: Gst.Element,
-        element: Gst.Element,
-        use_pad_block: boolean,
-    ): boolean;
+    function gst_remove_filter(player: Player, filterbin: Gst.Element, element: Gst.Element, use_pad_block: boolean): boolean;
+
     /**
      * Removes a branch from the tee, using pad blocking (if requested) to
      * avoid breaking the data flow.  Pad blocking should be used when the pipeline
@@ -1461,16 +1576,19 @@ export namespace RB {
      * @param use_pad_block if `true`, block the src pad connected to the filter bin
      */
     function gst_remove_tee(player: Player, tee: Gst.Element, element: Gst.Element, use_pad_block: boolean): boolean;
+
     /**
      * Checks if currently executing on the main thread.
      * @returns `true` if on the main thread
      */
     function is_main_thread(): boolean;
+
     /**
      * Returns the locale directory identified at build configuration time.
      * @returns locale dir
      */
     function locale_dir(): string;
+
     /**
      * Constructs a string describing the specified duration.  The string
      * describes hours, minutes, and seconds, and its format is localised.
@@ -1478,6 +1596,7 @@ export namespace RB {
      * @returns duration string
      */
     function make_duration_string(duration: number): string;
+
     /**
      * Constructs a string describing a playback position.  The string describes hours,
      * minutes, and seconds, and its format is localised.  The string can describe either
@@ -1488,12 +1607,14 @@ export namespace RB {
      * @returns elapsed/remaining time string
      */
     function make_elapsed_time_string(elapsed: number, duration: number, show_remaining: boolean): string;
+
     /**
      * Constructs a string describing the specified time.
      * @param seconds time in seconds
      * @returns time string
      */
     function make_time_string(seconds: number): string;
+
     /**
      * Updates a submenu link to point to the specified target menu.
      * @param menu menu to update
@@ -1501,14 +1622,18 @@ export namespace RB {
      * @param target new menu link target
      */
     function menu_update_link(menu: Gio.Menu, link_attr: string, target: Gio.MenuModel): void;
+
     function metadata_error_quark(): GLib.Quark;
+
     /**
      * Returns the default directory for the user's music library.
      * This will usually be the 'Music' directory under the home directory.
      * @returns user's music directory.  must not be freed.
      */
     function music_dir(): string;
+
     function player_error_quark(): GLib.Quark;
+
     /**
      * Finds an element inside `element` that has a property with the specified name.
      * @param element element to search
@@ -1516,6 +1641,7 @@ export namespace RB {
      * @returns element instance, or NULL if not found
      */
     function player_gst_find_element_with_property(element: Gst.Element, property: string): Gst.Element;
+
     /**
      * Creates and tests an instance of the specified audio sink.
      * @param plugin_name audio sink plugin name
@@ -1523,34 +1649,43 @@ export namespace RB {
      * @returns element instance, or NULL
      */
     function player_gst_try_audio_sink(plugin_name: string, name: string): Gst.Element;
+
     /**
      * Creates a new player object.
      * @param want_crossfade if TRUE, try to use a backend that supports 		    crossfading and other track transitions.
      * @returns new player object.
      */
     function player_new(want_crossfade: boolean): Player;
+
     /**
-     * @param data
+     * @param data 
      */
     function podcast_parse_channel_copy(data: PodcastChannel): PodcastChannel;
+
     function podcast_parse_channel_new(): PodcastChannel;
+
     /**
-     * @param data
+     * @param data 
      */
     function podcast_parse_channel_ref(data: PodcastChannel): PodcastChannel;
+
     /**
-     * @param data
+     * @param data 
      */
     function podcast_parse_channel_unref(data: PodcastChannel): void;
+
     function podcast_parse_error_quark(): GLib.Quark;
+
     /**
-     * @param data
+     * @param data 
      */
     function podcast_parse_item_copy(data: PodcastItem): PodcastItem;
+
     /**
-     * @param data
+     * @param data 
      */
     function podcast_parse_item_free(data: PodcastItem): void;
+
     /**
      * Key equality function suitable for use with {@link GLib.HashTable}.
      * Equality checks for {@link RB.RefString} are just pointer comparisons,
@@ -1559,7 +1694,8 @@ export namespace RB {
      * @param bp another `RBRefstring`
      * @returns `true` if the strings are the same
      */
-    function refstring_equal(ap: any | null, bp: any | null): boolean;
+    function refstring_equal(ap: (any | null), bp: (any | null)): boolean;
+
     /**
      * Returns an existing {@link RB.RefString} for `init` if one exists,
      * otherwise returns NULL.  If an existing refstring is found,
@@ -1568,28 +1704,35 @@ export namespace RB {
      * @returns existing {@link RB.RefString}, or NULL
      */
     function refstring_find(init: string): RefString;
+
     /**
      * Hash function suitable for use with `GHashTable`.
      * @param p an {@link RB.RefString}
      * @returns hash value for the string underlying `p`
      */
-    function refstring_hash(p: any | null): number;
+    function refstring_hash(p: (any | null)): number;
+
     /**
      * Sets up the refstring system.  Called on startup.
      */
     function refstring_system_init(): void;
+
     /**
      * Frees all data associated with the refstring system.
      * Only called on shutdown.
      */
     function refstring_system_shutdown(): void;
+
     function rhythmbox_get_resource(): Gio.Resource;
+
     function rhythmdb_query_get_type(): GObject.GType;
+
     /**
-     * @param a
-     * @param b
+     * @param a 
+     * @param b 
      */
     function safe_strcmp(a: string, b: string): number;
+
     /**
      * Modifies `path` such that it represents a legal path for MS DOS
      * filesystems.  Note that it replaces forward slash characters,
@@ -1598,6 +1741,7 @@ export namespace RB {
      * @param path a path segment to sanitize (modified in place)
      */
     function sanitize_path_for_msdos_filesystem(path: string): void;
+
     /**
      * Removes characters from `uri` that are not allowed by the filesystem
      * on which it would be stored, or a specific type of filesystem if specified.
@@ -1606,7 +1750,8 @@ export namespace RB {
      * @param filesystem a specific filesystem to sanitize for
      * @returns sanitized copy of `uri`, must be freed by caller.
      */
-    function sanitize_uri_for_filesystem(uri: string, filesystem: string | null): string;
+    function sanitize_uri_for_filesystem(uri: string, filesystem: (string | null)): string;
+
     /**
      * Creates a new {@link GdkPixbuf.Pixbuf} from the original one, for a target of
      * size, respecting the aspect ratio of the image.
@@ -1615,6 +1760,7 @@ export namespace RB {
      * @returns scaled {@link GdkPixbuf.Pixbuf}
      */
     function scale_pixbuf_to_size(pixbuf: GdkPixbuf.Pixbuf, size: Gtk.IconSize): GdkPixbuf.Pixbuf;
+
     /**
      * Returns a case-folded and punctuation-stripped version of `original`, useful
      * for performing text searches.
@@ -1622,6 +1768,7 @@ export namespace RB {
      * @returns case-folded string
      */
     function search_fold(original: string): string;
+
     /**
      * Sets a fixed size for a tree view column based on
      * a set of strings to be displayed in the column.
@@ -1631,13 +1778,8 @@ export namespace RB {
      * @param strings a NULL-terminated set of strings to base the size on
      * @param padding a small amount of extra padding for the column
      */
-    function set_tree_view_column_fixed_width(
-        treeview: Gtk.Widget,
-        column: Gtk.TreeViewColumn,
-        renderer: Gtk.CellRenderer,
-        strings: string[],
-        padding: number,
-    ): void;
+    function set_tree_view_column_fixed_width(treeview: Gtk.Widget, column: Gtk.TreeViewColumn, renderer: Gtk.CellRenderer, strings: string[], padding: number): void;
+
     /**
      * Synchronizes settings in the `settings` instance after 500ms has elapsed
      * with no further changes.
@@ -1645,34 +1787,36 @@ export namespace RB {
      * @param sync_func function to call
      * @param destroy function to use to free `data`
      */
-    function settings_delayed_sync(
-        settings: Gio.Settings,
-        sync_func: DelayedSyncFunc | null,
-        destroy: GLib.DestroyNotify | null,
-    ): void;
+    function settings_delayed_sync(settings: Gio.Settings, sync_func: (DelayedSyncFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+
     /**
      * Returns the {@link GLib.Quark} used for {@link RB.Shell} errors
      * @returns shell error {@link GLib.Quark}
      */
     function shell_error_quark(): GLib.Quark;
+
     function shell_player_error_quark(): GLib.Quark;
+
     /**
      * Initializes the stock icons, adding the necessary filesystem
      * locations to the GTK icon search path.  Must be called on startup.
      */
     function stock_icons_init(): void;
+
     /**
      * If anything was necessary to clean up the stock icons, this function
      * would do it.  Doesn't do anything, but should be called on shutdown
      * anyway.
      */
     function stock_icons_shutdown(): void;
+
     /**
      * Splits `string` on word boundaries using Unicode character definitions.
      * @param string the string to split
      * @returns NULL-terminated array of strings
      */
     function string_split_words(string: string): string[];
+
     /**
      * Creates a new URI consisting of `path` appended to `uri`.
      * @param uri the URI to append to
@@ -1680,6 +1824,7 @@ export namespace RB {
      * @returns new URI, must be freed by caller
      */
     function uri_append_path(uri: string, path: string): string;
+
     /**
      * Creates a new URI consisting of `fragment` appended to `uri`.
      * Generally isn't a good idea.
@@ -1688,6 +1833,7 @@ export namespace RB {
      * @returns new URI, must be freed by caller
      */
     function uri_append_uri(uri: string, fragment: string): string;
+
     /**
      * Checks if `uri` identifies a resource that is probably a podcast
      * (RSS or Atom feed).  This does not perform any IO, it just guesses
@@ -1697,6 +1843,7 @@ export namespace RB {
      * @returns `true` if `uri` may be a podcast
      */
     function uri_could_be_podcast(uri: string, is_opml: boolean): boolean;
+
     /**
      * Ensures that all parent directories of `uri` exist so that
      * `uri` itself can be created directly.
@@ -1704,12 +1851,14 @@ export namespace RB {
      * @returns `true` if successful
      */
     function uri_create_parent_dirs(uri: string): boolean;
+
     /**
      * Checks if a URI identifies a resource that exists
      * @param uri a URI to check
      * @returns `true` if `uri` exists
      */
     function uri_exists(uri: string): boolean;
+
     /**
      * Returns the directory component of `uri`, that is, everything up
      * to the start of the filename.
@@ -1717,6 +1866,7 @@ export namespace RB {
      * @returns new URI for parent of `uri`, must be freed by caller.
      */
     function uri_get_dir_name(uri: string): string;
+
     /**
      * Returns a string describing the type of the filesystem containing `uri`.
      * @param uri URI to get filesystem type for
@@ -1724,6 +1874,7 @@ export namespace RB {
      * @returns filesystem type string, must be freed by caller.
      */
     function uri_get_filesystem_type(uri: string, mount_point: string): string;
+
     /**
      * Returns the mount point of the filesystem holding `uri`.
      * If `uri` is on a normal filesystem mount (such as /, /home,
@@ -1732,6 +1883,7 @@ export namespace RB {
      * @returns filesystem mount point (must be freed by caller)  or NULL.
      */
     function uri_get_mount_point(uri: string): string;
+
     /**
      * Returns the filename component of `uri`, that is, everything after the
      * final slash and before the start of the query string or fragment.
@@ -1739,6 +1891,7 @@ export namespace RB {
      * @returns filename component of `uri`, must be freed by caller
      */
     function uri_get_short_path_name(uri: string): string;
+
     /**
      * Calls `func` for each file found under the directory identified by `uri`.
      * If `uri` identifies a file, calls `func` for that instead.
@@ -1746,26 +1899,28 @@ export namespace RB {
      * @param cancel an optional {@link Gio.Cancellable} to allow cancellation
      * @param func Callback function
      */
-    function uri_handle_recursively(uri: string, cancel: Gio.Cancellable | null, func: UriRecurseFunc): void;
+    function uri_handle_recursively(uri: string, cancel: (Gio.Cancellable | null), func: UriRecurseFunc): void;
+
     /**
      * Calls `func` for each file found under the directory identified
      * by `uri`, or if `uri` identifies a file, calls it once
      * with that.
-     *
+     * 
      * If non-NULL, `destroy_data` will be called once all files have been
      * processed, or when the operation is cancelled.
      * @param uri the URI to visit
      * @param cancel a {@link Gio.Cancellable} to allow cancellation
      * @param func callback function
      */
-    function uri_handle_recursively_async(uri: string, cancel: Gio.Cancellable | null, func: UriRecurseFunc): void;
+    function uri_handle_recursively_async(uri: string, cancel: (Gio.Cancellable | null), func: UriRecurseFunc): void;
+
     /**
      * Checks if `uri` refers to a path beneath `ancestor`, such that removing some number
      * of path segments of `uri` would result in `ancestor`.
      * It doesn't do any filesystem operations, it just looks at the URIs as strings.
      * The URI strings should be built by looking at a filesystem rather than user input,
      * and must not have path segments that are empty (multiple slashes) or '.' or '..'.
-     *
+     * 
      * Given this input, checking if one URI is a descendant of another is pretty simple.
      * A descendant URI must have the ancestor as a prefix, and if the ancestor ends with
      * a slash, there must be at least one character after that, otherwise the following
@@ -1775,12 +1930,14 @@ export namespace RB {
      * @returns `true` if `uri` is a descendant of `ancestor`
      */
     function uri_is_descendant(uri: string, ancestor: string): boolean;
+
     /**
      * Checks if `uri` identifies a directory.
      * @param uri the URI to check
      * @returns `true` if `uri` is a directory
      */
     function uri_is_directory(uri: string): boolean;
+
     /**
      * Checks if `uri` is hidden, according to the Unix filename convention.
      * If the filename component of `uri` begins with a dot, the file is considered
@@ -1789,6 +1946,7 @@ export namespace RB {
      * @returns `true` if `uri` is hidden
      */
     function uri_is_hidden(uri: string): boolean;
+
     /**
      * Checks if `uri` identifies a local resource.  Currently this just
      * checks that it uses the 'file' URI scheme.
@@ -1796,18 +1954,21 @@ export namespace RB {
      * @returns `true` if `uri` is local
      */
     function uri_is_local(uri: string): boolean;
+
     /**
      * Checks if the user can read the resource identified by `uri`
      * @param uri a URI to check
      * @returns `true` if `uri` is readable
      */
     function uri_is_readable(uri: string): boolean;
+
     /**
      * Checks if the user can write to the resource identified by `uri`
      * @param uri a URI to check
      * @returns `true` if `uri` is writable
      */
     function uri_is_writable(uri: string): boolean;
+
     /**
      * Converts a single string containing a list of URIs into
      * a {@link GLib.List} of URI strings.
@@ -1815,6 +1976,7 @@ export namespace RB {
      * @returns {@link GLib.List} of URI strings
      */
     function uri_list_parse(uri_list: string): string[];
+
     /**
      * Constructs a URI that is similar to `uri` but which identifies
      * a hidden file.  This can be used for temporary files that should not
@@ -1823,6 +1985,7 @@ export namespace RB {
      * @returns hidden URI, must be freed by the caller.
      */
     function uri_make_hidden(uri: string): string;
+
     /**
      * Creates a temporary file whose URI begins with `prefix`, returning
      * the file URI and an output stream for writing to it.
@@ -1832,6 +1995,7 @@ export namespace RB {
      * @returns `true` if successful
      */
     function uri_mkstemp(prefix: string, uri_ret: string, stream: Gio.OutputStream): boolean;
+
     /**
      * Attempts to resolve symlinks in `uri` and return a canonical URI for the file
      * it identifies.
@@ -1839,6 +2003,7 @@ export namespace RB {
      * @returns resolved URI, or NULL on error
      */
     function uri_resolve_symlink(uri: string): string;
+
     /**
      * This will create the rhythmbox user cache directory, using the XDG
      * Base Directory specification.  If none of the XDG environment
@@ -1846,6 +2011,7 @@ export namespace RB {
      * @returns string holding the path to the rhythmbox user cache directory, or NULL if the directory does not exist and could not be created.
      */
     function user_cache_dir(): string;
+
     /**
      * This will create the rhythmbox user data directory, using the XDG Base
      * Directory specification.  If none of the XDG environment variables are
@@ -1853,138 +2019,155 @@ export namespace RB {
      * @returns string holding the path to the rhythmbox user data directory, or NULL if the directory does not exist and cannot be created.
      */
     function user_data_dir(): string;
+
     /**
      * @gir-type Callback
      */
     interface AsyncCopyCallback {
-        (copy: AsyncCopy, success: boolean, data: any | null): void;
+        (copy: AsyncCopy, success: boolean, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface AsyncCopyProgressCallback {
-        (copy: AsyncCopy, position: number, total: number, data: any | null): void;
+        (copy: AsyncCopy, position: number, total: number, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface BrowserSourceFeatureFunc {
         (source: BrowserSource): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface BrowserSourceStringFunc {
         (source: BrowserSource): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface ChunkLoaderCallback {
         (loader: ChunkLoader, data: GLib.Bytes, total: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface DelayedSyncFunc {
-        (settings: Gio.Settings, data: any | null): void;
+        (settings: Gio.Settings, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ExtDBRequestCallback {
         (key: ExtDBKey, store_key: ExtDBKey, filename: string, data: unknown): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface PlayOrderQueryFunc {
         (porder: PlayOrder): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface PlayerFeatureFunc {
         (player: Player): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface PodcastParseCallback {
         (data: PodcastChannel, error: GLib.Error): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface RhythmDBEntryForeachFunc {
-        (entry: RhythmDBEntry, data: any | null): void;
+        (entry: RhythmDBEntry, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface RhythmDBEntryTypeBooleanFunc {
         (entry_type: RhythmDBEntryType, entry: RhythmDBEntry): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface RhythmDBEntryTypeStringFunc {
         (entry_type: RhythmDBEntryType, entry: RhythmDBEntry): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface SegmentedBarValueFormatter {
-        (percent: number, data: any | null): string;
+        (percent: number, data: (any | null)): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface SourceAddCallback {
-        (source: Source, uri: string, data: any | null): void;
+        (source: Source, uri: string, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SourceFeatureFunc {
         (source: Source): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface SourceStringFunc {
         (source: Source): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface UriRecurseFunc {
-        (file: Gio.File, info: Gio.FileInfo, data: any | null): boolean;
+        (file: Gio.File, info: Gio.FileInfo, data: (any | null)): boolean;
     }
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::active-window': (pspec: GObject.ParamSpec) => void;
-            'notify::app-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::menubar': (pspec: GObject.ParamSpec) => void;
-            'notify::register-session': (pspec: GObject.ParamSpec) => void;
-            'notify::screensaver-active': (pspec: GObject.ParamSpec) => void;
-            'notify::action-group': (pspec: GObject.ParamSpec) => void;
-            'notify::application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::inactivity-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::is-busy': (pspec: GObject.ParamSpec) => void;
-            'notify::is-registered': (pspec: GObject.ParamSpec) => void;
-            'notify::is-remote': (pspec: GObject.ParamSpec) => void;
-            'notify::resource-base-path': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::active-window": (pspec: GObject.ParamSpec) => void;
+            "notify::app-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::menubar": (pspec: GObject.ParamSpec) => void;
+            "notify::register-session": (pspec: GObject.ParamSpec) => void;
+            "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
+            "notify::action-group": (pspec: GObject.ParamSpec) => void;
+            "notify::application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::inactivity-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::is-busy": (pspec: GObject.ParamSpec) => void;
+            "notify::is-registered": (pspec: GObject.ParamSpec) => void;
+            "notify::is-remote": (pspec: GObject.ParamSpec) => void;
+            "notify::resource-base-path": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             shell: Shell;
         }
     }
@@ -1999,7 +2182,6 @@ export namespace RB {
         static $gtype: GObject.GType<Application>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -2015,42 +2197,33 @@ export namespace RB {
         $signals: Application.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Application;
+        static ["new"](): Application;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Attempts to activate an accelerator registered using `rb_application_add_accelerator`.
          * @param event a {@link Gdk.EventKey}
          * @returns `true` if an accelerator was activated
          */
         activate_key(event: Gdk.EventKey): boolean;
+
         /**
          * Like `gtk_application_add_accelerator`, except the accelerator only applies
          * if the key was not handled by the focused widget.
@@ -2058,7 +2231,8 @@ export namespace RB {
          * @param action the name of the action to activate
          * @param parameter parameter to pass when activating the action, or NULL if   the action does not accept an activation parameter.
          */
-        add_accelerator(accel: string, action: string, parameter: GLib.Variant | null): void;
+        add_accelerator(accel: string, action: string, parameter: (GLib.Variant | null)): void;
+
         /**
          * Adds an item to a plugin menu.  The id can be used to remove the item.
          * @param menu name of the menu to add to
@@ -2066,6 +2240,7 @@ export namespace RB {
          * @param item menu item to add
          */
         add_plugin_menu_item(menu: string, id: string, item: Gio.MenuItem): void;
+
         /**
          * Adds a menu model to the set of shared menus
          * available for linking into other menus.
@@ -2073,6 +2248,7 @@ export namespace RB {
          * @param menu {@link Gio.MenuModel} instance
          */
         add_shared_menu(name: string, menu: Gio.MenuModel): void;
+
         /**
          * Returns a plugin menu instance.  Plugin menus are like shared menus except
          * they are created empty on first access, and they consist solely of entries
@@ -2081,12 +2257,14 @@ export namespace RB {
          * @returns plugin menu instance.
          */
         get_plugin_menu(menu: string): Gio.MenuModel;
+
         /**
          * Returns a shared menu instance added with `rb_application_add_shared_menu`
          * @param name name of menu to return
          * @returns menu model instance, or NULL if not found
          */
         get_shared_menu(name: string): Gio.MenuModel;
+
         /**
          * Processes shared menu links in the given menu.  Menu links take the
          * form of items with "rb-menu-link" or "rb-plugin-menu-link" and "rb-menu-link-type" attributes.
@@ -2098,11 +2276,13 @@ export namespace RB {
          * @param menu a {@link Gio.Menu} to process
          */
         link_shared_menus(menu: Gio.Menu): void;
+
         /**
-         * @param menu
-         * @param id
+         * @param menu 
+         * @param id 
          */
         remove_plugin_menu_item(menu: string, id: string): void;
+
         /**
          * Runs the application
          * @param argc arg count
@@ -2110,11 +2290,13 @@ export namespace RB {
          * @returns exit code
          */
         run(argc: number, argv: string): number;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gio.Application.run
+    // Conflicted with Gio.Application.run
         run(...args: never[]): any;
+
         /**
          * Enables or disables accelerators for items in `menu`.
          * @param menu a {@link Gio.MenuModel} for which to enable or disable accelerators
@@ -2123,13 +2305,16 @@ export namespace RB {
         set_menu_accelerators(menu: Gio.MenuModel, enable: boolean): void;
     }
 
+
     namespace AsyncCopy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2148,51 +2333,44 @@ export namespace RB {
         $signals: AsyncCopy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AsyncCopy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AsyncCopy;
+        static ["new"](): AsyncCopy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AsyncCopy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncCopy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AsyncCopy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncCopy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AsyncCopy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncCopy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AsyncCopy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncCopy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AsyncCopy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AsyncCopy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AsyncCopy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncCopy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancels the loading operation, ensuring that the callback
          * will not be called again.
          */
         cancel(): void;
+
         /**
          * If an error has occurred that prevents the copy from proceeding,
          * this function will return a {@link GLib.Error}, otherwise NULL.
          * @returns copy error or NULL
          */
         get_error(): GLib.Error;
+
         /**
-         * @param callback
+         * @param callback 
          */
         set_progress(callback: AsyncCopyProgressCallback): void;
+
         /**
          * Starts copying `src` to `dest`, calling `callback` on completion or error.
          * @param src source URI
@@ -2202,95 +2380,92 @@ export namespace RB {
         start(src: string, dest: string, callback: AsyncCopyCallback): void;
     }
 
+
     namespace AutoPlaylistSource {
         // Signal signatures
         interface SignalSignatures extends PlaylistSource.SignalSignatures {
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::is-local': (pspec: GObject.ParamSpec) => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::is-local": (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends PlaylistSource.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                PlaylistSource.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
      * A playlist populated with the results of a database query.
-     *
+     * 
      * The query, limit, and sort settings are saved to the playlists file, so
      * they are persistent.
-     *
+     * 
      * Searching is implemented by appending the query criteria generated from
      * the search text to the query.  Browsing is implemented by using the base
      * query model (or a query model using the query generated from the search text,
      * there is some) as the input to a {@link RB.LibraryBrowser}.
-     *
+     * 
      * If the user has not set a sort order as part of the playlist definition,
      * the entry view columns are made clickable to allow the user to sort the
      * results.
@@ -2309,117 +2484,103 @@ export namespace RB {
         $signals: AutoPlaylistSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AutoPlaylistSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](shell: Shell, name: string, local: boolean): AutoPlaylistSource;
-        // Conflicted with Gtk.Box.new
+        static ["new"](shell: Shell, name: string, local: boolean): AutoPlaylistSource;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         static new_from_xml(shell: Shell, name: string, node: libxml2.NodePtr): AutoPlaylistSource;
-        // Conflicted with RB.PlaylistSource.new_from_xml
 
+        // Conflicted with RB.PlaylistSource.new_from_xml
         static new_from_xml(...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AutoPlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutoPlaylistSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AutoPlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AutoPlaylistSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AutoPlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AutoPlaylistSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AutoPlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutoPlaylistSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AutoPlaylistSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AutoPlaylistSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AutoPlaylistSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutoPlaylistSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace BrowserSource {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
-            'notify::populate': (pspec: GObject.ParamSpec) => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::populate": (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Source.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Source.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             populate: boolean;
         }
     }
@@ -2427,7 +2588,7 @@ export namespace RB {
     /**
      * This class simplifies implementation of sources that include genre/artist/album browsers.
      * It also handles searching (using the search box) and a few other UI niceties.
-     *
+     * 
      * Instances of browser sources will use a query that will match all entries of
      * the entry type assigned to the source, so it's mostly suited for sources that
      * have an entry type of their own.
@@ -2437,7 +2598,6 @@ export namespace RB {
         static $gtype: GObject.GType<BrowserSource>;
 
         // Properties
-
         /**
          * @default true
          */
@@ -2454,52 +2614,43 @@ export namespace RB {
         $signals: BrowserSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BrowserSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BrowserSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrowserSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BrowserSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BrowserSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BrowserSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BrowserSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BrowserSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BrowserSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BrowserSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BrowserSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BrowserSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BrowserSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * This is a virtual method that should be implemented by subclasses.  It returns `true`
          * if drag and drop target support for the source should be activated.
          * @virtual
          */
         vfunc_has_drop_support(): boolean;
+
         /**
-         * @param content
+         * @param content 
          * @virtual
          */
         vfunc_pack_content(content: Gtk.Widget): void;
+
         /**
          * @virtual
          */
         vfunc_show_entry_popup(): void;
 
         // Methods
-
         /**
          * This is a virtual method that should be implemented by subclasses.  It returns `true`
          * if drag and drop target support for the source should be activated.
@@ -2508,69 +2659,64 @@ export namespace RB {
         has_drop_support(): boolean;
     }
 
+
     namespace ButtonBar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::target': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             model: Gio.MenuModel;
             target: GObject.Object;
         }
@@ -2583,11 +2729,11 @@ export namespace RB {
         static $gtype: GObject.GType<ButtonBar>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get model(): Gio.MenuModel;
+
         /**
          * @construct-only
          */
@@ -2603,69 +2749,64 @@ export namespace RB {
         $signals: ButtonBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ButtonBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](model: Gio.MenuModel, target: GObject.Object): ButtonBar;
-        // Conflicted with Gtk.Grid.new
+        static ["new"](model: Gio.MenuModel, target: GObject.Object): ButtonBar;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Grid.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ButtonBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ButtonBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ButtonBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ButtonBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ButtonBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ButtonBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ButtonBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ButtonBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ButtonBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ButtonBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ButtonBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ButtonBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds accelerators for the buttons in `bar` to the accelerator
          * group `group`.
          * @param group the {@link Gtk.AccelGroup} to add accelerators to
          */
         add_accelerators(group: Gtk.AccelGroup): void;
+
         /**
          * Reverses the effects of `rb_button_bar_add_accelerators`.
          * @param group the {@link Gtk.AccelGroup} to remove accelerators from
          */
         remove_accelerators(group: Gtk.AccelGroup): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace CellRendererPixbuf {
         // Signal signatures
@@ -2675,38 +2816,39 @@ export namespace RB {
              * @signal
              * @run-first
              */
-            'pixbuf-clicked': (arg0: string) => void;
-            'notify::follow-state': (pspec: GObject.ParamSpec) => void;
-            'notify::gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-expander-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-expander-open': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-detail': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-size': (pspec: GObject.ParamSpec) => void;
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-gdk': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-set': (pspec: GObject.ParamSpec) => void;
-            'notify::editing': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expanded': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expander': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::xpad': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::ypad': (pspec: GObject.ParamSpec) => void;
+            "pixbuf-clicked": (arg0: string) => void;
+            "notify::follow-state": (pspec: GObject.ParamSpec) => void;
+            "notify::gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-expander-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-expander-open": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-detail": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-size": (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-gdk": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-set": (pspec: GObject.ParamSpec) => void;
+            "notify::editing": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expanded": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expander": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::xpad": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::ypad": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {}
+        }
     }
 
     /**
@@ -2727,42 +2869,33 @@ export namespace RB {
         $signals: CellRendererPixbuf.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CellRendererPixbuf.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CellRendererPixbuf;
+        static ["new"](): CellRendererPixbuf;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CellRendererPixbuf.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CellRendererPixbuf.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererPixbuf.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CellRendererPixbuf.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CellRendererPixbuf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CellRendererPixbuf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererPixbuf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param path
+         * @param path 
          * @virtual
          */
         vfunc_pixbuf_clicked(path: Gtk.TreePath): void;
     }
+
 
     namespace CellRendererRating {
         // Signal signatures
@@ -2773,27 +2906,26 @@ export namespace RB {
              * @run-last
              */
             rated: (arg0: string, arg1: number) => void;
-            'notify::rating': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-gdk': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-set': (pspec: GObject.ParamSpec) => void;
-            'notify::editing': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expanded': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expander': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::xpad': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::ypad': (pspec: GObject.ParamSpec) => void;
+            "notify::rating": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-gdk": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-set": (pspec: GObject.ParamSpec) => void;
+            "notify::editing": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expanded": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expander": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::xpad": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::ypad": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
             rating: number;
         }
@@ -2808,7 +2940,6 @@ export namespace RB {
         static $gtype: GObject.GType<CellRendererRating>;
 
         // Properties
-
         /**
          * The rating displayed by the renderer, as a floating point value
          * between 0.0 and 5.0.
@@ -2827,51 +2958,44 @@ export namespace RB {
         $signals: CellRendererRating.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CellRendererRating.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CellRendererRating;
+        static ["new"](): CellRendererRating;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CellRendererRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererRating.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CellRendererRating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererRating.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CellRendererRating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererRating.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CellRendererRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererRating.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CellRendererRating.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CellRendererRating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CellRendererRating.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererRating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param path
-         * @param rating
+         * @param path 
+         * @param rating 
          * @virtual
          */
         vfunc_rated(path: string, rating: number): void;
     }
 
+
     namespace ChunkLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2890,41 +3014,32 @@ export namespace RB {
         $signals: ChunkLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ChunkLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ChunkLoader;
+        static ["new"](): ChunkLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ChunkLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChunkLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ChunkLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ChunkLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ChunkLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ChunkLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ChunkLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChunkLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ChunkLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ChunkLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ChunkLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChunkLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancels the loading operation, ensuring that the callback
          * will not be called again.
          */
         cancel(): void;
+
         /**
          * If an error has occurred that prevents the loader from providing
          * any further data, this function will return a {@link GLib.Error}, otherwise
@@ -2932,24 +3047,27 @@ export namespace RB {
          * @returns loader error or NULL
          */
         get_error(): GLib.Error;
+
         /**
          * Sets the loader data callback.  This will be called with each
          * chunk of data read, or with NULL to indicate the end of the file
          * or that an error has occurred.  To determine which of these is
          * the case, call `rb_chunk_loader_get_error`.
-         *
+         * 
          * This must be called before `rb_chunk_loader_start`.
          * @param callback the data/error callback
          */
         set_callback(callback: ChunkLoaderCallback): void;
+
         /**
          * Starts loading data from the specified URI, passing it in chunks
          * of at most `chunk_size` to the callback.
          * @param uri the uri to load
          * @param chunk_size maximum chunk size
          */
-        start(uri: string, chunk_size: bigint | number): void;
+        start(uri: string, chunk_size: (bigint | number)): void;
     }
+
 
     namespace DisplayPage {
         // Signal signatures
@@ -2965,71 +3083,65 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'status-changed': () => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "status-changed": () => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             icon: Gio.Icon;
             name: string;
-            parent: DisplayPage | any;
+            parent: (DisplayPage | any);
             plugin: GObject.Object;
             selected: boolean;
             shell: Shell;
@@ -3042,7 +3154,7 @@ export namespace RB {
      * occupy the main display area.  Sources and source groups are display pages.
      * Other types of display, such as music visualization, could be implemented as
      * display pages too.
-     *
+     * 
      * The display page object itself is the widget shown in the main display area.
      * The icon and name properties control its appearance in the display page
      * tree, and its location is determined by its parent display page, the sorting
@@ -3054,40 +3166,45 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPage>;
 
         // Properties
-
         /**
          * Icon to display in the page tree
          */
         get icon(): Gio.Icon;
         set icon(val: Gio.Icon);
+
         /**
          * Page name as displayed in the tree
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * The parent page in the tree (may be NULL)
          * @construct-only
          */
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        get parent(): DisplayPage | any;
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        get parent(): (DisplayPage | any);
+
         /**
          * The plugin that created this page.
          */
         get plugin(): GObject.Object;
         set plugin(val: GObject.Object);
+
         /**
          * TRUE when the page is selected in the page tree.
          * @read-only
          * @default false
          */
         get selected(): boolean;
+
         /**
          * The rhythmbox shell object
          * @construct-only
          */
         get shell(): Shell;
+
         /**
          * If FALSE, the page will not be displayed in the tree
          * @default true
@@ -3105,44 +3222,36 @@ export namespace RB {
         $signals: DisplayPage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayPage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayPage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayPage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Called when the page is activated (double clicked, etc.) in the page tree.
          * @virtual
          */
         vfunc_activate(): void;
+
         /**
          * Called to check whether the user is able to remove the page
          * @virtual
          */
         vfunc_can_remove(): boolean;
+
         /**
          * This is called when the page should delete itself.
          * The 'deleted' signal will be emitted, which removes the page
@@ -3152,15 +3261,18 @@ export namespace RB {
          * @virtual
          */
         vfunc_delete_thyself(): void;
+
         /**
          * @virtual
          */
         vfunc_deleted(): void;
+
         /**
          * Called when the page is deselected in the page tree.
          * @virtual
          */
         vfunc_deselected(): void;
+
         /**
          * Source implementations can use this to return an optional
          * configuration widget. The widget will be displayed in a
@@ -3169,6 +3281,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_config_widget(prefs: ShellPreferences): Gtk.Widget;
+
         /**
          * Retrieves status details for the page.
          * @param text holds the returned status text
@@ -3176,47 +3289,54 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_status(text: string, busy: boolean): [string, boolean];
+
         /**
-         * @param data
+         * @param data 
          * @virtual
          */
         vfunc_receive_drag(data: Gtk.SelectionData): boolean;
+
         /**
          * Called when the user requests removal of a page.
          * @virtual
          */
         vfunc_remove(): void;
+
         /**
          * Checks if `page` can be selected
          * @virtual
          */
         vfunc_selectable(): boolean;
+
         /**
          * Called when the page is selected in the page tree.
          * @virtual
          */
         vfunc_selected(): void;
+
         /**
          * @virtual
          */
         vfunc_status_changed(): void;
 
         // Methods
-
         /**
          * Called when the page is activated (double clicked, etc.) in the page tree.
          */
         activate(): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.activate
+    // Conflicted with Gtk.Widget.activate
         activate(...args: never[]): any;
+
         /**
          * Called to check whether the user is able to remove the page
          * @returns `true` if the page can be removed
          */
         can_remove(): boolean;
+
         /**
          * This is called when the page should delete itself.
          * The 'deleted' signal will be emitted, which removes the page
@@ -3225,10 +3345,12 @@ export namespace RB {
          * correctly.
          */
         delete_thyself(): void;
+
         /**
          * Called when the page is deselected in the page tree.
          */
         deselected(): void;
+
         /**
          * Source implementations can use this to return an optional
          * configuration widget. The widget will be displayed in a
@@ -3237,47 +3359,56 @@ export namespace RB {
          * @returns configuration widget
          */
         get_config_widget(prefs: ShellPreferences): Gtk.Widget;
+
         /**
          * Retrieves status details for the page.
          * @param text holds the returned status text
          * @param busy holds the busy status
          */
         get_status(text: string, busy: boolean): [string, boolean];
+
         /**
          * Page implementations call this when their status bar information
          * changes.
          */
         notify_status_changed(): void;
+
         /**
-         * @param data
+         * @param data 
          */
         receive_drag(data: Gtk.SelectionData): boolean;
+
         /**
          * Called when the user requests removal of a page.
          */
         remove(): void;
+
         /**
          * Checks if `page` can be selected
          */
         selectable(): boolean;
+
         /**
          * Sets the icon for the page to the specified icon name.
          * @param icon_name icon name to use
          */
         set_icon_name(icon_name: string): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -3285,72 +3416,67 @@ export namespace RB {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace DisplayPageGroup {
         // Signal signatures
         interface SignalSignatures extends DisplayPage.SignalSignatures {
-            'notify::category': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::loaded': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::category": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::loaded": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                DisplayPage.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends DisplayPage.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             category: DisplayPageGroupType;
             id: string;
             loaded: boolean;
@@ -3362,7 +3488,7 @@ export namespace RB {
      * consists of an internal name, a display name, and a category.
      * The internal name can be used to locate a registered page group.
      * The category is used to sort the page groups.
-     *
+     * 
      * While {@link RB.DisplayPageGroup} is a subclass of {@link RB.DisplayPage}, by default page
      * groups are never selectable so they have no content.
      * @gir-type Class
@@ -3371,19 +3497,20 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPageGroup>;
 
         // Properties
-
         /**
          * Page group category that the group falls into
          * @construct-only
          * @default RB.DisplayPageGroupType.FIXED
          */
         get category(): DisplayPageGroupType;
+
         /**
          * Internal (untranslated) name for the page group
          * @construct-only
          * @default null
          */
         get id(): string;
+
         /**
          * @read-only
          * @default false
@@ -3400,50 +3527,36 @@ export namespace RB {
         $signals: DisplayPageGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayPageGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            shell: GObject.Object,
-            id: string,
-            name: string,
-            category: DisplayPageGroupCategory,
-        ): DisplayPageGroup;
-        // Conflicted with Gtk.Box.new
+        static ["new"](shell: GObject.Object, id: string, name: string, category: DisplayPageGroupCategory): DisplayPageGroup;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayPageGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayPageGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayPageGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayPageGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayPageGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayPageGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayPageGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayPageGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Registers core page groups.
          * @param shell the {@link RB.Shell}
          * @param page_model the {@link RB.DisplayPageModel}
          */
         static add_core_groups(shell: GObject.Object, page_model: DisplayPageModel): void;
+
         /**
          * Locates a page group by name.  If the page group has not been registered yet,
          * returns NULL instead.
@@ -3451,6 +3564,7 @@ export namespace RB {
          */
         static get_by_id(id: string): DisplayPageGroup;
     }
+
 
     namespace DisplayPageModel {
         // Signal signatures
@@ -3460,7 +3574,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'drop-received': (arg0: DisplayPage, arg1: number, arg2: any | null) => void;
+            "drop-received": (arg0: DisplayPage, arg1: number, arg2: (any | null)) => void;
             /**
              * Emitted when a new page is inserted into the model.
              * Use this instead of GtkTreeModel::row-inserted as this
@@ -3468,18 +3582,15 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'page-inserted': (arg0: DisplayPage, arg1: Gtk.TreeIter) => void;
-            'notify::child-model': (pspec: GObject.ParamSpec) => void;
-            'notify::virtual-root': (pspec: GObject.ParamSpec) => void;
+            "page-inserted": (arg0: DisplayPage, arg1: Gtk.TreeIter) => void;
+            "notify::child-model": (pspec: GObject.ParamSpec) => void;
+            "notify::virtual-root": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.TreeModelFilter.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.TreeModelFilter.ConstructorProps,
-                Gtk.TreeDragSource.ConstructorProps,
-                Gtk.TreeModel.ConstructorProps {}
+        }
     }
 
     /**
@@ -3488,14 +3599,14 @@ export namespace RB {
      * them, and a {@link Gtk.TreeModelFilter} that hides sources with the
      * visibility property set to FALSE.  This class implements the filter
      * model and also creates the actual model.
-     *
+     * 
      * The display page model supports drag and drop in a variety of formats.
      * The simplest of these are text/uri-list and application/x-rhythmbox-entry,
      * which convey URIs and IDs of existing database entries.  When dragged
      * to an existing source, these just add the URIs or entries to the target
      * source.  When dragged to an empty space in the tree widget, this results
      * in the creation of a static playlist.
-     *
+     * 
      * text/x-rhythmbox-artist, text/x-rhythmbox-album, and text/x-rhythmbox-genre
      * are used when dragging items from the library browser.  When dragged to
      * the display page tree, these result in the creation of a new auto playlist with
@@ -3515,52 +3626,42 @@ export namespace RB {
         $signals: DisplayPageModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayPageModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DisplayPageModel;
+        static ["new"](): DisplayPageModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayPageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayPageModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayPageModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayPageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayPageModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayPageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayPageModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayPageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param target
-         * @param pos
-         * @param data
+         * @param target 
+         * @param pos 
+         * @param data 
          * @virtual
          */
         vfunc_drop_received(target: DisplayPage, pos: Gtk.TreeViewDropPosition, data: Gtk.SelectionData): void;
+
         /**
-         * @param page
-         * @param iter
+         * @param page 
+         * @param iter 
          * @virtual
          */
         vfunc_page_inserted(page: DisplayPage, iter: Gtk.TreeIter): void;
 
         // Methods
-
         /**
          * Adds a page to the model, either below a specified page (if it's a source or
          * something else) or at the top level (if it's a group)
@@ -3568,6 +3669,7 @@ export namespace RB {
          * @param parent the parent under which to add `page`
          */
         add_page(page: DisplayPage, parent: DisplayPage): void;
+
         /**
          * Finds a {@link Gtk.TreeIter} for a specified page in the model.  This will only
          * find pages that are currently visible.  The returned {@link Gtk.TreeIter} can be used
@@ -3577,6 +3679,7 @@ export namespace RB {
          * @returns `true` if the page was found
          */
         find_page(page: DisplayPage, iter: Gtk.TreeIter): boolean;
+
         /**
          * Finds a {@link Gtk.TreeIter} for a specified page in the model.  This function
          * searches the full page model, so it will find pages that are not currently
@@ -3587,21 +3690,25 @@ export namespace RB {
          * @returns `true` if the page was found
          */
         find_page_full(page: DisplayPage, iter: Gtk.TreeIter): boolean;
+
         /**
          * Removes a page from the model.
          * @param page the {@link RB.DisplayPage} to remove
          */
         remove_page(page: DisplayPage): void;
+
         /**
          * Sets up the drag and drop targets for the display page tree.
          * @param treeview the sourcel ist {@link Gtk.TreeView}
          */
         set_dnd_targets(treeview: Gtk.TreeView): void;
+
         /**
          * Updates the model with the new playing source.
          * @param source the new playing {@link RB.Source} (as a {@link RB.DisplayPage})
          */
         set_playing_source(source: DisplayPage): void;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
          * it was moved somewhere else via drag-and-drop. Returns `false`
@@ -3612,6 +3719,7 @@ export namespace RB {
          * @returns `true` if the row was successfully deleted
          */
         drag_data_delete(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
          * representation of the row at `path`. `selection_data`->target gives
@@ -3622,6 +3730,7 @@ export namespace RB {
          * @returns `true` if data of the required type was provided
          */
         drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
@@ -3630,6 +3739,7 @@ export namespace RB {
          * @returns `true` if the row can be dragged
          */
         row_draggable(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
          * it was moved somewhere else via drag-and-drop. Returns `false`
@@ -3640,6 +3750,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_drag_data_delete(path: Gtk.TreePath): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
          * representation of the row at `path`. `selection_data`->target gives
@@ -3650,6 +3761,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
+
         /**
          * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
@@ -3658,36 +3770,41 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_draggable(path: Gtk.TreePath): boolean;
+
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+
         /**
          * Calls func on each node in model in a depth-first fashion.
-         *
+         * 
          * If `func` returns `true`, then the tree ceases to be walked,
          * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @returns the type of the column
          */
         get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
          */
         get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -3695,6 +3812,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Initializes `iter` with the first iterator in the tree
          * (the one at the path "0") and returns `true`. Returns
@@ -3702,6 +3820,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to a valid iterator pointing to `path_string`, if it
          * exists. Otherwise, `iter` is left invalid and `false` is returned.
@@ -3709,22 +3828,25 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @returns the number of columns
          */
         get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Generates a string representation of the iter.
-         *
+         * 
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
@@ -3732,55 +3854,61 @@ export namespace RB {
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: Gtk.TreeIter | null): number;
+        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -3790,37 +3918,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -3829,30 +3960,33 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -3861,49 +3995,55 @@ export namespace RB {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
-         *
+         * 
          * This should be called by models when their rows have been
          * reordered.
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -3911,22 +4051,25 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
@@ -3934,46 +4077,51 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -3983,37 +4131,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -4022,13 +4173,14 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
@@ -4036,19 +4188,21 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -4058,6 +4212,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
@@ -4065,20 +4220,22 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
     }
+
 
     namespace DisplayPageTree {
         // Signal signatures
@@ -4088,73 +4245,67 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'drop-received': (arg0: any | null, arg1: any | null) => void;
+            "drop-received": (arg0: (any | null), arg1: (any | null)) => void;
             /**
              * Emitted when a page is selected from the tree
              * @signal
              * @run-last
              */
             selected: (arg0: GObject.Object) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             model: Gtk.TreeModel;
             shell: Shell;
         }
@@ -4165,10 +4316,10 @@ export namespace RB {
      * containing the display page instances (sources and other things).  Display
      * pages include sources, such as the library and playlists, and other things
      * like the visualization display.
-     *
+     * 
      * Display pages are shown in the list with an icon and the name.  The current
      * playing source is displayed in bold.
-     *
+     * 
      * Sources are divided into groups - library, stores, playlists, devices,
      * network shares.  Groups are displayed as headers, with expanders for hiding
      * and showing the sources in the group.  Sources themselves may also have
@@ -4179,12 +4330,12 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPageTree>;
 
         // Properties
-
         /**
          * The {@link Gtk.TreeModel} for the display page tree
          * @read-only
          */
         get model(): Gtk.TreeModel;
+
         /**
          * The {@link RB.Shell} instance
          * @construct-only
@@ -4201,53 +4352,43 @@ export namespace RB {
         $signals: DisplayPageTree.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayPageTree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](shell: Shell): DisplayPageTree;
-        // Conflicted with Gtk.Grid.new
+        static ["new"](shell: Shell): DisplayPageTree;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Grid.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayPageTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageTree.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayPageTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageTree.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayPageTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPageTree.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayPageTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPageTree.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayPageTree.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayPageTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayPageTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayPageTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param page
-         * @param data
+         * @param page 
+         * @param data 
          * @virtual
          */
         vfunc_drop_received(page: DisplayPage, data: Gtk.SelectionData): void;
+
         /**
-         * @param page
+         * @param page 
          * @virtual
          */
         vfunc_selected(page: DisplayPage): void;
 
         // Methods
-
         /**
          * Initiates editing of the name of the specified source.  The row for the source
          * is selected and given input focus, allowing the user to edit the name.
@@ -4255,36 +4396,42 @@ export namespace RB {
          * @param source the {@link RB.Source} to edit
          */
         edit_source_name(source: Source): void;
+
         /**
          * Selects the specified page in the tree.  This will result in the 'selected'
          * signal being emitted.
          * @param page the {@link RB.DisplayPage} to select
          */
         select(page: DisplayPage): void;
+
         /**
          * If `page` is expanded (children visible), collapses it, otherwise expands it.
          * @param page the {@link RB.DisplayPage} to toggle
          */
         toggle_expanded(page: DisplayPage): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace EncoderFactory {
         // Signal signatures
@@ -4297,7 +4444,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'prepare-sink': (arg0: string, arg1: GObject.Object) => void;
+            "prepare-sink": (arg0: string, arg1: GObject.Object) => void;
             /**
              * Emitted when creating a source to read the specified URI.
              * Plugins can use this when just creating a GStreamer element from the URI
@@ -4306,12 +4453,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'prepare-source': (arg0: string, arg1: GObject.Object) => void;
+            "prepare-source": (arg0: string, arg1: GObject.Object) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4330,58 +4478,48 @@ export namespace RB {
         $signals: EncoderFactory.SignalSignatures;
 
         // Fields
-
         obj: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<EncoderFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EncoderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncoderFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EncoderFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EncoderFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EncoderFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EncoderFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EncoderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EncoderFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EncoderFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EncoderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EncoderFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EncoderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the {@link RB.EncoderFactory} instance.
          */
         static get(): EncoderFactory;
 
         // Virtual methods
-
         /**
-         * @param uri
-         * @param sink
+         * @param uri 
+         * @param sink 
          * @virtual
          */
         vfunc_prepare_sink(uri: string, sink: GObject.Object): void;
+
         /**
-         * @param uri
-         * @param source
+         * @param uri 
+         * @param source 
          * @virtual
          */
         vfunc_prepare_source(uri: string, source: GObject.Object): void;
     }
+
 
     namespace EntryView {
         // Signal signatures
@@ -4391,39 +4529,39 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'entries-replaced': () => void;
+            "entries-replaced": () => void;
             /**
              * Emitted when an entry in the view is activated (by double clicking
              * or by various key presses)
              * @signal
              * @run-last
              */
-            'entry-activated': (arg0: RhythmDBEntry) => void;
+            "entry-activated": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when an entry is added to the view
              * @signal
              * @run-last
              */
-            'entry-added': (arg0: RhythmDBEntry) => void;
+            "entry-added": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when an entry has been removed from the view
              * @signal
              * @run-last
              */
-            'entry-deleted': (arg0: RhythmDBEntry) => void;
+            "entry-deleted": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when the user first selects a row, or when no rows are selected
              * any more.
              * @signal
              * @run-last
              */
-            'have-selection-changed': (arg0: boolean) => void;
+            "have-selection-changed": (arg0: boolean) => void;
             /**
              * Emitted when the set of selected entries changes
              * @signal
              * @run-last
              */
-            'selection-changed': () => void;
+            "selection-changed": () => void;
             /**
              * Emitted when the user performs an action that should result in a
              * popup menu appearing.  If the action was a mouse button click,
@@ -4433,71 +4571,65 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'show-popup': (arg0: boolean) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::is-drag-dest': (pspec: GObject.ParamSpec) => void;
-            'notify::is-drag-source': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::playing-state': (pspec: GObject.ParamSpec) => void;
-            'notify::shell-player': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-order': (pspec: GObject.ParamSpec) => void;
-            'notify::visible-columns': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "show-popup": (arg0: boolean) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::is-drag-dest": (pspec: GObject.ParamSpec) => void;
+            "notify::is-drag-source": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::playing-state": (pspec: GObject.ParamSpec) => void;
+            "notify::shell-player": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-order": (pspec: GObject.ParamSpec) => void;
+            "notify::visible-columns": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             db: RhythmDB;
             is_drag_dest: boolean;
             isDragDest: boolean;
@@ -4523,7 +4655,7 @@ export namespace RB {
      * the currently playing entry, and also an error image next to entries for
      * which a playback error message has been set.  Clicking on the error
      * image opens a dialog displaying the full message.
-     *
+     * 
      * All columns added to entry view columns should be expandable, or have a fixed
      * minimum width set.  Otherwise, the tree view must measure the contents of each
      * row to assign sizes, which is very slow for large track lists.  All the predefined
@@ -4534,41 +4666,46 @@ export namespace RB {
         static $gtype: GObject.GType<EntryView>;
 
         // Properties
-
         /**
          * {@link RB.RhythmDB} instance
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * If TRUE, the view acts as a destination for drag and drop operations.
          * @construct-only
          * @default false
          */
         get is_drag_dest(): boolean;
+
         /**
          * If TRUE, the view acts as a destination for drag and drop operations.
          * @construct-only
          * @default false
          */
         get isDragDest(): boolean;
+
         /**
          * If TRUE, the view acts as a data source for drag and drop operations.
          * @construct-only
          * @default false
          */
         get is_drag_source(): boolean;
+
         /**
          * If TRUE, the view acts as a data source for drag and drop operations.
          * @construct-only
          * @default false
          */
         get isDragSource(): boolean;
+
         /**
          * The {@link RB.RhythmDBQueryModel} backing the view
          */
         get model(): RhythmDBQueryModel;
         set model(val: RhythmDBQueryModel);
+
         /**
          * Determines the icon to show in the 'playing' column next to the current
          * playing entry.
@@ -4576,6 +4713,7 @@ export namespace RB {
          */
         get playing_state(): number;
         set playing_state(val: number);
+
         /**
          * Determines the icon to show in the 'playing' column next to the current
          * playing entry.
@@ -4583,33 +4721,39 @@ export namespace RB {
          */
         get playingState(): number;
         set playingState(val: number);
+
         /**
          * {@link RB.ShellPlayer} instance
          * @construct-only
          */
         get shell_player(): ShellPlayer;
+
         /**
          * {@link RB.ShellPlayer} instance
          * @construct-only
          */
         get shellPlayer(): ShellPlayer;
+
         /**
          * The sort order for the track listing.
          * @default null
          */
         get sort_order(): string;
         set sort_order(val: string);
+
         /**
          * The sort order for the track listing.
          * @default null
          */
         get sortOrder(): string;
         set sortOrder(val: string);
+
         /**
          * An array containing the names of the visible columns.
          */
         get visible_columns(): string[];
         set visible_columns(val: string[]);
+
         /**
          * An array containing the names of the visible columns.
          */
@@ -4626,44 +4770,29 @@ export namespace RB {
         $signals: EntryView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EntryView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            db: RhythmDB,
-            shell_player: GObject.Object,
-            is_drag_source: boolean,
-            is_drag_dest: boolean,
-        ): EntryView;
-        // Conflicted with Gtk.Box.new
+        static ["new"](db: RhythmDB, shell_player: GObject.Object, is_drag_source: boolean, is_drag_dest: boolean): EntryView;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EntryView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EntryView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EntryView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EntryView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EntryView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EntryView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EntryView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EntryView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EntryView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EntryView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EntryView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns a sample string for use in columns displaying times
          * and dates in 'friendly' form (see `rb_utf_friendly_time`).
@@ -4672,43 +4801,47 @@ export namespace RB {
         static get_time_date_column_sample(): string;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_entries_replaced(): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_activated(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_added(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_deleted(entry: RhythmDBEntry): void;
+
         /**
-         * @param have_selection
+         * @param have_selection 
          * @virtual
          */
         vfunc_have_selection_changed(have_selection: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_selection_changed(): void;
+
         /**
-         * @param over_entry
+         * @param over_entry 
          * @virtual
          */
         vfunc_show_popup(over_entry: boolean): void;
 
         // Methods
-
         /**
          * Appends a predefined column type to the set of columns already present
          * in the entry view.  If `always_visible` is TRUE, the column will ignore
@@ -4719,6 +4852,7 @@ export namespace RB {
          * @param always_visible if TRUE, ignore the user's column visibility settings
          */
         append_column(coltype: EntryViewColumn, always_visible: boolean): void;
+
         /**
          * Appends a custom column to the entry view.
          * @param column a {@link Gtk.TreeViewColumn} to append
@@ -4726,12 +4860,8 @@ export namespace RB {
          * @param key sort key for the column (not translated)
          * @param sort_func comparison function to use for sorting on the column
          */
-        append_column_custom(
-            column: Gtk.TreeViewColumn,
-            title: string,
-            key: string,
-            sort_func: GLib.CompareDataFunc,
-        ): void;
+        append_column_custom(column: Gtk.TreeViewColumn, title: string, key: string, sort_func: GLib.CompareDataFunc): void;
+
         /**
          * Enables the entry view to act as a data source for drag an drop operations,
          * using a specified set of data targets.
@@ -4739,6 +4869,7 @@ export namespace RB {
          * @param n_targets the number of entries in the target array
          */
         enable_drag_source(targets: Gtk.TargetEntry, n_targets: number): void;
+
         /**
          * Retrieves a predefined column from the entry view.  This can be used
          * to insert additional cell renderers into the column.
@@ -4746,12 +4877,14 @@ export namespace RB {
          * @returns a {@link Gtk.TreeViewColumn} instance, or NULL
          */
         get_column(coltype: EntryViewColumn): Gtk.TreeViewColumn;
+
         /**
          * Determines whether a specified entry is present in the view.
          * @param entry a {@link RB.RhythmDBEntry} to check
          * @returns TRUE if the entry is present in the view
          */
         get_entry_contained(entry: RhythmDBEntry): boolean;
+
         /**
          * Determines whether a specified entry is present in the view
          * and is currently visible.
@@ -4759,15 +4892,18 @@ export namespace RB {
          * @returns TRUE if the entry is visible
          */
         get_entry_visible(entry: RhythmDBEntry): boolean;
+
         /**
          * Gathers the selected entries from the view.
          * @returns a {@link GLib.List} of selected entries in the view.
          */
         get_selected_entries(): RhythmDBEntry[];
+
         /**
          * Retrieves the sort settings for the view.
          */
         get_sorting_order(): [string, number];
+
         /**
          * Constructs a string that describes the sort settings for the entry view.
          * This consists of a column name and an order ('ascending' or 'descending')
@@ -4775,16 +4911,19 @@ export namespace RB {
          * @returns sort order description
          */
         get_sorting_type(): string;
+
         /**
          * Determines whether all entries in the view are selected.
          * @returns TRUE if all rows in the view are selected
          */
         have_complete_selection(): boolean;
+
         /**
          * Determines whether there is an active selection in the view.
          * @returns TRUE if one or more rows are selected
          */
         have_selection(): boolean;
+
         /**
          * Inserts a custom column at the specified position.
          * @param column a {@link Gtk.TreeViewColumn} to append
@@ -4793,38 +4932,38 @@ export namespace RB {
          * @param sort_func comparison function to use for sorting on the column
          * @param position position at which to insert the column (-1 to insert at the end)
          */
-        insert_column_custom(
-            column: Gtk.TreeViewColumn,
-            title: string,
-            key: string,
-            sort_func: GLib.CompareDataFunc,
-            position: number,
-        ): void;
+        insert_column_custom(column: Gtk.TreeViewColumn, title: string, key: string, sort_func: GLib.CompareDataFunc, position: number): void;
+
         /**
          * Resorts the entries in the entry view.  Mostly to be used
          * when a new model is associated with the view.
          */
         resort_model(): void;
+
         /**
          * If the specified entry is present in the view, the view will be
          * scrolled so that the entry is visible.
          * @param entry a {@link RB.RhythmDBEntry} to scroll to
          */
         scroll_to_entry(entry: RhythmDBEntry): void;
+
         /**
          * Selects all rows in the view
          */
         select_all(): void;
+
         /**
          * If the specified entry is present in the view, it is added
          * to the selection.
          * @param entry a {@link RB.RhythmDBEntry} to select
          */
         select_entry(entry: RhythmDBEntry): void;
+
         /**
          * Deselects all rows in the view.
          */
         select_none(): void;
+
         /**
          * Enables in-place editing of the values in a column.
          * The underlying %RhythmDBEntry is updated when editing is complete.
@@ -4832,12 +4971,14 @@ export namespace RB {
          * @param editable `true` to make the column editable, `false` otherwise
          */
         set_column_editable(column: EntryViewColumn, editable: boolean): void;
+
         /**
          * Makes the headers for sortable columns (those for which a sort function was
          * provided) clickable, so the user can set the sort order.
          * @param clickable if TRUE, sortable columns will be made clickable
          */
         set_columns_clickable(clickable: boolean): void;
+
         /**
          * Helper function for calling `rb_set_tree_view_column_fixed_width` on
          * a column.  This is important for performance reasons, as having the
@@ -4847,17 +4988,20 @@ export namespace RB {
          * @param strings a NULL-terminated array of strings that will be displayed in the column
          */
         set_fixed_column_width(column: Gtk.TreeViewColumn, renderer: Gtk.CellRenderer, strings: string[]): void;
+
         /**
          * Replaces the model backing the entry view.
          * @param model the new {@link RB.RhythmDBQueryModel} to use for the view
          */
         set_model(model: RhythmDBQueryModel): void;
+
         /**
          * Sets the sort order for the entry view.
          * @param column_name name of the column to sort on
          * @param sort_order order to sort in, as a {@link Gtk.SortType}
          */
         set_sorting_order(column_name: string, sort_order: number): void;
+
         /**
          * Changes the sort order for the entry view.  The sort order
          * description must be a column name, followed by a comma, followed
@@ -4865,6 +5009,7 @@ export namespace RB {
          * @param sorttype sort order description
          */
         set_sorting_type(sorttype: string): void;
+
         /**
          * Sets the icon to be drawn in the 'playing' column next to the
          * current playing entry.  RB_ENTRY_VIEW_PLAYING and RB_ENTRY_VIEW_PAUSED
@@ -4873,11 +5018,13 @@ export namespace RB {
          * @param state the new playing entry state
          */
         set_state(state: EntryViewState): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.set_state
+    // Conflicted with Gtk.Widget.set_state
         set_state(...args: never[]): any;
+
         /**
          * Sets the status text to be displayed inside the entry view, and
          * shows the spinner if busy.
@@ -4885,25 +5032,29 @@ export namespace RB {
          * @param busy whether the source is busy
          */
         set_status(status: string, busy: boolean): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace ExtDB {
         // Signal signatures
@@ -4923,7 +5074,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            load: (arg0: unknown) => any | null;
+            load: (arg0: unknown) => (any | null);
             /**
              * Emitted when a metadata request cannot be satisfied from the local
              * store.  Metadata providers initiate searches in response to this
@@ -4931,7 +5082,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            request: (arg0: ExtDBKey, arg1: number) => boolean | void;
+            request: (arg0: ExtDBKey, arg1: number) => (boolean | void);
             /**
              * Emitted when a metadata item needs to be written to a local file.
              * This only needs to be used for metadata that needs to be encoded
@@ -4939,12 +5090,11 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            store: (arg0: unknown) => any | null;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            store: (arg0: unknown) => (any | null);
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -4964,7 +5114,6 @@ export namespace RB {
         static $gtype: GObject.GType<ExtDB>;
 
         // Properties
-
         /**
          * Name of the metadata store.  Used to locate instances.
          * @construct-only
@@ -4982,73 +5131,67 @@ export namespace RB {
         $signals: ExtDB.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExtDB.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): ExtDB;
+        static ["new"](name: string): ExtDB;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtDB.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExtDB.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtDB.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExtDB.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtDB.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtDB.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExtDB.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExtDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExtDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param key
-         * @param filename
-         * @param data
+         * @param key 
+         * @param filename 
+         * @param data 
          * @virtual
          */
         vfunc_added(key: ExtDBKey, filename: string, data: unknown): void;
+
         /**
-         * @param data
+         * @param data 
          * @virtual
          */
-        vfunc_load(data: unknown): GObject.Value | any;
+        vfunc_load(data: unknown): (GObject.Value | any);
+
         /**
-         * @param key
-         * @param last_time
+         * @param key 
+         * @param last_time 
          * @virtual
          */
         vfunc_request(key: ExtDBKey, last_time: number): boolean;
+
         /**
-         * @param data
+         * @param data 
          * @virtual
          */
-        vfunc_store(data: unknown): GObject.Value | any;
+        vfunc_store(data: unknown): (GObject.Value | any);
 
         // Methods
-
         /**
          * Deletes the item stored in the metadata store under the specified storage key.
          * @param key metadata storage key
          */
-        ['delete'](key: ExtDBKey): void;
+        ["delete"](key: ExtDBKey): void;
+
         /**
          * Looks up a cached metadata item.
          * @param key metadata lookup key
          * @returns name of the file storing the cached metadata item
          */
         lookup(key: ExtDBKey): [string, ExtDBKey | null];
+
         /**
          * Requests a metadata item.  If the item is cached, the callback will be called
          * synchronously.  Otherwise, metadata providers will provide results asynchronously.
@@ -5057,6 +5200,7 @@ export namespace RB {
          * @returns `true` if results may be provided after returning
          */
         request(key: ExtDBKey, callback: ExtDBRequestCallback): boolean;
+
         /**
          * Stores an item in the metadata store so that lookups matching `key` will
          * return it.  `data` should contain an object that must be transformed using
@@ -5067,7 +5211,8 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | null): void;
+        store(key: ExtDBKey, source_type: ExtDBSourceType, data: (GObject.Value | null)): void;
+
         /**
          * Stores an item in the metadata store so that lookpus matching `key`
          * will return it.  `data` should contain the data to be written to the
@@ -5076,7 +5221,8 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store_raw(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | null): void;
+        store_raw(key: ExtDBKey, source_type: ExtDBSourceType, data: (GObject.Value | null)): void;
+
         /**
          * Stores an item identified by `uri` in the metadata store so that
          * lookups matching `key` will return it.
@@ -5084,8 +5230,9 @@ export namespace RB {
          * @param source_type metadata source type
          * @param uri URI of the item to store
          */
-        store_uri(key: ExtDBKey, source_type: ExtDBSourceType, uri: string | null): void;
+        store_uri(key: ExtDBKey, source_type: ExtDBSourceType, uri: (string | null)): void;
     }
+
 
     namespace FadingImage {
         // Signal signatures
@@ -5095,60 +5242,58 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'pixbuf-dropped': (arg0: GdkPixbuf.Pixbuf) => void;
+            "pixbuf-dropped": (arg0: GdkPixbuf.Pixbuf) => void;
             /**
              * Emitted when a URI is dragged and dropped on the image
              * @signal
              * @run-last
              */
-            'uri-dropped': (arg0: string) => void;
-            'notify::fallback': (pspec: GObject.ParamSpec) => void;
-            'notify::use-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "uri-dropped": (arg0: string) => void;
+            "notify::fallback": (pspec: GObject.ParamSpec) => void;
+            "notify::use-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             fallback: string;
             use_tooltip: boolean;
             useTooltip: boolean;
@@ -5164,19 +5309,20 @@ export namespace RB {
         static $gtype: GObject.GType<FadingImage>;
 
         // Properties
-
         /**
          * Name of an icon to display when no image is available.
          * @construct-only
          * @default null
          */
         get fallback(): string;
+
         /**
          * Whether to display a tooltip on the image
          * @construct-only
          * @default true
          */
         get use_tooltip(): boolean;
+
         /**
          * Whether to display a tooltip on the image
          * @construct-only
@@ -5194,39 +5340,30 @@ export namespace RB {
         $signals: FadingImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FadingImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FadingImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FadingImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FadingImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FadingImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FadingImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FadingImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FadingImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FadingImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FadingImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FadingImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FadingImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FadingImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets the next image to be displayed.
          * @param pixbuf the next pixbuf to display
          */
-        set_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
+        set_pixbuf(pixbuf: (GdkPixbuf.Pixbuf | null)): void;
+
         /**
          * Starts fading to the next image.  If no next image has been supplied,
          * the fallback image will be used instead.  If the next image has been
@@ -5235,7 +5372,8 @@ export namespace RB {
          * something tricky happens.
          * @param duration length of fade in milliseconds
          */
-        start(duration: bigint | number): void;
+        start(duration: (bigint | number)): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -5243,10 +5381,11 @@ export namespace RB {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -5254,6 +5393,7 @@ export namespace RB {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -5262,7 +5402,8 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -5271,7 +5412,8 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -5279,11 +5421,8 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -5291,15 +5430,17 @@ export namespace RB {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -5309,18 +5450,21 @@ export namespace RB {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -5329,10 +5473,11 @@ export namespace RB {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -5340,6 +5485,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -5349,12 +5495,8 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -5364,12 +5506,8 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -5377,11 +5515,8 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -5389,15 +5524,17 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -5408,6 +5545,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -5416,6 +5554,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -5424,15 +5563,15 @@ export namespace RB {
         vfunc_set_name(name: string): void;
     }
 
+
     namespace History {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::maximum-size': (pspec: GObject.ParamSpec) => void;
-            'notify::truncate-on-play': (pspec: GObject.ParamSpec) => void;
+            "notify::maximum-size": (pspec: GObject.ParamSpec) => void;
+            "notify::truncate-on-play": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             maximum_size: number;
             maximumSize: number;
@@ -5445,7 +5584,7 @@ export namespace RB {
      * RBHistory is a GSequence that maintains a "current" pointer and can delete
      * an arbitrary element in amortized O(log(N)) time. It can call a deletion
      * callback when it removes one of its entries.
-     *
+     * 
      * All operations take amortized O(log(N)) (worst-case O(N)) time unless noted
      * otherwise.
      * @gir-type Class
@@ -5454,25 +5593,27 @@ export namespace RB {
         static $gtype: GObject.GType<History>;
 
         // Properties
-
         /**
          * Maximum number of entries to store in the history.  If 0, no limit is applied.
          * @default 0
          */
         get maximum_size(): number;
         set maximum_size(val: number);
+
         /**
          * Maximum number of entries to store in the history.  If 0, no limit is applied.
          * @default 0
          */
         get maximumSize(): number;
         set maximumSize(val: number);
+
         /**
          * If set, `rb_history_set_playing()` truncates the rest of the history
          * @default false
          */
         get truncate_on_play(): boolean;
         set truncate_on_play(val: boolean);
+
         /**
          * If set, `rb_history_set_playing()` truncates the rest of the history
          * @default false
@@ -5490,36 +5631,26 @@ export namespace RB {
         $signals: History.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<History.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](truncate_on_play: boolean, destroyer: GLib.Func): History;
+        static ["new"](truncate_on_play: boolean, destroyer: GLib.Func): History;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof History.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, History.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof History.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, History.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof History.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, History.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof History.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, History.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof History.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<History.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof History.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<History.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new entry to the end of the history list.
          * If a size limit is set, an entry may be removed from the start to
@@ -5527,21 +5658,25 @@ export namespace RB {
          * @param entry a {@link RB.RhythmDBEntry} to append
          */
         append(entry: RhythmDBEntry): void;
+
         /**
          * Empties the history list.
          */
         clear(): void;
+
         /**
          * Returns `true` if the entry is present in the history list.
          * @param entry a {@link RB.RhythmDBEntry} to check for
          * @returns `true` if found
          */
         contains_entry(entry: RhythmDBEntry): boolean;
+
         /**
          * Returns the current {@link RB.RhythmDBEntry}, or NULL if there is no current position
          * @returns current entry or NULL
          */
         current(): RhythmDBEntry;
+
         /**
          * Constructs a copy of the whole history in order. Caller must free the result.
          * The caller does not own any references on the entries in the returned array.
@@ -5549,76 +5684,91 @@ export namespace RB {
          * @returns a copy of the history list
          */
         dump(): RhythmDBEntry[];
+
         /**
          * Returns the first entry in the history.
          * @returns first entry
          */
         first(): RhythmDBEntry;
+
         /**
          * Gets the index of the current entry. This is guaranteed to be < the
          * history's size, so if the history is empty, it returns -1.
          * @returns index of the current entry
          */
         get_current_index(): number;
+
         /**
          * Moves the current position to the first entry in the history
          */
         go_first(): void;
+
         /**
          * Moves the current position to the last entry in the history
          */
         go_last(): void;
+
         /**
          * Moves the current position to the next entry.  If the current position is
          * already at the end of the history, nothing happens.
          */
         go_next(): void;
+
         /**
          * Moves the current position to the previous entry.  If the current position is
          * already at the start of the history, nothing happens.
          */
         go_previous(): void;
+
         /**
          * Inserts `entry` at `index` within the history list. 0<=`index`<=size
          * @param entry a {@link RB.RhythmDBEntry} to insert
          * @param index position at which to insert `entry`
          */
         insert_at_index(entry: RhythmDBEntry, index: number): void;
+
         /**
          * Returns the last {@link RB.RhythmDBEntry} in the history
          * @returns last entry
          */
         last(): RhythmDBEntry;
+
         /**
          * Returns the number of entries in the history.
          * @returns number of entries
          */
         length(): number;
+
         /**
          * Returns the {@link RB.RhythmDBEntry} after the current position
          * @returns next entry
          */
         next(): RhythmDBEntry;
+
         /**
          * Returns the {@link RB.RhythmDBEntry} before the current position.
          * @returns previous entry
          */
         previous(): RhythmDBEntry;
+
         /**
          * Removes the specified entry from the history list.
          * @param entry the {@link RB.RhythmDBEntry} to remove
          */
         remove_entry(entry: RhythmDBEntry): void;
+
         /**
          * Sets a new function to call when removing entries from the history.
          * @param destroyer function to call when removing an entry from the history
          */
         set_destroy_notify(destroyer: GLib.Func): void;
+
         /**
          * Sets the maximum-size property
          * @param maximum_size new maximum size of the history (or 0 for no limit)
          */
         set_maximum_size(maximum_size: number): void;
+
         /**
          * Updates the current position to point to the specified entry.
          * If the truncate-on-play property is set, this will remove all entries
@@ -5626,6 +5776,7 @@ export namespace RB {
          * @param entry the new playing {@link RB.RhythmDBEntry}
          */
         set_playing(entry: RhythmDBEntry): void;
+
         /**
          * Sets the 'truncate-on-play' property.
          * @param truncate_on_play Whether `rb_history_set_playing()` should truncate the history
@@ -5633,70 +5784,65 @@ export namespace RB {
         set_truncate_on_play(truncate_on_play: boolean): void;
     }
 
+
     namespace LibraryBrowser {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::browser-views': (pspec: GObject.ParamSpec) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::input-model': (pspec: GObject.ParamSpec) => void;
-            'notify::output-model': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::browser-views": (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::input-model": (pspec: GObject.ParamSpec) => void;
+            "notify::output-model": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             browser_views: string;
             browserViews: string;
             db: RhythmDB;
@@ -5714,12 +5860,12 @@ export namespace RB {
      * {@link RB.RhythmDBPropertyModel}<!-- -->s and constructs a chain of
      * {@link RB.RhythmDBQueryModel}<!-- -->s to perform filtering of the entries
      * in a source.
-     *
+     * 
      * It operates on an input query model, containing the full set of
      * entries that may be displayed in the source, and produces an
      * output query model containing those entries that match the current
      * selection.
-     *
+     * 
      * When the selection in any of the property views changes, or when
      * `rb_library_browser_reset` or `rb_library_browser_set_selection` are
      * called to manipulate the selection, the query chain is rebuilt
@@ -5730,34 +5876,38 @@ export namespace RB {
         static $gtype: GObject.GType<LibraryBrowser>;
 
         // Properties
-
         /**
          * The set of browsers to display.
          * @default artists-albums
          */
         get browser_views(): string;
         set browser_views(val: string);
+
         /**
          * The set of browsers to display.
          * @default artists-albums
          */
         get browserViews(): string;
         set browserViews(val: string);
+
         /**
          * {@link RB.RhythmDB} instance
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * The type of entries to use in the browser.
          * @construct-only
          */
         get entry_type(): RhythmDBEntryType;
+
         /**
          * The type of entries to use in the browser.
          * @construct-only
          */
         get entryType(): RhythmDBEntryType;
+
         /**
          * This {@link RB.RhythmDBQueryModel} defines the set of entries that
          * the browser filters.  This property is not writeable.
@@ -5766,6 +5916,7 @@ export namespace RB {
          * @read-only
          */
         get input_model(): RhythmDBQueryModel;
+
         /**
          * This {@link RB.RhythmDBQueryModel} defines the set of entries that
          * the browser filters.  This property is not writeable.
@@ -5774,24 +5925,26 @@ export namespace RB {
          * @read-only
          */
         get inputModel(): RhythmDBQueryModel;
+
         /**
          * This {@link RB.RhythmDBQueryModel} contains the filtered set of
          * entries.  It is a subset of the entries contained in the
          * input model.  This should be used as the model backing
          * the source's entry view.
-         *
+         * 
          * Sources using this widget should connect to the notify
          * signal for this property, updating their entry view when
          * it changes.
          * @read-only
          */
         get output_model(): RhythmDBQueryModel;
+
         /**
          * This {@link RB.RhythmDBQueryModel} contains the filtered set of
          * entries.  It is a subset of the entries contained in the
          * input model.  This should be used as the model backing
          * the source's entry view.
-         *
+         * 
          * Sources using this widget should connect to the notify
          * signal for this property, updating their entry view when
          * it changes.
@@ -5809,44 +5962,35 @@ export namespace RB {
         $signals: LibraryBrowser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LibraryBrowser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](db: RhythmDB, entry_type: RhythmDBEntryType): LibraryBrowser;
-        // Conflicted with Gtk.Box.new
+        static ["new"](db: RhythmDB, entry_type: RhythmDBEntryType): LibraryBrowser;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LibraryBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LibraryBrowser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LibraryBrowser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LibraryBrowser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LibraryBrowser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LibraryBrowser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LibraryBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LibraryBrowser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LibraryBrowser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LibraryBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LibraryBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LibraryBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Constructs a {@link RB.RhythmDBQuery} from the current selections in the browser.
          * @returns a {@link RB.RhythmDBQuery} constructed from the current selection.
          */
         construct_query(): RhythmDBQuery;
+
         /**
          * Retrieves the property view widget for the specified property,
          * if there is one.
@@ -5854,21 +5998,25 @@ export namespace RB {
          * @returns {@link RB.PropertyView} widget, or NULL
          */
         get_property_view(type: RhythmDBPropType): PropertyView;
+
         /**
          * Retrieves the property view widgets from the browser.
          * @returns a {@link GLib.List} containing the {@link RB.PropertyView} widgets in the browser.
          */
         get_property_views(): PropertyView[];
+
         /**
          * Determines whether the browser has an active selection.
          * @returns TRUE if any items in the browser are selected.
          */
         has_selection(): boolean;
+
         /**
          * Clears all selections in the browser.
          * @returns TRUE if anything was changed
          */
         reset(): boolean;
+
         /**
          * Specifies a new input query model for the browser.
          * This should be the query model constructed from the
@@ -5878,31 +6026,36 @@ export namespace RB {
          * @param query_pending if TRUE, the caller promises to run a  query to populate the input query model.
          */
         set_model(model: RhythmDBQueryModel, query_pending: boolean): void;
+
         /**
          * Replaces any current selection for the specified property.
          * @param type the property for which to set the selection
          * @param selection a list of strings to select
          */
         set_selection(type: RhythmDBPropType, selection: string[]): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace ListModel {
         // Signal signatures
@@ -5911,12 +6064,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'items-changed': (arg0: number, arg1: number, arg2: number) => void;
+            "items-changed": (arg0: number, arg1: number, arg2: number) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5936,59 +6090,53 @@ export namespace RB {
         $signals: ListModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ListModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](item_type: GObject.GType): ListModel;
+        static ["new"](item_type: GObject.GType): ListModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ListModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ListModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ListModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ListModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ListModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ListModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ListModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ListModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ListModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Appends `item` to the list.
          * @param item item to append
          */
-        append(item: any | null): void;
+        append(item: (any | null)): void;
+
         /**
          * Returns the lowest index at which `item` appears in the list,
          * or -1 if the item is not in the list.
          * @param item item to find
          * @returns list index
          */
-        find(item: any | null): number;
+        find(item: (any | null)): number;
+
         /**
          * Returns an item from the list.
          * @param index item to retrieve
          * @returns item at the specified index
          */
-        get(index: number): any | null;
+        get(index: number): (any | null);
+
         /**
          * Returns the list entry type.
          * @returns list entry type
          */
         get_item_type(): GObject.GType;
+
         /**
          * Inserts at item into the list.  If `index` is less than zero or
          * greater than the length of the list, the item is appended to the
@@ -5996,45 +6144,49 @@ export namespace RB {
          * @param index position to insert the item at
          * @param item item to insert
          */
-        insert(index: number, item: any | null): void;
+        insert(index: number, item: (any | null)): void;
+
         /**
          * Returns the length of the list.
          * @returns list length
          */
         n_items(): number;
+
         /**
          * Prepends `item` to the list.
          * @param item item to prepend
          */
-        prepend(item: any | null): void;
+        prepend(item: (any | null)): void;
+
         /**
          * Removes the item at `index` from the list.
          * @param index index of the item to remove
          */
         remove(index: number): void;
+
         /**
          * Removes `item` from the list.  If the item appears in the
          * list multiple times, only the first instance is removed.
          * @param item item to remove
          */
-        remove_item(item: any | null): void;
+        remove_item(item: (any | null)): void;
     }
+
 
     namespace MediaPlayerEntryType {
         // Signal signatures
         interface SignalSignatures extends RhythmDBEntryType.SignalSignatures {
-            'notify::key-prefix': (pspec: GObject.ParamSpec) => void;
-            'notify::uri-prefix': (pspec: GObject.ParamSpec) => void;
-            'notify::cache-name': (pspec: GObject.ParamSpec) => void;
-            'notify::category': (pspec: GObject.ParamSpec) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::save-to-disk': (pspec: GObject.ParamSpec) => void;
-            'notify::type-data-size': (pspec: GObject.ParamSpec) => void;
+            "notify::key-prefix": (pspec: GObject.ParamSpec) => void;
+            "notify::uri-prefix": (pspec: GObject.ParamSpec) => void;
+            "notify::cache-name": (pspec: GObject.ParamSpec) => void;
+            "notify::category": (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::save-to-disk": (pspec: GObject.ParamSpec) => void;
+            "notify::type-data-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends RhythmDBEntryType.ConstructorProps {
             key_prefix: string;
             keyPrefix: string;
@@ -6050,22 +6202,24 @@ export namespace RB {
         static $gtype: GObject.GType<MediaPlayerEntryType>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get key_prefix(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get keyPrefix(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get uri_prefix(): string;
+
         /**
          * @construct-only
          * @default null
@@ -6082,112 +6236,96 @@ export namespace RB {
         $signals: MediaPlayerEntryType.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaPlayerEntryType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaPlayerEntryType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlayerEntryType.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaPlayerEntryType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlayerEntryType.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaPlayerEntryType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlayerEntryType.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaPlayerEntryType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlayerEntryType.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaPlayerEntryType.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaPlayerEntryType.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof MediaPlayerEntryType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPlayerEntryType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace MediaPlayerSource {
         // Signal signatures
         interface SignalSignatures extends BrowserSource.SignalSignatures {
-            'notify::encoding-settings': (pspec: GObject.ParamSpec) => void;
-            'notify::encoding-target': (pspec: GObject.ParamSpec) => void;
-            'notify::serial': (pspec: GObject.ParamSpec) => void;
-            'notify::populate': (pspec: GObject.ParamSpec) => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::encoding-settings": (pspec: GObject.ParamSpec) => void;
+            "notify::encoding-target": (pspec: GObject.ParamSpec) => void;
+            "notify::serial": (pspec: GObject.ParamSpec) => void;
+            "notify::populate": (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                BrowserSource.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends BrowserSource.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             encoding_settings: Gio.Settings;
             encodingSettings: Gio.Settings;
             encoding_target: GstPbutils.EncodingTarget;
@@ -6203,27 +6341,30 @@ export namespace RB {
         static $gtype: GObject.GType<MediaPlayerSource>;
 
         // Properties
-
         /**
          * The {@link Gio.Settings} instance holding encoding settings for this device
          */
         get encoding_settings(): Gio.Settings;
         set encoding_settings(val: Gio.Settings);
+
         /**
          * The {@link Gio.Settings} instance holding encoding settings for this device
          */
         get encodingSettings(): Gio.Settings;
         set encodingSettings(val: Gio.Settings);
+
         /**
          * The {@link GstPbutils.EncodingTarget} for this device
          */
         get encoding_target(): GstPbutils.EncodingTarget;
         set encoding_target(val: GstPbutils.EncodingTarget);
+
         /**
          * The {@link GstPbutils.EncodingTarget} for this device
          */
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
+
         /**
          * @read-only
          * @default null
@@ -6240,92 +6381,96 @@ export namespace RB {
         $signals: MediaPlayerSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaPlayerSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaPlayerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlayerSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaPlayerSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlayerSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaPlayerSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlayerSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaPlayerSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlayerSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaPlayerSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaPlayerSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaPlayerSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPlayerSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @param entries list of entries to delete
          * @param callback callback to call on completion
          * @virtual
          */
-        vfunc_delete_entries(entries: RhythmDBEntry[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_delete_entries(entries: RhythmDBEntry[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * @virtual
          */
-        vfunc_get_capacity(): bigint | number;
+        vfunc_get_capacity(): (bigint | number);
+
         /**
          * @param category the sync category name
          * @param map map to hold the entries
          * @virtual
          */
         vfunc_get_entries(category: string, map: GLib.HashTable<string, RhythmDBEntry>): void;
+
         /**
          * @virtual
          */
-        vfunc_get_free_space(): bigint | number;
+        vfunc_get_free_space(): (bigint | number);
+
         /**
          * @virtual
          */
         vfunc_remove_playlists(): void;
+
         /**
-         * @param info_box
-         * @param notebook
+         * @param info_box 
+         * @param notebook 
          * @virtual
          */
         vfunc_show_properties(info_box: Gtk.Widget, notebook: Gtk.Widget): void;
 
         // Methods
-
         /**
          * @param entries list of entries to delete
          * @param callback callback to call on completion
          */
-        delete_entries(entries: RhythmDBEntry[], callback: Gio.AsyncReadyCallback<this> | null): void;
+        delete_entries(entries: RhythmDBEntry[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         get_capacity(): number;
+
         /**
          * @param category the sync category name
          * @param map map to hold the entries
          */
-        get_entries(category: string, map: { [key: string]: any } | GLib.HashTable<string, RhythmDBEntry>): void;
+        get_entries(category: string, map: ({ [key: string]: any } | GLib.HashTable<string, RhythmDBEntry>)): void;
+
         get_free_space(): number;
+
         load(): void;
+
         purge_metadata_cache(): void;
+
         show_properties(): void;
+
         sync(): void;
     }
 
+
     namespace MetaData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6345,41 +6490,32 @@ export namespace RB {
         $signals: MetaData.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MetaData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MetaData;
+        static ["new"](): MetaData;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MetaData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MetaData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MetaData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MetaData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MetaData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MetaData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the name of a metadata field.
          * @param field a {@link RB.MetaDataField}
          */
         static get_field_name(field: MetaDataField): string;
+
         /**
          * Returns the {@link GObject.GType} of the value for a metadata field.
          * @param field a {@link RB.MetaDataField}
@@ -6387,7 +6523,6 @@ export namespace RB {
         static get_field_type(field: MetaDataField): GObject.GType;
 
         // Methods
-
         /**
          * Checks if the metadata writer is capable of updating file metadata
          * for a given media type.
@@ -6395,6 +6530,7 @@ export namespace RB {
          * @returns TRUE if the file metadata for the given media type can be updated
          */
         can_save(media_type: string): boolean;
+
         /**
          * Retrieves the value of a metadata field extracted from the target URI.
          * If the target URI contained no value for the field, returns FALSE.
@@ -6402,12 +6538,14 @@ export namespace RB {
          * @returns TRUE if a value was returned
          */
         get(field: MetaDataField): [boolean, unknown];
+
         /**
          * Returns the type of the file from which metadata was read.
          * This may look like a MIME type, but it isn't.
          * @returns media type string
          */
         get_media_type(): string;
+
         /**
          * This function returns the information used to request automatic
          * installation of media framework plugins required to decode the target URI.
@@ -6415,13 +6553,16 @@ export namespace RB {
          * @returns TRUE if missing plugin information was returned
          */
         get_missing_plugins(): [boolean, string[], string[]];
+
         /**
          * Constructs a list of the media types for which the metadata backend
          * implements tag saving.
          * @returns a NULL-terminated array of media type strings.  Use g_strfreev to free it.
          */
         get_saveable_types(): string[];
+
         has_audio(): boolean;
+
         /**
          * If the metadata reader could not decode the file it was asked to
          * because one or more media framework plugins (specifically, for the
@@ -6430,8 +6571,11 @@ export namespace RB {
          * @returns TRUE if required plugins are missing
          */
         has_missing_plugins(): boolean;
+
         has_other_data(): boolean;
+
         has_video(): boolean;
+
         /**
          * Reads metadata information from the specified URI.
          * Once this has returned successfully (with *error == NULL),
@@ -6440,17 +6584,20 @@ export namespace RB {
          * @param uri URI from which to load metadata
          */
         load(uri: string): void;
+
         /**
          * Resets the state of the metadata interface.  Call this before
          * setting tags to be written to a file.
          */
         reset(): void;
+
         /**
          * Saves all metadata changes made with rb_metadata_set to the
          * target URI.
          * @param uri the target URI
          */
         save(uri: string): void;
+
         /**
          * Sets a metadata field value.  The value is only stored inside the
          * {@link RB.MetaData} object until rb_metadata_save is called.
@@ -6458,13 +6605,15 @@ export namespace RB {
          * @param val the value to set
          * @returns TRUE if the field is valid
          */
-        set(field: MetaDataField, val: GObject.Value | any): boolean;
+        set(field: MetaDataField, val: (GObject.Value | any)): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
     }
+
 
     namespace PlayOrder {
         // Signal signatures
@@ -6475,13 +6624,12 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'have-next-previous-changed': (arg0: boolean, arg1: boolean) => void;
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::playing-entry': (pspec: GObject.ParamSpec) => void;
+            "have-next-previous-changed": (arg0: boolean, arg1: boolean) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::playing-entry": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             player: ShellPlayer;
             playing_entry: RhythmDBEntry;
@@ -6492,15 +6640,15 @@ export namespace RB {
     /**
      * A play order defines an ordering of the entries from a {@link RB.RhythmDBQueryModel} that
      * the {@link RB.ShellPlayer} uses to get the next or previous entry to play.
-     *
+     * 
      * Play order methods are invoked when changes are made to the query model, when
      * the query model is replaced, the playing source is changed, or a new playing
      * entry is selected.
-     *
+     * 
      * The play order must implement methods to check for, retrieve, and move to the
      * next and previous entries in the play order.  Only the go_next and go_previous
      * methods actually change anything.
-     *
+     * 
      * The play order should also emit the have-next-previous-changed signal to hint that
      * the availability of either a next or previous entry in the order may have changed.
      * This information is used to update the sensitivity of the next and previous buttons.
@@ -6510,17 +6658,18 @@ export namespace RB {
         static $gtype: GObject.GType<PlayOrder>;
 
         // Properties
-
         /**
          * The {@link RB.ShellPlayer} instance
          * @construct-only
          */
         get player(): ShellPlayer;
+
         /**
          * The current playing {@link RB.RhythmDBEntry}
          */
         get playing_entry(): RhythmDBEntry;
         set playing_entry(val: RhythmDBEntry);
+
         /**
          * The current playing {@link RB.RhythmDBEntry}
          */
@@ -6537,107 +6686,111 @@ export namespace RB {
         $signals: PlayOrder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlayOrder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlayOrder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayOrder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlayOrder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlayOrder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlayOrder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlayOrder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlayOrder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlayOrder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlayOrder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlayOrder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlayOrder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlayOrder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param new_db
+         * @param new_db 
          * @virtual
          */
         vfunc_db_changed(new_db: RhythmDB): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_db_entry_deleted(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_added(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_removed(entry: RhythmDBEntry): void;
+
         /**
          * Returns the next entry in the play order, or the first if not currently playing.
          * @virtual
          */
         vfunc_get_next(): RhythmDBEntry;
+
         /**
          * Returns the previous entry in the play order, or NULL if not currently playing.
          * @virtual
          */
         vfunc_get_previous(): RhythmDBEntry;
+
         /**
          * Moves to the next entry in the play order.  If not currently playing, sets the
          * first entry in the play order as the playing entry.
          * @virtual
          */
         vfunc_go_next(): void;
+
         /**
          * Moves to the previous entry in the play order.  If not currently playing, does nothing.
          * @virtual
          */
         vfunc_go_previous(): void;
+
         /**
          * If there is no current playing entry, returns true if the play order is non-empty.
          * @virtual
          */
         vfunc_has_next(): boolean;
+
         /**
          * Returns `true` if there is an entry before the current entry in the play order.
          * If not currently playing, returns `false`.
          * @virtual
          */
         vfunc_has_previous(): boolean;
+
         /**
-         * @param have_next
-         * @param have_previous
+         * @param have_next 
+         * @param have_previous 
          * @virtual
          */
         vfunc_have_next_previous_changed(have_next: boolean, have_previous: boolean): void;
+
         /**
-         * @param old_entry
-         * @param new_entry
+         * @param old_entry 
+         * @param new_entry 
          * @virtual
          */
         vfunc_playing_entry_changed(old_entry: RhythmDBEntry, new_entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_playing_entry_removed(entry: RhythmDBEntry): void;
+
         /**
          * @virtual
          */
         vfunc_playing_source_changed(): void;
+
         /**
          * Updates the {@link RB.RhythmDBQueryModel} instance for the play order.
          * Called from the {@link RB.Source} notify signal handler, and also from
@@ -6649,62 +6802,72 @@ export namespace RB {
         vfunc_query_model_changed(): void;
 
         // Methods
-
         /**
          * Only for use by {@link RB.PlayOrder} subclasses.
          * @returns the {@link RB.RhythmDB} instance.
          */
         get_db(): RhythmDB;
+
         /**
          * Returns the next entry in the play order, or the first if not currently playing.
          * @returns next entry to play
          */
         get_next(): RhythmDBEntry;
+
         /**
          * Only for use by {@link RB.PlayOrder} subclasses.
          * @returns {@link RB.ShellPlayer} instance
          */
         get_player(): ShellPlayer;
+
         /**
          * Returns the current playing entry in the play order.
          * @returns playing entry
          */
         get_playing_entry(): RhythmDBEntry;
+
         /**
          * Returns the previous entry in the play order, or NULL if not currently playing.
          * @returns previous entry
          */
         get_previous(): RhythmDBEntry;
+
         /**
          * Only for use by {@link RB.PlayOrder} subclasses.
          * @returns the active {@link RB.RhythmDBQueryModel} for the playing source.
          */
         get_query_model(): RhythmDBQueryModel;
+
         /**
          * Only for use by {@link RB.PlayOrder} subclasses.
          * @returns the playing {@link RB.Source} instance.
          */
         get_source(): Source;
+
         /**
          * Moves to the next entry in the play order.  If not currently playing, sets the
          * first entry in the play order as the playing entry.
          */
         go_next(): void;
+
         /**
          * Moves to the previous entry in the play order.  If not currently playing, does nothing.
          */
         go_previous(): void;
+
         /**
          * If there is no current playing entry, returns true if the play order is non-empty.
          * @returns true if there is an entry after the current playing entry in the play order.
          */
         has_next(): boolean;
+
         /**
          * Returns `true` if there is an entry before the current entry in the play order.
          * If not currently playing, returns `false`.
          * @returns `true` if previous entry exists
          */
         has_previous(): boolean;
+
         /**
          * Returns `true` if the {@link RB.RhythmDBQueryModel} is not empty.
          * Can be used to implement has_next and has_previous for play orders
@@ -6712,11 +6875,13 @@ export namespace RB {
          * @returns `true` if not empty
          */
         model_not_empty(): boolean;
+
         /**
          * Returns `true` if there is a current playing entry in the play order.
          * @returns `true` if playing
          */
         player_is_playing(): boolean;
+
         /**
          * Sets the playing {@link RB.Source} for the play order.  Should be called
          * by {@link RB.ShellPlayer} when the active source changes.  Subclasses
@@ -6725,6 +6890,7 @@ export namespace RB {
          * @param source New playing {@link RB.Source}
          */
         playing_source_changed(source: Source): void;
+
         /**
          * Updates the {@link RB.RhythmDBQueryModel} instance for the play order.
          * Called from the {@link RB.Source} notify signal handler, and also from
@@ -6733,12 +6899,14 @@ export namespace RB {
          * store any state based on the contents of the {@link RB.RhythmDBQueryModel}.
          */
         query_model_changed(): void;
+
         /**
          * Sets the playing entry in the play order.
          * @param entry The new playing entry (or NULL for none)
          */
-        set_playing_entry(entry: RhythmDBEntry | null): void;
+        set_playing_entry(entry: (RhythmDBEntry | null)): void;
     }
+
 
     namespace PlaylistManager {
         // Signal signatures
@@ -6749,34 +6917,33 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'load-finish': () => void;
+            "load-finish": () => void;
             /**
              * Emitted when the playlist manager starts loading the user's
              * playlist file.
              * @signal
              * @run-last
              */
-            'load-start': () => void;
+            "load-start": () => void;
             /**
              * Emitted when a playlist is added, including when being loaded
              * from the user's playlist file.
              * @signal
              * @run-last
              */
-            'playlist-added': (arg0: GObject.Object) => void;
+            "playlist-added": (arg0: GObject.Object) => void;
             /**
              * Emitted when a new playlist is created.
              * @signal
              * @run-last
              */
-            'playlist-created': (arg0: GObject.Object) => void;
-            'notify::playlists-file': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
+            "playlist-created": (arg0: GObject.Object) => void;
+            "notify::playlists-file": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             playlists_file: string;
             playlistsFile: string;
@@ -6795,19 +6962,21 @@ export namespace RB {
         static $gtype: GObject.GType<PlaylistManager>;
 
         // Properties
-
         /**
          * @default null
          */
         get playlists_file(): string;
         set playlists_file(val: string);
+
         /**
          * @default null
          */
         get playlistsFile(): string;
         set playlistsFile(val: string);
+
         get shell(): Shell;
         set shell(val: Shell);
+
         get source(): Source;
         set source(val: Source);
 
@@ -6821,61 +6990,52 @@ export namespace RB {
         $signals: PlaylistManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlaylistManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](shell: Shell, playlists_file: string): PlaylistManager;
+        static ["new"](shell: Shell, playlists_file: string): PlaylistManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlaylistManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaylistManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlaylistManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaylistManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlaylistManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaylistManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlaylistManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaylistManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlaylistManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlaylistManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlaylistManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaylistManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_load_finish(): void;
+
         /**
          * @virtual
          */
         vfunc_load_start(): void;
+
         /**
-         * @param source
+         * @param source 
          * @virtual
          */
         vfunc_playlist_added(source: Source): void;
+
         /**
-         * @param source
+         * @param source 
          * @virtual
          */
         vfunc_playlist_created(source: Source): void;
 
         // Methods
-
         /**
          * Adds an entry to the specified playlist.
          * Fails if no playlist with that name exists.
@@ -6885,6 +7045,7 @@ export namespace RB {
          * @returns TRUE if successful.
          */
         add_to_playlist(name: string, uri: string): boolean;
+
         /**
          * Creates a new static playlist source with the given name.
          * Will fail if a playlist with that name already exists.
@@ -6893,6 +7054,7 @@ export namespace RB {
          * @returns TRUE if successful.
          */
         create_static_playlist(name: string): boolean;
+
         /**
          * Deletes the specified playlist.  Will fail if no playlist with
          * that name exists. This is part of the playlist manager dbus interface.
@@ -6900,6 +7062,7 @@ export namespace RB {
          * @returns TRUE if successful.
          */
         delete_playlist(name: string): boolean;
+
         /**
          * Saves the specified playlist to a file in either M3U or PLS format.
          * This is part of the playlist manager dbus interface.
@@ -6909,22 +7072,26 @@ export namespace RB {
          * @returns TRUE if successful.
          */
         export_playlist(name: string, uri: string, m3u_format: boolean): boolean;
+
         /**
          * Allocates and returns an array containing the names of all local
          * playlists.  This is part of the playlist manager dbus interface.
          * @returns TRUE if successful.
          */
         get_playlist_names(): [boolean, string];
+
         /**
          * Returns a {@link GLib.List} containing all local playlist source objects.
          * @returns list of playlists
          */
         get_playlists(): Source[];
+
         /**
          * Loads the user's playlists, or if the playlist file does not exists,
          * reads the default playlist file.  Should be called only once on startup.
          */
         load_playlists(): void;
+
         /**
          * Creates a new playlist and adds it to the source list.
          * @param suggested_name optional name to use for the new playlist
@@ -6932,6 +7099,7 @@ export namespace RB {
          * @returns the new playlist object.
          */
         new_playlist(suggested_name: string, automatic: boolean): Source;
+
         /**
          * Creates a new playlist based on selection data from gtk.
          * Used to implement playlist creation through drag and drop
@@ -6940,6 +7108,7 @@ export namespace RB {
          * @returns the new playlist.
          */
         new_playlist_from_selection_data(data: Gtk.SelectionData): Source;
+
         /**
          * Parses a playlist file, adding entries to the database and to a new
          * static playlist.  If the playlist file includes a title, the static
@@ -6948,6 +7117,7 @@ export namespace RB {
          * @returns TRUE on success
          */
         parse_file(uri: string): boolean;
+
         /**
          * Removes an entry from the specified playlist.
          * Fails if no playlist with that name exists.
@@ -6957,10 +7127,12 @@ export namespace RB {
          * @returns TRUE if successful.
          */
         remove_from_playlist(name: string, uri: string): boolean;
+
         /**
-         * @param source
+         * @param source 
          */
         save_playlist_file(source: Source): void;
+
         /**
          * Saves the user's playlists.  If the force flag is
          * TRUE, the playlists will always be saved.  Otherwise, the playlists
@@ -6971,6 +7143,7 @@ export namespace RB {
          * @returns TRUE if a playlist save operation has been started
          */
         save_playlists(force: boolean): boolean;
+
         /**
          * Shuts down the playlist manager, making sure any outstanding playlist save
          * operation finishes.
@@ -6978,82 +7151,77 @@ export namespace RB {
         shutdown(): void;
     }
 
+
     namespace PlaylistSource {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::is-local': (pspec: GObject.ParamSpec) => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::is-local": (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Source.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Source.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             db: RhythmDB;
             dirty: boolean;
             is_local: boolean;
@@ -7068,7 +7236,7 @@ export namespace RB {
      * on the main library are saved to the playlists.xml file stored
      * alongside the rhythmdb.xml file.  Playlists on portable music players
      * are saved on the device in the format the player itself supports.
-     *
+     * 
      * This class provides most of the source UI (excluding the search bar),
      * holds some of the framework for loading and saving the playlists.xml
      * file, and records which playlists need to be saved.
@@ -7078,12 +7246,12 @@ export namespace RB {
         static $gtype: GObject.GType<PlaylistSource>;
 
         // Properties
-
         /**
          * The {@link RB.RhythmDB} instance
          * @read-only
          */
         get db(): RhythmDB;
+
         /**
          * Whether the playlist has been changed since it was last saved
          * to disk.
@@ -7091,6 +7259,7 @@ export namespace RB {
          * @default false
          */
         get dirty(): boolean;
+
         /**
          * Whether the playlist is attached to the local library.
          * Remote DAAP playlists, for example, are not local.
@@ -7098,6 +7267,7 @@ export namespace RB {
          * @default true
          */
         get is_local(): boolean;
+
         /**
          * Whether the playlist is attached to the local library.
          * Remote DAAP playlists, for example, are not local.
@@ -7116,7 +7286,6 @@ export namespace RB {
         $signals: PlaylistSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlaylistSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -7124,28 +7293,19 @@ export namespace RB {
         static new_from_xml(shell: Shell, node: libxml2.NodePtr): PlaylistSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaylistSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaylistSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaylistSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaylistSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlaylistSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlaylistSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlaylistSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaylistSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Marks the playlist dirty.  This generally means that the playlist
          * will be saved to disk fairly soon, but the exact meaning can vary
@@ -7153,20 +7313,21 @@ export namespace RB {
          * @virtual
          */
         vfunc_mark_dirty(): void;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_save_contents_to_xml(node: libxml2.NodePtr): void;
+
         /**
-         * @param view
-         * @param over_entry
+         * @param view 
+         * @param over_entry 
          * @virtual
          */
         vfunc_show_entry_view_popup(view: EntryView, over_entry: boolean): void;
 
         // Methods
-
         /**
          * Adds a URI to the playlist's entry map.  This is useful when the
          * URI is being added to the database, but no entry exists for it yet.
@@ -7175,30 +7336,35 @@ export namespace RB {
          * @returns TRUE if the URI was added to the entry map,  FALSE if it was already there.
          */
         add_to_map(location: string): boolean;
+
         /**
          * Returns the {@link RB.RhythmDB} instance.  The caller must not
          * unref the object once finished with it.
          * @returns the {@link RB.RhythmDB} instance
          */
         get_db(): RhythmDB;
+
         /**
          * Returns the current {@link RB.RhythmDBQueryModel} for the playlist.
          * The caller must not unref the object once finished with it.
          * @returns the current {@link RB.RhythmDBQueryModel}
          */
         get_query_model(): RhythmDBQueryModel;
+
         /**
          * Returns TRUE if the specified URI is in the playlist entry map
          * @param location a URI to check
          * @returns `true` if the URI is present
          */
         location_in_map(location: string): boolean;
+
         /**
          * Marks the playlist dirty.  This generally means that the playlist
          * will be saved to disk fairly soon, but the exact meaning can vary
          * between playlist types.
          */
         mark_dirty(): void;
+
         /**
          * Saves the playlist to an external file in a standard
          * format (M3U, PLS, or XSPF).
@@ -7206,22 +7372,25 @@ export namespace RB {
          * @param export_type format to save in
          */
         save_playlist(uri: string, export_type: PlaylistExportType): void;
+
         /**
          * Converts the playlist to XML format, below the specified
          * parent node.
          * @param parent_node libxml node below which to save the playlist
          */
         save_to_xml(parent_node: libxml2.NodePtr): void;
+
         /**
          * Sets a new query model for the playlist.  This updates the
          * entry view to use the new query model and also updates the
          * source query-model property.
-         *
+         * 
          * This needs to be called when the playlist subclass
          * creates a new query model.
          * @param model the new {@link RB.RhythmDBQueryModel}
          */
         set_query_model(model: RhythmDBQueryModel): void;
+
         /**
          * Connects signal handlers and sets up drag and drop support for
          * an entry view to be used by a playlist source.  This only needs
@@ -7231,6 +7400,7 @@ export namespace RB {
         setup_entry_view(entry_view: EntryView): void;
     }
 
+
     namespace PodcastManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -7238,23 +7408,22 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'feed-update-status': (arg0: string, arg1: PodcastFeedUpdateStatus, arg2: string) => void;
+            "feed-update-status": (arg0: string, arg1: PodcastFeedUpdateStatus, arg2: string) => void;
             /**
              * @signal
              * @run-last
              */
-            'finish-download': (arg0: RhythmDBEntry, arg1: GLib.Error) => void;
+            "finish-download": (arg0: RhythmDBEntry, arg1: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            'start-download': (arg0: RhythmDBEntry) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::updating': (pspec: GObject.ParamSpec) => void;
+            "start-download": (arg0: RhythmDBEntry) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::updating": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             db: RhythmDB;
             updating: boolean;
@@ -7268,9 +7437,9 @@ export namespace RB {
         static $gtype: GObject.GType<PodcastManager>;
 
         // Properties
-
         get db(): RhythmDB;
         set db(val: RhythmDB);
+
         /**
          * @read-only
          * @default false
@@ -7287,131 +7456,119 @@ export namespace RB {
         $signals: PodcastManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PodcastManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](db: RhythmDB): PodcastManager;
+        static ["new"](db: RhythmDB): PodcastManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PodcastManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PodcastManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PodcastManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PodcastManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PodcastManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PodcastManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PodcastManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PodcastManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @param db 
+         * @param search_result 
+         * @param entry 
+         * @param name 
+         * @param title 
+         * @param subtitle 
+         * @param channel_author 
+         * @param item_author 
+         * @param uri 
+         * @param description 
+         * @param guid 
+         * @param img 
+         * @param date 
+         * @param duration 
+         * @param position 
+         * @param filesize 
+         */
+        static add_post(db: RhythmDB, search_result: boolean, entry: RhythmDBEntry, name: string, title: string, subtitle: string, channel_author: string, item_author: string, uri: string, description: string, guid: string, img: string, date: (bigint | number), duration: (bigint | number), position: (bigint | number), filesize: (bigint | number)): RhythmDBEntry;
 
         /**
-         * @param db
-         * @param search_result
-         * @param entry
-         * @param name
-         * @param title
-         * @param subtitle
-         * @param channel_author
-         * @param item_author
-         * @param uri
-         * @param description
-         * @param guid
-         * @param img
-         * @param date
-         * @param duration
-         * @param position
-         * @param filesize
-         */
-        static add_post(
-            db: RhythmDB,
-            search_result: boolean,
-            entry: RhythmDBEntry,
-            name: string,
-            title: string,
-            subtitle: string,
-            channel_author: string,
-            item_author: string,
-            uri: string,
-            description: string,
-            guid: string,
-            img: string,
-            date: bigint | number,
-            duration: bigint | number,
-            position: bigint | number,
-            filesize: bigint | number,
-        ): RhythmDBEntry;
-        /**
-         * @param entry
+         * @param entry 
          */
         static entry_downloaded(entry: RhythmDBEntry): boolean;
 
         // Methods
-
         /**
-         * @param feed
+         * @param feed 
          */
         add_parsed_feed(feed: PodcastChannel): void;
+
         /**
-         * @param search_type
+         * @param search_type 
          */
         add_search(search_type: GObject.GType): void;
+
         /**
-         * @param entry
+         * @param entry 
          */
         cancel_download(entry: RhythmDBEntry): boolean;
+
         /**
-         * @param entry
+         * @param entry 
          */
         delete_download(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          */
         download_entry(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          */
         entry_in_download_queue(entry: RhythmDBEntry): boolean;
+
         /**
-         * @param url
+         * @param url 
          */
         feed_updating(url: string): boolean;
+
         get_podcast_dir(): string;
+
         /**
          * Returns the list of podcast searches
          * @returns list of search instances
          */
         get_searches(): PodcastSearch[];
+
         /**
-         * @param url
+         * @param url 
          */
         insert_feed_url(url: string): void;
+
         /**
-         * @param url
-         * @param remove_files
+         * @param url 
+         * @param remove_files 
          */
         remove_feed(url: string, remove_files: boolean): boolean;
+
         shutdown(): void;
+
         start_sync(): void;
+
         /**
-         * @param url
-         * @param automatic
+         * @param url 
+         * @param automatic 
          */
         subscribe_feed(url: string, automatic: boolean): boolean;
+
         update_feeds(): void;
     }
+
 
     namespace PodcastSearch {
         // Signal signatures
@@ -7425,12 +7582,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            result: (arg0: any | null) => void;
+            result: (arg0: (any | null)) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -7449,70 +7607,66 @@ export namespace RB {
         $signals: PodcastSearch.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PodcastSearch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PodcastSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastSearch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PodcastSearch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastSearch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PodcastSearch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastSearch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PodcastSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastSearch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PodcastSearch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PodcastSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PodcastSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PodcastSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_cancel(): void;
+
         /**
-         * @param text
-         * @param max_results
+         * @param text 
+         * @param max_results 
          * @virtual
          */
         vfunc_start(text: string, max_results: number): void;
 
         // Methods
-
         cancel(): void;
+
         /**
-         * @param successful
+         * @param successful 
          */
         finished(successful: boolean): void;
+
         /**
-         * @param data
+         * @param data 
          */
         result(data: PodcastChannel): void;
+
         /**
-         * @param text
-         * @param max_results
+         * @param text 
+         * @param max_results 
          */
         start(text: string, max_results: number): void;
     }
 
+
     namespace PodcastSearchITunes {
         // Signal signatures
-        interface SignalSignatures extends PodcastSearch.SignalSignatures {}
+        interface SignalSignatures extends PodcastSearch.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends PodcastSearch.ConstructorProps {
 
-        interface ConstructorProps extends PodcastSearch.ConstructorProps {}
+        }
     }
 
     /**
@@ -7531,34 +7685,24 @@ export namespace RB {
         $signals: PodcastSearchITunes.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PodcastSearchITunes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PodcastSearchITunes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastSearchITunes.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PodcastSearchITunes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastSearchITunes.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PodcastSearchITunes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PodcastSearchITunes.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PodcastSearchITunes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PodcastSearchITunes.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PodcastSearchITunes.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PodcastSearchITunes.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof PodcastSearchITunes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PodcastSearchITunes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace PropertyView {
         // Signal signatures
@@ -7570,13 +7714,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'properties-selected': (arg0: any | null) => void;
+            "properties-selected": (arg0: (any | null)) => void;
             /**
              * Emitted when a row in a property view is activated by double clicking.
              * @signal
              * @run-last
              */
-            'property-activated': (arg0: string) => void;
+            "property-activated": (arg0: string) => void;
             /**
              * Emitted when an individual property value becomes selected.  This is only
              * emitted for single-selection property views.  For multiple-selection views,
@@ -7584,14 +7728,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'property-selected': (arg0: string) => void;
+            "property-selected": (arg0: string) => void;
             /**
              * Emitted when the selection is reset.  At this point, no property values
              * are selected.
              * @signal
              * @run-last
              */
-            'property-selection-reset': () => void;
+            "property-selection-reset": () => void;
             /**
              * Emitted when a popup menu should be displayed for the property view.
              * The source containing the property view should connect a handler to
@@ -7599,78 +7743,73 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'show-popup': () => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::draggable': (pspec: GObject.ParamSpec) => void;
-            'notify::prop': (pspec: GObject.ParamSpec) => void;
-            'notify::property-model': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::hscrollbar-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::kinetic-scrolling': (pspec: GObject.ParamSpec) => void;
-            'notify::max-content-height': (pspec: GObject.ParamSpec) => void;
-            'notify::max-content-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-content-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-content-width': (pspec: GObject.ParamSpec) => void;
-            'notify::overlay-scrolling': (pspec: GObject.ParamSpec) => void;
-            'notify::propagate-natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::propagate-natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::shadow-type': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vscrollbar-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::window-placement': (pspec: GObject.ParamSpec) => void;
-            'notify::window-placement-set': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "show-popup": () => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::draggable": (pspec: GObject.ParamSpec) => void;
+            "notify::prop": (pspec: GObject.ParamSpec) => void;
+            "notify::property-model": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::hscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::kinetic-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::max-content-height": (pspec: GObject.ParamSpec) => void;
+            "notify::max-content-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-content-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-content-width": (pspec: GObject.ParamSpec) => void;
+            "notify::overlay-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::propagate-natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::propagate-natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::window-placement": (pspec: GObject.ParamSpec) => void;
+            "notify::window-placement-set": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.ScrolledWindow.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             db: RhythmDB;
             draggable: boolean;
             prop: RhythmDBPropType;
@@ -7686,7 +7825,7 @@ export namespace RB {
      * in the form "All 473 artists (6241)".  Each subsequent row in the tree view
      * displays a property value and the number of entries from the {@link RB.RhythmDBQueryModel}
      * with that value.
-     *
+     * 
      * The property view itself creates a single column, but additional columns can be
      * added.
      * @gir-type Class
@@ -7695,34 +7834,38 @@ export namespace RB {
         static $gtype: GObject.GType<PropertyView>;
 
         // Properties
-
         /**
          * {@link RB.RhythmDB} instance
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * Whether the property view acts as a data source for drag and drop operations.
          * @construct-only
          * @default true
          */
         get draggable(): boolean;
+
         /**
          * The property that is displayed in this view
          * @construct-only
          * @default RB.RhythmDBPropType.TYPE
          */
         get prop(): RhythmDBPropType;
+
         /**
          * The {@link RB.RhythmDBPropertyModel} backing the view.
          */
         get property_model(): RhythmDBPropertyModel;
         set property_model(val: RhythmDBPropertyModel);
+
         /**
          * The {@link RB.RhythmDBPropertyModel} backing the view.
          */
         get propertyModel(): RhythmDBPropertyModel;
         set propertyModel(val: RhythmDBPropertyModel);
+
         /**
          * The title displayed in the header of the property view
          * @construct-only
@@ -7739,95 +7882,94 @@ export namespace RB {
         $signals: PropertyView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PropertyView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](db: RhythmDB, propid: number, title: string): PropertyView;
-        // Conflicted with Gtk.ScrolledWindow.new
+        static ["new"](db: RhythmDB, propid: number, title: string): PropertyView;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.ScrolledWindow.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PropertyView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PropertyView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PropertyView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PropertyView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PropertyView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PropertyView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PropertyView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PropertyView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PropertyView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_property_activated(name: string): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_property_selected(name: string): void;
+
         /**
          * @virtual
          */
         vfunc_selection_reset(): void;
+
         /**
          * @virtual
          */
         vfunc_show_popup(): void;
 
         // Methods
-
         /**
          * Appends a custom created column to the view.
          * @param column a {@link Gtk.TreeViewColumn} to append to the view
          */
         append_column_custom(column: Gtk.TreeViewColumn): void;
+
         /**
          * Returns the {@link RB.RhythmDBPropertyModel} backing the view; no reference is taken
          * @returns property model
          */
         get_model(): RhythmDBPropertyModel;
+
         /**
          * Returns the number of property values present in the view.
          * @returns number of properties
          */
         get_num_properties(): number;
+
         /**
          * Returns a {@link GLib.List} containing the selected property values.  The list must
          * be freed by the caller.
          * @returns list of selected values
          */
         get_selection(): string[];
+
         /**
          * Clears the selection in the property view.
          */
         reset(): void;
+
         /**
          * Sets the visibility of the property column.
          * @param visible whether the property column should be visible
          */
         set_column_visible(visible: boolean): void;
+
         /**
          * Replaces the model backing the property view.
          * @param model the new {@link RB.RhythmDBPropertyModel} for the property view
          */
         set_model(model: RhythmDBPropertyModel): void;
+
         /**
          * Sets the compare function for the interactive search capabilities.
          * The function must return FALSE when the search key string matches
@@ -7835,6 +7977,7 @@ export namespace RB {
          * @param func tree view search function to use for this view
          */
         set_search_func(func: Gtk.TreeViewSearchEqualFunc): void;
+
         /**
          * Replaces the selection in the property view.  All values in the list
          * that are present in the view will be selected, and the view will be
@@ -7842,6 +7985,7 @@ export namespace RB {
          * @param vals the values to be selected
          */
         set_selection(vals: string[]): void;
+
         /**
          * Sets the selection mode (single or multiple) for the property view>
          * The default selection mode is single.
@@ -7849,6 +7993,7 @@ export namespace RB {
          */
         set_selection_mode(mode: Gtk.SelectionMode): void;
     }
+
 
     namespace Rating {
         // Signal signatures
@@ -7860,7 +8005,7 @@ export namespace RB {
              * @action
              * @run-last
              */
-            'adjust-rating': (arg0: number) => void;
+            "adjust-rating": (arg0: number) => void;
             /**
              * Emitted when the user changes the rating.
              * @signal
@@ -7873,53 +8018,51 @@ export namespace RB {
              * @action
              * @run-last
              */
-            'set-rating': (arg0: number) => void;
-            'notify::rating': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "set-rating": (arg0: number) => void;
+            "notify::rating": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             rating: number;
         }
     }
@@ -7933,7 +8076,6 @@ export namespace RB {
         static $gtype: GObject.GType<Rating>;
 
         // Properties
-
         /**
          * The rating displayed in the widget, as a floating point value
          * between 0.0 and 5.0.
@@ -7952,51 +8094,44 @@ export namespace RB {
         $signals: Rating.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Rating.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Rating;
+        static ["new"](): Rating;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Rating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Rating.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Rating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Rating.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Rating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Rating.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Rating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Rating.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Rating.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Rating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Rating.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Rating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param adjust
+         * @param adjust 
          * @virtual
          */
         vfunc_adjust_rating(adjust: number): boolean;
+
         /**
-         * @param score
+         * @param score 
          * @virtual
          */
         vfunc_rated(score: number): void;
+
         /**
-         * @param score
+         * @param score 
          * @virtual
          */
         vfunc_set_rating(score: number): boolean;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -8004,10 +8139,11 @@ export namespace RB {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -8015,6 +8151,7 @@ export namespace RB {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -8023,7 +8160,8 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -8032,7 +8170,8 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -8040,11 +8179,8 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -8052,15 +8188,17 @@ export namespace RB {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -8070,18 +8208,21 @@ export namespace RB {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -8090,10 +8231,11 @@ export namespace RB {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -8101,6 +8243,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -8110,12 +8253,8 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -8125,12 +8264,8 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -8138,11 +8273,8 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -8150,15 +8282,17 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -8169,6 +8303,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -8177,6 +8312,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -8184,6 +8320,7 @@ export namespace RB {
          */
         vfunc_set_name(name: string): void;
     }
+
 
     namespace RemovableMediaManager {
         // Signal signatures
@@ -8196,7 +8333,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'create-source-device': (arg0: GObject.Object) => Source;
+            "create-source-device": (arg0: GObject.Object) => Source;
             /**
              * Emitted when a new mount is added to allow plugins to create a
              * corresponding {@link RB.Source}.  The first signal handler that returns
@@ -8205,7 +8342,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'create-source-mount': (arg0: Gio.Mount, arg1: MPID.Device) => Source;
+            "create-source-mount": (arg0: Gio.Mount, arg1: MPID.Device) => Source;
             /**
              * Emitted when a new volume is added to allow plugins to create a
              * corresponding {@link RB.Source}.  The first signal handler that returns
@@ -8215,19 +8352,18 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'create-source-volume': (arg0: Gio.Volume) => Source;
+            "create-source-volume": (arg0: Gio.Volume) => Source;
             /**
              * Emitted when a new source is added for a removable medium.
              * @signal
              * @run-last
              */
-            'medium-added': (arg0: GObject.Object) => void;
-            'notify::scanned': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            "medium-added": (arg0: GObject.Object) => void;
+            "notify::scanned": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             scanned: boolean;
             shell: Shell;
@@ -8243,7 +8379,6 @@ export namespace RB {
         static $gtype: GObject.GType<RemovableMediaManager>;
 
         // Properties
-
         /**
          * This is set to TRUE when the removable media manager has scanned
          * all existing volumes and mounts.  When a plugin that handles removable
@@ -8253,6 +8388,7 @@ export namespace RB {
          * @default false
          */
         get scanned(): boolean;
+
         /**
          * The {@link RB.Shell} instance.
          * @construct-only
@@ -8269,58 +8405,47 @@ export namespace RB {
         $signals: RemovableMediaManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RemovableMediaManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](shell: Shell): RemovableMediaManager;
+        static ["new"](shell: Shell): RemovableMediaManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RemovableMediaManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemovableMediaManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RemovableMediaManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemovableMediaManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RemovableMediaManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemovableMediaManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RemovableMediaManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemovableMediaManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RemovableMediaManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RemovableMediaManager.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RemovableMediaManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemovableMediaManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param source
+         * @param source 
          * @virtual
          */
         vfunc_medium_added(source: Source): void;
 
         // Methods
-
         /**
          * Determines whether the specified device looks like an Android device.
          * @param device the `GUdevDevice` to query
          * @returns `true` if the device appears to be Android-based
          */
         device_is_android(device: GObject.Object): boolean;
+
         /**
          * Finds the `GUdevDevice` for the volume.
          * @param volume the {@link Gio.Volume}
          * @returns the `GUDevDevice` instance, if any
          */
         get_gudev_device<T = GObject.Object>(volume: Gio.Volume): T;
+
         /**
          * Initiates a new scan of all attached media.  Newly activated plugins that use
          * the create-source-volume or create-source-mount signals should call this if
@@ -8330,6 +8455,7 @@ export namespace RB {
         scan(): void;
     }
 
+
     namespace RhythmDB {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -8338,26 +8464,26 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'create-mount-op': () => Gio.MountOperation;
+            "create-mount-op": () => Gio.MountOperation;
             /**
              * Emitted when a new entry is added to the database.
              * @signal
              * @run-last
              */
-            'entry-added': (arg0: RhythmDBEntry) => void;
+            "entry-added": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when a database entry is modified.  The `changes` list
              * contains a structure for each entry property that has been modified.
              * @signal
              * @run-last
              */
-            'entry-changed': (arg0: RhythmDBEntry, arg1: RhythmDBEntryChange[]) => void;
+            "entry-changed": (arg0: RhythmDBEntry, arg1: RhythmDBEntryChange[]) => void;
             /**
              * Emitted when an entry is deleted from the database.
              * @signal
              * @run-last
              */
-            'entry-deleted': (arg0: RhythmDBEntry) => void;
+            "entry-deleted": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted to gather all available extra metadata for a database entry.
              * Handlers for this signal should insert any metadata they can provide
@@ -8368,7 +8494,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'entry-extra-metadata-gather': (arg0: RhythmDBEntry, arg1: StringValueMap) => void;
+            "entry-extra-metadata-gather": (arg0: RhythmDBEntry, arg1: StringValueMap) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8376,7 +8502,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8388,47 +8514,47 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request': (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request": (arg0: RhythmDBEntry) => (GObject.Value | any);
             /**
              * Emitted when a keyword is added to an entry.
              * @signal
              * @run-last
              */
-            'entry-keyword-added': (arg0: RhythmDBEntry, arg1: RefString) => void;
+            "entry-keyword-added": (arg0: RhythmDBEntry, arg1: RefString) => void;
             /**
              * Emitted when a keyword is removed from an entry.
              * @signal
              * @run-last
              */
-            'entry-keyword-removed': (arg0: RhythmDBEntry, arg1: RefString) => void;
+            "entry-keyword-removed": (arg0: RhythmDBEntry, arg1: RefString) => void;
             /**
              * Emitted when the database is fully loaded.
              * @signal
              * @run-last
              */
-            'load-complete': () => void;
+            "load-complete": () => void;
             /**
              * Emitted when the database becomes temporarily read-only, or becomes
              * writeable after being read-only.
              * @signal
              * @run-last
              */
-            'read-only': (arg0: boolean) => void;
+            "read-only": (arg0: boolean) => void;
             /**
              * Emitted when the database has been saved.
              * @signal
              * @run-last
              */
-            'save-complete': () => void;
+            "save-complete": () => void;
             /**
              * Emitted when an error occurs while saving the database.
              * @signal
              * @run-last
              */
-            'save-error': (arg0: string, arg1: any | null) => void;
-            'notify::dry-run': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-update': (pspec: GObject.ParamSpec) => void;
+            "save-error": (arg0: string, arg1: (any | null)) => void;
+            "notify::dry-run": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-update": (pspec: GObject.ParamSpec) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8436,7 +8562,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::dry-run': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::dry-run": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8444,7 +8570,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::name': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::name": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8452,7 +8578,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-notify::no-update': (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::no-update": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             [key: `entry-extra-metadata-notify::${string}`]: (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
@@ -8465,7 +8591,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::dry-run': (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::dry-run": (arg0: RhythmDBEntry) => (GObject.Value | any);
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8477,7 +8603,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::name': (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::name": (arg0: RhythmDBEntry) => (GObject.Value | any);
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8489,12 +8615,11 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            'entry-extra-metadata-request::no-update': (arg0: RhythmDBEntry) => GObject.Value | any;
-            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::no-update": (arg0: RhythmDBEntry) => (GObject.Value | any);
+            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => (GObject.Value | any);
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dry_run: boolean;
             dryRun: boolean;
@@ -8510,7 +8635,7 @@ export namespace RB {
      * feeding the results into {@link RB.RhythmDBQueryResults} implementations such as
      * {@link RB.RhythmDBQueryModel}.  From there, entries are grouped by particular property
      * values to form {@link RB.RhythmDBPropertyModel}<!-- -->s.
-     *
+     * 
      * {@link RB.RhythmDBEntry} contains a fixed set of properties, defined by {@link RB.RhythmDBPropType},
      * @gir-type Class
      */
@@ -8518,31 +8643,34 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDB>;
 
         // Properties
-
         /**
          * If `true`, no metadata changes will be written back to media fies.
          * @default false
          */
         get dry_run(): boolean;
         set dry_run(val: boolean);
+
         /**
          * If `true`, no metadata changes will be written back to media fies.
          * @default false
          */
         get dryRun(): boolean;
         set dryRun(val: boolean);
+
         /**
          * Database name.  Not sure whta this is used for.
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * If `true`, the database will not be updated.
          * @default false
          */
         get no_update(): boolean;
         set no_update(val: boolean);
+
         /**
          * If `true`, the database will not be updated.
          * @default false
@@ -8560,34 +8688,24 @@ export namespace RB {
         $signals: RhythmDB.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDB.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDB.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDB.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDB.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDB.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDB.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDB.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDB.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDB.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RhythmDB.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDB.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a string containing the "status" information about a list of tracks.
          * The singular and plural strings must be used in a direct ngettext call
@@ -8598,40 +8716,41 @@ export namespace RB {
          * @param singular singular form of the format string to use for entries (eg "%d song")
          * @param plural plural form of the format string to use for entries (eg "%d songs")
          */
-        static compute_status_normal(
-            n_songs: number,
-            duration: bigint | number,
-            size: bigint | number,
-            singular: string,
-            plural: string,
-        ): string;
+        static compute_status_normal(n_songs: number, duration: (bigint | number), size: (bigint | number), singular: string, plural: string): string;
+
         /**
          * Returns the {@link GLib.Quark} used for {@link RB.RhythmDBError} information
          */
         static error_quark(): GLib.Quark;
+
         /**
          * Returns the {@link RB.RhythmDBEntryType} for import errors
          */
         static get_error_entry_type(): RhythmDBEntryType;
+
         /**
          * Returns the {@link RB.RhythmDBEntryType} for ignored files
          */
         static get_ignore_entry_type(): RhythmDBEntryType;
+
         /**
          * Returns the {@link RB.RhythmDBEntryType} for normal songs.
          */
         static get_song_entry_type(): RhythmDBEntryType;
+
         /**
          * Appends `query2` to `query1`.
          * @param query1 query to append to
          * @param query2 query to append
          */
         static query_concatenate(query1: RhythmDBQuery, query2: RhythmDBQuery): void;
+
         /**
          * Creates a copy of a query.
          * @param array the query to copy.
          */
         static query_copy(array: RhythmDBQuery): RhythmDBQuery;
+
         /**
          * Frees the query `query`
          * @param query a query.
@@ -8639,168 +8758,194 @@ export namespace RB {
         static query_free(query: RhythmDBQuery): void;
 
         // Virtual methods
-
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_added(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_deleted(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
-         * @param data
+         * @param entry 
+         * @param data 
          * @virtual
          */
         vfunc_entry_extra_metadata_gather(entry: RhythmDBEntry, data: StringValueMap): void;
+
         /**
-         * @param entry
-         * @param field
-         * @param metadata
+         * @param entry 
+         * @param field 
+         * @param metadata 
          * @virtual
          */
         vfunc_entry_extra_metadata_notify(entry: RhythmDBEntry, field: string, metadata: unknown): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
-        vfunc_entry_extra_metadata_request(entry: RhythmDBEntry): GObject.Value | any;
+        vfunc_entry_extra_metadata_request(entry: RhythmDBEntry): (GObject.Value | any);
+
         /**
-         * @param entry
-         * @param keyword
+         * @param entry 
+         * @param keyword 
          * @virtual
          */
         vfunc_entry_keyword_added(entry: RhythmDBEntry, keyword: RefString): void;
+
         /**
-         * @param entry
-         * @param keyword
+         * @param entry 
+         * @param keyword 
          * @virtual
          */
         vfunc_entry_keyword_removed(entry: RhythmDBEntry, keyword: RefString): void;
+
         /**
-         * @param query
-         * @param results
-         * @param cancel
+         * @param query 
+         * @param results 
+         * @param cancel 
          * @virtual
          */
         vfunc_impl_do_full_query(query: RhythmDBQuery, results: RhythmDBQueryResults, cancel: boolean): void;
+
         /**
          * @virtual
          */
-        vfunc_impl_entry_count(): bigint | number;
+        vfunc_impl_entry_count(): (bigint | number);
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
-        vfunc_impl_entry_count_by_type(type: RhythmDBEntryType): bigint | number;
+        vfunc_impl_entry_count_by_type(type: RhythmDBEntryType): (bigint | number);
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_impl_entry_delete(entry: RhythmDBEntry): void;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_impl_entry_delete_by_type(type: RhythmDBEntryType): void;
+
         /**
-         * @param entry
-         * @param propid
-         * @param value
+         * @param entry 
+         * @param propid 
+         * @param value 
          * @virtual
          */
         vfunc_impl_entry_get(entry: RhythmDBEntry, propid: number, value: unknown): void;
+
         /**
-         * @param entry
-         * @param keyword
+         * @param entry 
+         * @param keyword 
          * @virtual
          */
         vfunc_impl_entry_keyword_add(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
-         * @param entry
-         * @param keyword
+         * @param entry 
+         * @param keyword 
          * @virtual
          */
         vfunc_impl_entry_keyword_has(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
-         * @param entry
-         * @param keyword
+         * @param entry 
+         * @param keyword 
          * @virtual
          */
         vfunc_impl_entry_keyword_remove(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_impl_entry_new(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
-         * @param propid
-         * @param value
+         * @param entry 
+         * @param propid 
+         * @param value 
          * @virtual
          */
         vfunc_impl_entry_set(entry: RhythmDBEntry, propid: number, value: unknown): boolean;
+
         /**
-         * @param type
+         * @param type 
          * @virtual
          */
         vfunc_impl_entry_type_registered(type: RhythmDBEntryType): void;
+
         /**
-         * @param query
-         * @param entry
+         * @param query 
+         * @param entry 
          * @virtual
          */
         vfunc_impl_evaluate_query(query: RhythmDBQuery, entry: RhythmDBEntry): boolean;
+
         /**
-         * @param cancel
+         * @param cancel 
          * @virtual
          */
-        vfunc_impl_load(cancel: Gio.Cancellable | null): boolean;
+        vfunc_impl_load(cancel: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_impl_lookup_by_id(id: number): RhythmDBEntry;
+
         /**
-         * @param uri
+         * @param uri 
          * @virtual
          */
         vfunc_impl_lookup_by_location(uri: RefString): RhythmDBEntry;
+
         /**
          * @virtual
          */
         vfunc_impl_save(): void;
+
         /**
          * @virtual
          */
         vfunc_load_complete(): void;
+
         /**
-         * @param uri
-         * @param msg
+         * @param uri 
+         * @param msg 
          * @virtual
          */
         vfunc_load_error(uri: string, msg: string): void;
+
         /**
-         * @param readonly
+         * @param readonly 
          * @virtual
          */
         vfunc_read_only(readonly: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_save_complete(): void;
+
         /**
-         * @param uri
-         * @param error
+         * @param uri 
+         * @param error 
          * @virtual
          */
         vfunc_save_error(uri: string, error: GLib.Error): void;
 
         // Methods
-
         /**
          * Adds the file(s) pointed to by `uri` to the database, as entries of type
          * RHYTHMDB_ENTRY_TYPE_SONG. If the URI is that of a file, it will be added.
@@ -8808,6 +8953,7 @@ export namespace RB {
          * @param uri the URI to add an entry/entries for
          */
         add_uri(uri: string): void;
+
         /**
          * Adds the file(s) pointed to by `uri` to the database, as entries
          * of the specified type. If the URI points to a file, it will be added.
@@ -8818,23 +8964,20 @@ export namespace RB {
          * @param ignore_type the {@link RB.RhythmDBEntryType} to use for ignored files
          * @param error_type the {@link RB.RhythmDBEntryType} to use for import errors
          */
-        add_uri_with_types(
-            uri: string,
-            type: RhythmDBEntryType,
-            ignore_type: RhythmDBEntryType,
-            error_type: RhythmDBEntryType,
-        ): void;
+        add_uri_with_types(uri: string, type: RhythmDBEntryType, ignore_type: RhythmDBEntryType, error_type: RhythmDBEntryType): void;
+
         /**
          * Apply all database changes, and send notification of changes and new entries.
          * This needs to be called after any changes have been made, such as a group of
          * `rhythmdb_entry_set()` calls, or a new entry has been added.
          */
         commit(): void;
+
         /**
          * Asynchronously runs a parsed query across the database, feeding matching
          * entries to `results` in chunks.  This can only be called from the
          * main thread.
-         *
+         * 
          * Since `results` is always a `RhythmDBQueryModel`,
          * use the RhythmDBQueryModel::complete signal to identify when the
          * query is complete.
@@ -8842,6 +8985,7 @@ export namespace RB {
          * @param query the query to run
          */
         do_full_query_async_parsed(results: RhythmDBQueryResults, query: RhythmDBQuery): void;
+
         /**
          * Synchronously evaluates the parsed query `query`, feeding results
          * to `results` in chunks.  Does not return until the query is complete.
@@ -8849,14 +8993,17 @@ export namespace RB {
          * @param query a parsed query
          */
         do_full_query_parsed(results: RhythmDBQueryResults, query: RhythmDBQuery): void;
+
         /**
-         * @param entry
+         * @param entry 
          */
         emit_entry_added(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          */
         emit_entry_deleted(entry: RhythmDBEntry): void;
+
         /**
          * Emits a signal describing extra metadata for the `entry`.  The `property_name`
          * argument is emitted as the ::detail part of the
@@ -8869,22 +9016,21 @@ export namespace RB {
          * @param property_name the metadata predicate
          * @param metadata a {@link GObject.Value}
          */
-        emit_entry_extra_metadata_notify(
-            entry: RhythmDBEntry,
-            property_name: string,
-            metadata: GObject.Value | any,
-        ): void;
+        emit_entry_extra_metadata_notify(entry: RhythmDBEntry, property_name: string, metadata: (GObject.Value | any)): void;
+
         /**
          * Returns the number of entries in the database.
          * @returns number of entries
          */
         entry_count(): number;
+
         /**
          * Returns the number of entries in the database of a particular type.
          * @param entry_type a {@link RB.RhythmDBEntryType}.
          * @returns entry count
          */
         entry_count_by_type(entry_type: RhythmDBEntryType): number;
+
         /**
          * Delete entry `entry` from the database, sending notification of its deletion.
          * This is usually used by sources where entries can disappear randomly, such
@@ -8892,6 +9038,7 @@ export namespace RB {
          * @param entry a {@link RB.RhythmDBEntry}.
          */
         entry_delete(entry: RhythmDBEntry): void;
+
         /**
          * Delete all entries from the database of the given type.
          * This is usually used by non-permanent sources when they disappear, such as
@@ -8899,11 +9046,13 @@ export namespace RB {
          * @param type type of entried to delete.
          */
         entry_delete_by_type(type: RhythmDBEntryType): void;
+
         /**
          * Calls the given function for each of the entries in the database.
          * @param func the function to call with each entry.
          */
         entry_foreach(func: RhythmDBEntryForeachFunc): void;
+
         /**
          * Calls the given function for each of the entries in the database
          * of a given type.
@@ -8911,6 +9060,7 @@ export namespace RB {
          * @param func the function to call with each entry
          */
         entry_foreach_by_type(entry_type: RhythmDBEntryType, func: RhythmDBEntryForeachFunc): void;
+
         /**
          * Gathers all metadata for the `entry`. The returned GHashTable maps property
          * names and extra metadata names (described under
@@ -8921,13 +9071,15 @@ export namespace RB {
          * @returns a RBStringValueMap containing metadata for the entry. This must be freed using g_object_unref.
          */
         entry_gather_metadata(entry: RhythmDBEntry): StringValueMap;
+
         /**
          * Gets a property of an entry, storing it in the given {@link GObject.Value}.
          * @param entry a {@link RB.RhythmDBEntry}.
          * @param propid the id of the property to get.
          * @param val return location for the property value.
          */
-        entry_get(entry: RhythmDBEntry, propid: RhythmDBPropType, val: GObject.Value | any): void;
+        entry_get(entry: RhythmDBEntry, propid: RhythmDBPropType, val: (GObject.Value | any)): void;
+
         /**
          * Adds a keyword to an entry.
          * @param entry a {@link RB.RhythmDBEntry}.
@@ -8935,6 +9087,7 @@ export namespace RB {
          * @returns whether the keyword was already on the entry
          */
         entry_keyword_add(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
          * Checks whether a keyword is has been added to an entry.
          * @param entry a {@link RB.RhythmDBEntry}.
@@ -8942,6 +9095,7 @@ export namespace RB {
          * @returns whether the keyword had been added to the entry.
          */
         entry_keyword_has(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
          * Removed a keyword from an entry.
          * @param entry a {@link RB.RhythmDBEntry}.
@@ -8949,24 +9103,28 @@ export namespace RB {
          * @returns whether the keyword had previously been added to the entry.
          */
         entry_keyword_remove(entry: RhythmDBEntry, keyword: RefString): boolean;
+
         /**
          * Gets the list ofkeywords that have been added to an entry.
          * @param entry a {@link RB.RhythmDBEntry}.
          * @returns the list of keywords          that have been added to the entry.
          */
         entry_keywords_get(entry: RhythmDBEntry): RefString[];
+
         /**
          * Looks up the entry with id `id`.
          * @param id entry ID
          * @returns the entry with id `id`, or NULL if no such entry exists.
          */
         entry_lookup_by_id(id: number): RhythmDBEntry;
+
         /**
          * Looks up the entry with location `uri`.
          * @param uri the URI of the entry to lookup.
          * @returns the entry with location `uri`, or NULL if no such entry exists.
          */
         entry_lookup_by_location(uri: string): RhythmDBEntry;
+
         /**
          * Locates an entry using a string containing either an entry ID
          * or a location.
@@ -8975,6 +9133,7 @@ export namespace RB {
          * @returns the entry matching the string, or NULL if no such entry exists.
          */
         entry_lookup_from_string(str: string, is_id: boolean): RhythmDBEntry;
+
         /**
          * Checks whether `key` matches `entry`.
          * @param entry a {@link RB.RhythmDBEntry}
@@ -8982,6 +9141,7 @@ export namespace RB {
          * @returns `true` if the key matches the entry
          */
         entry_matches_ext_db_key(entry: RhythmDBEntry, key: ExtDBKey): boolean;
+
         /**
          * Trashes the file represented by #entry.  If possible, the file is
          * moved to the user's trash directory and the entry is set to hidden,
@@ -8989,6 +9149,7 @@ export namespace RB {
          * @param entry {@link RB.RhythmDBEntry} to trash
          */
         entry_move_to_trash(entry: RhythmDBEntry): void;
+
         /**
          * Emits a request for extra metadata for the `entry`.
          * The `property_name` argument is emitted as the ::detail part of the
@@ -9011,6 +9172,7 @@ export namespace RB {
          * @returns an allocated, initialised, set {@link GObject.Value}, or NULL
          */
         entry_request_extra_metadata(entry: RhythmDBEntry, property_name: string): unknown;
+
         /**
          * This function can be called by any code which wishes to change a
          * song property and send a notification.  It may be called when the
@@ -9021,7 +9183,7 @@ export namespace RB {
          * make the change in the widget.  Then when the database returns to a
          * writable state, your change will take effect in the database too,
          * and a notification will be sent at that point.
-         *
+         * 
          * Note that you must call `rhythmdb_commit()` at some point after invoking
          * this function, and that even after the commit, your change may not
          * have taken effect.
@@ -9029,7 +9191,8 @@ export namespace RB {
          * @param propid the id of the property to set.
          * @param value the property value.
          */
-        entry_set(entry: RhythmDBEntry, propid: number, value: GObject.Value | any): void;
+        entry_set(entry: RhythmDBEntry, propid: number, value: (GObject.Value | any)): void;
+
         /**
          * Locates a {@link RB.RhythmDBEntryType} by name. Returns NULL if no entry
          * type is registered with the specified name.
@@ -9037,6 +9200,7 @@ export namespace RB {
          * @returns the {@link RB.RhythmDBEntryType}
          */
         entry_type_get_by_name(name: string): RhythmDBEntryType;
+
         /**
          * This can be called from a {@link RB.RhythmDBEntryType} sync_metadata function
          * when the appropriate action is to write the metadata changes
@@ -9045,6 +9209,7 @@ export namespace RB {
          * @param changes a list of changes to write
          */
         entry_write_metadata_changes(entry: RhythmDBEntry, changes: RhythmDBEntryChange[]): void;
+
         /**
          * Evaluates the given entry against the given query.
          * @param query a query.
@@ -9052,16 +9217,19 @@ export namespace RB {
          * @returns whether the given entry matches the criteria of the given query.
          */
         evaluate_query(query: RhythmDBQuery, entry: RhythmDBEntry): boolean;
+
         /**
          * Returns the {@link GObject.GType} for the value of the property.
          * @param property_id a property ID ({@link RB.RhythmDBPropType})
          * @returns property value type
          */
         get_property_type(property_id: number): GObject.GType;
+
         /**
          * Load the database from disk.
          */
         load(): void;
+
         /**
          * Returns a short non-translated name for the property #propid.
          * This name is suitable for use as an XML tag name, for example.
@@ -9069,6 +9237,7 @@ export namespace RB {
          * @returns property ID name, must not be freed
          */
         nice_elt_name_from_propid(propid: RhythmDBPropType): libxml2.Char;
+
         /**
          * Converts a property name returned by `rhythmdb_propid_from_nice_elt_name`
          * back to a {@link RB.RhythmDBPropType}.  If the name does not match a property ID,
@@ -9077,6 +9246,7 @@ export namespace RB {
          * @returns a {@link RB.RhythmDBPropType}, or -1
          */
         propid_from_nice_elt_name(name: libxml2.Char): number;
+
         /**
          * Appends a new query term to `query`.
          * @param query the query to append to
@@ -9084,12 +9254,8 @@ export namespace RB {
          * @param prop query property
          * @param value query value
          */
-        query_append_params(
-            query: RhythmDBQuery,
-            type: RhythmDBQueryType,
-            prop: RhythmDBPropType,
-            value: GObject.Value | any,
-        ): void;
+        query_append_params(query: RhythmDBQuery, type: RhythmDBQueryType, prop: RhythmDBPropType, value: (GObject.Value | any)): void;
+
         /**
          * Appends a set of criteria to a query to match against any of the values
          * listed in `items`.
@@ -9097,41 +9263,41 @@ export namespace RB {
          * @param propid property ID to match
          * @param items {@link GLib.List} of values to match against
          */
-        query_append_prop_multiple(
-            query: RhythmDBQuery,
-            propid: RhythmDBPropType,
-            items: (GObject.Value | any)[],
-        ): void;
+        query_append_prop_multiple(query: RhythmDBQuery, propid: RhythmDBPropType, items: (GObject.Value | any)[]): void;
+
         /**
          * Converts a serialized query back into a `GPtrArray` query.
          * @param parent parent XML node of serialized query
          * @returns deserialized query.
          */
         query_deserialize(parent: libxml2.NodePtr): RhythmDBQuery;
+
         /**
          * Checks if a query contains any time-relative criteria.
          * @param query the query to check
          * @returns `true` if time-relative criteria found
          */
         query_is_time_relative(query: RhythmDBQuery): boolean;
+
         /**
          * Preprocesses a query to prepare it for execution.  This has two main
          * roles: to perform expensive data transformations once per query, rather
          * than once per entry, and converting criteria to lower-level forms that
          * are implemented by the database backend.
-         *
+         * 
          * For RHYTHMDB_PROP_SEARCH_MATCH, this converts the search terms into
          * an array of case-folded words.
-         *
+         * 
          * When matching against case-folded properties such as
          * #RHYTHMDB_PROP_TITLE_FOLDED, this case-folds the query value.
-         *
+         * 
          * When performing year-based criteria such as #RHYTHMDB_QUERY_PROP_YEAR_LESS,
          * it converts the year into the Julian date such that a simple numeric
          * comparison will work.
          * @param query query to preprocess
          */
         query_preprocess(query: RhythmDBQuery): void;
+
         /**
          * Converts `query` into XML form as a child of `parent`.  It can be converted
          * back into a query by passing `parent` to `rhythmdb_query_deserialize`.
@@ -9139,6 +9305,7 @@ export namespace RB {
          * @param parent XML node to attach the query to
          */
         query_serialize(query: RhythmDBQuery, parent: libxml2.NodePtr): void;
+
         /**
          * Returns a supposedly human-readable form of the query.
          * This is only intended for debug usage.
@@ -9146,44 +9313,49 @@ export namespace RB {
          * @returns allocated string form of the query
          */
         query_to_string(query: RhythmDBQuery): string;
+
         /**
          * Registers a new entry type.  An entry type must be registered before
          * any entries can be created for it.
          * @param entry_type the new entry type to register
          */
         register_entry_type(entry_type: RhythmDBEntryType): void;
+
         /**
          * Save the database to disk, not returning until it has been saved.
          */
         save(): void;
+
         /**
          * Save the database to disk, asynchronously.
          */
         save_async(): void;
+
         /**
          * Ceases all {@link RB.RhythmDB} operations, including stopping all directory monitoring, and
          * removing all actions and events currently queued.
          */
         shutdown(): void;
+
         /**
          * Starts the {@link RB.RhythmDB} processing thread. Needs to be called during startup.
          */
         start_action_thread(): void;
     }
 
+
     namespace RhythmDBEntryType {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cache-name': (pspec: GObject.ParamSpec) => void;
-            'notify::category': (pspec: GObject.ParamSpec) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::save-to-disk': (pspec: GObject.ParamSpec) => void;
-            'notify::type-data-size': (pspec: GObject.ParamSpec) => void;
+            "notify::cache-name": (pspec: GObject.ParamSpec) => void;
+            "notify::category": (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::save-to-disk": (pspec: GObject.ParamSpec) => void;
+            "notify::type-data-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cache_name: string;
             cacheName: string;
@@ -9201,7 +9373,7 @@ export namespace RB {
      * This is the base class for database entry type classes, which provide
      * some aspects of the behaviour of database entry types.  There are different
      * entry types for songs, radio streams, podcast feeds and episodes, and so on.
-     *
+     * 
      * Plugins written in Python or Vala can create new entry types by subclassing
      * and overriding any methods required.  Plugins written in C can create a new
      * instance of the RhythmDBEntryType base class and use its function pointer
@@ -9212,7 +9384,6 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBEntryType>;
 
         // Properties
-
         /**
          * Metadata cache name.  For entry types created by a plugin, should match the plugin name.
          * If this is set, the entry type must also implement the uri_to_cache_key method.
@@ -9220,6 +9391,7 @@ export namespace RB {
          * @default null
          */
         get cache_name(): string;
+
         /**
          * Metadata cache name.  For entry types created by a plugin, should match the plugin name.
          * If this is set, the entry type must also implement the uri_to_cache_key method.
@@ -9227,23 +9399,27 @@ export namespace RB {
          * @default null
          */
         get cacheName(): string;
+
         /**
          * The {@link RB.RhythmDBEntryCategory} that this entry type fits into.
          * @construct-only
          * @default RB.RhythmDBEntryCategory.NORMAL
          */
         get category(): RhythmDBEntryCategory;
+
         /**
          * The {@link RB.RhythmDB} instance.
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * Entry type name.  This must be unique.
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * If `true`, entries of this type should be written to the
          * on-disk database.
@@ -9251,6 +9427,7 @@ export namespace RB {
          * @default false
          */
         get save_to_disk(): boolean;
+
         /**
          * If `true`, entries of this type should be written to the
          * on-disk database.
@@ -9258,6 +9435,7 @@ export namespace RB {
          * @default false
          */
         get saveToDisk(): boolean;
+
         /**
          * The size of the type-specific data structure to allocate for each
          * entry of this type.
@@ -9265,6 +9443,7 @@ export namespace RB {
          * @default 0
          */
         get type_data_size(): number;
+
         /**
          * The size of the type-specific data structure to allocate for each
          * entry of this type.
@@ -9283,99 +9462,98 @@ export namespace RB {
         $signals: RhythmDBEntryType.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDBEntryType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDBEntryType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBEntryType.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDBEntryType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBEntryType.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDBEntryType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBEntryType.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDBEntryType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBEntryType.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDBEntryType.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDBEntryType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RhythmDBEntryType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDBEntryType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param key
+         * @param key 
          * @virtual
          */
         vfunc_cache_key_to_uri(key: string): string;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_can_sync_metadata(entry: RhythmDBEntry): boolean;
+
         /**
-         * @param entry
-         * @param prop
+         * @param entry 
+         * @param prop 
          * @virtual
          */
         vfunc_create_ext_db_key(entry: RhythmDBEntry, prop: RhythmDBPropType): ExtDBKey;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_destroy_entry(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_created(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_get_playback_uri(entry: RhythmDBEntry): string;
+
         /**
-         * @param entry
-         * @param avail
+         * @param entry 
+         * @param avail 
          * @virtual
          */
         vfunc_update_availability(entry: RhythmDBEntry, avail: RhythmDBEntryAvailability): void;
+
         /**
-         * @param uri
+         * @param uri 
          * @virtual
          */
         vfunc_uri_to_cache_key(uri: string): string;
 
         // Methods
-
         /**
          * Fetches metadata for a URI (not an entry yet, at this point) from a cache, if possible.
-         *
+         * 
          * The `metadata` array contains RhythmDBEntryChange items with just the 'new' value set.
          * @param uri uri of the item to fetch
          * @param metadata returns fetched metadata
          * @returns `true` if metadata is returned
          */
         fetch_metadata(uri: string, metadata: RhythmDBEntryChange[]): boolean;
+
         /**
          * Returns the name of the entry type
          * @returns entry type name
          */
         get_name(): string;
+
         /**
          * @param prefix a cache key prefix to scan
          * @param max_age maximum age of missing entries to keep
          */
-        purge_metadata_cache(prefix: string, max_age: bigint | number): void;
+        purge_metadata_cache(prefix: string, max_age: (bigint | number)): void;
     }
+
 
     namespace RhythmDBImportJob {
         // Signal signatures
@@ -9392,7 +9570,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'entry-added': (arg0: RhythmDBEntry) => void;
+            "entry-added": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when the directory scan is complete.  Once
              * the scan is complete, the total number of files to
@@ -9400,27 +9578,26 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'scan-complete': (arg0: number) => void;
+            "scan-complete": (arg0: number) => void;
             /**
              * Emitted when the status of the import job has changed.
              * @signal
              * @run-last
              */
-            'status-changed': (arg0: number, arg1: number) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::error-type': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-type': (pspec: GObject.ParamSpec) => void;
-            'notify::task-cancellable': (pspec: GObject.ParamSpec) => void;
-            'notify::task-detail': (pspec: GObject.ParamSpec) => void;
-            'notify::task-label': (pspec: GObject.ParamSpec) => void;
-            'notify::task-notify': (pspec: GObject.ParamSpec) => void;
-            'notify::task-outcome': (pspec: GObject.ParamSpec) => void;
-            'notify::task-progress': (pspec: GObject.ParamSpec) => void;
+            "status-changed": (arg0: number, arg1: number) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::error-type": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-type": (pspec: GObject.ParamSpec) => void;
+            "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
+            "notify::task-detail": (pspec: GObject.ParamSpec) => void;
+            "notify::task-label": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
+            "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {
             db: RhythmDB;
             entry_type: RhythmDBEntryType;
@@ -9435,7 +9612,7 @@ export namespace RB {
     /**
      * Tracks the addition to the database of files under a set of
      * directories, providing status information.
-     *
+     * 
      * The entry types to use for the database entries added by the import
      * job are specified on creation.
      * @gir-type Class
@@ -9444,31 +9621,36 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBImportJob>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * @construct-only
          */
         get entry_type(): RhythmDBEntryType;
+
         /**
          * @construct-only
          */
         get entryType(): RhythmDBEntryType;
+
         /**
          * @construct-only
          */
         get error_type(): RhythmDBEntryType;
+
         /**
          * @construct-only
          */
         get errorType(): RhythmDBEntryType;
+
         /**
          * @construct-only
          */
         get ignore_type(): RhythmDBEntryType;
+
         /**
          * @construct-only
          */
@@ -9484,71 +9666,59 @@ export namespace RB {
         $signals: RhythmDBImportJob.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDBImportJob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            db: RhythmDB,
-            entry_type: RhythmDBEntryType,
-            ignore_type: RhythmDBEntryType,
-            error_type: RhythmDBEntryType,
-        ): RhythmDBImportJob;
+        static ["new"](db: RhythmDB, entry_type: RhythmDBEntryType, ignore_type: RhythmDBEntryType, error_type: RhythmDBEntryType): RhythmDBImportJob;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDBImportJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBImportJob.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDBImportJob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBImportJob.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDBImportJob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBImportJob.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDBImportJob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBImportJob.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDBImportJob.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDBImportJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RhythmDBImportJob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDBImportJob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param total
+         * @param total 
          * @virtual
          */
         vfunc_complete(total: number): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_added(entry: RhythmDBEntry): void;
+
         /**
-         * @param total
+         * @param total 
          * @virtual
          */
         vfunc_scan_complete(total: number): void;
+
         /**
-         * @param total
-         * @param imported
+         * @param total 
+         * @param imported 
          * @virtual
          */
         vfunc_status_changed(total: number, imported: number): void;
 
         // Methods
-
         /**
          * Adds a URI to import.  All files under the specified
          * URI will be imported.
          * @param uri the URI to import
          */
         add_uri(uri: string): void;
+
         /**
          * Cancels the import job.  The job will cease as soon
          * as possible.  More directories may be scanned and
@@ -9556,21 +9726,25 @@ export namespace RB {
          * ceases.
          */
         cancel(): void;
+
         /**
          * Returns whether the import job is complete.
          * @returns TRUE if complete.
          */
         complete(): boolean;
+
         /**
          * Returns the number of files successfully imported by the import job so far.
          * @returns file count
          */
         get_imported(): number;
+
         /**
          * Returns the number of files processed by the import job so far.
          * @returns file count
          */
         get_processed(): number;
+
         /**
          * Returns the total number of files that will be processed by
          * this import job.  This increases as the import directories are
@@ -9578,100 +9752,117 @@ export namespace RB {
          * @returns the total number of files to be processed
          */
         get_total(): number;
+
         /**
          * Checks if the specified URI is included in the import job.
          * @param uri a URI to check
          * @returns `true` if the import job includes the URI
          */
         includes_uri(uri: string): boolean;
+
         /**
          * Returns whether the directory scan phase of the import job is complete.
          * @returns TRUE if complete
          */
         scan_complete(): boolean;
+
         /**
          * Starts the import job.  After this method has been called,
          * no more URIs may be added to the import job.  May only be
          * called once for a given import job.
          */
         start(): void;
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_cancellable(): boolean;
         set task_cancellable(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskCancellable(): boolean;
         set taskCancellable(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_detail(): string;
         set task_detail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskDetail(): string;
         set taskDetail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_label(): string;
         set task_label(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskLabel(): string;
         set taskLabel(val: string);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_notify(): boolean;
         set task_notify(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskNotify(): boolean;
         set taskNotify(val: boolean);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_outcome(): TaskOutcome;
         set task_outcome(val: TaskOutcome);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskOutcome(): TaskOutcome;
         set taskOutcome(val: TaskOutcome);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_progress(): number;
         set task_progress(val: number);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskProgress(): number;
         set taskProgress(val: number);
+
         /**
          * @virtual
          */
         vfunc_cancel(): void;
     }
+
 
     namespace RhythmDBPropertyModel {
         // Signal signatures
@@ -9681,14 +9872,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'pre-row-deletion': () => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::prop': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
+            "pre-row-deletion": () => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::prop": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
             db: RhythmDB;
             prop: number;
@@ -9702,7 +9892,7 @@ export namespace RB {
      * the value of a property.  For example, a RhythmDBPropertyModel using
      * the RHYTHMDB_PROP_ARTIST property can be used as the model for a
      * {@link Gtk.TreeView} that will list the artists present in the query model.
-     *
+     * 
      * The album/artist/genre browsers displayed in the library and other sources are
      * populated using a RhythmDBPropertyModel for each property.
      * @gir-type Class
@@ -9711,23 +9901,25 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBPropertyModel>;
 
         // Properties
-
         /**
          * The {@link RB.RhythmDB} object the model is associated with.
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * The property that this property model indexes.
          * @construct-only
          * @default 0
          */
         get prop(): number;
+
         /**
          * The query model that this property model indexes.
          */
         get query_model(): RhythmDBQueryModel;
         set query_model(val: RhythmDBQueryModel);
+
         /**
          * The query model that this property model indexes.
          */
@@ -9744,45 +9936,32 @@ export namespace RB {
         $signals: RhythmDBPropertyModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDBPropertyModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](db: RhythmDB, propid: RhythmDBPropType): RhythmDBPropertyModel;
+        static ["new"](db: RhythmDB, propid: RhythmDBPropType): RhythmDBPropertyModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDBPropertyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBPropertyModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBPropertyModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBPropertyModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDBPropertyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBPropertyModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDBPropertyModel.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RhythmDBPropertyModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDBPropertyModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_pre_row_deletion(): void;
 
         // Methods
-
         /**
          * Enables drag and drop from a specified {@link Gtk.TreeView} that is
          * backed by the {@link RB.RhythmDBPropertyModel}.  Drag targets are
@@ -9790,6 +9969,7 @@ export namespace RB {
          * @param view the {@link Gtk.TreeView} from which to enable drag and drop
          */
         enable_drag(view: Gtk.TreeView): void;
+
         /**
          * Locates the row in the model for a property value.
          * @param name the property value to find
@@ -9797,36 +9977,41 @@ export namespace RB {
          * @returns TRUE if the value was found.
          */
         iter_from_string(name: string, iter: Gtk.TreeIter): boolean;
+
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+
         /**
          * Calls func on each node in model in a depth-first fashion.
-         *
+         * 
          * If `func` returns `true`, then the tree ceases to be walked,
          * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @returns the type of the column
          */
         get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
          */
         get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -9834,6 +10019,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Initializes `iter` with the first iterator in the tree
          * (the one at the path "0") and returns `true`. Returns
@@ -9841,6 +10027,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to a valid iterator pointing to `path_string`, if it
          * exists. Otherwise, `iter` is left invalid and `false` is returned.
@@ -9848,22 +10035,25 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @returns the number of columns
          */
         get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Generates a string representation of the iter.
-         *
+         * 
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
@@ -9871,55 +10061,61 @@ export namespace RB {
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: Gtk.TreeIter | null): number;
+        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -9929,37 +10125,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -9968,30 +10167,33 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -10000,49 +10202,55 @@ export namespace RB {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
-         *
+         * 
          * This should be called by models when their rows have been
          * reordered.
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -10050,22 +10258,25 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
@@ -10073,46 +10284,51 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -10122,37 +10338,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -10161,13 +10380,14 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
@@ -10175,19 +10395,21 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -10197,6 +10419,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
@@ -10204,20 +10427,22 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
     }
+
 
     namespace RhythmDBQueryModel {
         // Signal signatures
@@ -10237,7 +10462,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'entry-prop-changed': (arg0: RhythmDBEntry, arg1: number, arg2: any | null, arg3: any | null) => void;
+            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: (any | null), arg3: (any | null)) => void;
             /**
              * Emitted when an entry is removed from the model.  There is some
              * difference between this and the {@link Gtk.TreeModel} row-removed signal
@@ -10245,7 +10470,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'entry-removed': (arg0: RhythmDBEntry) => void;
+            "entry-removed": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when an entry is being added to a model by drag-and-drop.
              * This allows the owner of the model to filter out entries that should
@@ -10254,39 +10479,34 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'filter-entry-drop': (arg0: RhythmDBEntry) => boolean | void;
+            "filter-entry-drop": (arg0: RhythmDBEntry) => (boolean | void);
             /**
              * Emitted when a URI that does not match an existing {@link RB.RhythmDBEntry}
              * is dropped into the query model.
              * @signal
              * @run-last
              */
-            'non-entry-dropped': (arg0: string, arg1: number) => void;
+            "non-entry-dropped": (arg0: string, arg1: number) => void;
             /**
              * Emitted after an entry has been removed from the model.
              * @signal
              * @run-last
              */
-            'post-entry-delete': (arg0: RhythmDBEntry) => void;
-            'notify::base-model': (pspec: GObject.ParamSpec) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-type': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-value': (pspec: GObject.ParamSpec) => void;
-            'notify::query': (pspec: GObject.ParamSpec) => void;
-            'notify::show-hidden': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-data': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-data-destroy': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-func': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-reverse': (pspec: GObject.ParamSpec) => void;
+            "post-entry-delete": (arg0: RhythmDBEntry) => void;
+            "notify::base-model": (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-type": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-value": (pspec: GObject.ParamSpec) => void;
+            "notify::query": (pspec: GObject.ParamSpec) => void;
+            "notify::show-hidden": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-data": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-data-destroy": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-func": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-reverse": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                Gtk.TreeModel.ConstructorProps,
-                RhythmDBQueryResults.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps, RhythmDBQueryResults.ConstructorProps {
             base_model: RhythmDBQueryModel;
             baseModel: RhythmDBQueryModel;
             db: RhythmDB;
@@ -10312,23 +10532,23 @@ export namespace RB {
      * A RhythmDBQueryModel contains an ordered set of {@link RB.RhythmDBEntry} items,
      * either generated by running a query against the database, or populated
      * by adding individual entries.
-     *
+     * 
      * All sources use a {@link RB.RhythmDBQueryModel} to provide their track listing.
      * Since most sources provide a search or filtering capacity, there is
      * usually a distinction between the source's base query model, which contains
      * all entries for the source, and its current query model, which reflects
      * the current search terms and filter selections.
-     *
+     * 
      * A RhythmDBQueryModel can be populated directly from the {@link RB.RhythmDB}, or it
      * can be chained to another query model.  Chained query models inherit the
      * set of entries from the query model they chain to and then restrict the
      * set using a query.
-     *
+     * 
      * The query model consists of a {@link GLib.Sequence}, which provides ordering of entries,
      * and a {@link GLib.HashTable}, which allows efficient checks to see if a given entry
      * is in the model.  A side effect of this is that an entry can only be placed
      * into a query model in one location.
-     *
+     * 
      * In addition to the query, a {@link RB.RhythmDBQueryModel} can have a sort order and
      * a limit, specified in terms of file size, duration, or number of entries.
      * A query model can only have a limit if it also has a sort order, as the
@@ -10342,62 +10562,78 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBQueryModel>;
 
         // Properties
-
         get base_model(): RhythmDBQueryModel;
         set base_model(val: RhythmDBQueryModel);
+
         get baseModel(): RhythmDBQueryModel;
         set baseModel(val: RhythmDBQueryModel);
+
         /**
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * @construct-only
          * @default RB.RhythmDBQueryModelLimitType.NO_LIMIT
          */
         get limit_type(): RhythmDBQueryModelLimitType;
+
         /**
          * @construct-only
          * @default RB.RhythmDBQueryModelLimitType.NO_LIMIT
          */
         get limitType(): RhythmDBQueryModelLimitType;
+
         /**
          * @construct-only
          */
         get limit_value(): GLib.Variant;
+
         /**
          * @construct-only
          */
         get limitValue(): GLib.Variant;
+
         get query(): any;
         set query(val: any);
+
         /**
          * @default false
          */
         get show_hidden(): boolean;
         set show_hidden(val: boolean);
+
         /**
          * @default false
          */
         get showHidden(): boolean;
         set showHidden(val: boolean);
+
         get sort_data(): any;
         set sort_data(val: any);
+
         get sortData(): any;
         set sortData(val: any);
+
         get sort_data_destroy(): any;
         set sort_data_destroy(val: any);
+
         get sortDataDestroy(): any;
         set sortDataDestroy(val: any);
+
         get sort_func(): any;
         set sort_func(val: any);
+
         get sortFunc(): any;
         set sortFunc(val: any);
+
         /**
          * @default false
          */
         get sort_reverse(): boolean;
         set sort_reverse(val: boolean);
+
         /**
          * @default false
          */
@@ -10414,42 +10650,28 @@ export namespace RB {
         $signals: RhythmDBQueryModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDBQueryModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static new_empty(db: RhythmDB): RhythmDBQueryModel;
 
-        static new_for_entry_type(
-            db: RhythmDB,
-            entry_type: RhythmDBEntryType,
-            show_hidden: boolean,
-        ): RhythmDBQueryModel;
+        static new_for_entry_type(db: RhythmDB, entry_type: RhythmDBEntryType, show_hidden: boolean): RhythmDBQueryModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDBQueryModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBQueryModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDBQueryModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBQueryModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDBQueryModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBQueryModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDBQueryModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBQueryModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDBQueryModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDBQueryModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RhythmDBQueryModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDBQueryModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Sort function for sorting by album.  Sorts by album, then
          * disc number, then track number, then title.
@@ -10457,7 +10679,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static album_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static album_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by artist.  Sorts by artist, then
          * album, then disc number, then track number, then title.
@@ -10465,7 +10688,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static artist_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static artist_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by bitrate.  Lossless encodings (as identified
          * by media type) are considered to have the highest possible bitrate.
@@ -10474,7 +10698,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static bitrate_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static bitrate_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by composer.  Sorts by composer, then
          * album, then disc number, then track number, then title.
@@ -10482,7 +10707,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static composer_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static composer_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by release date.
          * Falls back to album sort order for equal dates.
@@ -10490,7 +10716,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static date_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static date_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by a rounded floating point value.
          * The property value is rounded up to an integer value for sorting.
@@ -10499,7 +10726,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static double_ceiling_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static double_ceiling_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by genre.  Sorts by genre, then artist,
          * then album, then disc number, then track number, then title.
@@ -10507,14 +10735,16 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static genre_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static genre_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by location.
          * @param a a {@link RB.RhythmDBEntry}
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static location_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static location_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by a single string property
          * Falls back to location sort order if the strings are equal.
@@ -10522,7 +10752,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static string_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static string_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by title.  Falls back to sorting
          * by location if the titles are the same.
@@ -10530,7 +10761,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static title_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static title_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by track.  Sorts by artist,
          * then album, then disc number, then track number, then title.
@@ -10538,7 +10770,8 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static track_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static track_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+
         /**
          * Sort function for sorting by an unsigned integer property value.
          * If the values are the same, falls back to sorting by location.
@@ -10546,46 +10779,49 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static ulong_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: any | null): number;
+        static ulong_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_complete(): void;
+
         /**
-         * @param entry
-         * @param prop
-         * @param old
-         * @param new_value
+         * @param entry 
+         * @param prop 
+         * @param old 
+         * @param new_value 
          * @virtual
          */
         vfunc_entry_prop_changed(entry: RhythmDBEntry, prop: RhythmDBPropType, old: unknown, new_value: unknown): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_entry_removed(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_filter_entry_drop(entry: RhythmDBEntry): boolean;
+
         /**
-         * @param uri
-         * @param position
+         * @param uri 
+         * @param position 
          * @virtual
          */
         vfunc_non_entry_dropped(uri: string, position: number): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_post_entry_delete(entry: RhythmDBEntry): void;
 
         // Methods
-
         /**
          * Adds an entry to the query model at the specified position.  Does not check
          * if the entry matches the query (if any).
@@ -10593,6 +10829,7 @@ export namespace RB {
          * @param index position at which to add it, or -1 to add at the end
          */
         add_entry(entry: RhythmDBEntry, index: number): void;
+
         /**
          * Chains `model` to `base`.  All changes made to the base model will be reflected in
          * the child model, and all changes made to the child model will be passed on to the
@@ -10601,6 +10838,7 @@ export namespace RB {
          * @param import_entries if `true`, copy all existing entries from `base` to `model`
          */
         chain(base: RhythmDBQueryModel, import_entries: boolean): void;
+
         /**
          * Constructs a status string describing the contents of the model.
          * @param singular singular form of the pattern describing the number of entries ("%d song")
@@ -10608,11 +10846,13 @@ export namespace RB {
          * @returns allocated status string, to be freed by the caller.
          */
         compute_status_normal(singular: string, plural: string): string;
+
         /**
          * Copies all entries from `src` to `dest`.
          * @param src source {@link RB.RhythmDBQueryModel}
          */
         copy_contents(src: RhythmDBQueryModel): void;
+
         /**
          * Creates a {@link Gtk.TreeIter} pointing to the specified entry in the model.
          * @param entry the {@link RB.RhythmDBEntry} to look up
@@ -10620,11 +10860,13 @@ export namespace RB {
          * @returns `true` if the iterator now points to the entry
          */
         entry_to_iter(entry: RhythmDBEntry, iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the total duration of all entries in the model.
          * @returns the total duration (in seconds) of all entries in the model
          */
         get_duration(): number;
+
         /**
          * Locates and returns the next {@link RB.RhythmDBEntry} in the model after the specified
          * entry.  The caller owns a reference to the returned entry.
@@ -10632,6 +10874,7 @@ export namespace RB {
          * @returns the next {@link RB.RhythmDBEntry} in the model, if any
          */
         get_next_from_entry(entry: RhythmDBEntry): RhythmDBEntry;
+
         /**
          * Locates and returns the  {@link RB.RhythmDBEntry} in the model before the specified
          * entry.  The caller owns a reference to the returned entry.
@@ -10639,17 +10882,20 @@ export namespace RB {
          * @returns the previous {@link RB.RhythmDBEntry} in the model, if any
          */
         get_previous_from_entry(entry: RhythmDBEntry): RhythmDBEntry;
+
         /**
          * Returns the total size of all entries in the model.
          * @returns the total size (in bytes) of all entries in the model
          */
         get_size(): number;
+
         /**
          * Checks if a {@link RB.RhythmDBQueryModel} has any outstanding changes that are
          * yet to be processed.  This is not very useful.
          * @returns `true` if there are outstanding changes to the model
          */
         has_pending_changes(): boolean;
+
         /**
          * Locates and returns the {@link RB.RhythmDBEntry} pointed to by the specified iterator
          * in the model.  The caller owns a reference to the returned entry.
@@ -10657,6 +10903,7 @@ export namespace RB {
          * @returns the {@link RB.RhythmDBEntry}, if any
          */
         iter_to_entry(entry_iter: Gtk.TreeIter): RhythmDBEntry;
+
         /**
          * Moves an entry to a new position in the query model.
          * The position must be a between 0 and the number of entries in the model.
@@ -10665,24 +10912,27 @@ export namespace RB {
          * @param index position to move to
          */
         move_entry(entry: RhythmDBEntry, index: number): void;
+
         /**
          * Reapplies the existing query to the entries in the model.  This
          * is mostly useful when the query contains relative time criteria
          * (such as 'not played in the last hour').  This will only remove
          * entries that are already in the model, it will not find entries
          * that previously did not match the query.
-         *
+         * 
          * The 'filter' parameter should be set to TRUE when the query is
          * being used as a filter, rather than to define a base set of entries.
          * @param filter if `false`, emit entry-removed signals
          */
         reapply_query(filter: boolean): void;
+
         /**
          * Removes an entry from the query model.
          * @param entry the {@link RB.RhythmDBEntry} to remove
          * @returns `true` if the entry was removed
          */
         remove_entry(entry: RhythmDBEntry): boolean;
+
         /**
          * Sets a new sort order on the model.  This reorders the entries
          * in the model to match the new sort order.
@@ -10690,10 +10940,12 @@ export namespace RB {
          * @param sort_reverse if `true`, reverse the sort order
          */
         set_sort_order(sort_func: GLib.CompareDataFunc, sort_reverse: boolean): void;
+
         /**
          * Shuffles the entries in the model into a new random order.
          */
         shuffle_entries(): void;
+
         /**
          * Locates the {@link RB.RhythmDBEntry} identified by the specified path in the model.
          * The caller owns a reference to the returned entry.
@@ -10701,36 +10953,41 @@ export namespace RB {
          * @returns the {@link RB.RhythmDBEntry}, if any
          */
         tree_path_to_entry(path: Gtk.TreePath): RhythmDBEntry;
+
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+
         /**
          * Calls func on each node in model in a depth-first fashion.
-         *
+         * 
          * If `func` returns `true`, then the tree ceases to be walked,
          * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @returns the type of the column
          */
         get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
          */
         get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -10738,6 +10995,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Initializes `iter` with the first iterator in the tree
          * (the one at the path "0") and returns `true`. Returns
@@ -10745,6 +11003,7 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to a valid iterator pointing to `path_string`, if it
          * exists. Otherwise, `iter` is left invalid and `false` is returned.
@@ -10752,22 +11011,25 @@ export namespace RB {
          * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @returns the number of columns
          */
         get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Generates a string representation of the iter.
-         *
+         * 
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
@@ -10775,55 +11037,61 @@ export namespace RB {
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: Gtk.TreeIter | null): number;
+        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -10833,37 +11101,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -10872,30 +11143,33 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -10904,49 +11178,55 @@ export namespace RB {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
-         *
+         * 
          * This should be called by models when their rows have been
          * reordered.
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -10954,22 +11234,25 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
@@ -10977,46 +11260,51 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -11026,37 +11314,40 @@ export namespace RB {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -11065,13 +11356,14 @@ export namespace RB {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
@@ -11079,19 +11371,21 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -11101,6 +11395,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
@@ -11108,25 +11403,28 @@ export namespace RB {
          * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Provides a new set of query results.  References must be taken on the
          * entries.
          * @param entries {@link GLib.PtrArray} containing {@link RB.RhythmDBEntry} results
          */
         add_results(entries: RhythmDBEntry[]): void;
+
         /**
          * Called when the query is complete and all entries that match the query
          * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -11135,6 +11433,7 @@ export namespace RB {
          * entry-changed signals from {@link RB.RhythmDB}.
          */
         query_complete(): void;
+
         /**
          * Provides a new set of query results.  References must be taken on the
          * entries.
@@ -11142,6 +11441,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_add_results(entries: RhythmDBEntry[]): void;
+
         /**
          * Called when the query is complete and all entries that match the query
          * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -11152,6 +11452,7 @@ export namespace RB {
          */
         vfunc_query_complete(): void;
     }
+
 
     namespace RhythmDBQueryResultList {
         // Signal signatures
@@ -11165,8 +11466,9 @@ export namespace RB {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RhythmDBQueryResults.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, RhythmDBQueryResults.ConstructorProps {}
+        }
     }
 
     /**
@@ -11185,56 +11487,45 @@ export namespace RB {
         $signals: RhythmDBQueryResultList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RhythmDBQueryResultList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RhythmDBQueryResultList;
+        static ["new"](): RhythmDBQueryResultList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RhythmDBQueryResultList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBQueryResultList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBQueryResultList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RhythmDBQueryResultList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RhythmDBQueryResultList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RhythmDBQueryResultList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RhythmDBQueryResultList.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RhythmDBQueryResultList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RhythmDBQueryResultList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_complete(): void;
 
         // Methods
-
         /**
          * Returns the results from the query.
          * @returns list of results
          */
         get_results(): RhythmDBEntry[];
+
         /**
          * Provides a new set of query results.  References must be taken on the
          * entries.
          * @param entries {@link GLib.PtrArray} containing {@link RB.RhythmDBEntry} results
          */
         add_results(entries: RhythmDBEntry[]): void;
+
         /**
          * Called when the query is complete and all entries that match the query
          * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -11243,6 +11534,7 @@ export namespace RB {
          * entry-changed signals from {@link RB.RhythmDB}.
          */
         query_complete(): void;
+
         /**
          * Provides a new set of query results.  References must be taken on the
          * entries.
@@ -11250,6 +11542,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_add_results(entries: RhythmDBEntry[]): void;
+
         /**
          * Called when the query is complete and all entries that match the query
          * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -11260,6 +11553,7 @@ export namespace RB {
          */
         vfunc_query_complete(): void;
     }
+
 
     namespace SearchEntry {
         // Signal signatures
@@ -11283,65 +11577,59 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'show-popup': () => void;
-            'notify::explicit-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "show-popup": () => void;
+            "notify::explicit-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::has-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             explicit_mode: boolean;
             explicitMode: boolean;
             has_popup: boolean;
@@ -11353,7 +11641,7 @@ export namespace RB {
      * The search entry contains a label and a text entry box.
      * The text entry box contains an icon that acts as a 'clear'
      * button.
-     *
+     * 
      * Signals are emitted when the search text changes,
      * arbitrarily rate-limited to one every 300ms.
      * @gir-type Class
@@ -11362,7 +11650,6 @@ export namespace RB {
         static $gtype: GObject.GType<SearchEntry>;
 
         // Properties
-
         /**
          * If TRUE, show a button and only emit the 'search' signal when
          * the user presses it rather than when they stop typing.
@@ -11370,6 +11657,7 @@ export namespace RB {
          */
         get explicit_mode(): boolean;
         set explicit_mode(val: boolean);
+
         /**
          * If TRUE, show a button and only emit the 'search' signal when
          * the user presses it rather than when they stop typing.
@@ -11377,12 +11665,14 @@ export namespace RB {
          */
         get explicitMode(): boolean;
         set explicitMode(val: boolean);
+
         /**
          * If TRUE, show a primary icon and emit the show-popup when clicked.
          * @construct-only
          * @default false
          */
         get has_popup(): boolean;
+
         /**
          * If TRUE, show a primary icon and emit the show-popup when clicked.
          * @construct-only
@@ -11400,100 +11690,99 @@ export namespace RB {
         $signals: SearchEntry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SearchEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](has_popup: boolean): SearchEntry;
-        // Conflicted with Gtk.Box.new
+        static ["new"](has_popup: boolean): SearchEntry;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SearchEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SearchEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SearchEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SearchEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchEntry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SearchEntry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SearchEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SearchEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param text
+         * @param text 
          * @virtual
          */
         vfunc_activate(text: string): void;
+
         /**
-         * @param text
+         * @param text 
          * @virtual
          */
         vfunc_search(text: string): void;
+
         /**
          * @virtual
          */
         vfunc_show_popup(): void;
 
         // Methods
-
         /**
          * Clears the search entry text.  The 'search' signal will
          * be emitted.
          */
         clear(): void;
+
         /**
          * Grabs input focus for the text entry widget.
          */
         grab_focus(): void;
+
         /**
          * Returns `true` if there is search text in the entry widget.
          * @returns `true` if searching
          */
         searching(): boolean;
+
         /**
          * Adds or removes a mnemonic allowing the user to focus
          * the search entry.
          * @param enable if `true`, enable the mnemonic
          */
         set_mnemonic(enable: boolean): void;
+
         /**
          * Sets the placeholder text in the search entry box.
          * @param text placeholder text
          */
         set_placeholder(text: string): void;
+
         /**
          * Sets the text in the search entry box.
          * The 'search' signal will be emitted.
          * @param text new search text
          */
         set_text(text: string): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -11501,57 +11790,56 @@ export namespace RB {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace SegmentedBar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::bar-height': (pspec: GObject.ParamSpec) => void;
-            'notify::show-labels': (pspec: GObject.ParamSpec) => void;
-            'notify::show-reflection': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::bar-height": (pspec: GObject.ParamSpec) => void;
+            "notify::show-labels": (pspec: GObject.ParamSpec) => void;
+            "notify::show-reflection": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             bar_height: number;
             barHeight: number;
             show_labels: boolean;
@@ -11568,19 +11856,20 @@ export namespace RB {
         static $gtype: GObject.GType<SegmentedBar>;
 
         // Properties
-
         /**
          * Height of the segmented bar
          * @default 26
          */
         get bar_height(): number;
         set bar_height(val: number);
+
         /**
          * Height of the segmented bar
          * @default 26
          */
         get barHeight(): number;
         set barHeight(val: number);
+
         /**
          * Set to TRUE if you want labels describing the various segments
          * to be shown.
@@ -11588,6 +11877,7 @@ export namespace RB {
          */
         get show_labels(): boolean;
         set show_labels(val: boolean);
+
         /**
          * Set to TRUE if you want labels describing the various segments
          * to be shown.
@@ -11595,6 +11885,7 @@ export namespace RB {
          */
         get showLabels(): boolean;
         set showLabels(val: boolean);
+
         /**
          * Set to TRUE if you want a reflection to be shown below the segmented
          * bar.
@@ -11602,6 +11893,7 @@ export namespace RB {
          */
         get show_reflection(): boolean;
         set show_reflection(val: boolean);
+
         /**
          * Set to TRUE if you want a reflection to be shown below the segmented
          * bar.
@@ -11620,60 +11912,54 @@ export namespace RB {
         $signals: SegmentedBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SegmentedBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SegmentedBar;
+        static ["new"](): SegmentedBar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SegmentedBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SegmentedBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SegmentedBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SegmentedBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SegmentedBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SegmentedBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SegmentedBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SegmentedBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SegmentedBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SegmentedBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SegmentedBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SegmentedBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param title
-         * @param percent
-         * @param red
-         * @param green
-         * @param blue
-         * @param alpha
+         * @param title 
+         * @param percent 
+         * @param red 
+         * @param green 
+         * @param blue 
+         * @param alpha 
          */
         add_segment(title: string, percent: number, red: number, green: number, blue: number, alpha: number): number;
+
         /**
-         * @param title
-         * @param percent
+         * @param title 
+         * @param percent 
          */
         add_segment_default_color(title: string, percent: number): number;
+
         /**
          * Sets a value formatter function to use for the bar.
          * @param formatter the formatter function to use
          */
         set_value_formatter(formatter: SegmentedBarValueFormatter): void;
+
         /**
-         * @param segment_index
-         * @param percent
+         * @param segment_index 
+         * @param percent 
          */
         update_segment(segment_index: number, percent: number): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -11681,10 +11967,11 @@ export namespace RB {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -11692,6 +11979,7 @@ export namespace RB {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -11700,7 +11988,8 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -11709,7 +11998,8 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -11717,11 +12007,8 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -11729,15 +12016,17 @@ export namespace RB {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -11747,18 +12036,21 @@ export namespace RB {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -11767,10 +12059,11 @@ export namespace RB {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -11778,6 +12071,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -11787,12 +12081,8 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -11802,12 +12092,8 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -11815,11 +12101,8 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -11827,15 +12110,17 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -11846,6 +12131,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -11854,6 +12140,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -11861,6 +12148,7 @@ export namespace RB {
          */
         vfunc_set_name(name: string): void;
     }
+
 
     namespace Shell {
         // Signal signatures
@@ -11872,27 +12160,27 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'create-song-info': (arg0: SongInfo, arg1: boolean) => void;
+            "create-song-info": (arg0: SongInfo, arg1: boolean) => void;
             /**
              * Emitted when a custom notification should be displayed to the user.
              * @signal
              * @run-last
              */
-            'notify-custom': (arg0: number, arg1: string, arg2: string, arg3: string, arg4: boolean) => void;
+            "notify-custom": (arg0: number, arg1: string, arg2: string, arg3: string, arg4: boolean) => void;
             /**
              * Emitted when a notification should be displayed showing the current
              * playing entry.
              * @signal
              * @run-last
              */
-            'notify-playing-entry': (arg0: boolean) => void;
+            "notify-playing-entry": (arg0: boolean) => void;
             /**
              * Emitted after the visibility of the main Rhythmbox window has
              * changed.
              * @signal
              * @run-last
              */
-            'visibility-changed': (arg0: boolean) => void;
+            "visibility-changed": (arg0: boolean) => void;
             /**
              * Emitted before the visibility of the main window changes.  The return
              * value overrides the visibility setting.  If multiple signal handlers
@@ -11900,32 +12188,31 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'visibility-changing': (arg0: boolean, arg1: boolean) => boolean | void;
-            'notify::accel-group': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::autostarted': (pspec: GObject.ParamSpec) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-plugins': (pspec: GObject.ParamSpec) => void;
-            'notify::display-page-model': (pspec: GObject.ParamSpec) => void;
-            'notify::display-page-tree': (pspec: GObject.ParamSpec) => void;
-            'notify::dry-run': (pspec: GObject.ParamSpec) => void;
-            'notify::no-registration': (pspec: GObject.ParamSpec) => void;
-            'notify::no-update': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::playlists-file': (pspec: GObject.ParamSpec) => void;
-            'notify::prefs': (pspec: GObject.ParamSpec) => void;
-            'notify::removable-media-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::rhythmdb-file': (pspec: GObject.ParamSpec) => void;
-            'notify::selected-page': (pspec: GObject.ParamSpec) => void;
-            'notify::shell-player': (pspec: GObject.ParamSpec) => void;
-            'notify::task-list': (pspec: GObject.ParamSpec) => void;
-            'notify::track-transfer-queue': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "visibility-changing": (arg0: boolean, arg1: boolean) => (boolean | void);
+            "notify::accel-group": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::autostarted": (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-plugins": (pspec: GObject.ParamSpec) => void;
+            "notify::display-page-model": (pspec: GObject.ParamSpec) => void;
+            "notify::display-page-tree": (pspec: GObject.ParamSpec) => void;
+            "notify::dry-run": (pspec: GObject.ParamSpec) => void;
+            "notify::no-registration": (pspec: GObject.ParamSpec) => void;
+            "notify::no-update": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::playlists-file": (pspec: GObject.ParamSpec) => void;
+            "notify::prefs": (pspec: GObject.ParamSpec) => void;
+            "notify::removable-media-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::rhythmdb-file": (pspec: GObject.ParamSpec) => void;
+            "notify::selected-page": (pspec: GObject.ParamSpec) => void;
+            "notify::shell-player": (pspec: GObject.ParamSpec) => void;
+            "notify::task-list": (pspec: GObject.ParamSpec) => void;
+            "notify::track-transfer-queue": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accel_group: Gtk.AccelGroup;
             accelGroup: Gtk.AccelGroup;
@@ -11976,195 +12263,229 @@ export namespace RB {
         static $gtype: GObject.GType<Shell>;
 
         // Properties
-
         /**
          * A {@link Gtk.AccelGroup} instance to use for additional accelerator keys
          * @read-only
          */
         get accel_group(): Gtk.AccelGroup;
+
         /**
          * A {@link Gtk.AccelGroup} instance to use for additional accelerator keys
          * @read-only
          */
         get accelGroup(): Gtk.AccelGroup;
+
         /**
          * @construct-only
          */
         get application(): Application;
+
         /**
          * Whether Rhythmbox was automatically started by the session manager
          * @construct-only
          * @default false
          */
         get autostarted(): boolean;
+
         /**
          * The {@link RB.RhythmDB} instance
          * @read-only
          */
         get db(): RhythmDB;
+
         /**
          * If `true`, disable plugins
          * @construct-only
          * @default false
          */
         get disable_plugins(): boolean;
+
         /**
          * If `true`, disable plugins
          * @construct-only
          * @default false
          */
         get disablePlugins(): boolean;
+
         /**
          * The model underlying the display page tree
          * @read-only
          */
         get display_page_model(): DisplayPageModel;
+
         /**
          * The model underlying the display page tree
          * @read-only
          */
         get displayPageModel(): DisplayPageModel;
+
         /**
          * The {@link RB.DisplayPageTree} instance
          * @read-only
          */
         get display_page_tree(): DisplayPageTree;
+
         /**
          * The {@link RB.DisplayPageTree} instance
          * @read-only
          */
         get displayPageTree(): DisplayPageTree;
+
         /**
          * If TRUE, don't write back file metadata changes.
          * @construct-only
          * @default false
          */
         get dry_run(): boolean;
+
         /**
          * If TRUE, don't write back file metadata changes.
          * @construct-only
          * @default false
          */
         get dryRun(): boolean;
+
         /**
          * If `true`, disable single-instance features.
          * @construct-only
          * @default false
          */
         get no_registration(): boolean;
+
         /**
          * If `true`, disable single-instance features.
          * @construct-only
          * @default false
          */
         get noRegistration(): boolean;
+
         /**
          * If `true`, don't update the database.
          * @construct-only
          * @default false
          */
         get no_update(): boolean;
+
         /**
          * If `true`, don't update the database.
          * @construct-only
          * @default false
          */
         get noUpdate(): boolean;
+
         /**
          * The {@link RB.PlaylistManager} instance
          * @read-only
          */
         get playlist_manager(): PlaylistManager;
+
         /**
          * The {@link RB.PlaylistManager} instance
          * @read-only
          */
         get playlistManager(): PlaylistManager;
+
         /**
          * The path to the playlist file
          * @construct-only
          * @default playlists.xml
          */
         get playlists_file(): string;
+
         /**
          * The path to the playlist file
          * @construct-only
          * @default playlists.xml
          */
         get playlistsFile(): string;
+
         /**
          * The {@link RB.ShellPreferences} instance
          * @read-only
          */
         get prefs(): ShellPreferences;
+
         /**
          * The {@link RB.RemovableMediaManager} instance
          * @read-only
          */
         get removable_media_manager(): RemovableMediaManager;
+
         /**
          * The {@link RB.RemovableMediaManager} instance
          * @read-only
          */
         get removableMediaManager(): RemovableMediaManager;
+
         /**
          * The path to the rhythmdb file
          * @construct-only
          * @default rhythmdb.xml
          */
         get rhythmdb_file(): string;
+
         /**
          * The path to the rhythmdb file
          * @construct-only
          * @default rhythmdb.xml
          */
         get rhythmdbFile(): string;
+
         /**
          * The currently selected display page
          * @read-only
          */
         get selected_page(): DisplayPage;
+
         /**
          * The currently selected display page
          * @read-only
          */
         get selectedPage(): DisplayPage;
+
         /**
          * The {@link RB.ShellPlayer} instance
          * @read-only
          */
         get shell_player(): ShellPlayer;
+
         /**
          * The {@link RB.ShellPlayer} instance
          * @read-only
          */
         get shellPlayer(): ShellPlayer;
+
         /**
          * The {@link RB.TaskList} instance
          * @read-only
          */
         get task_list(): TaskList;
+
         /**
          * The {@link RB.TaskList} instance
          * @read-only
          */
         get taskList(): TaskList;
+
         /**
          * The {@link RB.TrackTransferQueue} instance
          * @read-only
          */
         get track_transfer_queue(): TrackTransferQueue;
+
         /**
          * The {@link RB.TrackTransferQueue} instance
          * @read-only
          */
         get trackTransferQueue(): TrackTransferQueue;
+
         /**
          * Whether the main window is currently visible.
          * @default true
          */
         get visibility(): boolean;
         set visibility(val: boolean);
+
         /**
          * The main Rhythmbox window.
          * @read-only
@@ -12181,67 +12502,61 @@ export namespace RB {
         $signals: Shell.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Shell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Shell.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Shell.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Shell.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Shell.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Shell.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param song_info
-         * @param multi
+         * @param song_info 
+         * @param multi 
          * @virtual
          */
         vfunc_create_song_info(song_info: SongInfo, multi: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_database_load_complete(): void;
+
         /**
          * @virtual
          */
         vfunc_removable_media_scan_finished(): void;
+
         /**
-         * @param visible
+         * @param visible 
          * @virtual
          */
         vfunc_visibility_changed(visible: boolean): void;
+
         /**
-         * @param initial
-         * @param visible
+         * @param initial 
+         * @param visible 
          * @virtual
          */
         vfunc_visibility_changing(initial: boolean, visible: boolean): boolean;
 
         // Methods
-
         /**
-         * @param source
-         * @param play
+         * @param source 
+         * @param play 
          */
         activate_source(source: Source, play: number): boolean;
+
         /**
          * Searches for a source matching `source_uri` and if found, selects it,
          * and depending on the value of `play`, may start playing from it.
@@ -12253,6 +12568,7 @@ export namespace RB {
          * @returns `true` if successful
          */
         activate_source_by_uri(source_uri: string, play: number): boolean;
+
         /**
          * Adds the specified URI to the Rhythmbox database.  Whether the
          * title and genre specified are actually used is up to the source
@@ -12263,6 +12579,7 @@ export namespace RB {
          * @returns TRUE if the URI was added successfully
          */
         add_uri(uri: string, title: string, genre: string): boolean;
+
         /**
          * Adds a widget to the main Rhythmbox window.  See `gtk_box_pack_start` for
          * details on how the expand and fill parameters work.
@@ -12272,18 +12589,21 @@ export namespace RB {
          * @param fill whether the widget should fill all space allocated to it
          */
         add_widget(widget: Gtk.Widget, location: ShellUILocation, expand: boolean, fill: boolean): void;
+
         /**
          * Adds a new display page to the shell.
          * @param page the new {@link RB.DisplayPage}
          * @param parent the parent page for the new page
          */
-        append_display_page(page: DisplayPage, parent: DisplayPage | null): void;
+        append_display_page(page: DisplayPage, parent: (DisplayPage | null)): void;
+
         /**
          * Displays a notification of the current playing track.
          * @param requested if `true`, the notification was requested by some explicit user action
          * @returns not important
          */
         do_notify(requested: boolean): boolean;
+
         /**
          * Gathers and returns all metadata (including extra metadata such as album
          * art URIs and lyrics) for the specified URI.
@@ -12291,6 +12611,7 @@ export namespace RB {
          * @returns `true` if the URI is found in the database
          */
         get_song_properties(uri: string): [boolean, GLib.HashTable<string, GObject.Value>];
+
         /**
          * Looks up and returns the source that owns entries of the specified
          * type.
@@ -12298,6 +12619,7 @@ export namespace RB {
          * @returns source instance, if any
          */
         get_source_by_entry_type(type: RhythmDBEntryType): Source;
+
         /**
          * Attempts to locate the source that should handle the specified URI.
          * This iterates through all sources, calling `rb_source_want_uri`,
@@ -12306,10 +12628,11 @@ export namespace RB {
          * @returns the most appropriate {@link RB.Source} for the uri
          */
         guess_source_for_uri(uri: string): Source;
+
         /**
          * Loads a URI representing a single song, a directory, a playlist, or
          * an internet radio station, and optionally starts playing it.
-         *
+         * 
          * For playlists containing only stream URLs, we either add the playlist
          * itself (if it's remote) or each URL from it (if it's local).  The main
          * reason for this is so clicking on stream playlist links in web browsers
@@ -12321,20 +12644,23 @@ export namespace RB {
          * @returns TRUE if the URI was added successfully
          */
         load_uri(uri: string, play: boolean): boolean;
+
         /**
-         * @param timeout
-         * @param primary
-         * @param secondary
-         * @param image_uri
-         * @param requested
+         * @param timeout 
+         * @param primary 
+         * @param secondary 
+         * @param image_uri 
+         * @param requested 
          */
         notify_custom(timeout: number, primary: string, secondary: string, image_uri: string, requested: boolean): void;
+
         /**
          * Attempts to display the main window to the user.  See `gtk_window_present` for details.
          * @param timestamp GTK timestamp to use (for focus-stealing prevention)
          * @returns not used.
          */
         present(timestamp: number): boolean;
+
         /**
          * Begins the process of shutting down Rhythmbox.  This function will
          * return.  The error parameter and return value only exist because this
@@ -12342,6 +12668,7 @@ export namespace RB {
          * @returns not important
          */
         quit(): boolean;
+
         /**
          * Registers a source as the owner of entries of the specified type.
          * The main effect of this is that calling `rb_shell_get_source_by_entry_type`
@@ -12351,12 +12678,14 @@ export namespace RB {
          * @param type the {@link RB.RhythmDBEntryType} to register for
          */
         register_entry_type_for_source(source: Source, type: RhythmDBEntryType): void;
+
         /**
          * Removes a widget added with `rb_shell_add_widget` from the main window.
          * @param widget the {@link Gtk.Widget} to remove from the main window
          * @param location the UI location to which the widget was originally added
          */
         remove_widget(widget: Gtk.Widget, location: ShellUILocation): void;
+
         /**
          * Attempts to set a property of a database entry identified by its URI.
          * If the URI identifies a file and the property is one associated with a
@@ -12366,12 +12695,14 @@ export namespace RB {
          * @param value the new value to set
          * @returns `true` if the property was set successfully.
          */
-        set_song_property(uri: string, propname: string, value: GObject.Value | any): boolean;
+        set_song_property(uri: string, propname: string, value: (GObject.Value | any)): boolean;
+
         /**
          * Toggles the visibility of the main Rhythmbox window.
          */
         toggle_visibility(): void;
     }
+
 
     namespace ShellPlayer {
         // Signal signatures
@@ -12381,7 +12712,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'elapsed-changed': (arg0: number) => void;
+            "elapsed-changed": (arg0: number) => void;
             /**
              * Emitted when the playback position changes.  Only use this (as opposed to
              * elapsed-changed) when you require subsecond precision.  This signal will be
@@ -12389,60 +12720,59 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'elapsed-nano-changed': (arg0: number) => void;
+            "elapsed-nano-changed": (arg0: number) => void;
             /**
              * Emitted when playback either stops or starts.
              * @signal
              * @run-last
              */
-            'playing-changed': (arg0: boolean) => void;
+            "playing-changed": (arg0: boolean) => void;
             /**
              * Emitted when the playing database entry changes
              * @signal
              * @run-last
              */
-            'playing-song-changed': (arg0: RhythmDBEntry) => void;
+            "playing-song-changed": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted when a property of the playing database entry changes.
              * @signal
              * @run-last
              */
-            'playing-song-property-changed': (arg0: string, arg1: string, arg2: unknown, arg3: unknown) => void;
+            "playing-song-property-changed": (arg0: string, arg1: string, arg2: unknown, arg3: unknown) => void;
             /**
              * Emitted when a new {@link RB.Source} instance starts playing
              * @signal
              * @run-last
              */
-            'playing-source-changed': (arg0: Source) => void;
+            "playing-source-changed": (arg0: Source) => void;
             /**
              * Emitted when the playing database entry changes, providing the
              * URI of the entry.
              * @signal
              * @run-last
              */
-            'playing-uri-changed': (arg0: string) => void;
+            "playing-uri-changed": (arg0: string) => void;
             /**
              * Emitted when the main window title text should be changed
              * @signal
              * @run-last
              */
-            'window-title-changed': (arg0: string) => void;
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::has-next': (pspec: GObject.ParamSpec) => void;
-            'notify::has-prev': (pspec: GObject.ParamSpec) => void;
-            'notify::mute': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::playing': (pspec: GObject.ParamSpec) => void;
-            'notify::playing-from-queue': (pspec: GObject.ParamSpec) => void;
-            'notify::queue-only': (pspec: GObject.ParamSpec) => void;
-            'notify::queue-source': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::volume': (pspec: GObject.ParamSpec) => void;
+            "window-title-changed": (arg0: string) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::has-next": (pspec: GObject.ParamSpec) => void;
+            "notify::has-prev": (pspec: GObject.ParamSpec) => void;
+            "notify::mute": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::playing": (pspec: GObject.ParamSpec) => void;
+            "notify::playing-from-queue": (pspec: GObject.ParamSpec) => void;
+            "notify::queue-only": (pspec: GObject.ParamSpec) => void;
+            "notify::queue-source": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::volume": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             db: RhythmDB;
             has_next: boolean;
@@ -12470,16 +12800,16 @@ export namespace RB {
      * manages the {@link RB.Player} instance, tracks the current playing {@link RB.RhythmDBEntry},
      * and manages the various {@link RB.PlayOrder} instances.  It provides simple operations
      * such as next, previous, play/pause, and seek.
-     *
+     * 
      * When playing internet radio streams, it first attempts to read the stream URL
      * as a playlist.  If this succeeds, the URLs from the playlist are stored in a
      * list and tried in turn in case of errors.  If the playlist parsing fails, the
      * stream URL is played directly.
-     *
+     * 
      * The mapping from the separate shuffle and repeat settings to an {@link RB.PlayOrder}
      * instance occurs in here.  The play order logic can also support a number of
      * additional play orders not accessible via the shuffle and repeat buttons.
-     *
+     * 
      * If the player backend supports multiple streams, the shell player crossfades
      * between streams by watching the elapsed time of the current stream and simulating
      * an end-of-stream event when it gets within the crossfade duration of the actual
@@ -12490,104 +12820,120 @@ export namespace RB {
         static $gtype: GObject.GType<ShellPlayer>;
 
         // Properties
-
         /**
          * The {@link RB.RhythmDB}
          * @construct-only
          */
         get db(): RhythmDB;
+
         /**
          * Whether there is a track to play after the current track.
          * @read-only
          * @default false
          */
         get has_next(): boolean;
+
         /**
          * Whether there is a track to play after the current track.
          * @read-only
          * @default false
          */
         get hasNext(): boolean;
+
         /**
          * Whether there was a previous track before the current track.
          * @read-only
          * @default false
          */
         get has_prev(): boolean;
+
         /**
          * Whether there was a previous track before the current track.
          * @read-only
          * @default false
          */
         get hasPrev(): boolean;
+
         /**
          * Whether playback is currently muted.
          * @default false
          */
         get mute(): boolean;
         set mute(val: boolean);
+
         /**
          * The current play order object.
          * @read-only
          * @default linear
          */
         get play_order(): string;
+
         /**
          * The current play order object.
          * @read-only
          * @default linear
          */
         get playOrder(): string;
+
         /**
          * The player backend object (an object implementing the {@link RB.Player} interface).
          * @read-only
          */
         get player(): GObject.Object;
+
         /**
          * Whether Rhythmbox is currently playing something
          * @read-only
          * @default false
          */
         get playing(): boolean;
+
         /**
          * If `true`, the current playing entry came from the play queue.
          * @read-only
          * @default false
          */
         get playing_from_queue(): boolean;
+
         /**
          * If `true`, the current playing entry came from the play queue.
          * @read-only
          * @default false
          */
         get playingFromQueue(): boolean;
+
         /**
          * If `true`, activating an entry should only add it to the play queue.
          * @default false
          */
         get queue_only(): boolean;
         set queue_only(val: boolean);
+
         /**
          * If `true`, activating an entry should only add it to the play queue.
          * @default false
          */
         get queueOnly(): boolean;
         set queueOnly(val: boolean);
+
         /**
          * The play queue source
          */
         get queue_source(): PlaylistSource;
         set queue_source(val: PlaylistSource);
+
         /**
          * The play queue source
          */
         get queueSource(): PlaylistSource;
         set queueSource(val: PlaylistSource);
+
         /**
          * The current source that is selected for playback.
          */
         get source(): Source;
         set source(val: Source);
+
         /**
          * The current playback volume (between 0.0 and 1.0)
          * @default 1
@@ -12605,82 +12951,78 @@ export namespace RB {
         $signals: ShellPlayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ShellPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](db: RhythmDB): ShellPlayer;
+        static ["new"](db: RhythmDB): ShellPlayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ShellPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShellPlayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ShellPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShellPlayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ShellPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShellPlayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ShellPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShellPlayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ShellPlayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ShellPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ShellPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShellPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param elapsed
+         * @param elapsed 
          * @virtual
          */
         vfunc_elapsed_changed(elapsed: number): void;
+
         /**
-         * @param elapsed
+         * @param elapsed 
          * @virtual
          */
         vfunc_elapsed_nano_changed(elapsed: number): void;
+
         /**
-         * @param playing
+         * @param playing 
          * @virtual
          */
         vfunc_playing_changed(playing: boolean): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_playing_song_changed(entry: RhythmDBEntry): void;
+
         /**
-         * @param uri
-         * @param property
-         * @param old
-         * @param newValue
+         * @param uri 
+         * @param property 
+         * @param old 
+         * @param newValue 
          * @virtual
          */
         vfunc_playing_song_property_changed(uri: string, property: string, old: unknown, newValue: unknown): void;
+
         /**
-         * @param source
+         * @param source 
          * @virtual
          */
         vfunc_playing_source_changed(source: Source): void;
+
         /**
-         * @param uri
+         * @param uri 
          * @virtual
          */
         vfunc_playing_uri_changed(uri: string): void;
+
         /**
-         * @param window_title
+         * @param window_title 
          * @virtual
          */
         vfunc_window_title_changed(window_title: string): void;
 
         // Methods
-
         /**
          * Adds a new play order to the set of available play orders.
          * @param name name of the new play order
@@ -12689,6 +13031,7 @@ export namespace RB {
          * @param hidden if `true`, don't display the play order in the UI
          */
         add_play_order(name: string, description: string, order_type: GObject.GType, hidden: boolean): void;
+
         /**
          * Skips to the next song.  Consults the play queue and handles
          * transitions between the play queue and the active source.
@@ -12696,6 +13039,7 @@ export namespace RB {
          * @returns `true` if successful
          */
         do_next(): boolean;
+
         /**
          * If the current song has been playing for more than 3 seconds,
          * restarts it, otherwise, goes back to the previous song.
@@ -12704,45 +13048,53 @@ export namespace RB {
          * @returns `true` if successful
          */
         do_previous(): boolean;
+
         /**
          * Retrieves the active source.  This is the source that the user
          * selected for playback.
          * @returns the active {@link RB.Source}
          */
         get_active_source(): Source;
+
         /**
          * Returns `true` if currently muted
          * @returns `true` if currently muted
          */
         get_mute(): [boolean, boolean];
+
         /**
          * Retrieves the current state of the shuffle and repeat settings.
          * @returns `true` if successful.
          */
         get_playback_state(): [boolean, boolean, boolean];
+
         /**
          * Reports whether playback is occuring by setting #playing.
          * @returns `true` if successful
          */
         get_playing(): [boolean, boolean];
+
         /**
          * Retrieves the currently playing {@link RB.RhythmDBEntry}, or NULL if
          * nothing is playing.  The caller must unref the entry
          * (using `rhythmdb_entry_unref`) when it is no longer needed.
          * @returns the currently playing {@link RB.RhythmDBEntry}, or NULL
          */
-        get_playing_entry(): RhythmDBEntry | null;
+        get_playing_entry(): (RhythmDBEntry | null);
+
         /**
          * Retrieves the URI of the current playing entry.  The
          * caller must not free the returned string.
          * @returns `true` if successful
          */
         get_playing_path(): [boolean, string];
+
         /**
          * Retrieves the duration of the current playing song.
          * @returns duration, or -1 if not playing
          */
         get_playing_song_duration(): number;
+
         /**
          * Retrieves the current playing source.  That is, the source from
          * which the current song was drawn.  This differs from
@@ -12751,6 +13103,7 @@ export namespace RB {
          * @returns the current playing {@link RB.Source}
          */
         get_playing_source(): Source;
+
         /**
          * Retrieves the current playback position.  Fails if
          * the player currently cannot provide the playback
@@ -12758,34 +13111,41 @@ export namespace RB {
          * @returns `true` if successful
          */
         get_playing_time(): [boolean, number];
+
         /**
          * Constructs a string showing the current playback position,
          * taking the time display settings into account.
          * @returns allocated playing time string
          */
         get_playing_time_string(): string;
+
         /**
          * Returns the current volume level
          * @returns the current volume level.
          */
         get_volume(): [boolean, number];
+
         jump_to_current(): void;
+
         /**
          * Pauses playback if possible, completely stopping if not.
          * @returns whether playback is not occurring (TRUE when successfully paused/stopped or playback was not occurring).
          */
         pause(): boolean;
+
         /**
          * Starts playback, if it is not already playing.
          * @returns whether playback is now occurring (TRUE when successfully started or already playing).
          */
         play(): boolean;
+
         /**
          * Plays a specified entry.
          * @param entry the {@link RB.RhythmDBEntry} to play
          * @param source the new {@link RB.Source} to set as playing (or NULL to use the   selected source)
          */
         play_entry(entry: RhythmDBEntry, source: Source): void;
+
         /**
          * Toggles between playing and paused state.  If there is no playing
          * entry, chooses an entry from (in order of preference) the play queue,
@@ -12793,12 +13153,14 @@ export namespace RB {
          * @returns `true` if successful
          */
         playpause(): boolean;
+
         /**
          * Removes a play order previously added with `rb_shell_player_add_play_order`
          * from the set of available play orders.
          * @param name name of the play order to remove
          */
         remove_play_order(name: string): void;
+
         /**
          * Seeks forwards or backwards in the current playing
          * song. Fails if the current song is not seekable.
@@ -12806,23 +13168,27 @@ export namespace RB {
          * @returns `true` if successful
          */
         seek(offset: number): boolean;
+
         /**
          * Updates the mute setting on the player.
          * @param mute `true` to mute playback
          * @returns `true` if successful
          */
         set_mute(mute: boolean): boolean;
+
         /**
          * Sets the state of the shuffle and repeat settings.
          * @param shuffle whether to enable the shuffle setting
          * @param repeat whether to enable the repeat setting
          */
         set_playback_state(shuffle: boolean, repeat: boolean): void;
+
         /**
          * Replaces the current playing source.
          * @param source the new playing {@link RB.Source}
          */
         set_playing_source(source: Source): void;
+
         /**
          * Attempts to set the playback position.  Fails if the
          * current song is not seekable.
@@ -12830,134 +13196,136 @@ export namespace RB {
          * @returns `true` if successful
          */
         set_playing_time(time: number): boolean;
+
         /**
          * Updates the player to reflect a new source being selected.
          * @param source the {@link RB.Source} to select
          */
         set_selected_source(source: Source): void;
+
         /**
          * Sets the playback volume level.
          * @param volume the volume level (between 0 and 1)
          * @returns `true` on success
          */
         set_volume(volume: number): boolean;
+
         /**
          * Adds the specified value to the current volume level.
          * @param delta difference to apply to the volume level (between -1 and 1)
          * @returns `true` on success
          */
         set_volume_relative(delta: number): boolean;
+
         /**
          * Completely stops playback, freeing resources and unloading the file.
-         *
+         * 
          * In general `rb_shell_player_pause()` should be used instead, as it stops the
          * audio, but does not completely free resources.
          */
         stop(): void;
     }
 
+
     namespace ShellPreferences {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
      * The preferences dialog is built around a {@link Gtk.Notebook} widget, with two built-in
      * pages and additional pages for various sources.
-     *
+     * 
      * The 'general' preferences page controls the set of browser views that are visible
      * (artist and album; genre and artist; or genre, artist, and album), the columns
      * that are visible, and the appearance of buttons in the main toolbar.  The browser
      * and column settings apply to all sources.
-     *
+     * 
      * The 'playback' preferences page controls whether the crossfading player backend is used,
      * and if enabled, the crossfade duration and network buffer size.
-     *
+     * 
      * Currently, the library and podcast sources add pages to the notebook, for configuring the
      * location and layout of the library and the podcast download location and update frequency.
      * @gir-type Class
@@ -12975,39 +13343,29 @@ export namespace RB {
         $signals: ShellPreferences.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ShellPreferences.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](views: Source[]): ShellPreferences;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](views: Source[]): ShellPreferences;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ShellPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShellPreferences.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ShellPreferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShellPreferences.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ShellPreferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShellPreferences.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ShellPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShellPreferences.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ShellPreferences.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ShellPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ShellPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShellPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a widget to the preferences window.  See `gtk_box_pack_start` for
          * details on how the expand and fill parameters work.  This function can be
@@ -13018,12 +13376,14 @@ export namespace RB {
          * @param fill whether the widget should fill all space allocated to it
          */
         add_widget(widget: Gtk.Widget, location: ShellPrefsUILocation, expand: boolean, fill: boolean): void;
+
         /**
          * Appends a new page to the preferences dialog notebook.
          * @param name name of the page to append
          * @param widget the {@link Gtk.Widget} to use as the contents of the page
          */
         append_page(name: string, widget: Gtk.Widget): void;
+
         /**
          * Removes a widget added with `rb_shell_preferences_add_widget` from the preferences window.
          * @param widget the {@link Gtk.Widget} to remove from the preferences window
@@ -13031,6 +13391,7 @@ export namespace RB {
          */
         remove_widget(widget: Gtk.Widget, location: ShellPrefsUILocation): void;
     }
+
 
     namespace SongInfo {
         // Signal signatures
@@ -13041,7 +13402,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'post-metadata-change': (arg0: RhythmDBEntry) => void;
+            "post-metadata-change": (arg0: RhythmDBEntry) => void;
             /**
              * Emitted just before the changes made in the song properties window
              * are applied to the database.  This is only emitted in the single-entry
@@ -13049,93 +13410,91 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'pre-metadata-change': (arg0: RhythmDBEntry) => void;
-            'notify::current-entry': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-view': (pspec: GObject.ParamSpec) => void;
-            'notify::selected-entries': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "pre-metadata-change": (arg0: RhythmDBEntry) => void;
+            "notify::current-entry": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-view": (pspec: GObject.ParamSpec) => void;
+            "notify::selected-entries": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_entry: RhythmDBEntry;
             currentEntry: RhythmDBEntry;
             entry_view: EntryView;
@@ -13149,23 +13508,23 @@ export namespace RB {
     /**
      * Displays song properties and, if we know how to edit tags in the file,
      * allows the user to edit them.
-     *
+     * 
      * This class has two modes.  It can display and edit properties of a single
      * entry, in which case it uses a {@link Gtk.Notebook} to split the properties across
      * 'basic' and 'details' pages, and it can display and edit properties of
      * multiple entries at a time, in which case a smaller set of properties is
      * displayed in a single set.
-     *
+     * 
      * In single-entry mode, it is possible to add extra pages to the {@link Gtk.Notebook}
      * widget in the dialog.  The 'create-song-info' signal is emitted by the {@link RB.Shell}
      * object, allowing signal handlers to add pages by calling `rb_song_info_append_page`.
      * The lyrics plugin is currently the only place where this ability is used.
      * In this mode, the dialog features 'back' and 'forward' buttons that move to the
      * next or previous entries from the currently displayed track list.
-     *
+     * 
      * In multiple-entry mode, only the set of properties that can usefully be set
      * across multiple entries at once are displayed.
-     *
+     * 
      * When the dialog is closed, any changes made will be applied to the entry (or entries)
      * that were displayed in the dialog.  For songs in the library, this will result
      * in the song tags being updated on disk.  For other entry types, this only updates
@@ -13176,19 +13535,20 @@ export namespace RB {
         static $gtype: GObject.GType<SongInfo>;
 
         // Properties
-
         /**
          * The {@link RB.RhythmDBEntry} that is currently being displayed.  Will be NULL for
          * multiple-entry song properties windows.
          * @read-only
          */
         get current_entry(): RhythmDBEntry;
+
         /**
          * The {@link RB.RhythmDBEntry} that is currently being displayed.  Will be NULL for
          * multiple-entry song properties windows.
          * @read-only
          */
         get currentEntry(): RhythmDBEntry;
+
         /**
          * The {@link RB.EntryView} for the source that created the song properties window.  Used
          * find the set of selected entries, and to change the selection when the 'back' and
@@ -13196,6 +13556,7 @@ export namespace RB {
          * @construct-only
          */
         get entry_view(): EntryView;
+
         /**
          * The {@link RB.EntryView} for the source that created the song properties window.  Used
          * find the set of selected entries, and to change the selection when the 'back' and
@@ -13203,18 +13564,21 @@ export namespace RB {
          * @construct-only
          */
         get entryView(): EntryView;
+
         /**
          * The set of {@link RB.RhythmDBEntry} objects currently being displayed.  Valid for both
          * single-entry and multiple-entry song properties windows.
          * @read-only
          */
         get selected_entries(): any[];
+
         /**
          * The set of {@link RB.RhythmDBEntry} objects currently being displayed.  Valid for both
          * single-entry and multiple-entry song properties windows.
          * @read-only
          */
         get selectedEntries(): any[];
+
         /**
          * The {@link RB.Source} that created the song properties window.  Used to update
          * for track list changes, and to find the sets of albums, artist, and genres
@@ -13233,52 +13597,42 @@ export namespace RB {
         $signals: SongInfo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SongInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Source, entry_view: EntryView): SongInfo;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](source: Source, entry_view: EntryView): SongInfo;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SongInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SongInfo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SongInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SongInfo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SongInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SongInfo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SongInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SongInfo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SongInfo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SongInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SongInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SongInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_post_metadata_change(entry: RhythmDBEntry): void;
+
         /**
-         * @param entry
+         * @param entry 
          * @virtual
          */
         vfunc_pre_metadata_change(entry: RhythmDBEntry): void;
 
         // Methods
-
         /**
          * Adds a new page to the song properties window.  Should be called
          * in a handler connected to the {@link RB.Shell} 'create-song-info' signal.
@@ -13288,6 +13642,7 @@ export namespace RB {
          */
         append_page(title: string, page: Gtk.Widget): number;
     }
+
 
     namespace Source {
         // Signal signatures
@@ -13299,90 +13654,84 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'filter-changed': () => void;
+            "filter-changed": () => void;
             /**
              * Emitted to indicate playback status (buffering etc.) has changed
              * @signal
              * @run-last
              */
-            'playback-status-changed': () => void;
+            "playback-status-changed": () => void;
             /**
              * Action signal used to reset the source's filters.
              * @signal
              * @action
              * @run-last
              */
-            'reset-filters': () => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "reset-filters": () => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                DisplayPage.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends DisplayPage.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             base_query_model: RhythmDBQueryModel;
             baseQueryModel: RhythmDBQueryModel;
             entry_type: RhythmDBEntryType;
@@ -13410,11 +13759,11 @@ export namespace RB {
      * about the UI capabilities of the source, and defines the
      * expectations that apply to all sources - that they will
      * provide {@link RB.EntryView} and {@link RB.RhythmDBQueryModel} objects, mostly.
-     *
+     * 
      * Many of the methods on this class come in can_do_x and do_x
      * pairs.  When can_do_x always returns FALSE, the class does not
      * need to implement the do_x method.
-     *
+     * 
      * Useful subclasses include {@link RB.BrowserSource}, which includes a {@link RB.LibraryBrowser}
      * and takes care of constructing an {@link RB.EntryView} too; `RBRemovableMediaSource`,
      * which takes care of many aspects of implementing a source that represents a
@@ -13426,7 +13775,6 @@ export namespace RB {
         static $gtype: GObject.GType<Source>;
 
         // Properties
-
         /**
          * The unfiltered query model for the source, containing all entries in the source.
          * Source classes should override this if they perform filtering based on the search
@@ -13434,6 +13782,7 @@ export namespace RB {
          * @read-only
          */
         get base_query_model(): RhythmDBQueryModel;
+
         /**
          * The unfiltered query model for the source, containing all entries in the source.
          * Source classes should override this if they perform filtering based on the search
@@ -13441,16 +13790,19 @@ export namespace RB {
          * @read-only
          */
         get baseQueryModel(): RhythmDBQueryModel;
+
         /**
          * Entry type for entries in this source.
          * @construct-only
          */
         get entry_type(): RhythmDBEntryType;
+
         /**
          * Entry type for entries in this source.
          * @construct-only
          */
         get entryType(): RhythmDBEntryType;
+
         /**
          * If TRUE, the source will not be displayed in the source list
          * when it contains no entries.
@@ -13458,6 +13810,7 @@ export namespace RB {
          */
         get hidden_when_empty(): boolean;
         set hidden_when_empty(val: boolean);
+
         /**
          * If TRUE, the source will not be displayed in the source list
          * when it contains no entries.
@@ -13465,6 +13818,7 @@ export namespace RB {
          */
         get hiddenWhenEmpty(): boolean;
         set hiddenWhenEmpty(val: boolean);
+
         /**
          * Indicates whether the source is not loaded, is currently loading data, or is
          * fully loaded.
@@ -13472,6 +13826,7 @@ export namespace RB {
          */
         get load_status(): SourceLoadStatus;
         set load_status(val: SourceLoadStatus);
+
         /**
          * Indicates whether the source is not loaded, is currently loading data, or is
          * fully loaded.
@@ -13479,28 +13834,33 @@ export namespace RB {
          */
         get loadStatus(): SourceLoadStatus;
         set loadStatus(val: SourceLoadStatus);
+
         /**
          * If the source provides its own play order, it can override this property.
          * @read-only
          */
         get play_order(): PlayOrder;
+
         /**
          * If the source provides its own play order, it can override this property.
          * @read-only
          */
         get playOrder(): PlayOrder;
+
         /**
          * A GMenu instance to attach to the 'add to playlist' item in the edit menu.
          * If NULL, the item will be disabled.
          */
         get playlist_menu(): Gio.MenuModel;
         set playlist_menu(val: Gio.MenuModel);
+
         /**
          * A GMenu instance to attach to the 'add to playlist' item in the edit menu.
          * If NULL, the item will be disabled.
          */
         get playlistMenu(): Gio.MenuModel;
         set playlistMenu(val: Gio.MenuModel);
+
         /**
          * The current query model for the source.  This is used in
          * various places, including the play order, to find the
@@ -13508,6 +13868,7 @@ export namespace RB {
          */
         get query_model(): RhythmDBQueryModel;
         set query_model(val: RhythmDBQueryModel);
+
         /**
          * The current query model for the source.  This is used in
          * various places, including the play order, to find the
@@ -13515,12 +13876,14 @@ export namespace RB {
          */
         get queryModel(): RhythmDBQueryModel;
         set queryModel(val: RhythmDBQueryModel);
+
         /**
          * The {@link Gio.Settings} instance storing settings for the source.  The instance must
          * have a schema of org.gnome.Rhythmbox.Source.
          */
         get settings(): Gio.Settings;
         set settings(val: Gio.Settings);
+
         /**
          * Whether the browser widget for the source (if any) should be displayed.
          * This should be overridden in sources that include a browser widget.
@@ -13528,6 +13891,7 @@ export namespace RB {
          */
         get show_browser(): boolean;
         set show_browser(val: boolean);
+
         /**
          * Whether the browser widget for the source (if any) should be displayed.
          * This should be overridden in sources that include a browser widget.
@@ -13535,6 +13899,7 @@ export namespace RB {
          */
         get showBrowser(): boolean;
         set showBrowser(val: boolean);
+
         /**
          * A GMenu instance describing the contents of a toolbar to display at
          * the top of the source.  The {@link RB.Source} class doesn't actually display
@@ -13543,6 +13908,7 @@ export namespace RB {
          * @construct-only
          */
         get toolbar_menu(): Gio.MenuModel;
+
         /**
          * A GMenu instance describing the contents of a toolbar to display at
          * the top of the source.  The {@link RB.Source} class doesn't actually display
@@ -13562,34 +13928,24 @@ export namespace RB {
         $signals: Source.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Source.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Source.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Source.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Source.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Source.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Adds the currently selected entries to the end of the
          * play queue.
@@ -13597,6 +13953,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_add_to_queue(queue: Source): void;
+
         /**
          * Adds an entry corresponding to the URI to the source.  The
          * `title` and `genre` parameters are not really used.
@@ -13607,78 +13964,92 @@ export namespace RB {
          * @virtual
          */
         vfunc_add_uri(uri: string, title: string, genre: string, callback: SourceAddCallback): void;
+
         /**
          * Determines whether the source can add the selected entries to
          * the play queue.
          * @virtual
          */
         vfunc_can_add_to_queue(): boolean;
+
         /**
          * Determines whether the source supports the copy part
          * of a copy-and-paste operation.
          * @virtual
          */
         vfunc_can_copy(): boolean;
+
         /**
          * Determines whether the source supporst the typical cut
          * (as in cut-and-paste) operation.
          * @virtual
          */
         vfunc_can_cut(): boolean;
+
         /**
          * Determines whether the source allows the user to delete
          * a selected set of entries.
          * @virtual
          */
         vfunc_can_delete(): boolean;
+
         /**
          * Determines whether the source allows the user to trash
          * the files backing a selected set of entries.
          * @virtual
          */
         vfunc_can_move_to_trash(): boolean;
+
         /**
          * Determines whether the source supports paste operations.
          * @virtual
          */
         vfunc_can_paste(): boolean;
+
         /**
          * Determines whether playback of entries from the source can
          * be paused.
          * @virtual
          */
         vfunc_can_pause(): boolean;
+
         /**
          * Determines whether the source can be renamed.
          * @virtual
          */
         vfunc_can_rename(): boolean;
+
         /**
          * Checks if a database entry matches the entry type for the source.
          * @param entry a {@link RB.RhythmDBEntry}
          * @virtual
          */
         vfunc_check_entry_type(entry: RhythmDBEntry): boolean;
+
         /**
          * Copies the selected entries to the clipboard.
          * @virtual
          */
         vfunc_copy(): RhythmDBEntry[];
+
         /**
          * Removes the currently selected entries from the source and
          * returns them so they can be pasted into another source.
          * @virtual
          */
         vfunc_cut(): RhythmDBEntry[];
+
         /**
          * Deletes the currently selected entries from the source.
          * @virtual
          */
         vfunc_delete_selected(): void;
+
         /**
          * @virtual
          */
         vfunc_filter_changed(): void;
+
         /**
          * Returns a translated label for the 'delete' menu item, allowing
          * sources to better describe what happens to deleted entries.
@@ -13686,11 +14057,13 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_delete_label(): string;
+
         /**
          * Returns the entry view widget for the source.
          * @virtual
          */
         vfunc_get_entry_view(): EntryView;
+
         /**
          * Retrieves playback status details, such as buffering progress.
          * @param text holds returned playback status text
@@ -13698,18 +14071,21 @@ export namespace RB {
          * @virtual
          */
         vfunc_get_playback_status(text: string, progress: number): [string, number];
+
         /**
          * Returns a list containing the {@link RB.PropertyView} instances for the
          * source, if any.
          * @virtual
          */
         vfunc_get_property_views(): PropertyView[];
+
         /**
          * Determines how EOS events should be handled when playing entries
          * from the source.
          * @virtual
          */
         vfunc_handle_eos(): SourceEOFType;
+
         /**
          * Trashes the files backing the currently selected set of entries.
          * In general, this should use `rhythmdb_entry_move_to_trash` to
@@ -13717,12 +14093,13 @@ export namespace RB {
          * @virtual
          */
         vfunc_move_to_trash(): void;
+
         /**
          * Adds a list of entries previously cut or copied from another
          * source.  If the entries are not of the type used by the source,
          * the entries will be copied and possibly converted into an acceptable format.
          * This can be used for transfers to and from devices and network shares.
-         *
+         * 
          * If the transfer is performed using an {@link RB.TrackTransferBatch}, the batch object
          * is returned so the caller can monitor the transfer progress.  The caller does not
          * own a reference on the batch object.
@@ -13730,10 +14107,12 @@ export namespace RB {
          * @virtual
          */
         vfunc_paste(entries: RhythmDBEntry[]): TrackTransferBatch;
+
         /**
          * @virtual
          */
         vfunc_reset_filters(): void;
+
         /**
          * Updates the source with new search text.  The source
          * should recreate the database query that feeds into the
@@ -13743,18 +14122,21 @@ export namespace RB {
          * @param new_text the new search text
          * @virtual
          */
-        vfunc_search(search: SourceSearch | null, cur_text: string | null, new_text: string): void;
+        vfunc_search(search: (SourceSearch | null), cur_text: (string | null), new_text: string): void;
+
         /**
          * Displays a properties window for the currently selected entries.
          * @virtual
          */
         vfunc_song_properties(): void;
+
         /**
          * Determines whether playback URIs for entries in the source should
          * be parsed as playlists rather than just played.
          * @virtual
          */
         vfunc_try_playlist(): boolean;
+
         /**
          * Checks if the URI matches the source itself.  A source
          * should return TRUE here if the URI points to the device that
@@ -13763,6 +14145,7 @@ export namespace RB {
          * @virtual
          */
         vfunc_uri_is_source(uri: string): boolean;
+
         /**
          * Returns an indication of how much the source wants to handle
          * the specified URI.  100 is the highest usual value, and should
@@ -13774,13 +14157,13 @@ export namespace RB {
         vfunc_want_uri(uri: string): number;
 
         // Methods
-
         /**
          * Adds the currently selected entries to the end of the
          * play queue.
          * @param queue the {@link RB.Source} for the play queue
          */
         add_to_queue(queue: Source): void;
+
         /**
          * Adds an entry corresponding to the URI to the source.  The
          * `title` and `genre` parameters are not really used.
@@ -13790,10 +14173,11 @@ export namespace RB {
          * @param callback a callback function to call when complete
          */
         add_uri(uri: string, title: string, genre: string, callback: SourceAddCallback): void;
+
         /**
          * Binds the source's {@link Gio.Settings} instance to the given widgets.  Should be called
          * from the source's constructed method.
-         *
+         * 
          * If the browser widget has a browser-views property, it will be bound to the
          * browser-views settings key.
          * @param entry_view the {@link RB.EntryView} for the source
@@ -13801,75 +14185,82 @@ export namespace RB {
          * @param browser the browser (typically a {@link RB.LibraryBrowser}) for the source
          * @param sort_order whether to bind the entry view sort order
          */
-        bind_settings(
-            entry_view: Gtk.Widget | null,
-            paned: Gtk.Widget | null,
-            browser: Gtk.Widget | null,
-            sort_order: boolean,
-        ): void;
+        bind_settings(entry_view: (Gtk.Widget | null), paned: (Gtk.Widget | null), browser: (Gtk.Widget | null), sort_order: boolean): void;
+
         /**
          * Determines whether the source can add the selected entries to
          * the play queue.
          * @returns TRUE if adding to the play queue is supported
          */
         can_add_to_queue(): boolean;
+
         /**
          * Determines whether the source supports the copy part
          * of a copy-and-paste operation.
          * @returns TRUE if copying is supported
          */
         can_copy(): boolean;
+
         /**
          * Determines whether the source supporst the typical cut
          * (as in cut-and-paste) operation.
          * @returns TRUE if cutting is supported
          */
         can_cut(): boolean;
+
         /**
          * Determines whether the source allows the user to delete
          * a selected set of entries.
          * @returns TRUE if deletion is supported
          */
         can_delete(): boolean;
+
         /**
          * Determines whether the source allows the user to trash
          * the files backing a selected set of entries.
          * @returns TRUE if trashing is supported
          */
         can_move_to_trash(): boolean;
+
         /**
          * Determines whether the source supports paste operations.
          * @returns TRUE if the pasting is supported
          */
         can_paste(): boolean;
+
         /**
          * Determines whether playback of entries from the source can
          * be paused.
          * @returns TRUE if pausing is supported
          */
         can_pause(): boolean;
+
         /**
          * Determines whether the source can be renamed.
          * @returns TRUE if this source can be renamed
          */
         can_rename(): boolean;
+
         /**
          * Determines whether the source can display a properties
          * window for the currently selected entry (or set of entries)
          * @returns TRUE if showing properties is supported
          */
         can_show_properties(): boolean;
+
         /**
          * Checks if a database entry matches the entry type for the source.
          * @param entry a {@link RB.RhythmDBEntry}
          * @returns `true` if the entry matches the source's entry type.
          */
         check_entry_type(entry: RhythmDBEntry): boolean;
+
         /**
          * Copies the selected entries to the clipboard.
          * @returns a list containing the currently selected entries from the source.
          */
         copy(): RhythmDBEntry[];
+
         /**
          * Creates a GAction representing the selected search type for `source`.
          * The action is stateful. Its state is a string containing the name of
@@ -13880,16 +14271,19 @@ export namespace RB {
          * @returns {@link Gio.Action} instance
          */
         create_search_action(): Gio.Action;
+
         /**
          * Removes the currently selected entries from the source and
          * returns them so they can be pasted into another source.
          * @returns entries cut from the source.
          */
         cut(): RhythmDBEntry[];
+
         /**
          * Deletes the currently selected entries from the source.
          */
         delete_selected(): void;
+
         /**
          * Returns a list containing the values of the specified
          * property from the selected entries in the source.
@@ -13899,6 +14293,7 @@ export namespace RB {
          * @returns list of property values
          */
         gather_selected_properties(prop: RhythmDBPropType): string[];
+
         /**
          * Returns a translated label for the 'delete' menu item, allowing
          * sources to better describe what happens to deleted entries.
@@ -13906,50 +14301,58 @@ export namespace RB {
          * @returns allocated string holding the label string
          */
         get_delete_label(): string;
+
         /**
          * Returns the entry view widget for the source.
          * @returns the {@link RB.EntryView} instance for the source
          */
         get_entry_view(): EntryView;
+
         /**
          * Retrieves playback status details, such as buffering progress.
          * @param text holds returned playback status text
          * @param progress holds returned playback status progress value
          */
         get_playback_status(text: string, progress: number): [string, number];
+
         /**
          * Returns a list containing the {@link RB.PropertyView} instances for the
          * source, if any.
          * @returns list of property views
          */
         get_property_views(): PropertyView[];
+
         /**
          * Determines how EOS events should be handled when playing entries
          * from the source.
          * @returns EOS event handling type
          */
         handle_eos(): SourceEOFType;
+
         /**
          * Trashes the files backing the currently selected set of entries.
          * In general, this should use `rhythmdb_entry_move_to_trash` to
          * perform the actual trash operation.
          */
         move_to_trash(): void;
+
         /**
          * Source implementations call this when their filter state changes
          */
         notify_filter_changed(): void;
+
         /**
          * Source implementations call this when their playback status
          * changes.
          */
         notify_playback_status_changed(): void;
+
         /**
          * Adds a list of entries previously cut or copied from another
          * source.  If the entries are not of the type used by the source,
          * the entries will be copied and possibly converted into an acceptable format.
          * This can be used for transfers to and from devices and network shares.
-         *
+         * 
          * If the transfer is performed using an {@link RB.TrackTransferBatch}, the batch object
          * is returned so the caller can monitor the transfer progress.  The caller does not
          * own a reference on the batch object.
@@ -13957,6 +14360,7 @@ export namespace RB {
          * @returns the {@link RB.TrackTransferBatch} used to perform the transfer (if any)
          */
         paste(entries: RhythmDBEntry[]): TrackTransferBatch;
+
         /**
          * Updates the source with new search text.  The source
          * should recreate the database query that feeds into the
@@ -13965,23 +14369,27 @@ export namespace RB {
          * @param cur_text the current search text
          * @param new_text the new search text
          */
-        search(search: SourceSearch | null, cur_text: string | null, new_text: string): void;
+        search(search: (SourceSearch | null), cur_text: (string | null), new_text: string): void;
+
         /**
          * Enables or disables automatic hiding of the source when
          * there are no entries in it.
          * @param hidden if TRUE, automatically hide the source
          */
         set_hidden_when_empty(hidden: boolean): void;
+
         /**
          * Displays a properties window for the currently selected entries.
          */
         song_properties(): void;
+
         /**
          * Determines whether playback URIs for entries in the source should
          * be parsed as playlists rather than just played.
          * @returns TRUE to attempt playlist parsing
          */
         try_playlist(): boolean;
+
         /**
          * Updates play count and play time statistics for a database entry.
          * Sources containing entries that do not normally reach EOS should
@@ -13990,6 +14398,7 @@ export namespace RB {
          * @param entry the {@link RB.RhythmDBEntry} to update
          */
         update_play_statistics(db: RhythmDB, entry: RhythmDBEntry): void;
+
         /**
          * Checks if the URI matches the source itself.  A source
          * should return TRUE here if the URI points to the device that
@@ -13998,6 +14407,7 @@ export namespace RB {
          * @returns TRUE if the URI identifies the source itself.
          */
         uri_is_source(uri: string): boolean;
+
         /**
          * Returns an indication of how much the source wants to handle
          * the specified URI.  100 is the highest usual value, and should
@@ -14009,13 +14419,16 @@ export namespace RB {
         want_uri(uri: string): number;
     }
 
+
     namespace SourceSearch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -14025,7 +14438,7 @@ export namespace RB {
      * text.  Simple variants can restrict the search to single
      * properties (artist, album, genre).  More complicated searches
      * could implement something like the Xesam User Query spec.
-     *
+     * 
      * The source header finds the search instance to use by looking
      * for the 'rb-source-search' data item on the active search
      * action.
@@ -14044,34 +14457,24 @@ export namespace RB {
         $signals: SourceSearch.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SourceSearch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SourceSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSearch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SourceSearch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceSearch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SourceSearch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceSearch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SourceSearch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSearch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SourceSearch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SourceSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SourceSearch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSearch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Adds a registered search instance to a search menu.
          * @param menu {@link Gio.Menu} instance to populate
@@ -14080,6 +14483,7 @@ export namespace RB {
          * @param name name of the search instance to add
          */
         static add_to_menu(menu: Gio.Menu, action_namespace: string, action: Gio.Action, name: string): void;
+
         /**
          * Finds the registered search instance with the specified name
          * @param name name to look up
@@ -14087,7 +14491,6 @@ export namespace RB {
         static get_by_name(name: string): SourceSearch;
 
         // Virtual methods
-
         /**
          * Creates a {@link RB.RhythmDBQuery} from the user's search text.
          * @param db the {@link RB.RhythmDB}
@@ -14095,11 +14498,13 @@ export namespace RB {
          * @virtual
          */
         vfunc_create_query(db: RhythmDB, search_text: string): RhythmDBQuery;
+
         /**
          * Returns a description of the search suitable for displaying in a menu
          * @virtual
          */
         vfunc_get_description(): string;
+
         /**
          * Determines whether the new search text will result in a
          * subset of entries matched by the previous search.  This is
@@ -14111,7 +14516,6 @@ export namespace RB {
         vfunc_is_subset(current: string, next: string): boolean;
 
         // Methods
-
         /**
          * Creates a {@link RB.RhythmDBQuery} from the user's search text.
          * @param db the {@link RB.RhythmDB}
@@ -14119,11 +14523,13 @@ export namespace RB {
          * @returns {@link RB.RhythmDBQuery} for the source to use
          */
         create_query(db: RhythmDB, search_text: string): RhythmDBQuery;
+
         /**
          * Returns a description of the search suitable for displaying in a menu
          * @returns description string
          */
         get_description(): string;
+
         /**
          * Determines whether the new search text will result in a
          * subset of entries matched by the previous search.  This is
@@ -14133,6 +14539,7 @@ export namespace RB {
          * @returns TRUE iff the new search text will match a subset of those matched by the current search.
          */
         is_subset(current: string, next: string): boolean;
+
         /**
          * Registers a named search instance that can be used in menus and
          * search action states.
@@ -14141,15 +14548,15 @@ export namespace RB {
         register(name: string): void;
     }
 
+
     namespace SourceSearchBasic {
         // Signal signatures
         interface SignalSignatures extends SourceSearch.SignalSignatures {
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::prop': (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::prop": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends SourceSearch.ConstructorProps {
             description: string;
             prop: number;
@@ -14166,12 +14573,12 @@ export namespace RB {
         static $gtype: GObject.GType<SourceSearchBasic>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get description(): string;
+
         /**
          * @construct-only
          * @default 0
@@ -14188,40 +14595,29 @@ export namespace RB {
         $signals: SourceSearchBasic.SignalSignatures;
 
         // Fields
-
         search_prop: RhythmDBPropType;
 
         // Constructors
-
         constructor(properties?: Partial<SourceSearchBasic.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](prop: RhythmDBPropType, description: string): SourceSearchBasic;
+        static ["new"](prop: RhythmDBPropType, description: string): SourceSearchBasic;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SourceSearchBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSearchBasic.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SourceSearchBasic.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceSearchBasic.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SourceSearchBasic.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceSearchBasic.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SourceSearchBasic.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceSearchBasic.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SourceSearchBasic.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SourceSearchBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SourceSearchBasic.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceSearchBasic.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Adds an item to `menu` that will select a search based on the specified
          * property.  If there isn't already a registered search instance for the
@@ -14233,19 +14629,14 @@ export namespace RB {
          * @param name short untranslated name for the search
          * @param label descriptive translatable label for the search
          */
-        static add_to_menu(
-            menu: Gio.Menu,
-            action_namespace: string,
-            search_action: Gio.Action,
-            prop: RhythmDBPropType,
-            name: string,
-            label: string,
-        ): void;
+        static add_to_menu(menu: Gio.Menu, action_namespace: string, search_action: Gio.Action, prop: RhythmDBPropType, name: string, label: string): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with RB.SourceSearch.add_to_menu
+    // Conflicted with RB.SourceSearch.add_to_menu
         static add_to_menu(...args: never[]): any;
+
         /**
          * Ensures that a search instance is registered with the specified name.
          * @param prop the property to search on
@@ -14255,69 +14646,64 @@ export namespace RB {
         static register(prop: RhythmDBPropType, name: string, description: string): void;
     }
 
+
     namespace SourceToolbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::accel-group': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::accel-group": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             accel_group: Gtk.AccelGroup;
             accelGroup: Gtk.AccelGroup;
             page: DisplayPage;
@@ -14336,17 +14722,18 @@ export namespace RB {
         static $gtype: GObject.GType<SourceToolbar>;
 
         // Properties
-
         /**
          * The {@link Gtk.AccelGroup} to add accelerators to
          * @construct-only
          */
         get accel_group(): Gtk.AccelGroup;
+
         /**
          * The {@link Gtk.AccelGroup} to add accelerators to
          * @construct-only
          */
         get accelGroup(): Gtk.AccelGroup;
+
         /**
          * The {@link RB.DisplayPage} the toolbar is associated with
          * @construct-only
@@ -14363,67 +14750,62 @@ export namespace RB {
         $signals: SourceToolbar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SourceToolbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](page: DisplayPage, accel_group: Gtk.AccelGroup): SourceToolbar;
-        // Conflicted with Gtk.Grid.new
+        static ["new"](page: DisplayPage, accel_group: Gtk.AccelGroup): SourceToolbar;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Grid.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SourceToolbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceToolbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SourceToolbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceToolbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SourceToolbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SourceToolbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SourceToolbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SourceToolbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SourceToolbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SourceToolbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SourceToolbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SourceToolbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a search entry with no search type menu.
          * @param placeholder the placeholder text for the search entry (or NULL)
          */
         add_search_entry(placeholder: string): void;
+
         /**
          * Adds a search entry to the toolbar.
          * @param search_menu a {@link Gio.Menu} containing search items
          * @param search_action the {@link Gio.Action} for search state
          */
         add_search_entry_menu(search_menu: Gio.MenuModel, search_action: Gio.Action): void;
+
         /**
          * Clears the search entry text.  Call this from RBSource:reset_filters.
          */
         clear_search_entry(): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -14431,92 +14813,89 @@ export namespace RB {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace StaticPlaylistSource {
         // Signal signatures
         interface SignalSignatures extends PlaylistSource.SignalSignatures {
-            'notify::db': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::is-local': (pspec: GObject.ParamSpec) => void;
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::db": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::is-local": (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends PlaylistSource.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                PlaylistSource.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
      * Static playlists are not defined by a query, but instead by manually selected
      * and ordered tracks.
-     *
+     * 
      * This class is used for static playlists built from the user's library, and is
      * also a base class for the play queue and for playlists on devices and network
      * shares.
-     *
+     * 
      * It has some ability to track locations that are not yet present in the database
      * and to add them to the playlist once they are added.
      * @gir-type Class
@@ -14534,58 +14913,41 @@ export namespace RB {
         $signals: StaticPlaylistSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StaticPlaylistSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            shell: Shell,
-            name: string,
-            settings: Gio.Settings,
-            local: boolean,
-            entry_type: RhythmDBEntryType,
-        ): StaticPlaylistSource;
-        // Conflicted with Gtk.Box.new
+        static ["new"](shell: Shell, name: string, settings: Gio.Settings, local: boolean, entry_type: RhythmDBEntryType): StaticPlaylistSource;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         static new_from_xml(shell: Shell, name: string, node: libxml2.NodePtr): StaticPlaylistSource;
-        // Conflicted with RB.PlaylistSource.new_from_xml
 
+        // Conflicted with RB.PlaylistSource.new_from_xml
         static new_from_xml(...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StaticPlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StaticPlaylistSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StaticPlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StaticPlaylistSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StaticPlaylistSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StaticPlaylistSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StaticPlaylistSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StaticPlaylistSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StaticPlaylistSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StaticPlaylistSource.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof StaticPlaylistSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StaticPlaylistSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the specified entry to the playlist.
          * @param entry entry to add to the playlist
          * @param index position at which to add it (-1 to add at the end)
          */
         add_entry(entry: RhythmDBEntry, index: number): void;
+
         /**
          * If the location matches an entry in the database, the entry is added
          * to the playlist.  Otherwise, if it identifies a directory, the contents
@@ -14594,28 +14956,33 @@ export namespace RB {
          * @param index position at which to add the location (-1 to add at the end)
          */
         add_location(location: string, index: number): void;
+
         /**
          * Adds the locations specified in `locations` to the playlist.
          * See `rb_static_playlist_source_add_location` for details.
          * @param locations URI strings to add
          */
         add_locations(locations: string[]): void;
+
         /**
          * Loads the playlist contents from the specified XML document node.
          * @param node XML node to load from
          */
         load_from_xml(node: libxml2.NodePtr): void;
+
         /**
          * Moves an entry within the playlist.
          * @param entry the entry to move
          * @param index new location for the entry
          */
         move_entry(entry: RhythmDBEntry, index: number): void;
+
         /**
          * Removes the specified entry from the playlist.
          * @param entry the entry to remove
          */
         remove_entry(entry: RhythmDBEntry): void;
+
         /**
          * Removes the specified location from the playlist.  This affects both
          * the location map and the query model, whether an entry exists for the
@@ -14625,79 +14992,76 @@ export namespace RB {
         remove_location(location: string): void;
     }
 
+
     namespace StreamingSource {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
-            'notify::base-query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-type': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden-when-empty': (pspec: GObject.ParamSpec) => void;
-            'notify::load-status': (pspec: GObject.ParamSpec) => void;
-            'notify::play-order': (pspec: GObject.ParamSpec) => void;
-            'notify::playlist-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::query-model': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::show-browser': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::base-query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-type": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden-when-empty": (pspec: GObject.ParamSpec) => void;
+            "notify::load-status": (pspec: GObject.ParamSpec) => void;
+            "notify::play-order": (pspec: GObject.ParamSpec) => void;
+            "notify::playlist-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::query-model": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::show-browser": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Source.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Source.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -14718,51 +15082,44 @@ export namespace RB {
         $signals: StreamingSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StreamingSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StreamingSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamingSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StreamingSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StreamingSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StreamingSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StreamingSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StreamingSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamingSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StreamingSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StreamingSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StreamingSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamingSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Provides status text and progress fraction suitable for use in
          * a streaming source's `rb_source_get_status` method.
          */
         get_progress(): [string, number];
+
         /**
          * Updates the streaming song album name.  Call this when an updated
          * streaming song album name is received from the stream.
          * @param album the new streaming song album name
          */
         set_streaming_album(album: string): void;
+
         /**
          * Updates the streaming song artist name.  Call this when an updated
          * streaming song artist name is received from the stream.
          * @param artist the new streaming song artist name
          */
         set_streaming_artist(artist: string): void;
+
         /**
          * Updates the streaming song title.  Call this when an updated
          * streaming song title is received from the stream.
@@ -14771,13 +15128,16 @@ export namespace RB {
         set_streaming_title(title: string): void;
     }
 
+
     namespace StringValueMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -14799,43 +15159,34 @@ export namespace RB {
         $signals: StringValueMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StringValueMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): StringValueMap;
+        static ["new"](): StringValueMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StringValueMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringValueMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StringValueMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StringValueMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StringValueMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StringValueMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StringValueMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StringValueMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StringValueMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StringValueMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StringValueMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StringValueMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Locates and copies the value associated with the key.
          * @param key key to retrieve
          * @param out returns a copy of the value in the map
          * @returns `true` if the value was found
          */
-        get(key: string, out: GObject.Value | any): boolean;
+        get(key: string, out: (GObject.Value | any)): boolean;
+
         /**
          * Locates the value associated with the key.  This returns the
          * GValue stored in the map, so it cannot be modified.
@@ -14843,28 +15194,33 @@ export namespace RB {
          * @returns the GValue associated with the key
          */
         peek(key: string): unknown;
+
         /**
          * Removes a value from the map.
          * @param key key to remove
          * @returns `true` if the value was found and removed
          */
         remove(key: string): boolean;
+
         /**
          * Inserts a value into the map.  The value is copied.
          * @param key key to set
          * @param value value to store
          */
-        set(key: string, value: GObject.Value | any): void;
+        set(key: string, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Returns the number of entries in the map.
          * @returns number of entries
          */
         size(): number;
+
         /**
          * Extracts and returns the underlying hash table from the map,
          * and creates a new empty map.
@@ -14873,14 +15229,14 @@ export namespace RB {
         steal_hashtable(): GLib.HashTable<any, any>;
     }
 
+
     namespace TaskList {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::model': (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             model: ListModel;
         }
@@ -14893,7 +15249,6 @@ export namespace RB {
         static $gtype: GObject.GType<TaskList>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -14909,50 +15264,43 @@ export namespace RB {
         $signals: TaskList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TaskList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TaskList;
+        static ["new"](): TaskList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TaskList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TaskList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TaskList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TaskList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TaskList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TaskList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TaskList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param task
+         * @param task 
          */
         add_task(task: TaskProgress): void;
+
         /**
          * Returns the {@link RB.ListModel} backing the list
          * @returns list model
          */
         get_model(): ListModel;
+
         /**
-         * @param task
+         * @param task 
          */
         remove_task(task: TaskProgress): void;
     }
+
 
     namespace TaskProgressSimple {
         // Signal signatures
@@ -14961,18 +15309,19 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'cancel-task': () => void;
-            'notify::task-cancellable': (pspec: GObject.ParamSpec) => void;
-            'notify::task-detail': (pspec: GObject.ParamSpec) => void;
-            'notify::task-label': (pspec: GObject.ParamSpec) => void;
-            'notify::task-notify': (pspec: GObject.ParamSpec) => void;
-            'notify::task-outcome': (pspec: GObject.ParamSpec) => void;
-            'notify::task-progress': (pspec: GObject.ParamSpec) => void;
+            "cancel-task": () => void;
+            "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
+            "notify::task-detail": (pspec: GObject.ParamSpec) => void;
+            "notify::task-label": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
+            "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {}
+        }
     }
 
     /**
@@ -14994,123 +15343,128 @@ export namespace RB {
         $signals: TaskProgressSimple.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TaskProgressSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TaskProgressSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskProgressSimple.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TaskProgressSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskProgressSimple.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TaskProgressSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskProgressSimple.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TaskProgressSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskProgressSimple.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TaskProgressSimple.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TaskProgressSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TaskProgressSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskProgressSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new simple task progress object.
          */
-        static ['new'](): TaskProgress;
+        static ["new"](): TaskProgress;
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_cancellable(): boolean;
         set task_cancellable(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskCancellable(): boolean;
         set taskCancellable(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_detail(): string;
         set task_detail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskDetail(): string;
         set taskDetail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_label(): string;
         set task_label(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskLabel(): string;
         set taskLabel(val: string);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_notify(): boolean;
         set task_notify(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskNotify(): boolean;
         set taskNotify(val: boolean);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_outcome(): TaskOutcome;
         set task_outcome(val: TaskOutcome);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskOutcome(): TaskOutcome;
         set taskOutcome(val: TaskOutcome);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_progress(): number;
         set task_progress(val: number);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskProgress(): number;
         set taskProgress(val: number);
+
         cancel(): void;
+
         /**
          * @virtual
          */
         vfunc_cancel(): void;
     }
 
+
     namespace TrackTransferBatch {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * Emitted when the batch is cancelled.
-             *
+             * 
              * hmm.  will 'complete' still be emitted in this case?
              * @signal
              * @run-last
@@ -15131,7 +15485,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'get-dest-uri': (arg0: RhythmDBEntry, arg1: string, arg2: string) => string;
+            "get-dest-uri": (arg0: RhythmDBEntry, arg1: string, arg2: string) => string;
             /**
              * Emitted when the destination URI for a transfer already exists.
              * The handler must call _rb_track_transfer_batch_continue or
@@ -15140,7 +15494,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'overwrite-prompt': (arg0: string) => void;
+            "overwrite-prompt": (arg0: string) => void;
             /**
              * Emitted when the batch is started.  This will be after
              * all previous batches have finished, which is not necessarily
@@ -15156,40 +15510,34 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'track-done': (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: any | null) => void;
+            "track-done": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: (any | null)) => void;
             /**
              * Emitted when a track transfer is finishing, allowing signal handlers
              * to perform any post-processing required.  The signal is emitted on the
              * task thread, so no UI interaction is possible
-             *
+             * 
              * Use `g_task_return_error()` with the provided {@link Gio.Task} to report errors.
              * @signal
              * @run-last
              */
-            'track-postprocess': (
-                arg0: Gio.Task,
-                arg1: RhythmDBEntry,
-                arg2: string,
-                arg3: number,
-                arg4: string,
-            ) => void;
+            "track-postprocess": (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string, arg3: number, arg4: string) => void;
             /**
              * Emitted when a track transfer is about to start, allowing signal handlers
              * to perform any preparation required.  The signal is emitted on the task
              * thread, so no UI interaction is possible.
-             *
+             * 
              * Use `g_task_return_error()` with the provided {@link Gio.Task} to report errors.
              * @signal
              * @run-last
              */
-            'track-prepare': (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string) => void;
+            "track-prepare": (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string) => void;
             /**
              * Emitted regularly throughout the transfer to allow progress bars
              * and other UI elements to be updated.
              * @signal
              * @run-last
              */
-            'track-progress': (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: number, arg4: number) => void;
+            "track-progress": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: number, arg4: number) => void;
             /**
              * Emitted when a new entry is about to be transferred.
              * This will be emitted for each entry in the batch, unless
@@ -15197,26 +15545,25 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'track-started': (arg0: RhythmDBEntry, arg1: string) => void;
-            'notify::destination': (pspec: GObject.ParamSpec) => void;
-            'notify::done-entries': (pspec: GObject.ParamSpec) => void;
-            'notify::encoding-target': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-list': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::queue': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::total-entries': (pspec: GObject.ParamSpec) => void;
-            'notify::task-cancellable': (pspec: GObject.ParamSpec) => void;
-            'notify::task-detail': (pspec: GObject.ParamSpec) => void;
-            'notify::task-label': (pspec: GObject.ParamSpec) => void;
-            'notify::task-notify': (pspec: GObject.ParamSpec) => void;
-            'notify::task-outcome': (pspec: GObject.ParamSpec) => void;
-            'notify::task-progress': (pspec: GObject.ParamSpec) => void;
+            "track-started": (arg0: RhythmDBEntry, arg1: string) => void;
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::done-entries": (pspec: GObject.ParamSpec) => void;
+            "notify::encoding-target": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-list": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::queue": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::total-entries": (pspec: GObject.ParamSpec) => void;
+            "notify::task-cancellable": (pspec: GObject.ParamSpec) => void;
+            "notify::task-detail": (pspec: GObject.ParamSpec) => void;
+            "notify::task-label": (pspec: GObject.ParamSpec) => void;
+            "notify::task-notify": (pspec: GObject.ParamSpec) => void;
+            "notify::task-outcome": (pspec: GObject.ParamSpec) => void;
+            "notify::task-progress": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {
             destination: Source;
             done_entries: number;
@@ -15243,73 +15590,84 @@ export namespace RB {
         static $gtype: GObject.GType<TrackTransferBatch>;
 
         // Properties
-
         /**
          * The RBSource to which the tracks are being transferred.
          * @construct-only
          */
         get destination(): Source;
+
         /**
          * Number of entries in the batch that have been transferred.
          * @read-only
          * @default 0
          */
         get done_entries(): number;
+
         /**
          * Number of entries in the batch that have been transferred.
          * @read-only
          * @default 0
          */
         get doneEntries(): number;
+
         /**
          * A GstEncodingTarget describing allowable target formats.
          * If NULL, the default set of profiles will be used.
          */
         get encoding_target(): GstPbutils.EncodingTarget;
         set encoding_target(val: GstPbutils.EncodingTarget);
+
         /**
          * A GstEncodingTarget describing allowable target formats.
          * If NULL, the default set of profiles will be used.
          */
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
+
         /**
          * A list of all entries in the batch.
          * @read-only
          */
         get entry_list(): any;
+
         /**
          * A list of all entries in the batch.
          * @read-only
          */
         get entryList(): any;
+
         /**
          * Fraction of the transfer batch that has been processed.
          * @read-only
          * @default 0
          */
         get progress(): number;
+
         /**
          * The {@link RB.TrackTransferQueue} instance
          * @construct-only
          */
         get queue(): TrackTransferQueue;
+
         /**
          * GSettings instance holding profile preferences
          * @construct-only
          */
         get settings(): Gio.Settings;
+
         /**
          * The RBSource from which the tracks are being transferred.
          * @construct-only
          */
         get source(): Source;
+
         /**
          * Total number of entries in the transfer batch.
          * @read-only
          * @default 0
          */
         get total_entries(): number;
+
         /**
          * Total number of entries in the transfer batch.
          * @read-only
@@ -15327,130 +15685,112 @@ export namespace RB {
         $signals: TrackTransferBatch.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackTransferBatch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            target: GstPbutils.EncodingTarget,
-            settings: Gio.Settings,
-            source: GObject.Object,
-            destination: GObject.Object,
-            queue: GObject.Object,
-        ): TrackTransferBatch;
+        static ["new"](target: GstPbutils.EncodingTarget, settings: Gio.Settings, source: GObject.Object, destination: GObject.Object, queue: GObject.Object): TrackTransferBatch;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackTransferBatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackTransferBatch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackTransferBatch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackTransferBatch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackTransferBatch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackTransferBatch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackTransferBatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackTransferBatch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackTransferBatch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackTransferBatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackTransferBatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackTransferBatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_cancelled(): void;
+
         /**
          * @virtual
          */
         vfunc_complete(): void;
+
         /**
-         * @param entry
-         * @param mediatype
-         * @param extension
+         * @param entry 
+         * @param mediatype 
+         * @param extension 
          * @virtual
          */
         vfunc_get_dest_uri(entry: RhythmDBEntry, mediatype: string, extension: string): string;
+
         /**
-         * @param dest_file
+         * @param dest_file 
          * @virtual
          */
         vfunc_overwrite_prompt(dest_file: Gio.File): boolean;
+
         /**
          * @virtual
          */
         vfunc_started(): void;
+
         /**
-         * @param entry
-         * @param dest
-         * @param dest_size
-         * @param mediatype
-         * @param error
+         * @param entry 
+         * @param dest 
+         * @param dest_size 
+         * @param mediatype 
+         * @param error 
          * @virtual
          */
-        vfunc_track_done(
-            entry: RhythmDBEntry,
-            dest: string,
-            dest_size: number,
-            mediatype: string,
-            error: GLib.Error,
-        ): void;
+        vfunc_track_done(entry: RhythmDBEntry, dest: string, dest_size: number, mediatype: string, error: GLib.Error): void;
+
         /**
-         * @param task
-         * @param entry
-         * @param dest
-         * @param dest_size
-         * @param mediatype
+         * @param task 
+         * @param entry 
+         * @param dest 
+         * @param dest_size 
+         * @param mediatype 
          * @virtual
          */
-        vfunc_track_postprocess(
-            task: Gio.Task,
-            entry: RhythmDBEntry,
-            dest: string,
-            dest_size: number,
-            mediatype: string,
-        ): void;
+        vfunc_track_postprocess(task: Gio.Task, entry: RhythmDBEntry, dest: string, dest_size: number, mediatype: string): void;
+
         /**
-         * @param task
-         * @param entry
-         * @param dest
+         * @param task 
+         * @param entry 
+         * @param dest 
          * @virtual
          */
         vfunc_track_prepare(task: Gio.Task, entry: RhythmDBEntry, dest: string): void;
+
         /**
-         * @param entry
-         * @param dest
-         * @param done
-         * @param total
-         * @param fraction
+         * @param entry 
+         * @param dest 
+         * @param done 
+         * @param total 
+         * @param fraction 
          * @virtual
          */
         vfunc_track_progress(entry: RhythmDBEntry, dest: string, done: number, total: number, fraction: number): void;
+
         /**
-         * @param entry
-         * @param dest
+         * @param entry 
+         * @param dest 
          * @virtual
          */
         vfunc_track_started(entry: RhythmDBEntry, dest: string): void;
 
         // Methods
-
         /**
          * Adds an entry to be transferred.
          * @param entry the source {@link RB.RhythmDBEntry} to transfer
          */
         add(entry: RhythmDBEntry): void;
+
         /**
          * Cancels the batch.
          */
         cancel(): void;
+
         /**
          * Checks that all entries in the batch can be transferred in a format
          * supported by the destination.  If no encoding profile is available for
@@ -15460,83 +15800,97 @@ export namespace RB {
          * @returns `true` if some entries can be transferred without additional plugins
          */
         check_profiles(error_count: number): [boolean, GstPbutils.EncodingProfile[]];
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_cancellable(): boolean;
         set task_cancellable(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskCancellable(): boolean;
         set taskCancellable(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_detail(): string;
         set task_detail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskDetail(): string;
         set taskDetail(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_label(): string;
         set task_label(val: string);
+
         /**
          * @default null
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskLabel(): string;
         set taskLabel(val: string);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_notify(): boolean;
         set task_notify(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskNotify(): boolean;
         set taskNotify(val: boolean);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_outcome(): TaskOutcome;
         set task_outcome(val: TaskOutcome);
+
         /**
          * @default RB.TaskOutcome.NONE
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskOutcome(): TaskOutcome;
         set taskOutcome(val: TaskOutcome);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get task_progress(): number;
         set task_progress(val: number);
+
         /**
          * @default 0
-         * @category Inherited from RB.TaskProgress
+          * @category Inherited from RB.TaskProgress
          */
         get taskProgress(): number;
         set taskProgress(val: number);
+
         /**
          * @virtual
          */
         vfunc_cancel(): void;
     }
+
 
     namespace TrackTransferQueue {
         // Signal signatures
@@ -15548,7 +15902,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'missing-plugins': (arg0: string[], arg1: string[], arg2: GObject.Closure) => boolean | void;
+            "missing-plugins": (arg0: string[], arg1: string[], arg2: GObject.Closure) => (boolean | void);
             /**
              * Emitted regularly to convey progress information.  At the end of any given
              * transfer batch, there will be one signal emission with `done` == `total` and
@@ -15556,13 +15910,12 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'transfer-progress': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
-            'notify::batch': (pspec: GObject.ParamSpec) => void;
-            'notify::shell': (pspec: GObject.ParamSpec) => void;
+            "transfer-progress": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "notify::batch": (pspec: GObject.ParamSpec) => void;
+            "notify::shell": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             batch: TrackTransferBatch;
             shell: Shell;
@@ -15576,12 +15929,12 @@ export namespace RB {
         static $gtype: GObject.GType<TrackTransferQueue>;
 
         // Properties
-
         /**
          * The current {@link RB.TrackTransferBatch} being processed
          * @read-only
          */
         get batch(): TrackTransferBatch;
+
         /**
          * The {@link RB.Shell}
          * @construct-only
@@ -15598,47 +15951,36 @@ export namespace RB {
         $signals: TrackTransferQueue.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TrackTransferQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](shell: Shell): TrackTransferQueue;
+        static ["new"](shell: Shell): TrackTransferQueue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TrackTransferQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackTransferQueue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TrackTransferQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackTransferQueue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TrackTransferQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TrackTransferQueue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TrackTransferQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TrackTransferQueue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TrackTransferQueue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TrackTransferQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TrackTransferQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TrackTransferQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param done
-         * @param total
-         * @param fraction
-         * @param time_left
+         * @param done 
+         * @param total 
+         * @param fraction 
+         * @param time_left 
          * @virtual
          */
         vfunc_transfer_progress(done: number, total: number, fraction: number, time_left: number): void;
 
         // Methods
-
         /**
          * Removes a transfer batch from the queue.  If an entry from the
          * batch is currently being transferred, the transfer will be
@@ -15646,11 +15988,13 @@ export namespace RB {
          * @param batch the {@link RB.TrackTransferBatch} to cancel, or NULL for the current batch
          */
         cancel_batch(batch: TrackTransferBatch): void;
+
         /**
          * Cancels all transfers to or from a specified source.
          * @param source the {@link RB.Source} to cancel transfers to/from
          */
         cancel_for_source(source: Source): void;
+
         /**
          * Finds all transfer batches where `source` is the source or destination.
          * This should be used to wait for transfers to finish (or cancel them) before
@@ -15661,6 +16005,7 @@ export namespace RB {
          * @returns {@link GLib.List} of {@link RB.TrackTransferBatch} objects, not referenced
          */
         find_batch_by_source(source: Source): TrackTransferBatch[];
+
         /**
          * Adds a new transfer batch to the transfer queue; if the queue is currently
          * empty, the transfer will start immediately, but not before the call returns.
@@ -15668,6 +16013,7 @@ export namespace RB {
          */
         start_batch(batch: TrackTransferBatch): void;
     }
+
 
     namespace URIDialog {
         // Signal signatures
@@ -15677,90 +16023,88 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            'location-added': (arg0: string) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "location-added": (arg0: string) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             label: string;
         }
     }
@@ -15773,7 +16117,6 @@ export namespace RB {
         static $gtype: GObject.GType<URIDialog>;
 
         // Properties
-
         /**
          * The label displayed in the dialog.
          * @construct-only
@@ -15790,50 +16133,42 @@ export namespace RB {
         $signals: URIDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<URIDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, label: string): URIDialog;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](title: string, label: string): URIDialog;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof URIDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof URIDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof URIDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof URIDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof URIDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<URIDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof URIDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param uri
+         * @param uri 
          * @virtual
          */
         vfunc_location_added(uri: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
+
     /**
      * @gir-type Struct
      */
@@ -15841,10 +16176,12 @@ export namespace RB {
         static $gtype: GObject.GType<ApplicationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AsyncCopyClass = typeof AsyncCopy;
+
     /**
      * @gir-type Struct
      */
@@ -15852,14 +16189,17 @@ export namespace RB {
         static $gtype: GObject.GType<AsyncCopyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AutoPlaylistSourceClass = typeof AutoPlaylistSource;
+
     /**
      * @gir-type Alias
      */
     type BrowserSourceClass = typeof BrowserSource;
+
     /**
      * @gir-type Struct
      */
@@ -15867,10 +16207,12 @@ export namespace RB {
         static $gtype: GObject.GType<BrowserSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ButtonBarClass = typeof ButtonBar;
+
     /**
      * @gir-type Struct
      */
@@ -15878,20 +16220,24 @@ export namespace RB {
         static $gtype: GObject.GType<ButtonBarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CellRendererPixbufClass = typeof CellRendererPixbuf;
+
     /**
      * @gir-type Alias
      */
     type CellRendererRatingClass = typeof CellRendererRating;
+
     /**
      * @gir-type Struct
      */
     abstract class CellRendererRatingClassPrivate {
         static $gtype: GObject.GType<CellRendererRatingClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -15900,10 +16246,12 @@ export namespace RB {
         static $gtype: GObject.GType<CellRendererRatingPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ChunkLoaderClass = typeof ChunkLoader;
+
     /**
      * @gir-type Struct
      */
@@ -15911,18 +16259,22 @@ export namespace RB {
         static $gtype: GObject.GType<ChunkLoaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceSourceInterface = typeof DeviceSource;
+
     /**
      * @gir-type Alias
      */
     type DisplayPageClass = typeof DisplayPage;
+
     /**
      * @gir-type Alias
      */
     type DisplayPageGroupClass = typeof DisplayPageGroup;
+
     /**
      * @gir-type Struct
      */
@@ -15930,10 +16282,12 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPageGroupPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DisplayPageModelClass = typeof DisplayPageModel;
+
     /**
      * @gir-type Struct
      */
@@ -15941,10 +16295,12 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DisplayPageTreeClass = typeof DisplayPageTree;
+
     /**
      * @gir-type Struct
      */
@@ -15952,18 +16308,22 @@ export namespace RB {
         static $gtype: GObject.GType<DisplayPageTreePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EncoderFactoryClass = typeof EncoderFactory;
+
     /**
      * @gir-type Alias
      */
     type EncoderIface = typeof Encoder;
+
     /**
      * @gir-type Alias
      */
     type EntryViewClass = typeof EntryView;
+
     /**
      * @gir-type Struct
      */
@@ -15971,10 +16331,12 @@ export namespace RB {
         static $gtype: GObject.GType<EntryViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExtDBClass = typeof ExtDB;
+
     /**
      * An external metadata key consists of one or more required fields (such as
      * the album name for album art lookups), zero or more optional fields
@@ -15986,7 +16348,6 @@ export namespace RB {
         static $gtype: GObject.GType<ExtDBKey>;
 
         // Static methods
-
         /**
          * Creates a new metadata lookup key with a single field.
          * Use `rb_ext_db_key_add_field` to add more.
@@ -15994,6 +16355,7 @@ export namespace RB {
          * @param value value for field
          */
         static create_lookup(field: string, value: string): ExtDBKey;
+
         /**
          * Creates a new metadata storage key with a single field.
          * Use `rb_ext_db_key_add_field` to add more.
@@ -16003,24 +16365,26 @@ export namespace RB {
         static create_storage(field: string, value: string): ExtDBKey;
 
         // Methods
-
         /**
          * Adds a field to the key, or an additional value to an existing field.
          * @param field name of the field to add
          * @param value field value
          */
         add_field(field: string, value: string): void;
+
         /**
          * Adds an information field to the key.
          * @param name name of the field to add
          * @param value field value
          */
         add_info(name: string, value: string): void;
+
         /**
          * Copies a key.
          * @returns copied key
          */
         copy(): ExtDBKey;
+
         /**
          * Checks whether a specified field in `key` matches a value.
          * This can be used to match keys against other types of data.
@@ -16030,45 +16394,53 @@ export namespace RB {
          * @returns `true` if the field matches the value
          */
         field_matches(field: string, value: string): boolean;
+
         /**
          * Frees a key
          */
         free(): void;
+
         /**
          * Extracts the value for a single-valued field.
          * @param field field to retrieve
          * @returns field value, or NULL
          */
         get_field(field: string): string;
+
         /**
          * Returns a NULL-terminated array containing the names of the fields
          * present in the key.
          * @returns array of field names
          */
         get_field_names(): string[];
+
         /**
          * Extracts the values for the specified field.
          * @param field field to retrieve
          * @returns field values, or NULL
          */
         get_field_values(field: string): string[];
+
         /**
          * Extracts the value for the specified info field.
          * @param name info field to retrieve
          * @returns field value, or NULL
          */
         get_info(name: string): string;
+
         /**
          * Returns a NULL-terminated array containing the names of the info
          * fields * present in the key.
          * @returns array of info field names
          */
         get_info_names(): string[];
+
         /**
          * Returns `true` if the key is a lookup key
          * @returns whether the key is a lookup key
          */
         is_lookup(): boolean;
+
         /**
          * Checks whether `store` has a null value in an optional
          * field of `lookup`, which means it's not the most specific
@@ -16077,6 +16449,7 @@ export namespace RB {
          * @returns `true` if the storage key has a null value for the lookup key's optional field
          */
         is_null_match(store: ExtDBKey): boolean;
+
         /**
          * Checks whether the fields specified in `a` match `b`.
          * For keys to match, they must have the same set of required fields,
@@ -16086,12 +16459,14 @@ export namespace RB {
          * @returns `true` if the keys match
          */
         matches(b: ExtDBKey): boolean;
+
         /**
          * Generates a readable string format from the key.
          * @returns string form of the key
          */
         to_string(): string;
     }
+
 
     /**
      * @gir-type Struct
@@ -16100,10 +16475,12 @@ export namespace RB {
         static $gtype: GObject.GType<ExtDBPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FadingImageClass = typeof FadingImage;
+
     /**
      * @gir-type Struct
      */
@@ -16111,10 +16488,12 @@ export namespace RB {
         static $gtype: GObject.GType<FadingImagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HistoryClass = typeof History;
+
     /**
      * @gir-type Struct
      */
@@ -16122,14 +16501,17 @@ export namespace RB {
         static $gtype: GObject.GType<HistoryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LibraryBrowserClass = typeof LibraryBrowser;
+
     /**
      * @gir-type Alias
      */
     type ListModelClass = typeof ListModel;
+
     /**
      * @gir-type Struct
      */
@@ -16137,18 +16519,22 @@ export namespace RB {
         static $gtype: GObject.GType<ListModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MediaPlayerEntryTypeClass = typeof MediaPlayerEntryType;
+
     /**
      * @gir-type Alias
      */
     type MediaPlayerSourceClass = typeof MediaPlayerSource;
+
     /**
      * @gir-type Alias
      */
     type MetaDataClass = typeof MetaData;
+
     /**
      * @gir-type Struct
      */
@@ -16156,10 +16542,12 @@ export namespace RB {
         static $gtype: GObject.GType<MetaDataPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlayOrderClass = typeof PlayOrder;
+
     /**
      * @gir-type Struct
      */
@@ -16167,22 +16555,27 @@ export namespace RB {
         static $gtype: GObject.GType<PlayOrderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlayerGstFilterIface = typeof PlayerGstFilter;
+
     /**
      * @gir-type Alias
      */
     type PlayerGstTeeIface = typeof PlayerGstTee;
+
     /**
      * @gir-type Alias
      */
     type PlayerIface = typeof Player;
+
     /**
      * @gir-type Alias
      */
     type PlaylistManagerClass = typeof PlaylistManager;
+
     /**
      * @gir-type Struct
      */
@@ -16190,16 +16583,19 @@ export namespace RB {
         static $gtype: GObject.GType<PlaylistManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlaylistSourceClass = typeof PlaylistSource;
+
     /**
      * @gir-type Struct
      */
     abstract class PlaylistSourcePrivate {
         static $gtype: GObject.GType<PlaylistSourcePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -16208,22 +16604,35 @@ export namespace RB {
         static $gtype: GObject.GType<PodcastChannel>;
 
         // Fields
-
         refcount: number;
+
         url: string;
+
         title: string;
+
         lang: string;
+
         description: string;
+
         author: string;
+
         contact: string;
+
         img: string;
+
         pub_date: number;
+
         copyright: string;
+
         is_opml: boolean;
+
         posts: any[];
+
         num_posts: number;
+
         status: PodcastParseStatus;
     }
+
 
     /**
      * @gir-type Struct
@@ -16232,22 +16641,31 @@ export namespace RB {
         static $gtype: GObject.GType<PodcastItem>;
 
         // Fields
-
         title: string;
+
         url: string;
+
         description: string;
+
         author: string;
+
         guid: string;
+
         img: string;
+
         pub_date: number;
+
         duration: number;
+
         filesize: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type PodcastManagerClass = typeof PodcastManager;
+
     /**
      * @gir-type Struct
      */
@@ -16255,10 +16673,12 @@ export namespace RB {
         static $gtype: GObject.GType<PodcastManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PodcastSearchClass = typeof PodcastSearch;
+
     /**
      * @gir-type Struct
      */
@@ -16266,17 +16686,18 @@ export namespace RB {
         static $gtype: GObject.GType<Profiler>;
 
         // Methods
-
         /**
          * Frees the memory associated with a profiler instance.
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PropertyViewClass = typeof PropertyView;
+
     /**
      * @gir-type Struct
      */
@@ -16284,16 +16705,19 @@ export namespace RB {
         static $gtype: GObject.GType<PropertyViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RatingClass = typeof Rating;
+
     /**
      * @gir-type Struct
      */
     abstract class RatingPrivate {
         static $gtype: GObject.GType<RatingPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -16302,13 +16726,11 @@ export namespace RB {
         static $gtype: GObject.GType<RefString>;
 
         // Constructors
-
         constructor(init: string);
 
-        static ['new'](init: string): RefString;
+        static ["new"](init: string): RefString;
 
         // Static methods
-
         /**
          * Key equality function suitable for use with {@link GLib.HashTable}.
          * Equality checks for {@link RB.RefString} are just pointer comparisons,
@@ -16316,7 +16738,8 @@ export namespace RB {
          * @param ap an {@link RB.RefString}
          * @param bp another `RBRefstring`
          */
-        static equal(ap: any | null, bp: any | null): boolean;
+        static equal(ap: (any | null), bp: (any | null)): boolean;
+
         /**
          * Returns an existing {@link RB.RefString} for `init` if one exists,
          * otherwise returns NULL.  If an existing refstring is found,
@@ -16324,15 +16747,18 @@ export namespace RB {
          * @param init string to find
          */
         static find(init: string): RefString;
+
         /**
          * Hash function suitable for use with `GHashTable`.
          * @param p an {@link RB.RefString}
          */
-        static hash(p: any | null): number;
+        static hash(p: (any | null)): number;
+
         /**
          * Sets up the refstring system.  Called on startup.
          */
         static system_init(): void;
+
         /**
          * Frees all data associated with the refstring system.
          * Only called on shutdown.
@@ -16340,12 +16766,12 @@ export namespace RB {
         static system_shutdown(): void;
 
         // Methods
-
         /**
          * Returns the actual string for a {@link RB.RefString}.
          * @returns underlying string, must not be freed
          */
         get(): string;
+
         /**
          * Returns the case-folded version of the string underlying `val`.
          * The case-folded string is cached inside the {@link RB.RefString} for
@@ -16354,6 +16780,7 @@ export namespace RB {
          * @returns case-folded string, must not be freed
          */
         get_folded(): string;
+
         /**
          * Returns the sort key version of the string underlying `val`.
          * The sort key string is cached inside the {@link RB.RefString} for speed.
@@ -16363,12 +16790,14 @@ export namespace RB {
          * @returns sort key string, must not be freed.
          */
         get_sort_key(): string;
+
         /**
          * Increases the reference count for an existing {@link RB.RefString}.
          * The refstring is returned for convenience.
          * @returns the same refstring
          */
         ref(): RefString;
+
         /**
          * Drops a reference to an {@link RB.RefString}.  If this is the last
          * reference, the string will be freed.
@@ -16376,14 +16805,17 @@ export namespace RB {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RemovableMediaManagerClass = typeof RemovableMediaManager;
+
     /**
      * @gir-type Alias
      */
     type RhythmDBClass = typeof RhythmDB;
+
     /**
      * @gir-type Struct
      */
@@ -16391,25 +16823,25 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBEntry>;
 
         // Constructors
-
         constructor(db: RhythmDB, type: RhythmDBEntryType, uri: string);
 
         static example_new(db: RhythmDB, type: RhythmDBEntryType, uri: string): RhythmDBEntry;
 
-        static ['new'](db: RhythmDB, type: RhythmDBEntryType, uri: string): RhythmDBEntry;
+        static ["new"](db: RhythmDB, type: RhythmDBEntryType, uri: string): RhythmDBEntry;
 
         // Methods
-
         /**
          * Applies a set of metadata properties to `entry`.  The metadata should be in the
          * form returned by `rhythmdb_entry_type_fetch_metadata`.
          * @param metadata cached metadata to apply
          */
         apply_cached_metadata(metadata: RhythmDBEntryChange[]): void;
+
         /**
          * Stores metadata for `entry` in the metadata cache (if any) for its entry type.
          */
         cache_metadata(): void;
+
         /**
          * Calls the entry type's method to check if it can sync metadata for `entry`.
          * Usually this is only true for entries backed by files, where tag-writing is
@@ -16417,6 +16849,7 @@ export namespace RB {
          * @returns `true` if the entry can be synced
          */
         can_sync_metadata(): boolean;
+
         /**
          * Creates a {@link RB.ExtDBKey} for finding external metadata
          * for a given property.  This is mostly useful for finding album or
@@ -16425,26 +16858,31 @@ export namespace RB {
          * @returns the new {@link RB.ExtDBKey}
          */
         create_ext_db_key(prop: RhythmDBPropType): ExtDBKey;
+
         /**
          * Calls the entry type's post-creation method for `entry`.
          */
         created(): void;
+
         /**
-         * @param propid
+         * @param propid 
          */
         dup_string(propid: RhythmDBPropType): string;
+
         /**
          * Returns the value of a boolean property of `entry`.
          * @param propid property to return
          * @returns property value
          */
         get_boolean(propid: RhythmDBPropType): boolean;
+
         /**
          * Returns the value of a double-precision floating point property of `value`.
          * @param propid the property to return
          * @returns property value
          */
         get_double(propid: RhythmDBPropType): number;
+
         /**
          * Returns the {@link RB.RhythmDBEntryType} for `entry`.  This is used to access
          * entry type properties, to check that entries are of the same type,
@@ -16452,30 +16890,35 @@ export namespace RB {
          * @returns the {@link RB.RhythmDBEntryType} for `entry`
          */
         get_entry_type(): RhythmDBEntryType;
+
         /**
          * Returns the value of an object property of `entry`.
          * @param propid the property to return
          * @returns property value
          */
         get_object<T = GObject.Object>(propid: RhythmDBPropType): T;
+
         /**
          * Returns an allocated string containing the playback URI for `entry`,
          * or NULL if the entry cannot be played.
          * @returns playback URI or NULL
          */
         get_playback_uri(): string;
+
         /**
          * Returns an {@link RB.RefString} containing a string property of `entry`.
          * @param propid the property to return
          * @returns a {@link RB.RefString}, must be unreffed by caller.
          */
         get_refstring(propid: RhythmDBPropType): RefString;
+
         /**
          * Returns the value of a string property of #entry.
          * @param propid the {@link RB.RhythmDBPropType} to return
          * @returns property value, must not be freed
          */
         get_string(propid: RhythmDBPropType): string;
+
         /**
          * Retrieves a pointer to the entry's type-specific data, checking that
          * the size of the data structure matches what is expected.
@@ -16484,19 +16927,22 @@ export namespace RB {
          * @param expected_size expected size of the type-specific data.
          * @returns type-specific data pointer
          */
-        get_type_data(expected_size: number): any | null;
+        get_type_data(expected_size: number): (any | null);
+
         /**
          * Returns the value of a 64bit unsigned integer property.
          * @param propid property to return
          * @returns property value
          */
         get_uint64(propid: RhythmDBPropType): number;
+
         /**
          * Returns the value of an unsigned long integer property of `entry`.
          * @param propid property to return
          * @returns property value
          */
         get_ulong(propid: RhythmDBPropType): number;
+
         /**
          * Checks if `entry` represents a file that is losslessly encoded.
          * An entry is considered lossless if it has no bitrate value and
@@ -16505,31 +16951,37 @@ export namespace RB {
          * @returns `true` if `entry` is lossless
          */
         is_lossless(): boolean;
+
         /**
          * Calls the entry type's pre-deletion method for `entry`.
          */
         pre_destroy(): void;
+
         /**
          * Increase the reference count of the entry.
          * @returns the entry
          */
         ref(): RhythmDBEntry;
+
         /**
          * Calls the entry type's method to sync metadata changes for `entry`.
          * @param changes a list of {@link RB.RhythmDBEntryChange} structures
          */
         sync_metadata(changes: RhythmDBEntryChange[]): void;
+
         /**
          * Decrease the reference count of the entry, and destroys it if there are
          * no references left.
          */
         unref(): void;
+
         /**
          * Updates `entry` to reflect its new availability.
          * @param avail an availability event
          */
         update_availability(avail: RhythmDBEntryAvailability): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -16538,14 +16990,15 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBEntryChange>;
 
         // Fields
-
         prop: RhythmDBPropType;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RhythmDBEntryTypeClass = typeof RhythmDBEntryType;
+
     /**
      * @gir-type Struct
      */
@@ -16553,16 +17006,19 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBEntryTypePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RhythmDBImportJobClass = typeof RhythmDBImportJob;
+
     /**
      * @gir-type Struct
      */
     abstract class RhythmDBImportJobPrivate {
         static $gtype: GObject.GType<RhythmDBImportJobPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -16571,16 +17027,19 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RhythmDBPropertyModelClass = typeof RhythmDBPropertyModel;
+
     /**
      * @gir-type Struct
      */
     abstract class RhythmDBPropertyModelPrivate {
         static $gtype: GObject.GType<RhythmDBPropertyModelPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -16589,16 +17048,19 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBQueryData>;
 
         // Fields
-
         type: number;
+
         propid: number;
+
         subquery: RhythmDBQuery;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RhythmDBQueryModelClass = typeof RhythmDBQueryModel;
+
     /**
      * @gir-type Struct
      */
@@ -16606,10 +17068,12 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBQueryModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RhythmDBQueryResultListClass = typeof RhythmDBQueryResultList;
+
     /**
      * @gir-type Struct
      */
@@ -16617,14 +17081,17 @@ export namespace RB {
         static $gtype: GObject.GType<RhythmDBQueryResultListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RhythmDBQueryResultsIface = typeof RhythmDBQueryResults;
+
     /**
      * @gir-type Alias
      */
     type SearchEntryClass = typeof SearchEntry;
+
     /**
      * @gir-type Struct
      */
@@ -16632,10 +17099,12 @@ export namespace RB {
         static $gtype: GObject.GType<SearchEntryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SegmentedBarClass = typeof SegmentedBar;
+
     /**
      * @gir-type Struct
      */
@@ -16643,14 +17112,17 @@ export namespace RB {
         static $gtype: GObject.GType<SegmentedBarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ShellClass = typeof Shell;
+
     /**
      * @gir-type Alias
      */
     type ShellPlayerClass = typeof ShellPlayer;
+
     /**
      * @gir-type Struct
      */
@@ -16658,16 +17130,19 @@ export namespace RB {
         static $gtype: GObject.GType<ShellPlayerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ShellPreferencesClass = typeof ShellPreferences;
+
     /**
      * @gir-type Struct
      */
     abstract class ShellPreferencesPrivate {
         static $gtype: GObject.GType<ShellPreferencesPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -16676,10 +17151,12 @@ export namespace RB {
         static $gtype: GObject.GType<ShellPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SongInfoClass = typeof SongInfo;
+
     /**
      * @gir-type Struct
      */
@@ -16687,10 +17164,12 @@ export namespace RB {
         static $gtype: GObject.GType<SongInfoPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SourceClass = typeof Source;
+
     /**
      * @gir-type Struct
      */
@@ -16698,18 +17177,22 @@ export namespace RB {
         static $gtype: GObject.GType<SourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SourceSearchBasicClass = typeof SourceSearchBasic;
+
     /**
      * @gir-type Alias
      */
     type SourceSearchClass = typeof SourceSearch;
+
     /**
      * @gir-type Alias
      */
     type SourceToolbarClass = typeof SourceToolbar;
+
     /**
      * @gir-type Struct
      */
@@ -16717,14 +17200,17 @@ export namespace RB {
         static $gtype: GObject.GType<SourceToolbarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StaticPlaylistSourceClass = typeof StaticPlaylistSource;
+
     /**
      * @gir-type Alias
      */
     type StreamingSourceClass = typeof StreamingSource;
+
     /**
      * @gir-type Struct
      */
@@ -16732,10 +17218,12 @@ export namespace RB {
         static $gtype: GObject.GType<StreamingSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StringValueMapClass = typeof StringValueMap;
+
     /**
      * @gir-type Struct
      */
@@ -16743,10 +17231,12 @@ export namespace RB {
         static $gtype: GObject.GType<StringValueMapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TaskListClass = typeof TaskList;
+
     /**
      * @gir-type Struct
      */
@@ -16754,14 +17244,17 @@ export namespace RB {
         static $gtype: GObject.GType<TaskListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TaskProgressInterface = typeof TaskProgress;
+
     /**
      * @gir-type Alias
      */
     type TaskProgressSimpleClass = typeof TaskProgressSimple;
+
     /**
      * @gir-type Struct
      */
@@ -16769,10 +17262,12 @@ export namespace RB {
         static $gtype: GObject.GType<TaskProgressSimplePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TrackTransferBatchClass = typeof TrackTransferBatch;
+
     /**
      * @gir-type Struct
      */
@@ -16780,10 +17275,12 @@ export namespace RB {
         static $gtype: GObject.GType<TrackTransferBatchPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TrackTransferQueueClass = typeof TrackTransferQueue;
+
     /**
      * @gir-type Struct
      */
@@ -16791,14 +17288,17 @@ export namespace RB {
         static $gtype: GObject.GType<TrackTransferQueuePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TransferTargetInterface = typeof TransferTarget;
+
     /**
      * @gir-type Alias
      */
     type URIDialogClass = typeof URIDialog;
+
     /**
      * @gir-type Struct
      */
@@ -16806,18 +17306,20 @@ export namespace RB {
         static $gtype: GObject.GType<URIDialogPrivate>;
     }
 
+
     namespace DeviceSource {
         /**
          * Interface for implementing DeviceSource.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_can_eject(): boolean;
+
             /**
              * Ejects the device that the source represents.
              * @virtual
@@ -16825,29 +17327,30 @@ export namespace RB {
             vfunc_eject(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DeviceSourceNamespace {
         $gtype: GObject.GType<DeviceSource>;
         prototype: DeviceSource;
-
         /**
-         * Returns `true` if `uri` matches `source`.  This should be
-         * used to implement the uri_is_source {@link RB.Source} method.
-         * @param source a {@link RB.DeviceSource}
-         * @param uri a URI to check
-         */
+        * Returns `true` if `uri` matches `source`.  This should be
+        * used to implement the uri_is_source {@link RB.Source} method.
+        * @param source a {@link RB.DeviceSource}
+        * @param uri a URI to check
+        */
         uri_is_source(source: Source, uri: string): boolean;
         /**
-         * Checks whether `uri` identifies a path underneath the
-         * device's mount point.  Should be used to implement
-         * the {@link RB.Source} want_uri method.
-         * @param source a {@link RB.DeviceSource}
-         * @param uri a URI to consider
-         */
+        * Checks whether `uri` identifies a path underneath the
+        * device's mount point.  Should be used to implement
+        * the {@link RB.Source} want_uri method.
+        * @param source a {@link RB.DeviceSource}
+        * @param uri a URI to consider
+        */
         want_uri(source: Source, uri: string): number;
     }
     /**
@@ -16861,19 +17364,22 @@ export namespace RB {
      * @gir-type Interface
      */
     interface DeviceSource extends GObject.Object, DeviceSource.Interface {
-        // Methods
 
+        // Methods
         can_eject(): boolean;
+
         /**
          * Default method for ejecting devices.  Implementations can
          * perform any required work before ejecting, then call this do
          * eject the device.
          */
         default_eject(): void;
+
         /**
          * Ejects the device that the source represents.
          */
         eject(): void;
+
         /**
          * Sets the icon and display name for a device-based source.
          * The details come from the mount and/or volume.  This should
@@ -16881,6 +17387,7 @@ export namespace RB {
          */
         set_display_details(): void;
     }
+
 
     export const DeviceSource: DeviceSourceNamespace & {
         new (): DeviceSource; // This allows `obj instanceof DeviceSource`
@@ -16892,8 +17399,8 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Attempts to cancel any in progress encoding.  The encoder should
              * delete the destination file, if it created one, and emit the
@@ -16901,16 +17408,18 @@ export namespace RB {
              * @virtual
              */
             vfunc_cancel(): void;
+
             /**
-             * @param dest_size
-             * @param mediatype
-             * @param error
+             * @param dest_size 
+             * @param mediatype 
+             * @param error 
              * @virtual
              */
             vfunc_completed(dest_size: number, mediatype: string, error: GLib.Error): void;
+
             /**
              * Initiates encoding, transcoding to the specified profile if specified.
-             *
+             * 
              * Encoding and error reporting takes place asynchronously.  The caller should wait
              * for the 'completed' signal which indicates it has either completed or failed.
              * @param entry the {@link RB.RhythmDBEntry} to transcode
@@ -16919,12 +17428,8 @@ export namespace RB {
              * @param profile encoding profile to use, or NULL to just copy
              * @virtual
              */
-            vfunc_encode(
-                entry: RhythmDBEntry,
-                dest: string,
-                overwrite: boolean,
-                profile: GstPbutils.EncodingProfile,
-            ): void;
+            vfunc_encode(entry: RhythmDBEntry, dest: string, overwrite: boolean, profile: GstPbutils.EncodingProfile): void;
+
             /**
              * Retrieves the plugin installer detail strings and descriptions
              * for any missing plugins required to use the specified encoding profile.
@@ -16932,26 +17437,28 @@ export namespace RB {
              * @virtual
              */
             vfunc_get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
+
             /**
-             * @param fraction
+             * @param fraction 
              * @virtual
              */
             vfunc_progress(fraction: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface EncoderNamespace {
         $gtype: GObject.GType<Encoder>;
         prototype: Encoder;
-
         /**
-         * Creates a new {@link RB.Encoder} instance.
-         */
-        ['new'](): Encoder;
+        * Creates a new {@link RB.Encoder} instance.
+        */
+        ["new"](): Encoder;
     }
     /**
      * The RBEncoder interface provides transcoding between audio formats based on
@@ -16962,17 +17469,18 @@ export namespace RB {
      * @gir-type Interface
      */
     interface Encoder extends GObject.Object, Encoder.Interface {
-        // Methods
 
+        // Methods
         /**
          * Attempts to cancel any in progress encoding.  The encoder should
          * delete the destination file, if it created one, and emit the
          * 'completed' signal.
          */
         cancel(): void;
+
         /**
          * Initiates encoding, transcoding to the specified profile if specified.
-         *
+         * 
          * Encoding and error reporting takes place asynchronously.  The caller should wait
          * for the 'completed' signal which indicates it has either completed or failed.
          * @param entry the {@link RB.RhythmDBEntry} to transcode
@@ -16981,6 +17489,7 @@ export namespace RB {
          * @param profile encoding profile to use, or NULL to just copy
          */
         encode(entry: RhythmDBEntry, dest: string, overwrite: boolean, profile: GstPbutils.EncodingProfile): void;
+
         /**
          * Retrieves the plugin installer detail strings and descriptions
          * for any missing plugins required to use the specified encoding profile.
@@ -16989,6 +17498,7 @@ export namespace RB {
          */
         get_missing_plugins(profile: GstPbutils.EncodingProfile): [boolean, string, string];
     }
+
 
     export const Encoder: EncoderNamespace & {
         new (): Encoder; // This allows `obj instanceof Encoder`
@@ -17000,71 +17510,81 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param stream_data
-             * @param progress
+             * @param stream_data 
+             * @param progress 
              * @virtual
              */
-            vfunc_buffering(stream_data: any | null, progress: number): void;
+            vfunc_buffering(stream_data: (any | null), progress: number): void;
+
             /**
              * If a URI is specified, this will close the stream corresponding
              * to that URI and free any resources related resources.  If `uri`
              * is NULL, this will close all streams.
-             *
+             * 
              * If no streams remain open after this call, the audio device will
              * be released.
              * @param uri optionally, the URI of the stream to close
              * @virtual
              */
             vfunc_close(uri: string): boolean;
+
             /**
-             * @param stream_data
-             * @param early
+             * @param stream_data 
+             * @param early 
              * @virtual
              */
-            vfunc_eos(stream_data: any | null, early: boolean): void;
+            vfunc_eos(stream_data: (any | null), early: boolean): void;
+
             /**
-             * @param stream_data
-             * @param error
+             * @param stream_data 
+             * @param error 
              * @virtual
              */
-            vfunc_error(stream_data: any | null, error: GLib.Error): void;
+            vfunc_error(stream_data: (any | null), error: GLib.Error): void;
+
             /**
-             * @param stream_data
-             * @param data
+             * @param stream_data 
+             * @param data 
              * @virtual
              */
-            vfunc_event(stream_data: any | null, data: any | null): void;
+            vfunc_event(stream_data: (any | null), data: (any | null)): void;
+
             /**
              * Returns the current playback for the current stream in nanoseconds.
              * @virtual
              */
-            vfunc_get_time(): bigint | number;
+            vfunc_get_time(): (bigint | number);
+
             /**
              * Returns the current volume level, between 0.0 and 1.0.
              * @virtual
              */
             vfunc_get_volume(): number;
+
             /**
-             * @param stream_data
-             * @param image
+             * @param stream_data 
+             * @param image 
              * @virtual
              */
-            vfunc_image(stream_data: any | null, image: GdkPixbuf.Pixbuf): void;
+            vfunc_image(stream_data: (any | null), image: GdkPixbuf.Pixbuf): void;
+
             /**
-             * @param stream_data
-             * @param field
-             * @param value
+             * @param stream_data 
+             * @param field 
+             * @param value 
              * @virtual
              */
-            vfunc_info(stream_data: any | null, field: MetaDataField, value: unknown): void;
+            vfunc_info(stream_data: (any | null), field: MetaDataField, value: unknown): void;
+
             /**
              * Determines whether the player supports multiple open streams.
              * @virtual
              */
             vfunc_multiple_open(): boolean;
+
             /**
              * Prepares a stream for playback.  Depending on the player
              * implementation, this may stop any existing stream being
@@ -17075,12 +17595,14 @@ export namespace RB {
              * @param stream_data arbitrary data to associate with the stream
              * @virtual
              */
-            vfunc_open(uri: string, stream_data: any | null): boolean;
+            vfunc_open(uri: string, stream_data: (any | null)): boolean;
+
             /**
              * Determines whether a stream has been prepared for playback.
              * @virtual
              */
             vfunc_opened(): boolean;
+
             /**
              * Pauses playback of the most recently started stream.  Any
              * streams being faded out may continue until the fade is
@@ -17088,22 +17610,23 @@ export namespace RB {
              * @virtual
              */
             vfunc_pause(): void;
+
             /**
              * Starts playback of the most recently opened stream.
              * if `play_type` is #RB_PLAYER_PLAY_CROSSFADE, the player
              * may attempt to crossfade the new stream with any existing
              * streams.  If it does this, the it will use `crossfade` as the
              * duration of the fade.
-             *
+             * 
              * If `play_type` is #RB_PLAYER_PLAY_AFTER_EOS, the player may
              * attempt to start the stream immediately after the current
              * playing stream reaches EOS.  This may or may not result in
              * the phenomemon known as 'gapless playback'.
-             *
+             * 
              * If `play_type` is #RB_PLAYER_PLAY_REPLACE, the player will stop any
              * existing stream before starting the new stream. It may do
              * this anyway, regardless of the value of `play_type`.
-             *
+             * 
              * The 'playing-stream' signal will be emitted when the new stream
              * is actually playing. This may be before or after control returns
              * to the caller.
@@ -17112,28 +17635,33 @@ export namespace RB {
              * @virtual
              */
             vfunc_play(play_type: PlayerPlayType, crossfade: number): boolean;
+
             /**
              * Determines whether the player is currently playing a stream.
              * A stream is playing if it's not paused or being faded out.
              * @virtual
              */
             vfunc_playing(): boolean;
+
             /**
-             * @param stream_data
+             * @param stream_data 
              * @virtual
              */
-            vfunc_playing_stream(stream_data: any | null): void;
+            vfunc_playing_stream(stream_data: (any | null)): void;
+
             /**
-             * @param stream_data
-             * @param uri
+             * @param stream_data 
+             * @param uri 
              * @virtual
              */
-            vfunc_redirect(stream_data: any | null, uri: string): void;
+            vfunc_redirect(stream_data: (any | null), uri: string): void;
+
             /**
              * Determines whether seeking is supported for the current stream.
              * @virtual
              */
             vfunc_seekable(): boolean;
+
             /**
              * Attempts to seek in the current stream.  The player
              * may ignore this if the stream is not seekable.
@@ -17142,6 +17670,7 @@ export namespace RB {
              * @virtual
              */
             vfunc_set_time(newtime: number): void;
+
             /**
              * Adjusts the output volume level.  This affects all streams.
              * The player may use a hardware volume control to implement
@@ -17150,73 +17679,76 @@ export namespace RB {
              * @virtual
              */
             vfunc_set_volume(volume: number): void;
+
             /**
-             * @param stream_data
-             * @param elapsed
-             * @param duration
+             * @param stream_data 
+             * @param elapsed 
+             * @param duration 
              * @virtual
              */
-            vfunc_tick(stream_data: any | null, elapsed: number, duration: number): void;
+            vfunc_tick(stream_data: (any | null), elapsed: number, duration: number): void;
+
             /**
-             * @param volume
+             * @param volume 
              * @virtual
              */
             vfunc_volume_changed(volume: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PlayerNamespace {
         $gtype: GObject.GType<Player>;
         prototype: Player;
-
         /**
-         * Finds an element inside `element` that has a property with the specified name.
-         * @param element element to search
-         * @param property name of property to search for
-         */
+        * Finds an element inside `element` that has a property with the specified name.
+        * @param element element to search
+        * @param property name of property to search for
+        */
         gst_find_element_with_property(element: Gst.Element, property: string): Gst.Element;
         /**
-         * Creates and tests an instance of the specified audio sink.
-         * @param plugin_name audio sink plugin name
-         * @param name name to give to the element
-         */
+        * Creates and tests an instance of the specified audio sink.
+        * @param plugin_name audio sink plugin name
+        * @param name name to give to the element
+        */
         gst_try_audio_sink(plugin_name: string, name: string): Gst.Element;
         /**
-         * Creates a new player object.
-         * @param want_crossfade if TRUE, try to use a backend that supports 		    crossfading and other track transitions.
-         */
-        ['new'](want_crossfade: boolean): Player;
+        * Creates a new player object.
+        * @param want_crossfade if TRUE, try to use a backend that supports 		    crossfading and other track transitions.
+        */
+        ["new"](want_crossfade: boolean): Player;
     }
     /**
      * This is the interface implemented by the rhythmbox playback backends.
      * It allows the caller to control playback (open, play, pause, close),
      * seek (set_time), control volume (get_volume, set_volume)
      * and receive playback state information (get_time, various signals).
-     *
+     * 
      * The playback interface allows for multiple streams to be playing (or at
      * least open) concurrently. The caller associates some data with each stream
      * it opens (`rb_player_open`), which is included in the paramters with each
      * signal emitted. The caller should not assume that the new stream is playing
      * immediately upon returning from `rb_player_play`. Instead, it should use
      * the 'playing-stream' signal to determine that.
-     *
+     * 
      * The player implementation should emit signals for metadata extracted from the
      * stream using the 'info' signal
-     *
+     * 
      * While playing, the player implementation should emit 'tick' signals frequently
      * enough to update an elapsed/remaining time display consistently.  The duration
      * value included in tick signal emissions is used to prepare the next stream before
      * the current stream reaches EOS, so it should be updated for each emission to account
      * for variable bitrate streams that produce inaccurate duration estimates early on.
-     *
+     * 
      * When playing a stream from the network, the player can report buffering status
      * using the 'buffering' signal.  The value included in the signal indicates the
      * percentage of the buffer that has been filled.
-     *
+     * 
      * The 'event' signal can be used to communicate events from the player to the application.
      * For GStreamer-based player implementations, events are triggered by elements in the
      * pipeline posting application messages.  The name of the message becomes the name of the
@@ -17224,34 +17756,38 @@ export namespace RB {
      * @gir-type Interface
      */
     interface Player extends GObject.Object, Player.Interface {
-        // Methods
 
+        // Methods
         /**
          * If a URI is specified, this will close the stream corresponding
          * to that URI and free any resources related resources.  If `uri`
          * is NULL, this will close all streams.
-         *
+         * 
          * If no streams remain open after this call, the audio device will
          * be released.
          * @param uri optionally, the URI of the stream to close
          * @returns TRUE if a stream was found and closed
          */
         close(uri: string): boolean;
+
         /**
          * Returns the current playback for the current stream in nanoseconds.
          * @returns playback position
          */
         get_time(): number;
+
         /**
          * Returns the current volume level, between 0.0 and 1.0.
          * @returns current output volume level
          */
         get_volume(): number;
+
         /**
          * Determines whether the player supports multiple open streams.
          * @returns TRUE if multiple open is supported
          */
         multiple_open(): boolean;
+
         /**
          * Prepares a stream for playback.  Depending on the player
          * implementation, this may stop any existing stream being
@@ -17262,34 +17798,37 @@ export namespace RB {
          * @param stream_data arbitrary data to associate with the stream
          * @returns TRUE if the stream preparation was not unsuccessful
          */
-        open(uri: string, stream_data: any | null): boolean;
+        open(uri: string, stream_data: (any | null)): boolean;
+
         /**
          * Determines whether a stream has been prepared for playback.
          * @returns TRUE if a stream is prepared for playback
          */
         opened(): boolean;
+
         /**
          * Pauses playback of the most recently started stream.  Any
          * streams being faded out may continue until the fade is
          * complete.
          */
         pause(): void;
+
         /**
          * Starts playback of the most recently opened stream.
          * if `play_type` is #RB_PLAYER_PLAY_CROSSFADE, the player
          * may attempt to crossfade the new stream with any existing
          * streams.  If it does this, the it will use `crossfade` as the
          * duration of the fade.
-         *
+         * 
          * If `play_type` is #RB_PLAYER_PLAY_AFTER_EOS, the player may
          * attempt to start the stream immediately after the current
          * playing stream reaches EOS.  This may or may not result in
          * the phenomemon known as 'gapless playback'.
-         *
+         * 
          * If `play_type` is #RB_PLAYER_PLAY_REPLACE, the player will stop any
          * existing stream before starting the new stream. It may do
          * this anyway, regardless of the value of `play_type`.
-         *
+         * 
          * The 'playing-stream' signal will be emitted when the new stream
          * is actually playing. This may be before or after control returns
          * to the caller.
@@ -17297,25 +17836,29 @@ export namespace RB {
          * @param crossfade requested crossfade duration (nanoseconds)
          * @returns `true` if playback started successfully
          */
-        play(play_type: PlayerPlayType, crossfade: bigint | number): boolean;
+        play(play_type: PlayerPlayType, crossfade: (bigint | number)): boolean;
+
         /**
          * Determines whether the player is currently playing a stream.
          * A stream is playing if it's not paused or being faded out.
          * @returns TRUE if playing
          */
         playing(): boolean;
+
         /**
          * Determines whether seeking is supported for the current stream.
          * @returns TRUE if the current stream is seekable
          */
         seekable(): boolean;
+
         /**
          * Attempts to seek in the current stream.  The player
          * may ignore this if the stream is not seekable.
          * The seek may take place asynchronously.
          * @param newtime seek target position in seconds
          */
-        set_time(newtime: bigint | number): void;
+        set_time(newtime: (bigint | number)): void;
+
         /**
          * Adjusts the output volume level.  This affects all streams.
          * The player may use a hardware volume control to implement
@@ -17324,6 +17867,7 @@ export namespace RB {
          */
         set_volume(volume: number): void;
     }
+
 
     export const Player: PlayerNamespace & {
         new (): Player; // This allows `obj instanceof Player`
@@ -17335,8 +17879,8 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds a new filter to the playback pipeline.  The filter may not be
              * inserted immediately.  The 'filter-inserted' signal will be emitted
@@ -17345,16 +17889,19 @@ export namespace RB {
              * @virtual
              */
             vfunc_add_filter(element: Gst.Element): boolean;
+
             /**
-             * @param filter
+             * @param filter 
              * @virtual
              */
             vfunc_filter_inserted(filter: Gst.Element): void;
+
             /**
-             * @param filter
+             * @param filter 
              * @virtual
              */
             vfunc_filter_pre_remove(filter: Gst.Element): void;
+
             /**
              * Removes a filter from the playback pipeline.  The filter may not be
              * removed immediately.  The 'filter-pre-remove' signal will be emitted
@@ -17365,9 +17912,11 @@ export namespace RB {
             vfunc_remove_filter(element: Gst.Element): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PlayerGstFilterNamespace {
@@ -17380,8 +17929,8 @@ export namespace RB {
      * @gir-type Interface
      */
     interface PlayerGstFilter extends GObject.Object, PlayerGstFilter.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds a new filter to the playback pipeline.  The filter may not be
          * inserted immediately.  The 'filter-inserted' signal will be emitted
@@ -17390,6 +17939,7 @@ export namespace RB {
          * @returns TRUE if the filter will be added
          */
         add_filter(element: Gst.Element): boolean;
+
         /**
          * Removes a filter from the playback pipeline.  The filter may not be
          * removed immediately.  The 'filter-pre-remove' signal will be emitted
@@ -17399,6 +17949,7 @@ export namespace RB {
          */
         remove_filter(element: Gst.Element): boolean;
     }
+
 
     export const PlayerGstFilter: PlayerGstFilterNamespace & {
         new (): PlayerGstFilter; // This allows `obj instanceof PlayerGstFilter`
@@ -17410,8 +17961,8 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds a new sink to the playback pipeline.  The sink may not be
              * inserted immediately.  The 'tee-inserted' signal will be emitted
@@ -17420,6 +17971,7 @@ export namespace RB {
              * @virtual
              */
             vfunc_add_tee(element: Gst.Element): boolean;
+
             /**
              * Removes a sink from the playback pipeline.  The sink may not be
              * removed immediately.  The 'tee-pre-remove' signal will be emitted
@@ -17428,21 +17980,25 @@ export namespace RB {
              * @virtual
              */
             vfunc_remove_tee(element: Gst.Element): boolean;
+
             /**
-             * @param tee
+             * @param tee 
              * @virtual
              */
             vfunc_tee_inserted(tee: Gst.Element): void;
+
             /**
-             * @param tee
+             * @param tee 
              * @virtual
              */
             vfunc_tee_pre_remove(tee: Gst.Element): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PlayerGstTeeNamespace {
@@ -17455,8 +18011,8 @@ export namespace RB {
      * @gir-type Interface
      */
     interface PlayerGstTee extends GObject.Object, PlayerGstTee.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds a new sink to the playback pipeline.  The sink may not be
          * inserted immediately.  The 'tee-inserted' signal will be emitted
@@ -17465,6 +18021,7 @@ export namespace RB {
          * @returns TRUE if the sink will be added
          */
         add_tee(element: Gst.Element): boolean;
+
         /**
          * Removes a sink from the playback pipeline.  The sink may not be
          * removed immediately.  The 'tee-pre-remove' signal will be emitted
@@ -17474,6 +18031,7 @@ export namespace RB {
          */
         remove_tee(element: Gst.Element): boolean;
     }
+
 
     export const PlayerGstTee: PlayerGstTeeNamespace & {
         new (): PlayerGstTee; // This allows `obj instanceof PlayerGstTee`
@@ -17485,8 +18043,8 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Provides a new set of query results.  References must be taken on the
              * entries.
@@ -17494,6 +18052,7 @@ export namespace RB {
              * @virtual
              */
             vfunc_add_results(entries: RhythmDBEntry[]): void;
+
             /**
              * Called when the query is complete and all entries that match the query
              * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -17505,9 +18064,11 @@ export namespace RB {
             vfunc_query_complete(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RhythmDBQueryResultsNamespace {
@@ -17523,14 +18084,15 @@ export namespace RB {
      * @gir-type Interface
      */
     interface RhythmDBQueryResults extends GObject.Object, RhythmDBQueryResults.Interface {
-        // Methods
 
+        // Methods
         /**
          * Provides a new set of query results.  References must be taken on the
          * entries.
          * @param entries {@link GLib.PtrArray} containing {@link RB.RhythmDBEntry} results
          */
         add_results(entries: RhythmDBEntry[]): void;
+
         /**
          * Called when the query is complete and all entries that match the query
          * have been supplied to rhythmdb_query_results_add_results.  If the object
@@ -17540,6 +18102,7 @@ export namespace RB {
          */
         query_complete(): void;
     }
+
 
     export const RhythmDBQueryResults: RhythmDBQueryResultsNamespace & {
         new (): RhythmDBQueryResults; // This allows `obj instanceof RhythmDBQueryResults`
@@ -17551,16 +18114,16 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_cancel(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             task_cancellable: boolean;
             taskCancellable: boolean;
@@ -17585,63 +18148,74 @@ export namespace RB {
      * @gir-type Interface
      */
     interface TaskProgress extends GObject.Object, TaskProgress.Interface {
-        // Properties
 
+        // Properties
         /**
          * @default false
          */
         get task_cancellable(): boolean;
         set task_cancellable(val: boolean);
+
         /**
          * @default false
          */
         get taskCancellable(): boolean;
         set taskCancellable(val: boolean);
+
         /**
          * @default null
          */
         get task_detail(): string;
         set task_detail(val: string);
+
         /**
          * @default null
          */
         get taskDetail(): string;
         set taskDetail(val: string);
+
         /**
          * @default null
          */
         get task_label(): string;
         set task_label(val: string);
+
         /**
          * @default null
          */
         get taskLabel(): string;
         set taskLabel(val: string);
+
         /**
          * @default false
          */
         get task_notify(): boolean;
         set task_notify(val: boolean);
+
         /**
          * @default false
          */
         get taskNotify(): boolean;
         set taskNotify(val: boolean);
+
         /**
          * @default RB.TaskOutcome.NONE
          */
         get task_outcome(): TaskOutcome;
         set task_outcome(val: TaskOutcome);
+
         /**
          * @default RB.TaskOutcome.NONE
          */
         get taskOutcome(): TaskOutcome;
         set taskOutcome(val: TaskOutcome);
+
         /**
          * @default 0
          */
         get task_progress(): number;
         set task_progress(val: number);
+
         /**
          * @default 0
          */
@@ -17649,9 +18223,9 @@ export namespace RB {
         set taskProgress(val: number);
 
         // Methods
-
         cancel(): void;
     }
+
 
     export const TaskProgress: TaskProgressNamespace & {
         new (): TaskProgress; // This allows `obj instanceof TaskProgress`
@@ -17663,14 +18237,14 @@ export namespace RB {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Constructs a URI to use as the destination for a transfer or transcoding
              * operation.  The URI may be on the device itself, if the device is mounted
              * into the normal filesystem or through gvfs, or it may be a temporary
              * location used to store the file before uploading it to the device.
-             *
+             * 
              * The destination URI should conform to the device's normal URI format,
              * and should use the provided extension instead of the extension from
              * the source entry.
@@ -17680,6 +18254,7 @@ export namespace RB {
              * @virtual
              */
             vfunc_build_dest_uri(entry: RhythmDBEntry, media_type: string, extension: string): string;
+
             /**
              * Checks whether `entry` should be transferred to the target.
              * The target can check whether a matching entry already exists on the device,
@@ -17690,21 +18265,24 @@ export namespace RB {
              * @virtual
              */
             vfunc_should_transfer(entry: RhythmDBEntry): boolean;
+
             /**
-             * @param entry
-             * @param uri
-             * @param error
+             * @param entry 
+             * @param uri 
+             * @param error 
              * @virtual
              */
             vfunc_track_add_error(entry: RhythmDBEntry, uri: string, error: GLib.Error): boolean;
+
             /**
-             * @param entry
-             * @param uri
-             * @param dest_size
-             * @param media_type
+             * @param entry 
+             * @param uri 
+             * @param dest_size 
+             * @param media_type 
              * @virtual
              */
             vfunc_track_added(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): boolean;
+
             /**
              * Performs any preparation necessary before starting the transfer.
              * This is called on a task thread, so no UI interaction is possible.
@@ -17713,6 +18291,7 @@ export namespace RB {
              * @virtual
              */
             vfunc_track_prepare(entry: RhythmDBEntry, uri: string): void;
+
             /**
              * This is called after a transfer to a temporary file has finished,
              * allowing the transfer target to upload the file to a device or a
@@ -17726,8 +18305,8 @@ export namespace RB {
             vfunc_track_upload(entry: RhythmDBEntry, uri: string, dest_size: number, media_type: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             encoding_target: GstPbutils.EncodingTarget;
             encodingTarget: GstPbutils.EncodingTarget;
@@ -17748,21 +18327,21 @@ export namespace RB {
      * @gir-type Interface
      */
     interface TransferTarget extends GObject.Object, TransferTarget.Interface {
-        // Properties
 
+        // Properties
         get encoding_target(): GstPbutils.EncodingTarget;
         set encoding_target(val: GstPbutils.EncodingTarget);
+
         get encodingTarget(): GstPbutils.EncodingTarget;
         set encodingTarget(val: GstPbutils.EncodingTarget);
 
         // Methods
-
         /**
          * Constructs a URI to use as the destination for a transfer or transcoding
          * operation.  The URI may be on the device itself, if the device is mounted
          * into the normal filesystem or through gvfs, or it may be a temporary
          * location used to store the file before uploading it to the device.
-         *
+         * 
          * The destination URI should conform to the device's normal URI format,
          * and should use the provided extension instead of the extension from
          * the source entry.
@@ -17772,6 +18351,7 @@ export namespace RB {
          * @returns constructed URI
          */
         build_dest_uri(entry: RhythmDBEntry, media_type: string, extension: string): string;
+
         /**
          * This checks that the entry type of `entry` is in a suitable
          * category for transfer.  This can be used to implement
@@ -17780,6 +18360,7 @@ export namespace RB {
          * @returns `true` if the entry is in a suitable category
          */
         check_category(entry: RhythmDBEntry): boolean;
+
         /**
          * This checks for an existing entry in the target that matches
          * the title, album, artist, and track number of the entry being
@@ -17788,6 +18369,7 @@ export namespace RB {
          * @returns `true` if the entry already exists on the target.
          */
         check_duplicate(entry: RhythmDBEntry): boolean;
+
         /**
          * Returns a {@link GLib.List} of allocated media format descriptions for
          * the formats supported by the target.  The list and the strings
@@ -17795,6 +18377,7 @@ export namespace RB {
          * @returns list of descriptions.
          */
         get_format_descriptions(): string[];
+
         /**
          * Checks whether `entry` should be transferred to the target.
          * The target can check whether a matching entry already exists on the device,
@@ -17805,6 +18388,7 @@ export namespace RB {
          * @returns `true` if the entry should be transferred to the target
          */
         should_transfer(entry: RhythmDBEntry): boolean;
+
         /**
          * This is called when a transfer fails.  If the source's
          * impl_track_add_error implementation returns `true`, an error dialog
@@ -17815,11 +18399,12 @@ export namespace RB {
          * @param error the transfer error information
          */
         track_add_error(entry: RhythmDBEntry, uri: string, error: GLib.Error): void;
+
         /**
          * This is called when a transfer to the target has completed.
          * If the source's `track_added` method returns `true`, the destination
          * URI will be added to the database using the entry type for the device.
-         *
+         * 
          * If the target uses a temporary area as the destination for transfers,
          * it can instead upload the destination file to the device and create an
          * entry for it, then return `false`.
@@ -17828,7 +18413,8 @@ export namespace RB {
          * @param filesize size of the destination file
          * @param media_type media type of the destination file
          */
-        track_added(entry: RhythmDBEntry, uri: string, filesize: bigint | number, media_type: string): void;
+        track_added(entry: RhythmDBEntry, uri: string, filesize: (bigint | number), media_type: string): void;
+
         /**
          * Performs any preparation necessary before starting the transfer.
          * This is called on a task thread, so no UI interaction is possible.
@@ -17836,6 +18422,7 @@ export namespace RB {
          * @param uri the destination URI
          */
         track_prepare(entry: RhythmDBEntry, uri: string): void;
+
         /**
          * This is called after a transfer to a temporary file has finished,
          * allowing the transfer target to upload the file to a device or a
@@ -17845,7 +18432,8 @@ export namespace RB {
          * @param dest_size the size of the destination file
          * @param media_type the media type of the destination file
          */
-        track_upload(entry: RhythmDBEntry, uri: string, dest_size: bigint | number, media_type: string): void;
+        track_upload(entry: RhythmDBEntry, uri: string, dest_size: (bigint | number), media_type: string): void;
+
         /**
          * Starts tranferring `entries` to the target.  This returns the
          * {@link RB.TrackTransferBatch} that it starts, so the caller can track
@@ -17859,6 +18447,7 @@ export namespace RB {
         transfer(settings: Gio.Settings, entries: RhythmDBEntry[], defer: boolean): TrackTransferBatch;
     }
 
+
     export const TransferTarget: TransferTargetNamespace & {
         new (): TransferTarget; // This allows `obj instanceof TransferTarget`
     };
@@ -17867,11 +18456,13 @@ export namespace RB {
      * @gir-type Alias
      */
     type RhythmDBQuery = GLib.PtrArray;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

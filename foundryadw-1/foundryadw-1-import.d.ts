@@ -1,3 +1,4 @@
+
 import type FoundryAdw1 from '@girs/foundryadw-1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,40 +27,46 @@ import type xlib from '@girs/xlib-2.0';
 import type GL from '@girs/gl-1.0';
 
 export namespace CoglPango {
+
     /**
      * CoglPango-15
      */
 
+
     /**
      * This updates any internal glyph cache textures as necessary to be
      * able to render the given `layout`.
-     *
+     * 
      * This api should be used to avoid mid-scene modifications of
      * glyph-cache textures which can lead to undefined rendering results.
      * @param layout A {@link Pango.Layout}
      */
     function ensure_glyph_cache_for_layout(layout: Pango.Layout): void;
+
     /**
      * Create a {@link Pango.Context} for the given `font_map`.
      * @param font_map a {@link CoglPango.FontMap}
      * @returns the newly created context: free with {@link GObject.Object.unref}.
      */
     function font_map_create_context(font_map: FontMap): Pango.Context;
+
     /**
      * Retrieves the {@link CoglPango.Renderer} for the passed `font_map`.
      * @param font_map a {@link CoglPango.FontMap}
      * @returns a {@link Pango.Renderer}
      */
     function font_map_get_renderer(font_map: FontMap): Pango.Renderer;
+
     /**
      * Creates a new font map.
-     * @param context
+     * @param context 
      * @returns the newly created {@link Pango.FontMap}
      */
     function font_map_new(context: Cogl.Context): Pango.FontMap;
+
     /**
      * Sets the resolution for the `font_map`.
-     *
+     * 
      * This is a scale factor between points specified in a
      * {@link Pango.FontDescription} and Cogl units.
      * The default value is %96, meaning that a 10 point font will be 13
@@ -68,20 +75,21 @@ export namespace CoglPango {
      * @param dpi The resolution in "dots per inch". (Physical inches aren't       actually involved; the terminology is conventional.)
      */
     function font_map_set_resolution(font_map: FontMap, dpi: number): void;
+
     /**
      * @gir-type Callback
      */
     interface PipelineSetup {
         (pipeline: Cogl.Pipeline): void;
     }
+
     namespace Renderer {
         // Signal signatures
         interface SignalSignatures extends Pango.Renderer.SignalSignatures {
-            'notify::context': (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
             context: Cogl.Context;
         }
@@ -94,7 +102,6 @@ export namespace CoglPango {
         static $gtype: GObject.GType<Renderer>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -110,46 +117,41 @@ export namespace CoglPango {
         $signals: Renderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Renderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RendererClass = typeof Renderer;
+
     /**
      * @gir-type Alias
      */
     type FontMap = PangoCairo.FontMap;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

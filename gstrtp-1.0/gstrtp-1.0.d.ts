@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstRtp {
+
     /**
      * GstRtp-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -89,6 +92,7 @@ export namespace GstRtp {
          */
         PSFB_TYPE_VBCN,
     }
+
 
     /**
      * @gir-type Enum
@@ -172,6 +176,7 @@ export namespace GstRtp {
         MID,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -222,6 +227,7 @@ export namespace GstRtp {
         XR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -270,16 +276,17 @@ export namespace GstRtp {
         VOIP_METRICS,
     }
 
+
     /**
      * Standard predefined fixed payload types.
-     *
+     * 
      * The official list is at:
      * http://www.iana.org/assignments/rtp-parameters
-     *
+     * 
      * Audio:
      * reserved: 19
      * unassigned: 20-23,
-     *
+     * 
      * Video:
      * unassigned: 24, 27, 29, 30, 35-71, 77-95
      * Reserved for RTCP conflict avoidance: 72-76
@@ -289,112 +296,137 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPPayload>;
 
         // Static fields
-
         /**
          * ITU-T G.711. mu-law audio (RFC 3551)
          */
         static PCMU: number;
+
         /**
          * RFC 3551 says reserved
          */
-        static '1016': number;
+        static "1016": number;
+
         /**
          * RFC 3551 says reserved
          */
         static G721: number;
+
         /**
          * GSM audio
          */
         static GSM: number;
+
         /**
          * ITU G.723.1 audio
          */
         static G723: number;
+
         /**
          * IMA ADPCM wave type (RFC 3551)
          */
         static DVI4_8000: number;
+
         /**
          * IMA ADPCM wave type (RFC 3551)
          */
         static DVI4_16000: number;
+
         /**
          * experimental linear predictive encoding
          */
         static LPC: number;
+
         /**
          * ITU-T G.711 A-law audio (RFC 3551)
          */
         static PCMA: number;
+
         /**
          * ITU-T G.722 (RFC 3551)
          */
         static G722: number;
+
         /**
          * stereo PCM
          */
         static L16_STEREO: number;
+
         /**
          * mono PCM
          */
         static L16_MONO: number;
+
         /**
          * EIA & TIA standard IS-733
          */
         static QCELP: number;
+
         /**
          * Comfort Noise (RFC 3389)
          */
         static CN: number;
+
         /**
          * Audio MPEG 1-3.
          */
         static MPA: number;
+
         /**
          * ITU-T G.728 Speech coder (RFC 3551)
          */
         static G728: number;
+
         /**
          * IMA ADPCM wave type (RFC 3551)
          */
         static DVI4_11025: number;
+
         /**
          * IMA ADPCM wave type (RFC 3551)
          */
         static DVI4_22050: number;
+
         /**
          * ITU-T G.729 Speech coder (RFC 3551)
          */
         static G729: number;
+
         /**
          * See RFC 2029
          */
         static CELLB: number;
+
         /**
          * ISO Standards 10918-1 and 10918-2 (RFC 2435)
          */
         static JPEG: number;
+
         /**
          * nv encoding by Ron Frederick
          */
         static NV: number;
+
         /**
          * ITU-T Recommendation H.261 (RFC 2032)
          */
         static H261: number;
+
         /**
          * Video MPEG 1 & 2 (RFC 2250)
          */
         static MPV: number;
+
         /**
          * MPEG-2 transport stream (RFC 2250)
          */
         static MP2T: number;
+
         /**
          * Video H263 (RFC 2190)
          */
         static H263: number;
     }
+
 
     /**
      * @gir-type Enum
@@ -431,95 +463,148 @@ export namespace GstRtp {
         SAVPF,
     }
 
+
     /**
      * The maximum amount of SSRCs in a BYE packet.
      */
     const RTCP_MAX_BYE_SSRC_COUNT: number;
+
     /**
      * The maximum amount of Receiver report blocks in RR and SR messages.
      */
     const RTCP_MAX_RB_COUNT: number;
+
     /**
      * The maximum text length for an SDES item.
      */
     const RTCP_MAX_SDES: number;
+
     /**
      * The maximum amount of SDES items.
      */
     const RTCP_MAX_SDES_ITEM_COUNT: number;
+
     /**
      * Mask for version and packet type pair allowing reduced size
      * packets, basically it accepts other types than RR and SR
      */
     const RTCP_REDUCED_SIZE_VALID_MASK: number;
+
     /**
      * Mask for version, padding bit and packet type pair
      */
     const RTCP_VALID_MASK: number;
+
     /**
      * Valid value for the first two bytes of an RTCP packet after applying
      * #GST_RTCP_VALID_MASK to them.
      */
     const RTCP_VALID_VALUE: number;
+
     /**
      * The supported RTCP version 2.
      */
     const RTCP_VERSION: number;
+
     const RTP_HDREXT_BASE: string;
+
     /**
      * Constant string used in element classification to signal that this element
      * is a RTP header extension.
      * @since 1.20
      */
     const RTP_HDREXT_ELEMENT_CLASS: string;
+
     const RTP_HDREXT_NTP_56: string;
+
     const RTP_HDREXT_NTP_56_SIZE: number;
+
     const RTP_HDREXT_NTP_64: string;
+
     const RTP_HDREXT_NTP_64_SIZE: number;
+
     /**
      * @since 1.20
      */
     const RTP_HEADER_EXTENSION_URI_METADATA_KEY: string;
+
     const RTP_PAYLOAD_1016_STRING: string;
+
     const RTP_PAYLOAD_CELLB_STRING: string;
+
     const RTP_PAYLOAD_CN_STRING: string;
+
     const RTP_PAYLOAD_DVI4_11025_STRING: string;
+
     const RTP_PAYLOAD_DVI4_16000_STRING: string;
+
     const RTP_PAYLOAD_DVI4_22050_STRING: string;
+
     const RTP_PAYLOAD_DVI4_8000_STRING: string;
+
     const RTP_PAYLOAD_DYNAMIC_STRING: string;
+
     const RTP_PAYLOAD_G721_STRING: string;
+
     const RTP_PAYLOAD_G722_STRING: string;
+
     const RTP_PAYLOAD_G723_53: number;
+
     const RTP_PAYLOAD_G723_53_STRING: string;
+
     const RTP_PAYLOAD_G723_63: number;
+
     const RTP_PAYLOAD_G723_63_STRING: string;
+
     const RTP_PAYLOAD_G723_STRING: string;
+
     const RTP_PAYLOAD_G728_STRING: string;
+
     const RTP_PAYLOAD_G729_STRING: string;
+
     const RTP_PAYLOAD_GSM_STRING: string;
+
     const RTP_PAYLOAD_H261_STRING: string;
+
     const RTP_PAYLOAD_H263_STRING: string;
+
     const RTP_PAYLOAD_JPEG_STRING: string;
+
     const RTP_PAYLOAD_L16_MONO_STRING: string;
+
     const RTP_PAYLOAD_L16_STEREO_STRING: string;
+
     const RTP_PAYLOAD_LPC_STRING: string;
+
     const RTP_PAYLOAD_MP2T_STRING: string;
+
     const RTP_PAYLOAD_MPA_STRING: string;
+
     const RTP_PAYLOAD_MPV_STRING: string;
+
     const RTP_PAYLOAD_NV_STRING: string;
+
     const RTP_PAYLOAD_PCMA_STRING: string;
+
     const RTP_PAYLOAD_PCMU_STRING: string;
+
     const RTP_PAYLOAD_QCELP_STRING: string;
+
     const RTP_PAYLOAD_TS41: number;
+
     const RTP_PAYLOAD_TS41_STRING: string;
+
     const RTP_PAYLOAD_TS48: number;
+
     const RTP_PAYLOAD_TS48_STRING: string;
+
     const RTP_SOURCE_META_MAX_CSRC_COUNT: number;
+
     /**
      * The supported RTP version 2.
      */
     const RTP_VERSION: number;
+
     /**
      * Attaches RTP source information to `buffer`.
      * @param buffer a {@link Gst.Buffer}
@@ -528,14 +613,16 @@ export namespace GstRtp {
      * @returns the {@link GstRtp.RTPSourceMeta} on `buffer`.
      * @since 1.16
      */
-    function buffer_add_rtp_source_meta(buffer: Gst.Buffer, ssrc: number | null, csrc: number[] | null): RTPSourceMeta;
+    function buffer_add_rtp_source_meta(buffer: Gst.Buffer, ssrc: (number | null), csrc: (number[] | null)): RTPSourceMeta;
+
     /**
      * Find the {@link GstRtp.RTPSourceMeta} on `buffer`.
      * @param buffer a {@link Gst.Buffer}
      * @returns the {@link GstRtp.RTPSourceMeta} or `null` when there is no such metadata on `buffer`.
      * @since 1.16
      */
-    function buffer_get_rtp_source_meta(buffer: Gst.Buffer): RTPSourceMeta | null;
+    function buffer_get_rtp_source_meta(buffer: Gst.Buffer): (RTPSourceMeta | null);
+
     /**
      * Open `buffer` for reading or writing, depending on `flags`. The resulting RTCP
      * buffer state is stored in `rtcp`.
@@ -544,6 +631,7 @@ export namespace GstRtp {
      * @param rtcp resulting {@link GstRtp.RTCPBuffer}
      */
     function rtcp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags, rtcp: RTCPBuffer): boolean;
+
     /**
      * Create a new buffer for constructing RTCP packets. The packet will have a
      * maximum size of `mtu`.
@@ -551,6 +639,7 @@ export namespace GstRtp {
      * @returns A newly allocated buffer.
      */
     function rtcp_buffer_new(mtu: number): Gst.Buffer;
+
     /**
      * Create a new buffer and set the data to a copy of `len`
      * bytes of `data` and the size to `len`. The data will be freed when the buffer
@@ -558,7 +647,8 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with a copy of `data` and of size `len`.
      */
-    function rtcp_buffer_new_copy_data(data: Uint8Array | string): Gst.Buffer;
+    function rtcp_buffer_new_copy_data(data: (Uint8Array | string)): Gst.Buffer;
+
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
@@ -566,7 +656,8 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with `data` and of size `len`.
      */
-    function rtcp_buffer_new_take_data(data: Uint8Array | string): Gst.Buffer;
+    function rtcp_buffer_new_take_data(data: (Uint8Array | string)): Gst.Buffer;
+
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * `gst_rtcp_buffer_validate_data()`.
@@ -574,6 +665,7 @@ export namespace GstRtp {
      * @returns TRUE if `buffer` is a valid RTCP packet.
      */
     function rtcp_buffer_validate(buffer: Gst.Buffer): boolean;
+
     /**
      * Check if the `data` and `size` point to the data of a valid compound,
      * non-reduced size RTCP packet.
@@ -582,12 +674,13 @@ export namespace GstRtp {
      * @param data the data to validate
      * @returns TRUE if the data points to a valid RTCP packet.
      */
-    function rtcp_buffer_validate_data(data: Uint8Array | string): boolean;
+    function rtcp_buffer_validate_data(data: (Uint8Array | string)): boolean;
+
     /**
      * Check if the `data` and `size` point to the data of a valid RTCP packet.
      * Use this function to validate a packet before using the other functions in
      * this module.
-     *
+     * 
      * This function is updated to support reduced size rtcp packets according to
      * RFC 5506 and will validate full compound RTCP packets as well as reduced
      * size RTCP packets.
@@ -595,7 +688,8 @@ export namespace GstRtp {
      * @returns TRUE if the data points to a valid RTCP packet.
      * @since 1.6
      */
-    function rtcp_buffer_validate_data_reduced(data: Uint8Array | string): boolean;
+    function rtcp_buffer_validate_data_reduced(data: (Uint8Array | string)): boolean;
+
     /**
      * Check if the data pointed to by `buffer` is a valid RTCP packet using
      * `gst_rtcp_buffer_validate_reduced()`.
@@ -604,6 +698,7 @@ export namespace GstRtp {
      * @since 1.6
      */
     function rtcp_buffer_validate_reduced(buffer: Gst.Buffer): boolean;
+
     /**
      * Converts an NTP time to UNIX nanoseconds. `ntptime` can typically be
      * the NTP time of an SR RTCP message and contains, in the upper 32 bits, the
@@ -612,7 +707,8 @@ export namespace GstRtp {
      * @param ntptime an NTP timestamp
      * @returns the UNIX time for `ntptime` in nanoseconds.
      */
-    function rtcp_ntp_to_unix(ntptime: bigint | number): number;
+    function rtcp_ntp_to_unix(ntptime: (bigint | number)): number;
+
     /**
      * Convert `name` into a `GstRTCPSDESType`. `name` is typically a key in a
      * {@link Gst.Structure} containing SDES items.
@@ -620,6 +716,7 @@ export namespace GstRtp {
      * @returns the {@link GstRtp.RTCPSDESType} for `name` or #GST_RTCP_SDES_PRIV when `name` is a private sdes item.
      */
     function rtcp_sdes_name_to_type(name: string): RTCPSDESType;
+
     /**
      * Converts `type` to the string equivalent. The string is typically used as a
      * key in a {@link Gst.Structure} containing SDES items.
@@ -627,6 +724,7 @@ export namespace GstRtp {
      * @returns the string equivalent of `type`
      */
     function rtcp_sdes_type_to_name(type: RTCPSDESType): string;
+
     /**
      * Converts a UNIX timestamp in nanoseconds to an NTP time. The caller should
      * pass a value with nanoseconds since 1970. The NTP time will, in the upper
@@ -636,7 +734,8 @@ export namespace GstRtp {
      * @param unixtime an UNIX timestamp in nanoseconds
      * @returns the NTP time for `unixtime`.
      */
-    function rtcp_unix_to_ntp(unixtime: bigint | number): number;
+    function rtcp_unix_to_ntp(unixtime: (bigint | number)): number;
+
     /**
      * Allocate enough data in `buffer` to hold an RTP packet with `csrc_count` CSRCs,
      * a payload length of `payload_len` and padding of `pad_len`.
@@ -648,12 +747,8 @@ export namespace GstRtp {
      * @param pad_len the amount of padding
      * @param csrc_count the number of CSRC entries
      */
-    function rtp_buffer_allocate_data(
-        buffer: Gst.Buffer,
-        payload_len: number,
-        pad_len: number,
-        csrc_count: number,
-    ): void;
+    function rtp_buffer_allocate_data(buffer: Gst.Buffer, payload_len: number, pad_len: number, csrc_count: number): void;
+
     /**
      * Calculate the header length of an RTP packet with `csrc_count` CSRC entries.
      * An RTP packet can have at most 15 CSRC entries.
@@ -661,6 +756,7 @@ export namespace GstRtp {
      * @returns The length of an RTP header with `csrc_count` CSRC entries.
      */
     function rtp_buffer_calc_header_len(csrc_count: number): number;
+
     /**
      * Calculate the total length of an RTP packet with a payload size of `payload_len`,
      * a padding of `pad_len` and a `csrc_count` CSRC entries.
@@ -670,6 +766,7 @@ export namespace GstRtp {
      * @returns The total length of an RTP header with given parameters.
      */
     function rtp_buffer_calc_packet_len(payload_len: number, pad_len: number, csrc_count: number): number;
+
     /**
      * Calculate the length of the payload of an RTP packet with size `packet_len`,
      * a padding of `pad_len` and a `csrc_count` CSRC entries.
@@ -679,6 +776,7 @@ export namespace GstRtp {
      * @returns The length of the payload of an RTP packet  with given parameters.
      */
     function rtp_buffer_calc_payload_len(packet_len: number, pad_len: number, csrc_count: number): number;
+
     /**
      * Compare two sequence numbers, taking care of wraparounds. This function
      * returns the difference between `seqnum1` and `seqnum2`.
@@ -687,17 +785,19 @@ export namespace GstRtp {
      * @returns a negative value if `seqnum1` is bigger than `seqnum2`, 0 if they are equal or a positive value if `seqnum1` is smaller than `segnum2`.
      */
     function rtp_buffer_compare_seqnum(seqnum1: number, seqnum2: number): number;
+
     /**
      * Get the default clock-rate for the static payload type `payload_type`.
      * @param payload_type the static payload type
      * @returns the default clock rate or -1 if the payload type is not static or the clock-rate is undefined.
      */
     function rtp_buffer_default_clock_rate(payload_type: number): number;
+
     /**
      * Update the `exttimestamp` field with the extended timestamp of `timestamp`
      * For the first call of the method, `exttimestamp` should point to a location
      * with a value of -1.
-     *
+     * 
      * This function is able to handle both forward and backward timestamps taking
      * into account:
      *   - timestamp wraparound making sure that the returned value is properly increased.
@@ -706,7 +806,8 @@ export namespace GstRtp {
      * @param timestamp a new timestamp
      * @returns The extended timestamp of `timestamp` or 0 if the result can't go anywhere backwards.
      */
-    function rtp_buffer_ext_timestamp(exttimestamp: bigint | number, timestamp: number): [number, number];
+    function rtp_buffer_ext_timestamp(exttimestamp: (bigint | number), timestamp: number): [number, number];
+
     /**
      * Similar to gst_rtp_buffer_get_extension_onebyte_header, but working
      * on the {@link GLib.Bytes} you get from gst_rtp_buffer_get_extension_bytes.
@@ -719,12 +820,8 @@ export namespace GstRtp {
      * @returns TRUE if `bytes` had the requested header extension
      * @since 1.18
      */
-    function rtp_buffer_get_extension_onebyte_header_from_bytes(
-        bytes: GLib.Bytes | Uint8Array,
-        bit_pattern: number,
-        id: number,
-        nth: number,
-    ): [boolean, Uint8Array];
+    function rtp_buffer_get_extension_onebyte_header_from_bytes(bytes: (GLib.Bytes | Uint8Array), bit_pattern: number, id: number, nth: number): [boolean, Uint8Array];
+
     /**
      * Map the contents of `buffer` into `rtp`.
      * @param buffer a {@link Gst.Buffer}
@@ -732,6 +829,7 @@ export namespace GstRtp {
      * @returns `true` if `buffer` could be mapped.
      */
     function rtp_buffer_map(buffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, RTPBuffer];
+
     /**
      * Allocate a new {@link Gst.Buffer} with enough data to hold an RTP packet with
      * `csrc_count` CSRCs, a payload length of `payload_len` and padding of `pad_len`.
@@ -742,6 +840,7 @@ export namespace GstRtp {
      * @returns A newly allocated buffer that can hold an RTP packet with given parameters.
      */
     function rtp_buffer_new_allocate(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer;
+
     /**
      * Create a new {@link Gst.Buffer} that can hold an RTP packet that is exactly
      * `packet_len` long. The length of the payload depends on `pad_len` and
@@ -753,6 +852,7 @@ export namespace GstRtp {
      * @returns A newly allocated buffer that can hold an RTP packet of `packet_len`.
      */
     function rtp_buffer_new_allocate_len(packet_len: number, pad_len: number, csrc_count: number): Gst.Buffer;
+
     /**
      * Create a new buffer and set the data to a copy of `len`
      * bytes of `data` and the size to `len`. The data will be freed when the buffer
@@ -760,7 +860,8 @@ export namespace GstRtp {
      * @param data data for the new   buffer
      * @returns A newly allocated buffer with a copy of `data` and of size `len`.
      */
-    function rtp_buffer_new_copy_data(data: Uint8Array | string): Gst.Buffer;
+    function rtp_buffer_new_copy_data(data: (Uint8Array | string)): Gst.Buffer;
+
     /**
      * Create a new buffer and set the data and size of the buffer to `data` and `len`
      * respectively. `data` will be freed when the buffer is unreffed, so this
@@ -768,7 +869,8 @@ export namespace GstRtp {
      * @param data data for the new buffer
      * @returns A newly allocated buffer with `data` and of size `len`.
      */
-    function rtp_buffer_new_take_data(data: Uint8Array | string): Gst.Buffer;
+    function rtp_buffer_new_take_data(data: (Uint8Array | string)): Gst.Buffer;
+
     /**
      * Retrieve all the factories of the currently registered RTP header
      * extensions.  Call `gst_element_factory_create()` with each factory to create
@@ -777,20 +879,23 @@ export namespace GstRtp {
      * @since 1.20
      */
     function rtp_get_header_extension_list(): Gst.ElementFactory[];
+
     /**
      * Reads the NTP time from the `size` NTP-56 extension bytes in `data` and store the
      * result in `ntptime`.
      * @param data the data to read from
      * @returns `true` on success.
      */
-    function rtp_hdrext_get_ntp_56(data: Uint8Array | string): [boolean, number];
+    function rtp_hdrext_get_ntp_56(data: (Uint8Array | string)): [boolean, number];
+
     /**
      * Reads the NTP time from the `size` NTP-64 extension bytes in `data` and store the
      * result in `ntptime`.
      * @param data the data to read from
      * @returns `true` on success.
      */
-    function rtp_hdrext_get_ntp_64(data: Uint8Array | string): [boolean, number];
+    function rtp_hdrext_get_ntp_64(data: (Uint8Array | string)): [boolean, number];
+
     /**
      * Writes the NTP time in `ntptime` to the format required for the NTP-56 header
      * extension. `data` must hold at least #GST_RTP_HDREXT_NTP_56_SIZE bytes.
@@ -799,7 +904,8 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_56(data: any | null, size: number, ntptime: bigint | number): boolean;
+    function rtp_hdrext_set_ntp_56(data: (any | null), size: number, ntptime: (bigint | number)): boolean;
+
     /**
      * Writes the NTP time in `ntptime` to the format required for the NTP-64 header
      * extension. `data` must hold at least #GST_RTP_HDREXT_NTP_64_SIZE bytes.
@@ -808,18 +914,20 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_64(data: any | null, size: number, ntptime: bigint | number): boolean;
+    function rtp_hdrext_set_ntp_64(data: (any | null), size: number, ntptime: (bigint | number)): boolean;
+
     /**
      * Get the {@link GstRtp.RTPPayloadInfo} for `media` and `encoding_name`. This function is
      * mostly used to get the default clock-rate and bandwidth for dynamic payload
      * types specified with `media` and `encoding` name.
-     *
+     * 
      * The search for `encoding_name` will be performed in a case insensitive way.
      * @param media the media to find
      * @param encoding_name the encoding name to find
      * @returns a {@link GstRtp.RTPPayloadInfo} or NULL when no info could be found.
      */
-    function rtp_payload_info_for_name(media: string, encoding_name: string): RTPPayloadInfo | null;
+    function rtp_payload_info_for_name(media: string, encoding_name: string): (RTPPayloadInfo | null);
+
     /**
      * Get the {@link GstRtp.RTPPayloadInfo} for `payload_type`. This function is
      * mostly used to get the default clock-rate and bandwidth for static payload
@@ -827,9 +935,12 @@ export namespace GstRtp {
      * @param payload_type the payload_type to find
      * @returns a {@link GstRtp.RTPPayloadInfo} or NULL when no info could be found.
      */
-    function rtp_payload_info_for_pt(payload_type: number): RTPPayloadInfo | null;
+    function rtp_payload_info_for_pt(payload_type: number): (RTPPayloadInfo | null);
+
     function rtp_source_meta_api_get_type(): GObject.GType;
+
     function rtp_source_meta_get_info(): Gst.MetaInfo;
+
     /**
      * @gir-type Flags
      */
@@ -840,7 +951,7 @@ export namespace GstRtp {
     /**
      * Additional RTP buffer flags. These flags can potentially be used on any
      * buffers carrying RTP packets.
-     *
+     * 
      * Note that these are only valid for {@link Gst.Caps} of type: application/x-rtp (x-rtcp).
      * They can conflict with other extended buffer flags.
      * @gir-type Flags
@@ -864,6 +975,7 @@ export namespace GstRtp {
          */
         LAST,
     }
+
 
     /**
      * @gir-type Flags
@@ -889,6 +1001,7 @@ export namespace GstRtp {
          */
         LAST,
     }
+
 
     /**
      * @gir-type Flags
@@ -927,6 +1040,7 @@ export namespace GstRtp {
         INHERITED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -954,32 +1068,32 @@ export namespace GstRtp {
         TWO_BYTE,
     }
 
+
     namespace RTPBaseAudioPayload {
         // Signal signatures
         interface SignalSignatures extends RTPBasePayload.SignalSignatures {
-            'notify::buffer-list': (pspec: GObject.ParamSpec) => void;
-            'notify::auto-header-extension': (pspec: GObject.ParamSpec) => void;
-            'notify::max-ptime': (pspec: GObject.ParamSpec) => void;
-            'notify::min-ptime': (pspec: GObject.ParamSpec) => void;
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::onvif-no-rate-control': (pspec: GObject.ParamSpec) => void;
-            'notify::perfect-rtptime': (pspec: GObject.ParamSpec) => void;
-            'notify::pt': (pspec: GObject.ParamSpec) => void;
-            'notify::ptime-multiple': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-rtptime': (pspec: GObject.ParamSpec) => void;
-            'notify::seqnum': (pspec: GObject.ParamSpec) => void;
-            'notify::seqnum-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::source-info': (pspec: GObject.ParamSpec) => void;
-            'notify::ssrc': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-list": (pspec: GObject.ParamSpec) => void;
+            "notify::auto-header-extension": (pspec: GObject.ParamSpec) => void;
+            "notify::max-ptime": (pspec: GObject.ParamSpec) => void;
+            "notify::min-ptime": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::onvif-no-rate-control": (pspec: GObject.ParamSpec) => void;
+            "notify::perfect-rtptime": (pspec: GObject.ParamSpec) => void;
+            "notify::pt": (pspec: GObject.ParamSpec) => void;
+            "notify::ptime-multiple": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-rtptime": (pspec: GObject.ParamSpec) => void;
+            "notify::seqnum": (pspec: GObject.ParamSpec) => void;
+            "notify::seqnum-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::source-info": (pspec: GObject.ParamSpec) => void;
+            "notify::ssrc": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends RTPBasePayload.ConstructorProps {
             buffer_list: boolean;
             bufferList: boolean;
@@ -989,7 +1103,7 @@ export namespace GstRtp {
     /**
      * Provides a base class for audio RTP payloaders for frame or sample based
      * audio codecs (constant bitrate)
-     *
+     * 
      * This class derives from GstRTPBasePayload. It can be used for payloading
      * audio codecs. It will only work with constant bitrate codecs. It supports
      * both frame based and sample based codecs. It takes care of packing up the
@@ -1001,9 +1115,9 @@ export namespace GstRtp {
      * equal to min-ptime (if set). If min-ptime is not set, any residual data is
      * sent in a last RTP packet. In the case of frame based codecs, the resulting
      * RTP packets always contain full frames.
-     *
+     * 
      * ## Usage
-     *
+     * 
      * To use this base class, your child element needs to call either
      * `gst_rtp_base_audio_payload_set_frame_based()` or
      * `gst_rtp_base_audio_payload_set_sample_based()`. This is usually done in the
@@ -1021,12 +1135,12 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBaseAudioPayload>;
 
         // Properties
-
         /**
          * @default false
          */
         get buffer_list(): boolean;
         set buffer_list(val: boolean);
+
         /**
          * @default false
          */
@@ -1043,49 +1157,40 @@ export namespace GstRtp {
         $signals: RTPBaseAudioPayload.SignalSignatures;
 
         // Fields
-
         payload: RTPBasePayload;
+
         base_ts: Gst.ClockTime;
+
         frame_size: number;
+
         frame_duration: number;
+
         sample_size: number;
 
         // Constructors
-
         constructor(properties?: Partial<RTPBaseAudioPayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseAudioPayload.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RTPBaseAudioPayload.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseAudioPayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Create an RTP buffer and store `payload_len` bytes of the adapter as the
          * payload. Set the timestamp on the new buffer to `timestamp` before pushing
          * the buffer downstream.
-         *
+         * 
          * If `payload_len` is -1, all pending bytes will be flushed. If `timestamp` is
          * -1, the timestamp will be calculated automatically.
          * @param payload_len length of payload
@@ -1093,11 +1198,13 @@ export namespace GstRtp {
          * @returns a {@link Gst.FlowReturn}
          */
         flush(payload_len: number, timestamp: Gst.ClockTime): Gst.FlowReturn;
+
         /**
          * Gets the internal adapter used by the depayloader.
          * @returns a {@link GstBase.Adapter}.
          */
         get_adapter(): GstBase.Adapter;
+
         /**
          * Create an RTP buffer and store `payload_len` bytes of `data` as the
          * payload. Set the timestamp on the new buffer to `timestamp` before pushing
@@ -1106,39 +1213,46 @@ export namespace GstRtp {
          * @param timestamp a {@link Gst.ClockTime}
          * @returns a {@link Gst.FlowReturn}
          */
-        push(data: Uint8Array | string, timestamp: Gst.ClockTime): Gst.FlowReturn;
+        push(data: (Uint8Array | string), timestamp: Gst.ClockTime): Gst.FlowReturn;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GstRtp.RTPBasePayload.push
+    // Conflicted with GstRtp.RTPBasePayload.push
         push(...args: never[]): any;
+
         /**
          * Tells {@link GstRtp.RTPBaseAudioPayload} that the child element is for a frame based
          * audio codec
          */
         set_frame_based(): void;
+
         /**
          * Sets the options for frame based audio codecs.
          * @param frame_duration The duraction of an audio frame in milliseconds.
          * @param frame_size The size of an audio frame in bytes.
          */
         set_frame_options(frame_duration: number, frame_size: number): void;
+
         /**
          * Tells {@link GstRtp.RTPBaseAudioPayload} that the child element is for a sample based
          * audio codec
          */
         set_sample_based(): void;
+
         /**
          * Sets the options for sample based audio codecs.
          * @param sample_size Size per sample in bytes.
          */
         set_sample_options(sample_size: number): void;
+
         /**
          * Sets the options for sample based audio codecs.
          * @param sample_size Size per sample in bits.
          */
         set_samplebits_options(sample_size: number): void;
     }
+
 
     namespace RTPBaseDepayload {
         // Signal signatures
@@ -1151,7 +1265,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            'add-extension': (arg0: RTPHeaderExtension) => void;
+            "add-extension": (arg0: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this depayloader.
              * @signal
@@ -1159,7 +1273,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            'clear-extensions': () => void;
+            "clear-extensions": () => void;
             /**
              * The returned `ext` must be configured with the correct `ext_id` and with the
              * necessary attributes as required by the extension implementation.
@@ -1167,17 +1281,16 @@ export namespace GstRtp {
              * @since 1.20
              * @run-last
              */
-            'request-extension': (arg0: number, arg1: string | null) => RTPHeaderExtension | null;
-            'notify::auto-header-extension': (pspec: GObject.ParamSpec) => void;
-            'notify::max-reorder': (pspec: GObject.ParamSpec) => void;
-            'notify::source-info': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "request-extension": (arg0: number, arg1: (string | null)) => (RTPHeaderExtension | null);
+            "notify::auto-header-extension": (pspec: GObject.ParamSpec) => void;
+            "notify::max-reorder": (pspec: GObject.ParamSpec) => void;
+            "notify::source-info": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             auto_header_extension: boolean;
             autoHeaderExtension: boolean;
@@ -1197,7 +1310,6 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBaseDepayload>;
 
         // Properties
-
         /**
          * If enabled, the depayloader will automatically try to enable all the
          * RTP header extensions provided in the sink caps, saving the application
@@ -1208,6 +1320,7 @@ export namespace GstRtp {
          */
         get auto_header_extension(): boolean;
         set auto_header_extension(val: boolean);
+
         /**
          * If enabled, the depayloader will automatically try to enable all the
          * RTP header extensions provided in the sink caps, saving the application
@@ -1218,9 +1331,10 @@ export namespace GstRtp {
          */
         get autoHeaderExtension(): boolean;
         set autoHeaderExtension(val: boolean);
+
         /**
          * Max seqnum reorder before the sender is assumed to have restarted.
-         *
+         * 
          * When max-reorder is set to 0 all reordered/duplicate packets are
          * considered coming from a restarted sender.
          * @since 1.18
@@ -1228,9 +1342,10 @@ export namespace GstRtp {
          */
         get max_reorder(): number;
         set max_reorder(val: number);
+
         /**
          * Max seqnum reorder before the sender is assumed to have restarted.
-         *
+         * 
          * When max-reorder is set to 0 all reordered/duplicate packets are
          * considered coming from a restarted sender.
          * @since 1.18
@@ -1238,6 +1353,7 @@ export namespace GstRtp {
          */
         get maxReorder(): number;
         set maxReorder(val: number);
+
         /**
          * Add RTP source information found in RTP header as meta to output buffer.
          * @since 1.16
@@ -1245,6 +1361,7 @@ export namespace GstRtp {
          */
         get source_info(): boolean;
         set source_info(val: boolean);
+
         /**
          * Add RTP source information found in RTP header as meta to output buffer.
          * @since 1.16
@@ -1252,12 +1369,13 @@ export namespace GstRtp {
          */
         get sourceInfo(): boolean;
         set sourceInfo(val: boolean);
+
         /**
          * Various depayloader statistics retrieved atomically (and are therefore
          * synchroized with each other). This property return a GstStructure named
          * application/x-rtp-depayload-stats containing the following fields relating to
          * the last processed buffer and current state of the stream being depayloaded:
-         *
+         * 
          *   * `clock-rate`: #G_TYPE_UINT, clock-rate of the stream
          *   * `npt-start`: #G_TYPE_UINT64, time of playback start
          *   * `npt-stop`: #G_TYPE_UINT64, time of playback stop
@@ -1283,84 +1401,81 @@ export namespace GstRtp {
         $signals: RTPBaseDepayload.SignalSignatures;
 
         // Fields
-
         sinkpad: Gst.Pad;
+
         srcpad: Gst.Pad;
+
         clock_rate: number;
+
         need_newsegment: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<RTPBaseDepayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RTPBaseDepayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RTPBaseDepayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBaseDepayload.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RTPBaseDepayload.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RTPBaseDepayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RTPBaseDepayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBaseDepayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_handle_event(event: Gst.Event): boolean;
+
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_packet_lost(event: Gst.Event): boolean;
+
         /**
-         * @param _in
+         * @param _in 
          * @virtual
          */
         vfunc_process(_in: Gst.Buffer): Gst.Buffer;
+
         /**
-         * @param rtp_buffer
+         * @param rtp_buffer 
          * @virtual
          */
         vfunc_process_rtp_packet(rtp_buffer: RTPBuffer): Gst.Buffer;
+
         /**
-         * @param caps
+         * @param caps 
          * @virtual
          */
         vfunc_set_caps(caps: Gst.Caps): boolean;
 
         // Methods
-
         /**
          * Queries whether {@link GstRtp.RTPSourceMeta} will be added to depayloaded buffers.
          * @returns `true` if source-info is enabled.
          */
         is_source_info_enabled(): boolean;
+
         /**
          * Push `out_buf` to the peer of `filter`. This function takes ownership of
          * `out_buf`.
-         *
+         * 
          * This function will by default apply the last incoming timestamp on
          * the outgoing buffer when it didn't have a timestamp already.
          * @param out_buf a {@link Gst.Buffer}
          * @returns a {@link Gst.FlowReturn}.
          */
         push(out_buf: Gst.Buffer): Gst.FlowReturn;
+
         /**
          * Push `out_list` to the peer of `filter`. This function takes ownership of
          * `out_list`.
@@ -1368,12 +1483,14 @@ export namespace GstRtp {
          * @returns a {@link Gst.FlowReturn}.
          */
         push_list(out_list: Gst.BufferList): Gst.FlowReturn;
+
         /**
          * Enable or disable adding {@link GstRtp.RTPSourceMeta} to depayloaded buffers.
          * @param enable whether to add meta about RTP sources to buffer
          */
         set_source_info_enabled(enable: boolean): void;
     }
+
 
     namespace RTPBasePayload {
         // Signal signatures
@@ -1386,7 +1503,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            'add-extension': (arg0: RTPHeaderExtension) => void;
+            "add-extension": (arg0: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this payloader.
              * @signal
@@ -1394,7 +1511,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            'clear-extensions': () => void;
+            "clear-extensions": () => void;
             /**
              * The returned `ext` must be configured with the correct `ext_id` and with the
              * necessary attributes as required by the extension implementation.
@@ -1402,44 +1519,43 @@ export namespace GstRtp {
              * @since 1.20
              * @run-last
              */
-            'request-extension': (arg0: number, arg1: string) => RTPHeaderExtension | null;
-            'notify::auto-header-extension': (pspec: GObject.ParamSpec) => void;
-            'notify::max-ptime': (pspec: GObject.ParamSpec) => void;
-            'notify::min-ptime': (pspec: GObject.ParamSpec) => void;
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::onvif-no-rate-control': (pspec: GObject.ParamSpec) => void;
-            'notify::perfect-rtptime': (pspec: GObject.ParamSpec) => void;
-            'notify::pt': (pspec: GObject.ParamSpec) => void;
-            'notify::ptime-multiple': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-rtptime': (pspec: GObject.ParamSpec) => void;
-            'notify::seqnum': (pspec: GObject.ParamSpec) => void;
-            'notify::seqnum-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::source-info': (pspec: GObject.ParamSpec) => void;
-            'notify::ssrc': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "request-extension": (arg0: number, arg1: string) => (RTPHeaderExtension | null);
+            "notify::auto-header-extension": (pspec: GObject.ParamSpec) => void;
+            "notify::max-ptime": (pspec: GObject.ParamSpec) => void;
+            "notify::min-ptime": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::onvif-no-rate-control": (pspec: GObject.ParamSpec) => void;
+            "notify::perfect-rtptime": (pspec: GObject.ParamSpec) => void;
+            "notify::pt": (pspec: GObject.ParamSpec) => void;
+            "notify::ptime-multiple": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-rtptime": (pspec: GObject.ParamSpec) => void;
+            "notify::seqnum": (pspec: GObject.ParamSpec) => void;
+            "notify::seqnum-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::source-info": (pspec: GObject.ParamSpec) => void;
+            "notify::ssrc": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.Element.ConstructorProps {
             auto_header_extension: boolean;
             autoHeaderExtension: boolean;
-            max_ptime: bigint | number;
-            maxPtime: bigint | number;
-            min_ptime: bigint | number;
-            minPtime: bigint | number;
+            max_ptime: (bigint | number);
+            maxPtime: (bigint | number);
+            min_ptime: (bigint | number);
+            minPtime: (bigint | number);
             mtu: number;
             onvif_no_rate_control: boolean;
             onvifNoRateControl: boolean;
             perfect_rtptime: boolean;
             perfectRtptime: boolean;
             pt: number;
-            ptime_multiple: bigint | number;
-            ptimeMultiple: bigint | number;
+            ptime_multiple: (bigint | number);
+            ptimeMultiple: (bigint | number);
             scale_rtptime: boolean;
             scaleRtptime: boolean;
             seqnum: number;
@@ -1463,7 +1579,6 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBasePayload>;
 
         // Properties
-
         /**
          * If enabled, the payloader will automatically try to enable all the
          * RTP header extensions provided in the src caps, saving the application
@@ -1474,6 +1589,7 @@ export namespace GstRtp {
          */
         get auto_header_extension(): boolean;
         set auto_header_extension(val: boolean);
+
         /**
          * If enabled, the payloader will automatically try to enable all the
          * RTP header extensions provided in the src caps, saving the application
@@ -1484,33 +1600,39 @@ export namespace GstRtp {
          */
         get autoHeaderExtension(): boolean;
         set autoHeaderExtension(val: boolean);
+
         /**
          * @default -1
          */
         get max_ptime(): number;
-        set max_ptime(val: bigint | number);
+        set max_ptime(val: (bigint | number));
+
         /**
          * @default -1
          */
         get maxPtime(): number;
-        set maxPtime(val: bigint | number);
+        set maxPtime(val: (bigint | number));
+
         /**
          * Minimum duration of the packet data in ns (can't go above MTU)
          * @default 0
          */
         get min_ptime(): number;
-        set min_ptime(val: bigint | number);
+        set min_ptime(val: (bigint | number));
+
         /**
          * Minimum duration of the packet data in ns (can't go above MTU)
          * @default 0
          */
         get minPtime(): number;
-        set minPtime(val: bigint | number);
+        set minPtime(val: (bigint | number));
+
         /**
          * @default 1400
          */
         get mtu(): number;
         set mtu(val: number);
+
         /**
          * Make the payloader timestamp packets according to the Rate-Control=no
          * behaviour specified in the ONVIF replay spec.
@@ -1519,6 +1641,7 @@ export namespace GstRtp {
          */
         get onvif_no_rate_control(): boolean;
         set onvif_no_rate_control(val: boolean);
+
         /**
          * Make the payloader timestamp packets according to the Rate-Control=no
          * behaviour specified in the ONVIF replay spec.
@@ -1527,6 +1650,7 @@ export namespace GstRtp {
          */
         get onvifNoRateControl(): boolean;
         set onvifNoRateControl(val: boolean);
+
         /**
          * Try to use the offset fields to generate perfect RTP timestamps. When this
          * option is disabled, RTP timestamps are generated from GST_BUFFER_PTS of
@@ -1547,6 +1671,7 @@ export namespace GstRtp {
          */
         get perfect_rtptime(): boolean;
         set perfect_rtptime(val: boolean);
+
         /**
          * Try to use the offset fields to generate perfect RTP timestamps. When this
          * option is disabled, RTP timestamps are generated from GST_BUFFER_PTS of
@@ -1567,28 +1692,32 @@ export namespace GstRtp {
          */
         get perfectRtptime(): boolean;
         set perfectRtptime(val: boolean);
+
         /**
          * @default 96
          */
         get pt(): number;
         set pt(val: number);
+
         /**
          * Force buffers to be multiples of this duration in ns (0 disables)
          * @default 0
          */
         get ptime_multiple(): number;
-        set ptime_multiple(val: bigint | number);
+        set ptime_multiple(val: (bigint | number));
+
         /**
          * Force buffers to be multiples of this duration in ns (0 disables)
          * @default 0
          */
         get ptimeMultiple(): number;
-        set ptimeMultiple(val: bigint | number);
+        set ptimeMultiple(val: (bigint | number));
+
         /**
          * Make the RTP packets' timestamps be scaled with the segment's rate
          * (corresponding to RTSP speed parameter). Disabling this property means
          * the timestamps will not be affected by the set delivery speed (RTSP speed).
-         *
+         * 
          * Example: A server wants to allow streaming a recorded video in double
          * speed but still have the timestamps correspond to the position in the
          * video. This is achieved by the client setting RTSP Speed to 2 while the
@@ -1598,11 +1727,12 @@ export namespace GstRtp {
          */
         get scale_rtptime(): boolean;
         set scale_rtptime(val: boolean);
+
         /**
          * Make the RTP packets' timestamps be scaled with the segment's rate
          * (corresponding to RTSP speed parameter). Disabling this property means
          * the timestamps will not be affected by the set delivery speed (RTSP speed).
-         *
+         * 
          * Example: A server wants to allow streaming a recorded video in double
          * speed but still have the timestamps correspond to the position in the
          * video. This is achieved by the client setting RTSP Speed to 2 while the
@@ -1612,21 +1742,25 @@ export namespace GstRtp {
          */
         get scaleRtptime(): boolean;
         set scaleRtptime(val: boolean);
+
         /**
          * @read-only
          * @default 0
          */
         get seqnum(): number;
+
         /**
          * @default -1
          */
         get seqnum_offset(): number;
         set seqnum_offset(val: number);
+
         /**
          * @default -1
          */
         get seqnumOffset(): number;
         set seqnumOffset(val: number);
+
         /**
          * Enable writing the CSRC field in allocated RTP header based on RTP source
          * information found in the input buffer's {@link GstRtp.RTPSourceMeta}.
@@ -1635,6 +1769,7 @@ export namespace GstRtp {
          */
         get source_info(): boolean;
         set source_info(val: boolean);
+
         /**
          * Enable writing the CSRC field in allocated RTP header based on RTP source
          * information found in the input buffer's {@link GstRtp.RTPSourceMeta}.
@@ -1643,18 +1778,20 @@ export namespace GstRtp {
          */
         get sourceInfo(): boolean;
         set sourceInfo(val: boolean);
+
         /**
          * @default 4294967295
          */
         get ssrc(): number;
         set ssrc(val: number);
+
         /**
          * Various payloader statistics retrieved atomically (and are therefore
          * synchroized with each other), these can be used e.g. to generate an
          * RTP-Info header. This property return a GstStructure named
          * application/x-rtp-payload-stats containing the following fields relating to
          * the last processed buffer and current state of the stream being payloaded:
-         *
+         * 
          *   * `clock-rate` :#G_TYPE_UINT, clock-rate of the stream
          *   * `running-time` :#G_TYPE_UINT64, running time
          *   * `seqnum` :#G_TYPE_UINT, sequence number, same as {@link GstRtp.RTPBasePayload.seqnum}
@@ -1666,16 +1803,19 @@ export namespace GstRtp {
          * @read-only
          */
         get stats(): Gst.Structure;
+
         /**
          * @read-only
          * @default 0
          */
         get timestamp(): number;
+
         /**
          * @default 4294967295
          */
         get timestamp_offset(): number;
         set timestamp_offset(val: number);
+
         /**
          * @default 4294967295
          */
@@ -1692,79 +1832,73 @@ export namespace GstRtp {
         $signals: RTPBasePayload.SignalSignatures;
 
         // Fields
-
         element: Gst.Element;
 
         // Constructors
-
         constructor(properties?: Partial<RTPBasePayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RTPBasePayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RTPBasePayload.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPBasePayload.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RTPBasePayload.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RTPBasePayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RTPBasePayload.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPBasePayload.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param pad
-         * @param filter
+         * @param pad 
+         * @param filter 
          * @virtual
          */
         vfunc_get_caps(pad: Gst.Pad, filter: Gst.Caps): Gst.Caps;
+
         /**
-         * @param buffer
+         * @param buffer 
          * @virtual
          */
         vfunc_handle_buffer(buffer: Gst.Buffer): Gst.FlowReturn;
+
         /**
-         * @param pad
-         * @param query
+         * @param pad 
+         * @param query 
          * @virtual
          */
         vfunc_query(pad: Gst.Pad, query: Gst.Query): boolean;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
-        // Conflicted with Gst.Element.vfunc_query
+    // Conflicted with Gst.Element.vfunc_query
         vfunc_query(...args: never[]): any;
+
         /**
-         * @param caps
+         * @param caps 
          * @virtual
          */
         vfunc_set_caps(caps: Gst.Caps): boolean;
+
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_sink_event(event: Gst.Event): boolean;
+
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_src_event(event: Gst.Event): boolean;
 
         // Methods
-
         /**
          * Allocate a new {@link Gst.Buffer} with enough data to hold an RTP packet with
          * minimum `csrc_count` CSRCs, a payload length of `payload_len` and padding of
@@ -1776,6 +1910,7 @@ export namespace GstRtp {
          * @returns A newly allocated buffer that can hold an RTP packet with given parameters.
          */
         allocate_output_buffer(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer;
+
         /**
          * Count the total number of RTP sources found in the meta of `buffer`, which
          * will be automically added by `gst_rtp_base_payload_allocate_output_buffer()`.
@@ -1784,6 +1919,7 @@ export namespace GstRtp {
          * @returns The number of sources.
          */
         get_source_count(buffer: Gst.Buffer): number;
+
         /**
          * Check if the packet with `size` and `duration` would exceed the configured
          * maximum size.
@@ -1792,30 +1928,34 @@ export namespace GstRtp {
          * @returns `true` if the packet of `size` and `duration` would exceed the configured MTU or max_ptime.
          */
         is_filled(size: number, duration: Gst.ClockTime): boolean;
+
         /**
          * Queries whether the payloader will add contributing sources (CSRCs) to the
          * RTP header from {@link GstRtp.RTPSourceMeta}.
          * @returns `true` if source-info is enabled.
          */
         is_source_info_enabled(): boolean;
+
         /**
          * Push `buffer` to the peer element of the payloader. The SSRC, payload type,
          * seqnum and timestamp of the RTP buffer will be updated first.
-         *
+         * 
          * This function takes ownership of `buffer`.
          * @param buffer a {@link Gst.Buffer}
          * @returns a {@link Gst.FlowReturn}.
          */
         push(buffer: Gst.Buffer): Gst.FlowReturn;
+
         /**
          * Push `list` to the peer element of the payloader. The SSRC, payload type,
          * seqnum and timestamp of the RTP buffer will be updated first.
-         *
+         * 
          * This function takes ownership of `list`.
          * @param list a {@link Gst.BufferList}
          * @returns a {@link Gst.FlowReturn}.
          */
         push_list(list: Gst.BufferList): Gst.FlowReturn;
+
         /**
          * Set the rtp options of the payloader. These options will be set in the caps
          * of the payloader. Subclasses must call this method before calling
@@ -1826,12 +1966,14 @@ export namespace GstRtp {
          * @param clock_rate the clock rate of the media
          */
         set_options(media: string, dynamic: boolean, encoding_name: string, clock_rate: number): void;
+
         /**
          * Configure the output caps with the optional fields.
          * @param s a {@link Gst.Structure} with the caps fields
          * @returns `true` if the caps could be set.
          */
-        set_outcaps_structure(s: Gst.Structure | null): boolean;
+        set_outcaps_structure(s: (Gst.Structure | null)): boolean;
+
         /**
          * Enable or disable adding contributing sources to RTP packets from
          * {@link GstRtp.RTPSourceMeta}.
@@ -1840,16 +1982,18 @@ export namespace GstRtp {
         set_source_info_enabled(enable: boolean): void;
     }
 
+
     namespace RTPHeaderExtension {
         // Signal signatures
         interface SignalSignatures extends Gst.Element.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.Element.ConstructorProps {
 
-        interface ConstructorProps extends Gst.Element.ConstructorProps {}
+        }
     }
 
     /**
@@ -1870,60 +2014,52 @@ export namespace GstRtp {
         $signals: RTPHeaderExtension.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RTPHeaderExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RTPHeaderExtension.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RTPHeaderExtension.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RTPHeaderExtension.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RTPHeaderExtension.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RTPHeaderExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RTPHeaderExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RTPHeaderExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param uri the rtp header extension URI to search for
          */
-        static create_from_uri(uri: string): RTPHeaderExtension | null;
+        static create_from_uri(uri: string): (RTPHeaderExtension | null);
+
         /**
          * @param uri the RTP Header extension uri for `klass`
          */
         static set_uri(uri: string): void;
 
         // Virtual methods
-
         /**
          * This is used to know how much data a certain header extension will need for
          * both allocating the resulting data, and deciding how much payload data can
          * be generated.
-         *
+         * 
          * Implementations should return as accurate a value as is possible using the
          * information given in the input `buffer`.
          * @param input_meta a {@link Gst.Buffer}
          * @virtual
          */
-        vfunc_get_max_size(input_meta: Gst.Buffer): bigint | number;
+        vfunc_get_max_size(input_meta: Gst.Buffer): (bigint | number);
+
         /**
          * @virtual
          */
         vfunc_get_supported_flags(): RTPHeaderExtensionFlags;
+
         /**
          * Read the RTP header extension from `data`.
          * @param read_flags {@link GstRtp.RTPHeaderExtensionFlags} for how the extension should               be written
@@ -1932,22 +2068,25 @@ export namespace GstRtp {
          * @virtual
          */
         vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean;
+
         /**
-         * @param direction
-         * @param attributes
+         * @param direction 
+         * @param attributes 
          * @virtual
          */
         vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string): boolean;
+
         /**
          * `gst_rtp_header_extension_set_id()` must have been called with a valid
          * extension id that is contained in these caps.
-         *
+         * 
          * The only current known caps format is based on the SDP standard as produced
          * by `gst_sdp_media_attributes_to_caps()`.
          * @param caps writable {@link Gst.Caps} to modify
          * @virtual
          */
         vfunc_set_caps_from_attributes(caps: Gst.Caps): boolean;
+
         /**
          * Passes RTP payloader's sink (i.e. not payloaded) `caps` to the header
          * extension.
@@ -1955,6 +2094,7 @@ export namespace GstRtp {
          * @virtual
          */
         vfunc_set_non_rtp_sink_caps(caps: Gst.Caps): boolean;
+
         /**
          * Updates depayloader src caps based on the information received in RTP header.
          * `caps` must be writable as this function may modify them.
@@ -1962,6 +2102,7 @@ export namespace GstRtp {
          * @virtual
          */
         vfunc_update_non_rtp_src_caps(caps: Gst.Caps): boolean;
+
         /**
          * Writes the RTP header extension to `data` using information available from
          * the `input_meta`.  `data` will be sized to be at least the value returned
@@ -1972,47 +2113,47 @@ export namespace GstRtp {
          * @param data location to write the rtp header extension into
          * @virtual
          */
-        vfunc_write(
-            input_meta: Gst.Buffer,
-            write_flags: RTPHeaderExtensionFlags,
-            output: Gst.Buffer,
-            data: Uint8Array,
-        ): bigint | number;
+        vfunc_write(input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: Uint8Array): (bigint | number);
 
         // Methods
-
         /**
          * Retrieve the direction
          * @returns The direction
          */
         get_direction(): RTPHeaderExtensionDirection;
+
         /**
          * @returns the RTP extension id configured on `ext`
          */
         get_id(): number;
+
         /**
          * This is used to know how much data a certain header extension will need for
          * both allocating the resulting data, and deciding how much payload data can
          * be generated.
-         *
+         * 
          * Implementations should return as accurate a value as is possible using the
          * information given in the input `buffer`.
          * @param input_meta a {@link Gst.Buffer}
          * @returns the maximum size of the data written by this extension
          */
         get_max_size(input_meta: Gst.Buffer): number;
+
         /**
          * @returns the {@link Gst.Structure} field name used in SDP-like {@link Gst.Caps} for this `ext` configuration
          */
         get_sdp_caps_field_name(): string;
+
         /**
          * @returns the flags supported by this instance of `ext`
          */
         get_supported_flags(): RTPHeaderExtensionFlags;
+
         /**
          * @returns the RTP extension URI for this object
          */
-        get_uri(): string | null;
+        get_uri(): (string | null);
+
         /**
          * Read the RTP header extension from `data`.
          * @param read_flags {@link GstRtp.RTPHeaderExtensionFlags} for how the extension should               be written
@@ -2020,39 +2161,43 @@ export namespace GstRtp {
          * @param buffer a {@link Gst.Buffer} to modify if necessary
          * @returns whether the extension could be read from `data`
          */
-        read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array | string, buffer: Gst.Buffer): boolean;
+        read(read_flags: RTPHeaderExtensionFlags, data: (Uint8Array | string), buffer: Gst.Buffer): boolean;
+
         /**
          * `gst_rtp_header_extension_set_id()` must have been called with a valid
          * extension id that is contained in these caps.
-         *
+         * 
          * The only current known caps format is based on the SDP standard as produced
          * by `gst_sdp_media_attributes_to_caps()`.
          * @param caps the {@link Gst.Caps} to configure this extension with
          * @returns whether the `caps` could be successfully set on `ext`.
          */
         set_attributes_from_caps(caps: Gst.Caps): boolean;
+
         /**
          * `gst_rtp_header_extension_set_id()` must have been called with a valid
          * extension id that is contained in these caps.
-         *
+         * 
          * The only current known caps format is based on the SDP standard as produced
          * by `gst_sdp_media_attributes_to_caps()`.
          * @param caps writable {@link Gst.Caps} to modify
          * @returns whether the configured attributes on `ext` can successfully be set on 	`caps`
          */
         set_caps_from_attributes(caps: Gst.Caps): boolean;
+
         /**
          * Helper implementation for GstRTPExtensionClass::set_caps_from_attributes
          * that sets the `ext` uri on caps with the specified extension id as required
          * for sdp {@link Gst.Caps}.
-         *
+         * 
          * Requires that the extension does not have any attributes or direction
          * advertised in `caps`.
          * @param caps {@link Gst.Caps} to write fields into
-         * @param attributes
+         * @param attributes 
          * @returns whether the `ext` attributes could be set on `caps`.
          */
         set_caps_from_attributes_helper(caps: Gst.Caps, attributes: string): boolean;
+
         /**
          * Set the direction that this header extension should be used in.
          * If #GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED is included, the
@@ -2061,11 +2206,13 @@ export namespace GstRtp {
          * @param direction The direction
          */
         set_direction(direction: RTPHeaderExtensionDirection): void;
+
         /**
          * sets the RTP extension id on `ext`
          * @param ext_id The id of this extension
          */
         set_id(ext_id: number): void;
+
         /**
          * Passes RTP payloader's sink (i.e. not payloaded) `caps` to the header
          * extension.
@@ -2073,6 +2220,7 @@ export namespace GstRtp {
          * @returns Whether `caps` could be read successfully
          */
         set_non_rtp_sink_caps(caps: Gst.Caps): boolean;
+
         /**
          * Call this function in a subclass from {@link GstRtp.RTPHeaderExtensionClass.SignalSignatures.read | GstRtp.RTPHeaderExtensionClass::read} to
          * tell the depayloader whether the data just parsed from RTP packet require
@@ -2083,6 +2231,7 @@ export namespace GstRtp {
          * @param state TRUE if caps update is needed
          */
         set_wants_update_non_rtp_src_caps(state: boolean): void;
+
         /**
          * Updates depayloader src caps based on the information received in RTP header.
          * `caps` must be writable as this function may modify them.
@@ -2090,6 +2239,7 @@ export namespace GstRtp {
          * @returns whether `caps` were modified successfully
          */
         update_non_rtp_src_caps(caps: Gst.Caps): boolean;
+
         /**
          * Call this function after `gst_rtp_header_extension_read()` to check if
          * the depayloader's src caps need updating with data received in the last RTP
@@ -2097,6 +2247,7 @@ export namespace GstRtp {
          * @returns Whether `ext` wants to update depayloader's src caps.
          */
         wants_update_non_rtp_src_caps(): boolean;
+
         /**
          * Writes the RTP header extension to `data` using information available from
          * the `input_meta`.  `data` will be sized to be at least the value returned
@@ -2107,21 +2258,17 @@ export namespace GstRtp {
          * @param data location to write the rtp header extension into
          * @returns the size of the data written, < 0 on failure
          */
-        write(
-            input_meta: Gst.Buffer,
-            write_flags: RTPHeaderExtensionFlags,
-            output: Gst.Buffer,
-            data: Uint8Array | string,
-        ): number;
+        write(input_meta: Gst.Buffer, write_flags: RTPHeaderExtensionFlags, output: Gst.Buffer, data: (Uint8Array | string)): number;
     }
+
 
     /**
      * Note: The API in this module is not yet declared stable.
-     *
+     * 
      * The GstRTPCBuffer helper functions makes it easy to parse and create regular
      * {@link Gst.Buffer} objects that contain compound RTCP packets. These buffers are typically
      * of 'application/x-rtcp' {@link Gst.Caps}.
-     *
+     * 
      * An RTCP buffer consists of 1 or more {@link GstRtp.RTCPPacket} structures that you can
      * retrieve with `gst_rtcp_buffer_get_first_packet()`. {@link GstRtp.RTCPPacket} acts as a pointer
      * into the RTCP buffer; you can move to the next packet with
@@ -2132,7 +2279,6 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTCPBuffer>;
 
         // Static methods
-
         /**
          * Open `buffer` for reading or writing, depending on `flags`. The resulting RTCP
          * buffer state is stored in `rtcp`.
@@ -2141,32 +2287,37 @@ export namespace GstRtp {
          * @param rtcp resulting {@link GstRtp.RTCPBuffer}
          */
         static map(buffer: Gst.Buffer, flags: Gst.MapFlags, rtcp: RTCPBuffer): boolean;
+
         /**
          * Create a new buffer for constructing RTCP packets. The packet will have a
          * maximum size of `mtu`.
          * @param mtu the maximum mtu size.
          */
-        static ['new'](mtu: number): Gst.Buffer;
+        static ["new"](mtu: number): Gst.Buffer;
+
         /**
          * Create a new buffer and set the data to a copy of `len`
          * bytes of `data` and the size to `len`. The data will be freed when the buffer
          * is freed.
          * @param data data for the new buffer
          */
-        static new_copy_data(data: Uint8Array | string): Gst.Buffer;
+        static new_copy_data(data: (Uint8Array | string)): Gst.Buffer;
+
         /**
          * Create a new buffer and set the data and size of the buffer to `data` and `len`
          * respectively. `data` will be freed when the buffer is unreffed, so this
          * function transfers ownership of `data` to the new buffer.
          * @param data data for the new buffer
          */
-        static new_take_data(data: Uint8Array | string): Gst.Buffer;
+        static new_take_data(data: (Uint8Array | string)): Gst.Buffer;
+
         /**
          * Check if the data pointed to by `buffer` is a valid RTCP packet using
          * `gst_rtcp_buffer_validate_data()`.
          * @param buffer the buffer to validate
          */
         static validate(buffer: Gst.Buffer): boolean;
+
         /**
          * Check if the `data` and `size` point to the data of a valid compound,
          * non-reduced size RTCP packet.
@@ -2174,18 +2325,20 @@ export namespace GstRtp {
          * this module.
          * @param data the data to validate
          */
-        static validate_data(data: Uint8Array | string): boolean;
+        static validate_data(data: (Uint8Array | string)): boolean;
+
         /**
          * Check if the `data` and `size` point to the data of a valid RTCP packet.
          * Use this function to validate a packet before using the other functions in
          * this module.
-         *
+         * 
          * This function is updated to support reduced size rtcp packets according to
          * RFC 5506 and will validate full compound RTCP packets as well as reduced
          * size RTCP packets.
          * @param data the data to validate
          */
-        static validate_data_reduced(data: Uint8Array | string): boolean;
+        static validate_data_reduced(data: (Uint8Array | string)): boolean;
+
         /**
          * Check if the data pointed to by `buffer` is a valid RTCP packet using
          * `gst_rtcp_buffer_validate_reduced()`.
@@ -2194,7 +2347,6 @@ export namespace GstRtp {
         static validate_reduced(buffer: Gst.Buffer): boolean;
 
         // Methods
-
         /**
          * Add a new packet of `type` to `rtcp`. `packet` will point to the newly created
          * packet.
@@ -2203,6 +2355,7 @@ export namespace GstRtp {
          * @returns `true` if the packet could be created. This function returns `false` if the max mtu is exceeded for the buffer.
          */
         add_packet(type: RTCPType, packet: RTCPPacket): boolean;
+
         /**
          * Initialize a new {@link GstRtp.RTCPPacket} pointer that points to the first packet in
          * `rtcp`.
@@ -2210,20 +2363,23 @@ export namespace GstRtp {
          * @returns TRUE if the packet existed in `rtcp`.
          */
         get_first_packet(packet: RTCPPacket): boolean;
+
         /**
          * Get the number of RTCP packets in `rtcp`.
          * @returns the number of RTCP packets in `rtcp`.
          */
         get_packet_count(): number;
+
         /**
          * Finish `rtcp` after being constructed. This function is usually called
          * after `gst_rtcp_buffer_map()` and after adding the RTCP items to the new buffer.
-         *
+         * 
          * The function adjusts the size of `rtcp` with the total length of all the
          * added packets.
          */
         unmap(): boolean;
     }
+
 
     /**
      * Data structure that points to a packet at `offset` in `buffer`.
@@ -2234,11 +2390,9 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTCPPacket>;
 
         // Fields
-
         offset: number;
 
         // Methods
-
         /**
          * Add profile-specific extension `data` to `packet`. If `packet` already
          * contains profile-specific extension `data` will be appended to the existing
@@ -2246,7 +2400,8 @@ export namespace GstRtp {
          * @param data profile-specific data
          * @returns `true` if the profile specific extension data was added.
          */
-        add_profile_specific_ext(data: Uint8Array | string): boolean;
+        add_profile_specific_ext(data: (Uint8Array | string)): boolean;
+
         /**
          * Add a new report block to `packet` with the given values.
          * @param ssrc data source being reported
@@ -2258,41 +2413,39 @@ export namespace GstRtp {
          * @param dlsr the delay since last SR packet
          * @returns `true` if the packet was created. This function can return `false` if the max MTU is exceeded or the number of report blocks is greater than #GST_RTCP_MAX_RB_COUNT.
          */
-        add_rb(
-            ssrc: number,
-            fractionlost: number,
-            packetslost: number,
-            exthighestseq: number,
-            jitter: number,
-            lsr: number,
-            dlsr: number,
-        ): boolean;
+        add_rb(ssrc: number, fractionlost: number, packetslost: number, exthighestseq: number, jitter: number, lsr: number, dlsr: number): boolean;
+
         /**
          * Get the application-dependent data attached to a RTPFB or PSFB `packet`.
          * @returns A pointer to the data
          */
         app_get_data(): number;
+
         /**
          * Get the length of the application-dependent data attached to an APP
          * `packet`.
          * @returns The length of data in 32-bit words.
          */
         app_get_data_length(): number;
+
         /**
          * Get the name field of the APP `packet`.
          * @returns The 4-byte name field, not zero-terminated.
          */
         app_get_name(): string;
+
         /**
          * Get the SSRC/CSRC field of the APP `packet`.
          * @returns The SSRC/CSRC.
          */
         app_get_ssrc(): number;
+
         /**
          * Get the subtype field of the APP `packet`.
          * @returns The subtype.
          */
         app_get_subtype(): number;
+
         /**
          * Set the length of the application-dependent data attached to an APP
          * `packet`.
@@ -2300,92 +2453,109 @@ export namespace GstRtp {
          * @returns `true` if there was enough space in the packet to add this much data.
          */
         app_set_data_length(wordlen: number): boolean;
+
         /**
          * Set the name field of the APP `packet`.
          * @param name 4-byte ASCII name
          */
         app_set_name(name: string): void;
+
         /**
          * Set the SSRC/CSRC field of the APP `packet`.
          * @param ssrc SSRC/CSRC of the packet
          */
         app_set_ssrc(ssrc: number): void;
+
         /**
          * Set the subtype field of the APP `packet`.
          * @param subtype subtype of the packet
          */
         app_set_subtype(subtype: number): void;
+
         /**
          * Add `ssrc` to the BYE `packet`.
          * @param ssrc an SSRC to add
          * @returns `true` if the ssrc was added. This function can return `false` if the max MTU is exceeded or the number of sources blocks is greater than #GST_RTCP_MAX_BYE_SSRC_COUNT.
          */
         bye_add_ssrc(ssrc: number): boolean;
+
         /**
          * Adds `len` SSRCs in `ssrc` to BYE `packet`.
          * @param ssrc an array of SSRCs to add
          * @returns `true` if the all the SSRCs were added. This function can return `false` if the max MTU is exceeded or the number of sources blocks is greater than #GST_RTCP_MAX_BYE_SSRC_COUNT.
          */
         bye_add_ssrcs(ssrc: number[]): boolean;
+
         /**
          * Get the `nth` SSRC of the BYE `packet`.
          * @param nth the nth SSRC to get
          * @returns The `nth` SSRC of `packet`.
          */
         bye_get_nth_ssrc(nth: number): number;
+
         /**
          * Get the reason in `packet`.
          * @returns The reason for the BYE `packet` or NULL if the packet did not contain a reason string. The string must be freed with `g_free()` after usage.
          */
-        bye_get_reason(): string | null;
+        bye_get_reason(): (string | null);
+
         /**
          * Get the length of the reason string.
          * @returns The length of the reason string or 0 when there is no reason string present.
          */
         bye_get_reason_len(): number;
+
         /**
          * Get the number of SSRC fields in `packet`.
          * @returns The number of SSRC fields in `packet`.
          */
         bye_get_ssrc_count(): number;
+
         /**
          * Set the reason string to `reason` in `packet`.
          * @param reason a reason string
          * @returns TRUE if the string could be set.
          */
         bye_set_reason(reason: string): boolean;
+
         /**
          * The profile-specific extension data is copied into a new allocated
          * memory area `data`. This must be freed with `g_free()` after usage.
          * @returns `true` if there was valid data.
          */
         copy_profile_specific_ext(): [boolean, Uint8Array];
+
         /**
          * Get the Feedback Control Information attached to a RTPFB or PSFB `packet`.
          * @returns a pointer to the FCI
          */
         fb_get_fci(): number;
+
         /**
          * Get the length of the Feedback Control Information attached to a
          * RTPFB or PSFB `packet`.
          * @returns The length of the FCI in 32-bit words.
          */
         fb_get_fci_length(): number;
+
         /**
          * Get the media SSRC field of the RTPFB or PSFB `packet`.
          * @returns the media SSRC.
          */
         fb_get_media_ssrc(): number;
+
         /**
          * Get the sender SSRC field of the RTPFB or PSFB `packet`.
          * @returns the sender SSRC.
          */
         fb_get_sender_ssrc(): number;
+
         /**
          * Get the feedback message type of the FB `packet`.
          * @returns The feedback message type.
          */
         fb_get_type(): RTCPFBType;
+
         /**
          * Set the length of the Feedback Control Information attached to a
          * RTPFB or PSFB `packet`.
@@ -2393,95 +2563,113 @@ export namespace GstRtp {
          * @returns `true` if there was enough space in the packet to add this much FCI
          */
         fb_set_fci_length(wordlen: number): boolean;
+
         /**
          * Set the media SSRC field of the RTPFB or PSFB `packet`.
          * @param ssrc a media SSRC
          */
         fb_set_media_ssrc(ssrc: number): void;
+
         /**
          * Set the sender SSRC field of the RTPFB or PSFB `packet`.
          * @param ssrc a sender SSRC
          */
         fb_set_sender_ssrc(ssrc: number): void;
+
         /**
          * Set the feedback message type of the FB `packet`.
          * @param type the {@link GstRtp.RTCPFBType} to set
          */
         fb_set_type(type: RTCPFBType): void;
+
         /**
          * Get the count field in `packet`.
          * @returns The count field in `packet` or -1 if `packet` does not point to a valid packet.
          */
         get_count(): number;
+
         /**
          * Get the length field of `packet`. This is the length of the packet in
          * 32-bit words minus one.
          * @returns The length field of `packet`.
          */
         get_length(): number;
+
         /**
          * Get the packet padding of the packet pointed to by `packet`.
          * @returns If the packet has the padding bit set.
          */
         get_padding(): boolean;
+
         /**
          * @returns `true` if there was valid data.
          */
         get_profile_specific_ext(): [boolean, Uint8Array];
+
         /**
          * @returns The number of 32-bit words containing profile-specific extension          data from `packet`.
          */
         get_profile_specific_ext_length(): number;
+
         /**
          * Parse the values of the `nth` report block in `packet` and store the result in
          * the values.
          * @param nth the nth report block in `packet`
          */
         get_rb(nth: number): [number, number, number, number, number, number, number];
+
         /**
          * Get the number of report blocks in `packet`.
          * @returns The number of report blocks in `packet`.
          */
         get_rb_count(): number;
+
         /**
          * Get the packet type of the packet pointed to by `packet`.
          * @returns The packet type or GST_RTCP_TYPE_INVALID when `packet` is not pointing to a valid packet.
          */
         get_type(): RTCPType;
+
         /**
          * Move the packet pointer `packet` to the next packet in the payload.
          * Use `gst_rtcp_buffer_get_first_packet()` to initialize `packet`.
          * @returns TRUE if `packet` is pointing to a valid packet after calling this function.
          */
         move_to_next(): boolean;
+
         /**
          * Removes the packet pointed to by `packet` and moves pointer to the next one
          * @returns TRUE if `packet` is pointing to a valid packet after calling this function.
          */
         remove(): boolean;
+
         /**
          * Get the ssrc field of the RR `packet`.
          * @returns the ssrc.
          */
         rr_get_ssrc(): number;
+
         /**
          * Set the ssrc field of the RR `packet`.
          * @param ssrc the SSRC to set
          */
         rr_set_ssrc(ssrc: number): void;
+
         /**
          * Add a new SDES entry to the current item in `packet`.
          * @param type the {@link GstRtp.RTCPSDESType} of the SDES entry
          * @param data the data
          * @returns `true` if the item could be added, `false` if the MTU has been reached.
          */
-        sdes_add_entry(type: RTCPSDESType, data: Uint8Array | string): boolean;
+        sdes_add_entry(type: RTCPSDESType, data: (Uint8Array | string)): boolean;
+
         /**
          * Add a new SDES item for `ssrc` to `packet`.
          * @param ssrc the SSRC of the new item to add
          * @returns `true` if the item could be added, `false` if the maximum amount of items has been exceeded for the SDES packet or the MTU has been reached.
          */
         sdes_add_item(ssrc: number): boolean;
+
         /**
          * This function is like `gst_rtcp_packet_sdes_get_entry()` but it returns a
          * null-terminated copy of the data instead. use `g_free()` after usage.
@@ -2489,21 +2677,24 @@ export namespace GstRtp {
          * @returns `true` if there was valid data.
          */
         sdes_copy_entry(type: RTCPSDESType): [boolean, Uint8Array];
+
         /**
          * Move to the first SDES entry in the current item.
          * @returns `true` if there was a first entry.
          */
         sdes_first_entry(): boolean;
+
         /**
          * Move to the first SDES item in `packet`.
          * @returns TRUE if there was a first item.
          */
         sdes_first_item(): boolean;
+
         /**
          * Get the data of the current SDES item entry. `type` (when not NULL) will
          * contain the type of the entry. `data` (when not NULL) will point to `len`
          * bytes.
-         *
+         * 
          * When `type` refers to a text item, `data` will point to a UTF8 string. Note
          * that this UTF8 string is NOT null-terminated. Use
          * `gst_rtcp_packet_sdes_copy_entry()` to get a null-terminated copy of the entry.
@@ -2511,29 +2702,34 @@ export namespace GstRtp {
          * @returns `true` if there was valid data.
          */
         sdes_get_entry(type: RTCPSDESType): [boolean, Uint8Array];
+
         /**
          * Get the number of items in the SDES packet `packet`.
          * @returns The number of items in `packet`.
          */
         sdes_get_item_count(): number;
+
         /**
          * Get the SSRC of the current SDES item.
          * @returns the SSRC of the current item.
          */
         sdes_get_ssrc(): number;
+
         /**
          * Move to the next SDES entry in the current item.
          * @returns `true` if there was a next entry.
          */
         sdes_next_entry(): boolean;
+
         /**
          * Move to the next SDES item in `packet`.
          * @returns TRUE if there was a next item.
          */
         sdes_next_item(): boolean;
+
         /**
          * Set the `nth` new report block in `packet` with the given values.
-         *
+         * 
          * Note: Not implemented.
          * @param nth the nth report block to set
          * @param ssrc data source being reported
@@ -2544,20 +2740,13 @@ export namespace GstRtp {
          * @param lsr the last SR packet from this source
          * @param dlsr the delay since last SR packet
          */
-        set_rb(
-            nth: number,
-            ssrc: number,
-            fractionlost: number,
-            packetslost: number,
-            exthighestseq: number,
-            jitter: number,
-            lsr: number,
-            dlsr: number,
-        ): void;
+        set_rb(nth: number, ssrc: number, fractionlost: number, packetslost: number, exthighestseq: number, jitter: number, lsr: number, dlsr: number): void;
+
         /**
          * Parse the SR sender info and store the values.
          */
         sr_get_sender_info(): [number, number, number, number, number];
+
         /**
          * Set the given values in the SR packet `packet`.
          * @param ssrc the SSRC
@@ -2566,27 +2755,25 @@ export namespace GstRtp {
          * @param packet_count the packet count
          * @param octet_count the octet count
          */
-        sr_set_sender_info(
-            ssrc: number,
-            ntptime: bigint | number,
-            rtptime: number,
-            packet_count: number,
-            octet_count: number,
-        ): void;
+        sr_set_sender_info(ssrc: number, ntptime: (bigint | number), rtptime: number, packet_count: number, octet_count: number): void;
+
         /**
          * Move to the first extended report block in XR `packet`.
          * @returns TRUE if there was a first extended report block.
          */
         xr_first_rb(): boolean;
+
         /**
          * @returns The number of 32-bit words containing type-specific block          data from `packet`.
          */
         xr_get_block_length(): number;
+
         /**
          * Get the extended report block type of the XR `packet`.
          * @returns The extended report block type.
          */
         xr_get_block_type(): RTCPXRType;
+
         /**
          * Parse the extended report block for DLRR report block type.
          * @param nth the index of sub-block to retrieve.
@@ -2596,6 +2783,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_dlrr_block(nth: number, ssrc: number, last_rr: number, delay: number): boolean;
+
         /**
          * Retrieve the packet receipt time of `seq` which ranges in [begin_seq, end_seq).
          * @param seq the sequence to retrieve the time.
@@ -2603,6 +2791,7 @@ export namespace GstRtp {
          * @returns `true` if the report block returns the receipt time correctly.
          */
         xr_get_prt_by_seq(seq: number, receipt_time: number): boolean;
+
         /**
          * Parse the Packet Recept Times Report Block from a XR `packet`
          * @param ssrc the SSRC of the RTP data packet source being reported upon by this report block.
@@ -2612,6 +2801,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_prt_info(ssrc: number, thinning: number, begin_seq: number, end_seq: number): boolean;
+
         /**
          * Parse the extended report block for Loss RLE and Duplicated LRE block type.
          * @param ssrc the SSRC of the RTP data packet source being reported upon by this report block.
@@ -2621,13 +2811,8 @@ export namespace GstRtp {
          * @param chunk_count the number of chunks calculated by block length.
          * @returns `true` if the report block is correctly parsed.
          */
-        xr_get_rle_info(
-            ssrc: number,
-            thinning: number,
-            begin_seq: number,
-            end_seq: number,
-            chunk_count: number,
-        ): boolean;
+        xr_get_rle_info(ssrc: number, thinning: number, begin_seq: number, end_seq: number, chunk_count: number): boolean;
+
         /**
          * Retrieve actual chunk data.
          * @param nth the index of chunk to retrieve.
@@ -2635,16 +2820,19 @@ export namespace GstRtp {
          * @returns `true` if the report block returns chunk correctly.
          */
         xr_get_rle_nth_chunk(nth: number, chunk: number): boolean;
+
         /**
          * @param timestamp NTP timestamp
          * @returns `true` if the report block returns the reference time correctly.
          */
-        xr_get_rrt(timestamp: bigint | number): boolean;
+        xr_get_rrt(timestamp: (bigint | number)): boolean;
+
         /**
          * Get the ssrc field of the XR `packet`.
          * @returns the ssrc.
          */
         xr_get_ssrc(): number;
+
         /**
          * Extract a basic information from static summary report block of XR `packet`.
          * @param ssrc the SSRC of the source.
@@ -2653,6 +2841,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_summary_info(ssrc: number, begin_seq: number, end_seq: number): boolean;
+
         /**
          * Extract jitter information from the statistics summary. If the jitter flag in
          * a block header is set as zero, all of jitters will be zero.
@@ -2663,6 +2852,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_summary_jitter(min_jitter: number, max_jitter: number, mean_jitter: number, dev_jitter: number): boolean;
+
         /**
          * Get the number of lost or duplicate packets. If the flag in a block header
          * is set as zero, `lost_packets` or `dup_packets` will be zero.
@@ -2671,6 +2861,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_summary_pkt(lost_packets: number, dup_packets: number): boolean;
+
         /**
          * Extract the value of ttl for ipv4, or hop limit for ipv6.
          * @param is_ipv4 the flag to indicate that the return values are ipv4 ttl or ipv6 hop limits.
@@ -2680,13 +2871,8 @@ export namespace GstRtp {
          * @param dev_ttl the standard deviation of the TTL or Hop Limit value of data packets between two sequences.
          * @returns `true` if the report block is correctly parsed.
          */
-        xr_get_summary_ttl(
-            is_ipv4: boolean,
-            min_ttl: number,
-            max_ttl: number,
-            mean_ttl: number,
-            dev_ttl: number,
-        ): boolean;
+        xr_get_summary_ttl(is_ipv4: boolean, min_ttl: number, max_ttl: number, mean_ttl: number, dev_ttl: number): boolean;
+
         /**
          * @param burst_density the fraction of RTP data packets within burst periods.
          * @param gap_density the fraction of RTP data packets within inter-burst gaps.
@@ -2694,24 +2880,22 @@ export namespace GstRtp {
          * @param gap_duration the mean duration(ms) of the gap periods.
          * @returns `true` if the report block is correctly parsed.
          */
-        xr_get_voip_burst_metrics(
-            burst_density: number,
-            gap_density: number,
-            burst_duration: number,
-            gap_duration: number,
-        ): boolean;
+        xr_get_voip_burst_metrics(burst_density: number, gap_density: number, burst_duration: number, gap_duration: number): boolean;
+
         /**
          * @param gmin the gap threshold.
          * @param rx_config the receiver configuration byte.
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_configuration_params(gmin: number, rx_config: number): boolean;
+
         /**
          * @param roundtrip_delay the most recently calculated round trip time between RTP interfaces(ms)
          * @param end_system_delay the most recently estimated end system delay(ms)
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_delay_metrics(roundtrip_delay: number, end_system_delay: number): boolean;
+
         /**
          * @param jb_nominal the current nominal jitter buffer delay(ms)
          * @param jb_maximum the current maximum jitter buffer delay(ms)
@@ -2719,17 +2903,20 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_jitter_buffer_params(jb_nominal: number, jb_maximum: number, jb_abs_max: number): boolean;
+
         /**
          * @param ssrc the SSRC of source
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_metrics_ssrc(ssrc: number): boolean;
+
         /**
          * @param loss_rate the fraction of RTP data packets from the source lost.
          * @param discard_rate the fraction of RTP data packets from the source that have been discarded.
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_packet_metrics(loss_rate: number, discard_rate: number): boolean;
+
         /**
          * @param r_factor the R factor is a voice quality metric describing the segment of the call.
          * @param ext_r_factor the external R factor is a voice quality metric.
@@ -2738,6 +2925,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_quality_metrics(r_factor: number, ext_r_factor: number, mos_lq: number, mos_cq: number): boolean;
+
         /**
          * @param signal_level the ratio of the signal level to a 0 dBm reference.
          * @param noise_level the ratio of the silent period background noise level to a 0 dBm reference.
@@ -2746,6 +2934,7 @@ export namespace GstRtp {
          * @returns `true` if the report block is correctly parsed.
          */
         xr_get_voip_signal_metrics(signal_level: number, noise_level: number, rerl: number, gmin: number): boolean;
+
         /**
          * Move to the next extended report block in XR `packet`.
          * @returns TRUE if there was a next extended report block.
@@ -2753,10 +2942,12 @@ export namespace GstRtp {
         xr_next_rb(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RTPBaseAudioPayloadClass = typeof RTPBaseAudioPayload;
+
     /**
      * @gir-type Struct
      */
@@ -2764,10 +2955,12 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBaseAudioPayloadPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RTPBaseDepayloadClass = typeof RTPBaseDepayload;
+
     /**
      * @gir-type Struct
      */
@@ -2775,16 +2968,19 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBaseDepayloadPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RTPBasePayloadClass = typeof RTPBasePayload;
+
     /**
      * @gir-type Struct
      */
     abstract class RTPBasePayloadPrivate {
         static $gtype: GObject.GType<RTPBasePayloadPrivate>;
     }
+
 
     /**
      * The GstRTPBuffer helper functions makes it easy to parse and create regular
@@ -2796,14 +2992,15 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPBuffer>;
 
         // Fields
-
         state: number;
+
         data: any[];
+
         size: number[];
+
         map: Gst.MapInfo[];
 
         // Static methods
-
         /**
          * Allocate enough data in `buffer` to hold an RTP packet with `csrc_count` CSRCs,
          * a payload length of `payload_len` and padding of `pad_len`.
@@ -2816,12 +3013,14 @@ export namespace GstRtp {
          * @param csrc_count the number of CSRC entries
          */
         static allocate_data(buffer: Gst.Buffer, payload_len: number, pad_len: number, csrc_count: number): void;
+
         /**
          * Calculate the header length of an RTP packet with `csrc_count` CSRC entries.
          * An RTP packet can have at most 15 CSRC entries.
          * @param csrc_count the number of CSRC entries
          */
         static calc_header_len(csrc_count: number): number;
+
         /**
          * Calculate the total length of an RTP packet with a payload size of `payload_len`,
          * a padding of `pad_len` and a `csrc_count` CSRC entries.
@@ -2830,6 +3029,7 @@ export namespace GstRtp {
          * @param csrc_count the number of CSRC entries
          */
         static calc_packet_len(payload_len: number, pad_len: number, csrc_count: number): number;
+
         /**
          * Calculate the length of the payload of an RTP packet with size `packet_len`,
          * a padding of `pad_len` and a `csrc_count` CSRC entries.
@@ -2838,6 +3038,7 @@ export namespace GstRtp {
          * @param csrc_count the number of CSRC entries
          */
         static calc_payload_len(packet_len: number, pad_len: number, csrc_count: number): number;
+
         /**
          * Compare two sequence numbers, taking care of wraparounds. This function
          * returns the difference between `seqnum1` and `seqnum2`.
@@ -2845,16 +3046,18 @@ export namespace GstRtp {
          * @param seqnum2 a sequence number
          */
         static compare_seqnum(seqnum1: number, seqnum2: number): number;
+
         /**
          * Get the default clock-rate for the static payload type `payload_type`.
          * @param payload_type the static payload type
          */
         static default_clock_rate(payload_type: number): number;
+
         /**
          * Update the `exttimestamp` field with the extended timestamp of `timestamp`
          * For the first call of the method, `exttimestamp` should point to a location
          * with a value of -1.
-         *
+         * 
          * This function is able to handle both forward and backward timestamps taking
          * into account:
          *   - timestamp wraparound making sure that the returned value is properly increased.
@@ -2862,7 +3065,8 @@ export namespace GstRtp {
          * @param exttimestamp a previous extended timestamp
          * @param timestamp a new timestamp
          */
-        static ext_timestamp(exttimestamp: bigint | number, timestamp: number): [number, number];
+        static ext_timestamp(exttimestamp: (bigint | number), timestamp: number): [number, number];
+
         /**
          * Similar to gst_rtp_buffer_get_extension_onebyte_header, but working
          * on the {@link GLib.Bytes} you get from gst_rtp_buffer_get_extension_bytes.
@@ -2873,18 +3077,15 @@ export namespace GstRtp {
          * @param id The ID of the header extension to be read (between 1 and 14).
          * @param nth Read the nth extension packet with the requested ID
          */
-        static get_extension_onebyte_header_from_bytes(
-            bytes: GLib.Bytes | Uint8Array,
-            bit_pattern: number,
-            id: number,
-            nth: number,
-        ): [boolean, Uint8Array];
+        static get_extension_onebyte_header_from_bytes(bytes: (GLib.Bytes | Uint8Array), bit_pattern: number, id: number, nth: number): [boolean, Uint8Array];
+
         /**
          * Map the contents of `buffer` into `rtp`.
          * @param buffer a {@link Gst.Buffer}
          * @param flags {@link Gst.MapFlags}
          */
         static map(buffer: Gst.Buffer, flags: Gst.MapFlags): [boolean, RTPBuffer];
+
         /**
          * Allocate a new {@link Gst.Buffer} with enough data to hold an RTP packet with
          * `csrc_count` CSRCs, a payload length of `payload_len` and padding of `pad_len`.
@@ -2894,6 +3095,7 @@ export namespace GstRtp {
          * @param csrc_count the number of CSRC entries
          */
         static new_allocate(payload_len: number, pad_len: number, csrc_count: number): Gst.Buffer;
+
         /**
          * Create a new {@link Gst.Buffer} that can hold an RTP packet that is exactly
          * `packet_len` long. The length of the payload depends on `pad_len` and
@@ -2904,23 +3106,24 @@ export namespace GstRtp {
          * @param csrc_count the number of CSRC entries
          */
         static new_allocate_len(packet_len: number, pad_len: number, csrc_count: number): Gst.Buffer;
+
         /**
          * Create a new buffer and set the data to a copy of `len`
          * bytes of `data` and the size to `len`. The data will be freed when the buffer
          * is freed.
          * @param data data for the new   buffer
          */
-        static new_copy_data(data: Uint8Array | string): Gst.Buffer;
+        static new_copy_data(data: (Uint8Array | string)): Gst.Buffer;
+
         /**
          * Create a new buffer and set the data and size of the buffer to `data` and `len`
          * respectively. `data` will be freed when the buffer is unreffed, so this
          * function transfers ownership of `data` to the new buffer.
          * @param data data for the new buffer
          */
-        static new_take_data(data: Uint8Array | string): Gst.Buffer;
+        static new_take_data(data: (Uint8Array | string)): Gst.Buffer;
 
         // Methods
-
         /**
          * Adds a RFC 5285 header extension with a one byte header to the end of the
          * RTP header. If there is already a RFC 5285 header extension with a one byte
@@ -2933,7 +3136,8 @@ export namespace GstRtp {
          * @param data location for data
          * @returns `true` if header extension could be added
          */
-        add_extension_onebyte_header(id: number, data: Uint8Array | string): boolean;
+        add_extension_onebyte_header(id: number, data: (Uint8Array | string)): boolean;
+
         /**
          * Adds a RFC 5285 header extension with a two bytes header to the end of the
          * RTP header. If there is already a RFC 5285 header extension with a two bytes
@@ -2947,35 +3151,40 @@ export namespace GstRtp {
          * @param data location for data
          * @returns `true` if header extension could be added
          */
-        add_extension_twobytes_header(appbits: number, id: number, data: Uint8Array | string): boolean;
+        add_extension_twobytes_header(appbits: number, id: number, data: (Uint8Array | string)): boolean;
+
         /**
          * Get the CSRC at index `idx` in `buffer`.
          * @param idx the index of the CSRC to get
          * @returns the CSRC at index `idx` in host order.
          */
         get_csrc(idx: number): number;
+
         /**
          * Get the CSRC count of the RTP packet in `buffer`.
          * @returns the CSRC count of `buffer`.
          */
         get_csrc_count(): number;
+
         /**
          * Check if the extension bit is set on the RTP packet in `buffer`.
          * @returns TRUE if `buffer` has the extension bit set.
          */
         get_extension(): boolean;
+
         /**
          * Similar to gst_rtp_buffer_get_extension_data, but more suitable for language
          * bindings usage. `bits` will contain the extension 16 bits of custom data and
          * the extension data (not including the extension header) is placed in a new
          * {@link GLib.Bytes} structure.
-         *
+         * 
          * If `rtp` did not contain an extension, this function will return `null`, with
          * `bits` unchanged. If there is an extension header but no extension data then
          * an empty {@link GLib.Bytes} will be returned.
          * @returns A new {@link GLib.Bytes} if an extension header was present and `null` otherwise.
          */
-        get_extension_data(): [GLib.Bytes | null, number];
+        get_extension_data(): [(GLib.Bytes | null), number];
+
         /**
          * Parses RFC 5285 style header extensions with a one byte header. It will
          * return the nth extension with the requested id.
@@ -2984,6 +3193,7 @@ export namespace GstRtp {
          * @returns TRUE if `buffer` had the requested header extension
          */
         get_extension_onebyte_header(id: number, nth: number): [boolean, Uint8Array | null];
+
         /**
          * Parses RFC 5285 style header extensions with a two bytes header. It will
          * return the nth extension with the requested id.
@@ -2992,27 +3202,32 @@ export namespace GstRtp {
          * @returns TRUE if `buffer` had the requested header extension
          */
         get_extension_twobytes_header(id: number, nth: number): [boolean, number, Uint8Array | null];
+
         /**
          * Return the total length of the header in `buffer`. This include the length of
          * the fixed header, the CSRC list and the extension header.
          * @returns The total length of the header in `buffer`.
          */
         get_header_len(): number;
+
         /**
          * Check if the marker bit is set on the RTP packet in `buffer`.
          * @returns TRUE if `buffer` has the marker bit set.
          */
         get_marker(): boolean;
+
         /**
          * Return the total length of the packet in `buffer`.
          * @returns The total length of the packet in `buffer`.
          */
         get_packet_len(): number;
+
         /**
          * Check if the padding bit is set on the RTP packet in `buffer`.
          * @returns TRUE if `buffer` has the padding bit set.
          */
         get_padding(): boolean;
+
         /**
          * Create a buffer of the payload of the RTP packet in `buffer`. This function
          * will internally create a subbuffer of `buffer` so that a memcpy can be
@@ -3020,18 +3235,21 @@ export namespace GstRtp {
          * @returns A new buffer with the data of the payload.
          */
         get_payload_buffer(): Gst.Buffer;
+
         /**
          * Similar to gst_rtp_buffer_get_payload, but more suitable for language
          * bindings usage. The return value is a pointer to a {@link GLib.Bytes} structure
          * containing the payload data in `rtp`.
          * @returns A new {@link GLib.Bytes} containing the payload data in `rtp`.
          */
-        get_payload(): GLib.Bytes | null;
+        get_payload(): (GLib.Bytes | null);
+
         /**
          * Get the length of the payload of the RTP packet in `buffer`.
          * @returns The length of the payload in `buffer`.
          */
         get_payload_len(): number;
+
         /**
          * Create a subbuffer of the payload of the RTP packet in `buffer`. `offset` bytes
          * are skipped in the payload and the subbuffer will be of size `len`.
@@ -3041,121 +3259,142 @@ export namespace GstRtp {
          * @returns A new buffer with the specified data of the payload.
          */
         get_payload_subbuffer(offset: number, len: number): Gst.Buffer;
+
         /**
          * Get the payload type of the RTP packet in `buffer`.
          * @returns The payload type.
          */
         get_payload_type(): number;
+
         /**
          * Get the sequence number of the RTP packet in `buffer`.
          * @returns The sequence number in host order.
          */
         get_seq(): number;
+
         /**
          * Get the SSRC of the RTP packet in `buffer`.
          * @returns the SSRC of `buffer` in host order.
          */
         get_ssrc(): number;
+
         /**
          * Get the timestamp of the RTP packet in `buffer`.
          * @returns The timestamp in host order.
          */
         get_timestamp(): number;
+
         /**
          * Get the version number of the RTP packet in `buffer`.
          * @returns The version of `buffer`.
          */
         get_version(): number;
+
         /**
          * Set the amount of padding in the RTP packet in `buffer` to
          * `len`. If `len` is 0, the padding is removed.
-         *
+         * 
          * NOTE: This function does not work correctly.
          * @param len the new amount of padding
          */
         pad_to(len: number): void;
+
         /**
          * Unsets the extension bit of the RTP buffer and removes the extension header
          * and data.
-         *
+         * 
          * If the RTP buffer has no header extension data, the action has no effect.
          * The RTP buffer must be mapped READWRITE only once and the underlying
          * GstBuffer must be writable.
          */
         remove_extension_data(): void;
+
         /**
          * Modify the CSRC at index `idx` in `buffer` to `csrc`.
          * @param idx the CSRC index to set
          * @param csrc the CSRC in host order to set at `idx`
          */
         set_csrc(idx: number, csrc: number): void;
+
         /**
          * Set the extension bit on the RTP packet in `buffer` to `extension`.
          * @param extension the new extension
          */
         set_extension(extension: boolean): void;
+
         /**
          * Set the extension bit of the rtp buffer and fill in the `bits` and `length` of the
          * extension header. If the existing extension data is not large enough, it will
          * be made larger.
-         *
+         * 
          * Will also shorten the extension data from 1.20.
          * @param bits the bits specific for the extension
          * @param length the length that counts the number of 32-bit words in the extension, excluding the extension header ( therefore zero is a valid length)
          * @returns True if done.
          */
         set_extension_data(bits: number, length: number): boolean;
+
         /**
          * Set the marker bit on the RTP packet in `buffer` to `marker`.
          * @param marker the new marker
          */
         set_marker(marker: boolean): void;
+
         /**
          * Set the total `rtp` size to `len`. The data in the buffer will be made
          * larger if needed. Any padding will be removed from the packet.
          * @param len the new packet length
          */
         set_packet_len(len: number): void;
+
         /**
          * Set the padding bit on the RTP packet in `buffer` to `padding`.
          * @param padding the new padding
          */
         set_padding(padding: boolean): void;
+
         /**
          * Set the payload type of the RTP packet in `buffer` to `payload_type`.
          * @param payload_type the new type
          */
         set_payload_type(payload_type: number): void;
+
         /**
          * Set the sequence number of the RTP packet in `buffer` to `seq`.
          * @param seq the new sequence number
          */
         set_seq(seq: number): void;
+
         /**
          * Set the SSRC on the RTP packet in `buffer` to `ssrc`.
          * @param ssrc the new SSRC
          */
         set_ssrc(ssrc: number): void;
+
         /**
          * Set the timestamp of the RTP packet in `buffer` to `timestamp`.
          * @param timestamp the new timestamp
          */
         set_timestamp(timestamp: number): void;
+
         /**
          * Set the version of the RTP packet in `buffer` to `version`.
          * @param version the new version
          */
         set_version(version: number): void;
+
         /**
          * Unmap `rtp` previously mapped with `gst_rtp_buffer_map()`.
          */
         unmap(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RTPHeaderExtensionClass = typeof RTPHeaderExtension;
+
     /**
      * Structure holding default payload type information.
      * @gir-type Struct
@@ -3164,47 +3403,50 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPPayloadInfo>;
 
         // Fields
-
         payload_type: number;
+
         media: string;
+
         encoding_name: string;
+
         clock_rate: number;
+
         encoding_parameters: string;
+
         bitrate: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                payload_type: number;
-                media: string;
-                encoding_name: string;
-                clock_rate: number;
-                encoding_parameters: string;
-                bitrate: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            payload_type: number;
+            media: string;
+            encoding_name: string;
+            clock_rate: number;
+            encoding_parameters: string;
+            bitrate: number;
+        }>);
 
         // Static methods
-
         /**
          * Get the {@link GstRtp.RTPPayloadInfo} for `media` and `encoding_name`. This function is
          * mostly used to get the default clock-rate and bandwidth for dynamic payload
          * types specified with `media` and `encoding` name.
-         *
+         * 
          * The search for `encoding_name` will be performed in a case insensitive way.
          * @param media the media to find
          * @param encoding_name the encoding name to find
          */
-        static for_name(media: string, encoding_name: string): RTPPayloadInfo | null;
+        static for_name(media: string, encoding_name: string): (RTPPayloadInfo | null);
+
         /**
          * Get the {@link GstRtp.RTPPayloadInfo} for `payload_type`. This function is
          * mostly used to get the default clock-rate and bandwidth for static payload
          * types specified with `payload_type`.
          * @param payload_type the payload_type to find
          */
-        static for_pt(payload_type: number): RTPPayloadInfo | null;
+        static for_pt(payload_type: number): (RTPPayloadInfo | null);
     }
+
 
     /**
      * Meta describing the source(s) of the buffer.
@@ -3215,42 +3457,46 @@ export namespace GstRtp {
         static $gtype: GObject.GType<RTPSourceMeta>;
 
         // Fields
-
         ssrc: number;
+
         ssrc_valid: boolean;
+
         csrc: number[];
+
         csrc_count: number;
 
         // Static methods
-
         static get_info(): Gst.MetaInfo;
 
         // Methods
-
         /**
          * Appends `csrc` to the list of contributing sources in `meta`.
          * @param csrc the csrcs to append
          * @returns `true` if all elements in `csrc` was added, `false` otherwise.
          */
         append_csrc(csrc: number[]): boolean;
+
         /**
          * Count the total number of RTP sources found in `meta`, both SSRC and CSRC.
          * @returns The number of RTP sources
          */
         get_source_count(): number;
+
         /**
          * Sets `ssrc` in `meta`. If `ssrc` is `null` the ssrc of `meta` will be unset.
          * @param ssrc pointer to the SSRC
          * @returns `true` on success, `false` otherwise.
          */
-        set_ssrc(ssrc: number | null): boolean;
+        set_ssrc(ssrc: (number | null)): boolean;
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

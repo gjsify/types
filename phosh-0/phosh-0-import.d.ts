@@ -1,3 +1,4 @@
+
 import type Phosh0 from '@girs/phosh-0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

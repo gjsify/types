@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,9 +19,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Ags {
+
     /**
      * Ags-6.0
      */
+
 
     /**
      * @gir-type Enum
@@ -44,6 +47,7 @@ export namespace Ags {
         BYTE_ORDER_BE,
     }
 
+
     /**
      * Enum values to indicated failures to used with {@link GLib.Error}-struct.
      * @gir-type Enum
@@ -55,6 +59,7 @@ export namespace Ags {
         FILE_ERROR_PARSER_FAILURE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -62,27 +67,40 @@ export namespace Ags {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static BAD_BACK_REFERENCE: number;
+
         static BAD_PATTERN: number;
+
         static BAD_REPETITION: number;
+
         static UNMATCHED_BRACE_INTERVAL_OPERATORS: number;
+
         static UNMATCHED_BRACKET_LIST_OPERATORS: number;
+
         static INVALID_COLLATING_ELEMENT: number;
+
         static UNKNOWN_CHARACTER_CLASS_NAME: number;
+
         static NON_SPECIFIC_ERROR: number;
+
         static TRAILING_BACKSLASH: number;
+
         static UNMATCHED_PARENTHESIS_GROUP_OPERATORS: number;
+
         static INVALID_RANGE_OPERATOR: number;
+
         static PATTERN_BUFFER_LARGER_THAN_64KB: number;
+
         static OUT_OF_MEMORY: number;
+
         static INVALID_BACK_REFERENCE: number;
+
         static UNSPECIFIED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -110,6 +128,7 @@ export namespace Ags {
         SEEK_END,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -119,6 +138,7 @@ export namespace Ags {
         DIVISION_BY_ZERO,
         EXPONENT_NOT_CONSTANT,
     }
+
 
     /**
      * @gir-type Enum
@@ -166,132 +186,259 @@ export namespace Ags {
         SOUNDCARD_COMPLEX,
     }
 
+
     const AUTHENTICATION_MANAGER_DEFAULT_SESSION_TIMEOUT: number;
+
     const BUILD_ID: string;
+
     const COMPLEX_M_E: number;
+
     const COMPLEX_M_PI: number;
+
     const CONFIG_DEFAULT_BUILD_ID: string;
+
     const CONFIG_DEFAULT_VERSION: string;
+
     const CONFIG_GENERIC: string;
+
     const CONFIG_OSC_SERVER: string;
+
     const CONFIG_OSC_SERVER_0: string;
+
     const CONFIG_RECALL: string;
+
     const CONFIG_SEQUENCER: string;
+
     const CONFIG_SEQUENCER_0: string;
+
     const CONFIG_SERVER: string;
+
     const CONFIG_SOUNDCARD: string;
+
     const CONFIG_SOUNDCARD_0: string;
+
     const CONFIG_THREAD: string;
+
     const CONTROLLER_BASE_PATH: string;
+
     const DEFAULT_BUNDLE_ID: string;
+
     const DEFAULT_CONFIG: string;
+
     const DEFAULT_DIRECTORY: string;
+
     const FILE_CHARSET_CONVERTER_MAX_CONTENT_LENGTH: number;
+
     const FILE_CHARSET_CONVERTER_MAX_STRING_LENGTH: number;
+
     const FILE_CHECKSUM_LENGTH: number;
+
     const FILE_DEFAULT_APP_ENCODING: string;
+
     const FILE_DEFAULT_AUDIO_ENCODING: string;
+
     const FILE_DEFAULT_AUDIO_FORMAT: string;
+
     const FILE_DEFAULT_DTD: string;
+
     const FILE_DEFAULT_ENCODING: string;
+
     const FILE_ID_REF_RESOLVE_DATA: string;
+
     const FILE_ID_REF_SERIALIZE_DATA: string;
+
     const FILE_LINK_DEFAULT_BUILD_ID: string;
+
     const FILE_LINK_DEFAULT_VERSION: string;
+
     const FILE_UTIL_64BIT_MAX_STRING_LENGTH: number;
+
     const FILE_UTIL_DOUBLE_MAX_STRING_LENGTH: number;
+
     const NSEC_PER_SEC: number;
+
     const PRIORITY_DEFAULT_BUILD_ID: string;
+
     const PRIORITY_DEFAULT_VERSION: string;
+
     const PRIORITY_KEY_AUDIO: string;
+
     const PRIORITY_KEY_AUDIO_MAIN_LOOP: string;
+
     const PRIORITY_KEY_GUI_MAIN_LOOP: string;
+
     const PRIORITY_KEY_LIBAGS: string;
+
     const PRIORITY_KEY_OSC_SERVER_MAIN_LOOP: string;
+
     const PRIORITY_KEY_SERVER_MAIN_LOOP: string;
+
     const PRIORITY_RT_THREAD: string;
+
     const SEQUENCER_DEFAULT_BPM: number;
+
     const SEQUENCER_DEFAULT_BUFFER_SIZE: number;
+
     const SEQUENCER_DEFAULT_DELAY: number;
+
     const SEQUENCER_DEFAULT_DELAY_FACTOR: number;
+
     const SEQUENCER_DEFAULT_DEVICE: string;
+
     const SEQUENCER_DEFAULT_LATENCY: number;
+
     const SEQUENCER_DEFAULT_PERIOD: number;
+
     const SEQUENCER_DEFAULT_SAMPLERATE: number;
+
     const SEQUENCER_DEFAULT_SCALE: number;
+
     const SEQUENCER_DEFAULT_TACT: number;
+
     const SEQUENCER_DEFAULT_TACTRATE: number;
+
     const SEQUENCER_DEFAULT_TACT_JIFFIE: number;
+
     const SEQUENCER_MAX_MIDI_CHANNELS: number;
+
     const SEQUENCER_MAX_MIDI_KEYS: number;
+
     const SERVER_BUILD_ID: string;
+
     const SERVER_DEFAULT_AUTH_MODULE: string;
+
     const SERVER_DEFAULT_BACKLOG: number;
+
     const SERVER_DEFAULT_DOMAIN: string;
+
     const SERVER_DEFAULT_INET4_ADDRESS: string;
+
     const SERVER_DEFAULT_INET6_ADDRESS: string;
+
     const SERVER_DEFAULT_SERVER_PORT: number;
+
     const SERVER_VERSION: string;
+
     const SOUNDCARD_DEFAULT_BPM: number;
+
     const SOUNDCARD_DEFAULT_BUFFER_SIZE: number;
+
     const SOUNDCARD_DEFAULT_CACHE_BUFFER_SIZE: number;
+
     const SOUNDCARD_DEFAULT_DELAY: number;
+
     const SOUNDCARD_DEFAULT_DELAY_FACTOR: number;
+
     const SOUNDCARD_DEFAULT_DSP_CHANNELS: number;
+
     const SOUNDCARD_DEFAULT_LOOP_LEFT: number;
+
     const SOUNDCARD_DEFAULT_LOOP_RIGHT: number;
+
     const SOUNDCARD_DEFAULT_OVERCLOCK: number;
+
     const SOUNDCARD_DEFAULT_PCM_CHANNELS: number;
+
     const SOUNDCARD_DEFAULT_PERIOD: number;
+
     const SOUNDCARD_DEFAULT_SAMPLERATE: number;
+
     const SOUNDCARD_DEFAULT_SCALE: number;
+
     const SOUNDCARD_DEFAULT_SUB_BLOCK_COUNT: number;
+
     const SOUNDCARD_DEFAULT_TACT: number;
+
     const SOUNDCARD_DEFAULT_TACTRATE: number;
+
     const SOUNDCARD_DEFAULT_TACT_JIFFIE: number;
+
     const SOUNDCARD_DEFAULT_USE_CACHE: boolean;
+
     const SOUNDCARD_MAX_BUFFER_SIZE: number;
+
     const SOUNDCARD_MAX_DSP_CHANNELS: number;
+
     const SOUNDCARD_MAX_PCM_CHANNELS: number;
+
     const SOUNDCARD_MAX_SAMPLERATE: number;
+
     const SOUNDCARD_MIN_BUFFER_SIZE: number;
+
     const SOUNDCARD_MIN_DSP_CHANNELS: number;
+
     const SOUNDCARD_MIN_PCM_CHANNELS: number;
+
     const SOUNDCARD_MIN_SAMPLERATE: number;
+
     const SUBSCRIPT_0: string;
+
     const SUBSCRIPT_1: string;
+
     const SUBSCRIPT_2: string;
+
     const SUBSCRIPT_3: string;
+
     const SUBSCRIPT_4: string;
+
     const SUBSCRIPT_5: string;
+
     const SUBSCRIPT_6: string;
+
     const SUBSCRIPT_7: string;
+
     const SUBSCRIPT_8: string;
+
     const SUBSCRIPT_9: string;
+
     const SYMBOLIC_COMPLEX_UNIT: string;
+
     const SYMBOLIC_EULER: string;
+
     const SYMBOLIC_INFINIT: string;
+
     const SYMBOLIC_PI: string;
+
     const THREAD_BUILD_ID: string;
+
     const THREAD_DEFAULT_ATTACK: number;
+
     const THREAD_DEFAULT_JIFFIE: number;
+
     const THREAD_DEFAULT_MAX_PRECISION: number;
+
     const THREAD_DEFAULT_VERSION: string;
+
     const THREAD_HERTZ_JIFFIE: number;
+
     const THREAD_MAX_PRECISION: number;
+
     const THREAD_POOL_DEFAULT_MAX_THREADS: number;
+
     const THREAD_POOL_DEFAULT_MAX_UNUSED_THREADS: number;
+
     const THREAD_TOLERANCE: number;
+
     const THREAD_YIELD_JIFFIE: number;
+
     const TIME_ZERO: string;
+
     const TURTLE_BOOLEAN_LITERAL_FALSE: string;
+
     const TURTLE_BOOLEAN_LITERAL_TRUE: string;
+
     const TURTLE_DEFAULT_ENCODING: string;
+
     const TURTLE_DEFAULT_VERSION: string;
+
     const USEC_PER_SEC: number;
+
     const UUID_DEFAULT_LENGTH: number;
+
     const UUID_STRING_DEFAULT_LENGTH: number;
+
     const VERSION: string;
+
     /**
      * Read a {@link Ags.Complex} quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -300,6 +447,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_complex(cbuffer: number, byte_order: number): Complex;
+
     /**
      * Read a gdouble quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -308,6 +456,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_double(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gfloat quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -316,6 +465,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_float(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gint16 quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -324,6 +474,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s16(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gint32 24 bit quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -332,6 +483,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s24(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gint32 32 bit quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -340,6 +492,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s32(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gint64 64 bit quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -348,6 +501,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s64(cbuffer: number, byte_order: number): number;
+
     /**
      * Read a gint8 quantity of `cbuffer`.
      * @param cbuffer the character buffer
@@ -356,6 +510,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s8(cbuffer: number, byte_order: number): number;
+
     /**
      * Swap bytes in view of Little/Big-Endian.
      * @param cbuffer the buffer to swap
@@ -364,6 +519,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_swap_bytes(cbuffer: number, word_size: number, buffer_size: number): void;
+
     /**
      * Unpack `cbuffer` to a {@link Ags.Complex} buffer
      * @param cbuffer the guchar buffer
@@ -372,6 +528,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_complex(cbuffer: number, buffer_size: number): Complex;
+
     /**
      * Unpack `cbuffer` to a gdouble buffer
      * @param cbuffer the guchar buffer
@@ -380,6 +537,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_double(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gfloat buffer
      * @param cbuffer the guchar buffer
@@ -388,6 +546,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_float(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gint16 buffer
      * @param cbuffer the guchar buffer
@@ -396,6 +555,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s16(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gint32 buffer
      * @param cbuffer the guchar buffer
@@ -404,6 +564,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s24(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gint32 buffer
      * @param cbuffer the guchar buffer
@@ -412,6 +573,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s32(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gint64 buffer
      * @param cbuffer the guchar buffer
@@ -420,6 +582,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s64(cbuffer: number, buffer_size: number): number;
+
     /**
      * Unpack `cbuffer` to a gint8 buffer
      * @param cbuffer the guchar buffer
@@ -428,6 +591,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s8(cbuffer: number, buffer_size: number): number;
+
     /**
      * Write a {@link Ags.Complex} quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -436,6 +600,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_complex(cbuffer: number, value: Complex, byte_order: number): void;
+
     /**
      * Write a gdouble quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -444,6 +609,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_double(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Write a gfloat quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -452,6 +618,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_float(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Write a gint16 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -460,6 +627,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s16(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Write a gint32 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -468,6 +636,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s24(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Write a gint32 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -476,6 +645,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s32(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Write a gint64 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -483,7 +653,8 @@ export namespace Ags {
      * @param byte_order reverse order
      * @since 3.0.0
      */
-    function buffer_util_char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
+    function buffer_util_char_buffer_write_s64(cbuffer: number, value: (bigint | number), byte_order: number): void;
+
     /**
      * Write a gint8 quantity to `cbuffer`.
      * @param cbuffer the character buffer
@@ -492,6 +663,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s8(cbuffer: number, value: number, byte_order: number): void;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the {@link Ags.Complex} buffer
@@ -500,6 +672,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_complex_to_char_buffer(buffer: Complex, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gdouble buffer
@@ -508,6 +681,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_double_to_char_buffer(buffer: number, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gfloat buffer
@@ -516,6 +690,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_float_to_char_buffer(buffer: number, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint16 buffer
@@ -524,6 +699,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_s16_to_char_buffer(buffer: number, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint32 buffer
@@ -532,6 +708,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_s24_to_char_buffer(buffer: number, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint32 buffer
@@ -540,6 +717,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_s32_to_char_buffer(buffer: number, buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint64 buffer
@@ -547,7 +725,8 @@ export namespace Ags {
      * @returns the guchar buffer
      * @since 3.0.0
      */
-    function buffer_util_s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
+    function buffer_util_s64_to_char_buffer(buffer: (bigint | number), buffer_length: number): number;
+
     /**
      * Pack `buffer` into an guchar buffer.
      * @param buffer the gint8 buffer
@@ -556,1420 +735,894 @@ export namespace Ags {
      * @since 3.0.0
      */
     function buffer_util_s8_to_char_buffer(buffer: number, buffer_length: number): number;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_BOOLEAN__OBJECT_OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_BOOLEAN__POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_BOOLEAN__UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_BOOLEAN__VOID(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_DOUBLE__DOUBLE_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_INT64__OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_INT__VOID(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__OBJECT_OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_OBJECT__VOID(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__INT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_INT64(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_POINTER_STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_POINTER_OBJECT_STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_UINT_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_UINT_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER_POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__POINTER_UINT_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__STRING_STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_POINTER__VOID(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_STRING__POINTER_STRING_STRING_STRING_STRING_UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_STRING__STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_UINT__INT_UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_UINT__VOID(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__BOOLEAN_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__DOUBLE_DOUBLE(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__INT64_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__INT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__INT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__INT_UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_INT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_UINT_INT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__OBJECT_UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_INT_INT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_INT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_OBJECT_OBJECT_STRING_STRING_STRING_UINT_UINT_UINT_UINT_INT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_POINTER_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_STRING_STRING_STRING_INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_UINT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__POINTER_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_STRING_STRING(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_UINT_DOUBLE(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_UINT_POINTER(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__STRING_UINT_STRING_DOUBLE(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT64(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_DOUBLE(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_DOUBLE_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_POINTER_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_STRING_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
-    /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
-     */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_BOOLEAN__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_BOOLEAN__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_BOOLEAN__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_DOUBLE__DOUBLE_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_INT64__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_INT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_OBJECT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_POINTER_INT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_POINTER_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_POINTER_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__POINTER_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__STRING_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_POINTER__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_STRING__POINTER_STRING_STRING_STRING_STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_STRING__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_UINT__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_UINT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__DOUBLE_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__INT64_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_UINT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__OBJECT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_INT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_OBJECT_OBJECT_STRING_STRING_STRING_UINT_UINT_UINT_UINT_INT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_STRING_STRING_STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__STRING_UINT_STRING_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_DOUBLE_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
+    /**
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
+     */
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
     /**
      * Allocate {@link Ags.Complex}-struct
      * @returns a new {@link Ags.Complex}-struct
      * @since 3.0.0
      */
     function complex_alloc(): Complex;
+
     /**
      * Allocated {@link Ags.ControllerResource}-struct.
      * @param group_id the group id
@@ -1978,25 +1631,29 @@ export namespace Ags {
      * @returns the newly allocated {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_alloc(group_id: string, user_id: string, access_mode: number): any | null;
+    function controller_resource_alloc(group_id: string, user_id: string, access_mode: number): (any | null);
+
     /**
      * Free `controller_resource`.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_free(controller_resource: any | null): void;
+    function controller_resource_free(controller_resource: (any | null)): void;
+
     /**
      * Increase ref-count of `controller_resource`.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_ref(controller_resource: any | null): void;
+    function controller_resource_ref(controller_resource: (any | null)): void;
+
     /**
      * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_unref(controller_resource: any | null): void;
+    function controller_resource_unref(controller_resource: (any | null)): void;
+
     /**
      * Allocated a destroy entry.
      * @param ptr a pointer
@@ -2004,25 +1661,29 @@ export namespace Ags {
      * @returns the allocated {@link Ags.DestroyEntry}
      * @since 3.0.0
      */
-    function destroy_entry_alloc(ptr: any | null, destroy_func: DestroyFunc): any | null;
+    function destroy_entry_alloc(ptr: (any | null), destroy_func: DestroyFunc): (any | null);
+
     /**
      * Run dispose and unref `gobject`.
      * @param gobject the {@link GObject.Object} to destroy
      * @since 3.0.0
      */
     function destroy_util_dispose_and_unref(gobject: GObject.Object): void;
+
     /**
      * Check host is Big Endian.
      * @returns `true` if BE, otherwise `false`
      * @since 3.0.0
      */
     function endian_host_is_be(): boolean;
+
     /**
      * Check host is Little Endian.
      * @returns `true` if LE, otherwise `false`
      * @since 3.0.0
      */
     function endian_host_is_le(): boolean;
+
     /**
      * Swaps the floating point numbers endianness.
      * @param x the float to swap
@@ -2030,6 +1691,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function endian_swap_float(x: number): number;
+
     /**
      * Allocate {@link Ags.FileUtil}-struct
      * @param app_encoding the application encoding
@@ -2038,6 +1700,7 @@ export namespace Ags {
      * @since 6.3.0
      */
     function file_util_alloc(app_encoding: string, encoding: string): FileUtil;
+
     /**
      * Get global value for `key`.
      * @param key the key as string
@@ -2045,25 +1708,29 @@ export namespace Ags {
      * @since 3.0.0
      */
     function globals_get(key: string): unknown;
+
     /**
      * Get globals hash table.
      * @returns the {@link GLib.HashTable} containig globals
      * @since 3.0.0
      */
     function globals_get_hash_table(): GLib.HashTable<string, GObject.Value>;
+
     /**
      * Set global key/value.
      * @param key the key as string
      * @param value the {@link GObject.Value}-struct
      * @since 3.0.0
      */
-    function globals_set(key: string, value: GObject.Value | any): void;
+    function globals_set(key: string, value: (GObject.Value | any)): void;
+
     /**
      * Creates a new string containing an UUID.
      * @returns the UUID as string
      * @since 3.0.0
      */
     function id_generator_create_uuid(): string;
+
     /**
      * Find `gtype` within `list`.
      * @param list the {@link GLib.List}-struct
@@ -2072,30 +1739,35 @@ export namespace Ags {
      * @since 3.0.0
      */
     function list_util_find_type(list: GObject.Object[], gtype: GObject.GType): GObject.Object[];
+
     /**
      * Alloc {@link Ags.LoginInfo}-struct.
      * @returns the newly allocated {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_alloc(): any | null;
+    function login_info_alloc(): (any | null);
+
     /**
      * Free `login_info`.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_free(login_info: any | null): void;
+    function login_info_free(login_info: (any | null)): void;
+
     /**
      * Increase ref-count of `login_info`.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_ref(login_info: any | null): void;
+    function login_info_ref(login_info: (any | null)): void;
+
     /**
      * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_unref(login_info: any | null): void;
+    function login_info_unref(login_info: (any | null)): void;
+
     /**
      * Compute `value` from `coefficient`.
      * @param coefficient the coefficient string
@@ -2103,12 +1775,14 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_coefficient_to_complex(coefficient: string): [boolean, Complex];
+
     /**
      * Find exponent parenthesis.
      * @param str the string
      * @since 3.2.0
      */
     function math_util_find_exponent_parenthesis(str: string): [number, number, number, number];
+
     /**
      * Find next function.
      * @param str the string
@@ -2116,18 +1790,21 @@ export namespace Ags {
      * @since 3.2.0
      */
     function math_util_find_function(str: string): string;
+
     /**
      * Find function parenthesis.
      * @param str the string
      * @since 3.2.0
      */
     function math_util_find_function_parenthesis(str: string): [number, number, number, number];
+
     /**
      * Find all parenthesis.
      * @param str the string
      * @since 3.2.0
      */
     function math_util_find_parenthesis_all(str: string): [number, number, number, number];
+
     /**
      * Find next symbol.
      * @param str the string
@@ -2135,12 +1812,14 @@ export namespace Ags {
      * @since 3.2.0
      */
     function math_util_find_symbol(str: string): string;
+
     /**
      * Find term parenthesis.
      * @param str the string
      * @since 3.2.0
      */
     function math_util_find_term_parenthesis(str: string): [number, number, number, number];
+
     /**
      * Test if `term` is a term.
      * @param term the term
@@ -2148,6 +1827,7 @@ export namespace Ags {
      * @since 3.2.0
      */
     function math_util_is_term(term: string): boolean;
+
     /**
      * Match coefficient including optional sign.
      * @param offset the string pointer
@@ -2156,6 +1836,7 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_coefficient(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
      * Match exponent with or without parenthesis.
      * @param offset the string pointer
@@ -2164,6 +1845,7 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_exponent(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
      * Match function.
      * @param offset the string pointer
@@ -2172,6 +1854,7 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_function(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
      * Match operator.
      * @param offset the string pointer
@@ -2180,6 +1863,7 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_operator(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
      * Match sign.
      * @param offset the string pointer
@@ -2188,6 +1872,7 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_sign(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
      * Match symbol including optional sign.
      * @param offset the string pointer
@@ -2196,23 +1881,27 @@ export namespace Ags {
      * @since 3.6.0
      */
     function math_util_match_symbol(offset: string, end_ptr: string): [boolean, string, string];
+
     /**
-     * @param coefficient
-     * @param value_count
+     * @param coefficient 
+     * @param value_count 
      */
     function math_util_multiply_coefficient_all(coefficient: string, value_count: number): Complex;
+
     /**
      * Split `polynomial` into coefficient, powers of symbols and summand.
      * @param polynomial the polynomial
      * @since 3.2.0
      */
     function math_util_split_polynomial(polynomial: string): [string, string];
+
     /**
      * Split `sum` into summands.
      * @param sum the sum
      * @since 3.2.0
      */
     function math_util_split_sum(sum: string): string;
+
     /**
      * Read of file.
      * @param file the {@link GObject.Object}
@@ -2221,6 +1910,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function plugin_read(file: GObject.Object, node: libxml2.Node, plugin: Plugin): void;
+
     /**
      * Write to file.
      * @param file the {@link GObject.Object}
@@ -2230,6 +1920,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function plugin_write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
+
     /**
      * Allocate {@link Ags.RegexUtil}-struct
      * @param app_encoding the application encoding
@@ -2239,13 +1930,10 @@ export namespace Ags {
      * @returns a new {@link Ags.RegexUtil}-struct
      * @since 6.3.2
      */
-    function regex_util_alloc(
-        app_encoding: string,
-        encoding: string,
-        is_unichar: boolean,
-        is_unichar2: boolean,
-    ): RegexUtil;
+    function regex_util_alloc(app_encoding: string, encoding: string, is_unichar: boolean, is_unichar2: boolean): RegexUtil;
+
     function regex_util_error_quark(): GLib.Quark;
+
     /**
      * Allocate {@link Ags.SolverPath}-struct
      * @param nth_column the nth-column
@@ -2255,6 +1943,7 @@ export namespace Ags {
      * @since 6.7.1
      */
     function solver_path_alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
+
     /**
      * Get buffer size.
      * @param config the {@link Ags.Config}
@@ -2262,6 +1951,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function soundcard_helper_config_get_buffer_size(config: Config): number;
+
     /**
      * Get cache buffer size.
      * @param config the {@link Ags.Config}
@@ -2269,6 +1959,7 @@ export namespace Ags {
      * @since 6.10.4
      */
     function soundcard_helper_config_get_cache_buffer_size(config: Config): number;
+
     /**
      * Get dsp channels count.
      * @param config the {@link Ags.Config}
@@ -2276,6 +1967,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function soundcard_helper_config_get_dsp_channels(config: Config): number;
+
     /**
      * Get format as {@link Ags.SoundcardFormat}-enum.
      * @param config the {@link Ags.Config}
@@ -2283,6 +1975,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function soundcard_helper_config_get_format(config: Config): number;
+
     /**
      * Get pcm channels count.
      * @param config the {@link Ags.Config}
@@ -2290,6 +1983,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function soundcard_helper_config_get_pcm_channels(config: Config): number;
+
     /**
      * Get samplerate.
      * @param config the {@link Ags.Config}
@@ -2297,6 +1991,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function soundcard_helper_config_get_samplerate(config: Config): number;
+
     /**
      * Get use cache.
      * @param config the {@link Ags.Config}
@@ -2304,6 +1999,7 @@ export namespace Ags {
      * @since 6.10.4
      */
     function soundcard_helper_config_get_use_cache(config: Config): boolean;
+
     /**
      * Escape all occurence of single quotes.
      * @param str the string to escape
@@ -2311,6 +2007,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function string_util_escape_single_quote(str: string): string;
+
     /**
      * String from mcoded7 encoding.
      * @param mcoded7_str the string to decode
@@ -2318,6 +2015,7 @@ export namespace Ags {
      * @since 5.5.0
      */
     function string_util_from_mcoded7(mcoded7_str: string): string;
+
     /**
      * String to mcoded7 encoding.
      * @param str the string to encode
@@ -2325,6 +2023,7 @@ export namespace Ags {
      * @since 5.5.0
      */
     function string_util_to_mcoded7(str: string): string;
+
     /**
      * Check occurence of `str` within `str_array`
      * @param str_array the string vector
@@ -2333,6 +2032,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function strv_contains(str_array: string[], str: string): boolean;
+
     /**
      * Check `strv1` and `strv2` to be equal. The arrays don't have to be
      * sorted.
@@ -2342,6 +2042,7 @@ export namespace Ags {
      * @since 3.2.1
      */
     function strv_equal(strv1: string, strv2: string): boolean;
+
     /**
      * Check by comparing `str` against `str_array` items.
      * @param str_array the string vector
@@ -2350,6 +2051,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function strv_index(str_array: string[], str: string): number;
+
     /**
      * Count the number of non-`null` entries in the array.
      * @param str_array the string vector
@@ -2357,6 +2059,7 @@ export namespace Ags {
      * @since 3.0.0
      */
     function strv_length(str_array: string[]): number;
+
     /**
      * Calculates uptime from `offset` by applying factors `bpm`, `delay` and `delay_factor`
      * giving you the result as string.
@@ -2368,12 +2071,14 @@ export namespace Ags {
      * @since 3.0.0
      */
     function time_get_uptime_from_offset(offset: number, bpm: number, delay: number, delay_factor: number): string;
+
     /**
      * Nanosleep.
      * @param req the requisition to sleep
      * @since 5.5.1
      */
-    function time_nanosleep(req: any | null): void;
+    function time_nanosleep(req: (any | null)): void;
+
     /**
      * Check `start_time` plus `timeout_delay` against current time.
      * @param start_time the start time #timespec-struct
@@ -2381,13 +2086,15 @@ export namespace Ags {
      * @returns `true` if timeout expired, otherwise `false`
      * @since 3.0.0
      */
-    function time_timeout_expired(start_time: any | null, timeout_delay: any | null): boolean;
+    function time_timeout_expired(start_time: (any | null), timeout_delay: (any | null)): boolean;
+
     /**
      * Allocate {@link Ags.UUID}.
      * @returns a new {@link Ags.UUID}
      * @since 3.0.0
      */
     function uuid_alloc(): UUID;
+
     /**
      * Retrieve {@link Ags.UUID} by parsing `str`.
      * @param str the UUID as string
@@ -2395,31 +2102,36 @@ export namespace Ags {
      * @since 3.0.0
      */
     function uuid_from_string(str: string): UUID;
+
     /**
      * Do loop and invoke `ags_worker_thread_do_poll()` unless flag
      * AGS_WORKER_THREAD_RUNNING was unset.
      * @param ptr the {@link Ags.WorkerThread}
      * @since 3.0.0
      */
-    function woker_thread_do_poll_loop(ptr: any | null): any | null;
+    function woker_thread_do_poll_loop(ptr: (any | null)): (any | null);
+
     /**
      * @gir-type Callback
      */
     interface DestroyFunc {
-        (ptr: any | null): void;
+        (ptr: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface FileResolve {
         (): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ReturnableThreadCallback {
-        (returnable_thread: ReturnableThread, data: any | null): void;
+        (returnable_thread: ReturnableThread, data: (any | null)): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -2439,6 +2151,7 @@ export namespace Ags {
         APPLICATION_CONTEXT_TYPES_REGISTERED,
     }
 
+
     /**
      * Enum values to specify particular state.
      * @gir-type Flags
@@ -2453,6 +2166,7 @@ export namespace Ags {
          */
         CONNECTED,
     }
+
 
     /**
      * @gir-type Flags
@@ -2493,6 +2207,7 @@ export namespace Ags {
         FILE_WRITE_EMBEDDED_AUDIO,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2516,6 +2231,7 @@ export namespace Ags {
         REGEX_UTIL_NO_NEWLINE_MATCH,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2536,6 +2252,7 @@ export namespace Ags {
         REGEX_UTIL_END_OF_LINE,
         REGEX_UTIL_START_END,
     }
+
 
     /**
      * @gir-type Flags
@@ -2563,6 +2280,7 @@ export namespace Ags {
          */
         RETURNABLE_THREAD_RUN_ONCE,
     }
+
 
     /**
      * @gir-type Flags
@@ -2597,6 +2315,7 @@ export namespace Ags {
          */
         SECURITY_CONTEXT_ACCOUNT_WRITE,
     }
+
 
     /**
      * @gir-type Flags
@@ -2641,6 +2360,7 @@ export namespace Ags {
         SERVER_AUTO_START,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2666,6 +2386,7 @@ export namespace Ags {
          */
         SOUNDCARD_CAPABILITY_DUPLEX,
     }
+
 
     /**
      * @gir-type Flags
@@ -2698,6 +2419,7 @@ export namespace Ags {
         TASK_COMPLETION_COMPLETED,
     }
 
+
     /**
      * Enum values to control the behavior or indicate internal state of {@link Ags.Task} by
      * enable/disable as flags.
@@ -2713,6 +2435,7 @@ export namespace Ags {
          */
         CYCLIC,
     }
+
 
     /**
      * @gir-type Flags
@@ -2732,6 +2455,7 @@ export namespace Ags {
          */
         THREAD_APPLICATION_CONTEXT_SINGLE_THREAD,
     }
+
 
     /**
      * @gir-type Flags
@@ -2776,6 +2500,7 @@ export namespace Ags {
         THREAD_TIME_ACCOUNTING,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2798,6 +2523,7 @@ export namespace Ags {
          */
         THREAD_POOL_RT_SETUP,
     }
+
 
     /**
      * @gir-type Flags
@@ -2865,6 +2591,7 @@ export namespace Ags {
          */
         THREAD_STATUS_SYNCED_FREQ,
     }
+
 
     /**
      * @gir-type Flags
@@ -2953,6 +2680,7 @@ export namespace Ags {
         THREAD_SYNC_TIC_DONE_8,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2980,6 +2708,7 @@ export namespace Ags {
         TIMESTAMP_OUTDATED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2998,6 +2727,7 @@ export namespace Ags {
          */
         TURTLE_TOLOWER,
     }
+
 
     /**
      * @gir-type Flags
@@ -3030,6 +2760,7 @@ export namespace Ags {
         WORKER_THREAD_STATUS_RUN_SYNC,
     }
 
+
     namespace ApplicationContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -3039,7 +2770,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'load-config': () => void;
+            "load-config": () => void;
             /**
              * The ::prepare signal should be implemented to prepare
              * your application context.
@@ -3062,7 +2793,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'register-types': () => void;
+            "register-types": () => void;
             /**
              * The ::setup signal should be implemented to setup
              * your application context.
@@ -3071,14 +2802,13 @@ export namespace Ags {
              * @run-last
              */
             setup: () => void;
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::main-loop': (pspec: GObject.ParamSpec) => void;
-            'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::main-loop": (pspec: GObject.ParamSpec) => void;
+            "notify::task-launcher": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
             config: GObject.Object;
             file: GObject.Object;
@@ -3096,37 +2826,41 @@ export namespace Ags {
         static $gtype: GObject.GType<ApplicationContext>;
 
         // Properties
-
         /**
          * The assigned config.
          * @since 3.0.0
          */
         get config(): GObject.Object;
         set config(val: GObject.Object);
+
         /**
          * The assigned file.
          * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
+
         /**
          * The assigned main-loop.
          * @since 3.0.0
          */
         get main_loop(): GObject.Object;
         set main_loop(val: GObject.Object);
+
         /**
          * The assigned main-loop.
          * @since 3.0.0
          */
         get mainLoop(): GObject.Object;
         set mainLoop(val: GObject.Object);
+
         /**
          * The assigned task launcher.
          * @since 3.0.0
          */
         get task_launcher(): GObject.Object;
         set task_launcher(val: GObject.Object);
+
         /**
          * The assigned task launcher.
          * @since 3.0.0
@@ -3144,74 +2878,79 @@ export namespace Ags {
         $signals: ApplicationContext.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         connectable_flags: number;
+
         uuid: UUID;
+
         version: string;
+
         build_id: string;
+
         argc: number;
+
         argv: string;
 
-        // This field conflicts with a function in a parent class or interface.
-        is_ready: number | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    is_ready: (number | any);
+
         log: GObject.Object;
+
         domain: string;
+
         history: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ApplicationContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](main_loop: GObject.Object | null, config: Config | null): ApplicationContext;
+        static ["new"](main_loop: (GObject.Object | null), config: (Config | null)): ApplicationContext;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof ApplicationContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationContext.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ApplicationContext.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof ApplicationContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ApplicationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ApplicationContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get your application context instance.
          */
         static get_instance(): ApplicationContext;
 
         // Virtual methods
-
         /**
          * Signal to load and parse configuration.
          * @virtual
          */
         vfunc_load_config(): void;
+
         /**
          * Prepare `application_context`.
          * @virtual
          */
         vfunc_prepare(): void;
+
         /**
          * Calls `exit()`
          * @virtual
          */
         vfunc_quit(): void;
+
         /**
          * Notification to register your types.
          * @virtual
          */
         vfunc_register_types(): void;
+
         /**
          * Setup `application_context`.
          * @virtual
@@ -3219,165 +2958,197 @@ export namespace Ags {
         vfunc_setup(): void;
 
         // Methods
-
         /**
          * Signal to load and parse configuration.
          */
         load_config(): void;
+
         /**
          * Prepare `application_context`.
          */
         prepare(): void;
+
         /**
          * Calls `exit()`
          */
         quit(): void;
+
         /**
          * Notification to register your types.
          */
         register_types(): void;
+
         /**
          * Enable a feature of {@link Ags.ApplicationContext}.
          * @param flags see enum AgsApplicationContextFlags
          */
         set_flags(flags: ApplicationContextFlags): void;
+
         /**
          * Setup `application_context`.
          */
         setup(): void;
+
         /**
          * Test `flags` to be set on `application_context`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ApplicationContextFlags): boolean;
+
         /**
          * Disable a feature of AgsApplicationContext.
          * @param flags see enum AgsApplicationContextFlags
          */
         unset_flags(flags: ApplicationContextFlags): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -3386,15 +3157,17 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
+
     namespace AuthSecurityContext {
         // Signal signatures
         interface SignalSignatures extends SecurityContext.SignalSignatures {
-            'notify::certs': (pspec: GObject.ParamSpec) => void;
+            "notify::certs": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends SecurityContext.ConstructorProps {
 
-        interface ConstructorProps extends SecurityContext.ConstructorProps {}
+        }
     }
 
     /**
@@ -3413,55 +3186,45 @@ export namespace Ags {
         $signals: AuthSecurityContext.SignalSignatures;
 
         // Fields
-
         security_context: SecurityContext;
 
         // Constructors
-
         constructor(properties?: Partial<AuthSecurityContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AuthSecurityContext;
+        static ["new"](): AuthSecurityContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthSecurityContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthSecurityContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthSecurityContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthSecurityContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthSecurityContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthSecurityContext.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AuthSecurityContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthSecurityContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance.
          */
         static get_instance(): AuthSecurityContext;
     }
 
+
     namespace AuthenticationManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3480,61 +3243,51 @@ export namespace Ags {
         $signals: AuthenticationManager.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         authentication: any[];
+
         session_timeout: number;
 
         // Constructors
-
         constructor(properties?: Partial<AuthenticationManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AuthenticationManager;
+        static ["new"](): AuthenticationManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthenticationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthenticationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthenticationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthenticationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthenticationManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthenticationManager.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AuthenticationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthenticationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance.
          */
         static get_instance(): AuthenticationManager;
 
         // Methods
-
         /**
          * Add `authentication` to `authentication_manager`.
          * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         add_authentication(authentication: GObject.Object): void;
+
         /**
          * Get authentication.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         get_authentication(): GObject.Object[];
+
         /**
          * Get digest of `login`.
          * @param authentication_module the authentication module
@@ -3544,17 +3297,20 @@ export namespace Ags {
          * @returns the digest as string, or `null` if not available
          */
         get_digest(authentication_module: string, realm: string, login: string, security_token: string): string;
+
         /**
          * Get session timeout.
          * @returns the session timeout
          */
         get_session_timeout(): number;
+
         /**
          * Insert `login` as key and `login_info` as its value.
          * @param login the login
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
         insert_login(login: string, login_info: LoginInfo): void;
+
         /**
          * Check if session is active.
          * @param security_context the security context
@@ -3563,6 +3319,7 @@ export namespace Ags {
          * @returns `true` if active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
+
         /**
          * Login.
          * @param authentication_module the authentication module
@@ -3571,6 +3328,7 @@ export namespace Ags {
          * @returns `true` if login was successful, otherwise `false`
          */
         login(authentication_module: string, login: string, password: string): [boolean, string, string];
+
         /**
          * Logout.
          * @param security_context the {@link Ags.SecurityContext}
@@ -3579,17 +3337,20 @@ export namespace Ags {
          * @returns `true` if logout was successful, otherwise `false`
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
+
         /**
          * Lookup `login`.
          * @param login the login
          * @returns the user {@link Ags.LoginInfo}-struct or `null`
          */
-        lookup_login(login: string): any | null;
+        lookup_login(login: string): (any | null);
+
         /**
          * Remove `authentication` from `authentication_manager`.
          * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         remove_authentication(authentication: GObject.Object): void;
+
         /**
          * Remove `login`.
          * @param login the login
@@ -3597,13 +3358,16 @@ export namespace Ags {
         remove_login(login: string): void;
     }
 
+
     namespace BusinessGroupManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3622,60 +3386,49 @@ export namespace Ags {
         $signals: BusinessGroupManager.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         business_group: any[];
 
         // Constructors
-
         constructor(properties?: Partial<BusinessGroupManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BusinessGroupManager;
+        static ["new"](): BusinessGroupManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BusinessGroupManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BusinessGroupManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BusinessGroupManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BusinessGroupManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BusinessGroupManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BusinessGroupManager.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof BusinessGroupManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BusinessGroupManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance.
          */
         static get_instance(): BusinessGroupManager;
 
         // Methods
-
         /**
          * Add `business_group` to `business_group_manager`.
          * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
          */
         add_business_group(business_group: GObject.Object): void;
+
         /**
          * Get business_group.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.BusinessGroup}
          */
         get_business_group(): GObject.Object[];
+
         /**
          * Remove `business_group` from `business_group_manager`.
          * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
@@ -3683,13 +3436,16 @@ export namespace Ags {
         remove_business_group(business_group: GObject.Object): void;
     }
 
+
     namespace CertificateManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3708,58 +3464,49 @@ export namespace Ags {
         $signals: CertificateManager.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         certificate: any[];
 
         // Constructors
-
         constructor(properties?: Partial<CertificateManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CertificateManager;
+        static ["new"](): CertificateManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CertificateManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CertificateManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CertificateManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CertificateManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CertificateManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CertificateManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CertificateManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertificateManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance.
          */
         static get_instance(): CertificateManager;
 
         // Methods
-
         /**
          * Add `certificate` to `certificate_manager`.
          * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         add_certificate(certificate: GObject.Object): void;
+
         /**
          * Get certificate.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         get_certificate(): GObject.Object[];
+
         /**
          * Get public and private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -3768,19 +3515,15 @@ export namespace Ags {
          * @param domain the domain to find
          * @param key_type the key type to find
          */
-        get_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            domain: string,
-            key_type: string,
-        ): [string, string];
+        get_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, domain: string, key_type: string): [string, string];
+
         /**
          * Remove `certificate` from `certificate_manager`.
          * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         remove_certificate(certificate: GObject.Object): void;
     }
+
 
     namespace Config {
         // Signal signatures
@@ -3791,26 +3534,27 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'get-value': (arg0: string, arg1: string) => string;
+            "get-value": (arg0: string, arg1: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'load-defaults': () => void;
+            "load-defaults": () => void;
             /**
              * The ::set-value signal notifies about value been setting.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'set-value': (arg0: string, arg1: string, arg2: string) => void;
+            "set-value": (arg0: string, arg1: string, arg2: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3829,50 +3573,41 @@ export namespace Ags {
         $signals: Config.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         version: string;
+
         build_id: string;
 
         // Constructors
-
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Config;
+        static ["new"](): Config;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get config instance.
          */
         static get_instance(): Config;
 
         // Virtual methods
-
         /**
          * Retrieve config by `group` and `key`.
          * @param group the config group identifier
@@ -3880,11 +3615,13 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
+
         /**
          * Load configuration from default values.
          * @virtual
          */
         vfunc_load_defaults(): void;
+
         /**
          * Set config by `group` and `key`, applying `value`.
          * @param group the config group identifier
@@ -3895,11 +3632,11 @@ export namespace Ags {
         vfunc_set_value(group: string, key: string, value: string): void;
 
         // Methods
-
         /**
          * Clears configuration.
          */
         clear(): void;
+
         /**
          * Retrieve config by `group` and `key`.
          * @param group the config group identifier
@@ -3907,25 +3644,30 @@ export namespace Ags {
          * @returns the property's value
          */
         get_value(group: string, key: string): string;
+
         /**
          * Load configuration from default values.
          */
         load_defaults(): void;
+
         /**
          * Read configuration in memory.
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        load_from_data(buffer: string, buffer_length: bigint | number): void;
+        load_from_data(buffer: string, buffer_length: (bigint | number)): void;
+
         /**
          * Load configuration from `filename`.
          * @param filename the configuration file
          */
         load_from_file(filename: string): void;
+
         /**
          * Save configuration.
          */
         save(): void;
+
         /**
          * Set config by `group` and `key`, applying `value`.
          * @param group the config group identifier
@@ -3933,23 +3675,24 @@ export namespace Ags {
          * @param value the value to set
          */
         set_value(group: string, key: string, value: string): void;
+
         /**
          * Save configuration.
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
          */
-        to_data(buffer: string, buffer_length: bigint | number): void;
+        to_data(buffer: string, buffer_length: (bigint | number)): void;
     }
+
 
     namespace Controller {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context-path': (pspec: GObject.ParamSpec) => void;
-            'notify::server': (pspec: GObject.ParamSpec) => void;
+            "notify::context-path": (pspec: GObject.ParamSpec) => void;
+            "notify::server": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             context_path: string;
             contextPath: string;
@@ -3964,7 +3707,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Controller>;
 
         // Properties
-
         /**
          * The context path provided.
          * @since 3.0.0
@@ -3972,6 +3714,7 @@ export namespace Ags {
          */
         get context_path(): string;
         set context_path(val: string);
+
         /**
          * The context path provided.
          * @since 3.0.0
@@ -3979,6 +3722,7 @@ export namespace Ags {
          */
         get contextPath(): string;
         set contextPath(val: string);
+
         /**
          * The assigned {@link Ags.Server}
          * @since 3.0.0
@@ -3996,40 +3740,29 @@ export namespace Ags {
         $signals: Controller.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Controller.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Controller;
+        static ["new"](): Controller;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Controller.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Controller.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Controller.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Controller.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Controller.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Controller.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Controller.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Controller.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Query `security_context` for `login`.
          * @param security_context the {@link Ags.SecurityContext}
@@ -4039,19 +3772,20 @@ export namespace Ags {
         vfunc_query_security_context(security_context: GObject.Object, login: string): boolean;
 
         // Methods
-
         /**
          * Add `controller_resource` with key `resource_name` to hash table.
          * @param resource_name the resource name as string
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        add_resource(resource_name: string, controller_resource: any | null): void;
+        add_resource(resource_name: string, controller_resource: (any | null)): void;
+
         /**
          * Lookup key `resource_name` in hash table.
          * @param resource_name the resource name as string
          * @returns the matching {@link Ags.ControllerResource}-struct
          */
-        lookup_resource(resource_name: string): any | null;
+        lookup_resource(resource_name: string): (any | null);
+
         /**
          * Query `security_context` for `login`.
          * @param security_context the {@link Ags.SecurityContext}
@@ -4059,12 +3793,14 @@ export namespace Ags {
          * @returns `true` if allowed to proceed, otherwise `false`
          */
         query_security_context(security_context: GObject.Object, login: string): boolean;
+
         /**
          * Remove key `resource_name` from hash table.
          * @param resource_name the resource name as string
          */
         remove_resource(resource_name: string): void;
     }
+
 
     namespace Conversion {
         // Signal signatures
@@ -4076,12 +3812,11 @@ export namespace Ags {
              * @run-last
              */
             convert: (arg0: number, arg1: boolean) => number;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
             name: string;
@@ -4095,7 +3830,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Conversion>;
 
         // Properties
-
         /**
          * The description of the conversion.
          * @since 3.0.0
@@ -4103,6 +3837,7 @@ export namespace Ags {
          */
         get description(): string;
         set description(val: string);
+
         /**
          * The name of the conversion.
          * @since 3.0.0
@@ -4121,40 +3856,29 @@ export namespace Ags {
         $signals: Conversion.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Conversion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Conversion;
+        static ["new"](): Conversion;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Conversion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Conversion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Conversion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Conversion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Conversion.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Conversion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Conversion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Conversion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Convert a value if `reverse` is `false` then use the target format
          * otherwise if `true` convert back to original format.
@@ -4165,7 +3889,6 @@ export namespace Ags {
         vfunc_convert(x: number, reverse: boolean): number;
 
         // Methods
-
         /**
          * Convert a value if `reverse` is `false` then use the target format
          * otherwise if `true` convert back to original format.
@@ -4176,17 +3899,19 @@ export namespace Ags {
         convert(x: number, reverse: boolean): number;
     }
 
+
     namespace DestroyWorker {
         // Signal signatures
         interface SignalSignatures extends WorkerThread.SignalSignatures {
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::max-precision': (pspec: GObject.ParamSpec) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::max-precision": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends WorkerThread.ConstructorProps, Connectable.ConstructorProps {
 
-        interface ConstructorProps extends WorkerThread.ConstructorProps, Connectable.ConstructorProps {}
+        }
     }
 
     /**
@@ -4205,48 +3930,43 @@ export namespace Ags {
         $signals: DestroyWorker.SignalSignatures;
 
         // Fields
-
         worker_thread: WorkerThread;
+
         destroy_interval: any;
+
         destroy_list: any[];
 
         // Constructors
-
         constructor(properties?: Partial<DestroyWorker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DestroyWorker;
+        static ["new"](): DestroyWorker;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof DestroyWorker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DestroyWorker.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof DestroyWorker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DestroyWorker.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof DestroyWorker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DestroyWorker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DestroyWorker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DestroyWorker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Add `ptr` for destruction using `destroy_func`.
          * @param destroy_worker the {@link Ags.DestroyWorker}
          * @param ptr the gpointer to destroy
          * @param destroy_func the AgsDestroyFunc
          */
-        static add(destroy_worker: any | null, ptr: any | null, destroy_func: DestroyFunc): void;
+        static add(destroy_worker: (any | null), ptr: (any | null), destroy_func: DestroyFunc): void;
+
         /**
          * Get your destroy worker instance.
          */
         static get_instance(): DestroyWorker;
     }
+
 
     namespace File {
         // Signal signatures
@@ -4257,14 +3977,14 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            open: (arg0: any | null) => void;
+            open: (arg0: (any | null)) => void;
             /**
              * Open `file` from a buffer containing the file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'open-from-data': (arg0: string, arg1: number, arg2: any | null) => void;
+            "open-from-data": (arg0: string, arg1: number, arg2: (any | null)) => void;
             /**
              * Read a XML document from disk with specified filename.
              * @signal
@@ -4279,19 +3999,19 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'read-resolve': () => void;
+            "read-resolve": () => void;
             /**
              * Hook after reading XML document to update or start the application.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'read-start': () => void;
+            "read-start": () => void;
             /**
              * @signal
              * @run-last
              */
-            'rw-open': (arg0: boolean, arg1: any | null) => void;
+            "rw-open": (arg0: boolean, arg1: (any | null)) => void;
             /**
              * Write XML Document to disk.
              * @signal
@@ -4303,7 +4023,7 @@ export namespace Ags {
              * @signal
              * @run-last
              */
-            'write-concurrent': () => void;
+            "write-concurrent": () => void;
             /**
              * Resolve references and generate thus XPath expressions just
              * before writing to disk.
@@ -4311,16 +4031,15 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'write-resolve': () => void;
-            'notify::audio-encoding': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-format': (pspec: GObject.ParamSpec) => void;
-            'notify::encoding': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::xml-doc': (pspec: GObject.ParamSpec) => void;
+            "write-resolve": () => void;
+            "notify::audio-encoding": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-format": (pspec: GObject.ParamSpec) => void;
+            "notify::encoding": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::xml-doc": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             audio_encoding: string;
             audioEncoding: string;
@@ -4340,7 +4059,6 @@ export namespace Ags {
         static $gtype: GObject.GType<File>;
 
         // Properties
-
         /**
          * The encoding to use for embedding audio data.
          * @since 3.0.0
@@ -4348,6 +4066,7 @@ export namespace Ags {
          */
         get audio_encoding(): string;
         set audio_encoding(val: string);
+
         /**
          * The encoding to use for embedding audio data.
          * @since 3.0.0
@@ -4355,6 +4074,7 @@ export namespace Ags {
          */
         get audioEncoding(): string;
         set audioEncoding(val: string);
+
         /**
          * The format of embedded audio data.
          * @since 3.0.0
@@ -4362,6 +4082,7 @@ export namespace Ags {
          */
         get audio_format(): string;
         set audio_format(val: string);
+
         /**
          * The format of embedded audio data.
          * @since 3.0.0
@@ -4369,6 +4090,7 @@ export namespace Ags {
          */
         get audioFormat(): string;
         set audioFormat(val: string);
+
         /**
          * The charset encoding to use.
          * @since 3.0.0
@@ -4376,6 +4098,7 @@ export namespace Ags {
          */
         get encoding(): string;
         set encoding(val: string);
+
         /**
          * The assigned filename to open and read from.
          * @since 3.0.0
@@ -4383,12 +4106,14 @@ export namespace Ags {
          */
         get filename(): string;
         set filename(val: string);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
@@ -4406,58 +4131,65 @@ export namespace Ags {
         $signals: File.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         app_encoding: string;
+
         out: any;
+
         dtd: string;
+
         read_charset_converter: Gio.CharsetConverter;
+
         write_charset_converter: Gio.CharsetConverter;
+
         id_refs: any[];
+
         lookup: any[];
+
         launch: any[];
+
         clipboard: GObject.Object;
+
         property: any[];
+
         script: any[];
+
         cluster: GObject.Object;
+
         client: GObject.Object;
+
         server: GObject.Object;
+
         history: GObject.Object;
+
         embedded_audio: any[];
+
         file_link: any[];
 
         // Constructors
-
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): File;
+        static ["new"](): File;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Compute MD5 sums of a buffer.
          * @param content the string buffer
@@ -4466,12 +4198,12 @@ export namespace Ags {
         static str2md5(content: string, content_length: number): string;
 
         // Virtual methods
-
         /**
          * Opens the file specified by :filename property.
          * @virtual
          */
         vfunc_open(): void;
+
         /**
          * Opens the file provided by `data`.
          * @param data a buffer containing the XML document
@@ -4479,35 +4211,42 @@ export namespace Ags {
          * @virtual
          */
         vfunc_open_from_data(data: string, length: number): void;
+
         /**
          * Read XML document from disk.
          * @virtual
          */
         vfunc_read(): void;
+
         /**
          * @virtual
          */
         vfunc_read_resolve(): void;
+
         /**
          * Update or start the application.
          * @virtual
          */
         vfunc_read_start(): void;
+
         /**
          * Opens the file specified by :filename property in read-write mode.
          * @param create if `true` create the file as needed
          * @virtual
          */
         vfunc_rw_open(create: boolean): void;
+
         /**
          * Write the XML document to disk.
          * @virtual
          */
         vfunc_write(): void;
+
         /**
          * @virtual
          */
         vfunc_write_concurrent(): void;
+
         /**
          * Resolve references to XPath expressions.
          * @virtual
@@ -4515,170 +4254,203 @@ export namespace Ags {
         vfunc_write_resolve(): void;
 
         // Methods
-
         /**
          * Adds `id_ref` to `file`.
          * @param id_ref a reference
          */
         add_id_ref(id_ref: GObject.Object): void;
+
         /**
          * Add `file_launch` for later invoking.
          * @param file_launch a {@link Ags.FileLaunch}
          */
         add_launch(file_launch: GObject.Object): void;
+
         /**
          * Add `file_lookup` for later invoking.
          * @param file_lookup a {@link Ags.FileLookup}
          */
         add_lookup(file_lookup: GObject.Object): void;
+
         /**
          * Closes `file`.
          */
         close(): void;
+
         /**
          * Find a reference by its XML node.
          * @param node a XML node
          * @returns the matching {@link GObject.Object}
          */
         find_id_ref_by_node<T = GObject.Object>(node: libxml2.Node): T;
+
         /**
          * Find a reference matching `ref`.
          * @param ref a %gpointer
          * @returns the matching {@link GObject.Object}
          */
-        find_id_ref_by_reference<T = GObject.Object>(ref: any | null): T;
+        find_id_ref_by_reference<T = GObject.Object>(ref: (any | null)): T;
+
         /**
          * Lookup a reference by `xpath`.
          * @param xpath a XPath expression
          * @returns the matching {@link GObject.Object}
          */
         find_id_ref_by_xpath<T = GObject.Object>(xpath: string): T;
+
         /**
          * Get audio encoding of `file`.
          * @returns the audio encoding
          */
         get_audio_encoding(): string;
+
         /**
          * Get audio format of `file`.
          * @returns the audio format
          */
         get_audio_format(): string;
+
         /**
          * Get encoding of `file`.
          * @returns the encoding
          */
         get_encoding(): string;
+
         /**
          * Get filename of `file`.
          * @returns the filename
          */
         get_filename(): string;
+
         /**
          * Get xml doc of `file`.
          * @returns the #xmlDoc-struct
          */
         get_xml_doc(): libxml2.Doc;
+
         /**
          * Opens the file specified by :filename property.
          */
         open(): void;
+
         /**
          * Opens the file specified by `filename` property.
          * @param filename a path
          */
         open_filename(filename: string): void;
+
         /**
          * Opens the file provided by `data`.
          * @param data a buffer containing the XML document
          * @param length the buffer length
          */
         open_from_data(data: string, length: number): void;
+
         /**
          * Read XML document from disk.
          */
         read(): void;
+
         /**
-         * @param node
-         * @param application_context
+         * @param node 
+         * @param application_context 
          */
         read_application_context(node: libxml2.Node, application_context: GObject.Object): void;
+
         /**
-         * @param node
-         * @param ags_config
+         * @param node 
+         * @param ags_config 
          */
         read_config(node: libxml2.Node, ags_config: GObject.Object): void;
+
         read_resolve(): void;
+
         /**
          * Update or start the application.
          */
         read_start(): void;
+
         /**
          * Opens the file specified by :filename property in read-write mode.
          * @param create if `true` create the file as needed
          */
         rw_open(create: boolean): void;
+
         /**
          * Set `audio_encoding` of `file`.
          * @param audio_encoding the audio encoding
          */
         set_audio_encoding(audio_encoding: string): void;
+
         /**
          * Set `audio_format` of `file`.
          * @param audio_format the audio format
          */
         set_audio_format(audio_format: string): void;
+
         /**
          * Set `encoding` of `file`.
          * @param encoding the encoding
          */
         set_encoding(encoding: string): void;
+
         /**
          * Set `filename` of `file`.
          * @param filename the filename
          */
         set_filename(filename: string): void;
+
         /**
          * Set `xml_doc` of `file`.
          * @param xml_doc the #xmlDoc-struct
          */
         set_xml_doc(xml_doc: libxml2.Doc): void;
+
         /**
          * Write the XML document to disk.
          */
         write(): void;
+
         /**
-         * @param parent
-         * @param application_context
+         * @param parent 
+         * @param application_context 
          */
         write_application_context(parent: libxml2.Node, application_context: GObject.Object): void;
+
         write_concurrent(): void;
+
         /**
-         * @param parent
-         * @param ags_config
+         * @param parent 
+         * @param ags_config 
          */
         write_config(parent: libxml2.Node, ags_config: GObject.Object): void;
+
         /**
          * Resolve references to XPath expressions.
          */
         write_resolve(): void;
+
         /**
          * Set root element `root_node` of `doc`.
          * @param parent the parent #xmlNode-struct
          * @param child the child #xmlNode-struct
          */
         xml_add_child(parent: libxml2.Node, child: libxml2.Node): void;
+
         /**
          * Get content of `node`.
          * @param node the #xmlNode-struct
          * @returns the content of #xmlNode-struct
          */
         xml_get_content(node: libxml2.Node): string;
+
         /**
          * Get node name of `node`.
          * @param node the #xmlNode-struct
          * @returns the node name of #xmlNode-struct
          */
         xml_get_node_name(node: libxml2.Node): string;
+
         /**
          * Get property of `node`.
          * @param node the #xmlNode-struct
@@ -4686,12 +4458,14 @@ export namespace Ags {
          * @returns the property of #xmlNode-struct
          */
         xml_get_prop(node: libxml2.Node, prop_name: string): string;
+
         /**
          * Get root element of `doc`.
          * @param doc the #xmlDoc-struct
          * @returns the root element of #xmlDoc-struct
          */
         xml_get_root_element(doc: libxml2.Doc): libxml2.Node;
+
         /**
          * Set content of `node`.
          * @param node the #xmlNode-struct
@@ -4699,6 +4473,7 @@ export namespace Ags {
          * @param is_cdata if content is CDATA
          */
         xml_set_content(node: libxml2.Node, content: string, is_cdata: boolean): void;
+
         /**
          * Set property of `node`.
          * @param node the #xmlNode-struct
@@ -4706,6 +4481,7 @@ export namespace Ags {
          * @param prop_value property value
          */
         xml_set_prop(node: libxml2.Node, prop_name: string, prop_value: string): void;
+
         /**
          * Set root element `root_node` of `doc`.
          * @param doc the #xmlDoc-struct
@@ -4713,6 +4489,7 @@ export namespace Ags {
          */
         xml_set_root_element(doc: libxml2.Doc, root_node: libxml2.Node): void;
     }
+
 
     namespace FileIdRef {
         // Signal signatures
@@ -4724,14 +4501,13 @@ export namespace Ags {
              * @run-last
              */
             resolved: () => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::node': (pspec: GObject.ParamSpec) => void;
-            'notify::reference': (pspec: GObject.ParamSpec) => void;
-            'notify::xpath': (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::node": (pspec: GObject.ParamSpec) => void;
+            "notify::reference": (pspec: GObject.ParamSpec) => void;
+            "notify::xpath": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
             node: any;
@@ -4747,25 +4523,27 @@ export namespace Ags {
         static $gtype: GObject.GType<FileIdRef>;
 
         // Properties
-
         /**
          * The {@link Ags.File} this {@link Ags.FileIdRef} belongs to.
          * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
+
         /**
          * The assigned xmlNode being referred by this {@link Ags.FileIdRef}.
          * @since 3.0.0
          */
         get node(): any;
         set node(val: any);
+
         /**
          * The object referred by this {@link Ags.FileIdRef}.
          * @since 3.0.0
          */
         get reference(): any;
         set reference(val: any);
+
         /**
          * The XPath short-cut that can be used with this {@link Ags.FileIdRef}.
          * @since 3.0.0
@@ -4784,43 +4562,33 @@ export namespace Ags {
         $signals: FileIdRef.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
 
-        // This field conflicts with a function in a parent class or interface.
-        ref: any | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    ref: (any | any);
 
         // Constructors
-
         constructor(properties?: Partial<FileIdRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FileIdRef;
+        static ["new"](): FileIdRef;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileIdRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileIdRef.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileIdRef.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileIdRef.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileIdRef.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileIdRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileIdRef.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileIdRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Notify about resolved reference.
          * @virtual
@@ -4828,12 +4596,12 @@ export namespace Ags {
         vfunc_resolved(): void;
 
         // Methods
-
         /**
          * Notify about resolved reference.
          */
         resolved(): void;
     }
+
 
     namespace FileLaunch {
         // Signal signatures
@@ -4845,13 +4613,12 @@ export namespace Ags {
              * @run-last
              */
             start: () => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::node': (pspec: GObject.ParamSpec) => void;
-            'notify::reference': (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::node": (pspec: GObject.ParamSpec) => void;
+            "notify::reference": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
             node: any;
@@ -4866,19 +4633,20 @@ export namespace Ags {
         static $gtype: GObject.GType<FileLaunch>;
 
         // Properties
-
         /**
          * The {@link Ags.File} this {@link Ags.FileLaunch} belongs to.
          * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
+
         /**
          * The assigned xmlNode being referred by this {@link Ags.FileLaunch}.
          * @since 3.0.0
          */
         get node(): any;
         set node(val: any);
+
         /**
          * The object referred by this {@link Ags.FileLaunch}.
          * @since 3.0.0
@@ -4896,40 +4664,29 @@ export namespace Ags {
         $signals: FileLaunch.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<FileLaunch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FileLaunch;
+        static ["new"](): FileLaunch;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileLaunch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileLaunch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileLaunch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileLaunch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileLaunch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileLaunch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileLaunch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLaunch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Start {@link Ags.FileLaunch} to fulfill a task.
          * @virtual
@@ -4937,22 +4694,21 @@ export namespace Ags {
         vfunc_start(): void;
 
         // Methods
-
         /**
          * Start {@link Ags.FileLaunch} to fulfill a task.
          */
         start(): void;
     }
 
+
     namespace FileLink {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Plugin.ConstructorProps {
             data: string;
             filename: string;
@@ -4966,7 +4722,6 @@ export namespace Ags {
         static $gtype: GObject.GType<FileLink>;
 
         // Properties
-
         /**
          * The data this {@link Ags.FileLink} contains.
          * @since 3.0.0
@@ -4974,6 +4729,7 @@ export namespace Ags {
          */
         get data(): string;
         set data(val: string);
+
         /**
          * The filename this {@link Ags.FileLink} refers.
          * @since 3.0.0
@@ -4992,168 +4748,185 @@ export namespace Ags {
         $signals: FileLink.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         version: string;
+
         build_id: string;
+
         name: string;
+
         xml_type: string;
 
         // Constructors
-
         constructor(properties?: Partial<FileLink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FileLink;
+        static ["new"](): FileLink;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileLink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileLink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileLink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileLink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileLink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileLink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get data of `file_link`.
          * @returns the data
          */
         get_data(): string;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_data
+    // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+
         /**
          * Get filename of `file_link`.
          * @returns the filename
          */
         get_filename(): string;
+
         /**
          * Set `data` of `file_link`.
          * @param data the data
          */
         set_data(data: string): void;
+
         /**
          * Set `filename` of `file_link`.
          * @param filename the filename
          */
         set_filename(filename: string): void;
+
         /**
          * Retrieve the build id of the plugin.
          * @returns the plugins build id
          */
         get_build_id(): string;
+
         /**
          * Retrieve the name of the plugin.
          * @returns the plugins name
          */
         get_name(): string;
+
         /**
          * Retrieve the ports of the plugin.
          * @returns the plugins ports
          */
         get_ports(): GObject.Object[];
+
         /**
          * Retrieve the version of the plugin.
          * @returns the plugins version
          */
         get_version(): string;
+
         /**
          * Retrieve the xml type of the plugin.
          * @returns the plugins xml type
          */
         get_xml_type(): string;
+
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
          */
         set_build_id(build_id: string): void;
+
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
          */
         set_name(name: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
          */
         set_ports(ports: GObject.Object[]): void;
+
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
          */
         set_version(version: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
          */
         set_xml_type(xml_type: string): void;
+
         /**
          * Retrieve the build id of the plugin.
          * @virtual
          */
         vfunc_get_build_id(): string;
+
         /**
          * Retrieve the name of the plugin.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Retrieve the ports of the plugin.
          * @virtual
          */
         vfunc_get_ports(): GObject.Object[];
+
         /**
          * Retrieve the version of the plugin.
          * @virtual
          */
         vfunc_get_version(): string;
+
         /**
          * Retrieve the xml type of the plugin.
          * @virtual
          */
         vfunc_get_xml_type(): string;
+
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
          * @virtual
          */
         vfunc_set_build_id(build_id: string): void;
+
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
          * @virtual
          */
         vfunc_set_name(name: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
          * @virtual
          */
         vfunc_set_ports(ports: GObject.Object[]): void;
+
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
          * @virtual
          */
         vfunc_set_version(version: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
@@ -5161,6 +4934,7 @@ export namespace Ags {
          */
         vfunc_set_xml_type(xml_type: string): void;
     }
+
 
     namespace FileLookup {
         // Signal signatures
@@ -5170,13 +4944,12 @@ export namespace Ags {
              * @run-last
              */
             resolve: () => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::node': (pspec: GObject.ParamSpec) => void;
-            'notify::reference': (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::node": (pspec: GObject.ParamSpec) => void;
+            "notify::reference": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
             node: any;
@@ -5191,11 +4964,12 @@ export namespace Ags {
         static $gtype: GObject.GType<FileLookup>;
 
         // Properties
-
         get file(): GObject.Object;
         set file(val: GObject.Object);
+
         get node(): any;
         set node(val: any);
+
         get reference(): any;
         set reference(val: any);
 
@@ -5209,58 +4983,48 @@ export namespace Ags {
         $signals: FileLookup.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
 
-        // This field conflicts with a function in a parent class or interface.
-        ref: any | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    ref: (any | any);
 
         // Constructors
-
         constructor(properties?: Partial<FileLookup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FileLookup;
+        static ["new"](): FileLookup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileLookup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileLookup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileLookup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileLookup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileLookup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileLookup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileLookup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLookup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Find {@link Ags.FileLookup} by #xmlNode
          * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param node a #xmlNode
          */
         static find_by_node(file_lookup: FileLookup[], node: libxml2.Node): FileLookup[];
+
         /**
          * Find {@link Ags.FileLookup} by `ref`
          * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param ref a `gpointer`
          */
-        static find_by_reference(file_lookup: FileLookup[], ref: any | null): FileLookup[];
+        static find_by_reference(file_lookup: FileLookup[], ref: (any | null)): FileLookup[];
 
         // Virtual methods
-
         /**
          * The ::resolve signal.
          * @virtual
@@ -5268,12 +5032,12 @@ export namespace Ags {
         vfunc_resolve(): void;
 
         // Methods
-
         /**
          * The ::resolve signal.
          */
         resolve(): void;
     }
+
 
     namespace FrontController {
         // Signal signatures
@@ -5284,21 +5048,15 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'do-request': (
-                arg0: GObject.Object,
-                arg1: any | null,
-                arg2: GObject.Object,
-                arg3: string,
-                arg4: string,
-                arg5: string,
-            ) => any | null;
-            'notify::context-path': (pspec: GObject.ParamSpec) => void;
-            'notify::server': (pspec: GObject.ParamSpec) => void;
+            "do-request": (arg0: GObject.Object, arg1: (any | null), arg2: GObject.Object, arg3: string, arg4: string, arg5: string) => (any | null);
+            "notify::context-path": (pspec: GObject.ParamSpec) => void;
+            "notify::server": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Controller.ConstructorProps {
 
-        interface ConstructorProps extends Controller.ConstructorProps {}
+        }
     }
 
     /**
@@ -5317,40 +5075,29 @@ export namespace Ags {
         $signals: FrontController.SignalSignatures;
 
         // Fields
-
         controller: Controller;
 
         // Constructors
-
         constructor(properties?: Partial<FrontController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FrontController;
+        static ["new"](): FrontController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FrontController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FrontController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FrontController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FrontController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FrontController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FrontController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FrontController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FrontController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Do a XML-RPC request for the given `path` with `query`.
          * @param msg the {@link Soup.ServerMessage}
@@ -5361,17 +5108,9 @@ export namespace Ags {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(
-            msg: Soup.ServerMessage,
-            query: GLib.HashTable<any, any>,
-            security_context: GObject.Object,
-            path: string,
-            login: string,
-            security_token: string,
-        ): any | null;
+        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<any, any>, security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
 
         // Methods
-
         /**
          * Do a XML-RPC request for the given `path` with `query`.
          * @param msg the {@link Soup.ServerMessage}
@@ -5382,26 +5121,19 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the response on success, otherwise `null`.
          */
-        do_request(
-            msg: Soup.ServerMessage,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-            security_context: GObject.Object,
-            path: string,
-            login: string,
-            security_token: string,
-        ): any | null;
+        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<any, any>), security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
     }
+
 
     namespace Function {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::normalized-function': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-table': (pspec: GObject.ParamSpec) => void;
-            'notify::source-function': (pspec: GObject.ParamSpec) => void;
+            "notify::normalized-function": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-table": (pspec: GObject.ParamSpec) => void;
+            "notify::source-function": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             normalized_function: string;
             normalizedFunction: string;
@@ -5419,7 +5151,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Function>;
 
         // Properties
-
         /**
          * The normalized function.
          * @since 3.0.0
@@ -5427,6 +5158,7 @@ export namespace Ags {
          */
         get normalized_function(): string;
         set normalized_function(val: string);
+
         /**
          * The normalized function.
          * @since 3.0.0
@@ -5434,18 +5166,21 @@ export namespace Ags {
          */
         get normalizedFunction(): string;
         set normalizedFunction(val: string);
+
         /**
          * The pivot table.
          * @since 3.0.0
          */
         get pivot_table(): any;
         set pivot_table(val: any);
+
         /**
          * The pivot table.
          * @since 3.0.0
          */
         get pivotTable(): any;
         set pivotTable(val: any);
+
         /**
          * The source function.
          * @since 3.0.0
@@ -5453,6 +5188,7 @@ export namespace Ags {
          */
         get source_function(): string;
         set source_function(val: string);
+
         /**
          * The source function.
          * @since 3.0.0
@@ -5471,56 +5207,57 @@ export namespace Ags {
         $signals: Function.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         is_pushing: boolean;
+
         equation: string;
+
         transformed_equation: string;
+
         symbol: string;
+
         solver_matrix: any[];
+
         pivot_table_count: number;
+
         row_count: number;
+
         column_count: number;
+
         solver_level: number;
+
         solver_vector: Complex;
 
         // Constructors
-
         constructor(properties?: Partial<Function.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source_function: string): Function;
+        static ["new"](source_function: string): Function;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Function.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Function.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Function.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Function.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add `solver_matrix` to `function`.
          * @param solver_matrix the {@link Ags.SolverMatrix}
          */
         add_matrix(solver_matrix: SolverMatrix): void;
+
         /**
          * Remove `solver_matrix` from `function`.
          * @param solver_matrix the {@link Ags.SolverMatrix}
@@ -5528,18 +5265,19 @@ export namespace Ags {
         remove_matrix(solver_matrix: SolverMatrix): void;
     }
 
+
     namespace GenericMainLoop {
         // Signal signatures
         interface SignalSignatures extends Thread.SignalSignatures {
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::max-precision': (pspec: GObject.ParamSpec) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::max-precision": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps, MainLoop.ConstructorProps {
 
-        interface ConstructorProps
-            extends Thread.ConstructorProps, Connectable.ConstructorProps, MainLoop.ConstructorProps {}
+        }
     }
 
     /**
@@ -5558,247 +5296,285 @@ export namespace Ags {
         $signals: GenericMainLoop.SignalSignatures;
 
         // Fields
-
         thread: Thread;
 
-        // This field conflicts with a function in a parent class or interface.
-        is_syncing: boolean | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    is_syncing: (boolean | any);
 
-        // This field conflicts with a function in a parent class or interface.
-        is_critical_region: boolean | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    is_critical_region: (boolean | any);
+
         critical_region_ref: number;
 
         // Constructors
-
         constructor(properties?: Partial<GenericMainLoop.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): GenericMainLoop;
+        static ["new"](): GenericMainLoop;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof GenericMainLoop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericMainLoop.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof GenericMainLoop.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GenericMainLoop.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof GenericMainLoop.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GenericMainLoop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GenericMainLoop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericMainLoop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
+
         /**
          * Change frequency.
          * @param frequency the new frequency
          */
         change_frequency(frequency: number): void;
+
         /**
          * Decrement thread needs access to main loop's critical region field.
          */
         dec_queued_critical_region(): void;
+
         /**
          * Retrieve the tree mutex.
          * @returns the mutex
          */
         get_tree_lock(): GLib.RecMutex;
+
         /**
          * Increment thread needs access to main loop's critical region field.
          */
         inc_queued_critical_region(): void;
+
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
          */
         set_critical_region(is_critical_region: boolean): void;
+
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
          */
         set_syncing(is_syncing: boolean): void;
+
         /**
          * Test main loop may enter critical region.
          * @returns 0 if main loop may enter critical region, otherwise not
          */
         test_queued_critical_region(): number;
+
         /**
          * Change frequency.
          * @param frequency the new frequency
          * @virtual
          */
         vfunc_change_frequency(frequency: number): void;
+
         /**
          * Decrement thread needs access to main loop's critical region field.
          * @virtual
          */
         vfunc_dec_queued_critical_region(): void;
+
         /**
          * Retrieve the tree mutex.
          * @virtual
          */
         vfunc_get_tree_lock(): GLib.RecMutex;
+
         /**
          * Increment thread needs access to main loop's critical region field.
          * @virtual
          */
         vfunc_inc_queued_critical_region(): void;
+
         /**
          * Check if main loop is in critical region.
          * @virtual
          */
         vfunc_is_critical_region(): boolean;
+
         /**
          * Check if thread tree is syncing.
          * @virtual
          */
         vfunc_is_syncing(): boolean;
+
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
          * @virtual
          */
         vfunc_set_critical_region(is_critical_region: boolean): void;
+
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
          * @virtual
          */
         vfunc_set_syncing(is_syncing: boolean): void;
+
         /**
          * Test main loop may enter critical region.
          * @virtual
@@ -5806,13 +5582,16 @@ export namespace Ags {
         vfunc_test_queued_critical_region(): number;
     }
 
+
     namespace Log {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5831,54 +5610,45 @@ export namespace Ags {
         $signals: Log.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         messages: any[];
 
         // Constructors
-
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Log;
+        static ["new"](): Log;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get your logging instance.
          */
         static get_instance(): Log;
 
         // Methods
-
         /**
          * Add a message to `log`.
          * @param str the message
          */
         add_message(str: string): void;
+
         /**
          * Get log messages as {@link GLib.List}-struct containing strings.
          * @returns the {@link GLib.List}-struct containing log messages
@@ -5886,13 +5656,16 @@ export namespace Ags {
         get_messages(): string[];
     }
 
+
     namespace MessageDelivery {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5911,59 +5684,50 @@ export namespace Ags {
         $signals: MessageDelivery.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         message_queue: any[];
 
         // Constructors
-
         constructor(properties?: Partial<MessageDelivery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MessageDelivery;
+        static ["new"](): MessageDelivery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageDelivery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageDelivery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageDelivery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageDelivery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageDelivery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageDelivery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageDelivery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageDelivery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the {@link Ags.MessageDelivery} instance.
          */
         static get_instance(): MessageDelivery;
 
         // Methods
-
         /**
          * Add `message` to an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
          * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         add_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
+
         /**
          * Add `message_queue` to `message_delivery`.
          * @param message_queue the {@link Ags.MessageQueue}
          */
         add_message_queue(message_queue: GObject.Object): void;
+
         /**
          * Find `recipient` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
@@ -5972,12 +5736,14 @@ export namespace Ags {
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_recipient(recipient_namespace: string, recipient: GObject.Object): MessageEnvelope[];
+
         /**
          * Find recipient namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param recipient_namespace the recipient namespace as string to find
          * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
          */
         find_recipient_namespace(recipient_namespace: string): MessageQueue[];
+
         /**
          * Find `sender` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
@@ -5986,17 +5752,20 @@ export namespace Ags {
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_sender(recipient_namespace: string, sender: GObject.Object): MessageEnvelope[];
+
         /**
          * Find sender namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param sender_namespace the sender namespace as string to find
          * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
          */
         find_sender_namespace(sender_namespace: string): MessageQueue[];
+
         /**
          * Get message queue of `message_delivery`.
          * @returns the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
          */
         get_message_queue(): MessageQueue[];
+
         /**
          * Query `xpath` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
@@ -6005,17 +5774,20 @@ export namespace Ags {
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         query_message(recipient_namespace: string, xpath: string): MessageEnvelope[];
+
         /**
          * Remove `message` from an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
          * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         remove_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
+
         /**
          * Remove `message_queue` to `message_delivery`.
          * @param message_queue the {@link Ags.MessageQueue}
          */
         remove_message_queue(message_queue: GObject.Object): void;
+
         /**
          * Set `message_queue` of `message_delivery`.
          * @param message_queue the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
@@ -6023,16 +5795,16 @@ export namespace Ags {
         set_message_queue(message_queue: MessageQueue[]): void;
     }
 
+
     namespace MessageEnvelope {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::recipient': (pspec: GObject.ParamSpec) => void;
-            'notify::sender': (pspec: GObject.ParamSpec) => void;
-            'notify::xml-doc': (pspec: GObject.ParamSpec) => void;
+            "notify::recipient": (pspec: GObject.ParamSpec) => void;
+            "notify::sender": (pspec: GObject.ParamSpec) => void;
+            "notify::xml-doc": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             recipient: GObject.Object;
             sender: GObject.Object;
@@ -6048,25 +5820,27 @@ export namespace Ags {
         static $gtype: GObject.GType<MessageEnvelope>;
 
         // Properties
-
         /**
          * The assigned recipient.
          * @since 3.0.0
          */
         get recipient(): GObject.Object;
         set recipient(val: GObject.Object);
+
         /**
          * The assigned sender.
          * @since 3.0.0
          */
         get sender(): GObject.Object;
         set sender(val: GObject.Object);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
@@ -6084,69 +5858,57 @@ export namespace Ags {
         $signals: MessageEnvelope.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         n_params: number;
+
         parameter_name: string;
+
         free_func: GLib.DestroyNotify;
 
         // Constructors
-
         constructor(properties?: Partial<MessageEnvelope.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sender: GObject.Object, recipient: GObject.Object, doc: libxml2.Doc): MessageEnvelope;
+        static ["new"](sender: GObject.Object, recipient: GObject.Object, doc: libxml2.Doc): MessageEnvelope;
 
-        static new_with_params(
-            sender: GObject.Object,
-            recipient: GObject.Object,
-            doc: libxml2.Doc,
-            n_params: number,
-            parameter_name: string,
-            value: GObject.Value | any,
-        ): MessageEnvelope;
+        static new_with_params(sender: GObject.Object, recipient: GObject.Object, doc: libxml2.Doc, n_params: number, parameter_name: string, value: (GObject.Value | any)): MessageEnvelope;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageEnvelope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageEnvelope.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageEnvelope.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageEnvelope.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageEnvelope.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageEnvelope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageEnvelope.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageEnvelope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get xmlDoc.
          * @returns the doc
          */
         get_doc(): libxml2.Doc;
+
         /**
          * Get parameters.
          * @param n_params return location of parameter count
          * @param parameter_name return location `null` terminated string vector containing parameter name
          * @param value return location of {@link GObject.Value}-struct array containing values
          */
-        get_parameter(n_params: number, parameter_name: string, value: GObject.Value | any): void;
+        get_parameter(n_params: number, parameter_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Get recipient.
          * @returns the recipient
          */
         get_recipient<T = GObject.Object>(): T;
+
         /**
          * Get sender.
          * @returns the sender
@@ -6154,15 +5916,15 @@ export namespace Ags {
         get_sender<T = GObject.Object>(): T;
     }
 
+
     namespace MessageQueue {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::recipient-namespace': (pspec: GObject.ParamSpec) => void;
-            'notify::sender-namespace': (pspec: GObject.ParamSpec) => void;
+            "notify::recipient-namespace": (pspec: GObject.ParamSpec) => void;
+            "notify::sender-namespace": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             recipient_namespace: string;
             recipientNamespace: string;
@@ -6178,7 +5940,6 @@ export namespace Ags {
         static $gtype: GObject.GType<MessageQueue>;
 
         // Properties
-
         /**
          * The assigned namespace of recipient.
          * @since 3.0.0
@@ -6186,6 +5947,7 @@ export namespace Ags {
          */
         get recipient_namespace(): string;
         set recipient_namespace(val: string);
+
         /**
          * The assigned namespace of recipient.
          * @since 3.0.0
@@ -6193,6 +5955,7 @@ export namespace Ags {
          */
         get recipientNamespace(): string;
         set recipientNamespace(val: string);
+
         /**
          * The assigned namespace of sender.
          * @since 3.0.0
@@ -6200,6 +5963,7 @@ export namespace Ags {
          */
         get sender_namespace(): string;
         set sender_namespace(val: string);
+
         /**
          * The assigned namespace of sender.
          * @since 3.0.0
@@ -6218,94 +5982,94 @@ export namespace Ags {
         $signals: MessageQueue.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         message_envelope: any[];
 
         // Constructors
-
         constructor(properties?: Partial<MessageQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sender_namespace: string): MessageQueue;
+        static ["new"](sender_namespace: string): MessageQueue;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageQueue.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageQueue.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageQueue.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageQueue.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add `message` to `message_queue`.
          * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         add_message_envelope(message_envelope: GObject.Object): void;
+
         /**
          * Find `recipient` in `message_queue`'s messages.
          * @param recipient the recipient as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_recipient(recipient: GObject.Object): MessageEnvelope[];
+
         /**
          * Find `sender` in `message_queue`'s messages.
          * @param sender the sender as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_sender(sender: GObject.Object): MessageEnvelope[];
+
         /**
          * Get message envelope of `message_queue`.
          * @returns the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
          */
         get_message_envelope(): MessageEnvelope[];
+
         /**
          * Get recipient namespace of `message_queue`.
          * @returns the recipient namespace
          */
         get_recipient_namespace(): string;
+
         /**
          * Get sender namespace of `message_queue`.
          * @returns the sender namespace
          */
         get_sender_namespace(): string;
+
         /**
          * Query `xpath` in `message_queue`'s messages.
          * @param xpath the XPath as string
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         query_message(xpath: string): MessageEnvelope[];
+
         /**
          * Remove `message` from `message_queue`.
          * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         remove_message_envelope(message_envelope: GObject.Object): void;
+
         /**
          * Set `message_envelope` of `message_queue`.
          * @param message_envelope the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
          */
         set_message_envelope(message_envelope: MessageEnvelope[]): void;
+
         /**
          * Set `recipient_namespace` of `message_queue`.
          * @param recipient_namespace the recipient namespace
          */
         set_recipient_namespace(recipient_namespace: string): void;
+
         /**
          * Set `sender_namespace` of `message_queue`.
          * @param sender_namespace the sender namespace
@@ -6313,13 +6077,16 @@ export namespace Ags {
         set_sender_namespace(sender_namespace: string): void;
     }
 
+
     namespace PasswordStoreManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6338,56 +6105,45 @@ export namespace Ags {
         $signals: PasswordStoreManager.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         salt: string;
+
         password_store: any[];
 
         // Constructors
-
         constructor(properties?: Partial<PasswordStoreManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PasswordStoreManager;
+        static ["new"](): PasswordStoreManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PasswordStoreManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PasswordStoreManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PasswordStoreManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PasswordStoreManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PasswordStoreManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PasswordStoreManager.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof PasswordStoreManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordStoreManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance.
          */
         static get_instance(): PasswordStoreManager;
 
         // Methods
-
         /**
          * Add `password_store` to `password_store_manager`.
          * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         add_password_store(password_store: GObject.Object): void;
+
         /**
          * Check `password` to be valid for `user_uuid`.
          * @param user_uuid the user uuid
@@ -6395,17 +6151,20 @@ export namespace Ags {
          * @returns `true` if password matches, otherwise `false`
          */
         check_password(user_uuid: string, password: string): boolean;
+
         /**
          * Get password_store.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         get_password_store(): GObject.Object[];
+
         /**
          * Remove `password_store` from `password_store_manager`.
          * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         remove_password_store(password_store: GObject.Object): void;
     }
+
 
     namespace Priority {
         // Signal signatures
@@ -6416,26 +6175,27 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'get-value': (arg0: string, arg1: string) => string;
+            "get-value": (arg0: string, arg1: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'load-defaults': () => void;
+            "load-defaults": () => void;
             /**
              * The ::set-value signal notifies about value been setting.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            'set-value': (arg0: string, arg1: string, arg2: string) => void;
+            "set-value": (arg0: string, arg1: string, arg2: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6454,50 +6214,41 @@ export namespace Ags {
         $signals: Priority.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         version: string;
+
         build_id: string;
 
         // Constructors
-
         constructor(properties?: Partial<Priority.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Priority;
+        static ["new"](): Priority;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Priority.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Priority.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Priority.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Priority.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Priority.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Priority.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Priority.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Priority.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get priority instance.
          */
         static get_instance(): Priority;
 
         // Virtual methods
-
         /**
          * Retrieve priority by `group` and `key`.
          * @param group the priority group identifier
@@ -6505,11 +6256,13 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
+
         /**
          * Load priorities from default values.
          * @virtual
          */
         vfunc_load_defaults(): void;
+
         /**
          * Set priority by `group` and `key`, applying `value`.
          * @param group the priority group identifier
@@ -6520,7 +6273,6 @@ export namespace Ags {
         vfunc_set_value(group: string, key: string, value: string): void;
 
         // Methods
-
         /**
          * Retrieve priority by `group` and `key`.
          * @param group the priority group identifier
@@ -6528,15 +6280,18 @@ export namespace Ags {
          * @returns the property's value
          */
         get_value(group: string, key: string): string;
+
         /**
          * Load priorities from default values.
          */
         load_defaults(): void;
+
         /**
          * Load priorities from `filename`.
          * @param filename the priorityuration file
          */
         load_from_file(filename: string): void;
+
         /**
          * Set priority by `group` and `key`, applying `value`.
          * @param group the priority group identifier
@@ -6546,14 +6301,14 @@ export namespace Ags {
         set_value(group: string, key: string, value: string): void;
     }
 
+
     namespace Registry {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::server': (pspec: GObject.ParamSpec) => void;
+            "notify::server": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             server: Server;
         }
@@ -6566,7 +6321,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Registry>;
 
         // Properties
-
         /**
          * The assigned {@link Ags.Server}
          * @since 3.0.0
@@ -6584,49 +6338,42 @@ export namespace Ags {
         $signals: Registry.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         counter: number;
+
         entry: any[];
 
         // Constructors
-
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Registry;
+        static ["new"](): Registry;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Registry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Registry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Registry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Registry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Registry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add `registry_entry` to `registry`.
          * @param registry_entry the {@link Ags.RegistryEntry}-struct to add
          */
         add_entry(registry_entry: RegistryEntry): void;
     }
+
 
     namespace ReturnableThread {
         // Signal signatures
@@ -6638,15 +6385,14 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'safe-run': () => void;
-            'notify::thread-pool': (pspec: GObject.ParamSpec) => void;
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::max-precision': (pspec: GObject.ParamSpec) => void;
+            "safe-run": () => void;
+            "notify::thread-pool": (pspec: GObject.ParamSpec) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::max-precision": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {
             thread_pool: GObject.Object;
             threadPool: GObject.Object;
@@ -6660,13 +6406,13 @@ export namespace Ags {
         static $gtype: GObject.GType<ReturnableThread>;
 
         // Properties
-
         /**
          * The assigned {@link Ags.ThreadPool} providing default settings.
          * @since 3.0.0
          */
         get thread_pool(): GObject.Object;
         set thread_pool(val: GObject.Object);
+
         /**
          * The assigned {@link Ags.ThreadPool} providing default settings.
          * @since 3.0.0
@@ -6684,215 +6430,243 @@ export namespace Ags {
         $signals: ReturnableThread.SignalSignatures;
 
         // Fields
-
         thread: Thread;
+
         flags: number;
+
         safe_data: any;
+
         handler: number;
 
         // Constructors
-
         constructor(properties?: Partial<ReturnableThread.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](thread_pool: GObject.Object): ReturnableThread;
-        // Conflicted with Ags.Thread.new
+        static ["new"](thread_pool: GObject.Object): ReturnableThread;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Ags.Thread.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof ReturnableThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ReturnableThread.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ReturnableThread.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ReturnableThread.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof ReturnableThread.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ReturnableThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ReturnableThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ReturnableThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_safe_run(): void;
 
         // Methods
-
         /**
          * Connects `callback` to `thread`.
          * @param callback the callback
          */
         connect_safe_run(callback: ReturnableThreadCallback): void;
+
         /**
          * Disconnects callback of `thread`.
          */
         disconnect_safe_run(): void;
+
         safe_run(): void;
+
         /**
          * Set flags.
          * @param flags the flags
          */
         set_flags(flags: ReturnableThreadFlags): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.set_flags
+    // Conflicted with Ags.Thread.set_flags
         set_flags(...args: never[]): any;
+
         /**
          * Test `flags` to be set on `returnable_thread`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ReturnableThreadFlags): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.test_flags
+    // Conflicted with Ags.Thread.test_flags
         test_flags(...args: never[]): any;
+
         /**
          * Unset flags.
          * @param flags the flags
          */
         unset_flags(flags: ReturnableThreadFlags): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.unset_flags
+    // Conflicted with Ags.Thread.unset_flags
         unset_flags(...args: never[]): any;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -6901,14 +6675,14 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
+
     namespace SecurityContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::certs': (pspec: GObject.ParamSpec) => void;
+            "notify::certs": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             certs: string;
         }
@@ -6921,7 +6695,6 @@ export namespace Ags {
         static $gtype: GObject.GType<SecurityContext>;
 
         // Properties
-
         /**
          * The assigned certificates as string.
          * @since 3.0.0
@@ -6940,64 +6713,60 @@ export namespace Ags {
         $signals: SecurityContext.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         server_context_umask: number;
+
         business_group: string;
+
         server_context: string;
 
         // Constructors
-
         constructor(properties?: Partial<SecurityContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SecurityContext;
+        static ["new"](): SecurityContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SecurityContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SecurityContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SecurityContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SecurityContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SecurityContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SecurityContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SecurityContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecurityContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add `server_context` to `security_context`.
          * @param server_context the server context
          */
         add_server_context(server_context: string): void;
+
         /**
          * Get business group of `security_context`.
          * @returns the string vector containing business group or `null`
          */
         get_business_group(): string[];
+
         /**
          * Get business group of `security_context`.
          * @returns the string vector containing business group or `null`
          */
         get_server_context(): string[];
+
         /**
          * Parse `business_group` and apply to `security_context`.
          * @param xml_doc the xmlDoc containing groups
          * @param user_uuid the user's UUID
          */
         parse_business_group(xml_doc: libxml2.Doc, user_uuid: string): void;
+
         /**
          * Remove `server_context` from `security_context`.
          * @param server_context the server context
@@ -7005,6 +6774,7 @@ export namespace Ags {
          */
         remove_server_context(server_context: string): boolean;
     }
+
 
     namespace Server {
         // Signal signatures
@@ -7015,7 +6785,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            listen: () => boolean | void;
+            listen: () => (boolean | void);
             /**
              * The ::start signal is emitted as the server starts.
              * @signal
@@ -7030,18 +6800,17 @@ export namespace Ags {
              * @run-last
              */
             stop: () => void;
-            'notify::controller': (pspec: GObject.ParamSpec) => void;
-            'notify::domain': (pspec: GObject.ParamSpec) => void;
-            'notify::front-controller': (pspec: GObject.ParamSpec) => void;
-            'notify::ip4': (pspec: GObject.ParamSpec) => void;
-            'notify::ip6': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::realm': (pspec: GObject.ParamSpec) => void;
-            'notify::server-port': (pspec: GObject.ParamSpec) => void;
+            "notify::controller": (pspec: GObject.ParamSpec) => void;
+            "notify::domain": (pspec: GObject.ParamSpec) => void;
+            "notify::front-controller": (pspec: GObject.ParamSpec) => void;
+            "notify::ip4": (pspec: GObject.ParamSpec) => void;
+            "notify::ip6": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::realm": (pspec: GObject.ParamSpec) => void;
+            "notify::server-port": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             controller: Controller[];
             domain: string;
@@ -7063,13 +6832,13 @@ export namespace Ags {
         static $gtype: GObject.GType<Server>;
 
         // Properties
-
         /**
          * The assigned {@link Ags.Controller} providing default settings.
          * @since 3.0.0
          */
         get controller(): Controller[];
         set controller(val: Controller[]);
+
         /**
          * The domain to use.
          * @since 3.0.0
@@ -7077,18 +6846,21 @@ export namespace Ags {
          */
         get domain(): string;
         set domain(val: string);
+
         /**
          * The assigned {@link Ags.FrontController}.
          * @since 3.0.0
          */
         get front_controller(): FrontController;
         set front_controller(val: FrontController);
+
         /**
          * The assigned {@link Ags.FrontController}.
          * @since 3.0.0
          */
         get frontController(): FrontController;
         set frontController(val: FrontController);
+
         /**
          * The IPv4 address as string of the server.
          * @since 3.0.0
@@ -7096,6 +6868,7 @@ export namespace Ags {
          */
         get ip4(): string;
         set ip4(val: string);
+
         /**
          * The IPv6 address as string of the server.
          * @since 3.0.0
@@ -7103,6 +6876,7 @@ export namespace Ags {
          */
         get ip6(): string;
         set ip6(val: string);
+
         /**
          * The path to use.
          * @since 4.0.0
@@ -7110,6 +6884,7 @@ export namespace Ags {
          */
         get path(): string;
         set path(val: string);
+
         /**
          * The realm to use.
          * @since 3.0.0
@@ -7117,6 +6892,7 @@ export namespace Ags {
          */
         get realm(): string;
         set realm(val: string);
+
         /**
          * The server port to use.
          * @since 3.0.0
@@ -7124,6 +6900,7 @@ export namespace Ags {
          */
         get server_port(): number;
         set server_port(val: number);
+
         /**
          * The server port to use.
          * @since 3.0.0
@@ -7142,62 +6919,65 @@ export namespace Ags {
         $signals: Server.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         uuid: UUID;
+
         server_info: ServerInfo;
+
         ip4_fd: number;
+
         ip6_fd: number;
+
         ip4_socket: Gio.Socket;
+
         ip6_socket: Gio.Socket;
+
         ip4_address: Gio.SocketAddress;
+
         ip6_address: Gio.SocketAddress;
+
         soup_server: Soup.Server;
+
         auth_module: string;
+
         auth_domain: Soup.AuthDomain;
 
         // Constructors
-
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Server;
+        static ["new"](): Server;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Server.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Server.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Server.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Listen as  server.
          * @virtual
          */
         vfunc_listen(): boolean;
+
         /**
          * Start the XMLRPC-C abyss server.
          * @virtual
          */
         vfunc_start(): void;
+
         /**
          * Stop the XMLRPC-C abyss server.
          * @virtual
@@ -7205,41 +6985,47 @@ export namespace Ags {
         vfunc_stop(): void;
 
         // Methods
-
         /**
          * Add `controller` to `server`.
          * @param controller the {@link Ags.Controller}
          */
         add_controller(controller: GObject.Object): void;
+
         /**
          * Listen as  server.
          * @returns `true` as a new connection was initiated, otherwise `false`
          */
         listen(): boolean;
+
         /**
          * Remove `controller` from `server`.
          * @param controller the {@link Ags.Controller}
          */
         remove_controller(controller: GObject.Object): void;
+
         /**
          * Enable a feature of `server`.
          * @param flags see {@link Ags.ServerFlags}-enum
          */
         set_flags(flags: ServerFlags): void;
+
         /**
          * Start the XMLRPC-C abyss server.
          */
         start(): void;
+
         /**
          * Stop the XMLRPC-C abyss server.
          */
         stop(): void;
+
         /**
          * Test `flags` to be set on `server`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ServerFlags): boolean;
+
         /**
          * Disable a feature of `server`.
          * @param flags see {@link Ags.ServerFlags}-enum
@@ -7247,32 +7033,26 @@ export namespace Ags {
         unset_flags(flags: ServerFlags): void;
     }
 
+
     namespace ServerApplicationContext {
         // Signal signatures
         interface SignalSignatures extends ApplicationContext.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::main-loop': (pspec: GObject.ParamSpec) => void;
-            'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::main-loop": (pspec: GObject.ParamSpec) => void;
+            "notify::task-launcher": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ApplicationContext.ConstructorProps, ConcurrencyProvider.ConstructorProps, Connectable.ConstructorProps, ServiceProvider.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                ApplicationContext.ConstructorProps,
-                ConcurrencyProvider.ConstructorProps,
-                Connectable.ConstructorProps,
-                ServiceProvider.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class ServerApplicationContext
-        extends ApplicationContext
-        implements ConcurrencyProvider, Connectable, ServiceProvider
-    {
+    class ServerApplicationContext extends ApplicationContext implements ConcurrencyProvider, Connectable, ServiceProvider {
         static $gtype: GObject.GType<ServerApplicationContext>;
 
         /**
@@ -7285,285 +7065,331 @@ export namespace Ags {
         $signals: ServerApplicationContext.SignalSignatures;
 
         // Fields
-
         application_context: ApplicationContext;
+
         flags: number;
+
         thread_pool: ThreadPool;
+
         worker: any[];
 
-        // This field conflicts with a function in a parent class or interface.
-        is_operating: boolean | any;
+        
+    // This field conflicts with a function in a parent class or interface.
+    is_operating: (boolean | any);
+
         server_status: ServerStatus;
+
         registry: Registry;
+
         server: any[];
 
         // Constructors
-
         constructor(properties?: Partial<ServerApplicationContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ServerApplicationContext;
+        static ["new"](): ServerApplicationContext;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof ServerApplicationContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerApplicationContext.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ServerApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerApplicationContext.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof ServerApplicationContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ServerApplicationContext.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ServerApplicationContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerApplicationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
+
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
+
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
+
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
+
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
+
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
+
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
+
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
+
         /**
          * Get main loop of application context.
          * @virtual
          */
         vfunc_get_main_loop(): Thread;
+
         /**
          * Get task launcher of application context.
          * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
+
         /**
          * Get thread pool of application context.
          * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
+
         /**
          * Get workers of application context.
          * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
+
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
+
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
          * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
+
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
          * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
+
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
          * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
+
         /**
          * Get server.
          * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         get_server(): Server[];
+
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
          */
         set_registry(registry: Registry): void;
+
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         set_server(server: Server[]): void;
+
         /**
          * Get server.
          * @virtual
          */
         vfunc_get_server(): Server[];
+
         /**
          * Check if is operating.
          * @virtual
          */
         vfunc_is_operating(): boolean;
+
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
          * @virtual
          */
         vfunc_set_registry(registry: Registry): void;
+
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
@@ -7572,13 +7398,16 @@ export namespace Ags {
         vfunc_set_server(server: Server[]): void;
     }
 
+
     namespace ServerStatus {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
+        }
     }
 
     /**
@@ -7597,162 +7426,185 @@ export namespace Ags {
         $signals: ServerStatus.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         authentication_module: string;
+
         maximum_connections: number;
+
         connection_count: number;
 
         // Constructors
-
         constructor(properties?: Partial<ServerStatus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ServerStatus;
+        static ["new"](): ServerStatus;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof ServerStatus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerStatus.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ServerStatus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerStatus.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof ServerStatus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ServerStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ServerStatus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -7761,17 +7613,17 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
+
     namespace SolverMatrix {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::column-count': (pspec: GObject.ParamSpec) => void;
-            'notify::row-count': (pspec: GObject.ParamSpec) => void;
-            'notify::solver-path': (pspec: GObject.ParamSpec) => void;
-            'notify::source-function': (pspec: GObject.ParamSpec) => void;
+            "notify::column-count": (pspec: GObject.ParamSpec) => void;
+            "notify::row-count": (pspec: GObject.ParamSpec) => void;
+            "notify::solver-path": (pspec: GObject.ParamSpec) => void;
+            "notify::source-function": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             column_count: number;
             columnCount: number;
@@ -7791,7 +7643,6 @@ export namespace Ags {
         static $gtype: GObject.GType<SolverMatrix>;
 
         // Properties
-
         /**
          * The column count of the term table.
          * @since 3.9.3
@@ -7799,6 +7650,7 @@ export namespace Ags {
          * @default 0
          */
         get column_count(): number;
+
         /**
          * The column count of the term table.
          * @since 3.9.3
@@ -7806,6 +7658,7 @@ export namespace Ags {
          * @default 0
          */
         get columnCount(): number;
+
         /**
          * The row count of the term table.
          * @since 3.9.3
@@ -7813,6 +7666,7 @@ export namespace Ags {
          * @default 0
          */
         get row_count(): number;
+
         /**
          * The row count of the term table.
          * @since 3.9.3
@@ -7820,18 +7674,21 @@ export namespace Ags {
          * @default 0
          */
         get rowCount(): number;
+
         /**
          * The assigned solver path.
          * @since 6.7.1
          */
         get solver_path(): any;
         set solver_path(val: any);
+
         /**
          * The assigned solver path.
          * @since 6.7.1
          */
         get solverPath(): any;
         set solverPath(val: any);
+
         /**
          * The assigned source-function.
          * @since 3.9.3
@@ -7839,6 +7696,7 @@ export namespace Ags {
          */
         get source_function(): string;
         set source_function(val: string);
+
         /**
          * The assigned source-function.
          * @since 3.9.3
@@ -7857,43 +7715,35 @@ export namespace Ags {
         $signals: SolverMatrix.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         function_history: string;
+
         term_table: SolverVector;
 
         // Constructors
-
         constructor(properties?: Partial<SolverMatrix.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SolverMatrix;
+        static ["new"](): SolverMatrix;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SolverMatrix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SolverMatrix.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SolverMatrix.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SolverMatrix.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SolverMatrix.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SolverMatrix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SolverMatrix.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SolverMatrix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Eliminate one column of `solver_matrix`.
          * @param nth_column the nth column
@@ -7901,42 +7751,51 @@ export namespace Ags {
          * @param nth_row_b the nth row as b
          */
         eliminate(nth_column: number, nth_row_a: number, nth_row_b: number): void;
+
         get_column_count(): number;
+
         /**
          * Get row count of `solver_matrix`.
          * @returns the row count
          */
         get_row_count(): number;
+
         /**
          * Get column count of `solver_matrix`.
          * @returns the column count
          */
         get_source_function(): string;
+
         /**
          * Insert `solver_vector` to `solver_matrix`.
          * @param solver_vector the {@link Ags.SolverVector}
          * @param position the position
          */
         insert_vector(solver_vector: SolverVector, position: number): void;
+
         /**
          * Parse `source_function` and apply to `solver_matrix`.
          * @param source_function the normalized source function
          */
         parse(source_function: string): void;
+
         /**
          * Remove `solver_vector` from `solver_matrix`.
          * @param solver_vector the {@link Ags.SolverVector}
          */
         remove_vector(solver_vector: SolverVector): void;
+
         /**
          * Set `source_function` of `solver_matrix`.
          * @param source_function the source function
          */
         set_source_function(source_function: string): void;
+
         /**
          * Default solve.
          */
         solve_default(): void;
+
         /**
          * To string of `solver_matrix`.
          * @returns the new string representation
@@ -7944,19 +7803,19 @@ export namespace Ags {
         to_string(): string;
     }
 
+
     namespace SolverPolynomial {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::coefficient': (pspec: GObject.ParamSpec) => void;
-            'notify::coefficient-value': (pspec: GObject.ParamSpec) => void;
-            'notify::exponent': (pspec: GObject.ParamSpec) => void;
-            'notify::exponent-value': (pspec: GObject.ParamSpec) => void;
-            'notify::polynomial': (pspec: GObject.ParamSpec) => void;
-            'notify::symbol': (pspec: GObject.ParamSpec) => void;
+            "notify::coefficient": (pspec: GObject.ParamSpec) => void;
+            "notify::coefficient-value": (pspec: GObject.ParamSpec) => void;
+            "notify::exponent": (pspec: GObject.ParamSpec) => void;
+            "notify::exponent-value": (pspec: GObject.ParamSpec) => void;
+            "notify::polynomial": (pspec: GObject.ParamSpec) => void;
+            "notify::symbol": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             coefficient: string;
             coefficient_value: Complex;
@@ -7976,7 +7835,6 @@ export namespace Ags {
         static $gtype: GObject.GType<SolverPolynomial>;
 
         // Properties
-
         /**
          * The assigned coefficient.
          * @since 3.2.0
@@ -7984,36 +7842,42 @@ export namespace Ags {
          */
         get coefficient(): string;
         set coefficient(val: string);
+
         /**
          * Coefficient value.
          * @since 3.2.0
          */
         get coefficient_value(): Complex;
         set coefficient_value(val: Complex);
+
         /**
          * Coefficient value.
          * @since 3.2.0
          */
         get coefficientValue(): Complex;
         set coefficientValue(val: Complex);
+
         /**
          * The assigned exponent.
          * @since 3.2.0
          * @read-only
          */
         get exponent(): any;
+
         /**
          * Exponent value.
          * @since 3.2.0
          * @read-only
          */
         get exponent_value(): any;
+
         /**
          * Exponent value.
          * @since 3.2.0
          * @read-only
          */
         get exponentValue(): any;
+
         /**
          * The assigned polynomial.
          * @since 3.2.0
@@ -8021,6 +7885,7 @@ export namespace Ags {
          */
         get polynomial(): string;
         set polynomial(val: string);
+
         /**
          * The assigned symbol.
          * @since 3.2.0
@@ -8038,45 +7903,34 @@ export namespace Ags {
         $signals: SolverPolynomial.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
 
         // Constructors
-
         constructor(properties?: Partial<SolverPolynomial.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SolverPolynomial;
+        static ["new"](): SolverPolynomial;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SolverPolynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SolverPolynomial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SolverPolynomial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SolverPolynomial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SolverPolynomial.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SolverPolynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SolverPolynomial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SolverPolynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Perform addition of `polynomial_a` and `polynomial_b`. Both summands need to have the very same
          * symbol and exponent, otherwise `null` returned and error is appropriately set.
@@ -8084,75 +7938,89 @@ export namespace Ags {
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         add(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Perform division of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the divisor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         divide(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the index of root
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         extract_root(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Get coefficient of `solver_polynomial`.
          * @returns the coefficient
          */
         get_coefficient(): string;
+
         /**
          * Get coefficient value of `solver_polynomial`.
          * @returns the coefficient value
          */
         get_coefficient_value(): Complex;
+
         /**
          * Get exponent of `solver_polynomial`.
          * @returns the exponent
          */
         get_exponent(): string[];
+
         /**
          * Get polynomial of `solver_polynomial`.
          * @returns the polynomial
          */
         get_polynomial(): string;
+
         /**
          * Get symbol of `solver_polynomial`.
          * @returns the symbol
          */
         get_symbol(): string[];
+
         /**
          * Perform multiplication of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the second factor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         multiply(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Parse `polynomial` and apply to `solver_polynomial`.
          * @param polynomial the polynomial as string
          */
         parse(polynomial: string): void;
+
         /**
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the exponent
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         raise_power(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Set `coefficient` of `solver_polynomial`.
          * @param coefficient the coefficient
          */
         set_coefficient(coefficient: string): void;
+
         /**
          * Set `coefficient_value` of `solver_polynomial`.
          * @param coefficient_value the coefficient value
          */
         set_coefficient_value(coefficient_value: Complex): void;
+
         /**
          * Set `polynomial` of `solver_polynomial`.
          * @param polynomial the polynomial
          */
         set_polynomial(polynomial: string): void;
+
         /**
          * Perform subtraction of `polynomial_a` and `polynomial_b`. Both minuend and subtrahend need to have the very same
          * symbol and exponent, otherwise `null` returned and error is appropriately set.
@@ -8160,21 +8028,22 @@ export namespace Ags {
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         subtract(polynomial_b: SolverPolynomial): SolverPolynomial;
+
         /**
          * Update string representation of `solver_polynomial`.
          */
         update(): void;
     }
 
+
     namespace SolverVector {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::polynomial-count': (pspec: GObject.ParamSpec) => void;
-            'notify::source-polynomial': (pspec: GObject.ParamSpec) => void;
+            "notify::polynomial-count": (pspec: GObject.ParamSpec) => void;
+            "notify::source-polynomial": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             polynomial_count: number;
             polynomialCount: number;
@@ -8190,7 +8059,6 @@ export namespace Ags {
         static $gtype: GObject.GType<SolverVector>;
 
         // Properties
-
         /**
          * The polynomial count of the term table.
          * @since 3.9.3
@@ -8198,6 +8066,7 @@ export namespace Ags {
          * @default 0
          */
         get polynomial_count(): number;
+
         /**
          * The polynomial count of the term table.
          * @since 3.9.3
@@ -8205,6 +8074,7 @@ export namespace Ags {
          * @default 0
          */
         get polynomialCount(): number;
+
         /**
          * The assigned source-polynomial.
          * @since 3.9.3
@@ -8212,6 +8082,7 @@ export namespace Ags {
          */
         get source_polynomial(): string;
         set source_polynomial(val: string);
+
         /**
          * The assigned source-polynomial.
          * @since 3.9.3
@@ -8230,70 +8101,67 @@ export namespace Ags {
         $signals: SolverVector.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         polynomial_history: string;
+
         polynomial_column: SolverPolynomial;
 
         // Constructors
-
         constructor(properties?: Partial<SolverVector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SolverVector;
+        static ["new"](): SolverVector;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SolverVector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SolverVector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SolverVector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SolverVector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SolverVector.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SolverVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SolverVector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SolverVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get polynomial count of `solver_vector`.
          * @returns the polynomial count
          */
         get_polynomial_count(): number;
+
         /**
          * Get source polynomial of `solver_vector`.
          * @returns the source polynomial
          */
         get_source_polynomial(): string;
+
         /**
          * Insert `solver_polynomial` to `solver_vector`.
          * @param solver_polynomial the {@link Ags.SolverPolynomial}
          * @param position the position
          */
         insert_polynomial(solver_polynomial: SolverPolynomial, position: number): void;
+
         /**
          * Remove `solver_polynomial` from `solver_vector`.
          * @param solver_polynomial the {@link Ags.SolverPolynomial}
          */
         remove_polynomial(solver_polynomial: SolverPolynomial): void;
+
         /**
          * Set `source_polynomial` of `solver_vector`.
          * @param source_polynomial the source polynomial
          */
         set_source_polynomial(source_polynomial: string): void;
     }
+
 
     namespace Task {
         // Signal signatures
@@ -8304,7 +8172,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            failure: (arg0: any | null) => void;
+            failure: (arg0: (any | null)) => void;
             /**
              * The ::launch signal is emited in a thread safe context
              * @signal
@@ -8312,11 +8180,10 @@ export namespace Ags {
              * @run-last
              */
             launch: () => void;
-            'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
+            "notify::task-launcher": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             task_launcher: TaskLauncher;
             taskLauncher: TaskLauncher;
@@ -8330,13 +8197,13 @@ export namespace Ags {
         static $gtype: GObject.GType<Task>;
 
         // Properties
-
         /**
          * The assigned {@link Ags.TaskLauncher}
          * @since 3.0.0
          */
         get task_launcher(): TaskLauncher;
         set task_launcher(val: TaskLauncher);
+
         /**
          * The assigned {@link Ags.TaskLauncher}
          * @since 3.0.0
@@ -8354,48 +8221,40 @@ export namespace Ags {
         $signals: Task.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         task_name: string;
 
         // Constructors
-
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Task;
+        static ["new"](): Task;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Task.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Task.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Task.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Signals failure of task.
          * @param error is `null` on success
          * @virtual
          */
         vfunc_failure(error: GLib.Error): void;
+
         /**
          * Intercept task.
          * @virtual
@@ -8403,33 +8262,37 @@ export namespace Ags {
         vfunc_launch(): void;
 
         // Methods
-
         /**
          * Signals failure of task.
          * @param error is `null` on success
          */
         failure(error: GLib.Error): void;
+
         /**
          * Intercept task.
          */
         launch(): void;
+
         /**
          * Enable a feature of {@link Ags.Task}.
          * @param flags see enum AgsTaskFlags
          */
         set_flags(flags: TaskFlags): void;
+
         /**
          * Test `flags` to be set on `task`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: TaskFlags): boolean;
+
         /**
          * Disable a feature of AgsTask.
          * @param flags see enum AgsTaskFlags
          */
         unset_flags(flags: TaskFlags): void;
     }
+
 
     namespace TaskCompletion {
         // Signal signatures
@@ -8441,11 +8304,10 @@ export namespace Ags {
              * @run-last
              */
             complete: () => void;
-            'notify::task': (pspec: GObject.ParamSpec) => void;
+            "notify::task": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
             task: GObject.Object;
         }
@@ -8458,7 +8320,6 @@ export namespace Ags {
         static $gtype: GObject.GType<TaskCompletion>;
 
         // Properties
-
         /**
          * The assigned task.
          * @since 3.0.0
@@ -8476,38 +8337,33 @@ export namespace Ags {
         $signals: TaskCompletion.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         connectable_flags: number;
+
         uuid: UUID;
+
         data: any;
 
         // Constructors
-
         constructor(properties?: Partial<TaskCompletion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](task: GObject.Object, data: any | null): TaskCompletion;
+        static ["new"](task: GObject.Object, data: (any | null)): TaskCompletion;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof TaskCompletion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskCompletion.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof TaskCompletion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskCompletion.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof TaskCompletion.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TaskCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TaskCompletion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Emit ::complete signal
          * @virtual
@@ -8515,154 +8371,183 @@ export namespace Ags {
         vfunc_complete(): void;
 
         // Methods
-
         /**
          * Emit ::complete signal
          */
         complete(): void;
+
         /**
          * Enable a feature of {@link Ags.TaskCompletion}.
          * @param flags see enum AgsTaskCompletionFlags
          */
         set_flags(flags: TaskCompletionFlags): void;
+
         /**
          * Test `flags` to be set on `task_completion`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: TaskCompletionFlags): boolean;
+
         /**
          * Disable a feature of AgsTaskCompletion.
          * @param flags see enum AgsTaskCompletionFlags
          */
         unset_flags(flags: TaskCompletionFlags): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -8670,6 +8555,7 @@ export namespace Ags {
          */
         vfunc_xml_parse(node: libxml2.Node): void;
     }
+
 
     namespace TaskLauncher {
         // Signal signatures
@@ -8684,8 +8570,9 @@ export namespace Ags {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
+        }
     }
 
     /**
@@ -8704,39 +8591,35 @@ export namespace Ags {
         $signals: TaskLauncher.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         connectable_flags: number;
+
         uuid: UUID;
+
         is_running: boolean;
+
         wait_count: number;
 
         // Constructors
-
         constructor(properties?: Partial<TaskLauncher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TaskLauncher;
+        static ["new"](): TaskLauncher;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof TaskLauncher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TaskLauncher.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof TaskLauncher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TaskLauncher.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof TaskLauncher.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TaskLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TaskLauncher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TaskLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Run tasks.
          * @virtual
@@ -8744,167 +8627,199 @@ export namespace Ags {
         vfunc_run(): void;
 
         // Methods
-
         /**
          * Add `cyclic_task` to `task_launcher`.
          * @param cyclic_task the cyclic {@link Ags.Task}
          */
         add_cyclic_task(cyclic_task: Task): void;
+
         /**
          * Add `task` to `task_launcher`.
          * @param task the {@link Ags.Task}
          */
         add_task(task: Task): void;
+
         /**
          * Add all `list` to `task_launcher`.
          * @param list the {@link GLib.List}-struct containing {@link Ags.Task}
          */
         add_task_all(list: Task[]): void;
+
         /**
          * Attach `task_launcher` to `main_context`.
          * @param main_context the {@link GLib.MainContext}-struct
          */
         attach(main_context: GLib.MainContext): void;
+
         /**
          * Remove `cyclic_task` from `task_launcher`.
          * @param cyclic_task the cyclic {@link Ags.Task}
          */
         remove_cyclic_task(cyclic_task: Task): void;
+
         /**
          * Run tasks.
          */
         run(): void;
+
         /**
          * Sync run tasks.
          */
         sync_run(): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -8912,6 +8827,7 @@ export namespace Ags {
          */
         vfunc_xml_parse(node: libxml2.Node): void;
     }
+
 
     namespace Thread {
         // Signal signatures
@@ -8944,13 +8860,12 @@ export namespace Ags {
              * @run-last
              */
             stop: () => void;
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::max-precision': (pspec: GObject.ParamSpec) => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::max-precision": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
             delay: number;
             frequency: number;
@@ -8966,7 +8881,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Thread>;
 
         // Properties
-
         /**
          * The delay until next tic.
          * @since 3.0.0
@@ -8974,6 +8888,7 @@ export namespace Ags {
          */
         get delay(): number;
         set delay(val: number);
+
         /**
          * The frequency to run at in Hz.
          * @since 3.0.0
@@ -8981,6 +8896,7 @@ export namespace Ags {
          */
         get frequency(): number;
         set frequency(val: number);
+
         /**
          * The max-frequency to run at in Hz.
          * @since 3.0.0
@@ -8988,6 +8904,7 @@ export namespace Ags {
          */
         get max_precision(): number;
         set max_precision(val: number);
+
         /**
          * The max-frequency to run at in Hz.
          * @since 3.0.0
@@ -9006,71 +8923,75 @@ export namespace Ags {
         $signals: Thread.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         my_flags: number;
+
         connectable_flags: number;
+
         status_flags: number;
+
         sync_tic_flags: number;
+
         uuid: UUID;
+
         current_sync_tic: number;
+
         tic_delay: number;
+
         last_run_start: number;
+
         last_run_end: number;
+
         start_queue: any[];
 
         // Constructors
-
         constructor(properties?: Partial<Thread.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Thread;
+        static ["new"](): Thread;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof Thread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Thread.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof Thread.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Thread.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof Thread.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Thread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Thread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Thread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get global config value use sync counter.
          */
         static global_get_use_sync_counter(): boolean;
+
         /**
          * Thread self.
          */
         static self(): Thread;
 
         // Virtual methods
-
         /**
          * Clock the thread.
          * @virtual
          */
         vfunc_clock(): number;
+
         /**
          * Only for internal use of ags_thread_loop but you may want to set the your very own
          * class function namely your thread's routine.
          * @virtual
          */
         vfunc_run(): void;
+
         /**
          * Start the thread.
          * @virtual
          */
         vfunc_start(): void;
+
         /**
          * Stop the threads loop by unsetting AGS_THREAD_STATUS_RUNNING flag.
          * @virtual
@@ -9078,12 +8999,12 @@ export namespace Ags {
         vfunc_stop(): void;
 
         // Methods
-
         /**
          * Add child to thread.
          * @param child the child to remove
          */
         add_child(child: Thread): void;
+
         /**
          * Add child to thread.
          * @param child the child to remove
@@ -9091,34 +9012,41 @@ export namespace Ags {
          * @param no_wait don't wait until started
          */
         add_child_extended(child: Thread, no_start: boolean, no_wait: boolean): void;
+
         /**
          * Add `child` to `thread`'s start queue.
          * @param child the child {@link Ags.Thread} to start
          */
         add_start_queue(child: Thread): void;
+
         /**
          * Add `child` to `thread`'s start queue.
          * @param child the children as {@link GLib.List}-struct containing {@link Ags.Thread} to start
          */
         add_start_queue_all(child: Thread[]): void;
+
         /**
          * Get children thread.
          * @returns the children {@link Ags.Thread}
          */
         children(): Thread;
+
         /**
          * Clear status flags.
          */
         clear_status_flags(): void;
+
         /**
          * Clear sync-tic flags.
          */
         clear_sync_tic_flags(): void;
+
         /**
          * Clock the thread.
          * @returns the cycles to be performed
          */
         clock(): number;
+
         /**
          * Find `gtype` as descendant of `thread`. If its a descendant thread,
          * the ref-count is increased.
@@ -9126,155 +9054,187 @@ export namespace Ags {
          * @returns the matching {@link Ags.Thread}
          */
         find_type(gtype: GObject.GType): Thread;
+
         /**
          * Retrieve first sibling.
          * @returns the very first {@link Ags.Thread} within same tree level
          */
         first(): Thread;
+
         /**
          * Get current sync-tic.
          * @returns the current sync-tic
          */
         get_current_sync_tic(): number;
+
         /**
          * Get delay.
          * @returns the delay
          */
         get_delay(): number;
+
         /**
          * Get frequency.
          * @returns the frequency
          */
         get_frequency(): number;
+
         /**
          * Get max-precision.
          * @returns the max-precision
          */
         get_max_precision(): number;
+
         /**
          * Retrieve toplevel thread.
          * @returns the toplevevel {@link Ags.Thread}
          */
         get_toplevel(): Thread;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         is_current_ready(current_sync_tic: number): boolean;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         is_tree_ready_recursive(current_sync_tic: number): boolean;
+
         /**
          * Retrieve last sibling.
          * @returns the very last `AgsThread` within same tree level
          */
         last(): Thread;
+
         /**
          * Locks the threads own mutex and sets the appropriate flag.
          */
         lock(): void;
+
         /**
          * Get next thread.
          * @returns the next {@link Ags.Thread}
          */
         next(): Thread;
+
         /**
          * Get parent thread.
          * @returns the parent {@link Ags.Thread}
          */
         parent(): Thread;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         prepare_current_sync(current_sync_tic: number): void;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         prepare_tree_sync_recursive(current_sync_tic: number): void;
+
         /**
          * Get prev thread.
          * @returns the prev {@link Ags.Thread}
          */
         prev(): Thread;
+
         /**
          * Remove child of thread.
          * @param child the child to remove
          */
         remove_child(child: Thread): void;
+
         /**
          * Only for internal use of ags_thread_loop but you may want to set the your very own
          * class function namely your thread's routine.
          */
         run(): void;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         set_current_sync(current_sync_tic: number): void;
+
         /**
          * Set current sync-tic.
          * @param current_sync_tic the current sync-tic
          */
         set_current_sync_tic(current_sync_tic: number): void;
+
         /**
          * Set delay.
          * @param delay the delay
          */
         set_delay(delay: number): void;
+
         /**
          * Set flags.
          * @param flags the flags
          */
         set_flags(flags: ThreadFlags): void;
+
         /**
          * Set frequency.
          * @param frequency the frequency
          */
         set_frequency(frequency: number): void;
+
         /**
          * Set max-precision.
          * @param max_precision the max-precision
          */
         set_max_precision(max_precision: number): void;
+
         /**
          * Set status flags.
          * @param status_flags the status flags
          */
         set_status_flags(status_flags: ThreadStatusFlags): void;
+
         /**
          * Set sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
          */
         set_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
+
         /**
-         * @param current_sync_tic
+         * @param current_sync_tic 
          */
         set_tree_sync_recursive(current_sync_tic: number): void;
+
         /**
          * Start the thread.
          */
         start(): void;
+
         /**
          * Stop the threads loop by unsetting AGS_THREAD_STATUS_RUNNING flag.
          */
         stop(): void;
+
         /**
          * Test `flags` to be set on `thread`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ThreadFlags): boolean;
+
         /**
          * Test `status_flags` to be set on `thread`.
          * @param status_flags the status flags
          * @returns `true` if status flags are set, else `false`
          */
         test_status_flags(status_flags: ThreadStatusFlags): boolean;
+
         /**
          * Test `sync_tic_flags` to be set on `thread`.
          * @param sync_tic_flags the sync-tic flags
          * @returns `true` if sync-tic flags are set, else `false`
          */
         test_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): boolean;
+
         /**
          * Locks the threads own mutex if available and sets the
          * appropriate flag and returning `true`. Otherwise return `false`
@@ -9282,152 +9242,183 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         trylock(): boolean;
+
         /**
          * Unlocks the threads own mutex and unsets the appropriate flag.
          */
         unlock(): void;
+
         /**
          * Unset flags.
          * @param flags the flags
          */
         unset_flags(flags: ThreadFlags): void;
+
         /**
          * Unset status flags.
          * @param status_flags the status flags
          */
         unset_status_flags(status_flags: ThreadStatusFlags): void;
+
         /**
          * Unset sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
          */
         unset_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -9436,23 +9427,19 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
+
     namespace ThreadApplicationContext {
         // Signal signatures
         interface SignalSignatures extends ApplicationContext.SignalSignatures {
-            'notify::thread-pool': (pspec: GObject.ParamSpec) => void;
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::main-loop': (pspec: GObject.ParamSpec) => void;
-            'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
+            "notify::thread-pool": (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::main-loop": (pspec: GObject.ParamSpec) => void;
+            "notify::task-launcher": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                ApplicationContext.ConstructorProps,
-                ConcurrencyProvider.ConstructorProps,
-                Connectable.ConstructorProps {
+        interface ConstructorProps extends ApplicationContext.ConstructorProps, ConcurrencyProvider.ConstructorProps, Connectable.ConstructorProps {
             thread_pool: ThreadPool;
             threadPool: ThreadPool;
         }
@@ -9465,13 +9452,13 @@ export namespace Ags {
         static $gtype: GObject.GType<ThreadApplicationContext>;
 
         // Properties
-
         /**
          * The assigned thread pool.
          * @since 3.0.0
          */
         get thread_pool(): ThreadPool;
         set thread_pool(val: ThreadPool);
+
         /**
          * The assigned thread pool.
          * @since 3.0.0
@@ -9489,250 +9476,285 @@ export namespace Ags {
         $signals: ThreadApplicationContext.SignalSignatures;
 
         // Fields
-
         application_context: ApplicationContext;
+
         flags: number;
+
         version: string;
+
         build_id: string;
+
         worker: any[];
 
         // Constructors
-
         constructor(properties?: Partial<ThreadApplicationContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ThreadApplicationContext;
+        static ["new"](): ThreadApplicationContext;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof ThreadApplicationContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadApplicationContext.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof ThreadApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThreadApplicationContext.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof ThreadApplicationContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThreadApplicationContext.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ThreadApplicationContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreadApplicationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param application_context
+         * @param application_context 
          */
         static register_types(application_context: ApplicationContext): void;
+
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
+
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
+
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
+
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
+
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
+
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
+
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
+
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
+
         /**
          * Get main loop of application context.
          * @virtual
          */
         vfunc_get_main_loop(): Thread;
+
         /**
          * Get task launcher of application context.
          * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
+
         /**
          * Get thread pool of application context.
          * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
+
         /**
          * Get workers of application context.
          * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
+
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
+
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
          * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
+
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
          * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
+
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
          * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -9740,6 +9762,7 @@ export namespace Ags {
          */
         vfunc_xml_parse(node: libxml2.Node): void;
     }
+
 
     namespace ThreadPool {
         // Signal signatures
@@ -9751,12 +9774,11 @@ export namespace Ags {
              * @run-last
              */
             start: () => void;
-            'notify::max-threads': (pspec: GObject.ParamSpec) => void;
-            'notify::max-unused-threads': (pspec: GObject.ParamSpec) => void;
+            "notify::max-threads": (pspec: GObject.ParamSpec) => void;
+            "notify::max-unused-threads": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             max_threads: number;
             maxThreads: number;
@@ -9772,7 +9794,6 @@ export namespace Ags {
         static $gtype: GObject.GType<ThreadPool>;
 
         // Properties
-
         /**
          * The maximum amount of threads available.
          * @since 3.0.0
@@ -9780,6 +9801,7 @@ export namespace Ags {
          */
         get max_threads(): number;
         set max_threads(val: number);
+
         /**
          * The maximum amount of threads available.
          * @since 3.0.0
@@ -9787,6 +9809,7 @@ export namespace Ags {
          */
         get maxThreads(): number;
         set maxThreads(val: number);
+
         /**
          * The maximum amount of unused threads available.
          * @since 3.0.0
@@ -9794,6 +9817,7 @@ export namespace Ags {
          */
         get max_unused_threads(): number;
         set max_unused_threads(val: number);
+
         /**
          * The maximum amount of unused threads available.
          * @since 3.0.0
@@ -9812,45 +9836,39 @@ export namespace Ags {
         $signals: ThreadPool.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         queued: number;
+
         create_threads: boolean;
+
         idle: boolean;
+
         returnable_thread: any[];
 
         // Constructors
-
         constructor(properties?: Partial<ThreadPool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](parent: Thread): ThreadPool;
+        static ["new"](parent: Thread): ThreadPool;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ThreadPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ThreadPool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ThreadPool.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ThreadPool.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ThreadPool.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThreadPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ThreadPool.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreadPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Start the thread pool.
          * @virtual
@@ -9858,26 +9876,29 @@ export namespace Ags {
         vfunc_start(): void;
 
         // Methods
-
         /**
          * Pull a previously instantiated {@link Ags.ReturnableThread}. Note this
          * function may block until a new thread is available.
          * @returns a new {@link Ags.Thread}
          */
         pull(): Thread;
+
         /**
          * Start the thread pool.
          */
         start(): void;
     }
 
+
     namespace Timestamp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -9896,74 +9917,72 @@ export namespace Ags {
         $signals: Timestamp.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
+
         delay: number;
+
         attack: number;
 
         // Constructors
-
         constructor(properties?: Partial<Timestamp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Timestamp;
+        static ["new"](): Timestamp;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Timestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Timestamp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Timestamp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Timestamp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Timestamp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Timestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Timestamp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Timestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get AGS offset.
          * @returns the AGS offset as unsigned 64 bit integer
          */
         get_ags_offset(): number;
+
         /**
          * Get unix time.
          * @returns the unix time as time_t value
          */
         get_unix_time(): number;
+
         /**
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
          */
-        set_ags_offset(ags_offset: bigint | number): void;
+        set_ags_offset(ags_offset: (bigint | number)): void;
+
         /**
          * Set `flags` of `timestamp`.
          * @param flags the flags
          */
         set_flags(flags: TimestampFlags): void;
+
         /**
          * Set unix time.
          * @param unix_time the unix time value
          */
-        set_unix_time(unix_time: bigint | number): void;
+        set_unix_time(unix_time: (bigint | number)): void;
+
         /**
          * Test `flags` to be set.
          * @param flags the flags
          * @returns if `flags` set returning `true` otherwise `false`
          */
         test_flags(flags: TimestampFlags): boolean;
+
         /**
          * Unset `flags` of `timestamp`.
          * @param flags the flags
@@ -9971,15 +9990,15 @@ export namespace Ags {
         unset_flags(flags: TimestampFlags): void;
     }
 
+
     namespace Turtle {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::xml-doc': (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::xml-doc": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filename: string;
             xml_doc: any;
@@ -9994,7 +10013,6 @@ export namespace Ags {
         static $gtype: GObject.GType<Turtle>;
 
         // Properties
-
         /**
          * The assigned filename.
          * @since 3.0.0
@@ -10002,12 +10020,14 @@ export namespace Ags {
          */
         get filename(): string;
         set filename(val: string);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
+
         /**
          * The assigned xml-doc.
          * @since 3.0.0
@@ -10025,372 +10045,417 @@ export namespace Ags {
         $signals: Turtle.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         flags: number;
 
         // Constructors
-
         constructor(properties?: Partial<Turtle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string | null): Turtle;
+        static ["new"](filename: (string | null)): Turtle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Turtle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Turtle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Turtle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Turtle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Turtle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Turtle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Turtle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Turtle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Match anon.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_anon(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match blank node label.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_blank_node_label(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match boolean.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_boolean(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match decimal.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_decimal(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match double.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_double(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match echar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_echar(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match exponent.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match hex.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_hex(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match integer.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_integer(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match iriref.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_iriref(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match langtag.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_langtag(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match percent.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_percent(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match plx.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_plx(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match pn chars.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pn_chars(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match pn chars base.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pn_chars_base(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match pn chars u.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pn_chars_u(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match uchar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pn_local(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
-         * @param offset
-         * @param end_ptr
-         * @param start_offset
-         * @param end_offset
+         * @param offset 
+         * @param end_ptr 
+         * @param start_offset 
+         * @param end_offset 
          */
         static match_pn_local_esc(offset: string, end_ptr: string, start_offset: string, end_offset: string): boolean;
+
         /**
          * Match pn prefix.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pn_prefix(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match pname-ln.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pname_ln(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match match pname-ns.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_pname_ns(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match string.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_string(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match string literal long quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_string_literal_long_quote(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match string literal long single quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_string_literal_long_single_quote(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match string literal quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_string_literal_quote(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match string literal single quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_string_literal_single_quote(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match uchar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_uchar(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match ws.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_ws(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Read anon value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_anon(offset: string, end_ptr: string): string;
+
         /**
          * Read blank node label value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_blank_node_label(offset: string, end_ptr: string): string;
+
         /**
          * Read boolean value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_boolean(offset: string, end_ptr: string): string;
+
         /**
          * Read decimal value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_decimal(offset: string, end_ptr: string): string;
+
         /**
          * Read double value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_double(offset: string, end_ptr: string): string;
+
         /**
          * Read echar value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_echar(offset: string, end_ptr: string): string;
+
         /**
          * Read exponent value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_exponent(offset: string, end_ptr: string): string;
+
         /**
          * Read hex value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_hex(offset: string, end_ptr: string): string;
+
         /**
          * Read integer value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_integer(offset: string, end_ptr: string): string;
+
         /**
          * Read iriref value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_iriref(offset: string, end_ptr: string): string;
+
         /**
          * Read langtag value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_langtag(offset: string, end_ptr: string): string;
+
         /**
          * Read percent value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_percent(offset: string, end_ptr: string): string;
+
         /**
          * Read plx value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_plx(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name chars value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_chars(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name chars base value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_chars_base(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name chars underscore value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_chars_u(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name local value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_local(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed name local escapes.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_local_esc(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixe-name prefix value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pn_prefix(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name localized name value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pname_ln(offset: string, end_ptr: string): string;
+
         /**
          * Read prefixed-name namespace value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_pname_ns(offset: string, end_ptr: string): string;
+
         /**
          * Read string value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_string(offset: string, end_ptr: string): string;
+
         /**
          * Read string literal long quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_string_literal_long_quote(offset: string, end_ptr: string): string;
+
         /**
          * Read string literal long single quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_string_literal_long_single_quote(offset: string, end_ptr: string): string;
+
         /**
          * Read string literal quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_string_literal_quote(offset: string, end_ptr: string): string;
+
         /**
          * Read string literal single quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_string_literal_single_quote(offset: string, end_ptr: string): string;
+
         /**
          * Read uchar value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static read_uchar(offset: string, end_ptr: string): string;
+
         /**
          * Read ws value.
          * @param offset the string pointer
@@ -10399,13 +10464,13 @@ export namespace Ags {
         static read_ws(offset: string, end_ptr: string): string;
 
         // Methods
-
         /**
          * Lookup XPath expression withing `turtle`.
          * @param xpath a XPath expression as string
          * @returns a {@link GLib.List}-struct containing xmlNode
          */
         find_xpath(xpath: string): libxml2.Node[];
+
         /**
          * Lookup XPath expression from `context_node` withing `turtle`.
          * @param xpath a XPath expression as string
@@ -10413,24 +10478,29 @@ export namespace Ags {
          * @returns a {@link GLib.List}-struct containing xmlNode
          */
         find_xpath_with_context_node(xpath: string, context_node: libxml2.Node): libxml2.Node[];
+
         /**
          * Loads a RDF triple file into an XML Document.
          * @returns a #xmlDoc pointer
          */
         load(): libxml2.Doc;
+
         /**
-         * @param str
+         * @param str 
          */
         string_convert(str: string): string;
     }
 
+
     namespace TurtleManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -10449,53 +10519,43 @@ export namespace Ags {
         $signals: TurtleManager.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         turtle: any[];
 
         // Constructors
-
         constructor(properties?: Partial<TurtleManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TurtleManager;
+        static ["new"](): TurtleManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TurtleManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TurtleManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TurtleManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TurtleManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TurtleManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TurtleManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TurtleManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TurtleManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get instance of {@link Ags.TurtleManager}.
          */
         static get_instance(): TurtleManager;
 
         // Methods
-
         /**
          * Adds `turtle` to `turtle_manager`.
          * @param turtle the {@link Ags.Turtle}
          */
         add(turtle: GObject.Object): void;
+
         /**
          * Find `filename` in `turtle_manager`.
          * @param filename the filename as string
@@ -10503,6 +10563,7 @@ export namespace Ags {
          */
         find<T = GObject.Object>(filename: string): T;
     }
+
 
     namespace WorkerThread {
         // Signal signatures
@@ -10514,15 +10575,16 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            'do-poll': () => void;
-            'notify::delay': (pspec: GObject.ParamSpec) => void;
-            'notify::frequency': (pspec: GObject.ParamSpec) => void;
-            'notify::max-precision': (pspec: GObject.ParamSpec) => void;
+            "do-poll": () => void;
+            "notify::delay": (pspec: GObject.ParamSpec) => void;
+            "notify::frequency": (pspec: GObject.ParamSpec) => void;
+            "notify::max-precision": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {
 
-        interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {}
+        }
     }
 
     /**
@@ -10541,35 +10603,27 @@ export namespace Ags {
         $signals: WorkerThread.SignalSignatures;
 
         // Fields
-
         thread: Thread;
+
         status_flags: number;
 
         // Constructors
-
         constructor(properties?: Partial<WorkerThread.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): WorkerThread;
+        static ["new"](): WorkerThread;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof WorkerThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof WorkerThread.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof WorkerThread.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WorkerThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Do poll your work. It is called of the worker thread.
          * @virtual
@@ -10577,169 +10631,201 @@ export namespace Ags {
         vfunc_do_poll(): void;
 
         // Methods
-
         /**
          * Do poll your work. It is called of the worker thread.
          */
         do_poll(): void;
+
         /**
          * Set status flags.
          * @param status_flags status flags
          */
         set_status_flags(status_flags: WorkerThreadStatusFlags): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.set_status_flags
+    // Conflicted with Ags.Thread.set_status_flags
         set_status_flags(...args: never[]): any;
+
         /**
          * Test `status_flags` of `worker_thread`.
          * @param status_flags status flags
          * @returns `true` if status flags set, otherwise `false`
          */
         test_status_flags(status_flags: WorkerThreadStatusFlags): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.test_status_flags
+    // Conflicted with Ags.Thread.test_status_flags
         test_status_flags(...args: never[]): any;
+
         /**
          * Unset status flags.
          * @param status_flags status flags
          */
         unset_status_flags(status_flags: WorkerThreadStatusFlags): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ags.Thread.unset_status_flags
+    // Conflicted with Ags.Thread.unset_status_flags
         unset_status_flags(...args: never[]): any;
+
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
+
         /**
          * Add connectable to registry.
          * @virtual
          */
         vfunc_add_to_registry(): void;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_connect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          * @virtual
          */
         vfunc_disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @virtual
          */
         vfunc_get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @virtual
          */
         vfunc_has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @virtual
          */
         vfunc_is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @virtual
          */
         vfunc_is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          * @virtual
          */
         vfunc_remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
@@ -10748,13 +10834,16 @@ export namespace Ags {
         vfunc_xml_parse(node: libxml2.Node): void;
     }
 
+
     namespace XmlAuthentication {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Authentication.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Authentication.ConstructorProps {}
+        }
     }
 
     /**
@@ -10773,64 +10862,60 @@ export namespace Ags {
         $signals: XmlAuthentication.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         filename: string;
+
         encoding: string;
+
         dtd: string;
 
         // Constructors
-
         constructor(properties?: Partial<XmlAuthentication.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XmlAuthentication;
+        static ["new"](): XmlAuthentication;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XmlAuthentication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XmlAuthentication.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XmlAuthentication.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XmlAuthentication.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XmlAuthentication.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XmlAuthentication.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XmlAuthentication.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlAuthentication.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Find ags-srv-auth xmlNode containing `user_uuid`.
          * @param user_uuid the user UUID
          * @returns the matching xmlNode or `null`
          */
         find_user_uuid(user_uuid: string): libxml2.Node;
+
         /**
          * Open `filename`.
          * @param filename the filename
          */
         open_filename(filename: string): void;
+
         /**
          * Generate token.
          * @returns the generated token
          */
         generate_token(): string;
+
         /**
          * Available authentication modules.
          * @returns a `null` terminated array of strings of available authentication modules
          */
         get_authentication_module(): string[];
+
         /**
          * Get digest of `login`.
          * @param realm the realm
@@ -10839,6 +10924,7 @@ export namespace Ags {
          * @returns the encrypted password
          */
         get_digest(realm: string, login: string, security_token: string): string;
+
         /**
          * Check session.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10847,6 +10933,7 @@ export namespace Ags {
          * @returns `true` if session active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
+
         /**
          * Login.
          * @param login the login
@@ -10854,6 +10941,7 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         login(login: string, password: string): [boolean, string, string];
+
         /**
          * Logout.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10862,16 +10950,19 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
+
         /**
          * Generate token.
          * @virtual
          */
         vfunc_generate_token(): string;
+
         /**
          * Available authentication modules.
          * @virtual
          */
         vfunc_get_authentication_module(): string[];
+
         /**
          * Get digest of `login`.
          * @param realm the realm
@@ -10880,6 +10971,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_digest(realm: string, login: string, security_token: string): string;
+
         /**
          * Check session.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10888,6 +10980,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
+
         /**
          * Login.
          * @param login the login
@@ -10895,6 +10988,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_login(login: string, password: string): [boolean, string, string];
+
         /**
          * Logout.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10905,13 +10999,16 @@ export namespace Ags {
         vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
 
+
     namespace XmlBusinessGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, BusinessGroup.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, BusinessGroup.ConstructorProps {}
+        }
     }
 
     /**
@@ -10930,48 +11027,41 @@ export namespace Ags {
         $signals: XmlBusinessGroup.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         filename: string;
+
         encoding: string;
+
         dtd: string;
 
         // Constructors
-
         constructor(properties?: Partial<XmlBusinessGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XmlBusinessGroup;
+        static ["new"](): XmlBusinessGroup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XmlBusinessGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XmlBusinessGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XmlBusinessGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XmlBusinessGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XmlBusinessGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XmlBusinessGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XmlBusinessGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlBusinessGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Open `filename`.
          * @param filename the filename
          */
         open_filename(filename: string): void;
+
         /**
          * Get business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10980,12 +11070,8 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
          */
-        get_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string;
+        get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
+
         /**
          * Get group UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -10994,6 +11080,7 @@ export namespace Ags {
          * @returns the group UUIDs as `null` terminated string array
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get business group name as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11002,12 +11089,8 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
          */
-        get_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string[];
+        get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
+
         /**
          * Set business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11016,13 +11099,8 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
          */
-        set_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            group_name: string,
-        ): void;
+        set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
+
         /**
          * Set business group of user names as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11031,13 +11109,8 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
          */
-        set_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            user: string[],
-        ): void;
+        set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
+
         /**
          * Get business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11046,12 +11119,8 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @virtual
          */
-        vfunc_get_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string;
+        vfunc_get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
+
         /**
          * Get group UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11060,6 +11129,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get business group name as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11068,12 +11138,8 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @virtual
          */
-        vfunc_get_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string[];
+        vfunc_get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
+
         /**
          * Set business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11083,13 +11149,8 @@ export namespace Ags {
          * @param group_name the business group's name to set
          * @virtual
          */
-        vfunc_set_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            group_name: string,
-        ): void;
+        vfunc_set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
+
         /**
          * Set business group of user names as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11099,22 +11160,19 @@ export namespace Ags {
          * @param user the string array containing user names
          * @virtual
          */
-        vfunc_set_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            user: string[],
-        ): void;
+        vfunc_set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
     }
+
 
     namespace XmlCertificate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {}
+        }
     }
 
     /**
@@ -11133,48 +11191,41 @@ export namespace Ags {
         $signals: XmlCertificate.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         filename: string;
+
         encoding: string;
+
         dtd: string;
 
         // Constructors
-
         constructor(properties?: Partial<XmlCertificate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XmlCertificate;
+        static ["new"](): XmlCertificate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XmlCertificate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XmlCertificate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XmlCertificate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XmlCertificate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XmlCertificate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XmlCertificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XmlCertificate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlCertificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Open `filename`.
          * @param filename the filename
          */
         open_filename(filename: string): void;
+
         /**
          * Get cert UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11183,6 +11234,7 @@ export namespace Ags {
          * @returns the cert UUIDs as `null` terminated string array
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11191,12 +11243,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the domain
          */
-        get_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11205,12 +11253,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the key type
          */
-        get_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11219,12 +11263,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the private key file
          */
-        get_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11233,12 +11273,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the public key file
          */
-        get_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Set domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11247,13 +11283,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param domain the domain
          */
-        set_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            domain: string,
-        ): void;
+        set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
+
         /**
          * Set key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11262,13 +11293,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
          */
-        set_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            key_type: string,
-        ): void;
+        set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
+
         /**
          * Set private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11277,13 +11303,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
          */
-        set_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            private_key_file: string,
-        ): void;
+        set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
+
         /**
          * Set public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11292,13 +11313,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
          */
-        set_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            public_key_file: string,
-        ): void;
+        set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
+
         /**
          * Get cert UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11307,6 +11323,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11315,12 +11332,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @virtual
          */
-        vfunc_get_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        vfunc_get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11329,12 +11342,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @virtual
          */
-        vfunc_get_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        vfunc_get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11343,12 +11352,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @virtual
          */
-        vfunc_get_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        vfunc_get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11357,12 +11362,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @virtual
          */
-        vfunc_get_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        vfunc_get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Set domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11372,13 +11373,8 @@ export namespace Ags {
          * @param domain the domain
          * @virtual
          */
-        vfunc_set_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            domain: string,
-        ): void;
+        vfunc_set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
+
         /**
          * Set key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11388,13 +11384,8 @@ export namespace Ags {
          * @param key_type the key type
          * @virtual
          */
-        vfunc_set_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            key_type: string,
-        ): void;
+        vfunc_set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
+
         /**
          * Set private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11404,13 +11395,8 @@ export namespace Ags {
          * @param private_key_file the private key file
          * @virtual
          */
-        vfunc_set_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            private_key_file: string,
-        ): void;
+        vfunc_set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
+
         /**
          * Set public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11420,22 +11406,19 @@ export namespace Ags {
          * @param public_key_file the public key file
          * @virtual
          */
-        vfunc_set_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            public_key_file: string,
-        ): void;
+        vfunc_set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
     }
+
 
     namespace XmlPasswordStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PasswordStore.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PasswordStore.ConstructorProps {}
+        }
     }
 
     /**
@@ -11454,54 +11437,48 @@ export namespace Ags {
         $signals: XmlPasswordStore.SignalSignatures;
 
         // Fields
-
         gobject: GObject.Object;
+
         filename: string;
+
         encoding: string;
+
         dtd: string;
 
         // Constructors
-
         constructor(properties?: Partial<XmlPasswordStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XmlPasswordStore;
+        static ["new"](): XmlPasswordStore;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XmlPasswordStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XmlPasswordStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XmlPasswordStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XmlPasswordStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XmlPasswordStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XmlPasswordStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XmlPasswordStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XmlPasswordStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Find ags-srv-user xmlNode containing `login`.
          * @param login the login
          * @returns the matching xmlNode or `null`
          */
         find_login(login: string): libxml2.Node;
+
         /**
          * Open `filename`.
          * @param filename the filename
          */
         open_filename(filename: string): void;
+
         /**
          * Encrypt password.
          * @param password the password
@@ -11509,6 +11486,7 @@ export namespace Ags {
          * @returns the encrypted bytes
          */
         encrypt_password(password: string, salt: string): string;
+
         /**
          * Get login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11517,6 +11495,7 @@ export namespace Ags {
          * @returns the login name
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Get password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11525,6 +11504,7 @@ export namespace Ags {
          * @returns the password
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Set login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11532,12 +11512,8 @@ export namespace Ags {
          * @param security_token the security token
          * @param login_name the login name
          */
-        set_login_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            login_name: string,
-        ): void;
+        set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
+
         /**
          * Set password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11545,12 +11521,8 @@ export namespace Ags {
          * @param security_token the security token
          * @param password the password
          */
-        set_password(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            password: string,
-        ): void;
+        set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
+
         /**
          * Encrypt password.
          * @param password the password
@@ -11558,6 +11530,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_encrypt_password(password: string, salt: string): string;
+
         /**
          * Get login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11566,6 +11539,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Get password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11574,6 +11548,7 @@ export namespace Ags {
          * @virtual
          */
         vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Set login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11582,12 +11557,8 @@ export namespace Ags {
          * @param login_name the login name
          * @virtual
          */
-        vfunc_set_login_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            login_name: string,
-        ): void;
+        vfunc_set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
+
         /**
          * Set password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -11596,34 +11567,35 @@ export namespace Ags {
          * @param password the password
          * @virtual
          */
-        vfunc_set_password(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            password: string,
-        ): void;
+        vfunc_set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ApplicableInterface = typeof Applicable;
+
     /**
      * @gir-type Alias
      */
     type ApplicationContextClass = typeof ApplicationContext;
+
     /**
      * @gir-type Alias
      */
     type AuthSecurityContextClass = typeof AuthSecurityContext;
+
     /**
      * @gir-type Alias
      */
     type AuthenticationInterface = typeof Authentication;
+
     /**
      * @gir-type Alias
      */
     type AuthenticationManagerClass = typeof AuthenticationManager;
+
     /**
      * @gir-type Struct
      */
@@ -11631,55 +11603,62 @@ export namespace Ags {
         static $gtype: GObject.GType<BufferUtil>;
 
         // Static methods
-
         /**
          * Read a {@link Ags.Complex} quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_complex(cbuffer: number, byte_order: number): Complex;
+
         /**
          * Read a gdouble quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_double(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gfloat quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_float(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gint16 quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_s16(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gint32 24 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_s24(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gint32 32 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_s32(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gint64 64 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
         static char_buffer_read_s64(cbuffer: number, byte_order: number): number;
+
         /**
          * Read a gint8 quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order, ignored here
          */
         static char_buffer_read_s8(cbuffer: number, byte_order: number): number;
+
         /**
          * Swap bytes in view of Little/Big-Endian.
          * @param cbuffer the buffer to swap
@@ -11687,54 +11666,63 @@ export namespace Ags {
          * @param buffer_size the buffer size
          */
         static char_buffer_swap_bytes(cbuffer: number, word_size: number, buffer_size: number): void;
+
         /**
          * Unpack `cbuffer` to a {@link Ags.Complex} buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_complex(cbuffer: number, buffer_size: number): Complex;
+
         /**
          * Unpack `cbuffer` to a gdouble buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_double(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gfloat buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_float(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gint16 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_s16(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gint32 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_s24(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gint32 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_s32(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gint64 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_s64(cbuffer: number, buffer_size: number): number;
+
         /**
          * Unpack `cbuffer` to a gint8 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
         static char_buffer_to_s8(cbuffer: number, buffer_size: number): number;
+
         /**
          * Write a {@link Ags.Complex} quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11742,6 +11730,7 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_complex(cbuffer: number, value: Complex, byte_order: number): void;
+
         /**
          * Write a gdouble quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11749,6 +11738,7 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_double(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Write a gfloat quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11756,6 +11746,7 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_float(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Write a gint16 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11763,6 +11754,7 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_s16(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Write a gint32 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11770,6 +11762,7 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_s24(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Write a gint32 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11777,13 +11770,15 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_s32(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Write a gint64 quantity to `cbuffer`.
          * @param cbuffer the character buffer
          * @param value the gint64 value
          * @param byte_order reverse order
          */
-        static char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
+        static char_buffer_write_s64(cbuffer: number, value: (bigint | number), byte_order: number): void;
+
         /**
          * Write a gint8 quantity to `cbuffer`.
          * @param cbuffer the character buffer
@@ -11791,48 +11786,56 @@ export namespace Ags {
          * @param byte_order reverse order
          */
         static char_buffer_write_s8(cbuffer: number, value: number, byte_order: number): void;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the {@link Ags.Complex} buffer
          * @param buffer_length the buffer length
          */
         static complex_to_char_buffer(buffer: Complex, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gdouble buffer
          * @param buffer_length the buffer length
          */
         static double_to_char_buffer(buffer: number, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gfloat buffer
          * @param buffer_length the buffer length
          */
         static float_to_char_buffer(buffer: number, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint16 buffer
          * @param buffer_length the buffer length
          */
         static s16_to_char_buffer(buffer: number, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint32 buffer
          * @param buffer_length the buffer length
          */
         static s24_to_char_buffer(buffer: number, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint32 buffer
          * @param buffer_length the buffer length
          */
         static s32_to_char_buffer(buffer: number, buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint64 buffer
          * @param buffer_length the buffer length
          */
-        static s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
+        static s64_to_char_buffer(buffer: (bigint | number), buffer_length: number): number;
+
         /**
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint8 buffer
@@ -11841,22 +11844,27 @@ export namespace Ags {
         static s8_to_char_buffer(buffer: number, buffer_length: number): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BusinessGroupInterface = typeof BusinessGroup;
+
     /**
      * @gir-type Alias
      */
     type BusinessGroupManagerClass = typeof BusinessGroupManager;
+
     /**
      * @gir-type Alias
      */
     type CertificateInterface = typeof Certificate;
+
     /**
      * @gir-type Alias
      */
     type CertificateManagerClass = typeof CertificateManager;
+
     /**
      * @gir-type Struct
      */
@@ -11864,41 +11872,40 @@ export namespace Ags {
         static $gtype: GObject.GType<Complex>;
 
         // Fields
-
         real: number;
+
         imag: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                real: number;
-                imag: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            real: number;
+            imag: number;
+        }>);
 
         // Static methods
-
         /**
          * Allocate {@link Ags.Complex}-struct
          */
         static alloc(): Complex;
 
         // Methods
-
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.Complex}-struct
          */
-        copy(): any | null;
+        copy(): (any | null);
+
         /**
          * Free the memory of `ptr`.
          */
         free(): void;
+
         /**
          * Get complex number.
          */
         get_term(): [number, number];
+
         /**
          * Set complex number.
          * @param real the real part
@@ -11907,22 +11914,27 @@ export namespace Ags {
         set_term(real: number, imag: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConcurrencyProviderInterface = typeof ConcurrencyProvider;
+
     /**
      * @gir-type Alias
      */
     type ConfigClass = typeof Config;
+
     /**
      * @gir-type Alias
      */
     type ConnectableInterface = typeof Connectable;
+
     /**
      * @gir-type Alias
      */
     type ControllerClass = typeof Controller;
+
     /**
      * Specifing attributes of resources.
      * @gir-type Struct
@@ -11931,61 +11943,67 @@ export namespace Ags {
         static $gtype: GObject.GType<ControllerResource>;
 
         // Fields
-
         ref_count: number;
+
         group_id: string;
+
         user_id: string;
+
         access_mode: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                ref_count: number;
-                group_id: string;
-                user_id: string;
-                access_mode: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            ref_count: number;
+            group_id: string;
+            user_id: string;
+            access_mode: number;
+        }>);
 
         // Static methods
-
         /**
          * Allocated {@link Ags.ControllerResource}-struct.
          * @param group_id the group id
          * @param user_id the user id
          * @param access_mode the access mode
          */
-        static alloc(group_id: string, user_id: string, access_mode: number): any | null;
+        static alloc(group_id: string, user_id: string, access_mode: number): (any | null);
+
         /**
          * Free `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static free(controller_resource: any | null): void;
+        static free(controller_resource: (any | null)): void;
+
         /**
          * Increase ref-count of `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static ref(controller_resource: any | null): void;
+        static ref(controller_resource: (any | null)): void;
+
         /**
          * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static unref(controller_resource: any | null): void;
+        static unref(controller_resource: (any | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ConversionClass = typeof Conversion;
+
     /**
      * @gir-type Alias
      */
     type CountableInterface = typeof Countable;
+
     /**
      * @gir-type Alias
      */
     type CursorInterface = typeof Cursor;
+
     /**
      * The struct to specify an entry to destroy.
      * @gir-type Struct
@@ -11994,26 +12012,23 @@ export namespace Ags {
         static $gtype: GObject.GType<DestroyEntry>;
 
         // Fields
-
         ptr: any;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                ptr: any;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            ptr: any;
+        }>);
 
         // Static methods
-
         /**
          * Allocated a destroy entry.
          * @param ptr a pointer
          * @param destroy_func the `ptr`'s destroy function
          */
-        static alloc(ptr: any | null, destroy_func: DestroyFunc): any | null;
+        static alloc(ptr: (any | null), destroy_func: DestroyFunc): (any | null);
     }
+
 
     /**
      * @gir-type Struct
@@ -12022,7 +12037,6 @@ export namespace Ags {
         static $gtype: GObject.GType<DestroyUtil>;
 
         // Static methods
-
         /**
          * Run dispose and unref `gobject`.
          * @param gobject the {@link GObject.Object} to destroy
@@ -12030,30 +12044,37 @@ export namespace Ags {
         static dispose_and_unref(gobject: GObject.Object): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DestroyWorkerClass = typeof DestroyWorker;
+
     /**
      * @gir-type Alias
      */
     type FileClass = typeof File;
+
     /**
      * @gir-type Alias
      */
     type FileIdRefClass = typeof FileIdRef;
+
     /**
      * @gir-type Alias
      */
     type FileLaunchClass = typeof FileLaunch;
+
     /**
      * @gir-type Alias
      */
     type FileLinkClass = typeof FileLink;
+
     /**
      * @gir-type Alias
      */
     type FileLookupClass = typeof FileLookup;
+
     /**
      * @gir-type Struct
      */
@@ -12061,13 +12082,13 @@ export namespace Ags {
         static $gtype: GObject.GType<FileUtil>;
 
         // Fields
-
         file_version: string;
+
         app_encoding: string;
+
         encoding: string;
 
         // Static methods
-
         /**
          * Allocate {@link Ags.FileUtil}-struct
          * @param app_encoding the application encoding
@@ -12076,60 +12097,69 @@ export namespace Ags {
         static alloc(app_encoding: string, encoding: string): FileUtil;
 
         // Methods
-
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.FileUtil}-struct
          */
-        copy(): any | null;
+        copy(): (any | null);
+
         /**
          * Free the memory of `ptr`.
          */
         free(): void;
+
         /**
          * Get application encoding of `file_util`.
          * @returns the application encoding
          */
         get_app_encoding(): string;
+
         /**
          * Get complex floating point number from string.
          * @param str the string
          * @returns the complex floating point number
          */
         get_complex(str: string): Complex;
+
         /**
          * Get double precision size floating point number from string.
          * @param str the string
          * @returns the double precision size floating point number
          */
         get_double(str: string): number;
+
         /**
          * Get encoding of `file_util`.
          * @returns the encoding
          */
         get_encoding(): string;
+
         /**
          * set file version of `file_util`.
          */
         get_file_version(): string;
+
         /**
          * Get arbitary size floating point number from string.
          * @param str the string
          * @returns the arbitary size floating point number
          */
         get_float(str: string): number;
+
         /**
          * Get integer from string.
          * @param str the string to convert
          * @returns the converted integer
          */
         get_int(str: string): number;
+
         /**
          * Get long long integer from string.
          * @param str the string to convert
          * @returns the converted long long integer
          */
         get_int64(str: string): number;
+
         /**
          * Get string from `str`.
          * @param str the string
@@ -12137,48 +12167,56 @@ export namespace Ags {
          * @returns the newly allocated string
          */
         get_string(str: string, max_length: number): string;
+
         /**
          * Get unsigned integer from string.
          * @param str the string to convert
          * @returns the converted unsigned integer
          */
         get_uint(str: string): number;
+
         /**
          * Get unsigned long long integer.
          * @param str the string to convert
          * @returns the converted unsigned long long integer
          */
         get_uint64(str: string): number;
+
         /**
          * Put complex floating point number to string.
          * @param value the value
          * @returns the newly allocated string
          */
         put_complex(value: Complex): string;
+
         /**
          * Put double precision size floating point number to string.
          * @param value the value
          * @returns the newly allocated string
          */
         put_double(value: number): string;
+
         /**
          * Put arbitary size floating point number to string.
          * @param value the value
          * @returns the newly allocated string
          */
         put_float(value: number): string;
+
         /**
          * Put integer to string.
          * @param value the value
          * @returns the newly allocated string
          */
         put_int(value: number): string;
+
         /**
          * Put long long integer to string.
          * @param value the value
          * @returns the newly allocated string
          */
-        put_int64(value: bigint | number): string;
+        put_int64(value: (bigint | number)): string;
+
         /**
          * Put `str` to string.
          * @param str the string
@@ -12186,36 +12224,43 @@ export namespace Ags {
          * @returns the newly allocated string
          */
         put_string(str: string, length: number): string;
+
         /**
          * Put unsigned integer to string.
          * @param value the value
          * @returns the newly allocated string
          */
         put_uint(value: number): string;
+
         /**
          * Put unsigned long long integer to string.
          * @param value the value
          * @returns the newly allocated string
          */
-        put_uint64(value: bigint | number): string;
+        put_uint64(value: (bigint | number)): string;
+
         /**
-         * @param file_version
+         * @param file_version 
          */
         set_file_version(file_version: string): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type FrontControllerClass = typeof FrontController;
+
     /**
      * @gir-type Alias
      */
     type FunctionClass = typeof Function;
+
     /**
      * @gir-type Alias
      */
     type GenericMainLoopClass = typeof GenericMainLoop;
+
     /**
      * @gir-type Struct
      */
@@ -12223,7 +12268,6 @@ export namespace Ags {
         static $gtype: GObject.GType<ListUtil>;
 
         // Static methods
-
         /**
          * Find `gtype` within `list`.
          * @param list the {@link GLib.List}-struct
@@ -12232,10 +12276,12 @@ export namespace Ags {
         static find_type(list: GObject.Object[], gtype: GObject.GType): GObject.Object[];
     }
 
+
     /**
      * @gir-type Alias
      */
     type LogClass = typeof Log;
+
     /**
      * @gir-type Struct
      */
@@ -12243,39 +12289,45 @@ export namespace Ags {
         static $gtype: GObject.GType<LoginInfo>;
 
         // Fields
-
         ref_count: number;
+
         active_session_count: number;
+
         user_uuid: string;
+
         security_context: SecurityContext;
 
         // Static methods
-
         /**
          * Alloc {@link Ags.LoginInfo}-struct.
          */
-        static alloc(): any | null;
+        static alloc(): (any | null);
+
         /**
          * Free `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static free(login_info: any | null): void;
+        static free(login_info: (any | null)): void;
+
         /**
          * Increase ref-count of `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static ref(login_info: any | null): void;
+        static ref(login_info: (any | null)): void;
+
         /**
          * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static unref(login_info: any | null): void;
+        static unref(login_info: (any | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MainLoopInterface = typeof MainLoop;
+
     /**
      * @gir-type Struct
      */
@@ -12283,93 +12335,108 @@ export namespace Ags {
         static $gtype: GObject.GType<MathUtil>;
 
         // Static methods
-
         /**
          * Compute `value` from `coefficient`.
          * @param coefficient the coefficient string
          */
         static coefficient_to_complex(coefficient: string): [boolean, Complex];
+
         /**
          * Find exponent parenthesis.
          * @param str the string
          */
         static find_exponent_parenthesis(str: string): [number, number, number, number];
+
         /**
          * Find next function.
          * @param str the string
          */
         static find_function(str: string): string;
+
         /**
          * Find function parenthesis.
          * @param str the string
          */
         static find_function_parenthesis(str: string): [number, number, number, number];
+
         /**
          * Find all parenthesis.
          * @param str the string
          */
         static find_parenthesis_all(str: string): [number, number, number, number];
+
         /**
          * Find next symbol.
          * @param str the string
          */
         static find_symbol(str: string): string;
+
         /**
          * Find term parenthesis.
          * @param str the string
          */
         static find_term_parenthesis(str: string): [number, number, number, number];
+
         /**
          * Test if `term` is a term.
          * @param term the term
          */
         static is_term(term: string): boolean;
+
         /**
          * Match coefficient including optional sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_coefficient(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match exponent with or without parenthesis.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match function.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_function(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match operator.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_operator(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_sign(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
          * Match symbol including optional sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
          */
         static match_symbol(offset: string, end_ptr: string): [boolean, string, string];
+
         /**
-         * @param coefficient
-         * @param value_count
+         * @param coefficient 
+         * @param value_count 
          */
         static multiply_coefficient_all(coefficient: string, value_count: number): Complex;
+
         /**
          * Split `polynomial` into coefficient, powers of symbols and summand.
          * @param polynomial the polynomial
          */
         static split_polynomial(polynomial: string): [string, string];
+
         /**
          * Split `sum` into summands.
          * @param sum the sum
@@ -12377,46 +12444,57 @@ export namespace Ags {
         static split_sum(sum: string): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MessageDeliveryClass = typeof MessageDelivery;
+
     /**
      * @gir-type Alias
      */
     type MessageEnvelopeClass = typeof MessageEnvelope;
+
     /**
      * @gir-type Alias
      */
     type MessageQueueClass = typeof MessageQueue;
+
     /**
      * @gir-type Alias
      */
     type MutableInterface = typeof Mutable;
+
     /**
      * @gir-type Alias
      */
     type PasswordStoreInterface = typeof PasswordStore;
+
     /**
      * @gir-type Alias
      */
     type PasswordStoreManagerClass = typeof PasswordStoreManager;
+
     /**
      * @gir-type Alias
      */
     type PluginControllerInterface = typeof PluginController;
+
     /**
      * @gir-type Alias
      */
     type PluginInterface = typeof Plugin;
+
     /**
      * @gir-type Alias
      */
     type PortletInterface = typeof Portlet;
+
     /**
      * @gir-type Alias
      */
     type PriorityClass = typeof Priority;
+
     /**
      * @gir-type Struct
      */
@@ -12425,13 +12503,12 @@ export namespace Ags {
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                start_match_offset: unknown;
-                end_match_offset: unknown;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            start_match_offset: unknown;
+            end_match_offset: unknown;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -12440,16 +12517,19 @@ export namespace Ags {
         static $gtype: GObject.GType<RegexUtil>;
 
         // Fields
-
         app_encoding: string;
+
         encoding: string;
+
         is_unichar: boolean;
+
         is_unichar2: boolean;
+
         regex_str: string;
+
         compile_flags: number;
 
         // Static methods
-
         /**
          * Allocate {@link Ags.RegexUtil}-struct
          * @param app_encoding the application encoding
@@ -12458,10 +12538,10 @@ export namespace Ags {
          * @param is_unichar2 is gunichar2
          */
         static alloc(app_encoding: string, encoding: string, is_unichar: boolean, is_unichar2: boolean): RegexUtil;
+
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Compile `regex_str` by respecting `compile_flags`.
          * @param regex_str the regular expression
@@ -12469,11 +12549,13 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         compile(regex_str: string, compile_flags: number): boolean;
+
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.RegexUtil}-struct
          */
-        copy(): any | null;
+        copy(): (any | null);
+
         /**
          * Execute `regex_util` and fill `match`.
          * @param str the input string
@@ -12483,6 +12565,7 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         execute(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
+
         /**
          * Execute `regex_util` and fill `match`.
          * @param str the input string
@@ -12492,6 +12575,7 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         execute_unichar(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
+
         /**
          * Execute `regex_util` and fill `match`.
          * @param str the input string
@@ -12501,25 +12585,30 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         execute_unichar2(str: number, match_count: number, match: RegexMatch, execute_flags: number): boolean;
+
         /**
          * Free the memory of `ptr`.
          */
         free(): void;
+
         /**
          * Get application encoding of `regex_util`.
          * @returns the application encoding
          */
         get_app_encoding(): string;
+
         /**
          * Get encoding of `regex_util`.
          * @returns the encoding
          */
         get_encoding(): string;
+
         /**
          * Free `match`.
          * @param match the regex match
          */
         match_free(match: RegexMatch): void;
+
         /**
          * Get offset of `match`.
          * @param match the regex match
@@ -12528,10 +12617,12 @@ export namespace Ags {
         match_get_offset(match: RegexMatch, nth_match: number): [number, number];
     }
 
+
     /**
      * @gir-type Alias
      */
     type RegistryClass = typeof Registry;
+
     /**
      * {@link Ags.RegistryEntry} is an entry that you might want to lookup remotely.
      * @gir-type Struct
@@ -12540,41 +12631,46 @@ export namespace Ags {
         static $gtype: GObject.GType<RegistryEntry>;
 
         // Fields
-
         id: UUID;
 
         // Methods
-
         /**
          * Free `registry_entry`
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ReturnableThreadClass = typeof ReturnableThread;
+
     /**
      * @gir-type Alias
      */
     type SecurityContextClass = typeof SecurityContext;
+
     /**
      * @gir-type Alias
      */
     type SeekableInterface = typeof Seekable;
+
     /**
      * @gir-type Alias
      */
     type SequencerInterface = typeof Sequencer;
+
     /**
      * @gir-type Alias
      */
     type ServerApplicationContextClass = typeof ServerApplicationContext;
+
     /**
      * @gir-type Alias
      */
     type ServerClass = typeof Server;
+
     /**
      * {@link Ags.ServerInfo} does identify the server and provides some basic information about it.
      * @gir-type Struct
@@ -12583,32 +12679,34 @@ export namespace Ags {
         static $gtype: GObject.GType<ServerInfo>;
 
         // Fields
-
         uuid: string;
+
         server_name: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                uuid: string;
-                server_name: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            uuid: string;
+            server_name: string;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type ServerStatusClass = typeof ServerStatus;
+
     /**
      * @gir-type Alias
      */
     type ServiceProviderInterface = typeof ServiceProvider;
+
     /**
      * @gir-type Alias
      */
     type SolverMatrixClass = typeof SolverMatrix;
+
     /**
      * @gir-type Struct
      */
@@ -12616,23 +12714,21 @@ export namespace Ags {
         static $gtype: GObject.GType<SolverPath>;
 
         // Fields
-
         nth_column: number;
+
         nth_row_a: number;
+
         nth_row_b: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                nth_column: number;
-                nth_row_a: number;
-                nth_row_b: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            nth_column: number;
+            nth_row_a: number;
+            nth_row_b: number;
+        }>);
 
         // Static methods
-
         /**
          * Allocate {@link Ags.SolverPath}-struct
          * @param nth_column the nth-column
@@ -12642,41 +12738,47 @@ export namespace Ags {
         static alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
 
         // Methods
-
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.SolverPath}-struct
          */
-        copy(): any | null;
+        copy(): (any | null);
+
         /**
          * Free the memory of `ptr`.
          */
         free(): void;
+
         /**
          * Get nth-column of `solver_path`.
          * @returns nth-column as unsigned integer
          */
         get_nth_column(): number;
+
         /**
          * Get nth-row a of `solver_path`.
          * @returns nth-row a as unsigned integer
          */
         get_nth_row_a(): number;
+
         /**
          * Get nth-row b of solver path.
          * @returns nth-row b as unsigned integer
          */
         get_nth_row_b(): number;
+
         /**
          * Set nth-column of `solver_path`.
          * @param nth_column the nth-column to set
          */
         set_nth_column(nth_column: number): void;
+
         /**
          * Set nth-row a of `solver_path`.
          * @param nth_row_a the nth-row a to set
          */
         set_nth_row_a(nth_row_a: number): void;
+
         /**
          * Set nth-row b of `solver_path`.
          * @param nth_row_b the nth-row b to set
@@ -12684,22 +12786,27 @@ export namespace Ags {
         set_nth_row_b(nth_row_b: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SolverPolynomialClass = typeof SolverPolynomial;
+
     /**
      * @gir-type Alias
      */
     type SolverVectorClass = typeof SolverVector;
+
     /**
      * @gir-type Alias
      */
     type SoundServerInterface = typeof SoundServer;
+
     /**
      * @gir-type Alias
      */
     type SoundcardInterface = typeof Soundcard;
+
     /**
      * @gir-type Struct
      */
@@ -12707,17 +12814,18 @@ export namespace Ags {
         static $gtype: GObject.GType<StringUtil>;
 
         // Static methods
-
         /**
          * Escape all occurence of single quotes.
          * @param str the string to escape
          */
         static escape_single_quote(str: string): string;
+
         /**
          * String from mcoded7 encoding.
          * @param mcoded7_str the string to decode
          */
         static from_mcoded7(mcoded7_str: string): string;
+
         /**
          * String to mcoded7 encoding.
          * @param str the string to encode
@@ -12725,46 +12833,57 @@ export namespace Ags {
         static to_mcoded7(str: string): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TactableInterface = typeof Tactable;
+
     /**
      * @gir-type Alias
      */
     type TaskClass = typeof Task;
+
     /**
      * @gir-type Alias
      */
     type TaskCompletionClass = typeof TaskCompletion;
+
     /**
      * @gir-type Alias
      */
     type TaskLauncherClass = typeof TaskLauncher;
+
     /**
      * @gir-type Alias
      */
     type ThreadApplicationContextClass = typeof ThreadApplicationContext;
+
     /**
      * @gir-type Alias
      */
     type ThreadClass = typeof Thread;
+
     /**
      * @gir-type Alias
      */
     type ThreadPoolClass = typeof ThreadPool;
+
     /**
      * @gir-type Alias
      */
     type TimestampClass = typeof Timestamp;
+
     /**
      * @gir-type Alias
      */
     type TurtleClass = typeof Turtle;
+
     /**
      * @gir-type Alias
      */
     type TurtleManagerClass = typeof TurtleManager;
+
     /**
      * @gir-type Struct
      */
@@ -12772,23 +12891,20 @@ export namespace Ags {
         static $gtype: GObject.GType<UUID>;
 
         // Fields
-
         data: Uint8Array;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                data: Uint8Array;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            data: Uint8Array;
+        }>);
 
         // Static methods
-
         /**
          * Allocate {@link Ags.UUID}.
          */
         static alloc(): UUID;
+
         /**
          * Retrieve {@link Ags.UUID} by parsing `str`.
          * @param str the UUID as string
@@ -12796,26 +12912,29 @@ export namespace Ags {
         static from_string(str: string): UUID;
 
         // Methods
-
         /**
          * Compare `a` with `b`.
          * @param b another {@link Ags.UUID}
          * @returns 0 on success, otherwise a value less or greater than 0
          */
         compare(b: UUID): number;
+
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.UUID}
          */
-        copy(): any | null;
+        copy(): (any | null);
+
         /**
          * Free the memory of `ptr`.
          */
         free(): void;
+
         /**
          * Generate random UUID.
          */
         generate(): void;
+
         /**
          * Get string representation of `ptr`.
          * @returns the UUID as string if `ptr` not `null`, else `null`
@@ -12823,44 +12942,52 @@ export namespace Ags {
         to_string(): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WorkerThreadClass = typeof WorkerThread;
+
     /**
      * @gir-type Alias
      */
     type XmlAuthenticationClass = typeof XmlAuthentication;
+
     /**
      * @gir-type Alias
      */
     type XmlBusinessGroupClass = typeof XmlBusinessGroup;
+
     /**
      * @gir-type Alias
      */
     type XmlCertificateClass = typeof XmlCertificate;
+
     /**
      * @gir-type Alias
      */
     type XmlPasswordStoreClass = typeof XmlPasswordStore;
+
     namespace Applicable {
         /**
          * Interface for implementing Applicable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Apply all changes done so far.
              * @virtual
              */
             vfunc_apply(): void;
+
             /**
              * Reset all changes within the user interface.
              * @virtual
              */
             vfunc_reset(): void;
+
             /**
              * Update behaviour.
              * @param update if `true` do ::reset after ::apply
@@ -12869,9 +12996,11 @@ export namespace Ags {
             vfunc_set_update(update: boolean): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ApplicableNamespace {
@@ -12882,22 +13011,25 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Applicable extends GObject.Object, Applicable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Apply all changes done so far.
          */
         apply(): void;
+
         /**
          * Reset all changes within the user interface.
          */
         reset(): void;
+
         /**
          * Update behaviour.
          * @param update if `true` do ::reset after ::apply
          */
         set_update(update: boolean): void;
     }
+
 
     export const Applicable: ApplicableNamespace & {
         new (): Applicable; // This allows `obj instanceof Applicable`
@@ -12909,18 +13041,20 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Generate token.
              * @virtual
              */
             vfunc_generate_token(): string;
+
             /**
              * Available authentication modules.
              * @virtual
              */
             vfunc_get_authentication_module(): string[];
+
             /**
              * Get digest of `login`.
              * @param realm the realm
@@ -12929,6 +13063,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_digest(realm: string, login: string, security_token: string): string;
+
             /**
              * Check session.
              * @param security_context the {@link Ags.SecurityContext}
@@ -12936,11 +13071,8 @@ export namespace Ags {
              * @param security_token the security token
              * @virtual
              */
-            vfunc_is_session_active(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-            ): boolean;
+            vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
+
             /**
              * Login.
              * @param login the login
@@ -12948,6 +13080,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_login(login: string, password: string): [boolean, string, string];
+
             /**
              * Logout.
              * @param security_context the {@link Ags.SecurityContext}
@@ -12958,9 +13091,11 @@ export namespace Ags {
             vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface AuthenticationNamespace {
@@ -12971,18 +13106,20 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Authentication extends GObject.Object, Authentication.Interface {
-        // Methods
 
+        // Methods
         /**
          * Generate token.
          * @returns the generated token
          */
         generate_token(): string;
+
         /**
          * Available authentication modules.
          * @returns a `null` terminated array of strings of available authentication modules
          */
         get_authentication_module(): string[];
+
         /**
          * Get digest of `login`.
          * @param realm the realm
@@ -12991,6 +13128,7 @@ export namespace Ags {
          * @returns the encrypted password
          */
         get_digest(realm: string, login: string, security_token: string): string;
+
         /**
          * Check session.
          * @param security_context the {@link Ags.SecurityContext}
@@ -12999,6 +13137,7 @@ export namespace Ags {
          * @returns `true` if session active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
+
         /**
          * Login.
          * @param login the login
@@ -13006,6 +13145,7 @@ export namespace Ags {
          * @returns `true` on success, otherwise `false`
          */
         login(login: string, password: string): [boolean, string, string];
+
         /**
          * Logout.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13015,6 +13155,7 @@ export namespace Ags {
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
+
 
     export const Authentication: AuthenticationNamespace & {
         new (): Authentication; // This allows `obj instanceof Authentication`
@@ -13026,8 +13167,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get business group name.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13036,12 +13177,8 @@ export namespace Ags {
              * @param group_uuid the group's UUID
              * @virtual
              */
-            vfunc_get_group_name(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                group_uuid: string,
-            ): string;
+            vfunc_get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
+
             /**
              * Get group UUID as string vector.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13050,6 +13187,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
             /**
              * Get business group name as `null` terminated string array.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13058,12 +13196,8 @@ export namespace Ags {
              * @param group_uuid the business group's UUID
              * @virtual
              */
-            vfunc_get_user(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                group_uuid: string,
-            ): string[];
+            vfunc_get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
+
             /**
              * Set business group name.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13073,13 +13207,8 @@ export namespace Ags {
              * @param group_name the business group's name to set
              * @virtual
              */
-            vfunc_set_group_name(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                group_uuid: string,
-                group_name: string,
-            ): void;
+            vfunc_set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
+
             /**
              * Set business group of user names as `null` terminated string array.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13089,18 +13218,14 @@ export namespace Ags {
              * @param user the string array containing user names
              * @virtual
              */
-            vfunc_set_user(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                group_uuid: string,
-                user: string[],
-            ): void;
+            vfunc_set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface BusinessGroupNamespace {
@@ -13111,8 +13236,8 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface BusinessGroup extends GObject.Object, BusinessGroup.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13121,12 +13246,8 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
          */
-        get_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string;
+        get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
+
         /**
          * Get group UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13135,6 +13256,7 @@ export namespace Ags {
          * @returns the group UUIDs as `null` terminated string array
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get business group name as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13143,12 +13265,8 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
          */
-        get_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-        ): string[];
+        get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
+
         /**
          * Set business group name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13157,13 +13275,8 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
          */
-        set_group_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            group_name: string,
-        ): void;
+        set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
+
         /**
          * Set business group of user names as `null` terminated string array.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13172,14 +13285,9 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
          */
-        set_user(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            group_uuid: string,
-            user: string[],
-        ): void;
+        set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
     }
+
 
     export const BusinessGroup: BusinessGroupNamespace & {
         new (): BusinessGroup; // This allows `obj instanceof BusinessGroup`
@@ -13191,8 +13299,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get cert UUID as string vector.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13201,6 +13309,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
             /**
              * Get domain.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13209,12 +13318,8 @@ export namespace Ags {
              * @param cert_uuid the cert's UUID
              * @virtual
              */
-            vfunc_get_domain(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-            ): string;
+            vfunc_get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
             /**
              * Get key type.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13223,12 +13328,8 @@ export namespace Ags {
              * @param cert_uuid the cert's UUID
              * @virtual
              */
-            vfunc_get_key_type(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-            ): string;
+            vfunc_get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
             /**
              * Get private key file.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13237,12 +13338,8 @@ export namespace Ags {
              * @param cert_uuid the cert's UUID
              * @virtual
              */
-            vfunc_get_private_key_file(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-            ): string;
+            vfunc_get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
             /**
              * Get public key file.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13251,12 +13348,8 @@ export namespace Ags {
              * @param cert_uuid the cert's UUID
              * @virtual
              */
-            vfunc_get_public_key_file(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-            ): string;
+            vfunc_get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
             /**
              * Set domain.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13266,13 +13359,8 @@ export namespace Ags {
              * @param domain the domain
              * @virtual
              */
-            vfunc_set_domain(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-                domain: string,
-            ): void;
+            vfunc_set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
+
             /**
              * Set key type.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13282,13 +13370,8 @@ export namespace Ags {
              * @param key_type the key type
              * @virtual
              */
-            vfunc_set_key_type(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-                key_type: string,
-            ): void;
+            vfunc_set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
+
             /**
              * Set private key file.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13298,13 +13381,8 @@ export namespace Ags {
              * @param private_key_file the private key file
              * @virtual
              */
-            vfunc_set_private_key_file(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-                private_key_file: string,
-            ): void;
+            vfunc_set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
+
             /**
              * Set public key file.
              * @param security_context the {@link Ags.SecurityContext}
@@ -13314,18 +13392,14 @@ export namespace Ags {
              * @param public_key_file the public key file
              * @virtual
              */
-            vfunc_set_public_key_file(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                cert_uuid: string,
-                public_key_file: string,
-            ): void;
+            vfunc_set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CertificateNamespace {
@@ -13336,8 +13410,8 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Certificate extends GObject.Object, Certificate.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get cert UUID as string vector.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13346,6 +13420,7 @@ export namespace Ags {
          * @returns the cert UUIDs as `null` terminated string array
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
+
         /**
          * Get domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13354,12 +13429,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the domain
          */
-        get_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13368,12 +13439,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the key type
          */
-        get_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13382,12 +13449,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the private key file
          */
-        get_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Get public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13396,12 +13459,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the public key file
          */
-        get_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-        ): string;
+        get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
+
         /**
          * Set domain.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13410,13 +13469,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param domain the domain
          */
-        set_domain(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            domain: string,
-        ): void;
+        set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
+
         /**
          * Set key type.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13425,13 +13479,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
          */
-        set_key_type(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            key_type: string,
-        ): void;
+        set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
+
         /**
          * Set private key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13440,13 +13489,8 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
          */
-        set_private_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            private_key_file: string,
-        ): void;
+        set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
+
         /**
          * Set public key file.
          * @param security_context the {@link Ags.SecurityContext}
@@ -13455,14 +13499,9 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
          */
-        set_public_key_file(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            cert_uuid: string,
-            public_key_file: string,
-        ): void;
+        set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
     }
+
 
     export const Certificate: CertificateNamespace & {
         new (): Certificate; // This allows `obj instanceof Certificate`
@@ -13474,46 +13513,53 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get main loop of application context.
              * @virtual
              */
             vfunc_get_main_loop(): Thread;
+
             /**
              * Get task launcher of application context.
              * @virtual
              */
             vfunc_get_task_launcher(): TaskLauncher;
+
             /**
              * Get thread pool of application context.
              * @virtual
              */
             vfunc_get_thread_pool(): ThreadPool;
+
             /**
              * Get workers of application context.
              * @virtual
              */
             vfunc_get_worker(): WorkerThread[];
+
             /**
              * Set main loop of application context.
              * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
              * @virtual
              */
             vfunc_set_main_loop(main_loop: Thread): void;
+
             /**
              * Set task launcher of application context.
              * @param task_launcher the {@link Ags.TaskLauncher}
              * @virtual
              */
             vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
+
             /**
              * Set thread pool of application context.
              * @param thread_pool the {@link Ags.ThreadPool}
              * @virtual
              */
             vfunc_set_thread_pool(thread_pool: ThreadPool): void;
+
             /**
              * Set workers of application context.
              * @param worker the {@link GLib.List}-struct containing workers
@@ -13522,9 +13568,11 @@ export namespace Ags {
             vfunc_set_worker(worker: WorkerThread[]): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConcurrencyProviderNamespace {
@@ -13535,49 +13583,57 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface ConcurrencyProvider extends GObject.Object, ConcurrencyProvider.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
+
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
+
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
+
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
+
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
+
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
+
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
+
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
     }
+
 
     export const ConcurrencyProvider: ConcurrencyProviderNamespace & {
         new (): ConcurrencyProvider; // This allows `obj instanceof ConcurrencyProvider`
@@ -13589,70 +13645,82 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Add connectable to registry.
              * @virtual
              */
             vfunc_add_to_registry(): void;
+
             /**
              * Connect the connectable.
              * @virtual
              */
             vfunc_connect(): void;
+
             /**
              * Disconnect the connectable.
              * @param connection the connection
              * @virtual
              */
             vfunc_connect_connection(connection: GObject.Object): void;
+
             /**
              * Disconnect the connectable.
              * @virtual
              */
             vfunc_disconnect(): void;
+
             /**
              * Disconnect the connectable.
              * @param connection the connection
              * @virtual
              */
             vfunc_disconnect_connection(connection: GObject.Object): void;
+
             /**
              * Get UUID of `connectable`.
              * @virtual
              */
             vfunc_get_uuid(): UUID;
+
             /**
              * Check the connectable to have resources.
              * @virtual
              */
             vfunc_has_resource(): boolean;
+
             /**
              * Check if the `connectable` was connected.
              * @virtual
              */
             vfunc_is_connected(): boolean;
+
             /**
              * Connect the connectable.
              * @virtual
              */
             vfunc_is_ready(): boolean;
+
             /**
              * List resources as an XML element and return it.
              * @virtual
              */
             vfunc_list_resource(): libxml2.Node;
+
             /**
              * Remove connectable from registry.
              * @virtual
              */
             vfunc_remove_from_registry(): void;
+
             /**
              * Compose an XML element and return it.
              * @virtual
              */
             vfunc_xml_compose(): libxml2.Node;
+
             /**
              * Parse `node` as XML element and apply it.
              * @param node the #xmlNode-struct
@@ -13661,9 +13729,11 @@ export namespace Ags {
             vfunc_xml_parse(node: libxml2.Node): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConnectableNamespace {
@@ -13674,74 +13744,88 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Connectable extends GObject.Object, Connectable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Add connectable to registry.
          */
         add_to_registry(): void;
+
         /**
          * Connect the connectable.
          */
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         connect_connection(connection: GObject.Object): void;
+
         /**
          * Disconnect the connectable.
          */
         disconnect(): void;
+
         /**
          * Disconnect the connectable.
          * @param connection the connection
          */
         disconnect_connection(connection: GObject.Object): void;
+
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
+
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
+
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
+
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
+
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
          */
         list_resource(): libxml2.Node;
+
         /**
          * Remove connectable from registry.
          */
         remove_from_registry(): void;
+
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
          */
         xml_compose(): libxml2.Node;
+
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
          */
         xml_parse(node: libxml2.Node): void;
     }
+
 
     export const Connectable: ConnectableNamespace & {
         new (): Connectable; // This allows `obj instanceof Connectable`
@@ -13753,33 +13837,38 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Retrieve current position of MIDI.
              * @virtual
              */
-            vfunc_get_midi_counter(): bigint | number;
+            vfunc_get_midi_counter(): (bigint | number);
+
             /**
              * Retrieve current position of notation.
              * @virtual
              */
-            vfunc_get_notation_counter(): bigint | number;
+            vfunc_get_notation_counter(): (bigint | number);
+
             /**
              * Retrieve current position of sequencer.
              * @virtual
              */
-            vfunc_get_sequencer_counter(): bigint | number;
+            vfunc_get_sequencer_counter(): (bigint | number);
+
             /**
              * Retrieve current position of wave.
              * @virtual
              */
-            vfunc_get_wave_counter(): bigint | number;
+            vfunc_get_wave_counter(): (bigint | number);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CountableNamespace {
@@ -13790,29 +13879,33 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Countable extends GObject.Object, Countable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Retrieve current position of MIDI.
          * @returns the current position
          */
         get_midi_counter(): number;
+
         /**
          * Retrieve current position of notation.
          * @returns the current position
          */
         get_notation_counter(): number;
+
         /**
          * Retrieve current position of sequencer.
          * @returns the current position
          */
         get_sequencer_counter(): number;
+
         /**
          * Retrieve current position of wave.
          * @returns the current position
          */
         get_wave_counter(): number;
     }
+
 
     export const Countable: CountableNamespace & {
         new (): Countable; // This allows `obj instanceof Countable`
@@ -13824,63 +13917,74 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get BPM.
              * @virtual
              */
             vfunc_get_bpm(): number;
+
             /**
              * Get current.
              * @virtual
              */
             vfunc_get_current(): GObject.Object[];
+
             /**
              * Get current as copy.
              * @virtual
              */
             vfunc_get_current_copy(): GObject.Object[];
+
             /**
              * Get the default offset.
              * @virtual
              */
             vfunc_get_default_offset(): number;
+
             /**
              * Get delay.
              * @virtual
              */
             vfunc_get_delay(): number;
+
             /**
              * Get delay counter.
              * @virtual
              */
             vfunc_get_delay_counter(): number;
+
             /**
              * Get duration.
              * @virtual
              */
-            vfunc_get_duration(): bigint | number;
+            vfunc_get_duration(): (bigint | number);
+
             /**
              * Get next.
              * @virtual
              */
             vfunc_get_next(): GObject.Object[];
+
             /**
              * Get offset.
              * @virtual
              */
-            vfunc_get_offset(): bigint | number;
+            vfunc_get_offset(): (bigint | number);
+
             /**
              * Get prev.
              * @virtual
              */
             vfunc_get_prev(): GObject.Object[];
+
             /**
              * Get offset counter rate.
              * @virtual
              */
             vfunc_get_rate(): number;
+
             /**
              * Get the tact.
              * @virtual
@@ -13888,9 +13992,11 @@ export namespace Ags {
             vfunc_get_tact(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CursorNamespace {
@@ -13901,68 +14007,80 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Cursor extends GObject.Object, Cursor.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get BPM.
          * @returns the BPM
          */
         get_bpm(): number;
+
         /**
          * Get current.
          * @returns the {@link GLib.List}-struct pointing to current
          */
         get_current(): GObject.Object[];
+
         /**
          * Get current as copy.
          * @returns the {@link GLib.List}-struct of current as copy
          */
         get_current_copy(): GObject.Object[];
+
         /**
          * Get the default offset.
          * @returns the default offset
          */
         get_default_offset(): number;
+
         /**
          * Get delay.
          * @returns the delay
          */
         get_delay(): number;
+
         /**
          * Get delay counter.
          * @returns the delay counter
          */
         get_delay_counter(): number;
+
         /**
          * Get duration.
          * @returns the duration
          */
         get_duration(): number;
+
         /**
          * Get next.
          * @returns the {@link GLib.List}-struct pointing to next
          */
         get_next(): GObject.Object[];
+
         /**
          * Get offset.
          * @returns the offset
          */
         get_offset(): number;
+
         /**
          * Get prev.
          * @returns the {@link GLib.List}-struct pointing to previous
          */
         get_prev(): GObject.Object[];
+
         /**
          * Get offset counter rate.
          */
         get_rate(): number;
+
         /**
          * Get the tact.
          * @returns the tact
          */
         get_tact(): number;
     }
+
 
     export const Cursor: CursorNamespace & {
         new (): Cursor; // This allows `obj instanceof Cursor`
@@ -13974,51 +14092,59 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Change frequency.
              * @param frequency the new frequency
              * @virtual
              */
             vfunc_change_frequency(frequency: number): void;
+
             /**
              * Decrement thread needs access to main loop's critical region field.
              * @virtual
              */
             vfunc_dec_queued_critical_region(): void;
+
             /**
              * Retrieve the tree mutex.
              * @virtual
              */
             vfunc_get_tree_lock(): GLib.RecMutex;
+
             /**
              * Increment thread needs access to main loop's critical region field.
              * @virtual
              */
             vfunc_inc_queued_critical_region(): void;
+
             /**
              * Check if main loop is in critical region.
              * @virtual
              */
             vfunc_is_critical_region(): boolean;
+
             /**
              * Check if thread tree is syncing.
              * @virtual
              */
             vfunc_is_syncing(): boolean;
+
             /**
              * Set main loop is in critical region.
              * @param is_critical_region set `true` if critical region
              * @virtual
              */
             vfunc_set_critical_region(is_critical_region: boolean): void;
+
             /**
              * Set thread tree is syncing.
              * @param is_syncing set `true` if syncing
              * @virtual
              */
             vfunc_set_syncing(is_syncing: boolean): void;
+
             /**
              * Test main loop may enter critical region.
              * @virtual
@@ -14026,9 +14152,11 @@ export namespace Ags {
             vfunc_test_queued_critical_region(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MainLoopNamespace {
@@ -14039,52 +14167,61 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface MainLoop extends GObject.Object, MainLoop.Interface {
-        // Methods
 
+        // Methods
         /**
          * Change frequency.
          * @param frequency the new frequency
          */
         change_frequency(frequency: number): void;
+
         /**
          * Decrement thread needs access to main loop's critical region field.
          */
         dec_queued_critical_region(): void;
+
         /**
          * Retrieve the tree mutex.
          * @returns the mutex
          */
         get_tree_lock(): GLib.RecMutex;
+
         /**
          * Increment thread needs access to main loop's critical region field.
          */
         inc_queued_critical_region(): void;
+
         /**
          * Check if main loop is in critical region.
          * @returns `true` if sync in progress, otherwise `false`
          */
         is_critical_region(): boolean;
+
         /**
          * Check if thread tree is syncing.
          * @returns `true` if sync in progress, otherwise `false`
          */
         is_syncing(): boolean;
+
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
          */
         set_critical_region(is_critical_region: boolean): void;
+
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
          */
         set_syncing(is_syncing: boolean): void;
+
         /**
          * Test main loop may enter critical region.
          * @returns 0 if main loop may enter critical region, otherwise not
          */
         test_queued_critical_region(): number;
     }
+
 
     export const MainLoop: MainLoopNamespace & {
         new (): MainLoop; // This allows `obj instanceof MainLoop`
@@ -14096,8 +14233,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Mute a class instance.
              * @param muted if `true` then muted, else playing
@@ -14106,9 +14243,11 @@ export namespace Ags {
             vfunc_set_muted(muted: boolean): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MutableNamespace {
@@ -14119,14 +14258,15 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Mutable extends GObject.Object, Mutable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Mute a class instance.
          * @param muted if `true` then muted, else playing
          */
         set_muted(muted: boolean): void;
     }
+
 
     export const Mutable: MutableNamespace & {
         new (): Mutable; // This allows `obj instanceof Mutable`
@@ -14138,8 +14278,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Encrypt password.
              * @param password the password
@@ -14147,6 +14287,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_encrypt_password(password: string, salt: string): string;
+
             /**
              * Get login name.
              * @param security_context the {@link Ags.SecurityContext}
@@ -14155,6 +14296,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
             /**
              * Get password.
              * @param security_context the {@link Ags.SecurityContext}
@@ -14163,6 +14305,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
             /**
              * Set login name.
              * @param security_context the {@link Ags.SecurityContext}
@@ -14171,12 +14314,8 @@ export namespace Ags {
              * @param login_name the login name
              * @virtual
              */
-            vfunc_set_login_name(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                login_name: string,
-            ): void;
+            vfunc_set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
+
             /**
              * Set password.
              * @param security_context the {@link Ags.SecurityContext}
@@ -14185,17 +14324,14 @@ export namespace Ags {
              * @param password the password
              * @virtual
              */
-            vfunc_set_password(
-                security_context: GObject.Object,
-                user_uuid: string,
-                security_token: string,
-                password: string,
-            ): void;
+            vfunc_set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PasswordStoreNamespace {
@@ -14206,8 +14342,8 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface PasswordStore extends GObject.Object, PasswordStore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Encrypt password.
          * @param password the password
@@ -14215,6 +14351,7 @@ export namespace Ags {
          * @returns the encrypted bytes
          */
         encrypt_password(password: string, salt: string): string;
+
         /**
          * Get login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -14223,6 +14360,7 @@ export namespace Ags {
          * @returns the login name
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Get password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -14231,6 +14369,7 @@ export namespace Ags {
          * @returns the password
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
+
         /**
          * Set login name.
          * @param security_context the {@link Ags.SecurityContext}
@@ -14238,12 +14377,8 @@ export namespace Ags {
          * @param security_token the security token
          * @param login_name the login name
          */
-        set_login_name(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            login_name: string,
-        ): void;
+        set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
+
         /**
          * Set password.
          * @param security_context the {@link Ags.SecurityContext}
@@ -14251,13 +14386,9 @@ export namespace Ags {
          * @param security_token the security token
          * @param password the password
          */
-        set_password(
-            security_context: GObject.Object,
-            user_uuid: string,
-            security_token: string,
-            password: string,
-        ): void;
+        set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
     }
+
 
     export const PasswordStore: PasswordStoreNamespace & {
         new (): PasswordStore; // This allows `obj instanceof PasswordStore`
@@ -14269,57 +14400,66 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Retrieve the build id of the plugin.
              * @virtual
              */
             vfunc_get_build_id(): string;
+
             /**
              * Retrieve the name of the plugin.
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
              * Retrieve the ports of the plugin.
              * @virtual
              */
             vfunc_get_ports(): GObject.Object[];
+
             /**
              * Retrieve the version of the plugin.
              * @virtual
              */
             vfunc_get_version(): string;
+
             /**
              * Retrieve the xml type of the plugin.
              * @virtual
              */
             vfunc_get_xml_type(): string;
+
             /**
              * Set the build id of the plugin.
              * @param build_id the build id of plugin
              * @virtual
              */
             vfunc_set_build_id(build_id: string): void;
+
             /**
              * Set the name of the plugin.
              * @param name the name of plugin
              * @virtual
              */
             vfunc_set_name(name: string): void;
+
             /**
              * Set the build id of the plugin.
              * @param ports the build id of plugin
              * @virtual
              */
             vfunc_set_ports(ports: GObject.Object[]): void;
+
             /**
              * Set the version of the plugin.
              * @param version the version of plugin
              * @virtual
              */
             vfunc_set_version(version: string): void;
+
             /**
              * Set the build id of the plugin.
              * @param xml_type the build id of plugin
@@ -14328,87 +14468,98 @@ export namespace Ags {
             vfunc_set_xml_type(xml_type: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PluginNamespace {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
-
         /**
-         * Read of file.
-         * @param file the {@link GObject.Object}
-         * @param node the node
-         * @param plugin the {@link Ags.Plugin}
-         */
+        * Read of file.
+        * @param file the {@link GObject.Object}
+        * @param node the node
+        * @param plugin the {@link Ags.Plugin}
+        */
         read(file: GObject.Object, node: libxml2.Node, plugin: Plugin): void;
         /**
-         * Write to file.
-         * @param file the {@link GObject.Object}
-         * @param parent the parent node
-         * @param plugin the {@link Ags.Plugin}
-         */
+        * Write to file.
+        * @param file the {@link GObject.Object}
+        * @param parent the parent node
+        * @param plugin the {@link Ags.Plugin}
+        */
         write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
     }
     /**
      * @gir-type Interface
      */
     interface Plugin extends GObject.Object, Plugin.Interface {
-        // Methods
 
+        // Methods
         /**
          * Retrieve the build id of the plugin.
          * @returns the plugins build id
          */
         get_build_id(): string;
+
         /**
          * Retrieve the name of the plugin.
          * @returns the plugins name
          */
         get_name(): string;
+
         /**
          * Retrieve the ports of the plugin.
          * @returns the plugins ports
          */
         get_ports(): GObject.Object[];
+
         /**
          * Retrieve the version of the plugin.
          * @returns the plugins version
          */
         get_version(): string;
+
         /**
          * Retrieve the xml type of the plugin.
          * @returns the plugins xml type
          */
         get_xml_type(): string;
+
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
          */
         set_build_id(build_id: string): void;
+
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
          */
         set_name(name: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
          */
         set_ports(ports: GObject.Object[]): void;
+
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
          */
         set_version(version: string): void;
+
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
          */
         set_xml_type(xml_type: string): void;
     }
+
 
     export const Plugin: PluginNamespace & {
         new (): Plugin; // This allows `obj instanceof Plugin`
@@ -14420,8 +14571,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Do request.
              * @param msg the {@link Soup.ServerMessage}
@@ -14432,19 +14583,14 @@ export namespace Ags {
              * @param security_token the security token
              * @virtual
              */
-            vfunc_do_request(
-                msg: Soup.ServerMessage,
-                query: GLib.HashTable<any, any>,
-                security_context: GObject.Object,
-                path: string,
-                login: string,
-                security_token: string,
-            ): any | null;
+            vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<any, any>, security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PluginControllerNamespace {
@@ -14455,8 +14601,8 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface PluginController extends GObject.Object, PluginController.Interface {
-        // Methods
 
+        // Methods
         /**
          * Do request.
          * @param msg the {@link Soup.ServerMessage}
@@ -14467,15 +14613,9 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(
-            msg: Soup.ServerMessage,
-            query: { [key: string]: any } | GLib.HashTable<any, any>,
-            security_context: GObject.Object,
-            path: string,
-            login: string,
-            security_token: string,
-        ): any | null;
+        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<any, any>), security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
     }
+
 
     export const PluginController: PluginControllerNamespace & {
         new (): PluginController; // This allows `obj instanceof PluginController`
@@ -14487,18 +14627,20 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get port.
              * @virtual
              */
             vfunc_get_port<T = GObject.Object>(): T;
+
             /**
              * Retrieve thread-safe properties.
              * @virtual
              */
             vfunc_list_safe_properties(): string[];
+
             /**
              * Get property thread safe.
              * @param property_name propertie's name
@@ -14506,6 +14648,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_safe_get_property(property_name: string, value: unknown): void;
+
             /**
              * Set property thread safe.
              * @param property_name propertie's name
@@ -14513,6 +14656,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_safe_set_property(property_name: string, value: unknown): void;
+
             /**
              * Set port.
              * @param port the {@link GObject.Object}
@@ -14521,9 +14665,11 @@ export namespace Ags {
             vfunc_set_port(port: GObject.Object): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PortletNamespace {
@@ -14534,36 +14680,41 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Portlet extends GObject.Object, Portlet.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get port.
          * @returns the {@link GObject.Object}
          */
         get_port<T = GObject.Object>(): T;
+
         /**
          * Retrieve thread-safe properties.
          * @returns a {@link GLib.List} containing properties
          */
         list_safe_properties(): string[];
+
         /**
          * Get property thread safe.
          * @param property_name propertie's name
          * @param value the {@link GObject.Value}
          */
-        safe_get_property(property_name: string, value: GObject.Value | any): void;
+        safe_get_property(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Set property thread safe.
          * @param property_name propertie's name
          * @param value the {@link GObject.Value}
          */
-        safe_set_property(property_name: string, value: GObject.Value | any): void;
+        safe_set_property(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Set port.
          * @param port the {@link GObject.Object}
          */
         set_port(port: GObject.Object): void;
     }
+
 
     export const Portlet: PortletNamespace & {
         new (): Portlet; // This allows `obj instanceof Portlet`
@@ -14575,8 +14726,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Seek.
              * @param offset the offset
@@ -14586,9 +14737,11 @@ export namespace Ags {
             vfunc_seek(offset: number, whence: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SeekableNamespace {
@@ -14599,15 +14752,16 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Seekable extends GObject.Object, Seekable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: bigint | number, whence: number): void;
+        seek(offset: (bigint | number), whence: number): void;
     }
+
 
     export const Seekable: SeekableNamespace & {
         new (): Seekable; // This allows `obj instanceof Seekable`
@@ -14619,148 +14773,174 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get current playback bpm.
              * @virtual
              */
             vfunc_get_bpm(): number;
+
             /**
              * Get current playback buffer.
              * @param buffer_length the buffer's length
              * @virtual
              */
-            vfunc_get_buffer(buffer_length: number): any | null;
+            vfunc_get_buffer(buffer_length: number): (any | null);
+
             /**
              * Get current playback delay factor.
              * @virtual
              */
             vfunc_get_delay_factor(): number;
+
             /**
              * Get device.
              * @virtual
              */
             vfunc_get_device(): string;
+
             /**
              * Get future playback buffer.
              * @param buffer_length the buffer's length
              * @virtual
              */
-            vfunc_get_next_buffer(buffer_length: number): any | null;
+            vfunc_get_next_buffer(buffer_length: number): (any | null);
+
             /**
              * Get current playback note offset.
              * @virtual
              */
             vfunc_get_note_offset(): number;
+
             /**
              * Get start playback note offset.
              * @virtual
              */
             vfunc_get_start_note_offset(): number;
+
             /**
              * Get playing.
              * @virtual
              */
             vfunc_is_playing(): boolean;
+
             /**
              * Get recording.
              * @virtual
              */
             vfunc_is_recording(): boolean;
+
             /**
              * Get starting.
              * @virtual
              */
             vfunc_is_starting(): boolean;
+
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
              * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
+
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
              * @virtual
              */
-            vfunc_lock_buffer(buffer: any | null): void;
+            vfunc_lock_buffer(buffer: (any | null)): void;
+
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the note offset
              * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
+
             /**
              * Plays the current buffer of sequencer.
              * @virtual
              */
             vfunc_play(): void;
+
             /**
              * Initializes the sequencer for playback.
              * @virtual
              */
             vfunc_play_init(): void;
+
             /**
              * Records the current buffer of sequencer.
              * @virtual
              */
             vfunc_record(): void;
+
             /**
              * Initializes the sequencer for recording.
              * @virtual
              */
             vfunc_record_init(): void;
+
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
              * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
+
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
              * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
+
             /**
              * Set device.
              * @param card_id the device to set
              * @virtual
              */
             vfunc_set_device(card_id: string): void;
+
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
              * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
+
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
              * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
+
             /**
              * Stops the sequencer from playing to it.
              * @virtual
              */
             vfunc_stop(): void;
+
             /**
              * Every call to play may generate a tic.
              * @virtual
              */
             vfunc_tic(): void;
+
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
              * @virtual
              */
-            vfunc_unlock_buffer(buffer: any | null): void;
+            vfunc_unlock_buffer(buffer: (any | null)): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SequencerNamespace {
@@ -14771,129 +14951,154 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Sequencer extends GObject.Object, Sequencer.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get current playback bpm.
          * @returns bpm
          */
         get_bpm(): number;
+
         /**
          * Get current playback buffer.
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): any | null;
+        get_buffer(buffer_length: number): (any | null);
+
         /**
          * Get current playback delay factor.
          * @returns delay factor
          */
         get_delay_factor(): number;
+
         /**
          * Get device.
          * @returns the device's identifier
          */
         get_device(): string;
+
         /**
          * Get future playback buffer.
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): any | null;
+        get_next_buffer(buffer_length: number): (any | null);
+
         /**
          * Get current playback note offset.
          * @returns offset
          */
         get_note_offset(): number;
+
         /**
          * Get start playback note offset.
          * @returns the start note offset
          */
         get_start_note_offset(): number;
+
         /**
          * Get playing.
          * @returns `true` if playing, else `false`
          */
         is_playing(): boolean;
+
         /**
          * Get recording.
          * @returns `true` if recording, else `false`
          */
         is_recording(): boolean;
+
         /**
          * Get starting.
          * @returns `true` if starting, else `false`
          */
         is_starting(): boolean;
+
         /**
          * Retrieve `card_id` and `card_name` as a list of strings.
          */
         list_cards(): [string[], string[]];
+
         /**
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: any | null): void;
+        lock_buffer(buffer: (any | null)): void;
+
         /**
          * Callback when counter expires minor note offset.
          * @param note_offset the note offset
          */
         offset_changed(note_offset: number): void;
+
         /**
          * Plays the current buffer of sequencer.
          */
         play(): void;
+
         /**
          * Initializes the sequencer for playback.
          */
         play_init(): void;
+
         /**
          * Records the current buffer of sequencer.
          */
         record(): void;
+
         /**
          * Initializes the sequencer for recording.
          */
         record_init(): void;
+
         /**
          * Set current playback bpm.
          * @param bpm the bpm to set
          */
         set_bpm(bpm: number): void;
+
         /**
          * Set current playback delay factor.
          * @param delay_factor the delay factor to set
          */
         set_delay_factor(delay_factor: number): void;
+
         /**
          * Set device.
          * @param card_id the device to set
          */
         set_device(card_id: string): void;
+
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
          */
         set_note_offset(note_offset: number): void;
+
         /**
          * Set start playback note offset.
          * @param start_note_offset the start note offset to set
          */
         set_start_note_offset(start_note_offset: number): void;
+
         /**
          * Stops the sequencer from playing to it.
          */
         stop(): void;
+
         /**
          * Every call to play may generate a tic.
          */
         tic(): void;
+
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: any | null): void;
+        unlock_buffer(buffer: (any | null)): void;
     }
+
 
     export const Sequencer: SequencerNamespace & {
         new (): Sequencer; // This allows `obj instanceof Sequencer`
@@ -14905,24 +15110,27 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get server.
              * @virtual
              */
             vfunc_get_server(): Server[];
+
             /**
              * Check if is operating.
              * @virtual
              */
             vfunc_is_operating(): boolean;
+
             /**
              * Set registry.
              * @param registry the {@link Ags.Registry}
              * @virtual
              */
             vfunc_set_registry(registry: Registry): void;
+
             /**
              * Set server.
              * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
@@ -14931,9 +15139,11 @@ export namespace Ags {
             vfunc_set_server(server: Server[]): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ServiceProviderNamespace {
@@ -14944,29 +15154,33 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface ServiceProvider extends GObject.Object, ServiceProvider.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get server.
          * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         get_server(): Server[];
+
         /**
          * Check if is operating.
          * @returns `true` if operating, otherwise `false`
          */
         is_operating(): boolean;
+
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
          */
         set_registry(registry: Registry): void;
+
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         set_server(server: Server[]): void;
     }
+
 
     export const ServiceProvider: ServiceProviderNamespace & {
         new (): ServiceProvider; // This allows `obj instanceof ServiceProvider`
@@ -14978,49 +15192,56 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the ports of `sound_server`.
              * @param port_count the number of ports returned
              * @virtual
              */
             vfunc_get_ports(port_count: number): number;
+
             /**
              * Gets the sequencer of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
              * @virtual
              */
             vfunc_get_sequencer(client_uuid: string): GObject.Object[];
+
             /**
              * Gets the soundcard of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
              * @virtual
              */
             vfunc_get_soundcard(client_uuid: string): GObject.Object[];
+
             /**
              * Gets the URL of `sound_server`.
              * @virtual
              */
             vfunc_get_url(): string;
+
             /**
              * Fetches `sequencer` of `sound_server`.
              * @param is_output if `true` the used as sink, else as source
              * @virtual
              */
             vfunc_register_sequencer<T = GObject.Object>(is_output: boolean): T;
+
             /**
              * Fetches `soundcard` of `sound_server`.
              * @param is_output if `true` the used as sink, else as source
              * @virtual
              */
             vfunc_register_soundcard<T = GObject.Object>(is_output: boolean): T;
+
             /**
-             * @param ports
-             * @param port_count
+             * @param ports 
+             * @param port_count 
              * @virtual
              */
             vfunc_set_ports(ports: number, port_count: number): void;
+
             /**
              * Sets the sequencer at `client_uuid`.
              * @param client_uuid the location to fetch from
@@ -15028,6 +15249,7 @@ export namespace Ags {
              * @virtual
              */
             vfunc_set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
+
             /**
              * Sets the soundcard at `client_uuid`.
              * @param client_uuid the location to fetch from
@@ -15035,18 +15257,21 @@ export namespace Ags {
              * @virtual
              */
             vfunc_set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
+
             /**
              * Sets the url of `sound_server`.
              * @param url the url to set
              * @virtual
              */
             vfunc_set_url(url: string): void;
+
             /**
              * Releases `sequencer` in `sound_server`.
              * @param sequencer the {@link Ags.Sequencer}
              * @virtual
              */
             vfunc_unregister_sequencer(sequencer: GObject.Object): void;
+
             /**
              * Releases `soundcard` in `sound_server`.
              * @param soundcard the {@link Ags.Soundcard}
@@ -15055,9 +15280,11 @@ export namespace Ags {
             vfunc_unregister_soundcard(soundcard: GObject.Object): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SoundServerNamespace {
@@ -15068,76 +15295,88 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface SoundServer extends GObject.Object, SoundServer.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the ports of `sound_server`.
          * @param port_count the number of ports returned
          * @returns the port as string `null`-terminated array
          */
         get_ports(port_count: number): number;
+
         /**
          * Gets the sequencer of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
          * @returns the sequencer as {@link GLib.List}-struct
          */
         get_sequencer(client_uuid: string): GObject.Object[];
+
         /**
          * Gets the soundcard of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
          * @returns the soundcard as {@link GLib.List}-struct
          */
         get_soundcard(client_uuid: string): GObject.Object[];
+
         /**
          * Gets the URL of `sound_server`.
          * @returns the URL as string
          */
         get_url(): string;
+
         /**
          * Fetches `sequencer` of `sound_server`.
          * @param is_output if `true` the used as sink, else as source
          * @returns a new {@link Ags.Sequencer}
          */
         register_sequencer<T = GObject.Object>(is_output: boolean): T;
+
         /**
          * Fetches `soundcard` of `sound_server`.
          * @param is_output if `true` the used as sink, else as source
          * @returns a new {@link Ags.Soundcard}
          */
         register_soundcard<T = GObject.Object>(is_output: boolean): T;
+
         /**
-         * @param port
-         * @param port_count
+         * @param port 
+         * @param port_count 
          */
         set_ports(port: number, port_count: number): void;
+
         /**
          * Sets the sequencer at `client_uuid`.
          * @param client_uuid the location to fetch from
          * @param sequencer the sequencer to set
          */
         set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
+
         /**
          * Sets the soundcard at `client_uuid`.
          * @param client_uuid the location to fetch from
          * @param soundcard the soundcard to set
          */
         set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
+
         /**
          * Sets the url of `sound_server`.
          * @param url the url to set
          */
         set_url(url: string): void;
+
         /**
          * Releases `sequencer` in `sound_server`.
          * @param sequencer the {@link Ags.Sequencer}
          */
         unregister_sequencer(sequencer: GObject.Object): void;
+
         /**
          * Releases `soundcard` in `sound_server`.
          * @param soundcard the {@link Ags.Soundcard}
          */
         unregister_soundcard(soundcard: GObject.Object): void;
     }
+
 
     export const SoundServer: SoundServerNamespace & {
         new (): SoundServer; // This allows `obj instanceof SoundServer`
@@ -15149,68 +15388,80 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Get current playback delay.
              * @virtual
              */
             vfunc_get_absolute_delay(): number;
+
             /**
              * Get current playback attack.
              * @virtual
              */
             vfunc_get_attack(): number;
+
             /**
              * Get current playback bpm.
              * @virtual
              */
             vfunc_get_bpm(): number;
+
             /**
              * Get current playback buffer.
              * @virtual
              */
-            vfunc_get_buffer(): any | null;
+            vfunc_get_buffer(): (any | null);
+
             /**
              * Retrieve {@link Ags.SoundcardCapability}-enum information.
              * @virtual
              */
             vfunc_get_capability(): SoundcardCapability;
+
             /**
              * Get current playback delay.
              * @virtual
              */
             vfunc_get_delay(): number;
+
             /**
              * Get current playback note offset.
              * @virtual
              */
             vfunc_get_delay_counter(): number;
+
             /**
              * Get current playback delay factor.
              * @virtual
              */
             vfunc_get_delay_factor(): number;
+
             /**
              * Get device.
              * @virtual
              */
             vfunc_get_device(): string;
+
             /**
              * Get loop parameters of `soundcard`.
              * @virtual
              */
             vfunc_get_loop(): [number, number, boolean];
+
             /**
              * Get current playback loop offset.
              * @virtual
              */
             vfunc_get_loop_offset(): number;
+
             /**
              * Get future playback buffer.
              * @virtual
              */
-            vfunc_get_next_buffer(): any | null;
+            vfunc_get_next_buffer(): (any | null);
+
             /**
              * Get current playback note 256th attack.
              * @param note_256th_attack_lower the return location of attack lower range
@@ -15218,32 +15469,34 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
+
             /**
              * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position the note 256th attack position
              * @virtual
              */
             vfunc_get_note_256th_attack_at_position(note_256th_attack_position: number): number;
+
             /**
              * Get note 256th attack of current 16th pulse.
              * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse(): number;
+
             /**
              * Get note 256th attack position of current 16th pulse.
              * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse_position(): number;
+
             /**
              * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position_lower the return location of attack position lower range
              * @param note_256th_attack_position_upper the return location of attack position upper range
              * @virtual
              */
-            vfunc_get_note_256th_attack_position(
-                note_256th_attack_position_lower: number,
-                note_256th_attack_position_upper: number,
-            ): void;
+            vfunc_get_note_256th_attack_position(note_256th_attack_position_lower: number, note_256th_attack_position_upper: number): void;
+
             /**
              * Get current playback note 256th offset.
              * @param note_256th_offset_lower the return location of offset lower range
@@ -15251,122 +15504,145 @@ export namespace Ags {
              * @virtual
              */
             vfunc_get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
+
             /**
              * Get current playback note offset.
              * @virtual
              */
             vfunc_get_note_offset(): number;
+
             /**
              * Get current playback note offset.
              * @virtual
              */
             vfunc_get_note_offset_absolute(): number;
+
             /**
              * Get presets.
              * @virtual
              */
             vfunc_get_presets(): [number, number, number, SoundcardFormat];
+
             /**
              * Get future playback buffer.
              * @virtual
              */
-            vfunc_get_prev_buffer(): any | null;
+            vfunc_get_prev_buffer(): (any | null);
+
             /**
              * Get start playback note offset.
              * @virtual
              */
             vfunc_get_start_note_offset(): number;
+
             /**
              * Get sub block count.
              * @virtual
              */
             vfunc_get_sub_block_count(): number;
+
             /**
              * Get playback time as string.
              * @virtual
              */
             vfunc_get_uptime(): string;
+
             /**
              * Get available.
              * @virtual
              */
             vfunc_is_available(): boolean;
+
             /**
              * Get playing.
              * @virtual
              */
             vfunc_is_playing(): boolean;
+
             /**
              * Get recording.
              * @virtual
              */
             vfunc_is_recording(): boolean;
+
             /**
              * Get starting.
              * @virtual
              */
             vfunc_is_starting(): boolean;
+
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
              * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
+
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
              * @virtual
              */
-            vfunc_lock_buffer(buffer: any | null): void;
+            vfunc_lock_buffer(buffer: (any | null)): void;
+
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the current note offset
              * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
+
             /**
              * Retrieve detailed information of `card_id` soundcard.
              * @param card_id the selected soundcard by its string identifier
              * @virtual
              */
             vfunc_pcm_info(card_id: string): [number, number, number, number, number, number];
+
             /**
              * Plays the current buffer of soundcard.
              * @virtual
              */
             vfunc_play(): void;
+
             /**
              * Initializes the soundcard for playback.
              * @virtual
              */
             vfunc_play_init(): void;
+
             /**
              * Records the current buffer of soundcard.
              * @virtual
              */
             vfunc_record(): void;
+
             /**
              * Initializes the soundcard for recordback.
              * @virtual
              */
             vfunc_record_init(): void;
+
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
              * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
+
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
              * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
+
             /**
              * Set device.
              * @param card_id the device to set
              * @virtual
              */
             vfunc_set_device(card_id: string): void;
+
             /**
              * Set loop parameters of `soundcard`.
              * @param loop_left loop position of region
@@ -15375,18 +15651,21 @@ export namespace Ags {
              * @virtual
              */
             vfunc_set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
+
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
              * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
+
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
              * @virtual
              */
             vfunc_set_note_offset_absolute(note_offset: number): void;
+
             /**
              * Set presets.
              * @param channels the audio channels
@@ -15396,294 +15675,338 @@ export namespace Ags {
              * @virtual
              */
             vfunc_set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
+
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
              * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
+
             /**
              * Stops the soundcard from playing to it.
              * @virtual
              */
             vfunc_stop(): void;
+
             /**
              * Every call to play may generate a tic.
              * @virtual
              */
             vfunc_tic(): void;
+
             /**
              * Trylock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
              * @virtual
              */
-            vfunc_trylock_sub_block(buffer: any | null, sub_block: number): boolean;
+            vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
              * @virtual
              */
-            vfunc_unlock_buffer(buffer: any | null): void;
+            vfunc_unlock_buffer(buffer: (any | null)): void;
+
             /**
              * Unlock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
              * @virtual
              */
-            vfunc_unlock_sub_block(buffer: any | null, sub_block: number): void;
+            vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SoundcardNamespace {
         $gtype: GObject.GType<Soundcard>;
         prototype: Soundcard;
-
         /**
-         * Get buffer size.
-         * @param config the {@link Ags.Config}
-         */
+        * Get buffer size.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_buffer_size(config: Config): number;
         /**
-         * Get cache buffer size.
-         * @param config the {@link Ags.Config}
-         */
+        * Get cache buffer size.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_cache_buffer_size(config: Config): number;
         /**
-         * Get dsp channels count.
-         * @param config the {@link Ags.Config}
-         */
+        * Get dsp channels count.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_dsp_channels(config: Config): number;
         /**
-         * Get format as {@link Ags.SoundcardFormat}-enum.
-         * @param config the {@link Ags.Config}
-         */
+        * Get format as {@link Ags.SoundcardFormat}-enum.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_format(config: Config): number;
         /**
-         * Get pcm channels count.
-         * @param config the {@link Ags.Config}
-         */
+        * Get pcm channels count.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_pcm_channels(config: Config): number;
         /**
-         * Get samplerate.
-         * @param config the {@link Ags.Config}
-         */
+        * Get samplerate.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_samplerate(config: Config): number;
         /**
-         * Get use cache.
-         * @param config the {@link Ags.Config}
-         */
+        * Get use cache.
+        * @param config the {@link Ags.Config}
+        */
         helper_config_get_use_cache(config: Config): boolean;
     }
     /**
      * @gir-type Interface
      */
     interface Soundcard extends GObject.Object, Soundcard.Interface {
-        // Methods
 
+        // Methods
         /**
          * Get current playback delay.
          * @returns delay
          */
         get_absolute_delay(): number;
+
         /**
          * Get current playback attack.
          * @returns attack
          */
         get_attack(): number;
+
         /**
          * Get current playback bpm.
          * @returns bpm
          */
         get_bpm(): number;
+
         /**
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): any | null;
+        get_buffer(): (any | null);
+
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
          * @returns the capablities flags
          */
         get_capability(): SoundcardCapability;
+
         /**
          * Get current playback delay.
          * @returns delay
          */
         get_delay(): number;
+
         /**
          * Get current playback note offset.
          * @returns offset
          */
         get_delay_counter(): number;
+
         /**
          * Get current playback delay factor.
          * @returns delay factor
          */
         get_delay_factor(): number;
+
         /**
          * Get device.
          * @returns the device's identifier
          */
         get_device(): string;
+
         /**
          * Get loop parameters of `soundcard`.
          */
         get_loop(): [number, number, boolean];
+
         /**
          * Get current playback loop offset.
          * @returns offset
          */
         get_loop_offset(): number;
+
         /**
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): any | null;
+        get_next_buffer(): (any | null);
+
         /**
          * Get current playback note 256th attack.
          * @param note_256th_attack_lower the return location of attack lower range
          * @param note_256th_attack_upper the return location of attack upper range
          */
         get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
+
         /**
          * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position the note 256th attack position
          */
         get_note_256th_attack_at_position(note_256th_attack_position: number): number;
+
         /**
          * Get note 256th attack of current 16th pulse.
          * @returns the note 256th attack of 16th pulse
          */
         get_note_256th_attack_of_16th_pulse(): number;
+
         /**
          * Get note 256th attack position of current 16th pulse.
          * @returns the note 256th attack position of 16th pulse
          */
         get_note_256th_attack_of_16th_pulse_position(): number;
+
         /**
          * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position_lower the return location of attack position lower range
          * @param note_256th_attack_position_upper the return location of attack position upper range
          */
-        get_note_256th_attack_position(
-            note_256th_attack_position_lower: number,
-            note_256th_attack_position_upper: number,
-        ): void;
+        get_note_256th_attack_position(note_256th_attack_position_lower: number, note_256th_attack_position_upper: number): void;
+
         /**
          * Get current playback note 256th offset.
          * @param note_256th_offset_lower the return location of offset lower range
          * @param note_256th_offset_upper the return location of offset upper range
          */
         get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
+
         /**
          * Get current playback note offset.
          * @returns the current note offset
          */
         get_note_offset(): number;
+
         /**
          * Get current playback note offset.
          * @returns offset
          */
         get_note_offset_absolute(): number;
+
         /**
          * Get presets.
          */
         get_presets(): [number, number, number, SoundcardFormat];
+
         /**
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): any | null;
+        get_prev_buffer(): (any | null);
+
         /**
          * Get start playback note offset.
          * @returns the start note offset
          */
         get_start_note_offset(): number;
+
         /**
          * Get sub block count.
          * @returns the sub block count
          */
         get_sub_block_count(): number;
+
         /**
          * Get playback time as string.
          * @returns playback time as string
          */
         get_uptime(): string;
+
         /**
          * Get available.
          * @returns `true` if available, else `false`
          */
         is_available(): boolean;
+
         /**
          * Get playing.
          * @returns `true` if playing, else `false`
          */
         is_playing(): boolean;
+
         /**
          * Get recording.
          * @returns `true` if recording, else `false`
          */
         is_recording(): boolean;
+
         /**
          * Get starting.
          * @returns `true` if starting, else `false`
          */
         is_starting(): boolean;
+
         /**
          * Retrieve `card_id` and `card_name` as a list of strings.
          */
         list_cards(): [string[], string[]];
+
         /**
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: any | null): void;
+        lock_buffer(buffer: (any | null)): void;
+
         /**
          * Callback when counter expires minor note offset.
          * @param note_offset the current note offset
          */
         offset_changed(note_offset: number): void;
+
         /**
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
+
         /**
          * Plays the current buffer of soundcard.
          */
         play(): void;
+
         /**
          * Initializes the soundcard for playback.
          */
         play_init(): void;
+
         /**
          * Records the current buffer of soundcard.
          */
         record(): void;
+
         /**
          * Initializes the soundcard for recordback.
          */
         record_init(): void;
+
         /**
          * Set current playback bpm.
          * @param bpm the bpm to set
          */
         set_bpm(bpm: number): void;
+
         /**
          * Set current playback delay factor.
          * @param delay_factor the delay factor to set
          */
         set_delay_factor(delay_factor: number): void;
+
         /**
          * Set device.
          * @param card_id the device to set
          */
         set_device(card_id: string): void;
+
         /**
          * Set loop parameters of `soundcard`.
          * @param loop_left loop position of region
@@ -15691,16 +16014,19 @@ export namespace Ags {
          * @param do_loop if `true` do loop, else don't loop
          */
         set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
+
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
          */
         set_note_offset(note_offset: number): void;
+
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
          */
         set_note_offset_absolute(note_offset: number): void;
+
         /**
          * Set presets.
          * @param channels the audio channels
@@ -15709,38 +16035,45 @@ export namespace Ags {
          * @param format the format
          */
         set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
+
         /**
          * Set start playback note offset.
          * @param start_note_offset the start note offset to set
          */
         set_start_note_offset(start_note_offset: number): void;
+
         /**
          * Stops the soundcard from playing to it.
          */
         stop(): void;
+
         /**
          * Every call to play may generate a tic.
          */
         tic(): void;
+
         /**
          * Trylock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: any | null, sub_block: number): boolean;
+        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: any | null): void;
+        unlock_buffer(buffer: (any | null)): void;
+
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: any | null, sub_block: number): void;
+        unlock_sub_block(buffer: (any | null), sub_block: number): void;
     }
+
 
     export const Soundcard: SoundcardNamespace & {
         new (): Soundcard; // This allows `obj instanceof Soundcard`
@@ -15752,8 +16085,8 @@ export namespace Ags {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Change bpm.
              * @param new_bpm the new bpm
@@ -15761,24 +16094,28 @@ export namespace Ags {
              * @virtual
              */
             vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
+
             /**
              * Change midi duration.
              * @param midi_duration the duration
              * @virtual
              */
             vfunc_change_midi_duration(midi_duration: number): void;
+
             /**
              * Change notation duration.
              * @param notation_duration the duration
              * @virtual
              */
             vfunc_change_notation_duration(notation_duration: number): void;
+
             /**
              * Change sequencer duration.
              * @param sequencer_duration the duration
              * @virtual
              */
             vfunc_change_sequencer_duration(sequencer_duration: number): void;
+
             /**
              * Change tact.
              * @param new_tact the new tact
@@ -15786,47 +16123,56 @@ export namespace Ags {
              * @virtual
              */
             vfunc_change_tact(new_tact: number, old_tact: number): void;
+
             /**
              * Change wave duration.
              * @param wave_duration the duration
              * @virtual
              */
             vfunc_change_wave_duration(wave_duration: number): void;
+
             /**
              * Get bpm.
              * @virtual
              */
             vfunc_get_bpm(): number;
+
             /**
              * Get midi duration.
              * @virtual
              */
-            vfunc_get_midi_duration(): bigint | number;
+            vfunc_get_midi_duration(): (bigint | number);
+
             /**
              * Get notation duration.
              * @virtual
              */
-            vfunc_get_notation_duration(): bigint | number;
+            vfunc_get_notation_duration(): (bigint | number);
+
             /**
              * Get sequencer duration.
              * @virtual
              */
-            vfunc_get_sequencer_duration(): bigint | number;
+            vfunc_get_sequencer_duration(): (bigint | number);
+
             /**
              * Get tact.
              * @virtual
              */
             vfunc_get_tact(): number;
+
             /**
              * Get wave duration.
              * @virtual
              */
-            vfunc_get_wave_duration(): bigint | number;
+            vfunc_get_wave_duration(): (bigint | number);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TactableNamespace {
@@ -15837,71 +16183,83 @@ export namespace Ags {
      * @gir-type Interface
      */
     interface Tactable extends GObject.Object, Tactable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Change bpm.
          * @param new_bpm the new bpm
          * @param old_bpm the old bpm
          */
         change_bpm(new_bpm: number, old_bpm: number): void;
+
         /**
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: bigint | number): void;
+        change_midi_duration(midi_duration: (bigint | number)): void;
+
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: bigint | number): void;
+        change_notation_duration(notation_duration: (bigint | number)): void;
+
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: bigint | number): void;
+        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+
         /**
          * Change tact.
          * @param new_tact the new tact
          * @param old_tact the old tact
          */
         change_tact(new_tact: number, old_tact: number): void;
+
         /**
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: bigint | number): void;
+        change_wave_duration(wave_duration: (bigint | number)): void;
+
         /**
          * Get bpm.
          * @returns the bpm
          */
         get_bpm(): number;
+
         /**
          * Get midi duration.
          * @returns the midi duration
          */
         get_midi_duration(): number;
+
         /**
          * Get notation duration.
          * @returns the notation duration
          */
         get_notation_duration(): number;
+
         /**
          * Get sequencer duration.
          * @returns the sequencer duration
          */
         get_sequencer_duration(): number;
+
         /**
          * Get tact.
          * @returns the tact
          */
         get_tact(): number;
+
         /**
          * Get wave duration.
          * @returns the wave duration
          */
         get_wave_duration(): number;
     }
+
 
     export const Tactable: TactableNamespace & {
         new (): Tactable; // This allows `obj instanceof Tactable`
@@ -15912,6 +16270,7 @@ export namespace Ags {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

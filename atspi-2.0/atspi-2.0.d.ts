@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,9 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type DBus from '@girs/dbus-1.0';
 
 export namespace Atspi {
+
     /**
      * Atspi-2.0
      */
+
 
     /**
      * @gir-type Enum
@@ -61,6 +64,7 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+
 
     /**
      * @gir-type Enum
@@ -110,6 +114,7 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -141,6 +146,7 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+
 
     /**
      * @gir-type Enum
@@ -217,6 +223,7 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -245,6 +252,7 @@ export namespace Atspi {
          */
         PARENT,
     }
+
 
     /**
      * @gir-type Enum
@@ -282,6 +290,7 @@ export namespace Atspi {
         BUTTON_RELEASED_EVENT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -303,6 +312,7 @@ export namespace Atspi {
          */
         RELEASED,
     }
+
 
     /**
      * @gir-type Enum
@@ -363,6 +373,7 @@ export namespace Atspi {
         UNLOCKMODIFIERS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -405,6 +416,7 @@ export namespace Atspi {
          */
         TIME,
     }
+
 
     /**
      * @gir-type Enum
@@ -457,6 +469,7 @@ export namespace Atspi {
         NUMLOCK,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -479,8 +492,8 @@ export namespace Atspi {
      * other UI components which are directly effected by user interactions with
      * the valuator. Common examples include association of scrollbars with the
      * viewport or panel which they control.
-     *
-     *
+     * 
+     * 
      * Enumeration used to specify
      * the type of relation encapsulated in an {@link Atspi.Relation} object.
      * @gir-type Enum
@@ -640,6 +653,7 @@ export namespace Atspi {
          */
         LAST_DEFINED,
     }
+
 
     /**
      * @gir-type Enum
@@ -1383,6 +1397,7 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1431,6 +1446,7 @@ export namespace Atspi {
          */
         ANYWHERE,
     }
+
 
     /**
      * @gir-type Enum
@@ -1746,6 +1762,7 @@ export namespace Atspi {
         LAST_DEFINED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1757,7 +1774,7 @@ export namespace Atspi {
      * Specifies the boundary conditions determining a run of text as returned from
      * `atspi_text_get_text_at_offset`, `atspi_text_get_text_after_offset`, and
      * `atspi_text_get_text_before_offset`.
-     *
+     * 
      * This enumerationis deprecated since 2.9.90 and should not be used. Use
      * AtspiTextGranularity with `atspi_text_get_string_at_offset` instead.
      * @gir-type Enum
@@ -1816,6 +1833,7 @@ export namespace Atspi {
         LINE_END,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1849,6 +1867,7 @@ export namespace Atspi {
          */
         BOTH,
     }
+
 
     /**
      * @gir-type Enum
@@ -1894,98 +1913,145 @@ export namespace Atspi {
         PARAGRAPH,
     }
 
+
     /**
      * One higher than the highest valid value of {@link Atspi.ComponentLayer}.
      */
     const COMPONENTLAYER_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.CoordType}.
      */
     const COORD_TYPE_COUNT: number;
+
     const DBUS_INTERFACE_ACCESSIBLE: string;
+
     const DBUS_INTERFACE_ACTION: string;
+
     const DBUS_INTERFACE_APPLICATION: string;
+
     const DBUS_INTERFACE_CACHE: string;
+
     const DBUS_INTERFACE_COLLECTION: string;
+
     const DBUS_INTERFACE_COMPONENT: string;
+
     const DBUS_INTERFACE_DEC: string;
+
     const DBUS_INTERFACE_DEVICE_EVENT_LISTENER: string;
+
     const DBUS_INTERFACE_DOCUMENT: string;
+
     const DBUS_INTERFACE_EDITABLE_TEXT: string;
+
     const DBUS_INTERFACE_EVENT_KEYBOARD: string;
+
     const DBUS_INTERFACE_EVENT_MOUSE: string;
+
     const DBUS_INTERFACE_EVENT_OBJECT: string;
+
     const DBUS_INTERFACE_EVENT_SCREEN_READER: string;
+
     const DBUS_INTERFACE_HYPERLINK: string;
+
     const DBUS_INTERFACE_HYPERTEXT: string;
+
     const DBUS_INTERFACE_IMAGE: string;
+
     const DBUS_INTERFACE_REGISTRY: string;
+
     const DBUS_INTERFACE_SELECTION: string;
+
     const DBUS_INTERFACE_SOCKET: string;
+
     const DBUS_INTERFACE_TABLE: string;
+
     const DBUS_INTERFACE_TABLE_CELL: string;
+
     const DBUS_INTERFACE_TEXT: string;
+
     const DBUS_INTERFACE_VALUE: string;
+
     const DBUS_NAME_REGISTRY: string;
+
     const DBUS_PATH_DEC: string;
+
     const DBUS_PATH_NULL: string;
+
     const DBUS_PATH_REGISTRY: string;
+
     const DBUS_PATH_ROOT: string;
+
     const DBUS_PATH_SCREEN_READER: string;
+
     /**
      * One higher than the highest valid value of {@link Atspi.EventType}.
      */
     const EVENTTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.KeyEventType}.
      */
     const KEYEVENTTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.KeySynthType}.
      */
     const KEYSYNTHTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.LocaleType}.
      */
     const LOCALE_TYPE_COUNT: number;
+
     const MATCHTYPES_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.ModifierType}.
      */
     const MODIFIERTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.RelationType}.
      */
     const RELATIONTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.Role}.
      */
     const ROLE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.ScrollType}.
      */
     const SCROLLTYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.CollectionSortOrder}.
      */
     const SORTORDER_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.StateType}.
      */
     const STATETYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.TextBoundaryType}.
      */
     const TEXT_BOUNDARY_TYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of {@link Atspi.TextClipType}.
      */
     const TEXT_CLIP_TYPE_COUNT: number;
+
     /**
      * One higher than the highest valid value of
      * #AtspiCollection_TreeTraversalType.
      */
     const TREETRAVERSALTYPE_COUNT: number;
+
     /**
      * Removes a device event listener from the registry's listener queue,
      *            ceasing notification of events of the specified type.
@@ -1993,7 +2059,8 @@ export namespace Atspi {
      * @param filter Unused parameter.
      * @returns `true` if successful, otherwise `false`.
      */
-    function deregister_device_event_listener(listener: DeviceListener, filter: any | null): boolean;
+    function deregister_device_event_listener(listener: DeviceListener, filter: (any | null)): boolean;
+
     /**
      * Removes a keystroke event listener from the registry's listener queue,
      *            ceasing notification of events with modifiers matching `modmask`.
@@ -2003,30 +2070,29 @@ export namespace Atspi {
      * @param event_types an {@link Atspi.KeyMaskType} mask indicating which             types of key events were requested ({@link Atspi.KeyEventType.PRESSED}, etc.).
      * @returns `true` if successful, otherwise `false`.
      */
-    function deregister_keystroke_listener(
-        listener: DeviceListener,
-        key_set: KeyDefinition[] | null,
-        modmask: KeyMaskType,
-        event_types: KeyEventMask,
-    ): boolean;
+    function deregister_keystroke_listener(listener: DeviceListener, key_set: (KeyDefinition[] | null), modmask: KeyMaskType, event_types: KeyEventMask): boolean;
+
     /**
      * Starts/enters the main event loop for the AT-SPI services.
-     *
+     * 
      * NOTE: This method does not return control; it is exited via a call to
      * `atspi_event_quit` from within an event handler.
      */
     function event_main(): void;
+
     /**
      * Quits the last main event loop for the AT-SPI services,
      * See: `atspi_event_main`
      */
     function event_quit(): void;
+
     /**
      * Disconnects from `AtspiRegistry` instances and releases
      * any floating resources. Call only once at exit.
      * @returns 0 if there were no leaks, otherwise other integer values.
      */
     function exit(): number;
+
     /**
      * Synthesizes a keyboard event (as if a hardware keyboard event occurred in the
      * current UI context).
@@ -2035,11 +2101,8 @@ export namespace Atspi {
      * @param synth_type an {@link Atspi.KeySynthType} flag indicating whether `keyval`           is to be interpreted as a keysym rather than a keycode           ({@link Atspi.KeySynthType.SYM}) or a string ({@link Atspi.KeySynthType.STRING}) or a modifier           mask ({@link Atspi.KeySynthType.LOCKMODIFIERS} and {@link Atspi.KeySynthType.UNLOCKMODIFIERS}), or           whether to synthesize {@link Atspi.KeySynthType.PRESS},           {@link Atspi.KeySynthType.RELEASE}, or both ({@link Atspi.KeySynthType.PRESSRELEASE}).
      * @returns `true` if successful, otherwise `false`.
      */
-    function generate_keyboard_event(
-        keyval: bigint | number,
-        keystring: string | null,
-        synth_type: KeySynthType,
-    ): boolean;
+    function generate_keyboard_event(keyval: (bigint | number), keystring: (string | null), synth_type: KeySynthType): boolean;
+
     /**
      * Synthesizes a mouse event at a specific screen coordinate.
      * Most AT clients should use the `AccessibleAction` interface when
@@ -2052,7 +2115,8 @@ export namespace Atspi {
      * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
      * @returns `true` if successful, otherwise `false`.
      */
-    function generate_mouse_event(x: bigint | number, y: bigint | number, name: string): boolean;
+    function generate_mouse_event(x: (bigint | number), y: (bigint | number), name: string): boolean;
+
     /**
      * Gets the virtual desktop indicated by index `i`.
      * NOTE: currently multiple virtual desktops are not implemented;
@@ -2062,6 +2126,7 @@ export namespace Atspi {
      * @returns a pointer to the `i`-th virtual desktop's {@link Atspi.Accessible} representation.
      */
     function get_desktop(i: number): Accessible;
+
     /**
      * Gets the number of virtual desktops.
      * NOTE: multiple virtual desktops are not implemented yet; as a
@@ -2069,6 +2134,7 @@ export namespace Atspi {
      * @returns a `gint` indicating the number of active virtual desktops.
      */
     function get_desktop_count(): number;
+
     /**
      * Gets the list of virtual desktops.  On return, `list` will point
      *     to a newly-created, NULL terminated array of virtual desktop
@@ -2081,16 +2147,19 @@ export namespace Atspi {
      * @returns a {@link GLib.Array} of desktops.
      */
     function get_desktop_list(): Accessible[];
+
     /**
      * Connects to the accessibility registry and initializes the SPI.
      * @returns 0 on success, 1 if already initialized, or an integer error code.
      */
     function init(): number;
+
     /**
      * Indicates whether AT-SPI has been initialized.
      * @returns %True if initialized; %False otherwise.
      */
     function is_initialized(): boolean;
+
     /**
      * Registers a listener for device events, for instance button events.
      * @param listener a pointer to the {@link Atspi.DeviceListener} which requests             the events.
@@ -2098,11 +2167,8 @@ export namespace Atspi {
      * @param filter Unused parameter.
      * @returns `true` if successful, otherwise `false`.
      */
-    function register_device_event_listener(
-        listener: DeviceListener,
-        event_types: DeviceEventMask,
-        filter: any | null,
-    ): boolean;
+    function register_device_event_listener(listener: DeviceListener, event_types: DeviceEventMask, filter: (any | null)): boolean;
+
     /**
      * Registers a listener for keystroke events, either pre-emptively for
      *             all windows ({@link Atspi.KeyListenerSyncType.ALL_WINDOWS}),
@@ -2118,13 +2184,8 @@ export namespace Atspi {
      * @param sync_type an {@link Atspi.KeyListenerSyncType} parameter indicating             the behavior of the notification/listener transaction.
      * @returns `true` if successful, otherwise `false`.
      */
-    function register_keystroke_listener(
-        listener: DeviceListener,
-        key_set: KeyDefinition[] | null,
-        modmask: KeyMaskType,
-        event_types: KeyEventMask,
-        sync_type: KeyListenerSyncType,
-    ): boolean;
+    function register_keystroke_listener(listener: DeviceListener, key_set: (KeyDefinition[] | null), modmask: KeyMaskType, event_types: KeyEventMask, sync_type: KeyListenerSyncType): boolean;
+
     /**
      * Gets a localizable string that indicates the name of an {@link Atspi.Role}.
      * <em>DEPRECATED.</em>
@@ -2132,6 +2193,7 @@ export namespace Atspi {
      * @returns a localizable string name for an {@link Atspi.Role} enumerated type.
      */
     function role_get_name(role: Role): string;
+
     /**
      * Sets the main loop context that AT-SPI should assume is in use when
      * setting an idle callback.
@@ -2140,6 +2202,7 @@ export namespace Atspi {
      * @param cnx The {@link GLib.MainContext} to use.
      */
     function set_main_context(cnx: GLib.MainContext): void;
+
     /**
      * Sets the reference window that will be used when atspi_generate_mouse_event
      * is called. Coordinates will be assumed to be relative to this window. This
@@ -2150,6 +2213,7 @@ export namespace Atspi {
      * @param accessible the {@link Atspi.Accessible} corresponding to the window to select.              should be a top-level window with a role of              ATSPI_ROLE_APPLICATION.
      */
     function set_reference_window(accessible: Accessible): void;
+
     /**
      * Set the timeout used for method calls. If this is not set explicitly,
      * a default of 0.8 ms is used.
@@ -2161,43 +2225,49 @@ export namespace Atspi {
      * pass the key onto the application (ie, reply to indicate that the key
      * was not consumed), so this may make it undesirable to set a timeout
      * larger than 3 seconds.
-     *
+     * 
      * By default, the normal timeout is set to 800 ms, and the application startup
      * timeout is set to 15 seconds.
      * @param val The timeout value, in milliseconds, or -1 to disable the timeout.
      * @param startup_time The amount of time, in milliseconds, to allow to pass before enforcing timeouts on an application. Can be used to prevent timeout exceptions if an application is likely to block for an extended period of time on initialization. -1 can be passed to disable this behavior.
      */
     function set_timeout(val: number, startup_time: number): void;
+
     /**
      * @gir-type Callback
      */
     interface DeviceListenerCB {
         (stroke: DeviceEvent): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface DeviceListenerSimpleCB {
         (stroke: DeviceEvent): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface EventListenerCB {
         (event: Event): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface EventListenerSimpleCB {
         (event: Event): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface KeyCallback {
         (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -2222,6 +2292,7 @@ export namespace Atspi {
         DEFAULT,
         UNDEFINED,
     }
+
 
     /**
      * @gir-type Flags
@@ -2269,6 +2340,7 @@ export namespace Atspi {
         ALL_WINDOWS,
     }
 
+
     namespace Accessible {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
@@ -2284,7 +2356,7 @@ export namespace Atspi {
              * @detailed
              * @run-last
              */
-            'mode-changed': (arg0: number, arg1: string) => void;
+            "mode-changed": (arg0: number, arg1: string) => void;
             /**
              * The signal "region-changed" is emitted by a screen reader to indicate
              * that it is now reading or tracking a new object, or, a new piece of
@@ -2293,48 +2365,20 @@ export namespace Atspi {
              * @signal
              * @run-last
              */
-            'region-changed': (arg0: number, arg1: number) => void;
+            "region-changed": (arg0: number, arg1: number) => void;
             [key: `mode-changed::${string}`]: (arg0: number, arg1: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps, Action.ConstructorProps, Collection.ConstructorProps, Component.ConstructorProps, Document.ConstructorProps, EditableText.ConstructorProps, Hypertext.ConstructorProps, Image.ConstructorProps, Selection.ConstructorProps, Table.ConstructorProps, TableCell.ConstructorProps, Text.ConstructorProps, Value.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Object.ConstructorProps,
-                Action.ConstructorProps,
-                Collection.ConstructorProps,
-                Component.ConstructorProps,
-                Document.ConstructorProps,
-                EditableText.ConstructorProps,
-                Hypertext.ConstructorProps,
-                Image.ConstructorProps,
-                Selection.ConstructorProps,
-                Table.ConstructorProps,
-                TableCell.ConstructorProps,
-                Text.ConstructorProps,
-                Value.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class Accessible
-        extends Object
-        implements
-            Action,
-            Collection,
-            Component,
-            Document,
-            EditableText,
-            Hypertext,
-            Image,
-            Selection,
-            Table,
-            TableCell,
-            Text,
-            Value
-    {
+    class Accessible extends Object implements Action, Collection, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value {
         static $gtype: GObject.GType<Accessible>;
 
         /**
@@ -2347,64 +2391,61 @@ export namespace Atspi {
         $signals: Accessible.SignalSignatures;
 
         // Fields
-
         accessible_parent: Accessible;
+
         children: any[];
+
         role: Role;
+
         interfaces: number;
+
         name: string;
+
         description: string;
+
         states: StateSet;
+
         cached_properties: number;
 
         // Constructors
-
         constructor(properties?: Partial<Accessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Accessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Accessible.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Accessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Accessible.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Accessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Accessible.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Accessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Accessible.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Accessible.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Accessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Accessible.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Accessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param enabled
+         * @param enabled 
          * @virtual
          */
         vfunc_mode_changed(enabled: boolean): void;
+
         /**
-         * @param current_offset
-         * @param last_offset
+         * @param current_offset 
+         * @param last_offset 
          * @virtual
          */
         vfunc_region_changed(current_offset: number, last_offset: number): void;
 
         // Methods
-
         /**
          * Clears the cached information for the given accessible and all of its
          * descendants.
          */
         clear_cache(): void;
+
         /**
          * Gets the accessible id of the accessible.  This is not meant to be presented
          * to the user, but to be an id which is stable over application development.
@@ -2412,16 +2453,19 @@ export namespace Atspi {
          * @returns a character string representing the accessible id of the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_accessible_id(): string;
+
         /**
          * Gets the {@link Atspi.Action} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Action} interface          instance, or NULL if `obj` does not implement {@link Atspi.Action}.
          */
         get_action_iface(): Action;
+
         /**
          * Gets the containing {@link Atspi.Application} for an object.
          * @returns the containing {@link Atspi.Application} instance for          this object.
          */
         get_application(): Accessible;
+
         /**
          * Gets the AT-SPI IPC specification version supported by the application
          * pointed to by the {@link Atspi.Accessible} object.
@@ -2429,6 +2473,7 @@ export namespace Atspi {
          * @returns a UTF-8 string indicating the AT-SPI version for the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_atspi_version(): string;
+
         /**
          * Gets the `AttributeSet` representing any assigned
          * name-value pair attributes or annotations for this object.
@@ -2437,6 +2482,7 @@ export namespace Atspi {
          * @returns The name-value-pair attributes assigned to this object.
          */
         get_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Gets a {@link GLib.Array} representing any assigned
          * name-value pair attributes or annotations for this object.
@@ -2445,74 +2491,88 @@ export namespace Atspi {
          * @returns The name-value-pair          attributes assigned to this object.
          */
         get_attributes_as_array(): string[];
+
         /**
          * Gets the {@link Atspi.Accessible} child of an {@link Atspi.Accessible} object at a given index.
          * @param child_index a #long indicating which child is specified.
          * @returns a pointer to the {@link Atspi.Accessible} child object at index `child_index` or NULL on exception.
          */
         get_child_at_index(child_index: number): Accessible;
+
         /**
          * Gets the number of children contained by an {@link Atspi.Accessible} object.
          * @returns a #long indicating the number of {@link Atspi.Accessible} children          contained by an {@link Atspi.Accessible} object or -1 on exception.
          */
         get_child_count(): number;
+
         /**
          * Gets the {@link Atspi.Collection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Collection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Collection}.
          */
         get_collection_iface(): Collection;
+
         /**
          * Gets the {@link Atspi.Component} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Component} interface          instance, or NULL if `obj` does not implement {@link Atspi.Component}.
          */
         get_component_iface(): Component;
+
         /**
          * Gets the description of an {@link Atspi.Accessible} object.
          * @returns a UTF-8 string describing the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_description(): string;
+
         /**
          * Gets the {@link Atspi.Document} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Document} interface          instance, or NULL if `obj` does not implement {@link Atspi.Document}.
          */
         get_document_iface(): Document;
+
         /**
          * Gets the {@link Atspi.EditableText} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.EditableText} interface          instance, or NULL if `obj` does not implement {@link Atspi.EditableText}.
          */
         get_editable_text_iface(): EditableText;
+
         /**
          * Gets the {@link Atspi.Hyperlink} interface for an {@link Atspi.Accessible}.
          * @returns the {@link Atspi.Hyperlink} object associated with          the given {@link Atspi.Accessible}, or NULL if not supported.
          */
         get_hyperlink(): Hyperlink;
+
         /**
          * Gets the {@link Atspi.Hypertext} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Hypertext} interface          instance, or NULL if `obj` does not implement {@link Atspi.Hypertext}.
          */
         get_hypertext_iface(): Hypertext;
+
         /**
          * Gets the application id for a {@link Atspi.Accessible} object.
          * Only works on application root objects.
          * @returns a positive `gint` indicating the id for the {@link Atspi.Accessible} object or -1 on exception.
          */
         get_id(): number;
+
         /**
          * Gets the {@link Atspi.Image} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Image} interface instance, or          NULL if `obj` does not implement {@link Atspi.Image}.
          */
         get_image_iface(): Image;
+
         /**
          * Gets the index of an {@link Atspi.Accessible} object within its parent's
          * {@link Atspi.Accessible} children list.
          * @returns a `glong` indicating the index of the {@link Atspi.Accessible} object          in its parent,          or -1 if `obj` has no containing parent or on exception.
          */
         get_index_in_parent(): number;
+
         /**
          * A set of pointers to all interfaces supported by an {@link Atspi.Accessible}.
          * @returns A {@link GLib.Array} of strings          describing the interfaces supported by the object.  Interfaces are          denoted in short-hand (i.e. "Component", "Text" etc.).
          */
         get_interfaces(): string[];
+
         /**
          * Gets a UTF-8 string corresponding to the name of the role played by an
          * object, translated to the current locale.
@@ -2521,17 +2581,21 @@ export namespace Atspi {
          * @returns a localized, UTF-8 string specifying the type of UI role played by an {@link Atspi.Accessible} object.
          */
         get_localized_role_name(): string;
+
         /**
          * Gets the name of an {@link Atspi.Accessible} object.
          * @returns a UTF-8 string indicating the name of the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_name(): string;
+
         get_object_locale(): string;
+
         /**
          * Gets an {@link Atspi.Accessible} object's parent container.
          * @returns a pointer to the          {@link Atspi.Accessible} object which contains the given          {@link Atspi.Accessible} instance, or NULL if the `obj` has no          parent container.
          */
-        get_parent(): Accessible | null;
+        get_parent(): (Accessible | null);
+
         /**
          * Returns the process id associated with the given accessible.  Mainly
          * added for debugging; it is a shortcut to explicitly querying the
@@ -2539,18 +2603,21 @@ export namespace Atspi {
          * @returns The process ID or undetermined value if `error` is set.
          */
         get_process_id(): number;
+
         /**
          * Gets the set of {@link Atspi.Relation} objects which describes this {@link Atspi.Accessible} object's
          * relationships with other {@link Atspi.Accessible} objects.
          * @returns a {@link GLib.Array} of          {@link Atspi.Relation} pointers or NULL on exception.
          */
         get_relation_set(): Relation[];
+
         /**
          * Gets the UI role played by an {@link Atspi.Accessible} object.
          * This role's name can be obtained via atspi_accessible_get_role_name ().
          * @returns the {@link Atspi.Role} of an {@link Atspi.Accessible} object.
          */
         get_role(): Role;
+
         /**
          * Gets a UTF-8 string corresponding to the name of the role played by an object.
          * This method will return useful values for roles that fall outside the
@@ -2558,48 +2625,57 @@ export namespace Atspi {
          * @returns a UTF-8 string specifying the type of UI role played by an {@link Atspi.Accessible} object.
          */
         get_role_name(): string;
+
         /**
          * Gets the {@link Atspi.Selection} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Selection} interface          instance, or NULL if `obj` does not implement {@link Atspi.Selection}.
          */
         get_selection_iface(): Selection;
+
         /**
          * Gets the states currently held by an object.
          * @returns a pointer to an {@link Atspi.StateSet} representing an object's current state set.
          */
         get_state_set(): StateSet;
+
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Table} interface instance, or          NULL if `obj` does not implement {@link Atspi.Table}.
          */
         get_table_iface(): Table;
+
         /**
          * Gets the {@link Atspi.TableCell} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.TableCell} interface instance,          or NULL if `obj` does not implement {@link Atspi.Table}.
          */
         get_table_cell(): TableCell;
+
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Text} interface instance, or          NULL if `obj` does not implement {@link Atspi.Text}.
          */
         get_text_iface(): Text;
+
         /**
          * Gets the toolkit name for an {@link Atspi.Accessible} object.
          * Only works on application root objects.
          * @returns a UTF-8 string indicating the toolkit name for the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_toolkit_name(): string;
+
         /**
          * Gets the toolkit version for an {@link Atspi.Accessible} object.
          * Only works on application root objects.
          * @returns a UTF-8 string indicating the toolkit version for the {@link Atspi.Accessible} object or NULL on exception.
          */
         get_toolkit_version(): string;
+
         /**
          * Gets the {@link Atspi.Table} interface for an {@link Atspi.Accessible}.
          * @returns a pointer to an {@link Atspi.Value} interface instance, or          NULL if `obj` does not implement {@link Atspi.Value}.
          */
         get_value_iface(): Value;
+
         /**
          * Sets the type of data to cache for accessibles.
          * If this is not set for an application or is reset to ATSPI_CACHE_UNDEFINED,
@@ -2611,12 +2687,14 @@ export namespace Atspi {
          * @param mask An {@link Atspi.Cache} specifying a bit mask of the types of data to cache.
          */
         set_cache_mask(mask: Cache): void;
+
         /**
          * Invoke the action indicated by #index.
          * @param i an integer specifying which action to invoke.
          * @returns `TRUE` if the action is successfully invoked, otherwise `FALSE`.
          */
         do_action(i: number): boolean;
+
         /**
          * Get the description of '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -2624,6 +2702,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the '`i`-th' invocable action.
          */
         get_action_description(i: number): string;
+
         /**
          * Get the keybindings for the `i`-th action invocable on an
          *      object implementing {@link Atspi.Action}, if any are defined.
@@ -2650,6 +2729,7 @@ export namespace Atspi {
          * @returns a UTF-8 string which can be parsed to determine the `i`-th       invocable action's keybindings.
          */
         get_key_binding(i: number): string;
+
         /**
          * Get the name of the '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -2657,11 +2737,13 @@ export namespace Atspi {
          * @returns the name of the action, as a UTF-8 string.
          */
         get_localized_name(i: number): string;
+
         /**
          * Get the number of actions invokable on an {@link Atspi.Action} implementor.
          * @returns an integer indicating the number of invocable actions.
          */
         get_n_actions(): number;
+
         /**
          * Get the name of the '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -2669,10 +2751,12 @@ export namespace Atspi {
          * @returns the non-localized name of the action, as a UTF-8 string.
          */
         get_action_name(i: number): string;
+
         /**
          * @returns The active descendant of the given object. Not yet implemented.
          */
         get_active_descendant(): Accessible;
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection` matching a given
          * `rule`.
@@ -2683,6 +2767,7 @@ export namespace Atspi {
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule.
          */
         get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[];
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection`, before
          * `current_object`, matching a given `rule`.
@@ -2694,14 +2779,8 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule that preceed          `current_object`.
          */
-        get_matches_from(
-            current_object: Accessible,
-            rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
-            count: number,
-            traverse: boolean,
-        ): Accessible[];
+        get_matches_from(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: number, traverse: boolean): Accessible[];
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection`, after
          * `current_object`, matching a given `rule`.
@@ -2714,20 +2793,14 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule after          `current_object`.
          */
-        get_matches_to(
-            current_object: Accessible,
-            rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
-            limit_scope: boolean,
-            count: number,
-            traverse: boolean,
-        ): Accessible[];
+        get_matches_to(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: boolean, count: number, traverse: boolean): Accessible[];
+
         /**
          * Not yet implemented.
-         * @param test
+         * @param test 
          */
         is_ancestor_of(test: Accessible): boolean;
+
         /**
          * Queries whether a given {@link Atspi.Component} contains a particular point.
          * @param x a `gint` specifying the x coordinate in question.
@@ -2736,6 +2809,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified component contains the point (`x`, `y`),          `FALSE` otherwise.
          */
         contains(x: number, y: number, ctype: CoordType): boolean;
+
         /**
          * Gets the accessible child at a given coordinate within an {@link Atspi.Component}.
          * @param x a `gint` specifying the x coordinate of the point in question.
@@ -2743,12 +2817,14 @@ export namespace Atspi {
          * @param ctype the coordinate system of the point (`x`, `y`)         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an          {@link Atspi.Accessible} child of the specified component which          contains the point (`x`, `y`), or NULL if no child contains          the point.
          */
-        get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null;
+        get_accessible_at_point(x: number, y: number, ctype: CoordType): (Accessible | null);
+
         /**
          * Gets the opacity/alpha value of a component, if alpha blending is in use.
          * @returns the opacity value of a component, as a `gdouble` between 0.0 and 1.0.
          */
         get_alpha(): number;
+
         /**
          * Gets the bounding box of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -2757,18 +2833,21 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} giving the accessible's extents.
          */
         get_extents(ctype: CoordType): Rect;
+
         /**
          * Queries which layer the component is painted into, to help determine its
          *      visibility in terms of stacking order.
          * @returns the {@link Atspi.ComponentLayer} into which this component is painted.
          */
         get_layer(): ComponentLayer;
+
         /**
          * Queries the z stacking order of a component which is in the MDI or window
          *       layer. (Bigger z-order numbers mean nearer the top)
          * @returns a `gshort` indicating the stacking order of the component       in the MDI layer, or -1 if the component is not in the MDI layer.
          */
         get_mdi_z_order(): number;
+
         /**
          * Gets the minimum x and y coordinates of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -2777,11 +2856,13 @@ export namespace Atspi {
          * @returns An {@link Atspi.Point} giving the `obj`'s position.
          */
         get_position(ctype: CoordType): Point;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atspi.TableCell.get_position
         get_position(...args: never[]): any;
+
         /**
          * Gets the size of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -2789,12 +2870,14 @@ export namespace Atspi {
          * @returns An {@link Atspi.Point} giving the `obj`'s size.
          */
         get_size(): Point;
+
         /**
          * Attempts to set the keyboard input focus to the specified
          *         {@link Atspi.Component}.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Component} object so it becomes
          * visible on the screen.
@@ -2802,6 +2885,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Component} object so it becomes
          * visible on the screen at a given position.
@@ -2811,6 +2895,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Moves and resizes the specified component.
          * @param x the new vertical position to which the component should be moved.
@@ -2821,6 +2906,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
+
         /**
          * Moves the component to the specified position.
          * @param x the new vertical position to which the component should be moved.
@@ -2829,6 +2915,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType): boolean;
+
         /**
          * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
@@ -2836,63 +2923,72 @@ export namespace Atspi {
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_size(width: number, height: number): boolean;
+
         /**
          * Gets the value of a single attribute, if specified for the document as a whole.
          * @param attribute a string indicating the name of a specific attribute.
          * @returns a string corresponding to the value of the specified attribute, or an empty string if the attribute is unspecified for the object.
          */
         get_document_attribute_value(attribute: string): string;
+
         /**
          * Gets all constant attributes for the document as a whole. For attributes
          * that change within the document content, see `atspi_text_get_attribute_run` instead.
          * @returns a {@link GLib.HashTable}          containing the constant attributes of the document, as name-value pairs.
          */
         get_document_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Gets the current page number of an `AccessibleDocument` object.
          * @returns a `gint` indicating the current page number in the `AccessibleDocument` object.
          */
         get_current_page_number(): number;
+
         /**
          * Gets the locale associated with the document's content,
          * e.g. the locale for LOCALE_TYPE_MESSAGES.
          * @returns a string compliant with the POSIX standard for locale description.
          */
         get_locale(): string;
+
         /**
          * Gets the page count of an `AccessibleDocument` object.
          * @returns a `gint` indicating the page count of an `AccessibleDocument` object.
          */
         get_page_count(): number;
+
         /**
          * Copies text from an {@link Atspi.EditableText} object into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_paste_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to copy.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be copied.
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         copy_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Deletes text from an {@link Atspi.EditableText} object, copying the
          *       excised portion into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_paste_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to cut.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be cut.
          * @returns `TRUE` if operation was successful, `FALSE` otherwise.
          */
         cut_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Deletes text from an {@link Atspi.EditableText} object, without copying the
          *       excised portion into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_cut_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to delete.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be deleted.
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         delete_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Inserts text into an {@link Atspi.EditableText} object.
          * As with all character offsets, the specified `position` may not be the
@@ -2904,6 +3000,7 @@ export namespace Atspi {
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         insert_text(position: number, text: string, length: number): boolean;
+
         /**
          * Inserts text from the system clipboard into an {@link Atspi.EditableText} object.
          * As with all character offsets, the specified `position` may not be the
@@ -2913,18 +3010,21 @@ export namespace Atspi {
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         paste_text(position: number): boolean;
+
         /**
          * Replace the entire text contents of an {@link Atspi.EditableText} object.
          * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the {@link Atspi.EditableText} object.
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         set_text_contents(new_contents: string): boolean;
+
         /**
          * Gets the {@link Atspi.Hyperlink} object at a specified index.
          * @param link_index a (zero-index) `gint` indicating which hyperlink to query.
          * @returns the {@link Atspi.Hyperlink} object          specified by `link_index`.
          */
-        get_link(link_index: number): Hyperlink | null;
+        get_link(link_index: number): (Hyperlink | null);
+
         /**
          * Gets the index of the {@link Atspi.Hyperlink} object at a specified
          *        character offset.
@@ -2932,17 +3032,20 @@ export namespace Atspi {
          * @returns the linkIndex of the {@link Atspi.Hyperlink} active at        character offset `character_offset`, or -1 if there is        no hyperlink at the specified character offset.
          */
         get_link_index(character_offset: number): number;
+
         /**
          * Gets the total number of {@link Atspi.Hyperlink} objects that an
          * {@link Atspi.Hypertext} implementor has.
          * @returns a `gint` indicating the number of {@link Atspi.Hyperlink} objects        of the {@link Atspi.Hypertext} implementor, or -1 if        the number cannot be determined (for example, if the        {@link Atspi.Hypertext} object is so large that it is not        all currently in the memory cache).
          */
         get_n_links(): number;
+
         /**
          * Gets the description of the image displayed in an {@link Atspi.Image} object.
          * @returns a UTF-8 string describing the image.
          */
         get_image_description(): string;
+
         /**
          * Gets the bounding box of the image displayed in a
          *         specified {@link Atspi.Image} implementor.
@@ -2952,11 +3055,13 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Rect} corresponding to the image's bounding box. The minimum x and y coordinates, width, and height are specified.
          */
         get_image_extents(ctype: CoordType): Rect;
+
         /**
          * Gets the locale associated with an image and its textual representation.
          * @returns A POSIX LC_MESSAGES-style locale value for image description and text.
          */
         get_image_locale(): string;
+
         /**
          * Gets the minimum x and y coordinates of the image displayed in a
          *         specified {@link Atspi.Image} implementor.
@@ -2966,6 +3071,7 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Point} where x and y correspond to the minimum coordinates of the displayed image.
          */
         get_image_position(ctype: CoordType): Point;
+
         /**
          * Gets the size of the image displayed in a specified {@link Atspi.Image} object.
          * The returned values are meaningful only if the Image has both
@@ -2973,22 +3079,25 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Point} where x corresponds to the image's width and y corresponds to the image's height.
          */
         get_image_size(): Point;
+
         /**
          * Clears the current selection, removing all selected children from the
          *       specified {@link Atspi.Selection} implementor's selection list.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         clear_selection(): boolean;
+
         /**
          * Deselects a specific child of an {@link Atspi.Selection}.
          *          Note that `child_index` is the index of the child
          *          in the parent container.
-         *
+         * 
          * See `atspi_selection_deselect_selected_child`
          * @param child_index a `gint` indicating which of the children              of the {@link Atspi.Accessible} is to be de-selected.
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_child(child_index: number): boolean;
+
         /**
          * Removes a child from the selected children list of an {@link Atspi.Selection}.
          *          Note that `child_index` is the index in the selected-children list,
@@ -2999,12 +3108,14 @@ export namespace Atspi {
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_selected_child(selected_child_index: number): boolean;
+
         /**
          * Gets the number of children of an {@link Atspi.Selection} implementor which are
          *        currently selected.
          * @returns a `gint` indicating the number of {@link Atspi.Accessible} children        of the {@link Atspi.Selection} implementor which are currently selected.
          */
         get_n_selected_children(): number;
+
         /**
          * Gets the i-th selected {@link Atspi.Accessible} child of an {@link Atspi.Selection}.
          *      Note that `selected_child_index` refers to the index in the list
@@ -3018,6 +3129,7 @@ export namespace Atspi {
          * @returns a pointer to a selected {@link Atspi.Accessible} child          object, specified by `selected_child_index`.
          */
         get_selected_child(selected_child_index: number): Accessible;
+
         /**
          * Determines whether a particular child of an {@link Atspi.Selection} implementor
          *        is currently selected.  Note that `child_index` is the index into the
@@ -3026,12 +3138,14 @@ export namespace Atspi {
          * @returns `TRUE` if the specified child is currently selected,          `FALSE` otherwise.
          */
         is_child_selected(child_index: number): boolean;
+
         /**
          * Attempts to select all of the children of an {@link Atspi.Selection} implementor.
          * Not all {@link Atspi.Selection} implementors support this operation.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         select_all(): boolean;
+
         /**
          * Adds a child to the selected children list of an {@link Atspi.Selection}.
          *         For {@link Atspi.Selection} implementors that only allow
@@ -3041,6 +3155,7 @@ export namespace Atspi {
          * @returns `TRUE` if the child was successfully selected, `FALSE` otherwise.
          */
         select_child(child_index: number): boolean;
+
         /**
          * Selects the specified column, adding it to the current column selection.
          * Not all tables support column selection.
@@ -3048,6 +3163,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column was successfully selected, `FALSE` if not.
          */
         add_column_selection(column: number): boolean;
+
         /**
          * Selects the specified row, adding it to the current row selection.
          * Not all tables support row selection.
@@ -3055,6 +3171,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified row was successfully selected, `FALSE` if not.
          */
         add_row_selection(row: number): boolean;
+
         /**
          * Gets the table cell at the specified row and column indices.
          * To get the accessible object at a particular (x, y) screen
@@ -3064,20 +3181,23 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} object representing the          specified table cell.
          */
         get_accessible_at(row: number, column: number): Accessible;
+
         /**
          * Gets an accessible representation of the caption for an {@link Atspi.Table}.
          * @returns an {@link Atspi.Accessible} object that serves as the table's caption.
          */
         get_caption(): Accessible;
+
         /**
          * Gets the table column index occupied by the child at a particular 1-D
          * child index.
-         *
+         * 
          * `see` `atspi_table_get_index_at`, `atspi_table_get_row_at_index`
          * @param index the specified child index, zero-indexed.
          * @returns a `gint` indicating the first column spanned by the child of a          table, at the specified 1-D (zero-offset) `index`.
          */
         get_column_at_index(index: number): number;
+
         /**
          * Gets a text description of a particular table column.  This differs from
          * `atspi_table_get_column_header`, which returns an {@link Atspi.Accessible}.
@@ -3085,6 +3205,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the specified table column, if available.
          */
         get_column_description(column: number): string;
+
         /**
          * Gets the number of columns spanned by the table cell at the specific
          * row and column (some tables can have cells which span multiple
@@ -3096,6 +3217,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of columns spanned by the specified cell.
          */
         get_column_extent_at(row: number, column: number): number;
+
         /**
          * Gets the header associated with a table column, if available.
          * This differs from `atspi_table_get_column_description`, which
@@ -3104,17 +3226,19 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} representation of the          specified table column, if available.
          */
         get_column_header(column: number): Accessible;
+
         /**
          * Gets the 1-D child index corresponding to the specified 2-D row and
          * column indices. To get the accessible object at a particular (x, y) screen
          * coordinate, use `atspi_component_get_accessible_at_point`.
-         *
+         * 
          * `see` `atspi_table_get_row_at_index`, `atspi_table_get_column_at_index`
          * @param row the specified table row, zero-indexed.
          * @param column the specified table column, zero-indexed.
          * @returns a `gint` which serves as the index of a specified cell in the          table, in a form usable by `atspi_get_child_at_index`.
          */
         get_index_at(row: number, column: number): number;
+
         /**
          * Gets the number of columns in an {@link Atspi.Table},
          *        exclusive of any columns that are programmatically hidden, but inclusive
@@ -3122,6 +3246,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of columns in the table.
          */
         get_n_columns(): number;
+
         /**
          * Gets the number of rows in an {@link Atspi.Table},
          *        exclusive of any rows that are programmatically hidden, but inclusive
@@ -3129,27 +3254,31 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of rows in the table.
          */
         get_n_rows(): number;
+
         /**
          * Queries a table to find out how many columns are currently selected.
          * Not all tables support column selection.
          * @returns a `gint` indicating the number of columns currently selected.
          */
         get_n_selected_columns(): number;
+
         /**
          * Query a table to find out how many rows are currently selected.
          * Not all tables support row selection.
          * @returns a `gint` indicating the number of rows currently selected.
          */
         get_n_selected_rows(): number;
+
         /**
          * Gets the table row index occupied by the child at a particular 1-D
          * child index.
-         *
+         * 
          * `see` `atspi_table_get_index_at`, `atspi_table_get_column_at_index`
          * @param index the specified child index, zero-indexed.
          * @returns a `gint` indicating the first row spanned by the child of a          table, at the specified 1-D (zero-offset) `index`.
          */
         get_row_at_index(index: number): number;
+
         /**
          * Given a child index, determines the row and column indices and
          * extents, and whether the cell is currently selected.  If
@@ -3157,17 +3286,17 @@ export namespace Atspi {
          * a summary, caption, etc.), `FALSE` is returned.
          * The returned values are meaningful only if the Table has both
          * STATE_VISIBLE and STATE_SHOWING.
-         *
+         * 
          * Example:
          * If the {@link Atspi.Table} child at index '6' extends across columns 5 and 6 of
          * row 2 of an {@link Atspi.Table} instance, and is currently selected, then
-         *
+         * 
          * retval = atspi_table_get_row_column_extents_at_index (table, 6,
          *                                             row, col,
          *                                             row_extents,
          *                                             col_extents,
          *                                             is_selected);
-         *
+         * 
          * will return `TRUE`, and after the call
          * row, col, row_extents, col_extents,
          * and is_selected will contain 2, 5, 1, 2, and
@@ -3176,6 +3305,7 @@ export namespace Atspi {
          * @returns `TRUE` if the index is associated with a valid table cell, `FALSE` if the index does not correspond to a cell.  If `FALSE` is returned, the values of the out parameters are undefined.
          */
         get_row_column_extents_at_index(index: number): [boolean, number, number, number, number, boolean];
+
         /**
          * Gets a text description of a particular table row.  This differs from
          * `atspi_table_get_row_header`, which returns an {@link Atspi.Accessible}.
@@ -3183,6 +3313,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the specified table row, if available.
          */
         get_row_description(row: number): string;
+
         /**
          * Gets the number of rows spanned by the table cell at the specific row
          * and column. (some tables can have cells which span multiple rows
@@ -3194,6 +3325,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of rows spanned by the specified cell.
          */
         get_row_extent_at(row: number, column: number): number;
+
         /**
          * Gets the header associated with a table row, if available. This differs from
          * `atspi_table_get_row_description`, which returns a string.
@@ -3201,22 +3333,26 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} representation of the specified          table row, if available.
          */
         get_row_header(row: number): Accessible;
+
         /**
          * Queries a table for a list of indices of columns which are currently
          * selected.
          * @returns an array of `gint` values,          specifying which columns are currently selected.
          */
         get_selected_columns(): number[];
+
         /**
          * Queries a table for a list of indices of rows which are currently selected.
          * @returns an array of `gint` values,          specifying which rows are currently selected.
          */
         get_selected_rows(): number[];
+
         /**
          * Gets an accessible object which summarizes the contents of an {@link Atspi.Table}.
          * @returns an {@link Atspi.Accessible} object that serves as the          table's summary (often a reduced {@link Atspi.Table}).
          */
         get_summary(): Accessible;
+
         /**
          * Determines whether specified table column is selected.
          * Not all tables support column selection.
@@ -3224,6 +3360,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column is currently selected, `FALSE` if not.
          */
         is_column_selected(column: number): boolean;
+
         /**
          * Determines whether a table row is selected.  Not all tables support
          * row selection.
@@ -3231,6 +3368,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified row is currently selected, `FALSE` if not.
          */
         is_row_selected(row: number): boolean;
+
         /**
          * Determines whether the cell at a specific row and column is selected.
          * @param row the zero-indexed row of the cell being queried.
@@ -3238,6 +3376,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified cell is currently selected, `FALSE` if not.
          */
         is_selected(row: number, column: number): boolean;
+
         /**
          * De-selects the specified column, removing it from the current column
          * selection.
@@ -3246,6 +3385,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column was successfully de-selected, `FALSE` if not.
          */
         remove_column_selection(column: number): boolean;
+
         /**
          * De-selects the specified row, removing it from the current row selection.
          * Not all tables support row selection.
@@ -3253,12 +3393,15 @@ export namespace Atspi {
          * @returns `TRUE` if the specified row was successfully de-selected, `FALSE` if not.
          */
         remove_row_selection(row: number): boolean;
+
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtspiAccessibles representing the column header cells.
          */
         get_column_header_cells(): Accessible[];
+
         get_column_index(): number;
+
         /**
          * Returns the number of columns occupied by this cell accessible.
          * The returned values are meaningful only if the table cell has both
@@ -3266,17 +3409,20 @@ export namespace Atspi {
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_column_span(): number;
+
         /**
          * Gets the row and column indexes and extents of this cell accessible.
          * The returned values are meaningful only if the table cell has both
          * STATE_VISIBLE and STATE_SHOWING.
          */
         get_row_column_span(): [number, number, number, number];
+
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtspiAccessibles representing the row header cells.
          */
         get_row_header_cells(): Accessible[];
+
         /**
          * Returns the number of rows occupied by this cell accessible.
          * The returned values are meaningful only if the table cell has both
@@ -3284,11 +3430,13 @@ export namespace Atspi {
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_row_span(): number;
+
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the AtspiAccessible for the containing table.
          */
         get_table(): Accessible;
+
         /**
          * Selects some text (adds a text selection) in an {@link Atspi.Text} object.
          * @param start_offset the starting offset of the desired new selection.
@@ -3296,6 +3444,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         add_selection(start_offset: number, end_offset: number): boolean;
+
         /**
          * Gets a set of attributes applied to a range of text from an {@link Atspi.Text} object, optionally
          * including its 'default' attributes.
@@ -3304,13 +3453,15 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable} with attributes          defined at the indicated offset, optionally including the 'default' ones.
          */
         get_attribute_run(offset: number, include_defaults: boolean): [GLib.HashTable<string, string>, number, number];
+
         /**
          * Gets the value of a named attribute at a given offset.
          * @param offset The character offset at which to query the attribute.
          * @param attribute_name The attribute to query.
          * @returns the value of a given attribute at the given offset, or `null` if not present.
          */
-        get_text_attribute_value(offset: number, attribute_name: string): string | null;
+        get_text_attribute_value(offset: number, attribute_name: string): (string | null);
+
         /**
          * Gets the attributes applied to a range of text from an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
@@ -3320,6 +3471,7 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
          */
         get_text_attributes(offset: number): [GLib.HashTable<string, string>, number, number];
+
         /**
          * Gets the ranges of text from an {@link Atspi.Text} object which lie within the
          *          bounds defined by (`x`, `y`) and (`x`+`width`, `y`+`height`).
@@ -3332,31 +3484,27 @@ export namespace Atspi {
          * @param clipTypeY an {@link Atspi.TextClipType} indicating how to treat characters that        intersect the bounding box's y extents.
          * @returns a null-terminated list of          pointers to {@link Atspi.TextRange} structs detailing the bounded text.
          */
-        get_bounded_ranges(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            type: CoordType,
-            clipTypeX: TextClipType,
-            clipTypeY: TextClipType,
-        ): TextRange[];
+        get_bounded_ranges(x: number, y: number, width: number, height: number, type: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType): TextRange[];
+
         /**
          * Gets the current offset of the text caret in an {@link Atspi.Text} object.
          * @returns a `gint` indicating the current position of the text caret.
          */
         get_caret_offset(): number;
+
         /**
          * Gets the character at a given offset for an {@link Atspi.Text} object.
          * @param offset a `gint` indicating the text offset where the desired          character is located.
          * @returns a `guint`  representing the        UCS-4 unicode code point of the given character, or        0xFFFFFFFF if the character in question cannot be represented        in the UCS-4 encoding.
          */
         get_character_at_offset(offset: number): number;
+
         /**
          * Gets the character count of an `AccessibleText` object.
          * @returns a `gint` indicating the total number of              characters in the `AccessibleText` object.
          */
         get_character_count(): number;
+
         /**
          * Gets a bounding box containing the glyph representing
          *        the character at a particular text offset.
@@ -3367,6 +3515,7 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} specifying the position and size of the character.
          */
         get_character_extents(offset: number, type: CoordType): Rect;
+
         /**
          * Gets the default attributes applied to an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
@@ -3376,12 +3525,14 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable}          containing the default attributes applied to a text object,          (exclusive of explicitly-set attributes), encoded as UTF-8.
          */
         get_default_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Gets the number of active non-contiguous selections for an
          *          {@link Atspi.Text} object.
          * @returns a `gint` indicating the current          number of non-contiguous text selections active          within an {@link Atspi.Text} object.
          */
         get_n_selections(): number;
+
         /**
          * Gets the character offset into the text at a given point.
          * @param x the x coordinate of the point to be queried.
@@ -3390,6 +3541,7 @@ export namespace Atspi {
          * @returns the offset (as a `gint`) at the point (`x`, `y`)       in the specified coordinate system.
          */
         get_offset_at_point(x: number, y: number, type: CoordType): number;
+
         /**
          * Gets the bounding box for text within a range in an  {@link Atspi.Text} object.
          * The returned values are meaningful only if the Text has both
@@ -3400,40 +3552,42 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} giving the position and size of the specified range          of text.
          */
         get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect;
+
         /**
          * Gets the bounds of the `selection_num`-th active text selection for an
          *         {@link Atspi.Text} object.
          * @param selection_num a `gint` indicating which selection to query.
          */
         get_selection(selection_num: number): Range;
+
         /**
          * Gets a portion of the text exposed through an {@link Atspi.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_WORD the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_SENTENCE the returned string
          * is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_LINE the returned string
          * is from the line start at or before the offset to the line
          * start after the offset.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_PARAGRAPH the returned string
          * is from the start of the paragraph at or before the offset to the start
          * of the following paragraph after the offset.
@@ -3442,6 +3596,7 @@ export namespace Atspi {
          * @returns a newly allocated string containing the text at the `offset` bounded   by the specified `granularity`. Use `g_free()` to free the returned string.   Returns `null` if the offset is invalid or no implementation is available.
          */
         get_string_at_offset(offset: number, granularity: TextGranularity): TextRange;
+
         /**
          * Gets a range of text from an {@link Atspi.Text} object.  The number of bytes
          *          in the returned string may exceed either end_offset or start_offset, since
@@ -3451,11 +3606,13 @@ export namespace Atspi {
          * @returns a text string containing characters from `start_offset`          to `end_offset`-1, inclusive, encoded as UTF-8.
          */
         get_text(start_offset: number, end_offset: number): string;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atspi.Value.get_text
         get_text(...args: never[]): any;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which follows a given
          *          text offset.
@@ -3464,6 +3621,7 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are after or          inclusive of the current offset, or an empty string if no such          text exists.
          */
         get_text_after_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which includes a given
          *          text offset.
@@ -3472,6 +3630,7 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, whose delimiting boundaries bracket the          current offset, or an empty string if no such text exists.
          */
         get_text_at_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which precedes a given
          *          text offset.
@@ -3480,12 +3639,14 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are before the          current offset, or an empty string if no such text exists.
          */
         get_text_before_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * De-selects a text selection.
          * @param selection_num a `gint` indicating which text selection to remove.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         remove_selection(selection_num: number): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Text} text range so it becomes
          * visible on the screen.
@@ -3495,6 +3656,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Text} text range so it becomes
          * visible on the screen at a given position.
@@ -3505,19 +3667,15 @@ export namespace Atspi {
          * @param y the y coordinate of the point to reach
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
-        scroll_substring_to_point(
-            start_offset: number,
-            end_offset: number,
-            coords: CoordType,
-            x: number,
-            y: number,
-        ): boolean;
+        scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Moves the text caret to a given position.
          * @param new_offset the offset to which the text caret is to be moved.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         set_caret_offset(new_offset: number): boolean;
+
         /**
          * Changes the bounds of an existing {@link Atspi.Text} text selection.
          * @param selection_num a zero-offset index indicating which text selection to modify.
@@ -3526,26 +3684,31 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
+
         /**
          * Gets the current value for an {@link Atspi.Value}.
          * @returns the current value for this object.
          */
         get_current_value(): number;
+
         /**
          * Gets the maximum allowed value for an {@link Atspi.Value}.
          * @returns the maximum allowed value for this object.
          */
         get_maximum_value(): number;
+
         /**
          * Gets the minimum increment by which an {@link Atspi.Value} can be adjusted.
          * @returns the minimum increment by which the value may be changed, or zero if the minimum increment cannot be determined.
          */
         get_minimum_increment(): number;
+
         /**
          * Gets the minimum allowed value for an {@link Atspi.Value}.
          * @returns the minimum allowed value for this object.
          */
         get_minimum_value(): number;
+
         /**
          * Sets the current value of an {@link Atspi.Value}.
          * @param new_value a `gdouble` value which is the desired new value of the object.
@@ -3554,13 +3717,16 @@ export namespace Atspi {
         set_current_value(new_value: number): boolean;
     }
 
+
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3579,50 +3745,49 @@ export namespace Atspi {
         $signals: Application.SignalSignatures;
 
         // Fields
-
         bus_name: string;
+
         root: any;
+
         cache: Cache;
+
         toolkit_name: string;
+
         toolkit_version: string;
+
         atspi_version: string;
+
         time_added: any;
 
         // Constructors
-
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3641,47 +3806,39 @@ export namespace Atspi {
         $signals: Device.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Device;
+        static ["new"](): Device;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param kd
+         * @param kd 
          * @virtual
          */
         vfunc_add_key_grab(kd: KeyDefinition): void;
+
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
          * @virtual
          */
         vfunc_get_locked_modifiers(): number;
+
         /**
          * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
@@ -3691,6 +3848,7 @@ export namespace Atspi {
          * @virtual
          */
         vfunc_get_modifier(keycode: number): number;
+
         /**
          * Attempts to grab the entire keyboard. This should only be done
          * temporarily, as it may conflict with other applications that also want to
@@ -3698,6 +3856,7 @@ export namespace Atspi {
          * @virtual
          */
         vfunc_grab_keyboard(): boolean;
+
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -3711,17 +3870,20 @@ export namespace Atspi {
          * @virtual
          */
         vfunc_map_modifier(keycode: number): number;
+
         /**
          * Removes the key grab specified by `id`.
          * @param id the identifier of the grab to be removed.
          * @virtual
          */
         vfunc_remove_key_grab(id: number): void;
+
         /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          * @virtual
          */
         vfunc_ungrab_keyboard(): void;
+
         /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
@@ -3730,29 +3892,32 @@ export namespace Atspi {
         vfunc_unmap_modifier(keycode: number): void;
 
         // Methods
-
         /**
          * @param kd a {@link Atspi.KeyDefinition} specifying the key code to grab.
          * @param callback the function to call when the            given key is pressed.
          * @returns an identifier that can be later used to remove the grab. Add a key grab for the given key/modifier combination.
          */
-        add_key_grab(kd: KeyDefinition, callback: KeyCallback | null): number;
+        add_key_grab(kd: KeyDefinition, callback: (KeyCallback | null)): number;
+
         /**
          * Add a callback that will receive a notification whenever a key is
          * pressed or released.
          * @param callback the function to call when the given key is            pressed.
          */
-        add_key_watcher(callback: KeyCallback | null): void;
+        add_key_watcher(callback: (KeyCallback | null)): void;
+
         /**
-         * @param id
+         * @param id 
          */
         get_grab_by_id(id: number): KeyDefinition;
+
         /**
          * Returns the locked modifiers (ie, num lock, caps lock) associated with this
          * keyboard.
          * @returns a guint of modifier flags.
          */
         get_locked_modifiers(): number;
+
         /**
          * Gets the modifier for a given keycode, if one exists. Does not creatt a new
          * mapping. This function should be used when the intention is to query a
@@ -3762,6 +3927,7 @@ export namespace Atspi {
          * @returns the modifier that is mapped to this keycode.
          */
         get_modifier(keycode: number): number;
+
         /**
          * Attempts to grab the entire keyboard. This should only be done
          * temporarily, as it may conflict with other applications that also want to
@@ -3769,6 +3935,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         grab_keyboard(): boolean;
+
         /**
          * Maps the specified key code to a modifier so that it can be used in
          * conjunction with other keys to create a key grab. If the given keycode is
@@ -3782,23 +3949,27 @@ export namespace Atspi {
          * @returns the modifier that is now mapped to this keycode. This return value can be passed to atspi_device_add_key_grab.
          */
         map_modifier(keycode: number): number;
+
         /**
-         * @param pressed
-         * @param keycode
-         * @param keysym
-         * @param state
-         * @param text
+         * @param pressed 
+         * @param keycode 
+         * @param keysym 
+         * @param state 
+         * @param text 
          */
         notify_key(pressed: boolean, keycode: number, keysym: number, state: number, text: string): boolean;
+
         /**
          * Removes the key grab specified by `id`.
          * @param id the identifier of the grab to be removed.
          */
         remove_key_grab(id: number): void;
+
         /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          */
         ungrab_keyboard(): void;
+
         /**
          * Removes a mapped modifier from the given keycode.
          * @param keycode the keycode to unmap.
@@ -3806,13 +3977,16 @@ export namespace Atspi {
         unmap_modifier(keycode: number): void;
     }
 
+
     namespace DeviceLegacy {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Device.ConstructorProps {
 
-        interface ConstructorProps extends Device.ConstructorProps {}
+        }
     }
 
     /**
@@ -3831,42 +4005,36 @@ export namespace Atspi {
         $signals: DeviceLegacy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceLegacy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceLegacy;
+        static ["new"](): DeviceLegacy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceLegacy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLegacy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceLegacy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLegacy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceLegacy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLegacy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceLegacy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLegacy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceLegacy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceLegacy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceLegacy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceLegacy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace DeviceListener {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3885,54 +4053,44 @@ export namespace Atspi {
         $signals: DeviceListener.SignalSignatures;
 
         // Fields
-
         id: number;
+
         callbacks: any[];
 
         // Constructors
-
         constructor(properties?: Partial<DeviceListener.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](callback: DeviceListenerCB): DeviceListener;
+        static ["new"](callback: DeviceListenerCB): DeviceListener;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceListener.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceListener.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceListener.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceListener.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceListener.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceListener.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceListener.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceListener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_device_event(event: DeviceEvent): boolean;
 
         // Methods
-
         /**
          * Adds an in-process callback function to an existing {@link Atspi.DeviceListener}.
          * @param callback an {@link Atspi.DeviceListenerCB} function pointer.
          */
         add_callback(callback: DeviceListenerCB): void;
+
         /**
          * Removes an in-process callback function from an existing
          * {@link Atspi.DeviceListener}.
@@ -3941,13 +4099,16 @@ export namespace Atspi {
         remove_callback(callback: DeviceListenerCB): void;
     }
 
+
     namespace DeviceX11 {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Device.ConstructorProps {
 
-        interface ConstructorProps extends Device.ConstructorProps {}
+        }
     }
 
     /**
@@ -3966,42 +4127,36 @@ export namespace Atspi {
         $signals: DeviceX11.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceX11;
+        static ["new"](): DeviceX11;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceX11.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceX11.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceX11.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceX11.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceX11.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceX11.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceX11.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceX11.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceX11.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceX11.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace EventListener {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4020,42 +4175,33 @@ export namespace Atspi {
         $signals: EventListener.SignalSignatures;
 
         // Fields
-
         callback: EventListenerCB;
+
         user_data: any;
+
         cb_destroyed: GLib.DestroyNotify;
 
         // Constructors
-
         constructor(properties?: Partial<EventListener.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](callback: EventListenerCB): EventListener;
+        static ["new"](callback: EventListenerCB): EventListener;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EventListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventListener.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EventListener.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventListener.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EventListener.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventListener.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EventListener.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventListener.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EventListener.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EventListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EventListener.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventListener.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Deregisters an {@link Atspi.EventListenerCB} from the registry, for a specific
          *             event type.
@@ -4063,37 +4209,30 @@ export namespace Atspi {
          * @param event_type a string specifying the event type for which this             listener is to be deregistered.
          */
         static deregister_from_callback(callback: EventListenerCB, event_type: string): boolean;
+
         /**
          * Registers an {@link Atspi.EventListenerCB} against an `event_type`.
          * @param callback the {@link Atspi.EventListenerCB} to be registered against an event type.
          * @param event_type a character string indicating the type of events for which            notification is requested.  See `atspi_event_listener_register` for a description of the format.
          */
         static register_from_callback(callback: EventListenerCB, event_type: string): boolean;
+
         /**
          * @param callback an {@link Atspi.EventListenerCB} function pointer.
-         * @param event_type
-         * @param properties
+         * @param event_type 
+         * @param properties 
          */
-        static register_from_callback_full(
-            callback: EventListenerCB | null,
-            event_type: string,
-            properties: string[],
-        ): boolean;
+        static register_from_callback_full(callback: (EventListenerCB | null), event_type: string, properties: string[]): boolean;
+
         /**
          * @param callback an {@link Atspi.EventListenerCB} function pointer.
-         * @param event_type
-         * @param properties
-         * @param app
+         * @param event_type 
+         * @param properties 
+         * @param app 
          */
-        static register_from_callback_with_app(
-            callback: EventListenerCB | null,
-            event_type: string,
-            properties: string[],
-            app: Accessible | null,
-        ): boolean;
+        static register_from_callback_with_app(callback: (EventListenerCB | null), event_type: string, properties: string[], app: (Accessible | null)): boolean;
 
         // Methods
-
         /**
          * Deregisters an {@link Atspi.EventListener} from the registry, for a specific
          *             event type.
@@ -4101,13 +4240,14 @@ export namespace Atspi {
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
         deregister(event_type: string): boolean;
+
         /**
          * Adds an in-process callback function to an existing {@link Atspi.EventListener}.
-         *
+         * 
          * Legal object event types:
-         *
+         * 
          *    (property change events)
-         *
+         * 
          *            object:property-change
          *            object:property-change:accessible-name
          *            object:property-change:accessible-description
@@ -4120,9 +4260,9 @@ export namespace Atspi {
          *            object:property-change:accessible-table-row-description
          *            object:property-change:accessible-table-row-header
          *            object:property-change:accessible-table-summary
-         *
+         * 
          *    (other object events)
-         *
+         * 
          *            object:state-changed
          *            object:children-changed
          *            object:visible-data-changed
@@ -4138,12 +4278,12 @@ export namespace Atspi {
          *            object:column-deleted
          *            object:model-changed
          *            object:active-descendant-changed
-         *
+         * 
          *  (screen reader events)
          *             screen-reader:region-changed
-         *
+         * 
          *  (window events)
-         *
+         * 
          *            window:minimize
          *            window:maximize
          *            window:restore
@@ -4161,9 +4301,9 @@ export namespace Atspi {
          *            window:shade
          *            window:unshade
          *            window:restyle
-         *
+         * 
          *  (other events)
-         *
+         * 
          *            focus:
          *            mouse:abs
          *            mouse:rel
@@ -4173,14 +4313,14 @@ export namespace Atspi {
          *            mouse:b2r
          *            mouse:b3p
          *            mouse:b3r
-         *
+         * 
          * NOTE: this character string may be UTF-8, but should not contain byte
          * value 56
          *            (ascii ':'), except as a delimiter, since non-UTF-8 string
          *            delimiting functions are used internally.
          *            In general, listening to
          *            toolkit-specific events is not recommended.
-         *
+         * 
          * Currently, object:text-reading-position needs to be specified explicitly
          * (it is not implied by object:text), since it is generated by the screen
          * reader and is thus a special case internally.
@@ -4188,13 +4328,15 @@ export namespace Atspi {
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
         register(event_type: string): boolean;
+
         /**
          * Adds an in-process callback function to an existing {@link Atspi.EventListener}.
          * @param event_type a character string indicating the type of events for which            notification is requested.  See `atspi_event_listener_register` for a description of the format and legal event types.
          * @param properties a list of             properties that should be sent along with the event. The             properties are valued for the duration of the event callback.             TODO: Document.
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
-        register_full(event_type: string, properties: string[] | null): boolean;
+        register_full(event_type: string, properties: (string[] | null)): boolean;
+
         /**
          * Adds an in-process callback function to an existing {@link Atspi.EventListener}.
          * @param event_type a character string indicating the type of events for which            notification is requested.  See `atspi_event_listener_register` for a description of the format and legal event types.
@@ -4202,16 +4344,19 @@ export namespace Atspi {
          * @param app the application whose events should be reported, or      %null for all applications.
          * @returns `TRUE` if successful, otherwise `FALSE`.
          */
-        register_with_app(event_type: string, properties: string[] | null, app: Accessible | null): boolean;
+        register_with_app(event_type: string, properties: (string[] | null), app: (Accessible | null)): boolean;
     }
+
 
     namespace Hyperlink {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Object.ConstructorProps {
 
-        interface ConstructorProps extends Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4230,54 +4375,47 @@ export namespace Atspi {
         $signals: Hyperlink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hyperlink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Hyperlink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Hyperlink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Hyperlink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Hyperlink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the ending character offset of the text range associated with
          *       an {@link Atspi.Hyperlink}, in its originating {@link Atspi.Hypertext}.
          */
         get_end_index(): number;
+
         /**
          * Gets the starting and ending character offsets of the text range
          * associated with an {@link Atspi.Hyperlink}, in its originating {@link Atspi.Hypertext}.
          */
         get_index_range(): Range;
+
         /**
          * Gets the total number of anchors which an {@link Atspi.Hyperlink} implementor has.
          * Though typical hyperlinks have only one anchor, client-side image maps and
          * other hypertext objects may potentially activate or refer to multiple
          * URIs.  For each anchor there is a corresponding URI and object.
-         *
+         * 
          * see: `atspi_hyperlink_get_uri` and `atspi_hyperlink_get_object`.
          * @returns a `gint` indicating the number of anchors in this hyperlink.
          */
         get_n_anchors(): number;
+
         /**
          * Gets the object associated with a particular hyperlink anchor, as an
          * {@link Atspi.Accessible}.
@@ -4285,17 +4423,20 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} that represents the object        associated with the `ith` anchor of the specified {@link Atspi.Hyperlink}.
          */
         get_object(i: number): Accessible;
+
         /**
          * Gets the starting character offset of the text range associated with
          *       an {@link Atspi.Hyperlink}, in its originating {@link Atspi.Hypertext}.
          */
         get_start_index(): number;
+
         /**
          * Gets the URI associated with a particular hyperlink anchor.
          * @param i a (zero-index) integer indicating which hyperlink anchor to query.
          * @returns a UTF-8 string giving the URI of the `ith` hyperlink anchor.
          */
         get_uri(i: number): string;
+
         /**
          * Tells whether an {@link Atspi.Hyperlink} object is still valid with respect to its
          *          originating hypertext object.
@@ -4304,13 +4445,16 @@ export namespace Atspi {
         is_valid(): boolean;
     }
 
+
     namespace MatchRule {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4329,63 +4473,53 @@ export namespace Atspi {
         $signals: MatchRule.SignalSignatures;
 
         // Fields
-
         states: StateSet;
+
         statematchtype: CollectionMatchType;
+
         attributematchtype: CollectionMatchType;
+
         interfaces: any[];
+
         interfacematchtype: CollectionMatchType;
+
         roles: number[];
+
         rolematchtype: CollectionMatchType;
+
         invert: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<MatchRule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            states: StateSet,
-            statematchtype: CollectionMatchType,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            attributematchtype: CollectionMatchType,
-            roles: Role[],
-            rolematchtype: CollectionMatchType,
-            interfaces: string[],
-            interfacematchtype: CollectionMatchType,
-            invert: boolean,
-        ): MatchRule;
+        static ["new"](states: StateSet, statematchtype: CollectionMatchType, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), attributematchtype: CollectionMatchType, roles: Role[], rolematchtype: CollectionMatchType, interfaces: string[], interfacematchtype: CollectionMatchType, invert: boolean): MatchRule;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MatchRule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MatchRule.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MatchRule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MatchRule.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MatchRule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MatchRule.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MatchRule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MatchRule.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MatchRule.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MatchRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MatchRule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MatchRule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4404,45 +4538,39 @@ export namespace Atspi {
         $signals: Object.SignalSignatures;
 
         // Fields
-
         app: Application;
+
         path: string;
 
         // Constructors
-
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Relation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4461,39 +4589,29 @@ export namespace Atspi {
         $signals: Relation.SignalSignatures;
 
         // Fields
-
         relation_type: RelationType;
+
         targets: any[];
 
         // Constructors
-
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Relation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Relation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Relation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Relation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Relation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Relation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the number of objects which this relationship has as its
          *       target objects (the subject is the {@link Atspi.Accessible} from which this
@@ -4501,11 +4619,13 @@ export namespace Atspi {
          * @returns a `gint` indicating how many target objects which the       originating {@link Atspi.Accessible} object has the {@link Atspi.Relation}       relationship with.
          */
         get_n_targets(): number;
+
         /**
          * Gets the type of relationship represented by an {@link Atspi.Relation}.
          * @returns an {@link Atspi.RelationType} indicating the type of relation         encapsulated in this {@link Atspi.Relation} object.
          */
         get_relation_type(): RelationType;
+
         /**
          * Gets the `i`-th target of a specified {@link Atspi.Relation} relationship.
          * @param i a (zero-index) `gint` indicating which (of possibly several) target is requested.
@@ -4514,13 +4634,16 @@ export namespace Atspi {
         get_target(i: number): Accessible;
     }
 
+
     namespace StateSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4539,55 +4662,47 @@ export namespace Atspi {
         $signals: StateSet.SignalSignatures;
 
         // Fields
-
         accessible: any;
+
         states: number;
 
         // Constructors
-
         constructor(properties?: Partial<StateSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](states: StateType[]): StateSet;
+        static ["new"](states: StateType[]): StateSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StateSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StateSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StateSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StateSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StateSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StateSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a particular `AtspiState` to an {@link Atspi.StateSet} (i.e. sets the
          *       given state to `TRUE` in the stateset).
          * @param state an {@link Atspi.StateType} to be added to the specified {@link Atspi.StateSet}.
          */
         add(state: StateType): void;
+
         /**
          * Determines the differences between two instances of {@link Atspi.StateSet}.
-         *
+         * 
          * `see` `atspi_state_set_equals`.
          * @param set2 a pointer to the second {@link Atspi.StateSet} object on which to operate.
          * @returns an {@link Atspi.StateSet} object containing all states contained on one of the two sets but not the other.
          */
         compare(set2: StateSet): StateSet;
+
         /**
          * Determines whether a given {@link Atspi.StateSet} includes a given state; that is,
          *          whether `state` is true for the `set` in question.
@@ -4595,31 +4710,36 @@ export namespace Atspi {
          * @returns `TRUE` if `state` is true/included in the given {@link Atspi.StateSet},          otherwise `FALSE`.
          */
         contains(state: StateType): boolean;
+
         /**
          * Determines whether two instances of {@link Atspi.StateSet} are equivalent (i.e.
          *          consist of the same `AtspiStates`).  Useful for checking multiple
          *          state variables at once.
-         *
+         * 
          * `see` `atspi_state_set_compare`.
          * @param set2 a pointer to the second {@link Atspi.StateSet} object on which to operate.
          * @returns `TRUE` if the two `AtspiStateSets` are equivalent, otherwise `FALSE`.
          */
         equals(set2: StateSet): boolean;
+
         /**
          * Returns the states in an {@link Atspi.StateSet} as an array.
          * @returns A {@link GLib.Array} of state          types representing the current state.
          */
         get_states(): StateType[];
+
         /**
          * @returns `TRUE` if the state set contains no states; `FALSE` otherwise.
          */
         is_empty(): boolean;
+
         /**
          * Removes a particular `AtspiState` to an {@link Atspi.StateSet} (i.e. sets the
          *       given state to `FALSE` in the stateset.)
          * @param state an {@link Atspi.StateType} to remove from the specified `set`.
          */
         remove(state: StateType): void;
+
         /**
          * Enables/disables a state in an {@link Atspi.StateSet} according to its `name`.
          * @param name a string corresponding to a state name.
@@ -4628,10 +4748,12 @@ export namespace Atspi {
         set_by_name(name: string, enabled: boolean): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AccessibleClass = typeof Accessible;
+
     /**
      * @gir-type Struct
      */
@@ -4639,14 +4761,17 @@ export namespace Atspi {
         static $gtype: GObject.GType<AccessiblePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
+
     /**
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
     /**
      * @gir-type Struct
      */
@@ -4654,28 +4779,37 @@ export namespace Atspi {
         static $gtype: GObject.GType<DeviceEvent>;
 
         // Fields
-
         type: EventType;
+
         id: number;
+
         hw_code: number;
+
         modifiers: number;
+
         timestamp: number;
+
         event_string: string;
+
         is_text: boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DeviceLegacyClass = typeof DeviceLegacy;
+
     /**
      * @gir-type Alias
      */
     type DeviceListenerClass = typeof DeviceListener;
+
     /**
      * @gir-type Alias
      */
     type DeviceX11Class = typeof DeviceX11;
+
     /**
      * @gir-type Struct
      */
@@ -4683,22 +4817,25 @@ export namespace Atspi {
         static $gtype: GObject.GType<Event>;
 
         // Fields
-
         type: string;
+
         source: Accessible;
+
         detail1: number;
+
         detail2: number;
+
         sender: Accessible;
 
         // Static methods
-
         /**
          * Starts/enters the main event loop for the AT-SPI services.
-         *
+         * 
          * NOTE: This method does not return control; it is exited via a call to
          * `atspi_event_quit` from within an event handler.
          */
         static main(): void;
+
         /**
          * Quits the last main event loop for the AT-SPI services,
          * See: `atspi_event_main`
@@ -4706,10 +4843,12 @@ export namespace Atspi {
         static quit(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EventListenerClass = typeof EventListener;
+
     /**
      * @gir-type Struct
      */
@@ -4717,26 +4856,27 @@ export namespace Atspi {
         static $gtype: GObject.GType<EventListenerMode>;
 
         // Fields
-
         synchronous: boolean;
+
         preemptive: boolean;
+
         global: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                synchronous: boolean;
-                preemptive: boolean;
-                global: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            synchronous: boolean;
+            preemptive: boolean;
+            global: boolean;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type HyperlinkClass = typeof Hyperlink;
+
     /**
      * @gir-type Struct
      */
@@ -4744,23 +4884,24 @@ export namespace Atspi {
         static $gtype: GObject.GType<KeyDefinition>;
 
         // Fields
-
         keycode: number;
+
         keysym: number;
+
         keystring: string;
+
         modifiers: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                keycode: number;
-                keysym: number;
-                keystring: string;
-                modifiers: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            keycode: number;
+            keysym: number;
+            keystring: string;
+            modifiers: number;
+        }>);
     }
+
 
     /**
      * Structure containing identifying information about a set of keycode or
@@ -4771,32 +4912,35 @@ export namespace Atspi {
         static $gtype: GObject.GType<KeySet>;
 
         // Fields
-
         keysyms: number;
+
         keycodes: number;
+
         keystrings: string;
+
         len: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                keysyms: number;
-                keycodes: number;
-                keystrings: string;
-                len: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            keysyms: number;
+            keycodes: number;
+            keystrings: string;
+            len: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type MatchRuleClass = typeof MatchRule;
+
     /**
      * @gir-type Alias
      */
     type ObjectClass = typeof Object;
+
     /**
      * @gir-type Struct
      */
@@ -4804,23 +4948,21 @@ export namespace Atspi {
         static $gtype: GObject.GType<Point>;
 
         // Fields
-
         x: number;
+
         y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+        }>);
 
         // Methods
-
         copy(): Point;
     }
+
 
     /**
      * @gir-type Struct
@@ -4829,27 +4971,25 @@ export namespace Atspi {
         static $gtype: GObject.GType<Range>;
 
         // Fields
-
         start_offset: number;
+
         end_offset: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                start_offset: number;
-                end_offset: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            start_offset: number;
+            end_offset: number;
+        }>);
 
         // Methods
-
         /**
          * Gets a copy of an {@link Atspi.Range} object.
          * @returns the {@link Atspi.Range} copy of an {@link Atspi.Range} object.
          */
         copy(): Range;
     }
+
 
     /**
      * @gir-type Struct
@@ -4858,36 +4998,38 @@ export namespace Atspi {
         static $gtype: GObject.GType<Rect>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
 
         // Methods
-
         copy(): Rect;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RelationClass = typeof Relation;
+
     /**
      * @gir-type Alias
      */
     type StateSetClass = typeof StateSet;
+
     /**
      * @gir-type Struct
      */
@@ -4895,26 +5037,28 @@ export namespace Atspi {
         static $gtype: GObject.GType<TextRange>;
 
         // Fields
-
         start_offset: number;
+
         end_offset: number;
+
         content: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                start_offset: number;
-                end_offset: number;
-                content: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            start_offset: number;
+            end_offset: number;
+            content: string;
+        }>);
     }
 
-    namespace Action {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    namespace Action {
+
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ActionNamespace {
@@ -4925,14 +5069,15 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Action extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Invoke the action indicated by #index.
          * @param i an integer specifying which action to invoke.
          * @returns `TRUE` if the action is successfully invoked, otherwise `FALSE`.
          */
         do_action(i: number): boolean;
+
         /**
          * Get the description of '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -4940,6 +5085,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the '`i`-th' invocable action.
          */
         get_action_description(i: number): string;
+
         /**
          * Get the keybindings for the `i`-th action invocable on an
          *      object implementing {@link Atspi.Action}, if any are defined.
@@ -4966,6 +5112,7 @@ export namespace Atspi {
          * @returns a UTF-8 string which can be parsed to determine the `i`-th       invocable action's keybindings.
          */
         get_key_binding(i: number): string;
+
         /**
          * Get the name of the '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -4973,11 +5120,13 @@ export namespace Atspi {
          * @returns the name of the action, as a UTF-8 string.
          */
         get_localized_name(i: number): string;
+
         /**
          * Get the number of actions invokable on an {@link Atspi.Action} implementor.
          * @returns an integer indicating the number of invocable actions.
          */
         get_n_actions(): number;
+
         /**
          * Get the name of the '`i`-th' action invocable on an
          *      object implementing {@link Atspi.Action}.
@@ -4987,14 +5136,17 @@ export namespace Atspi {
         get_action_name(i: number): string;
     }
 
+
     export const Action: ActionNamespace & {
         new (): Action; // This allows `obj instanceof Action`
     };
 
     namespace Collection {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CollectionNamespace {
@@ -5005,12 +5157,13 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Collection extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * @returns The active descendant of the given object. Not yet implemented.
          */
         get_active_descendant(): Accessible;
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection` matching a given
          * `rule`.
@@ -5021,6 +5174,7 @@ export namespace Atspi {
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule.
          */
         get_matches(rule: MatchRule, sortby: CollectionSortOrder, count: number, traverse: boolean): Accessible[];
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection`, before
          * `current_object`, matching a given `rule`.
@@ -5032,14 +5186,8 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule that preceed          `current_object`.
          */
-        get_matches_from(
-            current_object: Accessible,
-            rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
-            count: number,
-            traverse: boolean,
-        ): Accessible[];
+        get_matches_from(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, count: number, traverse: boolean): Accessible[];
+
         /**
          * Gets all {@link Atspi.Accessible} objects from the `collection`, after
          * `current_object`, matching a given `rule`.
@@ -5052,30 +5200,26 @@ export namespace Atspi {
          * @param traverse Not supported.
          * @returns All          {@link Atspi.Accessible} objects matching the given match rule after          `current_object`.
          */
-        get_matches_to(
-            current_object: Accessible,
-            rule: MatchRule,
-            sortby: CollectionSortOrder,
-            tree: CollectionTreeTraversalType,
-            limit_scope: boolean,
-            count: number,
-            traverse: boolean,
-        ): Accessible[];
+        get_matches_to(current_object: Accessible, rule: MatchRule, sortby: CollectionSortOrder, tree: CollectionTreeTraversalType, limit_scope: boolean, count: number, traverse: boolean): Accessible[];
+
         /**
          * Not yet implemented.
-         * @param test
+         * @param test 
          */
         is_ancestor_of(test: Accessible): boolean;
     }
+
 
     export const Collection: CollectionNamespace & {
         new (): Collection; // This allows `obj instanceof Collection`
     };
 
     namespace Component {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ComponentNamespace {
@@ -5086,8 +5230,8 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Component extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Queries whether a given {@link Atspi.Component} contains a particular point.
          * @param x a `gint` specifying the x coordinate in question.
@@ -5096,6 +5240,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified component contains the point (`x`, `y`),          `FALSE` otherwise.
          */
         contains(x: number, y: number, ctype: CoordType): boolean;
+
         /**
          * Gets the accessible child at a given coordinate within an {@link Atspi.Component}.
          * @param x a `gint` specifying the x coordinate of the point in question.
@@ -5103,12 +5248,14 @@ export namespace Atspi {
          * @param ctype the coordinate system of the point (`x`, `y`)         (e.g. ATSPI_COORD_TYPE_WINDOW, ATSPI_COORD_TYPE_SCREEN).
          * @returns a pointer to an          {@link Atspi.Accessible} child of the specified component which          contains the point (`x`, `y`), or NULL if no child contains          the point.
          */
-        get_accessible_at_point(x: number, y: number, ctype: CoordType): Accessible | null;
+        get_accessible_at_point(x: number, y: number, ctype: CoordType): (Accessible | null);
+
         /**
          * Gets the opacity/alpha value of a component, if alpha blending is in use.
          * @returns the opacity value of a component, as a `gdouble` between 0.0 and 1.0.
          */
         get_alpha(): number;
+
         /**
          * Gets the bounding box of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -5117,18 +5264,21 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} giving the accessible's extents.
          */
         get_extents(ctype: CoordType): Rect;
+
         /**
          * Queries which layer the component is painted into, to help determine its
          *      visibility in terms of stacking order.
          * @returns the {@link Atspi.ComponentLayer} into which this component is painted.
          */
         get_layer(): ComponentLayer;
+
         /**
          * Queries the z stacking order of a component which is in the MDI or window
          *       layer. (Bigger z-order numbers mean nearer the top)
          * @returns a `gshort` indicating the stacking order of the component       in the MDI layer, or -1 if the component is not in the MDI layer.
          */
         get_mdi_z_order(): number;
+
         /**
          * Gets the minimum x and y coordinates of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -5137,6 +5287,7 @@ export namespace Atspi {
          * @returns An {@link Atspi.Point} giving the `obj`'s position.
          */
         get_position(ctype: CoordType): Point;
+
         /**
          * Gets the size of the specified {@link Atspi.Component}.
          * The returned values are meaningful only if the Component has both
@@ -5144,12 +5295,14 @@ export namespace Atspi {
          * @returns An {@link Atspi.Point} giving the `obj`'s size.
          */
         get_size(): Point;
+
         /**
          * Attempts to set the keyboard input focus to the specified
          *         {@link Atspi.Component}.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Component} object so it becomes
          * visible on the screen.
@@ -5157,6 +5310,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_to(type: ScrollType): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Component} object so it becomes
          * visible on the screen at a given position.
@@ -5166,6 +5320,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Moves and resizes the specified component.
          * @param x the new vertical position to which the component should be moved.
@@ -5176,6 +5331,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_extents(x: number, y: number, width: number, height: number, ctype: CoordType): boolean;
+
         /**
          * Moves the component to the specified position.
          * @param x the new vertical position to which the component should be moved.
@@ -5184,6 +5340,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful; `FALSE` otherwise.
          */
         set_position(x: number, y: number, ctype: CoordType): boolean;
+
         /**
          * Resizes the specified component to the given coordinates.
          * @param width the width to which the component should be resized.
@@ -5193,14 +5350,17 @@ export namespace Atspi {
         set_size(width: number, height: number): boolean;
     }
 
+
     export const Component: ComponentNamespace & {
         new (): Component; // This allows `obj instanceof Component`
     };
 
     namespace Document {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentNamespace {
@@ -5211,31 +5371,35 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Document extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Gets the value of a single attribute, if specified for the document as a whole.
          * @param attribute a string indicating the name of a specific attribute.
          * @returns a string corresponding to the value of the specified attribute, or an empty string if the attribute is unspecified for the object.
          */
         get_document_attribute_value(attribute: string): string;
+
         /**
          * Gets all constant attributes for the document as a whole. For attributes
          * that change within the document content, see `atspi_text_get_attribute_run` instead.
          * @returns a {@link GLib.HashTable}          containing the constant attributes of the document, as name-value pairs.
          */
         get_document_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Gets the current page number of an `AccessibleDocument` object.
          * @returns a `gint` indicating the current page number in the `AccessibleDocument` object.
          */
         get_current_page_number(): number;
+
         /**
          * Gets the locale associated with the document's content,
          * e.g. the locale for LOCALE_TYPE_MESSAGES.
          * @returns a string compliant with the POSIX standard for locale description.
          */
         get_locale(): string;
+
         /**
          * Gets the page count of an `AccessibleDocument` object.
          * @returns a `gint` indicating the page count of an `AccessibleDocument` object.
@@ -5243,14 +5407,17 @@ export namespace Atspi {
         get_page_count(): number;
     }
 
+
     export const Document: DocumentNamespace & {
         new (): Document; // This allows `obj instanceof Document`
     };
 
     namespace EditableText {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface EditableTextNamespace {
@@ -5261,37 +5428,40 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface EditableText extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Copies text from an {@link Atspi.EditableText} object into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_paste_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to copy.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be copied.
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         copy_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Deletes text from an {@link Atspi.EditableText} object, copying the
          *       excised portion into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_paste_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to cut.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be cut.
          * @returns `TRUE` if operation was successful, `FALSE` otherwise.
          */
         cut_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Deletes text from an {@link Atspi.EditableText} object, without copying the
          *       excised portion into the system clipboard.
-         *
+         * 
          * see: `atspi_editable_text_cut_text`
          * @param start_pos a `gint` indicating the starting character offset       of the text to delete.
          * @param end_pos a `gint` indicating the offset of the first character       past the end of the text section to be deleted.
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         delete_text(start_pos: number, end_pos: number): boolean;
+
         /**
          * Inserts text into an {@link Atspi.EditableText} object.
          * As with all character offsets, the specified `position` may not be the
@@ -5303,6 +5473,7 @@ export namespace Atspi {
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         insert_text(position: number, text: string, length: number): boolean;
+
         /**
          * Inserts text from the system clipboard into an {@link Atspi.EditableText} object.
          * As with all character offsets, the specified `position` may not be the
@@ -5312,6 +5483,7 @@ export namespace Atspi {
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          */
         paste_text(position: number): boolean;
+
         /**
          * Replace the entire text contents of an {@link Atspi.EditableText} object.
          * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the {@link Atspi.EditableText} object.
@@ -5320,14 +5492,17 @@ export namespace Atspi {
         set_text_contents(new_contents: string): boolean;
     }
 
+
     export const EditableText: EditableTextNamespace & {
         new (): EditableText; // This allows `obj instanceof EditableText`
     };
 
     namespace Hypertext {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface HypertextNamespace {
@@ -5338,14 +5513,15 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Hypertext extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Gets the {@link Atspi.Hyperlink} object at a specified index.
          * @param link_index a (zero-index) `gint` indicating which hyperlink to query.
          * @returns the {@link Atspi.Hyperlink} object          specified by `link_index`.
          */
-        get_link(link_index: number): Hyperlink | null;
+        get_link(link_index: number): (Hyperlink | null);
+
         /**
          * Gets the index of the {@link Atspi.Hyperlink} object at a specified
          *        character offset.
@@ -5353,6 +5529,7 @@ export namespace Atspi {
          * @returns the linkIndex of the {@link Atspi.Hyperlink} active at        character offset `character_offset`, or -1 if there is        no hyperlink at the specified character offset.
          */
         get_link_index(character_offset: number): number;
+
         /**
          * Gets the total number of {@link Atspi.Hyperlink} objects that an
          * {@link Atspi.Hypertext} implementor has.
@@ -5361,14 +5538,17 @@ export namespace Atspi {
         get_n_links(): number;
     }
 
+
     export const Hypertext: HypertextNamespace & {
         new (): Hypertext; // This allows `obj instanceof Hypertext`
     };
 
     namespace Image {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ImageNamespace {
@@ -5379,13 +5559,14 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Image extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Gets the description of the image displayed in an {@link Atspi.Image} object.
          * @returns a UTF-8 string describing the image.
          */
         get_image_description(): string;
+
         /**
          * Gets the bounding box of the image displayed in a
          *         specified {@link Atspi.Image} implementor.
@@ -5395,11 +5576,13 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Rect} corresponding to the image's bounding box. The minimum x and y coordinates, width, and height are specified.
          */
         get_image_extents(ctype: CoordType): Rect;
+
         /**
          * Gets the locale associated with an image and its textual representation.
          * @returns A POSIX LC_MESSAGES-style locale value for image description and text.
          */
         get_image_locale(): string;
+
         /**
          * Gets the minimum x and y coordinates of the image displayed in a
          *         specified {@link Atspi.Image} implementor.
@@ -5409,6 +5592,7 @@ export namespace Atspi {
          * @returns a pointer to an {@link Atspi.Point} where x and y correspond to the minimum coordinates of the displayed image.
          */
         get_image_position(ctype: CoordType): Point;
+
         /**
          * Gets the size of the image displayed in a specified {@link Atspi.Image} object.
          * The returned values are meaningful only if the Image has both
@@ -5418,14 +5602,17 @@ export namespace Atspi {
         get_image_size(): Point;
     }
 
+
     export const Image: ImageNamespace & {
         new (): Image; // This allows `obj instanceof Image`
     };
 
     namespace Selection {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SelectionNamespace {
@@ -5436,24 +5623,26 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Selection extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Clears the current selection, removing all selected children from the
          *       specified {@link Atspi.Selection} implementor's selection list.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         clear_selection(): boolean;
+
         /**
          * Deselects a specific child of an {@link Atspi.Selection}.
          *          Note that `child_index` is the index of the child
          *          in the parent container.
-         *
+         * 
          * See `atspi_selection_deselect_selected_child`
          * @param child_index a `gint` indicating which of the children              of the {@link Atspi.Accessible} is to be de-selected.
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_child(child_index: number): boolean;
+
         /**
          * Removes a child from the selected children list of an {@link Atspi.Selection}.
          *          Note that `child_index` is the index in the selected-children list,
@@ -5464,12 +5653,14 @@ export namespace Atspi {
          * @returns `TRUE` if the child was successfully deselected, `FALSE` otherwise.
          */
         deselect_selected_child(selected_child_index: number): boolean;
+
         /**
          * Gets the number of children of an {@link Atspi.Selection} implementor which are
          *        currently selected.
          * @returns a `gint` indicating the number of {@link Atspi.Accessible} children        of the {@link Atspi.Selection} implementor which are currently selected.
          */
         get_n_selected_children(): number;
+
         /**
          * Gets the i-th selected {@link Atspi.Accessible} child of an {@link Atspi.Selection}.
          *      Note that `selected_child_index` refers to the index in the list
@@ -5483,6 +5674,7 @@ export namespace Atspi {
          * @returns a pointer to a selected {@link Atspi.Accessible} child          object, specified by `selected_child_index`.
          */
         get_selected_child(selected_child_index: number): Accessible;
+
         /**
          * Determines whether a particular child of an {@link Atspi.Selection} implementor
          *        is currently selected.  Note that `child_index` is the index into the
@@ -5491,12 +5683,14 @@ export namespace Atspi {
          * @returns `TRUE` if the specified child is currently selected,          `FALSE` otherwise.
          */
         is_child_selected(child_index: number): boolean;
+
         /**
          * Attempts to select all of the children of an {@link Atspi.Selection} implementor.
          * Not all {@link Atspi.Selection} implementors support this operation.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         select_all(): boolean;
+
         /**
          * Adds a child to the selected children list of an {@link Atspi.Selection}.
          *         For {@link Atspi.Selection} implementors that only allow
@@ -5508,14 +5702,17 @@ export namespace Atspi {
         select_child(child_index: number): boolean;
     }
 
+
     export const Selection: SelectionNamespace & {
         new (): Selection; // This allows `obj instanceof Selection`
     };
 
     namespace Table {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TableNamespace {
@@ -5526,8 +5723,8 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Table extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Selects the specified column, adding it to the current column selection.
          * Not all tables support column selection.
@@ -5535,6 +5732,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column was successfully selected, `FALSE` if not.
          */
         add_column_selection(column: number): boolean;
+
         /**
          * Selects the specified row, adding it to the current row selection.
          * Not all tables support row selection.
@@ -5542,6 +5740,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified row was successfully selected, `FALSE` if not.
          */
         add_row_selection(row: number): boolean;
+
         /**
          * Gets the table cell at the specified row and column indices.
          * To get the accessible object at a particular (x, y) screen
@@ -5551,20 +5750,23 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} object representing the          specified table cell.
          */
         get_accessible_at(row: number, column: number): Accessible;
+
         /**
          * Gets an accessible representation of the caption for an {@link Atspi.Table}.
          * @returns an {@link Atspi.Accessible} object that serves as the table's caption.
          */
         get_caption(): Accessible;
+
         /**
          * Gets the table column index occupied by the child at a particular 1-D
          * child index.
-         *
+         * 
          * `see` `atspi_table_get_index_at`, `atspi_table_get_row_at_index`
          * @param index the specified child index, zero-indexed.
          * @returns a `gint` indicating the first column spanned by the child of a          table, at the specified 1-D (zero-offset) `index`.
          */
         get_column_at_index(index: number): number;
+
         /**
          * Gets a text description of a particular table column.  This differs from
          * `atspi_table_get_column_header`, which returns an {@link Atspi.Accessible}.
@@ -5572,6 +5774,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the specified table column, if available.
          */
         get_column_description(column: number): string;
+
         /**
          * Gets the number of columns spanned by the table cell at the specific
          * row and column (some tables can have cells which span multiple
@@ -5583,6 +5786,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of columns spanned by the specified cell.
          */
         get_column_extent_at(row: number, column: number): number;
+
         /**
          * Gets the header associated with a table column, if available.
          * This differs from `atspi_table_get_column_description`, which
@@ -5591,17 +5795,19 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} representation of the          specified table column, if available.
          */
         get_column_header(column: number): Accessible;
+
         /**
          * Gets the 1-D child index corresponding to the specified 2-D row and
          * column indices. To get the accessible object at a particular (x, y) screen
          * coordinate, use `atspi_component_get_accessible_at_point`.
-         *
+         * 
          * `see` `atspi_table_get_row_at_index`, `atspi_table_get_column_at_index`
          * @param row the specified table row, zero-indexed.
          * @param column the specified table column, zero-indexed.
          * @returns a `gint` which serves as the index of a specified cell in the          table, in a form usable by `atspi_get_child_at_index`.
          */
         get_index_at(row: number, column: number): number;
+
         /**
          * Gets the number of columns in an {@link Atspi.Table},
          *        exclusive of any columns that are programmatically hidden, but inclusive
@@ -5609,6 +5815,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of columns in the table.
          */
         get_n_columns(): number;
+
         /**
          * Gets the number of rows in an {@link Atspi.Table},
          *        exclusive of any rows that are programmatically hidden, but inclusive
@@ -5616,27 +5823,31 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of rows in the table.
          */
         get_n_rows(): number;
+
         /**
          * Queries a table to find out how many columns are currently selected.
          * Not all tables support column selection.
          * @returns a `gint` indicating the number of columns currently selected.
          */
         get_n_selected_columns(): number;
+
         /**
          * Query a table to find out how many rows are currently selected.
          * Not all tables support row selection.
          * @returns a `gint` indicating the number of rows currently selected.
          */
         get_n_selected_rows(): number;
+
         /**
          * Gets the table row index occupied by the child at a particular 1-D
          * child index.
-         *
+         * 
          * `see` `atspi_table_get_index_at`, `atspi_table_get_column_at_index`
          * @param index the specified child index, zero-indexed.
          * @returns a `gint` indicating the first row spanned by the child of a          table, at the specified 1-D (zero-offset) `index`.
          */
         get_row_at_index(index: number): number;
+
         /**
          * Given a child index, determines the row and column indices and
          * extents, and whether the cell is currently selected.  If
@@ -5644,17 +5855,17 @@ export namespace Atspi {
          * a summary, caption, etc.), `FALSE` is returned.
          * The returned values are meaningful only if the Table has both
          * STATE_VISIBLE and STATE_SHOWING.
-         *
+         * 
          * Example:
          * If the {@link Atspi.Table} child at index '6' extends across columns 5 and 6 of
          * row 2 of an {@link Atspi.Table} instance, and is currently selected, then
-         *
+         * 
          * retval = atspi_table_get_row_column_extents_at_index (table, 6,
          *                                             row, col,
          *                                             row_extents,
          *                                             col_extents,
          *                                             is_selected);
-         *
+         * 
          * will return `TRUE`, and after the call
          * row, col, row_extents, col_extents,
          * and is_selected will contain 2, 5, 1, 2, and
@@ -5663,6 +5874,7 @@ export namespace Atspi {
          * @returns `TRUE` if the index is associated with a valid table cell, `FALSE` if the index does not correspond to a cell.  If `FALSE` is returned, the values of the out parameters are undefined.
          */
         get_row_column_extents_at_index(index: number): [boolean, number, number, number, number, boolean];
+
         /**
          * Gets a text description of a particular table row.  This differs from
          * `atspi_table_get_row_header`, which returns an {@link Atspi.Accessible}.
@@ -5670,6 +5882,7 @@ export namespace Atspi {
          * @returns a UTF-8 string describing the specified table row, if available.
          */
         get_row_description(row: number): string;
+
         /**
          * Gets the number of rows spanned by the table cell at the specific row
          * and column. (some tables can have cells which span multiple rows
@@ -5681,6 +5894,7 @@ export namespace Atspi {
          * @returns a `gint` indicating the number of rows spanned by the specified cell.
          */
         get_row_extent_at(row: number, column: number): number;
+
         /**
          * Gets the header associated with a table row, if available. This differs from
          * `atspi_table_get_row_description`, which returns a string.
@@ -5688,22 +5902,26 @@ export namespace Atspi {
          * @returns an {@link Atspi.Accessible} representation of the specified          table row, if available.
          */
         get_row_header(row: number): Accessible;
+
         /**
          * Queries a table for a list of indices of columns which are currently
          * selected.
          * @returns an array of `gint` values,          specifying which columns are currently selected.
          */
         get_selected_columns(): number[];
+
         /**
          * Queries a table for a list of indices of rows which are currently selected.
          * @returns an array of `gint` values,          specifying which rows are currently selected.
          */
         get_selected_rows(): number[];
+
         /**
          * Gets an accessible object which summarizes the contents of an {@link Atspi.Table}.
          * @returns an {@link Atspi.Accessible} object that serves as the          table's summary (often a reduced {@link Atspi.Table}).
          */
         get_summary(): Accessible;
+
         /**
          * Determines whether specified table column is selected.
          * Not all tables support column selection.
@@ -5711,6 +5929,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column is currently selected, `FALSE` if not.
          */
         is_column_selected(column: number): boolean;
+
         /**
          * Determines whether a table row is selected.  Not all tables support
          * row selection.
@@ -5718,6 +5937,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified row is currently selected, `FALSE` if not.
          */
         is_row_selected(row: number): boolean;
+
         /**
          * Determines whether the cell at a specific row and column is selected.
          * @param row the zero-indexed row of the cell being queried.
@@ -5725,6 +5945,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified cell is currently selected, `FALSE` if not.
          */
         is_selected(row: number, column: number): boolean;
+
         /**
          * De-selects the specified column, removing it from the current column
          * selection.
@@ -5733,6 +5954,7 @@ export namespace Atspi {
          * @returns `TRUE` if the specified column was successfully de-selected, `FALSE` if not.
          */
         remove_column_selection(column: number): boolean;
+
         /**
          * De-selects the specified row, removing it from the current row selection.
          * Not all tables support row selection.
@@ -5742,14 +5964,17 @@ export namespace Atspi {
         remove_row_selection(row: number): boolean;
     }
 
+
     export const Table: TableNamespace & {
         new (): Table; // This allows `obj instanceof Table`
     };
 
     namespace TableCell {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TableCellNamespace {
@@ -5760,14 +5985,16 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface TableCell extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtspiAccessibles representing the column header cells.
          */
         get_column_header_cells(): Accessible[];
+
         get_column_index(): number;
+
         /**
          * Returns the number of columns occupied by this cell accessible.
          * The returned values are meaningful only if the table cell has both
@@ -5775,22 +6002,26 @@ export namespace Atspi {
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_column_span(): number;
+
         /**
          * Retrieves the tabular position of this cell.
          * @returns TRUE if successful, FALSE otherwise.
          */
         get_position(): [number, number, number];
+
         /**
          * Gets the row and column indexes and extents of this cell accessible.
          * The returned values are meaningful only if the table cell has both
          * STATE_VISIBLE and STATE_SHOWING.
          */
         get_row_column_span(): [number, number, number, number];
+
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtspiAccessibles representing the row header cells.
          */
         get_row_header_cells(): Accessible[];
+
         /**
          * Returns the number of rows occupied by this cell accessible.
          * The returned values are meaningful only if the table cell has both
@@ -5798,6 +6029,7 @@ export namespace Atspi {
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
          */
         get_row_span(): number;
+
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the AtspiAccessible for the containing table.
@@ -5805,14 +6037,17 @@ export namespace Atspi {
         get_table(): Accessible;
     }
 
+
     export const TableCell: TableCellNamespace & {
         new (): TableCell; // This allows `obj instanceof TableCell`
     };
 
     namespace Text {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface TextNamespace {
@@ -5823,8 +6058,8 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Text extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Selects some text (adds a text selection) in an {@link Atspi.Text} object.
          * @param start_offset the starting offset of the desired new selection.
@@ -5832,6 +6067,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         add_selection(start_offset: number, end_offset: number): boolean;
+
         /**
          * Gets a set of attributes applied to a range of text from an {@link Atspi.Text} object, optionally
          * including its 'default' attributes.
@@ -5840,13 +6076,15 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable} with attributes          defined at the indicated offset, optionally including the 'default' ones.
          */
         get_attribute_run(offset: number, include_defaults: boolean): [GLib.HashTable<string, string>, number, number];
+
         /**
          * Gets the value of a named attribute at a given offset.
          * @param offset The character offset at which to query the attribute.
          * @param attribute_name The attribute to query.
          * @returns the value of a given attribute at the given offset, or `null` if not present.
          */
-        get_text_attribute_value(offset: number, attribute_name: string): string | null;
+        get_text_attribute_value(offset: number, attribute_name: string): (string | null);
+
         /**
          * Gets the attributes applied to a range of text from an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
@@ -5856,6 +6094,7 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable} describing the attributes at the given character offset.
          */
         get_text_attributes(offset: number): [GLib.HashTable<string, string>, number, number];
+
         /**
          * Gets the ranges of text from an {@link Atspi.Text} object which lie within the
          *          bounds defined by (`x`, `y`) and (`x`+`width`, `y`+`height`).
@@ -5868,31 +6107,27 @@ export namespace Atspi {
          * @param clipTypeY an {@link Atspi.TextClipType} indicating how to treat characters that        intersect the bounding box's y extents.
          * @returns a null-terminated list of          pointers to {@link Atspi.TextRange} structs detailing the bounded text.
          */
-        get_bounded_ranges(
-            x: number,
-            y: number,
-            width: number,
-            height: number,
-            type: CoordType,
-            clipTypeX: TextClipType,
-            clipTypeY: TextClipType,
-        ): TextRange[];
+        get_bounded_ranges(x: number, y: number, width: number, height: number, type: CoordType, clipTypeX: TextClipType, clipTypeY: TextClipType): TextRange[];
+
         /**
          * Gets the current offset of the text caret in an {@link Atspi.Text} object.
          * @returns a `gint` indicating the current position of the text caret.
          */
         get_caret_offset(): number;
+
         /**
          * Gets the character at a given offset for an {@link Atspi.Text} object.
          * @param offset a `gint` indicating the text offset where the desired          character is located.
          * @returns a `guint`  representing the        UCS-4 unicode code point of the given character, or        0xFFFFFFFF if the character in question cannot be represented        in the UCS-4 encoding.
          */
         get_character_at_offset(offset: number): number;
+
         /**
          * Gets the character count of an `AccessibleText` object.
          * @returns a `gint` indicating the total number of              characters in the `AccessibleText` object.
          */
         get_character_count(): number;
+
         /**
          * Gets a bounding box containing the glyph representing
          *        the character at a particular text offset.
@@ -5903,6 +6138,7 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} specifying the position and size of the character.
          */
         get_character_extents(offset: number, type: CoordType): Rect;
+
         /**
          * Gets the default attributes applied to an {@link Atspi.Text}
          * object. The text attributes correspond to CSS attributes
@@ -5912,12 +6148,14 @@ export namespace Atspi {
          * @returns a {@link GLib.HashTable}          containing the default attributes applied to a text object,          (exclusive of explicitly-set attributes), encoded as UTF-8.
          */
         get_default_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Gets the number of active non-contiguous selections for an
          *          {@link Atspi.Text} object.
          * @returns a `gint` indicating the current          number of non-contiguous text selections active          within an {@link Atspi.Text} object.
          */
         get_n_selections(): number;
+
         /**
          * Gets the character offset into the text at a given point.
          * @param x the x coordinate of the point to be queried.
@@ -5926,6 +6164,7 @@ export namespace Atspi {
          * @returns the offset (as a `gint`) at the point (`x`, `y`)       in the specified coordinate system.
          */
         get_offset_at_point(x: number, y: number, type: CoordType): number;
+
         /**
          * Gets the bounding box for text within a range in an  {@link Atspi.Text} object.
          * The returned values are meaningful only if the Text has both
@@ -5936,40 +6175,42 @@ export namespace Atspi {
          * @returns An {@link Atspi.Rect} giving the position and size of the specified range          of text.
          */
         get_range_extents(start_offset: number, end_offset: number, type: CoordType): Rect;
+
         /**
          * Gets the bounds of the `selection_num`-th active text selection for an
          *         {@link Atspi.Text} object.
          * @param selection_num a `gint` indicating which selection to query.
          */
         get_selection(selection_num: number): Range;
+
         /**
          * Gets a portion of the text exposed through an {@link Atspi.Text} according to a given `offset`
          * and a specific `granularity`, along with the start and end offsets defining the
          * boundaries of such a portion of text.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_CHAR the character at the
          * offset is returned.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_WORD the returned string
          * is from the word start at or before the offset to the word start after
          * the offset.
-         *
+         * 
          * The returned string will contain the word at the offset if the offset
          * is inside a word and will contain the word before the offset if the
          * offset is not inside a word.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_SENTENCE the returned string
          * is from the sentence start at or before the offset to the sentence
          * start after the offset.
-         *
+         * 
          * The returned string will contain the sentence at the offset if the offset
          * is inside a sentence and will contain the sentence before the offset
          * if the offset is not inside a sentence.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_LINE the returned string
          * is from the line start at or before the offset to the line
          * start after the offset.
-         *
+         * 
          * If `granularity` is ATSPI_TEXT_GRANULARITY_PARAGRAPH the returned string
          * is from the start of the paragraph at or before the offset to the start
          * of the following paragraph after the offset.
@@ -5978,6 +6219,7 @@ export namespace Atspi {
          * @returns a newly allocated string containing the text at the `offset` bounded   by the specified `granularity`. Use `g_free()` to free the returned string.   Returns `null` if the offset is invalid or no implementation is available.
          */
         get_string_at_offset(offset: number, granularity: TextGranularity): TextRange;
+
         /**
          * Gets a range of text from an {@link Atspi.Text} object.  The number of bytes
          *          in the returned string may exceed either end_offset or start_offset, since
@@ -5987,6 +6229,7 @@ export namespace Atspi {
          * @returns a text string containing characters from `start_offset`          to `end_offset`-1, inclusive, encoded as UTF-8.
          */
         get_text(start_offset: number, end_offset: number): string;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which follows a given
          *          text offset.
@@ -5995,6 +6238,7 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are after or          inclusive of the current offset, or an empty string if no such          text exists.
          */
         get_text_after_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which includes a given
          *          text offset.
@@ -6003,6 +6247,7 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, whose delimiting boundaries bracket the          current offset, or an empty string if no such text exists.
          */
         get_text_at_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * Gets delimited text from an {@link Atspi.Text} object which precedes a given
          *          text offset.
@@ -6011,12 +6256,14 @@ export namespace Atspi {
          * @returns an {@link Atspi.TextRange} containing a UTF-8 string representing the          delimited text, both of whose delimiting boundaries are before the          current offset, or an empty string if no such text exists.
          */
         get_text_before_offset(offset: number, type: TextBoundaryType): TextRange;
+
         /**
          * De-selects a text selection.
          * @param selection_num a `gint` indicating which text selection to remove.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         remove_selection(selection_num: number): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Text} text range so it becomes
          * visible on the screen.
@@ -6026,6 +6273,7 @@ export namespace Atspi {
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
+
         /**
          * Scrolls whatever container of the {@link Atspi.Text} text range so it becomes
          * visible on the screen at a given position.
@@ -6036,19 +6284,15 @@ export namespace Atspi {
          * @param y the y coordinate of the point to reach
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
-        scroll_substring_to_point(
-            start_offset: number,
-            end_offset: number,
-            coords: CoordType,
-            x: number,
-            y: number,
-        ): boolean;
+        scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
+
         /**
          * Moves the text caret to a given position.
          * @param new_offset the offset to which the text caret is to be moved.
          * @returns `TRUE` if successful, `FALSE` otherwise.
          */
         set_caret_offset(new_offset: number): boolean;
+
         /**
          * Changes the bounds of an existing {@link Atspi.Text} text selection.
          * @param selection_num a zero-offset index indicating which text selection to modify.
@@ -6059,14 +6303,17 @@ export namespace Atspi {
         set_selection(selection_num: number, start_offset: number, end_offset: number): boolean;
     }
 
+
     export const Text: TextNamespace & {
         new (): Text; // This allows `obj instanceof Text`
     };
 
     namespace Value {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ValueNamespace {
@@ -6077,34 +6324,39 @@ export namespace Atspi {
      * @gir-type Interface
      */
     interface Value extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Gets the current value for an {@link Atspi.Value}.
          * @returns the current value for this object.
          */
         get_current_value(): number;
+
         /**
          * Gets the maximum allowed value for an {@link Atspi.Value}.
          * @returns the maximum allowed value for this object.
          */
         get_maximum_value(): number;
+
         /**
          * Gets the minimum increment by which an {@link Atspi.Value} can be adjusted.
          * @returns the minimum increment by which the value may be changed, or zero if the minimum increment cannot be determined.
          */
         get_minimum_increment(): number;
+
         /**
          * Gets the minimum allowed value for an {@link Atspi.Value}.
          * @returns the minimum allowed value for this object.
          */
         get_minimum_value(): number;
+
         /**
          * Gets the human readable text alternative associated with the value.
          * `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
          */
         get_text(): string;
+
         /**
          * Sets the current value of an {@link Atspi.Value}.
          * @param new_value a `gdouble` value which is the desired new value of the object.
@@ -6112,6 +6364,7 @@ export namespace Atspi {
          */
         set_current_value(new_value: number): boolean;
     }
+
 
     export const Value: ValueNamespace & {
         new (): Value; // This allows `obj instanceof Value`
@@ -6121,27 +6374,33 @@ export namespace Atspi {
      * @gir-type Alias
      */
     type ControllerEventMask = number;
+
     /**
      * @gir-type Alias
      */
     type DeviceEventMask = number;
+
     /**
      * @gir-type Alias
      */
     type KeyEventMask = number;
+
     /**
      * @gir-type Alias
      */
     type KeyMaskType = number;
+
     /**
      * @gir-type Alias
      */
     type KeystrokeListener = void;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

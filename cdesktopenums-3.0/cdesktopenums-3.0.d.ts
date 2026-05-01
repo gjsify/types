@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace CDesktopEnums {
+
     /**
      * CDesktopEnums-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -25,6 +28,7 @@ export namespace CDesktopEnums {
         VERTICAL,
         HORIZONTAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -39,6 +43,7 @@ export namespace CDesktopEnums {
         SPANNED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -47,6 +52,7 @@ export namespace CDesktopEnums {
         DISABLED,
         DISABLED_ON_EXTERNAL_MOUSE,
     }
+
 
     /**
      * @gir-type Enum
@@ -57,6 +63,7 @@ export namespace CDesktopEnums {
         MOUSE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -64,6 +71,7 @@ export namespace CDesktopEnums {
         SMART,
         STRICT,
     }
+
 
     /**
      * @gir-type Enum
@@ -75,6 +83,7 @@ export namespace CDesktopEnums {
         VERTICAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -84,6 +93,7 @@ export namespace CDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
 
     /**
      * @gir-type Enum
@@ -96,6 +106,7 @@ export namespace CDesktopEnums {
         LEFT_HALF,
         RIGHT_HALF,
     }
+
 
     /**
      * @gir-type Enum
@@ -158,6 +169,7 @@ export namespace CDesktopEnums {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -168,6 +180,7 @@ export namespace CDesktopEnums {
         DOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -175,6 +188,7 @@ export namespace CDesktopEnums {
         WINDOW,
         GESTURE,
     }
+
 
     /**
      * @gir-type Enum
@@ -184,6 +198,7 @@ export namespace CDesktopEnums {
         ACTIVE_SCREEN,
         FIXED_SCREEN,
     }
+
 
     /**
      * @gir-type Enum
@@ -195,6 +210,7 @@ export namespace CDesktopEnums {
         KEYBINDING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -203,6 +219,7 @@ export namespace CDesktopEnums {
         FLAT,
         ADAPTIVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -213,6 +230,7 @@ export namespace CDesktopEnums {
         AUTO,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -221,6 +239,7 @@ export namespace CDesktopEnums {
         RANDOM,
         SINGLE,
     }
+
 
     /**
      * @gir-type Enum
@@ -234,6 +253,7 @@ export namespace CDesktopEnums {
         DISABLED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -241,6 +261,7 @@ export namespace CDesktopEnums {
         ABSOLUTE,
         RELATIVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -258,6 +279,7 @@ export namespace CDesktopEnums {
         MENU,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -267,6 +289,7 @@ export namespace CDesktopEnums {
         NONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -274,6 +297,7 @@ export namespace CDesktopEnums {
         SMALL,
         LARGE,
     }
+
 
     /**
      * @gir-type Enum
@@ -285,6 +309,7 @@ export namespace CDesktopEnums {
         TEXT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -295,6 +320,7 @@ export namespace CDesktopEnums {
         FINGERS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -304,6 +330,7 @@ export namespace CDesktopEnums {
         MOUSE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -312,11 +339,13 @@ export namespace CDesktopEnums {
         FRAME_FLASH,
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

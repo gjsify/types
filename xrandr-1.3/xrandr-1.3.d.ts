@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace xrandr {
+
     /**
      * xrandr-1.3
      */
+
 
     /**
      * @gir-type Struct
@@ -24,12 +27,14 @@ export namespace xrandr {
         static $gtype: GObject.GType<ScreenSize>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class ScreenChangeNotifyEvent {
         static $gtype: GObject.GType<ScreenChangeNotifyEvent>;
     }
+
 
     /**
      * @gir-type Struct
@@ -38,12 +43,14 @@ export namespace xrandr {
         static $gtype: GObject.GType<NotifyEvent>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class ScreenResources {
         static $gtype: GObject.GType<ScreenResources>;
     }
+
 
     /**
      * @gir-type Struct
@@ -52,12 +59,14 @@ export namespace xrandr {
         static $gtype: GObject.GType<OutputChangeNotifyEvent>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class CrtcChangeNotifyEvent {
         static $gtype: GObject.GType<CrtcChangeNotifyEvent>;
     }
+
 
     /**
      * @gir-type Struct
@@ -66,11 +75,13 @@ export namespace xrandr {
         static $gtype: GObject.GType<OutputPropertyNotifyEvent>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

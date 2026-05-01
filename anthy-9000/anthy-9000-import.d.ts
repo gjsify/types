@@ -1,3 +1,4 @@
+
 import type Anthy9000 from '@girs/anthy-9000';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

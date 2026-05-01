@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -21,73 +22,73 @@ declare namespace package {
      */
     interface PackageInitParams {
         /** The base name of the entry point (eg. org.foo.Bar.App) */
-        name: string;
+        name: string
         /** The version of the package */
-        version: string;
+        version: string
         /** The prefix of the package */
-        prefix: string;
+        prefix: string
         /**
          * The final datadir and libdir when installed;
          * usually, these would be prefix + '/share' and
          * and prefix + '/lib' (or '/lib64')
          */
-        libdir: string;
+        libdir: string
         /**
          * The final datadir and libdir when installed;
          * usually, these would be prefix + '/share' and
          * and prefix + '/lib' (or '/lib64')
          */
-        datadir?: string;
+        datadir?: string
     }
 
     /**
      * The base name of the entry point (eg. org.foo.Bar.App)
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const name: string;
+    export const name: string
     /**
      * The version of the package
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const version: string;
+    export const version: string
     /**
      * The prefix of the package
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const prefix: string;
+    export const prefix: string
     /**
      * The final datadir when installed; usually, these would be prefix + '/share'
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const datadir: string;
+    export const datadir: string
     /**
      * The final libdir when installed; usually, these would be prefix + '/lib' (or '/lib64')
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const libdir: string;
+    export const libdir: string
     /**
      * The final pkglibdir when installed; usually, this would be prefix + '/lib' (or '/lib64')
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const pkglibdir: string;
+    export const pkglibdir: string
     /**
      * The final moduledir when installed; usually, this would be prefix + '/lib' (or '/lib64')
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const moduledir: string;
+    export const moduledir: string
     /**
      * The directory containing gettext translation files; this will be datadir + '/locale' when installed and './po' in the source tree
-     *
+     * 
      * Note: Run `pkg.init()` before accessing this property.
      */
-    export const localedir: string;
+    export const localedir: string
 
     /**
      * Initialize directories and global variables. Must be called
@@ -196,25 +197,25 @@ declare namespace package {
     export function initGettext(): void;
     /**
      * Initializes string formatting capabilities by adding a format() method to String.prototype.
-     *
+     * 
      * After calling this method, you can use a printf-style string formatting by calling
      * the format() method on any string:
-     *
+     * 
      * @example
      * ```ts
      * pkg.initFormat();
-     *
+     * 
      * // Now you can use format() on any string
      * const name = "User";
      * const count = 5;
      * const formatted = "Hello %s, you have %d items".format(name, count);
      * // formatted = "Hello User, you have 5 items"
-     *
+     * 
      * // Format numbers with precision
      * const price = 10.5;
      * const priceStr = "Price: $%.2f".format(price);
      * // priceStr = "Price: $10.50"
-     *
+     * 
      * // Pad with zeros
      * const id = 42;
      * const idStr = "ID: %05d".format(id);
@@ -240,78 +241,78 @@ declare namespace package {
 
 declare namespace byteArray {
     export class ByteArray {
-        static get(target: any, property: string, receiver: any): any;
-        static set(target: any, property: string, value: any, receiver: any): boolean;
+        static get(target: any, property: string, receiver: any): any
+        static set(target: any, property: string, value: any, receiver: any): boolean
 
-        length: number;
-        protected _array: Uint8Array;
+        length: number
+        protected _array: Uint8Array
 
-        constructor(x: Uint8Array | number);
-        toString(encoding?: TextDecoderEncoding): string;
-        fromString(input: string, encoding?: TextDecoderEncoding): ByteArray;
-        toGBytes(): GLib.Bytes;
+        constructor(x: Uint8Array | number)
+        toString(encoding?: TextDecoderEncoding): string
+        fromString(input: string, encoding?: TextDecoderEncoding): ByteArray
+        toGBytes(): GLib.Bytes
     }
 
     /** @deprecated Use {@link TextEncoder.encode} instead */
-    export function fromString(input: string, encoding?: TextDecoderEncoding): Uint8Array;
+    export function fromString(input: string, encoding?: TextDecoderEncoding): Uint8Array
 
     /** @deprecated Use {@link GLib.Bytes.toArray} instead */
-    export function fromGBytes(input: GLib.Bytes): Uint8Array;
+    export function fromGBytes(input: GLib.Bytes): Uint8Array
 
     /** @deprecated Use {@link TextDecoder.decode} instead */
-    export function toString(x: Uint8Array, encoding?: TextDecoderEncoding): string;
+    export function toString(x: Uint8Array, encoding?: TextDecoderEncoding): string
 
     /** @deprecated Use {@link GLib.Bytes new GLib.Bytes() } instead */
-    export function toGBytes(x: Uint8Array): GLib.Bytes;
+    export function toGBytes(x: Uint8Array): GLib.Bytes
 
     /** @deprecated Use {@link ByteArray new ByteArray()} instead */
-    export function fromArray(array: Iterable<number>): ByteArray;
+    export function fromArray(array: Iterable<number>): ByteArray
 }
 
 declare namespace lang {
     // TODO: There is a lot more in Lang
-    export function Class(props: any): void;
+    export function Class(props: any): void
 }
 
 declare namespace format {
     /**
      * Formats a string using printf-style format specifiers.
-     *
+     * 
      * @param str The format string
      * @param args The arguments to be formatted
      * @returns The formatted string
      */
     export function vprintf(str: string, args: (string | number | boolean | null | undefined)[]): string;
-
+    
     /**
      * Prints a formatted string to the console.
      * Similar to C's printf function.
-     *
+     * 
      * @param fmt The format string
      * @param args The arguments to be formatted
      */
     export function printf(fmt: string, ...args: (string | number | boolean | null | undefined)[]): void;
-
+    
     /**
      * Formats a string with the given arguments.
      * This is the implementation that backs String.prototype.format
      * when pkg.initFormat() is called.
-     *
+     * 
      * Supported format specifiers:
      * - %s: Formats as a string
      * - %d: Formats as an integer
      * - %x: Formats as a hexadecimal number
      * - %f: Formats as a floating point number, optionally with precision (e.g. %.2f)
-     *
+     * 
      * All specifiers can be prefixed with a minimum field width, e.g. "%5s" will pad with spaces.
      * If the width is prefixed with '0', it will pad with zeroes instead of spaces.
-     *
+     * 
      * @example
      * ```ts
      * format.format("Hello %s, you have %d items", "User", 5);
      * // Returns: "Hello User, you have 5 items"
      * ```
-     *
+     * 
      * @param fmt The format string
      * @param args The arguments to format the string with
      * @returns The formatted string
@@ -320,15 +321,15 @@ declare namespace format {
 }
 
 declare namespace mainloop {
-    export function quit(name: string): void;
-    export function idle_source(handler: any, priority?: number): any;
-    export function idle_add(handler: any, priority?: number): any;
-    export function timeout_source(timeout: any, handler: any, priority?: number): any;
-    export function timeout_seconds_source(timeout: any, handler: any, priority?: number): any;
-    export function timeout_add(timeout: any, handler: any, priority?: number): any;
-    export function timeout_add_seconds(timeout: any, handler: any, priority?: number): any;
-    export function source_remove(id: any): any;
-    export function run(name: string): void;
+    export function quit(name: string): void
+    export function idle_source(handler: any, priority?: number): any
+    export function idle_add(handler: any, priority?: number): any
+    export function timeout_source(timeout: any, handler: any, priority?: number): any
+    export function timeout_seconds_source(timeout: any, handler: any, priority?: number): any
+    export function timeout_add(timeout: any, handler: any, priority?: number): any
+    export function timeout_add_seconds(timeout: any, handler: any, priority?: number): any
+    export function source_remove(id: any): any
+    export function run(name: string): void
 }
 
 /**
@@ -338,15 +339,15 @@ declare namespace mainloop {
  * @example
  * ```ts
  * const Signals = imports.signals;
- *
+ * 
  * // Define an interface with the same name of your class to make the methods known
  * interface Events extends Signals.Methods {}
- *
+ * 
  * class Events {}
  * Signals.addSignalMethods(Events.prototype);
- *
+ * 
  * const events = new Events();
- *
+ * 
  * // Typescript will not complain here
  * events.emit("test-signal", "test argument");
  * ```
@@ -355,13 +356,13 @@ export interface SignalMethods {
     /**
      * Connects a callback to a signal for an object. Pass the returned ID to
      * `disconnect()` to remove the handler.
-     *
+     * 
      * If `callback` returns `true`, emission will stop and no other handlers will be
      * invoked.
-     *
+     * 
      * > Warning: Unlike GObject signals, `this` within a signal callback will always
      * > refer to the global object (ie. `globalThis`).
-     *
+     * 
      * @param sigName A signal name
      * @param callback A callback function
      * @returns A handler ID
@@ -369,7 +370,7 @@ export interface SignalMethods {
     connect(sigName: string, callback: (self: any, ...args: any[]) => void): number;
     /**
      * Emits a signal for an object. Emission stops if a signal handler returns `true`.
-     *
+     * 
      * Unlike GObject signals, it is not necessary to declare signals or define their
      * signature. Simply call `emit()` with whatever signal name you wish, with
      * whatever arguments you wish.
@@ -385,7 +386,7 @@ export interface SignalMethods {
     /**
      * Disconnects all signal handlers for an object.
      */
-    disconnectAll(): void;
+    disconnectAll(): void
     /**
      * Checks if a handler ID is connected.
      * @param id The ID of the handler to be disconnected
@@ -399,6 +400,7 @@ declare namespace signals {
 }
 
 declare global {
+
     // https://gitlab.gnome.org/GNOME/gjs/-/blob/1.73.2/modules/esm/_encoding/encodingMap.js#L7-232
     type TextDecoderEncoding =
         | 'unicode-1-1-utf-8'
@@ -620,27 +622,27 @@ declare global {
         | 'unicode'
         | 'unicodefeff'
         | 'utf-16'
-        | 'utf-16le';
+        | 'utf-16le'
 
     interface GjsGiImports {
         // Will be extended by the import of more gir types
         versions: {
-            [namespace: string]: string;
-        };
+            [namespace: string]: string
+        }
     }
-
+    
     interface GjsImports {
-        gi: GjsGiImports;
-        lang: typeof lang;
-        system: typeof system;
-        signals: typeof signals;
-        package: typeof package;
-        mainloop: typeof mainloop;
-        searchPath: string[];
-        gettext: typeof gettext;
-        byteArray: typeof byteArray;
-        format: typeof format;
-        cairo: typeof cairo;
+        gi: GjsGiImports
+        lang: typeof lang
+        system: typeof system
+        signals: typeof signals
+        package: typeof package
+        mainloop: typeof mainloop
+        searchPath: string[]
+        gettext: typeof gettext
+        byteArray: typeof byteArray
+        format: typeof format
+        cairo: typeof cairo
     }
 
     // Overwrites, see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/modules/script/package.js
@@ -648,50 +650,50 @@ declare global {
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.gettext}
      */
-    const _: typeof gettext.gettext;
+    const _: typeof gettext.gettext
     /**
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.pgettext}
      */
-    const C_: typeof gettext.pgettext;
+    const C_: typeof gettext.pgettext
     /**
      * Run `pkg.initGettext()` before using this.
      * Currently not implemented.
      */
-    const N_: (x: string) => string;
+    const N_: ((x: string) => string)
 
-    function print(...args: any[]): void;
-    function printerr(...args: any[]): void;
+    function print(...args: any[]): void
+    function printerr(...args: any[]): void
     function log(obj: object, others?: object[]): void;
     function log(msg: string, substitutions?: any[]): void;
-    function logError(exception: object, message?: any): void;
-    function logError(message?: any): void;
+    function logError(exception: object, message?: any): void
+    function logError(message?: any): void
 
-    const pkg: typeof package;
+    const pkg: typeof package
 
     interface BooleanConstructor {
-        $gtype: GObject.GType<boolean>;
+        $gtype: GObject.GType<boolean>
     }
 
     interface NumberConstructor {
-        $gtype: GObject.GType<number>;
+        $gtype: GObject.GType<number>
     }
 
     interface StringConstructor {
-        $gtype: GObject.GType<string>;
+        $gtype: GObject.GType<string>
     }
 
     interface StringConstructor {
-        $gtype: GObject.GType<string>;
+        $gtype: GObject.GType<string>
     }
 
     interface ObjectConstructor {
         $gtype: GObject.GType<Object>;
     }
 
-    const imports: GjsImports;
+    const imports: GjsImports
 
-    const ARGV: string[];
+    const ARGV: string[]
 
     interface String {
         /**
@@ -743,6 +745,8 @@ declare global {
     }
 }
 
-declare const _imports: GjsImports;
-export default _imports;
-export { _imports as imports };
+declare const _imports: GjsImports
+export default _imports
+export { _imports as imports }
+
+

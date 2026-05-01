@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Json {
+
     /**
      * Json-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -50,9 +53,10 @@ export namespace Json {
         NULL,
     }
 
+
     /**
      * Error codes for `JSON_PARSER_ERROR`.
-     *
+     * 
      * This enumeration can be extended at later date
      * @gir-type Struct
      */
@@ -60,51 +64,60 @@ export namespace Json {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * parse error
          */
         static PARSE: number;
+
         /**
          * unexpected trailing comma
          */
         static TRAILING_COMMA: number;
+
         /**
          * expected comma
          */
         static MISSING_COMMA: number;
+
         /**
          * expected colon
          */
         static MISSING_COLON: number;
+
         /**
          * invalid bareword
          */
         static INVALID_BAREWORD: number;
+
         /**
          * Empty member name.
          * @since 0.16
          */
         static EMPTY_MEMBER_NAME: number;
+
         /**
          * Invalid data.
          * @since 0.18
          */
         static INVALID_DATA: number;
+
         /**
          * unknown error
          */
         static UNKNOWN: number;
+
         /**
          * Too many levels of nesting.
          * @since 1.10
          */
         static NESTING: number;
+
         /**
          * Invalid structure.
          * @since 1.10
          */
         static INVALID_STRUCTURE: number;
+
         /**
          * Invalid assignment.
          * @since 1.10
@@ -112,17 +125,16 @@ export namespace Json {
         static INVALID_ASSIGNMENT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
 
+
     /**
      * Error codes for `JSON_PATH_ERROR`.
-     *
+     * 
      * This enumeration can be extended at later date
      * @gir-type Struct
      */
@@ -130,24 +142,22 @@ export namespace Json {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Invalid query
          */
         static QUERY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
 
+
     /**
      * Error codes for `JSON_READER_ERROR`.
-     *
+     * 
      * This enumeration can be extended at later date
      * @gir-type Struct
      */
@@ -155,32 +165,37 @@ export namespace Json {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * No array found at the current position
          */
         static NO_ARRAY: number;
+
         /**
          * Index out of bounds
          */
         static INVALID_INDEX: number;
+
         /**
          * No object found at the current position
          */
         static NO_OBJECT: number;
+
         /**
          * Member not found
          */
         static INVALID_MEMBER: number;
+
         /**
          * No valid node found at the current position
          */
         static INVALID_NODE: number;
+
         /**
          * The node at the current position does not
          *   hold a value
          */
         static NO_VALUE: number;
+
         /**
          * The node at the current position does not
          *   hold a value of the desired type
@@ -188,36 +203,40 @@ export namespace Json {
         static INVALID_TYPE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Json major version component (e.g. 1 if `JSON_VERSION` is "1.2.3")
      */
     const MAJOR_VERSION: number;
+
     /**
      * Json micro version component (e.g. 3 if `JSON_VERSION` is "1.2.3")
      */
     const MICRO_VERSION: number;
+
     /**
      * Json minor version component (e.g. 2 if `JSON_VERSION` is "1.2.3")
      */
     const MINOR_VERSION: number;
+
     /**
      * The maximum recursion depth for a JSON tree.
      * @since 1.10
      */
     const PARSER_MAX_RECURSION_DEPTH: number;
+
     /**
      * The version of JSON-GLib, encoded as a string, useful for printing and
      * concatenation.
      */
     const VERSION_S: string;
+
     /**
      * Checks whether it is possible to deserialize a `GBoxed` of
      * type `gboxed_type` from a {@link Json.Node} of type `node_type`.
@@ -227,10 +246,11 @@ export namespace Json {
      * @since 0.10
      */
     function boxed_can_deserialize(gboxed_type: GObject.GType, node_type: NodeType): boolean;
+
     /**
      * Checks whether it is possible to serialize a `GBoxed` of
      * type `gboxed_type` into a {@link Json.Node}.
-     *
+     * 
      * The type of the node is placed inside `node_type` if the function
      * returns `TRUE`, and it's undefined otherwise.
      * @param gboxed_type a boxed type
@@ -238,6 +258,7 @@ export namespace Json {
      * @since 0.10
      */
     function boxed_can_serialize(gboxed_type: GObject.GType): [boolean, NodeType | null];
+
     /**
      * Deserializes the given {@link Json.Node} into a `GBoxed` of the given type.
      * @param gboxed_type a boxed type
@@ -245,28 +266,30 @@ export namespace Json {
      * @returns the newly allocated boxed data
      * @since 0.10
      */
-    function boxed_deserialize(gboxed_type: GObject.GType, node: Node): any | null;
+    function boxed_deserialize(gboxed_type: GObject.GType, node: Node): (any | null);
+
     /**
      * Serializes a pointer to a `GBoxed` of the given type into a {@link Json.Node}.
-     *
+     * 
      * If the serialization is not possible, this function will return `NULL`.
      * @param gboxed_type a boxed type
      * @param boxed a pointer to a boxed of type `gboxed_type`
      * @returns a node with the serialized boxed type
      * @since 0.10
      */
-    function boxed_serialize(gboxed_type: GObject.GType, boxed: any | null): Node | null;
+    function boxed_serialize(gboxed_type: GObject.GType, boxed: (any | null)): (Node | null);
+
     /**
      * Deserializes a JSON data stream and creates an instance of the given
      * type.
-     *
+     * 
      * If the given type implements the {@link Json.Serializable} interface, it
      * will be asked to deserialize all the JSON members into their respective
      * properties; otherwise, the default implementation will be used to translate
      * the compatible JSON native types.
-     *
+     * 
      * **Note**: the JSON data stream must be an object.
-     *
+     * 
      * For historical reasons, the `length` argument is unused. The given `data`
      * must be a `NUL`-terminated string.
      * @param gtype the type of the object to construct
@@ -276,19 +299,21 @@ export namespace Json {
      * @since 0.4
      * @deprecated since 0.10: Use {@link Json.gobject_from_data} instead
      */
-    function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
+    function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: (bigint | number)): T;
+
     /**
      * Parses the given string and returns the corresponding JSON tree.
-     *
+     * 
      * If the string is empty, this function will return `NULL`.
-     *
+     * 
      * In case of parsing error, this function returns `NULL` and sets
      * the error appropriately.
      * @param str a valid UTF-8 string containing JSON data
      * @returns the root node of the JSON tree
      * @since 1.2
      */
-    function from_string(str: string): Node | null;
+    function from_string(str: string): (Node | null);
+
     /**
      * Creates a new {@link GObject.Object} instance of the given type, and constructs it
      * using the members of the object in the given node.
@@ -298,15 +323,16 @@ export namespace Json {
      * @since 0.10
      */
     function gobject_deserialize<T = GObject.Object>(gtype: GObject.GType, node: Node): T;
+
     /**
      * Deserializes a JSON data stream and creates an instance of the
      * given type.
-     *
+     * 
      * If the type implements the {@link Json.Serializable} interface, it will
      * be asked to deserialize all the JSON members into their respective properties;
      * otherwise, the default implementation will be used to translate the
      * compatible JSON native types.
-     *
+     * 
      * **Note**: the JSON data stream must be an object
      * @param gtype the type of the object to construct
      * @param data a JSON data stream
@@ -314,13 +340,14 @@ export namespace Json {
      * @returns a new object instance of the given type
      * @since 0.10
      */
-    function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
+    function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: (bigint | number)): T;
+
     /**
      * Creates a JSON tree representing the passed object instance.
-     *
+     * 
      * Each member of the returned JSON object will map to a property of
      * the object type.
-     *
+     * 
      * The returned JSON tree will be returned as a {@link Json.Node} with a type
      * of `JSON_NODE_OBJECT`.
      * @param gobject the object to serialize
@@ -328,10 +355,11 @@ export namespace Json {
      * @since 0.10
      */
     function gobject_serialize(gobject: GObject.Object): Node;
+
     /**
      * Serializes a {@link GObject.Object} instance into a JSON data stream, iterating
      * recursively over each property.
-     *
+     * 
      * If the given object implements the {@link Json.Serializable} interface,
      * it will be asked to serialize all its properties; otherwise, the default
      * implementation will be use to translate the compatible types into
@@ -341,25 +369,26 @@ export namespace Json {
      * @since 0.10
      */
     function gobject_to_data(gobject: GObject.Object): [string, number];
+
     /**
      * Converts a JSON data structure to a {@link GLib.Variant}.
-     *
+     * 
      * If `signature` is not `NULL`, it will be used to resolve ambiguous
      * data types.
-     *
+     * 
      * If no error occurs, the resulting {@link GLib.Variant} is guaranteed to conform
      * to `signature`.
-     *
+     * 
      * If `signature` is not `NULL` but does not represent a valid {@link GLib.Variant} type
      * string, `NULL` is returned and the `error` is set to
      * `G_IO_ERROR_INVALID_ARGUMENT`.
-     *
+     * 
      * If a `signature` is provided but the JSON structure cannot be mapped to it,
      * `NULL` is returned and the `error` is set to `G_IO_ERROR_INVALID_DATA`.
-     *
+     * 
      * If `signature` is `NULL`, the conversion is done based strictly on the types
      * in the JSON nodes.
-     *
+     * 
      * The returned variant has a floating reference that will need to be sunk
      * by the caller code.
      * @param json_node the node to convert
@@ -367,17 +396,18 @@ export namespace Json {
      * @returns A newly created {@link GLib.Variant}
      * @since 0.14
      */
-    function gvariant_deserialize(json_node: Node, signature: string | null): GLib.Variant | null;
+    function gvariant_deserialize(json_node: Node, signature: (string | null)): (GLib.Variant | null);
+
     /**
      * Converts a JSON string to a {@link GLib.Variant} value.
-     *
+     * 
      * This function works exactly like {@link Json.gvariant_deserialize}, but
      * takes a JSON encoded string instead.
-     *
+     * 
      * The string is first converted to a {@link Json.Node} using
      * {@link Json.Parser}, and then `json_gvariant_deserialize` is called on
      * the node.
-     *
+     * 
      * The returned variant has a floating reference that will need to be sunk
      * by the caller code.
      * @param json A JSON data string
@@ -386,11 +416,8 @@ export namespace Json {
      * @returns A newly created {@link GLib.Variant}D compliant
      * @since 0.14
      */
-    function gvariant_deserialize_data(
-        json: string,
-        length: bigint | number,
-        signature: string | null,
-    ): GLib.Variant | null;
+    function gvariant_deserialize_data(json: string, length: (bigint | number), signature: (string | null)): (GLib.Variant | null);
+
     /**
      * Converts `variant` to a JSON tree.
      * @param variant A {@link GLib.Variant} to convert
@@ -398,9 +425,10 @@ export namespace Json {
      * @since 0.14
      */
     function gvariant_serialize(variant: GLib.Variant): Node;
+
     /**
      * Converts `variant` to its JSON encoded string representation.
-     *
+     * 
      * This is a convenience function around {@link Json.gvariant_serialize}, to
      * obtain the JSON tree, and then {@link Json.Generator} to stringify it.
      * @param variant A {@link GLib.Variant} to convert
@@ -408,12 +436,16 @@ export namespace Json {
      * @since 0.14
      */
     function gvariant_serialize_data(variant: GLib.Variant): [string, number];
+
     function parser_error_quark(): GLib.Quark;
+
     function path_error_quark(): GLib.Quark;
+
     function reader_error_quark(): GLib.Quark;
+
     /**
      * Serializes a {@link GObject.Object} instance into a JSON data stream.
-     *
+     * 
      * If the object implements the {@link Json.Serializable} interface, it will be
      * asked to serizalize all its properties; otherwise, the default
      * implementation will be use to translate the compatible types into JSON
@@ -423,6 +455,7 @@ export namespace Json {
      * @deprecated since 0.10: Use {@link Json.gobject_to_data} instead
      */
     function serialize_gobject(gobject: GObject.Object): [string, number];
+
     /**
      * Check whether `a` and `b` are equal UTF-8 JSON strings and return an ordering
      * over them in `strcmp()` style.
@@ -432,6 +465,7 @@ export namespace Json {
      * @since 1.2
      */
     function string_compare(a: string, b: string): number;
+
     /**
      * Check whether `a` and `b` are equal UTF-8 JSON strings.
      * @param a a JSON string
@@ -440,9 +474,10 @@ export namespace Json {
      * @since 1.2
      */
     function string_equal(a: string, b: string): boolean;
+
     /**
      * Calculate a hash value for the given `key` (a UTF-8 JSON string).
-     *
+     * 
      * Note: Member names are compared byte-wise, without applying any Unicode
      * decomposition or normalisation. This is not explicitly mentioned in the JSON
      * standard (ECMA-404), but is assumed.
@@ -451,6 +486,7 @@ export namespace Json {
      * @since 1.2
      */
     function string_hash(key: string): number;
+
     /**
      * Generates a stringified JSON representation of the contents of
      * the given `node`.
@@ -460,38 +496,42 @@ export namespace Json {
      * @since 1.2
      */
     function to_string(node: Node, pretty: boolean): string;
+
     /**
      * @gir-type Callback
      */
     interface ArrayForeach {
         (array: Array, index_: number, element_node: Node): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface BoxedDeserializeFunc {
-        (node: Node): any | null;
+        (node: Node): (any | null);
     }
+
     /**
      * @gir-type Callback
      */
     interface BoxedSerializeFunc {
-        (boxed: any | null): Node;
+        (boxed: (any | null)): Node;
     }
+
     /**
      * @gir-type Callback
      */
     interface ObjectForeach {
         (object: Object, member_name: string, member_node: Node): void;
     }
+
     namespace Builder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::immutable': (pspec: GObject.ParamSpec) => void;
+            "notify::immutable": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             immutable: boolean;
         }
@@ -499,38 +539,38 @@ export namespace Json {
 
     /**
      * {@link Json.Builder} provides an object for generating a JSON tree.
-     *
+     * 
      * The root of the JSON tree can be either a {@link Json.Object} or a {@link Json.Array}.
      * Thus the first call must necessarily be either
      * {@link Json.Builder.begin_object} or {@link Json.Builder.begin_array}.
-     *
+     * 
      * For convenience to language bindings, most {@link Json.Builder} method return the
      * instance, making it easy to chain function calls.
-     *
+     * 
      * ## Using {@link Json.Builder}
-     *
+     * 
      * ```c
      * g_autoptr(JsonBuilder) builder = json_builder_new ();
-     *
+     * 
      * json_builder_begin_object (builder);
-     *
+     * 
      * json_builder_set_member_name (builder, "url");
      * json_builder_add_string_value (builder, "http://www.gnome.org/img/flash/two-thirty.png");
-     *
+     * 
      * json_builder_set_member_name (builder, "size");
      * json_builder_begin_array (builder);
      * json_builder_add_int_value (builder, 652);
      * json_builder_add_int_value (builder, 242);
      * json_builder_end_array (builder);
-     *
+     * 
      * json_builder_end_object (builder);
-     *
+     * 
      * g_autoptr(JsonNode) root = json_builder_get_root (builder);
-     *
+     * 
      * g_autoptr(JsonGenerator) gen = json_generator_new ();
      * json_generator_set_root (gen, root);
      * g_autofree char *str = json_generator_to_data (gen, NULL);
-     *
+     * 
      * // str now contains the following JSON data
      * // { "url" : "http://www.gnome.org/img/flash/two-thirty.png", "size" : [ 652, 242 ] }
      * ```
@@ -540,10 +580,9 @@ export namespace Json {
         static $gtype: GObject.GType<Builder>;
 
         // Properties
-
         /**
          * Whether the tree should be immutable when created.
-         *
+         * 
          * Making the output immutable on creation avoids the expense
          * of traversing it to make it immutable later.
          * @since 1.2
@@ -562,194 +601,196 @@ export namespace Json {
         $signals: Builder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Builder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Builder;
+        static ["new"](): Builder;
 
         static new_immutable(): Builder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Builder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Builder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Builder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Builder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Builder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a boolean value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given value
          * as the value of the current member in the open object; otherwise, the value
          * is appended to the elements of the open array.
-         *
+         * 
          * See also: {@link Json.Builder.add_value}
          * @param value the value of the member or element
          * @returns the builder instance
          */
-        add_boolean_value(value: boolean): Builder | null;
+        add_boolean_value(value: boolean): (Builder | null);
+
         /**
          * Adds a floating point value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given value
          * as the value of the current member in the open object; otherwise, the value
          * is appended to the elements of the open array.
-         *
+         * 
          * See also: {@link Json.Builder.add_value}
          * @param value the value of the member or element
          * @returns the builder instance
          */
-        add_double_value(value: number): Builder | null;
+        add_double_value(value: number): (Builder | null);
+
         /**
          * Adds an integer value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given value
          * as the value of the current member in the open object; otherwise, the value
          * is appended to the elements of the open array.
-         *
+         * 
          * See also: {@link Json.Builder.add_value}
          * @param value the value of the member or element
          * @returns the builder instance
          */
-        add_int_value(value: bigint | number): Builder | null;
+        add_int_value(value: (bigint | number)): (Builder | null);
+
         /**
          * Adds a null value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given value
          * as the value of the current member in the open object; otherwise, the value
          * is appended to the elements of the open array.
-         *
+         * 
          * See also: {@link Json.Builder.add_value}
          * @returns the builder instance
          */
-        add_null_value(): Builder | null;
+        add_null_value(): (Builder | null);
+
         /**
          * Adds a string value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given value
          * as the value of the current member in the open object; otherwise, the value
          * is appended to the elements of the open array.
-         *
+         * 
          * See also: {@link Json.Builder.add_value}
          * @param value the value of the member or element
          * @returns the builder instance
          */
-        add_string_value(value: string): Builder | null;
+        add_string_value(value: string): (Builder | null);
+
         /**
          * Adds a value to the currently open object member or array.
-         *
+         * 
          * If called after {@link Json.Builder.set_member_name}, sets the given node
          * as the value of the current member in the open object; otherwise, the node
          * is appended to the elements of the open array.
-         *
+         * 
          * The builder will take ownership of the node.
          * @param node the value of the member or element
          * @returns the builder instance
          */
-        add_value(node: Node): Builder | null;
+        add_value(node: Node): (Builder | null);
+
         /**
          * Opens an array inside the given builder.
-         *
+         * 
          * You can add a new element to the array by using {@link Json.Builder.add_value}.
-         *
+         * 
          * Once you added all elements to the array, you must call
          * {@link Json.Builder.end_array} to close the array.
          * @returns the builder instance
          */
-        begin_array(): Builder | null;
+        begin_array(): (Builder | null);
+
         /**
          * Opens an object inside the given builder.
-         *
+         * 
          * You can add a new member to the object by using {@link Json.Builder.set_member_name},
          * followed by {@link Json.Builder.add_value}.
-         *
+         * 
          * Once you added all members to the object, you must call {@link Json.Builder.end_object}
          * to close the object.
-         *
+         * 
          * If the builder is in an inconsistent state, this function will return `NULL`.
          * @returns the builder instance
          */
-        begin_object(): Builder | null;
+        begin_object(): (Builder | null);
+
         /**
          * Closes the array inside the given builder that was opened by the most
          * recent call to {@link Json.Builder.begin_array}.
-         *
+         * 
          * This function cannot be called after {@link Json.Builder.set_member_name}.
          * @returns the builder instance
          */
-        end_array(): Builder | null;
+        end_array(): (Builder | null);
+
         /**
          * Closes the object inside the given builder that was opened by the most
          * recent call to {@link Json.Builder.begin_object}.
-         *
+         * 
          * This function cannot be called after {@link Json.Builder.set_member_name}.
          * @returns the builder instance
          */
-        end_object(): Builder | null;
+        end_object(): (Builder | null);
+
         /**
          * Returns the root of the currently constructed tree.
-         *
+         * 
          * if the build is incomplete (ie: if there are any opened objects, or any
          * open object members and array elements) then this function will return
          * `NULL`.
          * @returns the root node
          */
-        get_root(): Node | null;
+        get_root(): (Node | null);
+
         /**
          * Resets the state of the builder back to its initial state.
          */
         reset(): void;
+
         /**
          * Sets the name of the member in an object.
-         *
+         * 
          * This function must be followed by of these functions:
-         *
+         * 
          *  - {@link Json.Builder.add_value}, to add a scalar value to the member
          *  - {@link Json.Builder.begin_object}, to add an object to the member
          *  - {@link Json.Builder.begin_array}, to add an array to the member
-         *
+         * 
          * This function can only be called within an open object.
          * @param member_name the name of the member
          * @returns the builder instance
          */
-        set_member_name(member_name: string): Builder | null;
+        set_member_name(member_name: string): (Builder | null);
     }
+
 
     namespace Generator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::indent': (pspec: GObject.ParamSpec) => void;
-            'notify::indent-char': (pspec: GObject.ParamSpec) => void;
-            'notify::pretty': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
+            "notify::indent": (pspec: GObject.ParamSpec) => void;
+            "notify::indent-char": (pspec: GObject.ParamSpec) => void;
+            "notify::pretty": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             indent: number;
             indent_char: number;
             indentChar: number;
             pretty: boolean;
-            root: Node | null;
+            root: (Node | null);
         }
     }
 
@@ -763,13 +804,13 @@ export namespace Json {
         static $gtype: GObject.GType<Generator>;
 
         // Properties
-
         /**
          * Number of spaces to be used to indent when pretty printing.
          * @default 2
          */
         get indent(): number;
         set indent(val: number);
+
         /**
          * The character that should be used when indenting in pretty print.
          * @since 0.6
@@ -777,6 +818,7 @@ export namespace Json {
          */
         get indent_char(): number;
         set indent_char(val: number);
+
         /**
          * The character that should be used when indenting in pretty print.
          * @since 0.6
@@ -784,23 +826,25 @@ export namespace Json {
          */
         get indentChar(): number;
         set indentChar(val: number);
+
         /**
          * Whether the output should be "pretty-printed", with indentation and
          * newlines.
-         *
+         * 
          * The indentation level can be controlled by using the
          * {@link Json.Generator.indent} property.
          * @default false
          */
         get pretty(): boolean;
         set pretty(val: boolean);
+
         /**
          * The root node to be used when constructing a JSON data
          * stream.
          * @since 0.4
          */
-        get root(): Node | null;
-        set root(val: Node | null);
+        get root(): (Node | null);
+        set root(val: (Node | null));
 
         /**
          * Compile-time signal type information.
@@ -812,123 +856,126 @@ export namespace Json {
         $signals: Generator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Generator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Generator;
+        static ["new"](): Generator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Generator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Generator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Generator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Generator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Generator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Generator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Generator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Generator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Generator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the value set using {@link Json.Generator.set_indent}.
          * @returns the number of repetitions per indentation level
          */
         get_indent(): number;
+
         /**
          * Retrieves the value set using {@link Json.Generator.set_indent_char}.
          * @returns the character to be used when indenting
          */
         get_indent_char(): string;
+
         /**
          * Retrieves the value set using {@link Json.Generator.set_pretty}.
          * @returns `TRUE` if the generated JSON should be pretty-printed, and   `FALSE` otherwise
          */
         get_pretty(): boolean;
+
         /**
          * Retrieves a pointer to the root node set using
          * {@link Json.Generator.set_root}.
          * @returns the root node
          */
-        get_root(): Node | null;
+        get_root(): (Node | null);
+
         /**
          * Sets the number of repetitions for each indentation level.
          * @param indent_level the number of repetitions of the indentation character   that should be applied when pretty printing
          */
         set_indent(indent_level: number): void;
+
         /**
          * Sets the character to be used when indenting.
          * @param indent_char a Unicode character to be used when indenting
          */
         set_indent_char(indent_char: string): void;
+
         /**
          * Sets whether the generated JSON should be pretty printed.
-         *
+         * 
          * Pretty printing will use indentation character specified in the
          * {@link Json.Generator.indent_char} property and the spacing
          * specified in the {@link Json.Generator.indent} property.
          * @param is_pretty whether the generated string should be pretty printed
          */
         set_pretty(is_pretty: boolean): void;
+
         /**
          * Sets the root of the JSON data stream to be serialized by
          * the given generator.
-         *
+         * 
          * The passed `node` is copied by the generator object, so it can be
          * safely freed after calling this function.
          * @param node the root node
          */
         set_root(node: Node): void;
+
         /**
          * Sets the root of the JSON data stream to be serialized by
          * the given generator.
-         *
+         * 
          * The ownership of the passed `node` is transferred to the generator object.
          * @param node the root node
          */
-        take_root(node: Node | null): void;
+        take_root(node: (Node | null)): void;
+
         /**
          * Generates a JSON data stream from `generator` and returns it as a
          * buffer.
          * @returns a newly allocated string holding a JSON data stream
          */
         to_data(): [string, number];
+
         /**
          * Creates a JSON data stream and puts it inside `filename`, overwriting
          * the file's current contents.
-         *
+         * 
          * This operation is atomic, in the sense that the data is written to a
          * temporary file which is then renamed to the given `filename`.
          * @param filename the path to the target file
          * @returns `true` if saving was successful.
          */
         to_file(filename: string): boolean;
+
         /**
          * Generates a JSON data stream and appends it to the string buffer.
          * @param string a string buffer
          * @returns the passed string, updated with   the generated JSON data
          */
         to_gstring(string: GLib.String): GLib.String;
+
         /**
          * Outputs JSON data and writes it (synchronously) to the given stream.
          * @param stream the output stream used to write the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          * @returns whether the write operation was successful
          */
-        to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
+        to_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Parser {
         // Signal signatures
@@ -940,7 +987,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_element} virtual function
              * @run-last
              */
-            'array-element': (arg0: Array, arg1: number) => void;
+            "array-element": (arg0: Array, arg1: number) => void;
             /**
              * The `::array-end` signal is emitted each time a parser
              * has successfully parsed an entire JSON array.
@@ -948,7 +995,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_end} virtual function
              * @run-last
              */
-            'array-end': (arg0: Array) => void;
+            "array-end": (arg0: Array) => void;
             /**
              * The `::array-start` signal is emitted each time a parser
              * starts parsing a JSON array.
@@ -956,7 +1003,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_start} virtual function
              * @run-last
              */
-            'array-start': () => void;
+            "array-start": () => void;
             /**
              * The `::error` signal is emitted each time a parser encounters
              * an error in a JSON stream.
@@ -964,7 +1011,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.error} virtual function
              * @run-last
              */
-            error: (arg0: any | null) => void;
+            error: (arg0: (any | null)) => void;
             /**
              * The `::object-end` signal is emitted each time a parser
              * has successfully parsed an entire JSON object.
@@ -972,7 +1019,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_end} virtual function
              * @run-last
              */
-            'object-end': (arg0: Object) => void;
+            "object-end": (arg0: Object) => void;
             /**
              * The `::object-member` signal is emitted each time a parser
              * has successfully parsed a single member of a JSON object.
@@ -980,14 +1027,14 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_member} virtual function
              * @run-last
              */
-            'object-member': (arg0: Object, arg1: string) => void;
+            "object-member": (arg0: Object, arg1: string) => void;
             /**
              * This signal is emitted each time a parser starts parsing a JSON object.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_start} virtual function
              * @run-last
              */
-            'object-start': () => void;
+            "object-start": () => void;
             /**
              * This signal is emitted when a parser successfully finished parsing a
              * JSON data stream.
@@ -995,20 +1042,19 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.parse_end} virtual function
              * @run-last
              */
-            'parse-end': () => void;
+            "parse-end": () => void;
             /**
              * This signal is emitted when a parser starts parsing a JSON data stream.
              * @signal
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.parse_start} virtual function
              * @run-last
              */
-            'parse-start': () => void;
-            'notify::immutable': (pspec: GObject.ParamSpec) => void;
-            'notify::strict': (pspec: GObject.ParamSpec) => void;
+            "parse-start": () => void;
+            "notify::immutable": (pspec: GObject.ParamSpec) => void;
+            "notify::strict": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             immutable: boolean;
             strict: boolean;
@@ -1018,33 +1064,33 @@ export namespace Json {
     /**
      * {@link Json.Parser} provides an object for parsing a JSON data stream, either
      * inside a file or inside a static buffer.
-     *
+     * 
      * ## Using {@link Json.Parser}
-     *
+     * 
      * The {@link Json.Parser} API is fairly simple:
-     *
+     * 
      * ```c
      * gboolean
      * parse_json (const char *filename)
      * {
      *   g_autoptr(JsonParser) parser = json_parser_new ();
      *   g_autoptr(GError) error = NULL
-     *
+     * 
      *   json_parser_load_from_file (parser, filename, &error);
      *   if (error != NULL)
      *     {
      *       g_critical ("Unable to parse '%s': %s", filename, error->message);
      *       return FALSE;
      *     }
-     *
+     * 
      *   g_autoptr(JsonNode) root = json_parser_get_root (parser);
-     *
+     * 
      *   // manipulate the object tree from the root node
-     *
+     * 
      *   return TRUE
      * }
      * ```
-     *
+     * 
      * By default, the entire process of loading the data and parsing it is
      * synchronous; the {@link Json.Parser.load_from_stream_async} API will
      * load the data asynchronously, but parse it in the main context as the
@@ -1058,11 +1104,10 @@ export namespace Json {
         static $gtype: GObject.GType<Parser>;
 
         // Properties
-
         /**
          * Whether the tree built by the parser should be immutable
          * when created.
-         *
+         * 
          * Making the output immutable on creation avoids the expense
          * of traversing it to make it immutable later.
          * @since 1.2
@@ -1070,6 +1115,7 @@ export namespace Json {
          * @default false
          */
         get immutable(): boolean;
+
         /**
          * Whether the parser should be strictly conforming to the
          * JSON format, or allow custom extensions like comments.
@@ -1089,85 +1135,83 @@ export namespace Json {
         $signals: Parser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Parser;
+        static ["new"](): Parser;
 
         static new_immutable(): Parser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * class handler for the JsonParser::array-element signal
-         * @param array
-         * @param index_
+         * @param array 
+         * @param index_ 
          * @virtual
          */
         vfunc_array_element(array: Array, index_: number): void;
+
         /**
          * class handler for the JsonParser::array-end signal
-         * @param array
+         * @param array 
          * @virtual
          */
         vfunc_array_end(array: Array): void;
+
         /**
          * class handler for the JsonParser::array-start signal
          * @virtual
          */
         vfunc_array_start(): void;
+
         /**
          * class handler for the JsonParser::error signal
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: GLib.Error): void;
+
         /**
          * class handler for the JsonParser::object-end signal
-         * @param object
+         * @param object 
          * @virtual
          */
         vfunc_object_end(object: Object): void;
+
         /**
          * class handler for the JsonParser::object-member signal
-         * @param object
-         * @param member_name
+         * @param object 
+         * @param member_name 
          * @virtual
          */
         vfunc_object_member(object: Object, member_name: string): void;
+
         /**
          * class handler for the JsonParser::object-start signal
          * @virtual
          */
         vfunc_object_start(): void;
+
         /**
          * class handler for the JsonParser::parse-end signal
          * @virtual
          */
         vfunc_parse_end(): void;
+
         /**
          * class handler for the JsonParser::parse-start signal
          * @virtual
@@ -1175,49 +1219,52 @@ export namespace Json {
         vfunc_parse_start(): void;
 
         // Methods
-
         /**
          * Retrieves the line currently parsed, starting from 1.
-         *
+         * 
          * This function has defined behaviour only while parsing; calling this
          * function from outside the signal handlers emitted by the parser will
          * yield 0.
          * @returns the currently parsed line, or 0.
          */
         get_current_line(): number;
+
         /**
          * Retrieves the current position inside the current line, starting
          * from 0.
-         *
+         * 
          * This function has defined behaviour only while parsing; calling this
          * function from outside the signal handlers emitted by the parser will
          * yield 0.
          * @returns the position in the current line, or 0.
          */
         get_current_pos(): number;
+
         /**
          * Retrieves the top level node from the parsed JSON stream.
-         *
+         * 
          * If the parser input was an empty string, or if parsing failed, the root
          * will be `NULL`. It will also be `NULL` if it has been stolen using
          * {@link Json.Parser.steal_root}.
          * @returns the root node.
          */
-        get_root(): Node | null;
+        get_root(): (Node | null);
+
         /**
          * Retrieves whether the parser is operating in strict mode.
          * @returns true if the parser is strict, and false otherwise
          */
         get_strict(): boolean;
+
         /**
          * A JSON data stream might sometimes contain an assignment, like:
-         *
+         * 
          * ```
          * var _json_data = { "member_name" : [ ...
          * ```
-         *
+         * 
          * even though it would technically constitute a violation of the RFC.
-         *
+         * 
          * {@link Json.Parser} will ignore the left hand identifier and parse the right
          * hand value of the assignment. {@link Json.Parser} will record, though, the
          * existence of the assignment in the data stream and the variable name
@@ -1225,43 +1272,47 @@ export namespace Json {
          * @returns `TRUE` if there was an assignment, and `FALSE` otherwise
          */
         has_assignment(): [boolean, string];
+
         /**
          * Loads a JSON stream from a buffer and parses it.
-         *
+         * 
          * You can call this function multiple times with the same parser, but the
          * contents of the parser will be destroyed each time.
          * @param data the buffer to parse
          * @param length the length of the buffer, or -1 if it is `NUL` terminated
          * @returns `TRUE` if the buffer was succesfully parsed
          */
-        load_from_data(data: string, length: bigint | number): boolean;
+        load_from_data(data: string, length: (bigint | number)): boolean;
+
         /**
          * Loads a JSON stream from the content of `filename` and parses it.
-         *
+         * 
          * If the file is large or shared between processes,
          * {@link Json.Parser.load_from_mapped_file} may be a more efficient
          * way to load it.
-         *
+         * 
          * See also: {@link Json.Parser.load_from_data}
          * @param filename the path for the file to parse
          * @returns `TRUE` if the file was successfully loaded and parsed.
          */
         load_from_file(filename: string): boolean;
+
         /**
          * Loads a JSON stream from the content of `filename` and parses it.
-         *
+         * 
          * Unlike {@link Json.Parser.load_from_file}, `filename` will be memory
          * mapped as read-only and parsed. `filename` will be unmapped before this
          * function returns.
-         *
+         * 
          * If mapping or reading the file fails, a `G_FILE_ERROR` will be returned.
          * @param filename the path for the file to parse
          * @returns `TRUE` if the file was successfully loaded and parsed.
          */
         load_from_mapped_file(filename: string): boolean;
+
         /**
          * Loads the contents of an input stream and parses them.
-         *
+         * 
          * If `cancellable` is not `NULL`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the
          * operation was cancelled, `G_IO_ERROR_CANCELLED` will be set
@@ -1270,47 +1321,28 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `TRUE` if the data stream was successfully read and   parsed, and `FALSE` otherwise
          */
-        load_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
+        load_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously reads the contents of a stream.
-         *
+         * 
          * For more details, see {@link Json.Parser.load_from_stream}, which is the
          * synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You should
          * then call {@link Json.Parser.load_from_stream_finish} to get the result
          * of the operation.
          * @param stream the input stream with the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          */
-        load_from_stream_async(
-            stream: Gio.InputStream,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        load_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously reads the contents of a stream.
-         *
+         * 
          * For more details, see {@link Json.Parser.load_from_stream}, which is the
          * synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called. You should
-         * then call {@link Json.Parser.load_from_stream_finish} to get the result
-         * of the operation.
-         * @param stream the input stream with the JSON data
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback the function to call when the request is satisfied
-         */
-        load_from_stream_async(
-            stream: Gio.InputStream,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously reads the contents of a stream.
-         *
-         * For more details, see {@link Json.Parser.load_from_stream}, which is the
-         * synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You should
          * then call {@link Json.Parser.load_from_stream_finish} to get the result
          * of the operation.
@@ -1318,11 +1350,23 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the function to call when the request is satisfied
          */
-        load_from_stream_async(
-            stream: Gio.InputStream,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously reads the contents of a stream.
+         * 
+         * For more details, see {@link Json.Parser.load_from_stream}, which is the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You should
+         * then call {@link Json.Parser.load_from_stream_finish} to get the result
+         * of the operation.
+         * @param stream the input stream with the JSON data
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback the function to call when the request is satisfied
+         */
+        load_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous stream loading started with
          * {@link Json.Parser.load_from_stream_async}.
@@ -1330,96 +1374,101 @@ export namespace Json {
          * @returns `TRUE` if the content of the stream was successfully retrieved   and parsed, and `FALSE` otherwise
          */
         load_from_stream_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sets whether the parser should operate in strict mode.
-         *
+         * 
          * If `strict` is true, {@link Json.Parser} will strictly conform to
          * the JSON format.
-         *
+         * 
          * If `strict` is false, {@link Json.Parser} will allow custom extensions
          * to the JSON format, like comments.
          * @param strict whether the parser should be strict
          */
         set_strict(strict: boolean): void;
+
         /**
          * Steals the top level node from the parsed JSON stream.
-         *
+         * 
          * This will be `NULL` in the same situations as {@link Json.Parser.get_root}
          * return `NULL`.
          * @returns the root node
          */
-        steal_root(): Node | null;
+        steal_root(): (Node | null);
     }
+
 
     namespace Path {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * {@link Json.Path} is a simple class implementing the JSONPath syntax for extracting
      * data out of a JSON tree.
-     *
+     * 
      * While the semantics of the JSONPath expressions are heavily borrowed by the
      * XPath specification for XML, the syntax follows the ECMAScript origins of
      * JSON.
-     *
+     * 
      * Once a {@link Json.Path} instance has been created, it has to compile a JSONPath
      * expression using {@link Json.Path.compile} before being able to match it to
      * a JSON tree; the same {@link Json.Path} instance can be used to match multiple JSON
      * trees. It it also possible to compile a new JSONPath expression using the
      * same {@link Json.Path} instance; the previous expression will be discarded only if
      * the compilation of the new expression is successful.
-     *
+     * 
      * The simple convenience function {@link Json.Path.query} can be used for
      * one-off matching.
-     *
+     * 
      * ## Syntax of the JSONPath expressions
-     *
+     * 
      * A JSONPath expression is composed by path indices and operators.
      * Each path index can either be a member name or an element index inside
      * a JSON tree. A JSONPath expression must start with the `$` operator; each
      * path index is separated using either the dot notation or the bracket
      * notation, e.g.:
-     *
+     * 
      * ```
      * // dot notation
      * $.store.book[0].title
-     *
+     * 
      * // bracket notation
      * $['store']['book'][0]['title']
      * ```
-     *
+     * 
      * The available operators are:
-     *
+     * 
      * * The `$` character represents the root node of the JSON tree, and
      *   matches the entire document.
-     *
+     * 
      * * Child nodes can either be matched using `.` or `[]`. For instance,
      *   both `$.store.book` and `$['store']['book']` match the contents of
      *   the book member of the store object.
-     *
+     * 
      * * Child nodes can be reached without specifying the whole tree structure
      *   through the recursive descent operator, or `..`. For instance,
      *   `$..author` matches all author member in every object.
-     *
+     * 
      * * Child nodes can grouped through the wildcard operator, or `*`. For
      *   instance, `$.store.book[*].author` matches all author members of any
      *   object element contained in the book array of the store object.
-     *
+     * 
      * * Element nodes can be accessed using their index (starting from zero)
      *   in the subscript operator `[]`. For instance, `$.store.book[0]` matches
      *   the first element of the book array of the store object.
-     *
+     * 
      * * Subsets of element nodes can be accessed using the set notation
      *   operator `[i,j,...]`. For instance, `$.store.book[0,2]` matches the
      *   elements 0 and 2 (the first and third) of the book array of the store
      *   object.
-     *
+     * 
      * * Slices of element nodes can be accessed using the slice notation
      *   operation `[start:end:step]`. If start is omitted, the starting index
      *   of the slice is implied to be zero; if end is omitted, the ending index
@@ -1427,15 +1476,15 @@ export namespace Json {
      *   omitted, the step of the slice is implied to be 1. For instance,
      *   `$.store.book[:2]` matches the first two elements of the book array
      *   of the store object.
-     *
+     * 
      * More information about JSONPath is available on Stefan Gössner's
      * [JSONPath website](http://goessner.net/articles/JsonPath/).
-     *
+     * 
      * ## Example of JSONPath matches
-     *
+     * 
      * The following example shows some of the results of using {@link Json.Path}
      * on a JSON tree. We use the following JSON description of a bookstore:
-     *
+     * 
      * ```json
      * { "store": {
      *     "book": [
@@ -1454,37 +1503,37 @@ export namespace Json {
      *   }
      * }
      * ```
-     *
+     * 
      * We can parse the JSON using {@link Json.Parser}:
-     *
+     * 
      * ```c
      * JsonParser *parser = json_parser_new ();
      * json_parser_load_from_data (parser, json_data, -1, NULL);
      * ```
-     *
+     * 
      * If we run the following code:
-     *
+     * 
      * ```c
      * JsonNode *result;
      * JsonPath *path = json_path_new ();
      * json_path_compile (path, "$.store..author", NULL);
      * result = json_path_match (path, json_parser_get_root (parser));
      * ```
-     *
+     * 
      * The `result` node will contain an array with all values of the
      * author member of the objects in the JSON tree. If we use a
      * {@link Json.Generator} to convert the `result` node to a string
      * and print it:
-     *
+     * 
      * ```c
      * JsonGenerator *generator = json_generator_new ();
      * json_generator_set_root (generator, result);
      * char *str = json_generator_to_data (generator, NULL);
      * g_print ("Results: %s\n", str);
      * ```
-     *
+     * 
      * The output will be:
-     *
+     * 
      * ```json
      * ["Nigel Rees","Evelyn Waugh","Herman Melville","J. R. R. Tolkien"]
      * ```
@@ -1504,39 +1553,29 @@ export namespace Json {
         $signals: Path.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Path.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Path;
+        static ["new"](): Path;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Path.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Path.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Path.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Queries a JSON tree using a JSONPath expression.
-         *
+         * 
          * This function is a simple wrapper around {@link Json.Path.new},
          * {@link Json.Path.compile}, and {@link Json.Path.match}. It implicitly
          * creates a {@link Json.Path} instance, compiles the given expression and matches
@@ -1547,20 +1586,20 @@ export namespace Json {
         static query(expression: string, root: Node): Node;
 
         // Methods
-
         /**
          * Validates and decomposes the given expression.
-         *
+         * 
          * A JSONPath expression must be compiled before calling
          * {@link Json.Path.match}.
          * @param expression a JSONPath expression
          * @returns `TRUE` if the compilation was successful, and `FALSE`   otherwise
          */
         compile(expression: string): boolean;
+
         /**
          * Matches the JSON tree pointed by `root` using the expression compiled
          * into the {@link Json.Path}.
-         *
+         * 
          * The nodes matching the expression will be copied into an array.
          * @param root the root node of the JSON data to match
          * @returns a newly-created node of type   `JSON_NODE_ARRAY` containing the array of matching nodes
@@ -1568,14 +1607,14 @@ export namespace Json {
         match(root: Node): Node;
     }
 
+
     namespace Reader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::root': (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             root: Node;
         }
@@ -1583,9 +1622,9 @@ export namespace Json {
 
     /**
      * {@link Json.Reader} provides a simple, cursor-based API for parsing a JSON DOM.
-     *
+     * 
      * It is similar, in spirit, to the XML Reader API.
-     *
+     * 
      * The cursor is moved by the `json_reader_read_*` and the `json_reader_end_*`
      * functions. You can enter a JSON object using {@link Json.Reader.read_member}
      * with the name of the object member, access the value at that position, and
@@ -1593,24 +1632,24 @@ export namespace Json {
      * work in a similar way, using {@link Json.Reader.read_element} with the
      * index of the element, and using {@link Json.Reader.end_element} to move
      * the cursor back.
-     *
+     * 
      * ## Using {@link Json.Reader}
-     *
+     * 
      * ```c
      * g_autoptr(JsonParser) parser = json_parser_new ();
-     *
+     * 
      * // str is defined elsewhere and contains:
      * // { "url" : "http://www.gnome.org/img/flash/two-thirty.png", "size" : [ 652, 242 ] }
      * json_parser_load_from_data (parser, str, -1, NULL);
-     *
+     * 
      * g_autoptr(JsonReader) reader = json_reader_new (json_parser_get_root (parser));
-     *
+     * 
      * // Enter the "url" member of the object
      * json_reader_read_member (reader, "url");
      *   const char *url = json_reader_get_string_value (reader);
      *   // url now contains "http://www.gnome.org/img/flash/two-thirty.png"
      *   json_reader_end_member (reader);
-     *
+     * 
      * // Enter the "size" member of the object
      * json_reader_read_member (reader, "size");
      *   // Enter the first element of the array
@@ -1625,29 +1664,29 @@ export namespace Json {
      *     json_reader_end_element (reader);
      *   json_reader_end_member (reader);
      * ```
-     *
+     * 
      * ## Error handling
-     *
+     * 
      * In case of error, {@link Json.Reader} will be set in an error state; all subsequent
      * calls will simply be ignored until a function that resets the error state is
      * called, e.g.:
-     *
+     * 
      * ```c
      * // ask for the 7th element; if the element does not exist, the
      * // reader will be put in an error state
      * json_reader_read_element (reader, 6);
-     *
+     * 
      * // in case of error, this will return NULL, otherwise it will
      * // return the value of the element
      * str = json_reader_get_string_value (value);
-     *
+     * 
      * // this function resets the error state if any was set
      * json_reader_end_element (reader);
      * ```
-     *
+     * 
      * If you want to detect the error state as soon as possible, you can use
      * {@link Json.Reader.get_error}:
-     *
+     * 
      * ```c
      * // like the example above, but in this case we print out the
      * // error immediately
@@ -1664,7 +1703,6 @@ export namespace Json {
         static $gtype: GObject.GType<Reader>;
 
         // Properties
-
         /**
          * The root of the JSON tree that the reader should read.
          * @since 0.12
@@ -1682,183 +1720,190 @@ export namespace Json {
         $signals: Reader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Reader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](node: Node | null): Reader;
+        static ["new"](node: (Node | null)): Reader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Reader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Reader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Reader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Reader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Reader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Reader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Reader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Reader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Reader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Reader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Reader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Reader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Counts the elements of the current position, if the reader is
          * positioned on an array.
-         *
+         * 
          * In case of failure, the reader is set to an error state.
          * @returns the number of elements, or -1.
          */
         count_elements(): number;
+
         /**
          * Counts the members of the current position, if the reader is
          * positioned on an object.
-         *
+         * 
          * In case of failure, the reader is set to an error state.
          * @returns the number of members, or -1
          */
         count_members(): number;
+
         /**
          * Moves the cursor back to the previous node after being positioned
          * inside an array.
-         *
+         * 
          * This function resets the error state of the reader, if any was set.
          */
         end_element(): void;
+
         /**
          * Moves the cursor back to the previous node after being positioned
          * inside an object.
-         *
+         * 
          * This function resets the error state of the reader, if any was set.
          */
         end_member(): void;
+
         /**
          * Retrieves the boolean value of the current position of the reader.
-         *
+         * 
          * See also: {@link Json.Reader.get_value}
          * @returns the boolean value
          */
         get_boolean_value(): boolean;
+
         /**
          * Retrieves the reader node at the current position.
          * @returns the current node of the reader
          */
-        get_current_node(): Node | null;
+        get_current_node(): (Node | null);
+
         /**
          * Retrieves the floating point value of the current position of the reader.
-         *
+         * 
          * See also: {@link Json.Reader.get_value}
          * @returns the floating point value
          */
         get_double_value(): number;
+
         /**
          * Retrieves the error currently set on the reader.
          * @returns the current error
          */
-        get_error(): GLib.Error | null;
+        get_error(): (GLib.Error | null);
+
         /**
          * Retrieves the integer value of the current position of the reader.
-         *
+         * 
          * See also: {@link Json.Reader.get_value}
          * @returns the integer value
          */
         get_int_value(): number;
+
         /**
          * Retrieves the name of the current member.
-         *
+         * 
          * In case of failure, the reader is set to an error state.
          * @returns the name of the member
          */
-        get_member_name(): string | null;
+        get_member_name(): (string | null);
+
         /**
          * Checks whether the value of the current position of the reader is `null`.
-         *
+         * 
          * See also: {@link Json.Reader.get_value}
          * @returns `TRUE` if `null` is set, and `FALSE` otherwise
          */
         get_null_value(): boolean;
+
         /**
          * Retrieves the string value of the current position of the reader.
-         *
+         * 
          * See also: {@link Json.Reader.get_value}
          * @returns the string value
          */
         get_string_value(): string;
+
         /**
          * Retrieves the value node at the current position of the reader.
-         *
+         * 
          * If the current position does not contain a scalar value, the reader
          * is set to an error state.
          * @returns the current value node
          */
-        get_value(): Node | null;
+        get_value(): (Node | null);
+
         /**
          * Checks whether the reader is currently on an array.
          * @returns `TRUE` if the reader is on an array
          */
         is_array(): boolean;
+
         /**
          * Checks whether the reader is currently on an object.
          * @returns `TRUE` if the reader is on an object
          */
         is_object(): boolean;
+
         /**
          * Checks whether the reader is currently on a value.
          * @returns `TRUE` if the reader is on a value
          */
         is_value(): boolean;
+
         /**
          * Retrieves a list of member names from the current position, if the reader
          * is positioned on an object.
-         *
+         * 
          * In case of failure, the reader is set to an error state.
          * @returns the members of   the object
          */
         list_members(): string[];
+
         /**
          * Advances the cursor of the reader to the element of the array or
          * the member of the object at the given position.
-         *
+         * 
          * You can use {@link Json.Reader.get_value} and its wrapper functions to
          * retrieve the value of the element; for instance, the following code will
          * read the first element of the array at the current cursor position:
-         *
+         * 
          * ```c
          * json_reader_read_element (reader, 0);
          * int_value = json_reader_get_int_value (reader);
          * ```
-         *
+         * 
          * After reading the value, you should call {@link Json.Reader.end_element}
          * to reposition the cursor inside the reader, e.g.:
-         *
+         * 
          * ```c
          * const char *str_value = NULL;
-         *
+         * 
          * json_reader_read_element (reader, 1);
          * str_value = json_reader_get_string_value (reader);
          * json_reader_end_element (reader);
-         *
+         * 
          * json_reader_read_element (reader, 2);
          * str_value = json_reader_get_string_value (reader);
          * json_reader_end_element (reader);
          * ```
-         *
+         * 
          * If the reader is not currently on an array or an object, or if the index is
          * bigger than the size of the array or the object, the reader will be
          * put in an error state until {@link Json.Reader.end_element} is called. This
          * means that, if used conditionally, {@link Json.Reader.end_element} must be
          * called on all branches:
-         *
+         * 
          * ```c
          * if (!json_reader_read_element (reader, 1))
          *   {
@@ -1870,9 +1915,9 @@ export namespace Json {
          *   {
          *     const char *str_value = json_reader_get_string_value (reader);
          *     json_reader_end_element (reader);
-         *
+         * 
          *     // use str_value
-         *
+         * 
          *     return TRUE;
          *   }
          * ```c
@@ -1880,36 +1925,37 @@ export namespace Json {
          * @returns `TRUE` on success, and `FALSE` otherwise
          */
         read_element(index_: number): boolean;
+
         /**
          * Advances the cursor of the reader to the `member_name` of the object at
          * the current position.
-         *
+         * 
          * You can use {@link Json.Reader.get_value} and its wrapper functions to
          * retrieve the value of the member; for instance:
-         *
+         * 
          * ```c
          * json_reader_read_member (reader, "width");
          * width = json_reader_get_int_value (reader);
          * ```
-         *
+         * 
          * After reading the value, `json_reader_end_member()` should be called to
          * reposition the cursor inside the reader, e.g.:
-         *
+         * 
          * ```c
          * json_reader_read_member (reader, "author");
          * author = json_reader_get_string_value (reader);
          * json_reader_end_member (reader);
-         *
+         * 
          * json_reader_read_member (reader, "title");
          * title = json_reader_get_string_value (reader);
          * json_reader_end_member (reader);
          * ```
-         *
+         * 
          * If the reader is not currently on an object, or if the `member_name` is not
          * defined in the object, the reader will be put in an error state until
          * {@link Json.Reader.end_member} is called. This means that if used
          * conditionally, {@link Json.Reader.end_member} must be called on all branches:
-         *
+         * 
          * ```c
          * if (!json_reader_read_member (reader, "title"))
          *   {
@@ -1921,9 +1967,9 @@ export namespace Json {
          *   {
          *     const char *str_value = json_reader_get_string_value (reader);
          *     json_reader_end_member (reader);
-         *
+         * 
          *     // use str_value
-         *
+         * 
          *     return TRUE;
          *   }
          * ```
@@ -1931,31 +1977,33 @@ export namespace Json {
          * @returns `TRUE` on success, and `FALSE` otherwise
          */
         read_member(member_name: string): boolean;
+
         /**
          * Sets the root node of the JSON tree to be read by `reader`.
-         *
+         * 
          * The reader will take a copy of the node.
          * @param root the root node
          */
-        set_root(root: Node | null): void;
+        set_root(root: (Node | null)): void;
     }
+
 
     /**
      * {@link Json.Array} is the representation of the array type inside JSON.
-     *
+     * 
      * A {@link Json.Array} contains {@link Json.Node} elements, which may contain
      * fundamental types, other arrays or objects.
-     *
+     * 
      * Since arrays can be arbitrarily big, copying them can be expensive; for
      * this reason, they are reference counted. You can control the lifetime of
      * a {@link Json.Array} using {@link Json.Array.ref} and {@link Json.Array.unref}.
-     *
+     * 
      * To append an element, use {@link Json.Array.add_element}.
-     *
+     * 
      * To extract an element at a given index, use {@link Json.Array.get_element}.
-     *
+     * 
      * To retrieve the entire array in list form, use {@link Json.Array.get_elements}.
-     *
+     * 
      * To retrieve the length of the array, use {@link Json.Array.get_length}.
      * @gir-type Struct
      */
@@ -1964,224 +2012,253 @@ export namespace Json {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): Array;
+        }>);
+
+        static ["new"](): Array;
 
         static sized_new(n_elements: number): Array;
 
         // Methods
-
         /**
          * Conveniently adds an array element into an array.
-         *
+         * 
          * If `value` is `NULL`, a `null` element will be added instead.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_array}
          * @param value the array to add
          */
-        add_array_element(value: Array | null): void;
+        add_array_element(value: (Array | null)): void;
+
         /**
          * Conveniently adds the given boolean value into an array.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_boolean}
          * @param value the boolean value to add
          */
         add_boolean_element(value: boolean): void;
+
         /**
          * Conveniently adds the given floating point value into an array.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_double}
          * @param value the floating point value to add
          */
         add_double_element(value: number): void;
+
         /**
          * Appends the given `node` inside an array.
          * @param node the element to add
          */
         add_element(node: Node): void;
+
         /**
          * Conveniently adds the given integer value into an array.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_int}
          * @param value the integer value to add
          */
-        add_int_element(value: bigint | number): void;
+        add_int_element(value: (bigint | number)): void;
+
         /**
          * Conveniently adds a `null` element into an array
-         *
+         * 
          * See also: {@link Json.Array.add_element}, `JSON_NODE_NULL`
          */
         add_null_element(): void;
+
         /**
          * Conveniently adds an object into an array.
-         *
+         * 
          * If `value` is `NULL`, a `null` element will be added instead.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_object}
          * @param value the object to add
          */
-        add_object_element(value: Object | null): void;
+        add_object_element(value: (Object | null)): void;
+
         /**
          * Conveniently adds the given string value into an array.
-         *
+         * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_string}
          * @param value the string value to add
          */
         add_string_element(value: string): void;
+
         /**
          * Retrieves a copy of the element at the given position in the array.
          * @param index_ the index of the element to retrieve
          * @returns a copy of the element at the given position
          */
         dup_element(index_: number): Node;
+
         /**
          * Check whether two arrays are equal.
-         *
+         * 
          * Equality is defined as:
-         *
+         * 
          *  - the array have the same number of elements
          *  - the values of elements in corresponding positions are equal
          * @param b another JSON array
          * @returns `TRUE` if the arrays are equal, and `FALSE` otherwise
          */
         equal(b: Array): boolean;
+
         /**
          * Iterates over all elements of an array, and calls a function on
          * each one of them.
-         *
+         * 
          * It is safe to change the value of an element of the array while
          * iterating over it, but it is not safe to add or remove elements
          * from the array.
          * @param func the function to be called on each element
          */
         foreach_element(func: ArrayForeach): void;
+
         /**
          * Conveniently retrieves the array at the given position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_array}
          * @param index_ the index of the element to retrieve
          * @returns the array
          */
         get_array_element(index_: number): Array;
+
         /**
          * Conveniently retrieves the boolean value of the element at the given
          * position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_boolean}
          * @param index_ the index of the element to retrieve
          * @returns the boolean value
          */
         get_boolean_element(index_: number): boolean;
+
         /**
          * Conveniently retrieves the floating point value of the element at
          * the given position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_double}
          * @param index_ the index of the element to retrieve
          * @returns the floating point value
          */
         get_double_element(index_: number): number;
+
         /**
          * Retrieves the element at the given position in the array.
          * @param index_ the index of the element to retrieve
          * @returns the element at the given position
          */
         get_element(index_: number): Node;
+
         /**
          * Retrieves all the elements of an array as a list of nodes.
          * @returns the elements   of the array
          */
-        get_elements(): Node[] | null;
+        get_elements(): (Node[] | null);
+
         /**
          * Conveniently retrieves the integer value of the element at the given
          * position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_int}
          * @param index_ the index of the element to retrieve
          * @returns the integer value
          */
         get_int_element(index_: number): number;
+
         /**
          * Retrieves the length of the given array
          * @returns the length of the array
          */
         get_length(): number;
+
         /**
          * Conveniently checks whether the element at the given position inside the
          * array contains a `null` value.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.is_null}
          * @param index_ the index of the element to retrieve
          * @returns `TRUE` if the element is `null`
          */
         get_null_element(index_: number): boolean;
+
         /**
          * Conveniently retrieves the object at the given position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_object}
          * @param index_ the index of the element to retrieve
          * @returns the object
          */
         get_object_element(index_: number): Object;
+
         /**
          * Conveniently retrieves the string value of the element at the given
          * position inside an array.
-         *
+         * 
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_string}
          * @param index_ the index of the element to retrieve
          * @returns the string value
          */
         get_string_element(index_: number): string;
+
         /**
          * Calculates a hash value for the given `key`.
-         *
+         * 
          * The hash is calculated over the array and all its elements, recursively.
-         *
+         * 
          * If the array is immutable, this is a fast operation; otherwise, it scales
          * proportionally with the length of the array.
          * @returns hash value for the key
          */
         hash(): number;
+
         /**
          * Check whether the given `array` has been marked as immutable by calling
          * {@link Json.Array.seal} on it.
          * @returns `true` if the array is immutable
          */
         is_immutable(): boolean;
+
         /**
          * Acquires a reference on the given array.
          * @returns the passed array, with the reference count   increased by one
          */
         ref(): Array;
+
         /**
          * Removes the element at the given position inside an array.
-         *
+         * 
          * This function will release the reference held on the element.
          * @param index_ the position of the element to be removed
          */
         remove_element(index_: number): void;
+
         /**
          * Seals the given array, making it immutable to further changes.
-         *
+         * 
          * This function will recursively seal all elements in the array too.
-         *
+         * 
          * If the `array` is already immutable, this is a no-op.
          */
         seal(): void;
+
         /**
          * Releases a reference on the given array.
-         *
+         * 
          * If the reference count reaches zero, the array is destroyed and all
          * its allocated resources are freed.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BuilderClass = typeof Builder;
+
     /**
      * @gir-type Struct
      */
@@ -2189,10 +2266,12 @@ export namespace Json {
         static $gtype: GObject.GType<BuilderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GeneratorClass = typeof Generator;
+
     /**
      * @gir-type Struct
      */
@@ -2200,12 +2279,13 @@ export namespace Json {
         static $gtype: GObject.GType<GeneratorPrivate>;
     }
 
+
     /**
      * A generic container of JSON data types.
-     *
+     * 
      * {@link Json.Node} can contain fundamental types (integers, booleans, floating point
      * numbers, strings) and complex types (arrays and objects).
-     *
+     * 
      * When parsing a JSON data stream you extract the root node and walk
      * the node tree by retrieving the type of data contained inside the
      * node with the `JSON_NODE_TYPE` macro. If the node contains a fundamental
@@ -2215,7 +2295,7 @@ export namespace Json {
      * {@link Json.Object} or the {@link Json.Array} using {@link Json.Node.get_object}
      * or {@link Json.Node.get_array} respectively, and then retrieve the nodes
      * they contain.
-     *
+     * 
      * A {@link Json.Node} may be marked as immutable using {@link Json.Node.seal}. This
      * marks the node and all its descendents as read-only, and means that
      * subsequent calls to setter functions (such as {@link Json.Node.set_array})
@@ -2224,7 +2304,7 @@ export namespace Json {
      * for fast lookups, without the possibility of a value deep within the tree
      * changing and affecting hash values. Immutable nodes may be passed to
      * functions which retain a reference to them without needing to take a copy.
-     *
+     * 
      * A {@link Json.Node} supports two types of memory management: `malloc`/`free`
      * semantics, and reference counting semantics. The two may be mixed to a
      * limited extent: nodes may be allocated (which gives them a reference count
@@ -2241,157 +2321,174 @@ export namespace Json {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static alloc(): Node;
 
-        static ['new'](type: NodeType): Node;
+        static ["new"](type: NodeType): Node;
 
         // Methods
-
         /**
          * Copies `node`.
-         *
+         * 
          * If the node contains complex data types, their reference
          * counts are increased, regardless of whether the node is mutable or
          * immutable.
-         *
+         * 
          * The copy will be immutable if, and only if, `node` is immutable. However,
          * there should be no need to copy an immutable node.
          * @returns the copied of the given node
          */
         copy(): Node;
+
         /**
          * Retrieves the JSON array inside `node`.
-         *
+         * 
          * The reference count of the returned array is increased.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
          * @returns the JSON array with its reference   count increased.
          */
-        dup_array(): Array | null;
+        dup_array(): (Array | null);
+
         /**
          * Retrieves the object inside `node`.
-         *
+         * 
          * The reference count of the returned object is increased.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * object value. Use `JSON_NODE_HOLDS_OBJECT` first.
          * @returns the JSON object
          */
-        dup_object(): Object | null;
+        dup_object(): (Object | null);
+
         /**
          * Gets a copy of the string value stored inside a node.
-         *
+         * 
          * If the node does not hold a string value, `NULL` is returned.
          * @returns a copy of the string   inside the node
          */
-        dup_string(): string | null;
+        dup_string(): (string | null);
+
         /**
          * Check whether `a` and `b` are equal node, meaning they have the same
          * type and same values (checked recursively).
-         *
+         * 
          * Note that integer values are compared numerically, ignoring type, so a
          * double value 4.0 is equal to the integer value 4.
          * @param b another JSON node
          * @returns `TRUE` if `a` and `b` are equal; `FALSE` otherwise
          */
         equal(b: Node): boolean;
+
         /**
          * Frees the resources allocated by the node.
          */
         free(): void;
+
         /**
          * Retrieves the JSON array stored inside a node.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
          * @returns the JSON array
          */
-        get_array(): Array | null;
+        get_array(): (Array | null);
+
         /**
          * Gets the boolean value stored inside a node.
-         *
+         * 
          * If the node holds an integer or double value which is zero, `FALSE` is
          * returned; otherwise `TRUE` is returned.
-         *
+         * 
          * If the node holds a `JSON_NODE_NULL` value or a value of another
          * non-boolean type, `FALSE` is returned.
          * @returns a boolean value.
          */
         get_boolean(): boolean;
+
         /**
          * Gets the double value stored inside a node.
-         *
+         * 
          * If the node holds an integer value, it is returned as a double.
-         *
+         * 
          * If the node holds a `FALSE` boolean value, `0.0` is returned; otherwise
          * a non-zero double is returned.
-         *
+         * 
          * If the node holds a `JSON_NODE_NULL` value or a value of another
          * non-double type, `0.0` is returned.
          * @returns a double value.
          */
         get_double(): number;
+
         /**
          * Gets the integer value stored inside a node.
-         *
+         * 
          * If the node holds a double value, its integer component is returned.
-         *
+         * 
          * If the node holds a `FALSE` boolean value, `0` is returned; otherwise,
          * a non-zero integer is returned.
-         *
+         * 
          * If the node holds a `JSON_NODE_NULL` value or a value of another
          * non-integer type, `0` is returned.
          * @returns an integer value.
          */
         get_int(): number;
+
         /**
          * Retrieves the type of a `node`.
          * @returns the type of the node
          */
         get_node_type(): NodeType;
+
         /**
          * Retrieves the object stored inside a node.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * object value. Use `JSON_NODE_HOLDS_OBJECT` first.
          * @returns the JSON object
          */
-        get_object(): Object | null;
+        get_object(): (Object | null);
+
         /**
          * Retrieves the parent node of the given `node`.
          * @returns the parent node, or `NULL` if `node`   is the root node
          */
-        get_parent(): Node | null;
+        get_parent(): (Node | null);
+
         /**
          * Gets the string value stored inside a node.
-         *
+         * 
          * If the node does not hold a string value, `NULL` is returned.
          * @returns a string value.
          */
-        get_string(): string | null;
+        get_string(): (string | null);
+
         /**
          * Retrieves a value from a node and copies into `value`.
-         *
+         * 
          * When done using it, call `g_value_unset()` on the {@link GObject.Value} to free the
          * associated resources.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold a scalar
          * value. Use `JSON_NODE_HOLDS_VALUE` first.
          */
         get_value(): unknown;
+
         /**
          * Returns the {@link GObject.GType} of the payload of the node.
-         *
+         * 
          * For `JSON_NODE_NULL` nodes, the returned type is `G_TYPE_INVALID`.
          * @returns the type for the payload
          */
         get_value_type(): GObject.GType;
+
         /**
          * Calculate a hash value for the given `key`.
-         *
+         * 
          * The hash is calculated over the node and its value, recursively. If the node
          * is immutable, this is a fast operation; otherwise, it scales proportionally
          * with the size of the node’s value (for example, with the number of members
@@ -2399,252 +2496,277 @@ export namespace Json {
          * @returns hash value for `key`
          */
         hash(): number;
+
         /**
          * Initializes a `node` to a specific `type`.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param type the type of JSON node to initialize `node` to
          * @returns the initialized node
          */
         init(type: NodeType): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_ARRAY` and sets `array` into it.
-         *
+         * 
          * This function will take a reference on `array`.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param array the JSON array to initialize `node` with, or `NULL`
          * @returns the initialized node
          */
-        init_array(array: Array | null): Node;
+        init_array(array: (Array | null)): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param value a boolean value
          * @returns the initialized node
          */
         init_boolean(value: boolean): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param value a floating point value
          * @returns the initialized node
          */
         init_double(value: number): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param value an integer
          * @returns the initialized node
          */
-        init_int(value: bigint | number): Node;
+        init_int(value: (bigint | number)): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_NULL`.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @returns the initialized node
          */
         init_null(): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_OBJECT` and sets `object` into it.
-         *
+         * 
          * This function will take a reference on `object`.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param object the JSON object to initialize `node` with, or `NULL`
          * @returns the initialized node
          */
-        init_object(object: Object | null): Node;
+        init_object(object: (Object | null)): Node;
+
         /**
          * Initializes `node` to `JSON_NODE_VALUE` and sets `value` into it.
-         *
+         * 
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @param value a string value
          * @returns the initialized node
          */
-        init_string(value: string | null): Node;
+        init_string(value: (string | null)): Node;
+
         /**
          * Check whether the given `node` has been marked as immutable by calling
          * {@link Json.Node.seal} on it.
          * @returns `TRUE` if the `node` is immutable
          */
         is_immutable(): boolean;
+
         /**
          * Checks whether `node` is a `JSON_NODE_NULL`.
-         *
+         * 
          * A `JSON_NODE_NULL` node is not the same as a `NULL` node; a `JSON_NODE_NULL`
          * represents a literal `null` value in the JSON tree.
          * @returns `TRUE` if the node is null
          */
         is_null(): boolean;
+
         /**
          * Increments the reference count of `node`.
          * @returns a pointer to `node`
          */
         ref(): Node;
+
         /**
          * Seals the given node, making it immutable to further changes.
-         *
+         * 
          * In order to be sealed, the `node` must have a type and value set. The value
          * will be recursively sealed — if the node holds an object, that JSON object
          * will be sealed, etc.
-         *
+         * 
          * If the `node` is already immutable, this is a no-op.
          */
         seal(): void;
+
         /**
          * Sets `array` inside `node`.
-         *
+         * 
          * The reference count of `array` is increased.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
          * @param array a JSON array
          */
         set_array(array: Array): void;
+
         /**
          * Sets `value` as the boolean content of the `node`, replacing any existing
          * content.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * a value node.
          * @param value a boolean value
          */
         set_boolean(value: boolean): void;
+
         /**
          * Sets `value` as the double content of the `node`, replacing any existing
          * content.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * a value node.
          * @param value a double value
          */
         set_double(value: number): void;
+
         /**
          * Sets `value` as the integer content of the `node`, replacing any existing
          * content.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * a value node.
          * @param value an integer value
          */
-        set_int(value: bigint | number): void;
+        set_int(value: (bigint | number)): void;
+
         /**
          * Sets `objects` inside `node`.
-         *
+         * 
          * The reference count of `object` is increased.
-         *
+         * 
          * If `object` is `NULL`, the node’s existing object is cleared.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * an object node.
          * @param object a JSON object
          */
-        set_object(object: Object | null): void;
+        set_object(object: (Object | null)): void;
+
         /**
          * Sets the parent node for the given `node`.
-         *
+         * 
          * It is an error to call this with an immutable `parent`.
-         *
+         * 
          * The `node` may be immutable.
          * @param parent the parent node
          */
-        set_parent(parent: Node | null): void;
+        set_parent(parent: (Node | null)): void;
+
         /**
          * Sets `value` as the string content of the `node`, replacing any existing
          * content.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * a value node.
          * @param value a string value
          */
         set_string(value: string): void;
+
         /**
          * Sets a scalar value inside the given node.
-         *
+         * 
          * The contents of the given {@link GObject.Value} are copied into the {@link Json.Node}.
-         *
+         * 
          * The following {@link GObject.Value} types have a direct mapping to JSON types:
-         *
+         * 
          *  - `G_TYPE_INT64`
          *  - `G_TYPE_DOUBLE`
          *  - `G_TYPE_BOOLEAN`
          *  - `G_TYPE_STRING`
-         *
+         * 
          * JSON-GLib will also automatically promote the following {@link GObject.Value} types:
-         *
+         * 
          *  - `G_TYPE_INT` to `G_TYPE_INT64`
          *  - `G_TYPE_FLOAT` to `G_TYPE_DOUBLE`
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * a value node.
          * @param value the value to set
          */
-        set_value(value: GObject.Value | any): void;
+        set_value(value: (GObject.Value | any)): void;
+
         /**
          * Sets `array` inside `node`.
-         *
+         * 
          * The reference count of `array` is not increased.
-         *
+         * 
          * It is a programmer error to call this on a node which doesn’t hold an
          * array value. Use `JSON_NODE_HOLDS_ARRAY` first.
          * @param array a JSON array
          */
         take_array(array: Array): void;
+
         /**
          * Sets `object` inside `node`.
-         *
+         * 
          * The reference count of `object` is not increased.
-         *
+         * 
          * It is an error to call this on an immutable node, or on a node which is not
          * an object node.
          * @param object a JSON object
          */
         take_object(object: Object): void;
+
         /**
          * Retrieves the user readable name of the data type contained by `node`.
-         *
+         * 
          * **Note**: The name is only meant for debugging purposes, and there is no
          * guarantee the name will stay the same across different versions.
          * @returns a string containing the name of the type
          */
         type_name(): string;
+
         /**
          * Decrements the reference count of `node`.
-         *
+         * 
          * If the reference count reaches zero, the node is freed.
          */
         unref(): void;
     }
 
+
     /**
      * {@link Json.Object} is the representation of the object type inside JSON.
-     *
+     * 
      * A {@link Json.Object} contains {@link Json.Node} "members", which may contain
      * fundamental types, arrays or other objects; each member of an object is
      * accessed using a unique string, or "name".
-     *
+     * 
      * Since objects can be arbitrarily big, copying them can be expensive; for
      * this reason they are reference counted. You can control the lifetime of
      * a {@link Json.Object} using {@link Json.Object.ref} and {@link Json.Object.unref}.
-     *
+     * 
      * To add or overwrite a member with a given name, use {@link Json.Object.set_member}.
-     *
+     * 
      * To extract a member with a given name, use {@link Json.Object.get_member}.
-     *
+     * 
      * To retrieve the list of members, use {@link Json.Object.get_members}.
-     *
+     * 
      * To retrieve the size of the object (that is, the number of members it has),
      * use {@link Json.Object.get_size}.
      * @gir-type Struct
@@ -2654,27 +2776,30 @@ export namespace Json {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): Object;
+        }>);
+
+        static ["new"](): Object;
 
         // Methods
-
         /**
          * Adds a new member for the given name and value into an object.
-         *
+         * 
          * This function will return if the object already contains a member
          * with the same name.
          * @param member_name the name of the member
          * @param node the value of the member
          */
         add_member(member_name: string, node: Node): void;
+
         /**
          * Retrieves a copy of the value of the given member inside an object.
          * @param member_name the name of the JSON object member to access
          * @returns a copy of the value for the   requested object member
          */
-        dup_member(member_name: string): Node | null;
+        dup_member(member_name: string): (Node | null);
+
         /**
          * Check whether `a` and `b` are equal objects, meaning they have the same
          * set of members, and the values of corresponding members are equal.
@@ -2682,48 +2807,52 @@ export namespace Json {
          * @returns `TRUE` if `a` and `b` are equal, and `FALSE` otherwise
          */
         equal(b: Object): boolean;
+
         /**
          * Iterates over all members of `object` and calls `func` on
          * each one of them.
-         *
+         * 
          * It is safe to change the value of a member of the oobject
          * from within the iterator function, but it is not safe to add or
          * remove members from the object.
-         *
+         * 
          * The order in which the object members are iterated is the
          * insertion order.
          * @param func the function to be called on each member
          */
         foreach_member(func: ObjectForeach): void;
+
         /**
          * Convenience function that retrieves the array
          * stored in `member_name` of `object`. It is an error to specify a
          * `member_name` which does not exist or which holds a non-`null`, non-array
          * value.
-         *
+         * 
          * If `member_name` contains `null`, then this function will return `NULL`.
-         *
+         * 
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the array inside the object's member
          */
-        get_array_member(member_name: string): Array | null;
+        get_array_member(member_name: string): (Array | null);
+
         /**
          * Convenience function that retrieves the boolean value
          * stored in `member_name` of `object`. It is an error to specify a
          * `member_name` which does not exist or which holds a non-scalar,
          * non-`null` value.
-         *
+         * 
          * See also: {@link Json.Object.get_boolean_member_with_default},
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the boolean value of the object's member
          */
         get_boolean_member(member_name: string): boolean;
+
         /**
          * Convenience function that retrieves the boolean value
          * stored in `member_name` of `object`.
-         *
+         * 
          * If `member_name` does not exist, does not contain a scalar value,
          * or contains `null`, then `default_value` is returned instead. If
          * `member_name` contains a non-boolean, non-`null` scalar value, then
@@ -2733,22 +2862,24 @@ export namespace Json {
          * @returns the boolean value of the object's member, or the   given default
          */
         get_boolean_member_with_default(member_name: string, default_value: boolean): boolean;
+
         /**
          * Convenience function that retrieves the floating point value
          * stored in `member_name` of `object`. It is an error to specify a
          * `member_name` which does not exist or which holds a non-scalar,
          * non-`null` value.
-         *
+         * 
          * See also: {@link Json.Object.get_double_member_with_default},
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the floating point value of the object's member
          */
         get_double_member(member_name: string): number;
+
         /**
          * Convenience function that retrieves the floating point value
          * stored in `member_name` of `object`.
-         *
+         * 
          * If `member_name` does not exist, does not contain a scalar value,
          * or contains `null`, then `default_value` is returned instead. If
          * `member_name` contains a non-double, non-`null` scalar value, then
@@ -2758,22 +2889,24 @@ export namespace Json {
          * @returns the floating point value of the object's member, or the   given default
          */
         get_double_member_with_default(member_name: string, default_value: number): number;
+
         /**
          * Convenience function that retrieves the integer value
          * stored in `member_name` of `object`. It is an error to specify a
          * `member_name` which does not exist or which holds a non-scalar,
          * non-`null` value.
-         *
+         * 
          * See also: {@link Json.Object.get_int_member_with_default},
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the object member
          * @returns the integer value of the object's member
          */
         get_int_member(member_name: string): number;
+
         /**
          * Convenience function that retrieves the integer value
          * stored in `member_name` of `object`.
-         *
+         * 
          * If `member_name` does not exist, does not contain a scalar value,
          * or contains `null`, then `default_value` is returned instead. If
          * `member_name` contains a non-integer, non-`null` scalar value, then whatever
@@ -2782,64 +2915,71 @@ export namespace Json {
          * @param default_value the value to return if `member_name` is not valid
          * @returns the integer value of the object's member, or the   given default
          */
-        get_int_member_with_default(member_name: string, default_value: bigint | number): number;
+        get_int_member_with_default(member_name: string, default_value: (bigint | number)): number;
+
         /**
          * Retrieves the value of the given member inside an object.
          * @param member_name the name of the JSON object member to access
          * @returns the value for the   requested object member
          */
-        get_member(member_name: string): Node | null;
+        get_member(member_name: string): (Node | null);
+
         /**
          * Retrieves all the names of the members of an object.
-         *
+         * 
          * You can obtain the value for each member by iterating the returned list
          * and calling {@link Json.Object.get_member}.
          * @returns the   member names of the object
          */
-        get_members(): string[] | null;
+        get_members(): (string[] | null);
+
         /**
          * Convenience function that checks whether the value
          * stored in `member_name` of `object` is null. It is an error to
          * specify a `member_name` which does not exist.
-         *
+         * 
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns `TRUE` if the value is `null`
          */
         get_null_member(member_name: string): boolean;
+
         /**
          * Convenience function that retrieves the object
          * stored in `member_name` of `object`. It is an error to specify a `member_name`
          * which does not exist or which holds a non-`null`, non-object value.
-         *
+         * 
          * If `member_name` contains `null`, then this function will return `NULL`.
-         *
+         * 
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the object inside the object's member
          */
-        get_object_member(member_name: string): Object | null;
+        get_object_member(member_name: string): (Object | null);
+
         /**
          * Retrieves the number of members of a JSON object.
          * @returns the number of members
          */
         get_size(): number;
+
         /**
          * Convenience function that retrieves the string value
          * stored in `member_name` of `object`. It is an error to specify a
          * `member_name` that does not exist or which holds a non-scalar,
          * non-`null` value.
-         *
+         * 
          * See also: {@link Json.Object.get_string_member_with_default},
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the string value of the object's member
          */
         get_string_member(member_name: string): string;
+
         /**
          * Convenience function that retrieves the string value
          * stored in `member_name` of `object`.
-         *
+         * 
          * If `member_name` does not exist, does not contain a scalar value,
          * or contains `null`, then `default_value` is returned instead. If
          * `member_name` contains a non-string, non-`null` scalar value, then
@@ -2849,135 +2989,152 @@ export namespace Json {
          * @returns the string value of the object's member, or the   given default
          */
         get_string_member_with_default(member_name: string, default_value: string): string;
+
         /**
          * Retrieves all the values of the members of an object.
          * @returns the   member values of the object
          */
-        get_values(): Node[] | null;
+        get_values(): (Node[] | null);
+
         /**
          * Checks whether `object` has a member named `member_name`.
          * @param member_name the name of a JSON object member
          * @returns `TRUE` if the JSON object has the requested member
          */
         has_member(member_name: string): boolean;
+
         /**
          * Calculate a hash value for the given `key` (a JSON object).
-         *
+         * 
          * The hash is calculated over the object and all its members, recursively. If
          * the object is immutable, this is a fast operation; otherwise, it scales
          * proportionally with the number of members in the object.
          * @returns hash value for `key`
          */
         hash(): number;
+
         /**
          * Checks whether the given object has been marked as immutable by calling
          * {@link Json.Object.seal} on it.
          * @returns `TRUE` if the object is immutable
          */
         is_immutable(): boolean;
+
         /**
          * Acquires a reference on the given object.
          * @returns the given object, with the reference count   increased by one.
          */
         ref(): Object;
+
         /**
          * Removes `member_name` from `object`, freeing its allocated resources.
          * @param member_name the name of the member to remove
          */
         remove_member(member_name: string): void;
+
         /**
          * Seals the object, making it immutable to further changes.
-         *
+         * 
          * This function will recursively seal all members of the object too.
-         *
+         * 
          * If the object is already immutable, this is a no-op.
          */
         seal(): void;
+
         /**
          * Convenience function for setting an object member with an array value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.take_array}
          * @param member_name the name of the member
          * @param value the value of the member
          */
         set_array_member(member_name: string, value: Array): void;
+
         /**
          * Convenience function for setting an object member with a boolean value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_boolean}
          * @param member_name the name of the member
          * @param value the value of the member
          */
         set_boolean_member(member_name: string, value: boolean): void;
+
         /**
          * Convenience function for setting an object member with a floating point value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_double}
          * @param member_name the name of the member
          * @param value the value of the member
          */
         set_double_member(member_name: string, value: number): void;
+
         /**
          * Convenience function for setting an object member with an integer value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_int}
          * @param member_name the name of the member
          * @param value the value of the member
          */
-        set_int_member(member_name: string, value: bigint | number): void;
+        set_int_member(member_name: string, value: (bigint | number)): void;
+
         /**
          * Sets the value of a member inside an object.
-         *
+         * 
          * If the object does not have a member with the given name, a new member
          * is created.
-         *
+         * 
          * If the object already has a member with the given name, the current
          * value is overwritten with the new.
          * @param member_name the name of the member
          * @param node the value of the member
          */
         set_member(member_name: string, node: Node): void;
+
         /**
          * Convenience function for setting an object member with a `null` value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_null}
          * @param member_name the name of the member
          */
         set_null_member(member_name: string): void;
+
         /**
          * Convenience function for setting an object member with an object value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.take_object}
          * @param member_name the name of the member
          * @param value the value of the member
          */
         set_object_member(member_name: string, value: Object): void;
+
         /**
          * Convenience function for setting an object member with a string value.
-         *
+         * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_string}
          * @param member_name the name of the member
          * @param value the value of the member
          */
         set_string_member(member_name: string, value: string): void;
+
         /**
          * Releases a reference on the given object.
-         *
+         * 
          * If the reference count reaches zero, the object is destroyed and
          * all its resources are freed.
          */
         unref(): void;
     }
 
+
     /**
      * An iterator object used to iterate over the members of a JSON object.
-     *
+     * 
      * {@link Json.ObjectIter} must be allocated on the stack and initialised using
      * {@link Json.ObjectIter.init} or {@link Json.ObjectIter.init_ordered}.
-     *
+     * 
      * The iterator is invalidated if the object is modified during
      * iteration.
-     *
+     * 
      * All the fields in the {@link Json.ObjectIter} structure are private and should
      * never be accessed directly.
      * @gir-type Struct
@@ -2988,94 +3145,100 @@ export namespace Json {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         // Methods
-
         /**
          * Initialises the `iter` and associate it with `object`.
-         *
+         * 
          * ```c
          * JsonObjectIter iter;
          * const gchar *member_name;
          * JsonNode *member_node;
-         *
+         * 
          * json_object_iter_init (&iter, some_object);
          * while (json_object_iter_next (&iter, &member_name, &member_node))
          *   {
          *     // Do something with `member_name` and `member_node`.
          *   }
          * ```
-         *
+         * 
          * The iterator initialized with this function will iterate the
          * members of the object in an undefined order.
-         *
+         * 
          * See also: {@link Json.ObjectIter.init_ordered}
          * @param object the JSON object to iterate over
          */
         init(object: Object): void;
+
         /**
          * Initialises the `iter` and associate it with `object`.
-         *
+         * 
          * ```c
          * JsonObjectIter iter;
          * const gchar *member_name;
          * JsonNode *member_node;
-         *
+         * 
          * json_object_iter_init_ordered (&iter, some_object);
          * while (json_object_iter_next_ordered (&iter, &member_name, &member_node))
          *   {
          *     // Do something with `member_name` and `member_node`.
          *   }
          * ```
-         *
+         * 
          * See also: {@link Json.ObjectIter.init}
          * @param object the JSON object to iterate over
          */
         init_ordered(object: Object): void;
+
         /**
          * Advances the iterator and retrieves the next member in the object.
-         *
+         * 
          * If the end of the object is reached, `FALSE` is returned and `member_name`
          * and `member_node` are set to invalid values. After that point, the `iter`
          * is invalid.
-         *
+         * 
          * The order in which members are returned by the iterator is undefined. The
          * iterator is invalidated if the object is modified during iteration.
-         *
+         * 
          * You must use this function with an iterator initialized with
          * {@link Json.ObjectIter.init}; using this function with an iterator
          * initialized with {@link Json.ObjectIter.init_ordered} yields undefined
          * behavior.
-         *
+         * 
          * See also: {@link Json.ObjectIter.next_ordered}
          * @returns `TRUE` if `member_name` and `member_node` are valid; `FALSE` if   there are no more members
          */
         next(): [boolean, string, Node | null];
+
         /**
          * Advances the iterator and retrieves the next member in the object.
-         *
+         * 
          * If the end of the object is reached, `FALSE` is returned and `member_name` and
          * `member_node` are set to invalid values. After that point, the `iter` is invalid.
-         *
+         * 
          * The order in which members are returned by the iterator is the same order in
          * which the members were added to the {@link Json.Object}. The iterator is invalidated
          * if its {@link Json.Object} is modified during iteration.
-         *
+         * 
          * You must use this function with an iterator initialized with
          * {@link Json.ObjectIter.init_ordered}; using this function with an iterator
          * initialized with {@link Json.ObjectIter.init} yields undefined behavior.
-         *
+         * 
          * See also: {@link Json.ObjectIter.next}
          * @returns `TRUE `if `member_name` and `member_node` are valid; `FALSE` if the end    of the object has been reached
          */
         next_ordered(): [boolean, string, Node | null];
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParserClass = typeof Parser;
+
     /**
      * @gir-type Struct
      */
@@ -3083,14 +3246,17 @@ export namespace Json {
         static $gtype: GObject.GType<ParserPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PathClass = typeof Path;
+
     /**
      * @gir-type Alias
      */
     type ReaderClass = typeof Reader;
+
     /**
      * @gir-type Struct
      */
@@ -3098,30 +3264,32 @@ export namespace Json {
         static $gtype: GObject.GType<ReaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SerializableIface = typeof Serializable;
+
     namespace Serializable {
         /**
          * Interface for implementing Serializable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Asks a {@link Json.Serializable} implementation to deserialize the
              * property contained inside `property_node` and place its value
              * into `value`.
-             *
+             * 
              * The `value` can be:
-             *
+             * 
              * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
              *   initialized with the expected type of the property by using the given
              *   property description (since JSON-GLib 1.6)
              * - a {@link GObject.Value} initialized with the expected type of the property
-             *
+             * 
              * This function will not be called for properties that are marked as
              * as `G_PARAM_CONSTRUCT_ONLY`.
              * @param property_name the name of the property to serialize
@@ -3129,11 +3297,8 @@ export namespace Json {
              * @param property_node the JSON node containing the serialized property
              * @virtual
              */
-            vfunc_deserialize_property(
-                property_name: string,
-                pspec: GObject.ParamSpec,
-                property_node: Node,
-            ): [boolean, GObject.Value | any];
+            vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Node): [boolean, GObject.Value | any];
+
             /**
              * Calls the {@link Json.Serializable.find_property} implementation on
              * the {@link Json.Serializable} instance, which will return the property
@@ -3141,7 +3306,8 @@ export namespace Json {
              * @param name the name of the property
              * @virtual
              */
-            vfunc_find_property(name: string): GObject.ParamSpec | null;
+            vfunc_find_property(name: string): (GObject.ParamSpec | null);
+
             /**
              * Calls the {@link Json.Serializable.get_property} implementation
              * on the {@link Json.Serializable} instance, which will get the value of
@@ -3150,11 +3316,13 @@ export namespace Json {
              * @virtual
              */
             vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+
             /**
-             * @param args
+             * @param args 
              */
-            // Conflicted with GObject.Object.vfunc_get_property
+    // Conflicted with GObject.Object.vfunc_get_property
             vfunc_get_property(...args: never[]): any;
+
             /**
              * Asks a {@link Json.Serializable} implementation to serialize an object
              * property into a JSON node.
@@ -3163,7 +3331,8 @@ export namespace Json {
              * @param pspec a property description
              * @virtual
              */
-            vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
+            vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Node | null);
+
             /**
              * Calls the {@link Json.Serializable.set_property} implementation
              * on the {@link Json.Serializable} instance, which will set the property
@@ -3173,16 +3342,19 @@ export namespace Json {
              * @virtual
              */
             vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+
             /**
-             * @param args
+             * @param args 
              */
-            // Conflicted with GObject.Object.vfunc_set_property
+    // Conflicted with GObject.Object.vfunc_set_property
             vfunc_set_property(...args: never[]): any;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SerializableNamespace {
@@ -3192,27 +3364,27 @@ export namespace Json {
     /**
      * {@link Json.Serializable} is an interface for controlling the serialization
      * and deserialization of {@link GObject.Object} classes.
-     *
+     * 
      * Implementing this interface allows controlling how the class is going
      * to be serialized or deserialized by {@link Json.construct_gobject} and
      * {@link Json.serialize_gobject}, respectively.
      * @gir-type Interface
      */
     interface Serializable extends GObject.Object {
-        // Methods
 
+        // Methods
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
          * virtual function.
-         *
+         * 
          * This function can be used inside a custom implementation of the
          * `deserialize_property()` virtual function in lieu of calling the
          * default implementation through `g_type_default_interface_peek()`:
-         *
+         * 
          * ```c
          * JsonSerializable *iface;
          * gboolean res;
-         *
+         * 
          * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
          * res = iface->deserialize_property (serializable, property_name,
          *                                    value,
@@ -3225,30 +3397,26 @@ export namespace Json {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(
-            property_name: string,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-            property_node: Node,
-        ): boolean;
+        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Node): boolean;
+
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
          * virtual function.
-         *
+         * 
          * This function can be used inside a custom implementation of the
          * `serialize_property()` virtual function in lieu of calling the
          * default implementation through `g_type_default_interface_peek()`:
-         *
+         * 
          * ```c
          * JsonSerializable *iface;
          * JsonNode *node;
-         *
+         * 
          * iface = g_type_default_interface_peek (JSON_TYPE_SERIALIZABLE);
          * node = iface->serialize_property (serializable, property_name,
          *                                   value,
          *                                   pspec);
          * ```
-         *
+         * 
          * This function will return `NULL` if the property could not be
          * serialized.
          * @param property_name the name of the property to serialize
@@ -3256,23 +3424,20 @@ export namespace Json {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(
-            property_name: string,
-            value: GObject.Value | any,
-            pspec: GObject.ParamSpec,
-        ): Node | null;
+        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Node | null);
+
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
          * property contained inside `property_node` and place its value
          * into `value`.
-         *
+         * 
          * The `value` can be:
-         *
+         * 
          * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
          *   initialized with the expected type of the property by using the given
          *   property description (since JSON-GLib 1.6)
          * - a {@link GObject.Value} initialized with the expected type of the property
-         *
+         * 
          * This function will not be called for properties that are marked as
          * as `G_PARAM_CONSTRUCT_ONLY`.
          * @param property_name the name of the property to serialize
@@ -3281,6 +3446,7 @@ export namespace Json {
          * @returns `TRUE` if the property was successfully deserialized
          */
         deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Node): [boolean, unknown];
+
         /**
          * Calls the {@link Json.Serializable.find_property} implementation on
          * the {@link Json.Serializable} instance, which will return the property
@@ -3288,7 +3454,8 @@ export namespace Json {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): GObject.ParamSpec | null;
+        find_property(name: string): (GObject.ParamSpec | null);
+
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
          * on the {@link Json.Serializable} instance, which will get the value of
@@ -3296,11 +3463,13 @@ export namespace Json {
          * @param pspec a property description
          */
         get_property(pspec: GObject.ParamSpec): unknown;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Calls the {@link Json.Serializable.list_properties} implementation on
          * the {@link Json.Serializable} instance, which will return the list of serializable
@@ -3308,6 +3477,7 @@ export namespace Json {
          * @returns the serializable   properties of the object
          */
         list_properties(): GObject.ParamSpec[];
+
         /**
          * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
@@ -3316,7 +3486,8 @@ export namespace Json {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node | null;
+        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Node | null);
+
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
          * on the {@link Json.Serializable} instance, which will set the property
@@ -3324,11 +3495,12 @@ export namespace Json {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
+        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_property
+    // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
 
         // Virtual methods - generated with overloads due to conflicts
@@ -3337,113 +3509,109 @@ export namespace Json {
          * Asks a {@link Json.Serializable} implementation to deserialize the
          * property contained inside `property_node` and place its value
          * into `value`.
-         *
+         * 
          * The `value` can be:
-         *
+         * 
          * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
          *   initialized with the expected type of the property by using the given
          *   property description (since JSON-GLib 1.6)
          * - a {@link GObject.Value} initialized with the expected type of the property
-         *
+         * 
          * This function will not be called for properties that are marked as
          * as `G_PARAM_CONSTRUCT_ONLY`.
          * @ignore
          */
-        /**
-         * Asks a {@link Json.Serializable} implementation to deserialize the
-         * property contained inside `property_node` and place its value
-         * into `value`.
-         *
-         * The `value` can be:
-         *
-         * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
-         *   initialized with the expected type of the property by using the given
-         *   property description (since JSON-GLib 1.6)
-         * - a {@link GObject.Value} initialized with the expected type of the property
-         *
-         * This function will not be called for properties that are marked as
-         * as `G_PARAM_CONSTRUCT_ONLY`.
-         * @param property_name the name of the property to serialize
-         * @param pspec a property description
-         * @param property_node the JSON node containing the serialized property
-         * @virtual
-         */
-        vfunc_deserialize_property(
-            property_name: string,
-            pspec: GObject.ParamSpec,
-            property_node: Node,
-        ): [boolean, GObject.Value | any];
+    /**
+     * Asks a {@link Json.Serializable} implementation to deserialize the
+     * property contained inside `property_node` and place its value
+     * into `value`.
+     * 
+     * The `value` can be:
+     * 
+     * - an empty {@link GObject.Value} initialized by `G_VALUE_INIT`, which will be automatically
+     *   initialized with the expected type of the property by using the given
+     *   property description (since JSON-GLib 1.6)
+     * - a {@link GObject.Value} initialized with the expected type of the property
+     * 
+     * This function will not be called for properties that are marked as
+     * as `G_PARAM_CONSTRUCT_ONLY`.
+     * @param property_name the name of the property to serialize
+     * @param pspec a property description
+     * @param property_node the JSON node containing the serialized property
+     * @virtual
+     */
+    vfunc_deserialize_property(property_name: string, pspec: GObject.ParamSpec, property_node: Node): [boolean, GObject.Value | any];
         /**
          * Calls the {@link Json.Serializable.find_property} implementation on
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @ignore
          */
-        /**
-         * Calls the {@link Json.Serializable.find_property} implementation on
-         * the {@link Json.Serializable} instance, which will return the property
-         * description for the given name.
-         * @param name the name of the property
-         * @virtual
-         */
-        vfunc_find_property(name: string): GObject.ParamSpec | null;
+    /**
+     * Calls the {@link Json.Serializable.find_property} implementation on
+     * the {@link Json.Serializable} instance, which will return the property
+     * description for the given name.
+     * @param name the name of the property
+     * @virtual
+     */
+    vfunc_find_property(name: string): (GObject.ParamSpec | null);
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @ignore
          */
-        /**
-         * Calls the {@link Json.Serializable.get_property} implementation
-         * on the {@link Json.Serializable} instance, which will get the value of
-         * the given property.
-         * @param pspec a property description
-         * @virtual
-         */
-        vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
+    /**
+     * Calls the {@link Json.Serializable.get_property} implementation
+     * on the {@link Json.Serializable} instance, which will get the value of
+     * the given property.
+     * @param pspec a property description
+     * @virtual
+     */
+    vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
         /**
          * the generic getter for all properties of this type. Should be
          *  overridden for every type with properties.
          * @ignore
          */
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+    /**
+     * the generic getter for all properties of this type. Should be
+     *  overridden for every type with properties.
+     * @param property_id 
+     * @param value 
+     * @param pspec 
+     * @virtual
+     */
+    vfunc_get_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
         /**
          * Asks a {@link Json.Serializable} implementation to serialize an object
          * property into a JSON node.
          * @ignore
          */
-        /**
-         * Asks a {@link Json.Serializable} implementation to serialize an object
-         * property into a JSON node.
-         * @param property_name the name of the property to serialize
-         * @param value the value of the property to serialize
-         * @param pspec a property description
-         * @virtual
-         */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Node | null;
+    /**
+     * Asks a {@link Json.Serializable} implementation to serialize an object
+     * property into a JSON node.
+     * @param property_name the name of the property to serialize
+     * @param value the value of the property to serialize
+     * @param pspec a property description
+     * @virtual
+     */
+    vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Node | null);
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
          * on the {@link Json.Serializable} instance, which will set the property
          * with the given value.
          * @ignore
          */
-        /**
-         * Calls the {@link Json.Serializable.set_property} implementation
-         * on the {@link Json.Serializable} instance, which will set the property
-         * with the given value.
-         * @param pspec a property description
-         * @param value the property value to set
-         * @virtual
-         */
-        vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
+    /**
+     * Calls the {@link Json.Serializable.set_property} implementation
+     * on the {@link Json.Serializable} instance, which will set the property
+     * with the given value.
+     * @param pspec a property description
+     * @param value the property value to set
+     * @virtual
+     */
+    vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
         /**
          * the generic setter for all properties of this type. Should be
          *  overridden for every type with properties. If implementations of
@@ -3452,19 +3620,20 @@ export namespace Json {
          *  emitted explicitly, the type system will not emit it a second time.
          * @ignore
          */
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         * @virtual
-         */
-        vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+    /**
+     * the generic setter for all properties of this type. Should be
+     *  overridden for every type with properties. If implementations of
+     *  `set_property` don't emit property change notification explicitly, this will
+     *  be done implicitly by the type system. However, if the notify signal is
+     *  emitted explicitly, the type system will not emit it a second time.
+     * @param property_id 
+     * @param value 
+     * @param pspec 
+     * @virtual
+     */
+    vfunc_set_property(property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
     }
+
 
     export const Serializable: SerializableNamespace & {
         new (): Serializable; // This allows `obj instanceof Serializable`
@@ -3475,6 +3644,7 @@ export namespace Json {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

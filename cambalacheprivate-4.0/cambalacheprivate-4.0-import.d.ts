@@ -1,3 +1,4 @@
+
 import type CambalachePrivate40 from '@girs/cambalacheprivate-4.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

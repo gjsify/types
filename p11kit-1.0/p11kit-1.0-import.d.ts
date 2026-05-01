@@ -1,3 +1,4 @@
+
 import type P11Kit10 from '@girs/p11kit-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

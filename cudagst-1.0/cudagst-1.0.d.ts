@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace CudaGst {
+
     /**
      * CudaGst-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -23,6 +26,7 @@ export namespace CudaGst {
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
     }
+
 
     /**
      * @gir-type Enum
@@ -34,6 +38,7 @@ export namespace CudaGst {
         BORDER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -41,6 +46,7 @@ export namespace CudaGst {
         INT8,
         INT16,
     }
+
 
     /**
      * @gir-type Enum
@@ -57,6 +63,7 @@ export namespace CudaGst {
         MEMORY_POOLS_SUPPORTED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -66,6 +73,7 @@ export namespace CudaGst {
         DISABLE_TIMING,
         INTERPROCESS,
     }
+
 
     /**
      * @gir-type Enum
@@ -80,6 +88,7 @@ export namespace CudaGst {
         D3D11_RESOURCE_KMT,
         NVSCIBUF,
     }
+
 
     /**
      * @gir-type Enum
@@ -97,6 +106,7 @@ export namespace CudaGst {
         TIMELINE_SEMAPHORE_WIN32,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -104,6 +114,7 @@ export namespace CudaGst {
         POINT,
         LINEAR,
     }
+
 
     /**
      * @gir-type Enum
@@ -113,6 +124,7 @@ export namespace CudaGst {
         READ_ONLY,
         WRITE_DISCARD,
     }
+
 
     /**
      * @gir-type Enum
@@ -125,12 +137,14 @@ export namespace CudaGst {
         TEXTURE_GATHER,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum ipcMem_flags {
         IPC_MEM_LAZY_ENABLE_PEER_ACCESS,
     }
+
 
     /**
      * @gir-type Enum
@@ -148,6 +162,7 @@ export namespace CudaGst {
         CIG_SHMEM_FALLBACK_ENABLED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -158,6 +173,7 @@ export namespace CudaGst {
         MAX,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -165,6 +181,7 @@ export namespace CudaGst {
         MINIMUM,
         RECOMMENDED,
     }
+
 
     /**
      * @gir-type Enum
@@ -177,6 +194,7 @@ export namespace CudaGst {
         MAX,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -186,6 +204,7 @@ export namespace CudaGst {
         MAX,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -194,6 +213,7 @@ export namespace CudaGst {
         DEVICE,
         MAX,
     }
+
 
     /**
      * @gir-type Enum
@@ -209,6 +229,7 @@ export namespace CudaGst {
         USED_MEM_HIGH,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -219,12 +240,14 @@ export namespace CudaGst {
         UNIFIED,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum resourceViewFormat {
         RES_VIEW_FORMAT_NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -236,6 +259,7 @@ export namespace CudaGst {
         PITCH2D,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -246,6 +270,7 @@ export namespace CudaGst {
         ERROR_NOT_SUPPORTED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -254,9 +279,13 @@ export namespace CudaGst {
         NON_BLOCKING,
     }
 
+
     const IPC_HANDLE_SIZE: number;
+
     const TRSF_READ_AS_INTEGER: number;
+
     const VERSION: number;
+
     /**
      * @gir-type Struct
      */
@@ -264,14 +293,19 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_ARRAY3D_DESCRIPTOR>;
 
         // Fields
-
         Width: number;
+
         Height: number;
+
         Depth: number;
+
         Format: array_format;
+
         NumChannels: number;
+
         Flags: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -280,21 +314,20 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_BUFFER_DESC>;
 
         // Fields
-
         flags: number;
+
         reserved: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                offset: number;
-                size: number;
-                flags: number;
-                reserved: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            offset: number;
+            size: number;
+            flags: number;
+            reserved: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -303,10 +336,11 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC>;
 
         // Fields
-
         numLevels: number;
+
         reserved: number[];
     }
+
 
     /**
      * @gir-type Struct
@@ -315,24 +349,39 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_MEMCPY2D>;
 
         // Fields
-
         srcXInBytes: number;
+
         srcY: number;
+
         srcMemoryType: memorytype;
+
         srcHost: any;
+
         srcDevice: deviceptr;
+
         srcArray: array;
+
         srcPitch: number;
+
         dstXInBytes: number;
+
         dstY: number;
+
         dstMemoryType: memorytype;
+
         dstHost: any;
+
         dstDevice: deviceptr;
+
         dstArray: array;
+
         dstPitch: number;
+
         WidthInBytes: number;
+
         Height: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -341,10 +390,11 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_RESOURCE_DESC>;
 
         // Fields
-
         resType: resourcetype;
+
         flags: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -353,17 +403,25 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_RESOURCE_VIEW_DESC>;
 
         // Fields
-
         format: resourceViewFormat;
+
         width: number;
+
         height: number;
+
         depth: number;
+
         firstMipmapLevel: number;
+
         lastMipmapLevel: number;
+
         firstLayer: number;
+
         lastLayer: number;
+
         reserved: number[];
     }
+
 
     /**
      * @gir-type Struct
@@ -372,18 +430,27 @@ export namespace CudaGst {
         static $gtype: GObject.GType<DA_TEXTURE_DESC>;
 
         // Fields
-
         addressMode: address_mode[];
+
         filterMode: filter_mode;
+
         flags: number;
+
         maxAnisotropy: number;
+
         mipmapFilterMode: filter_mode;
+
         mipmapLevelBias: number;
+
         minMipmapLevelClamp: number;
+
         maxMipmapLevelClamp: number;
+
         borderColor: number[];
+
         reserved: number[];
     }
+
 
     /**
      * @gir-type Struct
@@ -392,17 +459,15 @@ export namespace CudaGst {
         static $gtype: GObject.GType<ipcEventHandle>;
 
         // Fields
-
         reserved: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                reserved: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            reserved: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -411,17 +476,15 @@ export namespace CudaGst {
         static $gtype: GObject.GType<ipcMemHandle>;
 
         // Fields
-
         reserved: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                reserved: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            reserved: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -430,9 +493,9 @@ export namespace CudaGst {
         static $gtype: GObject.GType<memAccessDesc>;
 
         // Fields
-
         flags: memAccess_flags;
     }
+
 
     /**
      * @gir-type Struct
@@ -441,12 +504,15 @@ export namespace CudaGst {
         static $gtype: GObject.GType<memAllocationProp>;
 
         // Fields
-
         type: memAllocationType;
+
         requestedHandleTypes: memAllocationHandleType;
+
         win32HandleMetaData: any;
+
         allocFlags: memAllocationPropAllocFlags;
     }
+
 
     /**
      * @gir-type Struct
@@ -455,23 +521,24 @@ export namespace CudaGst {
         static $gtype: GObject.GType<memAllocationPropAllocFlags>;
 
         // Fields
-
         compressionType: number;
+
         gpuDirectRDMACapable: number;
+
         usage: number;
+
         reserved: Uint8Array;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                compressionType: number;
-                gpuDirectRDMACapable: number;
-                usage: number;
-                reserved: Uint8Array;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            compressionType: number;
+            gpuDirectRDMACapable: number;
+            usage: number;
+            reserved: Uint8Array;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -480,10 +547,11 @@ export namespace CudaGst {
         static $gtype: GObject.GType<memLocation>;
 
         // Fields
-
         type: memLocationType;
+
         id: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -492,75 +560,94 @@ export namespace CudaGst {
         static $gtype: GObject.GType<memPoolProps>;
 
         // Fields
-
         allocType: memAllocationType;
+
         handleTypes: memAllocationHandleType;
+
         win32SecurityAttributes: any;
+
         maxSize: number;
+
         reserved: Uint8Array;
     }
+
 
     /**
      * @gir-type Alias
      */
     type array = any;
+
     /**
      * @gir-type Alias
      */
     type context = any;
+
     /**
      * @gir-type Alias
      */
     type device = number;
+
     /**
      * @gir-type Alias
      */
-    type deviceptr = bigint | number;
+    type deviceptr = (bigint | number);
+
     /**
      * @gir-type Alias
      */
     type event = any;
+
     /**
      * @gir-type Alias
      */
     type externalMemory = any;
+
     /**
      * @gir-type Alias
      */
     type externalSemaphore = any;
+
     /**
      * @gir-type Alias
      */
     type __function = any;
+
     /**
      * @gir-type Alias
      */
     type graphicsResource = any;
+
     /**
      * @gir-type Alias
      */
     type memoryPool = any;
+
     /**
      * @gir-type Alias
      */
     type mipmappedArray = any;
+
     /**
      * @gir-type Alias
      */
     type module = any;
+
     /**
      * @gir-type Alias
      */
     type stream = any;
+
     /**
      * @gir-type Alias
      */
-    type texObject = bigint | number;
+    type texObject = (bigint | number);
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -22,9 +23,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Caribou {
+
     /**
      * Caribou-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -41,6 +44,7 @@ export namespace Caribou {
         LATCHED,
         LOCKED,
     }
+
 
     /**
      * @gir-type Enum
@@ -59,32 +63,33 @@ export namespace Caribou {
         LINEAR,
     }
 
+
     /**
      * @gir-type Callback
      */
     interface KeyButtonCallback {
         (keybuttoncode: number, pressed: boolean): void;
     }
+
     namespace DisplayAdapter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * @signal
              */
-            'modifiers-changed': (arg0: number) => void;
+            "modifiers-changed": (arg0: number) => void;
             /**
              * @signal
              */
-            'group-changed': (arg0: number, arg1: string, arg2: string) => void;
+            "group-changed": (arg0: number, arg1: string, arg2: string) => void;
             /**
              * @signal
              */
-            'config-changed': () => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "config-changed": () => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             display: Gdk.Display;
         }
@@ -97,7 +102,6 @@ export namespace Caribou {
         static $gtype: GObject.GType<DisplayAdapter>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -113,143 +117,153 @@ export namespace Caribou {
         $signals: DisplayAdapter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayAdapter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayAdapter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param adapter
+         * @param adapter 
          */
         static set_default(adapter: DisplayAdapter): boolean;
+
         static get_default(): DisplayAdapter;
 
         // Virtual methods
-
         /**
-         * @param keyval
+         * @param keyval 
          * @virtual
          */
         vfunc_keyval_press(keyval: number): void;
+
         /**
-         * @param keyval
+         * @param keyval 
          * @virtual
          */
         vfunc_keyval_release(keyval: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          * @virtual
          */
         vfunc_mod_lock(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          * @virtual
          */
         vfunc_mod_unlock(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          * @virtual
          */
         vfunc_mod_latch(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          * @virtual
          */
         vfunc_mod_unlatch(mask: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_current_group(): [number, string, string];
+
         /**
          * @virtual
          */
         vfunc_get_groups(): [string[], string[]];
+
         /**
-         * @param keyval
-         * @param func
+         * @param keyval 
+         * @param func 
          * @virtual
          */
         vfunc_register_key_func(keyval: number, func: KeyButtonCallback): void;
+
         /**
-         * @param button
-         * @param func
+         * @param button 
+         * @param func 
          * @virtual
          */
         vfunc_register_button_func(button: number, func: KeyButtonCallback): void;
 
         // Methods
-
         /**
-         * @param keyval
+         * @param keyval 
          */
         keyval_press(keyval: number): void;
+
         /**
-         * @param keyval
+         * @param keyval 
          */
         keyval_release(keyval: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          */
         mod_lock(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          */
         mod_unlock(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          */
         mod_latch(mask: number): void;
+
         /**
-         * @param mask
+         * @param mask 
          */
         mod_unlatch(mask: number): void;
+
         get_current_group(): [number, string, string];
+
         get_groups(): [string[], string[]];
+
         /**
-         * @param keyval
-         * @param func
+         * @param keyval 
+         * @param func 
          */
         register_key_func(keyval: number, func: KeyButtonCallback): void;
+
         /**
-         * @param button
-         * @param func
+         * @param button 
+         * @param func 
          */
         register_button_func(button: number, func: KeyButtonCallback): void;
+
         get_display(): Gdk.Display;
     }
+
 
     namespace NullAdapter {
         // Signal signatures
         interface SignalSignatures extends DisplayAdapter.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends DisplayAdapter.ConstructorProps {
 
-        interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
+        }
     }
 
     /**
@@ -268,44 +282,37 @@ export namespace Caribou {
         $signals: NullAdapter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NullAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): NullAdapter;
+        static ["new"](): NullAdapter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NullAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NullAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NullAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NullAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullAdapter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NullAdapter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NullAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NullAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace XAdapter {
         // Signal signatures
         interface SignalSignatures extends DisplayAdapter.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends DisplayAdapter.ConstructorProps {
 
-        interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
+        }
     }
 
     /**
@@ -324,34 +331,26 @@ export namespace Caribou {
         $signals: XAdapter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<XAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XAdapter;
+        static ["new"](): XAdapter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XAdapter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XAdapter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace KeyboardModel {
         // Signal signatures
@@ -359,18 +358,17 @@ export namespace Caribou {
             /**
              * @signal
              */
-            'group-added': (arg0: string) => void;
+            "group-added": (arg0: string) => void;
             /**
              * @signal
              */
-            'group-removed': (arg0: string) => void;
-            'notify::active-group': (pspec: GObject.ParamSpec) => void;
-            'notify::keyboard-type': (pspec: GObject.ParamSpec) => void;
-            'notify::keyboard-file': (pspec: GObject.ParamSpec) => void;
+            "group-removed": (arg0: string) => void;
+            "notify::active-group": (pspec: GObject.ParamSpec) => void;
+            "notify::keyboard-type": (pspec: GObject.ParamSpec) => void;
+            "notify::keyboard-file": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, IKeyboardObject.ConstructorProps {
             active_group: string;
             activeGroup: string;
@@ -388,23 +386,27 @@ export namespace Caribou {
         static $gtype: GObject.GType<KeyboardModel>;
 
         // Properties
-
         get active_group(): string;
         set active_group(val: string);
+
         get activeGroup(): string;
         set activeGroup(val: string);
+
         /**
          * @construct-only
          */
         get keyboard_type(): string;
+
         /**
          * @construct-only
          */
         get keyboardType(): string;
+
         /**
          * @construct-only
          */
         get keyboard_file(): string;
+
         /**
          * @construct-only
          */
@@ -420,63 +422,64 @@ export namespace Caribou {
         $signals: KeyboardModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<KeyboardModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): KeyboardModel;
+        static ["new"](): KeyboardModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof KeyboardModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof KeyboardModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof KeyboardModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof KeyboardModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof KeyboardModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<KeyboardModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof KeyboardModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_groups(): string[];
+
         /**
-         * @param group_name
+         * @param group_name 
          */
         get_group(group_name: string): GroupModel;
+
         get_active_group(): string;
+
         get_keyboard_type(): string;
+
         get_keyboard_file(): string;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
 
+
     namespace KeyboardService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -495,108 +498,106 @@ export namespace Caribou {
         $signals: KeyboardService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<KeyboardService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof KeyboardService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof KeyboardService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof KeyboardService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof KeyboardService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyboardService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof KeyboardService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<KeyboardService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof KeyboardService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyboardService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param x
-         * @param y
-         * @param w
-         * @param h
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
          * @virtual
          */
         vfunc_set_cursor_location(x: number, y: number, w: number, h: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param w
-         * @param h
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
          * @virtual
          */
         vfunc_set_entry_location(x: number, y: number, w: number, h: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          * @virtual
          */
         vfunc_show(timestamp: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          * @virtual
          */
         vfunc_hide(timestamp: number): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_name_lost(name: string): void;
 
         // Methods
-
         /**
-         * @param x
-         * @param y
-         * @param w
-         * @param h
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
          */
         set_cursor_location(x: number, y: number, w: number, h: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param w
-         * @param h
+         * @param x 
+         * @param y 
+         * @param w 
+         * @param h 
          */
         set_entry_location(x: number, y: number, w: number, h: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         show(timestamp: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         hide(timestamp: number): void;
+
         /**
-         * @param name
+         * @param name 
          */
         register_keyboard(name: string): void;
+
         /**
-         * @param name
+         * @param name 
          */
         name_lost(name: string): void;
     }
 
+
     namespace GroupModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-level': (pspec: GObject.ParamSpec) => void;
+            "notify::active-level": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, IKeyboardObject.ConstructorProps {
             active_level: string;
             activeLevel: string;
@@ -610,9 +611,9 @@ export namespace Caribou {
         static $gtype: GObject.GType<GroupModel>;
 
         // Properties
-
         get active_level(): string;
         set active_level(val: string);
+
         get activeLevel(): string;
         set activeLevel(val: string);
 
@@ -626,66 +627,62 @@ export namespace Caribou {
         $signals: GroupModel.SignalSignatures;
 
         // Fields
-
         group: string;
+
         variant: string;
 
         // Constructors
-
         constructor(properties?: Partial<GroupModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](group: string, variant: string): GroupModel;
+        static ["new"](group: string, variant: string): GroupModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GroupModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GroupModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GroupModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GroupModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param group
-         * @param variant
+         * @param group 
+         * @param variant 
          */
         static create_group_name(group: string, variant: string): string;
 
         // Methods
-
         get_levels(): string[];
+
         /**
-         * @param level_name
+         * @param level_name 
          */
         get_level(level_name: string): LevelModel;
+
         get_active_level(): string;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
+
 
     namespace LevelModel {
         // Signal signatures
@@ -693,12 +690,11 @@ export namespace Caribou {
             /**
              * @signal
              */
-            'level-toggled': (arg0: string) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            "level-toggled": (arg0: string) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends ScannableGroup.ConstructorProps, IKeyboardObject.ConstructorProps {
             mode: string;
         }
@@ -711,7 +707,6 @@ export namespace Caribou {
         static $gtype: GObject.GType<LevelModel>;
 
         // Properties
-
         get mode(): string;
         set mode(val: string);
 
@@ -725,64 +720,57 @@ export namespace Caribou {
         $signals: LevelModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LevelModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](mode: string): LevelModel;
+        static ["new"](mode: string): LevelModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LevelModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LevelModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LevelModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LevelModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LevelModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LevelModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LevelModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LevelModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LevelModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_rows(): RowModel[];
+
         get_mode(): string;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
 
+
     namespace RowModel {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
-            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
+            "notify::scan-stepping": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-selected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                ScannableGroup.ConstructorProps,
-                IScannableItem.ConstructorProps,
-                IKeyboardObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -801,88 +789,95 @@ export namespace Caribou {
         $signals: RowModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RowModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RowModel;
+        static ["new"](): RowModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RowModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RowModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RowModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RowModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RowModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RowModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RowModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RowModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RowModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_columns(): ColumnModel[];
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_stepping(): boolean;
         set scan_stepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanStepping(): boolean;
         set scanStepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_selected(): boolean;
         set scan_selected(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanSelected(): boolean;
         set scanSelected(val: boolean);
+
         get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_stepping(value: boolean): void;
+
         get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_selected(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_stepping(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_selected(value: boolean): void;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
+
 
     namespace KeyModel {
         // Signal signatures
@@ -890,29 +885,27 @@ export namespace Caribou {
             /**
              * @signal
              */
-            'key-hold-end': () => void;
+            "key-hold-end": () => void;
             /**
              * @signal
              */
-            'key-hold': () => void;
-            'notify::align': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::toggle': (pspec: GObject.ParamSpec) => void;
-            'notify::repeatable': (pspec: GObject.ParamSpec) => void;
-            'notify::is-modifier': (pspec: GObject.ParamSpec) => void;
-            'notify::show-subkeys': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::keyval': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
+            "key-hold": () => void;
+            "notify::align": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::toggle": (pspec: GObject.ParamSpec) => void;
+            "notify::repeatable": (pspec: GObject.ParamSpec) => void;
+            "notify::is-modifier": (pspec: GObject.ParamSpec) => void;
+            "notify::show-subkeys": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::keyval": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-stepping": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-selected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
             align: string;
             width: number;
             toggle: string;
@@ -935,29 +928,39 @@ export namespace Caribou {
         static $gtype: GObject.GType<KeyModel>;
 
         // Properties
-
         get align(): string;
         set align(val: string);
+
         get width(): number;
         set width(val: number);
+
         get toggle(): string;
         set toggle(val: string);
+
         get repeatable(): boolean;
         set repeatable(val: boolean);
+
         get is_modifier(): boolean;
         set is_modifier(val: boolean);
+
         get isModifier(): boolean;
         set isModifier(val: boolean);
+
         get show_subkeys(): boolean;
         set show_subkeys(val: boolean);
+
         get showSubkeys(): boolean;
         set showSubkeys(val: boolean);
+
         get name(): string;
         set name(val: string);
+
         get keyval(): number;
         set keyval(val: number);
+
         get text(): string;
         set text(val: string);
+
         get label(): string;
         set label(val: string);
 
@@ -971,144 +974,166 @@ export namespace Caribou {
         $signals: KeyModel.SignalSignatures;
 
         // Fields
-
         modifier_state: ModifierState;
 
         // Constructors
-
         constructor(properties?: Partial<KeyModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, text: string): KeyModel;
+        static ["new"](name: string, text: string): KeyModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof KeyModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof KeyModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof KeyModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<KeyModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof KeyModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         press(): void;
+
         release(): void;
+
         get_extended_keys(): KeyModel[];
+
         activate(): void;
+
         get_align(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_align(value: string): void;
+
         get_width(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_width(value: number): void;
+
         get_toggle(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_toggle(value: string): void;
+
         get_repeatable(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_repeatable(value: boolean): void;
+
         get_is_modifier(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_modifier(value: boolean): void;
+
         get_show_subkeys(): boolean;
+
         get_name(): string;
+
         get_keyval(): number;
+
         get_text(): string;
+
         get_label(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_label(value: string): void;
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_stepping(): boolean;
         set scan_stepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanStepping(): boolean;
         set scanStepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_selected(): boolean;
         set scan_selected(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanSelected(): boolean;
         set scanSelected(val: boolean);
+
         get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_stepping(value: boolean): void;
+
         get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_selected(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_stepping(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_selected(value: boolean): void;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
 
+
     namespace ColumnModel {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
-            'notify::scan-stepping': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-selected': (pspec: GObject.ParamSpec) => void;
+            "notify::scan-stepping": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-selected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                ScannableGroup.ConstructorProps,
-                IScannableItem.ConstructorProps,
-                IKeyboardObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -1127,110 +1152,117 @@ export namespace Caribou {
         $signals: ColumnModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ColumnModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ColumnModel;
+        static ["new"](): ColumnModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ColumnModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ColumnModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ColumnModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ColumnModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColumnModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ColumnModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ColumnModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ColumnModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColumnModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param index
+         * @param index 
          */
         get_key(index: number): KeyModel;
+
         first_key(): KeyModel;
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_stepping(): boolean;
         set scan_stepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanStepping(): boolean;
         set scanStepping(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scan_selected(): boolean;
         set scan_selected(val: boolean);
+
         /** @category Inherited from Caribou.IScannableItem */
         get scanSelected(): boolean;
         set scanSelected(val: boolean);
+
         get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_stepping(value: boolean): void;
+
         get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_selected(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_stepping(value: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_selected(value: boolean): void;
+
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
+
         /**
          * @virtual
          */
         vfunc_get_children(): IKeyboardObject[];
+
         /**
          * @virtual
          */
         vfunc_get_keys(): KeyModel[];
     }
 
+
     namespace Scanner {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bind-settings': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-grouping': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::step-time': (pspec: GObject.ParamSpec) => void;
-            'notify::switch-device': (pspec: GObject.ParamSpec) => void;
-            'notify::keyboard-key': (pspec: GObject.ParamSpec) => void;
-            'notify::mouse-button': (pspec: GObject.ParamSpec) => void;
-            'notify::scan-cycles': (pspec: GObject.ParamSpec) => void;
-            'notify::autorestart': (pspec: GObject.ParamSpec) => void;
-            'notify::inverse-scanning': (pspec: GObject.ParamSpec) => void;
+            "notify::bind-settings": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-grouping": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::step-time": (pspec: GObject.ParamSpec) => void;
+            "notify::switch-device": (pspec: GObject.ParamSpec) => void;
+            "notify::keyboard-key": (pspec: GObject.ParamSpec) => void;
+            "notify::mouse-button": (pspec: GObject.ParamSpec) => void;
+            "notify::scan-cycles": (pspec: GObject.ParamSpec) => void;
+            "notify::autorestart": (pspec: GObject.ParamSpec) => void;
+            "notify::inverse-scanning": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             bind_settings: boolean;
             bindSettings: boolean;
@@ -1261,47 +1293,64 @@ export namespace Caribou {
         static $gtype: GObject.GType<Scanner>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get bind_settings(): boolean;
+
         /**
          * @construct-only
          */
         get bindSettings(): boolean;
+
         get scan_grouping(): number;
         set scan_grouping(val: number);
+
         get scanGrouping(): number;
         set scanGrouping(val: number);
+
         get scan_enabled(): boolean;
         set scan_enabled(val: boolean);
+
         get scanEnabled(): boolean;
         set scanEnabled(val: boolean);
+
         get step_time(): number;
         set step_time(val: number);
+
         get stepTime(): number;
         set stepTime(val: number);
+
         get switch_device(): string;
         set switch_device(val: string);
+
         get switchDevice(): string;
         set switchDevice(val: string);
+
         get keyboard_key(): string;
         set keyboard_key(val: string);
+
         get keyboardKey(): string;
         set keyboardKey(val: string);
+
         get mouse_button(): number;
         set mouse_button(val: number);
+
         get mouseButton(): number;
         set mouseButton(val: number);
+
         get scan_cycles(): number;
         set scan_cycles(val: number);
+
         get scanCycles(): number;
         set scanCycles(val: number);
+
         get autorestart(): boolean;
         set autorestart(val: boolean);
+
         get inverse_scanning(): boolean;
         set inverse_scanning(val: boolean);
+
         get inverseScanning(): boolean;
         set inverseScanning(val: boolean);
 
@@ -1315,98 +1364,110 @@ export namespace Caribou {
         $signals: Scanner.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Scanner.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Scanner;
+        static ["new"](): Scanner;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Scanner.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Scanner.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Scanner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scanner.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Scanner.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Scanner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scanner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param keyboard
+         * @param keyboard 
          */
         set_keyboard(keyboard: KeyboardModel): void;
+
         reset(): void;
+
         get_bind_settings(): boolean;
+
         get_scan_grouping(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_grouping(value: number): void;
+
         get_scan_enabled(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_enabled(value: boolean): void;
+
         get_step_time(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_step_time(value: number): void;
+
         get_switch_device(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_switch_device(value: string): void;
+
         get_keyboard_key(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_keyboard_key(value: string): void;
+
         get_mouse_button(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_mouse_button(value: number): void;
+
         get_scan_cycles(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_cycles(value: number): void;
+
         get_autorestart(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_autorestart(value: boolean): void;
+
         get_inverse_scanning(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_inverse_scanning(value: boolean): void;
     }
 
+
     namespace ScannableGroup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::scan-grouping': (pspec: GObject.ParamSpec) => void;
+            "notify::scan-grouping": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {}
+        }
     }
 
     /**
@@ -1425,97 +1486,104 @@ export namespace Caribou {
         $signals: ScannableGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScannableGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScannableGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScannableGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScannableGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScannableGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScannableGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScannableGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScannableGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScannableGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScannableGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_get_scan_children(): IScannableItem[];
+
         /**
          * @virtual
          */
         vfunc_child_select(): IScannableItem;
 
         // Methods
-
         get_scan_children(): IScannableItem[];
+
         child_select(): IScannableItem;
+
         /** @category Inherited from Caribou.IScannableGroup */
         get scan_grouping(): ScanGrouping;
         set scan_grouping(val: ScanGrouping);
+
         /** @category Inherited from Caribou.IScannableGroup */
         get scanGrouping(): ScanGrouping;
         set scanGrouping(val: ScanGrouping);
+
         scan_reset(): void;
+
         /**
-         * @param cycles
+         * @param cycles 
          */
         child_step(cycles: number): IScannableItem;
+
         get_step_path(): IScannableItem[];
+
         get_selected_path(): IScannableItem[];
+
         get_scan_grouping(): ScanGrouping;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_grouping(value: ScanGrouping): void;
+
         /**
          * @virtual
          */
         vfunc_scan_reset(): void;
+
         /**
-         * @param cycles
+         * @param cycles 
          * @virtual
          */
         vfunc_child_step(cycles: number): IScannableItem;
+
         /**
          * @virtual
          */
         vfunc_get_step_path(): IScannableItem[];
+
         /**
          * @virtual
          */
         vfunc_get_selected_path(): IScannableItem[];
+
         /**
          * @virtual
          */
         vfunc_get_scan_grouping(): ScanGrouping;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_scan_grouping(value: ScanGrouping): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DisplayAdapterClass = typeof DisplayAdapter;
+
     /**
      * @gir-type Struct
      */
@@ -1523,10 +1591,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<DisplayAdapterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NullAdapterClass = typeof NullAdapter;
+
     /**
      * @gir-type Struct
      */
@@ -1534,10 +1604,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<NullAdapterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type XAdapterClass = typeof XAdapter;
+
     /**
      * @gir-type Struct
      */
@@ -1545,10 +1617,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<XAdapterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type KeyboardModelClass = typeof KeyboardModel;
+
     /**
      * @gir-type Struct
      */
@@ -1556,10 +1630,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<KeyboardModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type KeyboardServiceClass = typeof KeyboardService;
+
     /**
      * @gir-type Struct
      */
@@ -1567,10 +1643,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<KeyboardServicePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GroupModelClass = typeof GroupModel;
+
     /**
      * @gir-type Struct
      */
@@ -1578,10 +1656,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<GroupModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LevelModelClass = typeof LevelModel;
+
     /**
      * @gir-type Struct
      */
@@ -1589,10 +1669,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<LevelModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RowModelClass = typeof RowModel;
+
     /**
      * @gir-type Struct
      */
@@ -1600,10 +1682,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<RowModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type KeyModelClass = typeof KeyModel;
+
     /**
      * @gir-type Struct
      */
@@ -1611,10 +1695,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<KeyModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ColumnModelClass = typeof ColumnModel;
+
     /**
      * @gir-type Struct
      */
@@ -1622,10 +1708,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<ColumnModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ScannerClass = typeof Scanner;
+
     /**
      * @gir-type Struct
      */
@@ -1633,10 +1721,12 @@ export namespace Caribou {
         static $gtype: GObject.GType<ScannerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ScannableGroupClass = typeof ScannableGroup;
+
     /**
      * @gir-type Struct
      */
@@ -1644,48 +1734,55 @@ export namespace Caribou {
         static $gtype: GObject.GType<ScannableGroupPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IScannableItemIface = typeof IScannableItem;
+
     /**
      * @gir-type Alias
      */
     type IScannableGroupIface = typeof IScannableGroup;
+
     /**
      * @gir-type Alias
      */
     type IKeyboardObjectIface = typeof IKeyboardObject;
+
     namespace IScannableItem {
         /**
          * Interface for implementing IScannableItem.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_scan_stepping(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_scan_stepping(value: boolean): void;
+
             /**
              * @virtual
              */
             vfunc_get_scan_selected(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_scan_selected(value: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             scan_stepping: boolean;
             scanStepping: boolean;
@@ -1702,30 +1799,36 @@ export namespace Caribou {
      * @gir-type Interface
      */
     interface IScannableItem extends GObject.Object, IScannableItem.Interface {
-        // Properties
 
+        // Properties
         get scan_stepping(): boolean;
         set scan_stepping(val: boolean);
+
         get scanStepping(): boolean;
         set scanStepping(val: boolean);
+
         get scan_selected(): boolean;
         set scan_selected(val: boolean);
+
         get scanSelected(): boolean;
         set scanSelected(val: boolean);
 
         // Methods
-
         get_scan_stepping(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_stepping(value: boolean): void;
+
         get_scan_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_selected(value: boolean): void;
     }
+
 
     export const IScannableItem: IScannableItemNamespace & {
         new (): IScannableItem; // This allows `obj instanceof IScannableItem`
@@ -1737,46 +1840,53 @@ export namespace Caribou {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_child_select(): IScannableItem;
+
             /**
              * @virtual
              */
             vfunc_scan_reset(): void;
+
             /**
              * @virtual
              */
             vfunc_get_scan_children(): IScannableItem[];
+
             /**
-             * @param cycles
+             * @param cycles 
              * @virtual
              */
             vfunc_child_step(cycles: number): IScannableItem;
+
             /**
              * @virtual
              */
             vfunc_get_step_path(): IScannableItem[];
+
             /**
              * @virtual
              */
             vfunc_get_selected_path(): IScannableItem[];
+
             /**
              * @virtual
              */
             vfunc_get_scan_grouping(): ScanGrouping;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_scan_grouping(value: ScanGrouping): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             scan_grouping: ScanGrouping;
             scanGrouping: ScanGrouping;
@@ -1791,30 +1901,38 @@ export namespace Caribou {
      * @gir-type Interface
      */
     interface IScannableGroup extends GObject.Object, IScannableGroup.Interface {
-        // Properties
 
+        // Properties
         get scan_grouping(): ScanGrouping;
         set scan_grouping(val: ScanGrouping);
+
         get scanGrouping(): ScanGrouping;
         set scanGrouping(val: ScanGrouping);
 
         // Methods
-
         child_select(): IScannableItem;
+
         scan_reset(): void;
+
         get_scan_children(): IScannableItem[];
+
         /**
-         * @param cycles
+         * @param cycles 
          */
         child_step(cycles: number): IScannableItem;
+
         get_step_path(): IScannableItem[];
+
         get_selected_path(): IScannableItem[];
+
         get_scan_grouping(): ScanGrouping;
+
         /**
-         * @param value
+         * @param value 
          */
         set_scan_grouping(value: ScanGrouping): void;
     }
+
 
     export const IScannableGroup: IScannableGroupNamespace & {
         new (): IScannableGroup; // This allows `obj instanceof IScannableGroup`
@@ -1826,21 +1944,24 @@ export namespace Caribou {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_children(): IKeyboardObject[];
+
             /**
              * @virtual
              */
             vfunc_get_keys(): KeyModel[];
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface IKeyboardObjectNamespace {
@@ -1851,11 +1972,13 @@ export namespace Caribou {
      * @gir-type Interface
      */
     interface IKeyboardObject extends GObject.Object, IKeyboardObject.Interface {
-        // Methods
 
+        // Methods
         get_children(): IKeyboardObject[];
+
         get_keys(): KeyModel[];
     }
+
 
     export const IKeyboardObject: IKeyboardObjectNamespace & {
         new (): IKeyboardObject; // This allows `obj instanceof IKeyboardObject`
@@ -1866,6 +1989,7 @@ export namespace Caribou {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

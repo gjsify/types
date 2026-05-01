@@ -1,3 +1,4 @@
+
 import type GstInterfaces010 from '@girs/gstinterfaces-0.10';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

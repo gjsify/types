@@ -1,3 +1,4 @@
+
 import type CoglPango9 from '@girs/coglpango-9';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

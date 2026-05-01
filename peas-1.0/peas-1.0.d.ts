@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GIRepository from '@girs/girepository-2.0';
 
 export namespace Peas {
+
     /**
      * Peas-1.0
      */
+
 
     /**
      * These identify the various errors that can occur while
@@ -30,48 +33,53 @@ export namespace Peas {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * The plugin failed to load.
          */
         static LOADING_FAILED: number;
+
         /**
          * The plugin's loader was not found.
          */
         static LOADER_NOT_FOUND: number;
+
         /**
          * A dependency of the plugin was not found.
          */
         static DEP_NOT_FOUND: number;
+
         /**
          * A dependency of the plugin failed to load.
          */
         static DEP_LOADING_FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     function plugin_info_error_quark(): GLib.Quark;
+
     /**
      * @gir-type Callback
      */
     interface ExtensionSetForeachFunc {
-        (set: ExtensionSet, info: PluginInfo, exten: Extension, data: any | null): void;
+        (set: ExtensionSet, info: PluginInfo, exten: Extension, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface FactoryFunc {
         (parameters: GObject.Parameter[]): GObject.Object;
     }
+
     namespace Engine {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * The load-plugin signal is emitted when a plugin is being loaded.
-             *
+             * 
              * The plugin is being loaded in the default handler. Hence, if you want to
              * perform some action before the plugin is loaded, you should use
              * {@link GObject.signal_connect}, but if you want to perform some action *after* the
@@ -80,10 +88,10 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            'load-plugin': (arg0: PluginInfo) => void;
+            "load-plugin": (arg0: PluginInfo) => void;
             /**
              * The unload-plugin signal is emitted when a plugin is being unloaded.
-             *
+             * 
              * The plugin is being unloaded in the default handler. Hence, if you want to
              * perform some action before the plugin is unloaded (the most common case),
              * you should use {@link GObject.signal_connect}, but if you want to perform
@@ -92,14 +100,13 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            'unload-plugin': (arg0: PluginInfo) => void;
-            'notify::loaded-plugins': (pspec: GObject.ParamSpec) => void;
-            'notify::nonglobal-loaders': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin-list': (pspec: GObject.ParamSpec) => void;
+            "unload-plugin": (arg0: PluginInfo) => void;
+            "notify::loaded-plugins": (pspec: GObject.ParamSpec) => void;
+            "notify::nonglobal-loaders": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin-list": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             loaded_plugins: string[];
             loadedPlugins: string[];
@@ -119,16 +126,15 @@ export namespace Peas {
         static $gtype: GObject.GType<Engine>;
 
         // Properties
-
         /**
          * The list of loaded plugins.
-         *
+         * 
          * This will be modified when {@link Engine.load_plugin} or
          * {@link Engine.unload_plugin} is called.
-         *
+         * 
          * This can be used with {@link Gio.Settings} to save the loaded plugins by
          * binding to this property after instantiating the engine by doing:
-         *
+         * 
          * ```c
          *   g_settings_bind (gsettings_object,
          *                    LOADED_PLUGINS_KEY,
@@ -136,20 +142,21 @@ export namespace Peas {
          *                    "loaded-plugins",
          *                    G_SETTINGS_BIND_DEFAULT);
          * ```
-         *
+         * 
          * Note: notify will not be called when the engine is being destroyed.
          */
         get loaded_plugins(): string[];
         set loaded_plugins(val: string[]);
+
         /**
          * The list of loaded plugins.
-         *
+         * 
          * This will be modified when {@link Engine.load_plugin} or
          * {@link Engine.unload_plugin} is called.
-         *
+         * 
          * This can be used with {@link Gio.Settings} to save the loaded plugins by
          * binding to this property after instantiating the engine by doing:
-         *
+         * 
          * ```c
          *   g_settings_bind (gsettings_object,
          *                    LOADED_PLUGINS_KEY,
@@ -157,43 +164,47 @@ export namespace Peas {
          *                    "loaded-plugins",
          *                    G_SETTINGS_BIND_DEFAULT);
          * ```
-         *
+         * 
          * Note: notify will not be called when the engine is being destroyed.
          */
         get loadedPlugins(): string[];
         set loadedPlugins(val: string[]);
+
         /**
          * If non-global plugin loaders should be used.
-         *
+         * 
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
          * @construct-only
          * @default false
          */
         get nonglobal_loaders(): boolean;
+
         /**
          * If non-global plugin loaders should be used.
-         *
+         * 
          * See {@link Engine.new_with_nonglobal_loaders} for more information.
          * @since 1.14
          * @construct-only
          * @default false
          */
         get nonglobalLoaders(): boolean;
+
         /**
          * The list of found plugins.
-         *
+         * 
          * This will be modified when {@link Engine.rescan_plugins} is called.
-         *
+         * 
          * Note: the list belongs to the engine and should not be modified or freed.
          * @read-only
          */
         get plugin_list(): any;
+
         /**
          * The list of found plugins.
-         *
+         * 
          * This will be modified when {@link Engine.rescan_plugins} is called.
-         *
+         * 
          * Note: the list belongs to the engine and should not be modified or freed.
          * @read-only
          */
@@ -209,92 +220,82 @@ export namespace Peas {
         $signals: Engine.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Engine;
+        static ["new"](): Engine;
 
         static new_with_nonglobal_loaders(): Engine;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Engine.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Engine.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Engine.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Return the existing instance of {@link Peas.Engine} or a subclass of it.
-         *
+         * 
          * If no {@link Peas.Engine} subclass has been instantiated yet, the first call
          * of this function will return a new instance of {@link Peas.Engine}.
-         *
+         * 
          * Note: this function should never be used when multiple threads are
          *   using libpeas API as it is not thread-safe.
          */
         static get_default(): Engine;
 
         // Virtual methods
-
         /**
-         * @param info
+         * @param info 
          * @virtual
          */
         vfunc_load_plugin(info: PluginInfo): void;
+
         /**
-         * @param info
+         * @param info 
          * @virtual
          */
         vfunc_unload_plugin(info: PluginInfo): void;
 
         // Methods
-
         /**
          * Appends a search path to the list of paths where to look for plugins.
-         *
+         * 
          * A so-called "search path" actually consists of both a
          * module directory (where the shared libraries or language modules
          * lie) and a data directory (where the plugin data is).
-         *
+         * 
          * The plugin will be able to use a correct data dir depending on
          * where it is installed, hence allowing to keep the plugin agnostic
          * when it comes to installation location: the same plugin can be
          * installed either in the system path or in the user's home directory,
          * without taking other special care than using
          * {@link PluginInfo.get_data_dir} when looking for its data files.
-         *
+         * 
          * If `data_dir` is `null`, then it is set to the same value as
          * `module_dir`.
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        add_search_path(module_dir: string, data_dir: string | null): void;
+        add_search_path(module_dir: string, data_dir: (string | null)): void;
+
         /**
          * If the plugin identified by `info` implements the `extension_type`,
          * then this function will return a new instance of this implementation,
          * wrapped in a new {@link Extension} instance. Otherwise, it will return `null`.
-         *
+         * 
          * Since libpeas 1.22, `extension_type` can be an Abstract {@link GObject.Type}
          * and not just an Interface {@link GObject.Type}.
-         *
+         * 
          * See {@link Engine.create_extension} for more information.
          * @param info A loaded {@link Peas.PluginInfo}.
          * @param extension_type The implemented extension {@link GObject.GType}.
@@ -302,25 +303,21 @@ export namespace Peas {
          * @param prop_values an array of property values.
          * @returns a new instance of {@link Peas.Extension} wrapping   the `extension_type` instance, or `null`.
          */
-        create_extension(
-            info: PluginInfo,
-            extension_type: GObject.GType,
-            prop_names: string[],
-            prop_values: (GObject.Value | any)[],
-        ): Extension;
+        create_extension(info: PluginInfo, extension_type: GObject.GType, prop_names: string[], prop_values: (GObject.Value | any)[]): Extension;
+
         /**
          * Enable a loader, enables a loader for plugins.
-         *
+         * 
          * The C plugin loader is always enabled. The other plugin
          * loaders are: lua5.1, python and python3.
-         *
+         * 
          * For instance, the following code will enable Python 2 plugins
          * to be loaded:
-         *
+         * 
          * ```c
          * peas_engine_enable_loader (engine, "python");
          * ```
-         *
+         * 
          * Note: plugin loaders used to be shared across {@link Peas.Engine}s so enabling
          *   a loader on one {@link Peas.Engine} would enable it on all `PeasEngines`.
          *   This behavior has been kept to avoid breaking applications,
@@ -328,26 +325,29 @@ export namespace Peas {
          * @param loader_name The name of the loader to enable.
          */
         enable_loader(loader_name: string): void;
+
         /**
          * Triggers garbage collection on all the loaders currently owned by the
          * {@link Peas.Engine}.
-         *
+         * 
          * This can be used to force the loaders to destroy
          * managed objects that still hold references to objects that are about to
          * disappear.
          */
         garbage_collect(): void;
+
         /**
          * Returns the list of the names of all the loaded plugins.
-         *
+         * 
          * If there is no plugin currently loaded, it will return an array containing a
          * single `null` element.
-         *
+         * 
          * Please note that the returned array is a newly allocated one: you will need
          * to free it using {@link GLib.strfreev}.
          * @returns A newly-allocated   `null`-terminated array of strings.
          */
         get_loaded_plugins(): string[];
+
         /**
          * Gets the {@link PluginInfo} corresponding with `plugin_name`,
          * or `null` if `plugin_name` was not found.
@@ -355,33 +355,37 @@ export namespace Peas {
          * @returns the {@link Peas.PluginInfo} corresponding with   a given plugin module name.
          */
         get_plugin_info(plugin_name: string): PluginInfo;
+
         /**
          * Returns the list of {@link PluginInfo} known to the engine.
          * @returns a {@link GLib.List} of   {@link Peas.PluginInfo}. Note that the list belongs to the engine and should   not be freed.
          */
         get_plugin_list(): PluginInfo[];
+
         /**
          * Loads the plugin corresponding to `info` if it's not currently loaded.
-         *
+         * 
          * Emits the `Peas.Engine::load-plugin` signal; loading the plugin
          * actually occurs in the default signal handler.
          * @param info A {@link Peas.PluginInfo}.
          * @returns whether the plugin has been successfully loaded.
          */
         load_plugin(info: PluginInfo): boolean;
+
         /**
          * Prepends a search path to the list of paths where to look for plugins.
-         *
+         * 
          * See Also: {@link Engine.add_search_path}
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        prepend_search_path(module_dir: string, data_dir: string | null): void;
+        prepend_search_path(module_dir: string, data_dir: (string | null)): void;
+
         /**
          * Returns if `info` provides an extension for `extension_type`.
-         *
+         * 
          * If the `info` is not loaded than `false` will always be returned.
-         *
+         * 
          * Since libpeas 1.22, `extension_type` can be an Abstract {@link GObject.Type}
          * and not just an Interface {@link GObject.Type}.
          * @param info A {@link Peas.PluginInfo}.
@@ -389,28 +393,31 @@ export namespace Peas {
          * @returns if `info` provides an extension for `extension_type`.
          */
         provides_extension(info: PluginInfo, extension_type: GObject.GType): boolean;
+
         /**
          * Rescan all the registered directories to find new or updated plugins.
-         *
+         * 
          * Calling this function will make the newly installed plugin infos
          * be loaded by the engine, so the new plugins can be used without
          * restarting the application.
          */
         rescan_plugins(): void;
+
         /**
          * Sets the list of loaded plugins for `engine`.
-         *
+         * 
          * When this function is called, the {@link Peas.Engine} will load all the plugins whose
          * names are in `plugin_names`, and ensures all other active plugins are
          * unloaded.
-         *
+         * 
          * If `plugin_names` is `null`, all plugins will be unloaded.
          * @param plugin_names A `null`-terminated  array of plugin names, or `null`.
          */
-        set_loaded_plugins(plugin_names: string[] | null): void;
+        set_loaded_plugins(plugin_names: (string[] | null)): void;
+
         /**
          * Unloads the plugin corresponding to `info`.
-         *
+         * 
          * Emits the `Peas.Engine::unload-plugin` signal; unloading the plugin
          * actually occurs in the default signal handler.
          * @param info A {@link Peas.PluginInfo}.
@@ -419,15 +426,15 @@ export namespace Peas {
         unload_plugin(info: PluginInfo): boolean;
     }
 
+
     namespace ExtensionBase {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data-dir': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin-info': (pspec: GObject.ParamSpec) => void;
+            "notify::data-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             data_dir: string;
             dataDir: string;
@@ -444,32 +451,34 @@ export namespace Peas {
         static $gtype: GObject.GType<ExtensionBase>;
 
         // Properties
-
         /**
          * The The full path of the directory where the plugin
          * should look for its data files.
-         *
+         * 
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
          * @read-only
          * @default null
          */
         get data_dir(): string;
+
         /**
          * The The full path of the directory where the plugin
          * should look for its data files.
-         *
+         * 
          * Note: This is the same path as that returned by
          * {@link PluginInfo.get_data_dir}.
          * @read-only
          * @default null
          */
         get dataDir(): string;
+
         /**
          * The {@link PluginInfo} related to the current plugin.
          * @construct-only
          */
         get plugin_info(): PluginInfo;
+
         /**
          * The {@link PluginInfo} related to the current plugin.
          * @construct-only
@@ -486,40 +495,31 @@ export namespace Peas {
         $signals: ExtensionBase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExtensionBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExtensionBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExtensionBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExtensionBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExtensionBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionBase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExtensionBase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExtensionBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExtensionBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the path of the directory where the plugin should look for
          * its data files.
          * @returns A newly allocated string with the path of the   directory where the plugin should look for its data files
          */
         get_data_dir(): string;
+
         /**
          * Get information relative to `extbase`.
          * @returns the {@link PluginInfo} relative   to the {@link Peas.ExtensionBase}.
@@ -527,15 +527,16 @@ export namespace Peas {
         get_plugin_info(): PluginInfo;
     }
 
+
     namespace ExtensionSet {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * Emitted when a new extension has been added to the {@link Peas.ExtensionSet}.
-             *
+             * 
              * It happens when a new plugin implementing the extension set's extension
              * type is loaded.
-             *
+             * 
              * You should connect to this signal in order to set up the extensions when
              * they are loaded. Note that this signal is not fired for extensions coming
              * from plugins that were already loaded when the {@link Peas.ExtensionSet} instance
@@ -543,14 +544,14 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            'extension-added': (arg0: PluginInfo, arg1: GObject.Object) => void;
+            "extension-added": (arg0: PluginInfo, arg1: GObject.Object) => void;
             /**
              * Emitted when a new extension is about to be removed from the
              * {@link Peas.ExtensionSet}.
-             *
+             * 
              * It happens when a plugin implementing the extension set's extension type is
              * unloaded, or when the {@link Peas.ExtensionSet} itself is destroyed.
-             *
+             * 
              * You should connect to this signal in order to clean up the extensions
              * when their plugin is unload. Note that this signal is not fired for the
              * {@link Extension} instances still available when the {@link Peas.ExtensionSet}
@@ -558,16 +559,14 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            'extension-removed': (arg0: PluginInfo, arg1: GObject.Object) => void;
-            'notify::construct-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::engine': (pspec: GObject.ParamSpec) => void;
-            'notify::extension-type': (pspec: GObject.ParamSpec) => void;
+            "extension-removed": (arg0: PluginInfo, arg1: GObject.Object) => void;
+            "notify::construct-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::engine": (pspec: GObject.ParamSpec) => void;
+            "notify::extension-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             construct_properties: any;
             constructProperties: any;
             engine: Engine;
@@ -585,23 +584,26 @@ export namespace Peas {
         static $gtype: GObject.GType<ExtensionSet>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set construct_properties(val: any);
+
         /**
          * @construct-only
          */
         set constructProperties(val: any);
+
         /**
          * @construct-only
          */
         get engine(): Engine;
+
         /**
          * @construct-only
          */
         get extension_type(): GObject.GType;
+
         /**
          * @construct-only
          */
@@ -617,121 +619,112 @@ export namespace Peas {
         $signals: ExtensionSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExtensionSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            engine: Engine | null,
-            exten_type: GObject.GType,
-            prop_names: string[],
-            prop_values: (GObject.Value | any)[],
-        ): ExtensionSet;
+        static ["new"](engine: (Engine | null), exten_type: GObject.GType, prop_names: string[], prop_values: (GObject.Value | any)[]): ExtensionSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExtensionSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExtensionSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExtensionSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtensionSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExtensionSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ExtensionSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtensionSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param method_name
-         * @param args
+         * @param method_name 
+         * @param args 
          * @virtual
          */
         vfunc_call(method_name: string, args: GIRepository.Argument): boolean;
+
         /**
-         * @param info
-         * @param exten
+         * @param info 
+         * @param exten 
          * @virtual
          */
         vfunc_extension_added(info: PluginInfo, exten: Extension): void;
+
         /**
-         * @param info
-         * @param exten
+         * @param info 
+         * @param exten 
          * @virtual
          */
         vfunc_extension_removed(info: PluginInfo, exten: Extension): void;
 
         // Methods
-
         /**
          * Calls `func` for each {@link Extension}.
          * @param func A function call for each extension.
          */
         foreach(func: ExtensionSetForeachFunc): void;
+
         /**
          * Returns the {@link Extension} object corresponding to `info`.
-         *
+         * 
          * If the plugin doesn't provide such an extension, it returns `null`.
          * @param info a {@link Peas.PluginInfo}
          * @returns a reference to a {@link Peas.Extension}
          */
-        get_extension(info: PluginInfo): Extension | null;
+        get_extension(info: PluginInfo): (Extension | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -740,7 +733,7 @@ export namespace Peas {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -750,33 +743,36 @@ export namespace Peas {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
@@ -785,18 +781,18 @@ export namespace Peas {
         vfunc_get_n_items(): number;
     }
 
+
     namespace ObjectModule {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-            'notify::local-linkage': (pspec: GObject.ParamSpec) => void;
-            'notify::module-name': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::resident': (pspec: GObject.ParamSpec) => void;
-            'notify::symbol': (pspec: GObject.ParamSpec) => void;
+            "notify::local-linkage": (pspec: GObject.ParamSpec) => void;
+            "notify::module-name": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::resident": (pspec: GObject.ParamSpec) => void;
+            "notify::symbol": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
             local_linkage: boolean;
             localLinkage: boolean;
@@ -817,43 +813,48 @@ export namespace Peas {
         static $gtype: GObject.GType<ObjectModule>;
 
         // Properties
-
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
-         *
+         * 
          * Since 1.14
          * @construct-only
          * @default false
          */
         get local_linkage(): boolean;
+
         /**
          * Whether the module is loaded with local linkage, i.e. #G_MODULE_BIND_LOCAL.
-         *
+         * 
          * Since 1.14
          * @construct-only
          * @default false
          */
         get localLinkage(): boolean;
+
         /**
          * @construct-only
          * @default null
          */
         get module_name(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get moduleName(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get path(): string;
+
         /**
          * @construct-only
          * @default false
          */
         get resident(): boolean;
+
         /**
          * @construct-only
          * @default peas_register_types
@@ -870,59 +871,51 @@ export namespace Peas {
         $signals: ObjectModule.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ObjectModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ObjectModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ObjectModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ObjectModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ObjectModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectModule.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ObjectModule.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ObjectModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ObjectModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Register an implementation for an extension type through a factory
          * function `factory_func` which will instantiate the extension when
          * requested.
-         *
+         * 
          * This method is primarily meant to be used by native bindings (like gtkmm),
          * creating native types which cannot be instantiated correctly using
          * {@link GObject.Object.new}.  For other uses, you will usually prefer relying on
          * `peas_object_module_register_extension_type()`.
-         *
+         * 
          * Since libpeas 1.22, `exten_type` can be an Abstract {@link GObject.Type}
          * and not just an Interface {@link GObject.Type}.
          * @param exten_type The {@link GObject.GType} of the extension you implement.
          * @param factory_func The {@link Peas.FactoryFunc} that will create the `exten_type`   instance when requested.
          */
         register_extension_factory(exten_type: GObject.GType, factory_func: FactoryFunc): void;
+
         /**
          * Register `impl_type` as an extension which implements `extension_type`.
-         *
+         * 
          * Since libpeas 1.22, `exten_type` can be an Abstract {@link GObject.Type}
          * and not just an Interface {@link GObject.Type}.
          * @param exten_type The {@link GObject.GType} of the extension you implement.
          * @param impl_type The {@link GObject.GType} of your implementation of `exten_type`.
          */
         register_extension_type(exten_type: GObject.GType, impl_type: GObject.GType): void;
+
         /**
          * Calls the `complete_interface_info` function from the
          * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
@@ -931,11 +924,8 @@ export namespace Peas {
          * @param interface_type the {@link GObject.GType} of the interface whose info is completed
          * @param info the {@link GObject.InterfaceInfo} to fill in
          */
-        complete_interface_info(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            info: GObject.InterfaceInfo,
-        ): void;
+        complete_interface_info(instance_type: GObject.GType, interface_type: GObject.GType, info: GObject.InterfaceInfo): void;
+
         /**
          * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
@@ -945,33 +935,39 @@ export namespace Peas {
          * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
+
         /**
          * Calls the `unuse_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         unuse(): void;
+
         /**
          * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ActivatableInterface = typeof Activatable;
+
     /**
      * @gir-type Alias
      */
     type EngineClass = typeof Engine;
+
     /**
      * @gir-type Struct
      */
@@ -979,10 +975,12 @@ export namespace Peas {
         static $gtype: GObject.GType<EnginePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExtensionBaseClass = typeof ExtensionBase;
+
     /**
      * @gir-type Struct
      */
@@ -990,10 +988,12 @@ export namespace Peas {
         static $gtype: GObject.GType<ExtensionBasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExtensionSetClass = typeof ExtensionSet;
+
     /**
      * @gir-type Struct
      */
@@ -1001,16 +1001,19 @@ export namespace Peas {
         static $gtype: GObject.GType<ExtensionSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ObjectModuleClass = typeof ObjectModule;
+
     /**
      * @gir-type Struct
      */
     abstract class ObjectModulePrivate {
         static $gtype: GObject.GType<ObjectModulePrivate>;
     }
+
 
     /**
      * The {@link Peas.PluginInfo} structure contains only private data and should only
@@ -1021,28 +1024,28 @@ export namespace Peas {
         static $gtype: GObject.GType<PluginInfo>;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Gets a `null`-terminated array of strings with the authors of the plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Authors".
          * @returns the plugin's author list.
          */
         get_authors(): string[];
+
         /**
          * Gets the copyright of the plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Copyright".
          * @returns the plugin's copyright information.
          */
         get_copyright(): string;
+
         /**
          * Gets the data dir of the plugin.
-         *
+         * 
          * The module data directory is the directory where a plugin should find its
          * runtime data. This is not a value read from the {@link GLib.KeyFile}, but
          * rather a value provided by the {@link Engine}, depending on where the plugin
@@ -1050,93 +1053,102 @@ export namespace Peas {
          * @returns the plugin's data dir.
          */
         get_data_dir(): string;
+
         /**
          * Gets the dependencies of the plugin.
-         *
+         * 
          * The {@link Engine} will always ensure that the dependencies of a plugin are
          * loaded when the said plugin is loaded. It means that dependencies are
          * loaded before the plugin, and unloaded after it. Circular dependencies of
          * plugins lead to undefined loading order.
-         *
+         * 
          * The relevant key in the plugin info file is "Depends".
          * @returns the plugin's dependencies.
          */
         get_dependencies(): string[];
+
         /**
          * Gets the description of the plugin.
-         *
+         * 
          * The description of the plugin should be a string presenting the purpose of
          * the plugin. It will typically be presented in a plugin's about box.
-         *
+         * 
          * The relevant key in the plugin info file is "Description".
          * @returns the plugin's description.
          */
         get_description(): string;
+
         /**
          * Gets external data specified for the plugin.
-         *
+         * 
          * External data is specified in the plugin info file prefixed with X-. For
          * example, if a key/value pair `X-Peas=1` is specified in the key file, you
          * can use "Peas" for `key` to retrieve the value "1".
-         *
+         * 
          * Note: that you can omit the X- prefix when retrieving the value,
          * but not when specifying the value in the file.
          * @param key The key to lookup.
          * @returns the external data, or `null` if the external data could not be found.
          */
-        get_external_data(key: string): string | null;
+        get_external_data(key: string): (string | null);
+
         /**
          * Gets the help URI of the plugin.
-         *
+         * 
          * The Help URI of a plugin will typically be presented by the plugin manager
          * as a "Help" button linking to the URI. It can either be a HTTP URL on some
          * website or a ghelp: URI if a Gnome help page is available for the plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Help". Other platform-specific
          * keys exist for platform-specific help files. Those are "Help-GNOME",
          * "Help-Windows" and "Help-MacOS-X".
          * @returns the plugin's help URI.
          */
         get_help_uri(): string;
+
         /**
          * Gets the icon name of the plugin.
-         *
+         * 
          * The icon of the plugin will be presented in the plugin manager UI. If no
          * icon is specified, the default green puzzle icon will be used.
-         *
+         * 
          * The relevant key in the plugin info file is "Icon".
          * @returns the plugin's icon name.
          */
         get_icon_name(): string;
+
         /**
          * Gets the module directory.
-         *
+         * 
          * The module directory is the directory where the plugin file was found. This
          * is not a value from the {@link GLib.KeyFile}, but rather a value provided by the
          * {@link Engine}.
          * @returns the module directory.
          */
         get_module_dir(): string;
+
         /**
          * Gets the module name.
-         *
+         * 
          * The module name will be used to find the actual plugin. The way this value
          * will be used depends on the loader (i.e. on the language) of the plugin.
          * This value is also used to uniquely identify a particular plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Module".
          * @returns the module name.
          */
         get_module_name(): string;
+
         /**
          * Gets the name of the plugin.
-         *
+         * 
          * The name of a plugin should be a nice short string to be presented in UIs.
-         *
+         * 
          * The relevant key in the plugin info file is "Name".
          * @returns the plugin's name.
          */
         get_name(): string;
+
         /**
          * Creates a new {@link Gio.Settings} for the given `schema_id` and if
          * gschemas.compiled is not in the module directory an attempt
@@ -1144,64 +1156,71 @@ export namespace Peas {
          * @param schema_id The schema id.
          * @returns a new {@link Gio.Settings}.
          */
-        get_settings(schema_id: string | null): Gio.Settings | null;
+        get_settings(schema_id: (string | null)): (Gio.Settings | null);
+
         /**
          * Gets the version of the plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Version".
          * @returns the plugin's version.
          */
         get_version(): string;
+
         /**
          * Gets the website of the plugin.
-         *
+         * 
          * The relevant key in the plugin info file is "Website".
          * @returns the plugin's associated website.
          */
         get_website(): string;
+
         /**
          * Check if the plugin depends on another plugin.
          * @param module_name The name of the plugin to check.
          * @returns whether the plugin depends on the plugin `module_name`.
          */
         has_dependency(module_name: string): boolean;
+
         /**
          * Check if the plugin is available.
-         *
+         * 
          * A plugin is marked as not available when there is no loader available to
          * load it, or when there has been an error when trying to load it previously.
          * If not available then `error` will be set.
          * @returns `true` if the plugin is available.
          */
         is_available(): boolean;
+
         /**
          * Check if the plugin is a builtin plugin.
-         *
+         * 
          * A builtin plugin is a plugin which cannot be enabled or disabled by the user
          * through a plugin manager (like
          * [PeasGtkPluginManager](https://gnome.pages.gitlab.gnome.org/libpeas/libpeas-gtk-1.0/class.PluginManager.html)).
          * Loading or unloading such plugins is the responsibility of the application
          * alone. Most applications will usually load those plugins immediately after
          * the initialization of the {@link Peas.Engine}.
-         *
+         * 
          * The relevant key in the plugin info file is "Builtin".
          * @returns `true` if the plugin is a builtin plugin, `false`   if not.
          */
         is_builtin(): boolean;
+
         /**
          * Check if the plugin is a hidden plugin.
-         *
+         * 
          * A hidden plugin is a plugin which cannot be seen by a
          * user through a plugin manager (like
          * [PeasGtkPluginManager](https://gnome.pages.gitlab.gnome.org/libpeas/libpeas-gtk-1.0/class.PluginManager.html)).
          * Loading and
          * unloading such plugins is the responsibility of the application alone or
          * through plugins that depend on them.
-         *
+         * 
          * The relevant key in the plugin info file is "Hidden".
          * @returns `true` if the plugin is a hidden plugin, `false`   if not.
          */
         is_hidden(): boolean;
+
         /**
          * Check if the plugin is loaded.
          * @returns `true` if the plugin is loaded.
@@ -1209,31 +1228,34 @@ export namespace Peas {
         is_loaded(): boolean;
     }
 
+
     namespace Activatable {
         /**
          * Interface for implementing Activatable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Activates the extension on the targetted object.
-             *
+             * 
              * On activation, the extension should hook itself to the object
              * where it makes sense.
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * Deactivates the extension on the targetted object.
-             *
+             * 
              * On deactivation, an extension should remove itself from all the hooks it
              * used and should perform any cleanup required, so it can be unreffed safely
              * and without any more effect on the host application.
              * @virtual
              */
             vfunc_deactivate(): void;
+
             /**
              * Triggers an update of the extension internal state to take into account
              * state changes in the targetted object, due to some event or user action.
@@ -1242,8 +1264,8 @@ export namespace Peas {
             vfunc_update_state(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             object: GObject.Object;
         }
@@ -1258,12 +1280,12 @@ export namespace Peas {
      * @gir-type Interface
      */
     interface Activatable extends GObject.Object, Activatable.Interface {
-        // Properties
 
+        // Properties
         /**
          * The object property contains the targetted object for this {@link Peas.Activatable}
          * instance.
-         *
+         * 
          * For example a toplevel window in a typical windowed application. It is set
          * at construction time and won't change.
          * @construct-only
@@ -1271,28 +1293,30 @@ export namespace Peas {
         get object(): GObject.Object;
 
         // Methods
-
         /**
          * Activates the extension on the targetted object.
-         *
+         * 
          * On activation, the extension should hook itself to the object
          * where it makes sense.
          */
         activate(): void;
+
         /**
          * Deactivates the extension on the targetted object.
-         *
+         * 
          * On deactivation, an extension should remove itself from all the hooks it
          * used and should perform any cleanup required, so it can be unreffed safely
          * and without any more effect on the host application.
          */
         deactivate(): void;
+
         /**
          * Triggers an update of the extension internal state to take into account
          * state changes in the targetted object, due to some event or user action.
          */
         update_state(): void;
     }
+
 
     export const Activatable: ActivatableNamespace & {
         new (): Activatable; // This allows `obj instanceof Activatable`
@@ -1303,11 +1327,13 @@ export namespace Peas {
      * @gir-type Alias
      */
     type Extension = GObject.Object;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

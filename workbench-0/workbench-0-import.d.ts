@@ -1,3 +1,4 @@
+
 import type Workbench0 from '@girs/workbench-0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

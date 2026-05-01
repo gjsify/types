@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Gdl {
+
     /**
      * Gdl-3
      */
+
 
     /**
      * @gir-type Enum
@@ -59,6 +62,7 @@ export namespace Gdl {
         AUTO,
     }
 
+
     /**
      * Define the image displayed.
      * @gir-type Enum
@@ -73,6 +77,7 @@ export namespace Gdl {
          */
         ICONIFY,
     }
+
 
     /**
      * @gir-type Enum
@@ -116,6 +121,7 @@ export namespace Gdl {
         FLOATING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -154,62 +160,48 @@ export namespace Gdl {
         NONE,
     }
 
+
     const DOCK_MASTER_PROPERTY: string;
+
     const DOCK_NAME_PROPERTY: string;
+
     /**
      * Minimum shift count to be used for user defined flags, to be stored in
      * {@link Gdl.DockObject}.flags.
      * @deprecated since 3.6: Use a private flag instead
      */
     const DOCK_OBJECT_FLAGS_SHIFT: number;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_ENUM_BOXED(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
+    function marshal_VOID__OBJECT_ENUM_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_INT_INT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
+    function marshal_VOID__OBJECT_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function marshal_VOID__UINT_UINT(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any | null,
-        marshal_data: any | null,
-    ): void;
+    function marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
     /**
      * @gir-type Flags
      */
@@ -276,6 +268,7 @@ export namespace Gdl {
         NO_GRIP,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -307,6 +300,7 @@ export namespace Gdl {
         USER_ACTION,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -316,7 +310,7 @@ export namespace Gdl {
 
     /**
      * Described the state of a {@link Gdl.DockObject}.
-     *
+     * 
      * Since 3.6: These flags are available using access function, like
      * `gdl_dock_object_is_automatic()` or `gdl_dock_object_is_closed()`.
      * @gir-type Flags
@@ -339,6 +333,7 @@ export namespace Gdl {
          */
         IN_DETACH,
     }
+
 
     /**
      * @gir-type Flags
@@ -363,6 +358,7 @@ export namespace Gdl {
         AFTER,
     }
 
+
     namespace Dock {
         // Signal signatures
         interface SignalSignatures extends DockObject.SignalSignatures {
@@ -372,66 +368,64 @@ export namespace Gdl {
              * @signal
              * @run-last
              */
-            'layout-changed': () => void;
-            'notify::default-title': (pspec: GObject.ParamSpec) => void;
-            'notify::floating': (pspec: GObject.ParamSpec) => void;
-            'notify::floatx': (pspec: GObject.ParamSpec) => void;
-            'notify::floaty': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "layout-changed": () => void;
+            "notify::default-title": (pspec: GObject.ParamSpec) => void;
+            "notify::floating": (pspec: GObject.ParamSpec) => void;
+            "notify::floatx": (pspec: GObject.ParamSpec) => void;
+            "notify::floaty": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             default_title: string;
             defaultTitle: string;
             floating: boolean;
@@ -451,37 +445,42 @@ export namespace Gdl {
         static $gtype: GObject.GType<Dock>;
 
         // Properties
-
         /**
          * @default null
          */
         get default_title(): string;
         set default_title(val: string);
+
         /**
          * @default null
          */
         get defaultTitle(): string;
         set defaultTitle(val: string);
+
         /**
          * @construct-only
          * @default false
          */
         get floating(): boolean;
+
         /**
          * @default 0
          */
         get floatx(): number;
         set floatx(val: number);
+
         /**
          * @default 0
          */
         get floaty(): number;
         set floaty(val: number);
+
         /**
          * @default -1
          */
         get height(): number;
         set height(val: number);
+
         /**
          * Whether or not to prevent a floating dock window from appearing in the
          * taskbar. Note that this only affects floating windows that are created
@@ -492,6 +491,7 @@ export namespace Gdl {
          */
         get skip_taskbar(): boolean;
         set skip_taskbar(val: boolean);
+
         /**
          * Whether or not to prevent a floating dock window from appearing in the
          * taskbar. Note that this only affects floating windows that are created
@@ -502,6 +502,7 @@ export namespace Gdl {
          */
         get skipTaskbar(): boolean;
         set skipTaskbar(val: boolean);
+
         /**
          * @default -1
          */
@@ -518,47 +519,35 @@ export namespace Gdl {
         $signals: Dock.SignalSignatures;
 
         // Fields
-
         object: DockObject;
 
         // Constructors
-
         constructor(properties?: Partial<Dock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Dock;
+        static ["new"](): Dock;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Dock.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Dock.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dock.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Dock.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Dock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_layout_changed(): void;
 
         // Methods
-
         /**
          * Dock an item as a floating item. It creates a new window containing a new
          * dock widget sharing the same master where the item is docked.
@@ -569,6 +558,7 @@ export namespace Gdl {
          * @param height height of the floating item
          */
         add_floating_item(item: DockItem, x: number, y: number, width: number, height: number): void;
+
         /**
          * Dock in `dock`, the widget `item` at the position defined by `placement`. The
          * function takes care of finding the right parent widget eventually creating
@@ -577,6 +567,7 @@ export namespace Gdl {
          * @param placement A position for the widget
          */
         add_item(item: DockItem, placement: DockPlacement): void;
+
         /**
          * Looks for an {@link Gdl.DockItem} widget bound to the master of the dock item. It
          * does not search only in the children of this particular dock widget.
@@ -584,12 +575,14 @@ export namespace Gdl {
          * @returns A {@link Gdl.DockItem} widget or `null`
          */
         get_item_by_name(name: string): DockItem;
+
         /**
          * Returns a list of all item bound to the master of the dock, not only
          * the children of this particular dock widget.
          * @returns A list of {@link Gdl.DockItem}. The list should be freedwith `g_list_free()`, but the item still belong to the master.
          */
         get_named_items(): DockObject[];
+
         /**
          * Looks for an {@link Gdl.DockPlaceholder} object bound to the master of the dock item.
          * It does not search only in the children of this particular dock widget.
@@ -597,104 +590,106 @@ export namespace Gdl {
          * @returns A {@link Gdl.DockPlaceholder} object or `null`
          */
         get_placeholder_by_name(name: string): DockPlaceholder;
+
         /**
          * Get the first child of the {@link Gdl.DockObject}.
          * @returns A {@link Gdl.DockObject} or `null`.
          */
-        get_root(): DockObject | null;
+        get_root(): (DockObject | null);
+
         /**
          * Hide the preview window used to materialize the dock target.
          */
         hide_preview(): void;
+
         /**
          * Create a new dock widget having the same master than `original`.
          * @param floating `true` to create a floating dock
          * @returns A new {@link Gdl.Dock} widget
          */
         new_from(floating: boolean): Gtk.Widget;
+
         /**
          * Sets whether or not a floating dock window should be prevented from
          * appearing in the system taskbar.
          * @param skip `true` if floating docks should be prevented from appearing in the taskbar
          */
         set_skip_taskbar(skip: boolean): void;
+
         /**
          * Show a preview window used to materialize the dock target.
          * @param rect The position and the size of the preview window
          */
         show_preview(rect: Gdk.Rectangle): void;
+
         /**
          * Show a preview window used to materialize the dock target.
          * @param rect The position and the size of the preview window
          */
         xor_rect(rect: Gdk.Rectangle): void;
+
         /**
          * Hide the preview window used to materialize the dock target.
          */
         xor_rect_hide(): void;
     }
 
+
     namespace DockBar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::dockbar-style': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::dockbar-style": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             dockbar_style: DockBarStyle;
             dockbarStyle: DockBarStyle;
             master: GObject.Object;
@@ -708,17 +703,18 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockBar>;
 
         // Properties
-
         /**
          * @default Gdl.DockBarStyle.BOTH
          */
         get dockbar_style(): DockBarStyle;
         set dockbar_style(val: DockBarStyle);
+
         /**
          * @default Gdl.DockBarStyle.BOTH
          */
         get dockbarStyle(): DockBarStyle;
         set dockbarStyle(val: DockBarStyle);
+
         /**
          * The {@link Gdl.DockMaster} object attached to the dockbar.
          */
@@ -735,78 +731,75 @@ export namespace Gdl {
         $signals: DockBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DockBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](master: GObject.Object | null): DockBar;
-        // Conflicted with Gtk.Box.new
+        static ["new"](master: (GObject.Object | null)): DockBar;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the orientation of the `dockbar`.
          * @returns the orientation of the `docbar`
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Retrieves the style of the `dockbar`.
          * @returns the style of the `docbar`
          */
         get_style(): DockBarStyle;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.get_style
+    // Conflicted with Gtk.Widget.get_style
         get_style(...args: never[]): any;
+
         /**
          * Set the orientation of the `dockbar`.
          * @param orientation the new orientation
          */
         set_orientation(orientation: Gtk.Orientation): void;
+
         /**
          * Set the style of the `dockbar`.
          * @param style the new style
          */
         set_style(style: DockBarStyle): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.set_style
+    // Conflicted with Gtk.Widget.set_style
         set_style(...args: never[]): any;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
     }
+
 
     namespace DockItem {
         // Signal signatures
@@ -822,19 +815,19 @@ export namespace Gdl {
              * @signal
              * @run-first
              */
-            'dock-drag-begin': () => void;
+            "dock-drag-begin": () => void;
             /**
              * Signals that the dock item dragging has ended.
              * @signal
              * @run-first
              */
-            'dock-drag-end': (arg0: boolean) => void;
+            "dock-drag-end": (arg0: boolean) => void;
             /**
              * Signals that a dock item dragging motion event has occured.
              * @signal
              * @run-first
              */
-            'dock-drag-motion': (arg0: Gdk.Device, arg1: number, arg2: number) => void;
+            "dock-drag-motion": (arg0: Gdk.Device, arg1: number, arg2: number) => void;
             /**
              * The ::move-focus-child signal is emitted when a change of focus is
              * requested for the child widget of a dock item.  The `dir` parameter
@@ -844,73 +837,71 @@ export namespace Gdl {
              * @action
              * @run-last
              */
-            'move-focus-child': (arg0: Gtk.DirectionType) => void;
+            "move-focus-child": (arg0: Gtk.DirectionType) => void;
             /**
              * Signals that this dock has been selected from a switcher.
              * @signal
              * @run-first
              */
             selected: () => void;
-            'notify::behavior': (pspec: GObject.ParamSpec) => void;
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
-            'notify::iconified': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-height': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-width': (pspec: GObject.ParamSpec) => void;
-            'notify::resize': (pspec: GObject.ParamSpec) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::behavior": (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
+            "notify::iconified": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
+            "notify::resize": (pspec: GObject.ParamSpec) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             behavior: DockItemBehavior;
             closed: boolean;
             iconified: boolean;
@@ -931,12 +922,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockItem>;
 
         // Properties
-
         /**
          * @default Gdl.DockItemBehavior.NORMAL
          */
         get behavior(): DockItemBehavior;
         set behavior(val: DockItemBehavior);
+
         /**
          * If set, the dock item is closed.
          * @since 3.6
@@ -944,6 +935,7 @@ export namespace Gdl {
          */
         get closed(): boolean;
         set closed(val: boolean);
+
         /**
          * If set, the dock item is hidden but it has a corresponding icon in the
          * dock bar allowing to show it again.
@@ -952,11 +944,13 @@ export namespace Gdl {
          */
         get iconified(): boolean;
         set iconified(val: boolean);
+
         /**
          * @default false
          */
         get locked(): boolean;
         set locked(val: boolean);
+
         /**
          * The orientation of the docking item. If the orientation is set to
          * #GTK_ORIENTATION_VERTICAL, the grip widget will be shown along
@@ -968,26 +962,31 @@ export namespace Gdl {
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * @default -1
          */
         get preferred_height(): number;
         set preferred_height(val: number);
+
         /**
          * @default -1
          */
         get preferredHeight(): number;
         set preferredHeight(val: number);
+
         /**
          * @default -1
          */
         get preferred_width(): number;
         set preferred_width(val: number);
+
         /**
          * @default -1
          */
         get preferredWidth(): number;
         set preferredWidth(val: number);
+
         /**
          * @default true
          */
@@ -1004,77 +1003,64 @@ export namespace Gdl {
         $signals: DockItem.SignalSignatures;
 
         // Fields
-
         object: DockObject;
 
         // Constructors
-
         constructor(properties?: Partial<DockItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, long_name: string, behavior: DockItemBehavior): DockItem;
+        static ["new"](name: string, long_name: string, behavior: DockItemBehavior): DockItem;
 
-        static new_with_pixbuf_icon(
-            name: string,
-            long_name: string,
-            pixbuf_icon: GdkPixbuf.Pixbuf,
-            behavior: DockItemBehavior,
-        ): DockItem;
+        static new_with_pixbuf_icon(name: string, long_name: string, pixbuf_icon: GdkPixbuf.Pixbuf, behavior: DockItemBehavior): DockItem;
 
         static new_with_stock(name: string, long_name: string, stock_id: string, behavior: DockItemBehavior): DockItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param has_grip `true` is the dock item has a grip
          */
         static set_has_grip(has_grip: boolean): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_dock_drag_begin(): void;
+
         /**
-         * @param cancelled
+         * @param cancelled 
          * @virtual
          */
         vfunc_dock_drag_end(cancelled: boolean): void;
+
         /**
-         * @param device
-         * @param x
-         * @param y
+         * @param device 
+         * @param x 
+         * @param y 
          * @virtual
          */
         vfunc_dock_drag_motion(device: Gdk.Device, x: number, y: number): void;
+
         /**
-         * @param direction
+         * @param direction 
          * @virtual
          */
         vfunc_move_focus_child(direction: Gtk.DirectionType): void;
+
         /**
          * This function sets the layout of the dock item.
          * @param orientation The orientation to set the item to. If the orientation is set to #GTK_ORIENTATION_VERTICAL, the grip widget will be shown along the top of the edge of item (if it is not hidden). If the orientation is set to #GTK_ORIENTATION_HORIZONTAL, the grip widget will be shown down the left edge of the item (even if the widget text direction is set to RTL).
@@ -1083,24 +1069,26 @@ export namespace Gdl {
         vfunc_set_orientation(orientation: Gtk.Orientation): void;
 
         // Methods
-
         /**
          * Binds this dock item to a new dock master.
          * @param dock The {@link Gdl.Dock} widget to bind it to. Note that this widget must be a type of {@link Gdl.Dock}.
          */
         bind(dock: Gtk.Widget): void;
+
         /**
          * Relocates a dock item to a new location relative to another dock item.
          * @param target The dock item that will be used as the point of reference.
          * @param position The position to dock #item, relative to #target.
          * @param docking_param This value is unused, and will be ignored.
          */
-        dock_to(target: DockItem | null, position: DockPlacement, docking_param: number): void;
+        dock_to(target: (DockItem | null), position: DockPlacement, docking_param: number): void;
+
         /**
          * Retrieves the behavior of the item.
          * @returns the behavior of the item.
          */
         get_behavior_flags(): DockItemBehavior;
+
         /**
          * Gets the child of the {@link Gdl.DockItem}, or `null` if the item contains
          * no child widget. The returned widget does not have a reference
@@ -1108,21 +1096,25 @@ export namespace Gdl {
          * @returns pointer to child of the {@link Gdl.DockItem}
          */
         get_child(): Gtk.Widget;
+
         /**
          * Gets the size and the position of the drag window in pixels.
          * @param rect A pointer to a {@link Gdk.Rectangle} that will receive the drag position
          */
         get_drag_area(rect: Gdk.Rectangle): void;
+
         /**
          * This function returns the dock item's grip label widget.
          * @returns Returns the current label widget.
          */
-        get_grip(): Gtk.Widget | null;
+        get_grip(): (Gtk.Widget | null);
+
         /**
          * Retrieves the orientation of the object.
          * @returns the orientation of the object.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Gets the current tab label widget. Note that this label widget is
          * only visible when the "switcher-style" property of the {@link Gdl.DockMaster}
@@ -1130,97 +1122,113 @@ export namespace Gdl {
          * @returns Returns the tab label widget.
          */
         get_tablabel(): Gtk.Widget;
+
         /**
          * This function hides the dock item's grip widget.
          */
         hide_grip(): void;
+
         /**
          * This function hides the dock item. Since version 3.6, when dock items
          * are hidden they are not removed from the layout.
-         *
+         * 
          * The dock item close button causes the panel to be hidden.
          */
         hide_item(): void;
+
         /**
          * This function iconifies the dock item. When dock items are iconified
          * they are hidden, and appear only as icons in dock bars.
-         *
+         * 
          * The dock item iconify button causes the panel to be iconified.
          */
         iconify_item(): void;
+
         /**
          * Checks whether a given {@link Gdl.DockItem} is closed. It can be only hidden or
          * detached.
          * @returns `true` if the dock item is closed.
          */
         is_closed(): boolean;
+
         /**
          * Checks whether a given {@link Gdl.DockItem} is iconified.
          * @returns `true` if the dock item is iconified.
          */
         is_iconified(): boolean;
+
         /**
          * Checks whether a given {@link Gdl.DockItem} is a placeholder created by the
          * {@link Gdl.DockLayout} object and does not contain a child.
          * @returns `true` if the dock item is a placeholder
          */
         is_placeholder(): boolean;
+
         /**
          * This function locks the dock item. When locked the dock item cannot
          * be dragged around and it doesn't show a grip.
          */
         lock(): void;
+
         /**
          * This function emits the deselected signal. It is used by {@link Gdl.Switcher}
          * to let clients know that this item has been deselected.
          */
         notify_deselected(): void;
+
         /**
          * This function emits the selected signal. It is to be used by {@link Gdl.Switcher}
          * to let clients know that this item has been switched to.
          */
         notify_selected(): void;
+
         /**
          * Checks whether a given {@link Gdl.DockItem} or its child widget has focus.
          * This check is performed recursively on child widgets.
          * @returns `true` if the dock item or its child widget has focus; `false` otherwise.
          */
         or_child_has_focus(): boolean;
+
         /**
          * Gets the preferred size of the dock item in pixels.
          * @param req A pointer to a {@link Gtk.Requisition} into which the preferred size will be written.
          */
         preferred_size(req: Gtk.Requisition): void;
+
         /**
          * This function sets the behavior of the dock item.
          * @param behavior Behavior flags to turn on
          * @param clear Whether to clear state before turning on `flags`
          */
         set_behavior_flags(behavior: DockItemBehavior, clear: boolean): void;
+
         /**
          * Set a new child for the {@link Gdl.DockItem}. This child is different from the
          * children using the {@link Gtk.Container} interface. It is a private child reserved
          * for the widget implementation.
-         *
+         * 
          * If a child is already present, it will be replaced. If `widget` is `null` the
          * child will be removed.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child: Gtk.Widget | null): void;
+        set_child(child: (Gtk.Widget | null)): void;
+
         /**
          * This method has only an effect when you add you dock_item with
          * GDL_DOCK_ITEM_BEH_NEVER_FLOATING. In this case you have to assign
          * it a default position.*
-         *
+         * 
          * Deprecated 3.6: This function is doing nothing now.
          * @param reference The GdlDockObject which is the default dock for `item`
          */
         set_default_position(reference: DockObject): void;
+
         /**
          * This function sets the layout of the dock item.
          * @param orientation The orientation to set the item to. If the orientation is set to #GTK_ORIENTATION_VERTICAL, the grip widget will be shown along the top of the edge of item (if it is not hidden). If the orientation is set to #GTK_ORIENTATION_HORIZONTAL, the grip widget will be shown down the left edge of the item (even if the widget text direction is set to RTL).
          */
         set_orientation(orientation: Gtk.Orientation): void;
+
         /**
          * Replaces the current tab label widget with another widget. Note that
          * this label widget is only visible when the "switcher-style" property
@@ -1228,24 +1236,29 @@ export namespace Gdl {
          * @param tablabel The widget that will become the tab label.
          */
         set_tablabel(tablabel: Gtk.Widget): void;
+
         /**
          * This function shows the dock item's grip widget.
          */
         show_grip(): void;
+
         /**
          * This function shows the dock item. When dock items are shown, they
          * are displayed in their normal layout position.
          */
         show_item(): void;
+
         /**
          * Unbinds this dock item from it's dock master.
          */
         unbind(): void;
+
         /**
          * This function unlocks the dock item. When unlocked the dock item can
          * be dragged around and can show a grip.
          */
         unlock(): void;
+
         /**
          * This function sets the behavior of the dock item.
          * @param behavior Behavior flags to turn off
@@ -1253,57 +1266,55 @@ export namespace Gdl {
         unset_behavior_flags(behavior: DockItemBehavior): void;
     }
 
+
     namespace DockItemButtonImage {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1322,39 +1333,28 @@ export namespace Gdl {
         $signals: DockItemButtonImage.SignalSignatures;
 
         // Fields
-
         image_type: DockItemButtonImageType;
 
         // Constructors
-
         constructor(properties?: Partial<DockItemButtonImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](image_type: DockItemButtonImageType): DockItemButtonImage;
+        static ["new"](image_type: DockItemButtonImageType): DockItemButtonImage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockItemButtonImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItemButtonImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockItemButtonImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItemButtonImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockItemButtonImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItemButtonImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockItemButtonImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItemButtonImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockItemButtonImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockItemButtonImage.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof DockItemButtonImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockItemButtonImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -1362,10 +1362,11 @@ export namespace Gdl {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -1373,6 +1374,7 @@ export namespace Gdl {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -1381,7 +1383,8 @@ export namespace Gdl {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -1390,7 +1393,8 @@ export namespace Gdl {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -1398,11 +1402,8 @@ export namespace Gdl {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -1410,15 +1411,17 @@ export namespace Gdl {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -1428,18 +1431,21 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -1448,10 +1454,11 @@ export namespace Gdl {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -1459,6 +1466,7 @@ export namespace Gdl {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -1468,12 +1476,8 @@ export namespace Gdl {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -1483,12 +1487,8 @@ export namespace Gdl {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -1496,11 +1496,8 @@ export namespace Gdl {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -1508,15 +1505,17 @@ export namespace Gdl {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -1527,6 +1526,7 @@ export namespace Gdl {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -1535,6 +1535,7 @@ export namespace Gdl {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -1543,61 +1544,57 @@ export namespace Gdl {
         vfunc_set_name(name: string): void;
     }
 
+
     namespace DockItemGrip {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
-            'notify::item': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Container.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             item: DockItem;
         }
     }
@@ -1609,7 +1606,6 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockItemGrip>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1625,71 +1621,65 @@ export namespace Gdl {
         $signals: DockItemGrip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DockItemGrip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](item: DockItem): DockItemGrip;
+        static ["new"](item: DockItem): DockItemGrip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockItemGrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItemGrip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockItemGrip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItemGrip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockItemGrip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockItemGrip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockItemGrip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockItemGrip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockItemGrip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockItemGrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockItemGrip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockItemGrip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Return `true` if the grip window has reveived the event.
          * @param event A {@link Gdk.Event}
          * @returns `true` if the grip has received the event
          */
         has_event(event: Gdk.Event): boolean;
+
         /**
          * This function hides the dock item's grip widget handle hatching.
          */
         hide_handle(): void;
+
         /**
          * Change the cursor when a drag operation is started.
          * @param in_drag `true` if a drag operation is started
          */
         set_cursor(in_drag: boolean): void;
+
         /**
          * Replaces the current label widget with another widget.
          * @param label The widget that will become the label.
          */
         set_label(label: Gtk.Widget): void;
+
         /**
          * This function shows the dock item's grip widget handle hatching.
          */
         show_handle(): void;
     }
 
+
     namespace DockLayout {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dirty: boolean;
             master: GObject.Object;
@@ -1705,12 +1695,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockLayout>;
 
         // Properties
-
         /**
          * @read-only
          * @default false
          */
         get dirty(): boolean;
+
         get master(): GObject.Object;
         set master(val: GObject.Object);
 
@@ -1724,70 +1714,64 @@ export namespace Gdl {
         $signals: DockLayout.SignalSignatures;
 
         // Fields
-
         g_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DockLayout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](master: GObject.Object): DockLayout;
+        static ["new"](master: GObject.Object): DockLayout;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockLayout.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockLayout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockLayout.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockLayout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockLayout.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockLayout.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockLayout.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Attach the `layout` to the `master` and delete the reference to
          * the master that the layout attached previously.
-         *
+         * 
          * Deprecated 3.6: Use `gdl_dock_layout_set_master()` instead.
          * @param master The master object to which the layout will be attached
          */
         attach(master: DockMaster): void;
+
         /**
          * Deletes the layout with the given name from the memory.
          * This will set {@link Gdl.DockLayout.dirty} to `true`.
          * @param name The name of the layout to delete.
          */
         delete_layout(name: string): void;
+
         /**
          * Get the list of layout names including or not the default layout.
          * @param include_default `true` to include the default layout.
          * @returns a {@link GLib.List} list  holding the layout names. You must first free each element in the list  with `g_free()`, then free the list itself with `g_list_free()`.
          */
         get_layouts(include_default: boolean): string[];
+
         /**
          * Retrieves the master of the object.
          * @returns a {@link Gdl.DockMaster} object
          */
         get_master<T = GObject.Object>(): T;
+
         /**
          * Checks whether the XML tree in memory is different from the file where the layout was saved.
          * @returns `true` is the layout in the memory is different from the file, else `false`.
          */
         is_dirty(): boolean;
+
         /**
          * Loads the layout from file with the given `filename`.
          * This will set {@link Gdl.DockLayout.dirty} to `false`.
@@ -1795,23 +1779,26 @@ export namespace Gdl {
          * @returns `true` if `layout` successfully loaded else `false`
          */
         load_from_file(filename: string): boolean;
+
         /**
          * Loads the layout with the given name from the memory.
          * This will set {@link Gdl.DockLayout.dirty} to `true`.
-         *
+         * 
          * See also `gdl_dock_layout_load_from_file()`
          * @param name The name of the layout to load or `null` for a default layout name.
          * @returns `true` if layout successfully loaded else `false`
          */
-        load_layout(name: string | null): boolean;
+        load_layout(name: (string | null)): boolean;
+
         /**
          * Saves the `layout` with the given name to the memory.
          * This will set {@link Gdl.DockLayout.dirty} to `true`.
-         *
+         * 
          * See also `gdl_dock_layout_save_to_file()`.
          * @param name The name of the layout to save or `null` for a default layout name.
          */
-        save_layout(name: string | null): void;
+        save_layout(name: (string | null)): void;
+
         /**
          * This function saves the current layout in XML format to
          * the file with the given `filename`.
@@ -1819,6 +1806,7 @@ export namespace Gdl {
          * @returns `true` if `layout` successfuly save to the file, otherwise `false`.
          */
         save_to_file(filename: string): boolean;
+
         /**
          * Attach the `layout` to the `master` and delete the reference to
          * the master that the layout attached previously. Instead of setting `master`
@@ -1830,6 +1818,7 @@ export namespace Gdl {
         set_master(master: GObject.Object): void;
     }
 
+
     namespace DockMaster {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -1839,16 +1828,15 @@ export namespace Gdl {
              * @signal
              * @run-last
              */
-            'layout-changed': () => void;
-            'notify::default-title': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::switcher-style': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-pos': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-reorderable': (pspec: GObject.ParamSpec) => void;
+            "layout-changed": () => void;
+            "notify::default-title": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::switcher-style": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-pos": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-reorderable": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             default_title: string;
             defaultTitle: string;
@@ -1869,47 +1857,54 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockMaster>;
 
         // Properties
-
         /**
          * @default null
          */
         get default_title(): string;
         set default_title(val: string);
+
         /**
          * @default null
          */
         get defaultTitle(): string;
         set defaultTitle(val: string);
+
         /**
          * @default 0
          */
         get locked(): number;
         set locked(val: number);
+
         /**
          * @default Gdl.SwitcherStyle.BOTH
          */
         get switcher_style(): SwitcherStyle;
         set switcher_style(val: SwitcherStyle);
+
         /**
          * @default Gdl.SwitcherStyle.BOTH
          */
         get switcherStyle(): SwitcherStyle;
         set switcherStyle(val: SwitcherStyle);
+
         /**
          * @default Gtk.PositionType.BOTTOM
          */
         get tab_pos(): Gtk.PositionType;
         set tab_pos(val: Gtk.PositionType);
+
         /**
          * @default Gtk.PositionType.BOTTOM
          */
         get tabPos(): Gtk.PositionType;
         set tabPos(val: Gtk.PositionType);
+
         /**
          * @default false
          */
         get tab_reorderable(): boolean;
         set tab_reorderable(val: boolean);
+
         /**
          * @default false
          */
@@ -1926,55 +1921,45 @@ export namespace Gdl {
         $signals: DockMaster.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DockMaster.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockMaster.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockMaster.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockMaster.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockMaster.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockMaster.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockMaster.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockMaster.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockMaster.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockMaster.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockMaster.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockMaster.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockMaster.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_layout_changed(): void;
 
         // Methods
-
         /**
          * Add a new dock widget to the master.
          * @param object a {@link Gdl.DockObject}
          */
         add(object: DockObject): void;
+
         /**
          * Call `function` on each dock widget of the master.
          * @param _function the function to call with each element's data
          */
         foreach(_function: GLib.Func): void;
+
         /**
          * Call `function` on each top level dock widget of the master, including or not
          * the controller.
@@ -1982,27 +1967,32 @@ export namespace Gdl {
          * @param _function the function to call with each element's data
          */
         foreach_toplevel(include_controller: boolean, _function: GLib.Func): void;
+
         /**
          * Retrieves the {@link Gdl.DockObject} acting as the controller.
          * @returns A {@link Gdl.DockObject}.
          */
         get_controller(): DockObject;
+
         /**
          * Return an unique translated dock name.
          * @returns a new translated name. The string has to be freed with `g_free()`.
          */
         get_dock_name(): string;
+
         /**
          * Looks for a {@link Gdl.DockObject} named `nick_name`.
          * @param nick_name the name of the dock widget.
          * @returns A {@link Gdl.DockObject} named `nick_name` or `null` if it does not exist.
          */
-        get_object(nick_name: string): DockObject | null;
+        get_object(nick_name: string): (DockObject | null);
+
         /**
          * Remove one dock widget from the master.
          * @param object a {@link Gdl.DockObject}
          */
         remove(object: DockObject): void;
+
         /**
          * Set a new controller. The controller must be a top level {@link Gdl.DockObject}.
          * @param new_controller a {@link Gdl.DockObject}
@@ -2010,70 +2000,69 @@ export namespace Gdl {
         set_controller(new_controller: DockObject): void;
     }
 
+
     namespace DockNotebook {
         // Signal signatures
         interface SignalSignatures extends DockItem.SignalSignatures {
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::behavior': (pspec: GObject.ParamSpec) => void;
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
-            'notify::iconified': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-height': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-width': (pspec: GObject.ParamSpec) => void;
-            'notify::resize': (pspec: GObject.ParamSpec) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::behavior": (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
+            "notify::iconified": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
+            "notify::resize": (pspec: GObject.ParamSpec) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             page: number;
         }
     }
@@ -2085,7 +2074,6 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockNotebook>;
 
         // Properties
-
         /**
          * @default -1
          */
@@ -2102,38 +2090,29 @@ export namespace Gdl {
         $signals: DockNotebook.SignalSignatures;
 
         // Fields
-
         item: DockItem;
 
         // Constructors
-
         constructor(properties?: Partial<DockNotebook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DockNotebook;
+        static ["new"](): DockNotebook;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockNotebook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockNotebook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockNotebook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockNotebook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockNotebook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockNotebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockNotebook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockNotebook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockNotebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockNotebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockNotebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DockObject {
         // Signal signatures
@@ -2149,62 +2128,57 @@ export namespace Gdl {
              * @signal
              * @run-first
              */
-            dock: (arg0: DockObject, arg1: DockPlacement, arg2: GObject.Value | null) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            dock: (arg0: DockObject, arg1: DockPlacement, arg2: (GObject.Value | null)) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Container.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             long_name: string;
             longName: string;
             master: DockMaster;
@@ -2223,24 +2197,26 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockObject>;
 
         // Properties
-
         /**
          * A long descriptive name.
          * @default null
          */
         get long_name(): string;
         set long_name(val: string);
+
         /**
          * A long descriptive name.
          * @default null
          */
         get longName(): string;
         set longName(val: string);
+
         /**
          * The master which manages all the objects in a dock ring
          */
         get master(): DockMaster;
         set master(val: DockMaster);
+
         /**
          * The object name.  If the object is manual the name can be used
          * to recall the object from any other object in the ring
@@ -2248,24 +2224,28 @@ export namespace Gdl {
          * @default null
          */
         get name(): string;
+
         /**
          * A GdkPixbuf to use for the icon of the dock object.
          * @since 3.3.2
          */
         get pixbuf_icon(): any;
         set pixbuf_icon(val: any);
+
         /**
          * A GdkPixbuf to use for the icon of the dock object.
          * @since 3.3.2
          */
         get pixbufIcon(): any;
         set pixbufIcon(val: any);
+
         /**
          * A stock id to use for the icon of the dock object.
          * @default null
          */
         get stock_id(): string;
         set stock_id(val: string);
+
         /**
          * A stock id to use for the icon of the dock object.
          * @default null
@@ -2283,45 +2263,37 @@ export namespace Gdl {
         $signals: DockObject.SignalSignatures;
 
         // Fields
-
         container: Gtk.Container;
+
         deprecated_flags: DockObjectFlags;
+
         deprecated_master: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DockObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockObject.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockObject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockObject.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockObject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockObject.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockObject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockObject.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockObject.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockObject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Finds the nickname for a given type
          * @param type The type for which to find the nickname
          */
         static nick_from_type(type: GObject.GType): string;
+
         /**
          * Assigns an object type to a given nickname.  If the nickname already exists,
          * then it reassigns it to a new object type.
@@ -2329,18 +2301,19 @@ export namespace Gdl {
          * @param type The object type
          */
         static set_type_for_nick(nick: string, type: GObject.GType): GObject.GType;
+
         /**
          * Finds the object type assigned to a given nickname.
          * @param nick The nickname for the object type
          */
         static type_from_nick(nick: string): GObject.GType;
+
         /**
          * @param is_compound `true` is the dock object contains other objects
          */
         static set_is_compound(is_compound: boolean): void;
 
         // Virtual methods
-
         /**
          * This function returns information about placement of a child dock
          * object inside another dock object.  The function returns `true` if
@@ -2349,20 +2322,22 @@ export namespace Gdl {
          * other value, this function will not touch the stored value if the
          * specified placement is "compatible" with the actual placement of
          * the child.
-         *
+         * 
          * `placement` can be `null`, in which case the function simply tells if
          * `child` is attached to `object`.
          * @param child the child of the `object` we want the placement for
          * @param placement where to return the placement information
          * @virtual
          */
-        vfunc_child_placement(child: DockObject, placement: DockPlacement | null): boolean;
+        vfunc_child_placement(child: DockObject, placement: (DockPlacement | null)): boolean;
+
         /**
          * Dissociate a dock object from its parent, including or not its children.
          * @param recursive `true` to detach children
          * @virtual
          */
         vfunc_detach(recursive: boolean): void;
+
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param requestor The widget to dock
@@ -2370,7 +2345,8 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
+        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: (GObject.Value | null)): void;
+
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param x X coordinate
@@ -2379,6 +2355,7 @@ export namespace Gdl {
          * @virtual
          */
         vfunc_dock_request(x: number, y: number, request: DockRequest): boolean;
+
         /**
          * Presents the GDL object to the user. By example, this will select the
          * corresponding page if the object is in a notebook. If `child` is missing,
@@ -2386,13 +2363,15 @@ export namespace Gdl {
          * @param child The child widget to present or `null`
          * @virtual
          */
-        vfunc_present(child: DockObject | null): void;
+        vfunc_present(child: (DockObject | null)): void;
+
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
          * object has to be removed and the child reattached to the parent.
          * @virtual
          */
         vfunc_reduce(): void;
+
         /**
          * Move the `child` widget at another place.
          * @param child The child widget to reorder
@@ -2400,16 +2379,16 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
+        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: (GObject.Value | null)): boolean;
 
         // Methods
-
         /**
          * Add a link between a {@link Gdl.DockObject} and a master. It is normally not used
          * directly because it is automatically called when a new object is docked.
          * @param master A {@link Gdl.DockMaster}
          */
         bind(master: GObject.Object): void;
+
         /**
          * This function returns information about placement of a child dock
          * object inside another dock object.  The function returns `true` if
@@ -2418,26 +2397,29 @@ export namespace Gdl {
          * other value, this function will not touch the stored value if the
          * specified placement is "compatible" with the actual placement of
          * the child.
-         *
+         * 
          * `placement` can be `null`, in which case the function simply tells if
          * `child` is attached to `object`.
          * @param child the child of the `object` we want the placement for
          * @param placement where to return the placement information
          * @returns `true` if `child` is a child of `object`.
          */
-        child_placement(child: DockObject, placement: DockPlacement | null): boolean;
+        child_placement(child: DockObject, placement: (DockPlacement | null)): boolean;
+
         /**
          * Dissociate a dock object from its parent, including or not its children.
          * @param recursive `true` to detach children
          */
         detach(recursive: boolean): void;
+
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param requestor The widget to dock
          * @param position The position for the child
          * @param other_data Optional data giving additional information depending on the dock object.
          */
-        dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
+        dock(requestor: DockObject, position: DockPlacement, other_data: (GObject.Value | null)): void;
+
         /**
          * Dock a dock widget in `object` at the defined position.
          * @param x X coordinate
@@ -2446,103 +2428,122 @@ export namespace Gdl {
          * @returns `true` if `object` has been docked.
          */
         dock_request(x: number, y: number, request: DockRequest): boolean;
+
         /**
          * Temporarily freezes a dock object, any call to reduce on the object has no
          * immediate effect. If `gdl_dock_object_freeze()` has been called more than once,
          * `gdl_dock_object_thaw()` must be called an equal number of times.
          */
         freeze(): void;
+
         /**
          * Retrieves the controller of the object.
          * @returns a {@link Gdl.DockObject} object
          */
         get_controller(): DockObject;
+
         /**
          * Retrieves the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
          * @returns the name of the object.
          */
         get_long_name(): string;
+
         /**
          * Retrieves the master of the object.
          * @returns a {@link Gdl.DockMaster} object
          */
         get_master<T = GObject.Object>(): T;
+
         /**
          * Retrieves the name of the object. This name is used to identify the object.
          * @returns the name of the object.
          */
         get_name(): string;
+
         /**
          * Returns a parent {@link Gdl.DockObject} if it exists.
          * @returns a {@link Gdl.DockObject} or `null` if such object does not exist.
          */
-        get_parent_object(): DockObject | null;
+        get_parent_object(): (DockObject | null);
+
         /**
          * Retrieves a pixbuf used as the dock object icon.
          * @returns icon for dock object
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         /**
          * Retrieves the a stock id used as the object icon.
          * @returns A stock id corresponding to the object icon.
          */
         get_stock_id(): string;
+
         /**
          * Get the top level {@link Gdl.Dock} widget of `object` or `null` if cannot be found.
          * @returns A {@link Gdl.Dock} or `null`.
          */
-        get_toplevel(): Dock | null;
+        get_toplevel(): (Dock | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.get_toplevel
+    // Conflicted with Gtk.Widget.get_toplevel
         get_toplevel(...args: never[]): any;
+
         /**
          * Determine if an object is managed by the dock master, such object is
          * destroyed automatically when it is not needed anymore.
          * @returns `true` if the object is managed automatically by the dock master.
          */
         is_automatic(): boolean;
+
         /**
          * Check if the object is bound to a master.
          * @returns `true` if `object` has a master
          */
         is_bound(): boolean;
+
         /**
          * Checks whether a given {@link Gdl.DockObject} is closed. It can be only hidden and
          * still in the widget hierarchy or detached.
          * @returns `true` if the dock object is closed.
          */
         is_closed(): boolean;
+
         /**
          * Check if an object is a compound object, accepting children widget or not.
          * @returns `true` if `object` is a compound object.
          */
         is_compound(): boolean;
+
         /**
          * Determine if an object is frozen and is not removed immediately from the
          * widget hierarchy when it is reduced.
          * @returns `true` if the object is frozen.
          */
         is_frozen(): boolean;
+
         /**
          * Emits the {@link Gdl.DockMaster.SignalSignatures.layout_changed | Gdl.DockMaster::layout-changed} signal on the master of the object
          * if existing.
          */
         layout_changed_notify(): void;
+
         /**
          * Presents the GDL object to the user. By example, this will select the
          * corresponding page if the object is in a notebook. If `child` is missing,
          * only the `object` will be show.
          * @param child The child widget to present or `null`
          */
-        present(child: DockObject | null): void;
+        present(child: (DockObject | null)): void;
+
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
          * object has to be removed and the child reattached to the parent.
          */
         reduce(): void;
+
         /**
          * Move the `child` widget at another place.
          * @param child The child widget to reorder
@@ -2550,110 +2551,116 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @returns `true` if `child` has been moved
          */
-        reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
+        reorder(child: DockObject, new_position: DockPlacement, other_data: (GObject.Value | null)): boolean;
+
         /**
          * Set the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
          * @param name a name for the object
          */
         set_long_name(name: string): void;
+
         /**
          * A {@link Gdl.DockObject} is managed by default by the dock master, use this function
          * to make it a manual object if you want to manage the destruction of the
          * object.
          */
         set_manual(): void;
+
         /**
          * Set the name of the object used to identify it.
          * @param name a name for the object
          */
         set_name(name: string): void;
+
         /**
          * Set a icon for a dock object using a {@link GdkPixbuf.Pixbuf}.
          * @param icon a icon or `null`
          */
-        set_pixbuf(icon: GdkPixbuf.Pixbuf | null): void;
+        set_pixbuf(icon: (GdkPixbuf.Pixbuf | null)): void;
+
         /**
          * Set an icon for the dock object using a stock id.
          * @param stock_id a stock id
          */
         set_stock_id(stock_id: string): void;
+
         /**
          * Thaws a dock object frozen with `gdl_dock_object_freeze()`.
          * Any pending reduce calls are made, maybe leading to the destruction of
          * the object.
          */
         thaw(): void;
+
         /**
          * This removes the link between an dock object and its master.
          */
         unbind(): void;
     }
 
+
     namespace DockPaned {
         // Signal signatures
         interface SignalSignatures extends DockItem.SignalSignatures {
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::behavior': (pspec: GObject.ParamSpec) => void;
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
-            'notify::iconified': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-height': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-width': (pspec: GObject.ParamSpec) => void;
-            'notify::resize': (pspec: GObject.ParamSpec) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::behavior": (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
+            "notify::iconified": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
+            "notify::resize": (pspec: GObject.ParamSpec) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends DockItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             position: number;
         }
     }
@@ -2665,7 +2672,6 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockPaned>;
 
         // Properties
-
         /**
          * @default 0
          */
@@ -2682,45 +2688,37 @@ export namespace Gdl {
         $signals: DockPaned.SignalSignatures;
 
         // Fields
-
         dock_item: DockItem;
 
         // Constructors
-
         constructor(properties?: Partial<DockPaned.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](orientation: Gtk.Orientation): DockPaned;
-        // Conflicted with Gdl.DockItem.new
+        static ["new"](orientation: Gtk.Orientation): DockPaned;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gdl.DockItem.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockPaned.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockPaned.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPaned.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockPaned.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockPaned.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPaned.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace DockParam {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -2730,94 +2728,84 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockParam>;
 
         // Constructors
-
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockParam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockParam.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockParam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockParam.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockParam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockParam.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockParam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockParam.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockParam.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockParam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockParam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockParam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DockPlaceholder {
         // Signal signatures
         interface SignalSignatures extends DockObject.SignalSignatures {
-            'notify::floating': (pspec: GObject.ParamSpec) => void;
-            'notify::floatx': (pspec: GObject.ParamSpec) => void;
-            'notify::floaty': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::host': (pspec: GObject.ParamSpec) => void;
-            'notify::next-placement': (pspec: GObject.ParamSpec) => void;
-            'notify::sticky': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::long-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::stock-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::floating": (pspec: GObject.ParamSpec) => void;
+            "notify::floatx": (pspec: GObject.ParamSpec) => void;
+            "notify::floaty": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::host": (pspec: GObject.ParamSpec) => void;
+            "notify::next-placement": (pspec: GObject.ParamSpec) => void;
+            "notify::sticky": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::long-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::stock-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends DockObject.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             floating: boolean;
             floatx: number;
             floaty: number;
@@ -2837,44 +2825,51 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockPlaceholder>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get floating(): boolean;
+
         /**
          * @construct-only
          * @default -1
          */
         get floatx(): number;
+
         /**
          * @construct-only
          * @default -1
          */
         get floaty(): number;
+
         /**
          * @default -1
          */
         get height(): number;
         set height(val: number);
+
         get host(): DockObject;
         set host(val: DockObject);
+
         /**
          * @default Gdl.DockPlacement.CENTER
          */
         get next_placement(): DockPlacement;
         set next_placement(val: DockPlacement);
+
         /**
          * @default Gdl.DockPlacement.CENTER
          */
         get nextPlacement(): DockPlacement;
         set nextPlacement(val: DockPlacement);
+
         /**
          * @construct-only
          * @default false
          */
         get sticky(): boolean;
+
         /**
          * @default -1
          */
@@ -2891,46 +2886,36 @@ export namespace Gdl {
         $signals: DockPlaceholder.SignalSignatures;
 
         // Fields
-
         object: DockObject;
 
         // Constructors
-
         constructor(properties?: Partial<DockPlaceholder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder;
+        static ["new"](name: string, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockPlaceholder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPlaceholder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockPlaceholder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockPlaceholder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockPlaceholder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockPlaceholder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockPlaceholder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockPlaceholder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockPlaceholder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockPlaceholder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockPlaceholder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockPlaceholder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Move the placeholder to the position of `object`.
          * @param object A new {@link Gdl.DockObject}
          */
         attach(object: DockObject): void;
     }
+
 
     namespace DockTablabel {
         // Signal signatures
@@ -2940,56 +2925,54 @@ export namespace Gdl {
              * @signal
              * @run-last
              */
-            'button-pressed-handle': (arg0: Gdk.Event) => void;
-            'notify::item': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "button-pressed-handle": (arg0: Gdk.Event) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             item: DockItem;
         }
     }
@@ -3001,7 +2984,6 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockTablabel>;
 
         // Properties
-
         get item(): DockItem;
         set item(val: DockItem);
 
@@ -3015,153 +2997,144 @@ export namespace Gdl {
         $signals: DockTablabel.SignalSignatures;
 
         // Fields
-
         drag_handle_size: number;
+
         event_window: Gdk.Window;
+
         active: boolean;
+
         pre_drag: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<DockTablabel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](item: DockItem): DockTablabel;
+        static ["new"](item: DockItem): DockTablabel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DockTablabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTablabel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DockTablabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockTablabel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DockTablabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DockTablabel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DockTablabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DockTablabel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DockTablabel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DockTablabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DockTablabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DockTablabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_button_pressed_handle(event: Gdk.EventButton): void;
 
         // Methods
-
         /**
          * Set the widget in "activated" state.
          */
         activate(): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.activate
+    // Conflicted with Gtk.Widget.activate
         activate(...args: never[]): any;
+
         /**
          * Set the widget in "deactivated" state.
          */
         deactivate(): void;
     }
 
+
     namespace PreviewWindow {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -3182,36 +3155,26 @@ export namespace Gdl {
         $signals: PreviewWindow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PreviewWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PreviewWindow;
+        static ["new"](): PreviewWindow;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PreviewWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewWindow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PreviewWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PreviewWindow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PreviewWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PreviewWindow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PreviewWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreviewWindow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PreviewWindow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PreviewWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PreviewWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreviewWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Update the size and position of the preview window. This function is
          * called on drag_motion event to update the representation of the docking site
@@ -3221,69 +3184,65 @@ export namespace Gdl {
         update(rect: Gdk.Rectangle): void;
     }
 
+
     namespace Switcher {
         // Signal signatures
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
-            'notify::switcher-style': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-pos': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-reorderable': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::group-name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::scrollable': (pspec: GObject.ParamSpec) => void;
-            'notify::show-border': (pspec: GObject.ParamSpec) => void;
-            'notify::show-tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::switcher-style": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-pos": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-reorderable": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::group-name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::scrollable": (pspec: GObject.ParamSpec) => void;
+            "notify::show-border": (pspec: GObject.ParamSpec) => void;
+            "notify::show-tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Notebook.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             switcher_style: SwitcherStyle;
             switcherStyle: SwitcherStyle;
             tab_pos: Gtk.PositionType;
@@ -3300,32 +3259,36 @@ export namespace Gdl {
         static $gtype: GObject.GType<Switcher>;
 
         // Properties
-
         /**
          * @default Gdl.SwitcherStyle.BOTH
          */
         get switcher_style(): SwitcherStyle;
         set switcher_style(val: SwitcherStyle);
+
         /**
          * @default Gdl.SwitcherStyle.BOTH
          */
         get switcherStyle(): SwitcherStyle;
         set switcherStyle(val: SwitcherStyle);
+
         /**
          * @default Gtk.PositionType.BOTTOM
          */
         get tab_pos(): Gtk.PositionType;
         set tab_pos(val: Gtk.PositionType);
+
         /**
          * @default Gtk.PositionType.BOTTOM
          */
         get tabPos(): Gtk.PositionType;
         set tabPos(val: Gtk.PositionType);
+
         /**
          * @default false
          */
         get tab_reorderable(): boolean;
         set tab_reorderable(val: boolean);
+
         /**
          * @default false
          */
@@ -3342,36 +3305,26 @@ export namespace Gdl {
         $signals: Switcher.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Switcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Switcher;
+        static ["new"](): Switcher;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Switcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a page to a {@link Gdl.Switcher}.  A button is created in the switcher, with its
          * icon taken preferentially from the `stock_id` parameter.  If this parameter is
@@ -3388,26 +3341,21 @@ export namespace Gdl {
          * @param position The position at which to create the page
          * @returns The index (starting from 0) of the appended page in the notebook, or -1 if function fails
          */
-        insert_page(
-            page: Gtk.Widget,
-            tab_widget: Gtk.Widget,
-            label: string,
-            tooltips: string,
-            stock_id: string,
-            pixbuf_icon: GdkPixbuf.Pixbuf,
-            position: number,
-        ): number;
+        insert_page(page: Gtk.Widget, tab_widget: Gtk.Widget, label: string, tooltips: string, stock_id: string, pixbuf_icon: GdkPixbuf.Pixbuf, position: number): number;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Notebook.insert_page
+    // Conflicted with Gtk.Notebook.insert_page
         insert_page(...args: never[]): any;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DockBarClass = typeof DockBar;
+
     /**
      * @gir-type Struct
      */
@@ -3415,18 +3363,22 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockBarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockClass = typeof Dock;
+
     /**
      * @gir-type Alias
      */
     type DockItemButtonImageClass = typeof DockItemButtonImage;
+
     /**
      * @gir-type Alias
      */
     type DockItemClass = typeof DockItem;
+
     /**
      * @gir-type Struct
      */
@@ -3434,16 +3386,19 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockItemClassPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockItemGripClass = typeof DockItemGrip;
+
     /**
      * @gir-type Struct
      */
     abstract class DockItemGripPrivate {
         static $gtype: GObject.GType<DockItemGripPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3452,10 +3407,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockItemPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockLayoutClass = typeof DockLayout;
+
     /**
      * @gir-type Struct
      */
@@ -3463,10 +3420,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockLayoutPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockMasterClass = typeof DockMaster;
+
     /**
      * @gir-type Struct
      */
@@ -3474,16 +3433,19 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockMasterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockNotebookClass = typeof DockNotebook;
+
     /**
      * @gir-type Struct
      */
     abstract class DockNotebookClassPrivate {
         static $gtype: GObject.GType<DockNotebookClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3492,16 +3454,19 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockNotebookPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockObjectClass = typeof DockObject;
+
     /**
      * @gir-type Struct
      */
     abstract class DockObjectClassPrivate {
         static $gtype: GObject.GType<DockObjectClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3510,10 +3475,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockObjectPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockPanedClass = typeof DockPaned;
+
     /**
      * @gir-type Struct
      */
@@ -3521,10 +3488,12 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockPanedPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DockPlaceholderClass = typeof DockPlaceholder;
+
     /**
      * @gir-type Struct
      */
@@ -3532,12 +3501,14 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockPlaceholderPrivate>;
     }
 
+
     /**
      * @gir-type Struct
      */
     abstract class DockPrivate {
         static $gtype: GObject.GType<DockPrivate>;
     }
+
 
     /**
      * Full docking information.
@@ -3547,31 +3518,38 @@ export namespace Gdl {
         static $gtype: GObject.GType<DockRequest>;
 
         // Fields
-
         applicant: DockObject;
+
         target: DockObject;
+
         position: DockPlacement;
+
         rect: cairo.RectangleInt;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DockTablabelClass = typeof DockTablabel;
+
     /**
      * @gir-type Alias
      */
     type PreviewWindowClass = typeof PreviewWindow;
+
     /**
      * @gir-type Alias
      */
     type SwitcherClass = typeof Switcher;
+
     /**
      * @gir-type Struct
      */
     abstract class SwitcherClassPrivate {
         static $gtype: GObject.GType<SwitcherClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3580,11 +3558,13 @@ export namespace Gdl {
         static $gtype: GObject.GType<SwitcherPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type Atk from '@girs/atk-1.0';
 import type Colord from '@girs/colord-1.0';
 
 export namespace ColordGtk {
+
     /**
      * ColordGtk-1.0
      */
+
 
     /**
      * Errors that can be thrown
@@ -42,61 +45,60 @@ export namespace ColordGtk {
         LAST,
     }
 
+
     const GTK_MAJOR_VERSION: number;
+
     const GTK_MICRO_VERSION: number;
+
     const GTK_MINOR_VERSION: number;
+
     namespace SampleWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.DrawingArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             color: Colord.ColorRGB;
         }
     }
@@ -108,7 +110,6 @@ export namespace ColordGtk {
         static $gtype: GObject.GType<SampleWidget>;
 
         // Properties
-
         get color(): Colord.ColorRGB;
         set color(val: Colord.ColorRGB);
 
@@ -122,36 +123,26 @@ export namespace ColordGtk {
         $signals: SampleWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SampleWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SampleWidget;
+        static ["new"](): SampleWidget;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SampleWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SampleWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SampleWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SampleWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SampleWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SampleWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SampleWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets the color for the sample widget
          * @param color A color
@@ -159,93 +150,91 @@ export namespace ColordGtk {
         set_color(color: Colord.ColorRGB): void;
     }
 
+
     namespace SampleWindow {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Window.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -264,47 +253,39 @@ export namespace ColordGtk {
         $signals: SampleWindow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SampleWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SampleWindow;
+        static ["new"](): SampleWindow;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SampleWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SampleWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SampleWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SampleWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SampleWindow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SampleWindow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SampleWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SampleWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SampleWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets the window to a specific color.
          * @param color the color
          */
         set_color(color: Colord.ColorRGB): void;
+
         /**
          * Sets the percentage value on the window.
          * @param fraction the fraction value to show, or -1 for pulsing.
          */
         set_fraction(fraction: number): void;
     }
+
 
     namespace Window {
         // Signal signatures
@@ -319,11 +300,10 @@ export namespace ColordGtk {
              * @run-last
              */
             changed: (arg0: Colord.Profile) => void;
-            'notify::profile': (pspec: GObject.ParamSpec) => void;
+            "notify::profile": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             Profile: string;
         }
@@ -336,7 +316,6 @@ export namespace ColordGtk {
         static $gtype: GObject.GType<Window>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -352,125 +331,112 @@ export namespace ColordGtk {
         $signals: Window.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Window;
+        static ["new"](): Window;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param profile
+         * @param profile 
          * @virtual
          */
         vfunc_changed(profile: Colord.Profile): void;
 
         // Methods
-
         /**
          * Gets the color profile to use for this widget.
          * @returns a {@link Colord.Profile}
          */
         get_last_profile(): Colord.Profile;
+
         /**
          * Gets the screen profile that should be used for the widget,
          * which corresponds to the screen output the widget most covers.
-         *
+         * 
          * This method should be called when the widget has mapped, i.e.
          * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
-         *
+         * 
          * Note, the returned profile from `cd_client_get_profile_for_widget_finish()`
          * has already been connected to, as is ready to use.
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<Colord.Profile>;
+        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Colord.Profile>;
+
         /**
          * Gets the screen profile that should be used for the widget,
          * which corresponds to the screen output the widget most covers.
-         *
+         * 
          * This method should be called when the widget has mapped, i.e.
          * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
-         *
-         * Note, the returned profile from `cd_client_get_profile_for_widget_finish()`
-         * has already been connected to, as is ready to use.
-         * @param widget a {@link Gtk.Widget}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        get_profile(
-            widget: Gtk.Widget,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Gets the screen profile that should be used for the widget,
-         * which corresponds to the screen output the widget most covers.
-         *
-         * This method should be called when the widget has mapped, i.e.
-         * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
-         *
+         * 
          * Note, the returned profile from `cd_client_get_profile_for_widget_finish()`
          * has already been connected to, as is ready to use.
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_profile(
-            widget: Gtk.Widget,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Colord.Profile> | void;
+        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Gets the screen profile that should be used for the widget,
+         * which corresponds to the screen output the widget most covers.
+         * 
+         * This method should be called when the widget has mapped, i.e.
+         * g_signal_connect (dialog, "map", G_CALLBACK (map_cb), priv);
+         * 
+         * Note, the returned profile from `cd_client_get_profile_for_widget_finish()`
+         * has already been connected to, as is ready to use.
+         * @param widget a {@link Gtk.Widget}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Colord.Profile> | void);
+
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          */
         get_profile_finish(res: Gio.AsyncResult): Colord.Profile;
+
         /**
          * Gets the screen profile that should be used for the widget,
          * which corresponds to the screen output the widget most covers.
-         *
+         * 
          * WARNING: This function is synchronous, and may block.
          * Do not use it in GUI applications.
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
          */
-        get_profile_sync(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): Colord.Profile;
+        get_profile_sync(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null)): Colord.Profile;
     }
+
 
     /**
      * @gir-type Alias
      */
     type SampleWidgetClass = typeof SampleWidget;
+
     /**
      * @gir-type Struct
      */
@@ -478,10 +444,12 @@ export namespace ColordGtk {
         static $gtype: GObject.GType<SampleWidgetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SampleWindowClass = typeof SampleWindow;
+
     /**
      * Private {@link ColordGtk.SampleWindow} data
      * @gir-type Struct
@@ -490,10 +458,12 @@ export namespace ColordGtk {
         static $gtype: GObject.GType<SampleWindowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WindowClass = typeof Window;
+
     /**
      * Private {@link ColordGtk.Window} data
      * @gir-type Struct
@@ -502,11 +472,13 @@ export namespace ColordGtk {
         static $gtype: GObject.GType<WindowPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

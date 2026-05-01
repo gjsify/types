@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GnomeBluetooth {
+
     /**
      * GnomeBluetooth-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -54,6 +57,7 @@ export namespace GnomeBluetooth {
         OFF,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -80,14 +84,17 @@ export namespace GnomeBluetooth {
         COARSE,
     }
 
+
     /**
      * Use this value to select any Bluetooth audio device where a {@link GnomeBluetooth.Type} enum is required.
      */
     const TYPE_AUDIO: number;
+
     /**
      * Use this value to select any Bluetooth input device where a {@link GnomeBluetooth.Type} enum is required.
      */
     const TYPE_INPUT: number;
+
     /**
      * Returns the type of device corresponding to the given `appearance` value,
      * as usually found in the GAP service.
@@ -95,12 +102,14 @@ export namespace GnomeBluetooth {
      * @returns a {@link GnomeBluetooth.Type}.
      */
     function appearance_to_type(appearance: number): Type;
+
     /**
      * Returns the type of device corresponding to the given `class` value.
      * @param _class a Bluetooth device class
      * @returns a {@link GnomeBluetooth.Type}.
      */
     function class_to_type(_class: number): Type;
+
     /**
      * Start a GUI application for transferring files over Bluetooth.
      * @param address Remote device to use
@@ -108,6 +117,7 @@ export namespace GnomeBluetooth {
      * @returns `true` on success, `false` on error.
      */
     function send_to_address(address: string, alias: string): boolean;
+
     /**
      * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
      * The returned string is already translated with `gettext()`.
@@ -115,18 +125,21 @@ export namespace GnomeBluetooth {
      * @returns a string.
      */
     function type_to_string(type: number): string;
+
     /**
      * Returns a string representing a human-readable (but not usable for display to users) version of the `uuid`. Do not free the return value.
      * @param uuid a string representing a Bluetooth UUID
      * @returns a string.
      */
     function uuid_to_string(uuid: string): string;
+
     /**
      * Returns whether the string is a valid Bluetooth address. This does not contact the device in any way.
      * @param bdaddr a string representing a Bluetooth address
      * @returns `true` if the address is valid, `false` if not.
      */
     function verify_address(bdaddr: string): boolean;
+
     /**
      * @gir-type Flags
      */
@@ -225,6 +238,7 @@ export namespace GnomeBluetooth {
         SPEAKERS,
     }
 
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -234,29 +248,28 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            'device-added': (arg0: GObject.Object) => void;
+            "device-added": (arg0: GObject.Object) => void;
             /**
              * The {@link GnomeBluetooth.Client.SignalSignatures.device_removed | GnomeBluetooth.Client::device-removed} signal is launched when a
              * device gets removed from the model.
-             *
+             * 
              * Note that {@link GnomeBluetooth.Client.SignalSignatures.device_removed | GnomeBluetooth.Client::device-removed} will not be called
              * for each individual device as the model is cleared when the
              * {@link GnomeBluetooth.Client.default_adapter} property changes.
              * @signal
              * @run-last
              */
-            'device-removed': (arg0: string) => void;
-            'notify::default-adapter': (pspec: GObject.ParamSpec) => void;
-            'notify::default-adapter-address': (pspec: GObject.ParamSpec) => void;
-            'notify::default-adapter-name': (pspec: GObject.ParamSpec) => void;
-            'notify::default-adapter-powered': (pspec: GObject.ParamSpec) => void;
-            'notify::default-adapter-setup-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::default-adapter-state': (pspec: GObject.ParamSpec) => void;
-            'notify::num-adapters': (pspec: GObject.ParamSpec) => void;
+            "device-removed": (arg0: string) => void;
+            "notify::default-adapter": (pspec: GObject.ParamSpec) => void;
+            "notify::default-adapter-address": (pspec: GObject.ParamSpec) => void;
+            "notify::default-adapter-name": (pspec: GObject.ParamSpec) => void;
+            "notify::default-adapter-powered": (pspec: GObject.ParamSpec) => void;
+            "notify::default-adapter-setup-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::default-adapter-state": (pspec: GObject.ParamSpec) => void;
+            "notify::num-adapters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             default_adapter: string;
             defaultAdapter: string;
@@ -282,67 +295,76 @@ export namespace GnomeBluetooth {
         static $gtype: GObject.GType<Client>;
 
         // Properties
-
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get default_adapter(): string;
+
         /**
          * The D-Bus path of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get defaultAdapter(): string;
+
         /**
          * The address of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get default_adapter_address(): string;
+
         /**
          * The address of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get defaultAdapterAddress(): string;
+
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get default_adapter_name(): string;
+
         /**
          * The name of the default Bluetooth adapter or `null`.
          * @read-only
          * @default null
          */
         get defaultAdapterName(): string;
+
         /**
          * `true` if the default Bluetooth adapter is powered.
          * @default false
          */
         get default_adapter_powered(): boolean;
         set default_adapter_powered(val: boolean);
+
         /**
          * `true` if the default Bluetooth adapter is powered.
          * @default false
          */
         get defaultAdapterPowered(): boolean;
         set defaultAdapterPowered(val: boolean);
+
         /**
          * `true` if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
          * @default false
          */
         get default_adapter_setup_mode(): boolean;
         set default_adapter_setup_mode(val: boolean);
+
         /**
          * `true` if the default Bluetooth adapter is in setup mode (discoverable, and discovering).
          * @default false
          */
         get defaultAdapterSetupMode(): boolean;
         set defaultAdapterSetupMode(val: boolean);
+
         /**
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
@@ -350,6 +372,7 @@ export namespace GnomeBluetooth {
          * @default GnomeBluetooth.AdapterState.ABSENT
          */
         get default_adapter_state(): AdapterState;
+
         /**
          * The {@link GnomeBluetooth.AdapterState} of the default Bluetooth adapter. More precise than
          * {@link GnomeBluetooth.Client.default_adapter_powered}.
@@ -357,12 +380,14 @@ export namespace GnomeBluetooth {
          * @default GnomeBluetooth.AdapterState.ABSENT
          */
         get defaultAdapterState(): AdapterState;
+
         /**
          * The number of detected Bluetooth adapters.
          * @read-only
          * @default 0
          */
         get num_adapters(): number;
+
         /**
          * The number of detected Bluetooth adapters.
          * @read-only
@@ -380,66 +405,53 @@ export namespace GnomeBluetooth {
         $signals: Client.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Client;
+        static ["new"](): Client;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * This will start the process of connecting to one of the known-connectable
+         * services on the device. This means that it could connect to all the audio
+         * services on a headset, but just to the input service on a keyboard.
+         * 
+         * Broadly speaking, this will only have an effect on devices with audio and HID
+         * services, and do nothing if the device doesn't have the "connectable"
+         * property set.
+         * 
+         * When the connection operation is finished, `callback` will be called. You can
+         * then call `bluetooth_client_connect_service_finish()` to get the result of the
+         * operation.
+         * @param path the object path on which to operate
+         * @param connect Whether try to connect or disconnect from services on a device
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         */
+        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * This will start the process of connecting to one of the known-connectable
          * services on the device. This means that it could connect to all the audio
          * services on a headset, but just to the input service on a keyboard.
-         *
+         * 
          * Broadly speaking, this will only have an effect on devices with audio and HID
          * services, and do nothing if the device doesn't have the "connectable"
          * property set.
-         *
-         * When the connection operation is finished, `callback` will be called. You can
-         * then call `bluetooth_client_connect_service_finish()` to get the result of the
-         * operation.
-         * @param path the object path on which to operate
-         * @param connect Whether try to connect or disconnect from services on a device
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         */
-        connect_service(
-            path: string,
-            connect: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * This will start the process of connecting to one of the known-connectable
-         * services on the device. This means that it could connect to all the audio
-         * services on a headset, but just to the input service on a keyboard.
-         *
-         * Broadly speaking, this will only have an effect on devices with audio and HID
-         * services, and do nothing if the device doesn't have the "connectable"
-         * property set.
-         *
+         * 
          * When the connection operation is finished, `callback` will be called. You can
          * then call `bluetooth_client_connect_service_finish()` to get the result of the
          * operation.
@@ -448,21 +460,17 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(
-            path: string,
-            connect: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * This will start the process of connecting to one of the known-connectable
          * services on the device. This means that it could connect to all the audio
          * services on a headset, but just to the input service on a keyboard.
-         *
+         * 
          * Broadly speaking, this will only have an effect on devices with audio and HID
          * services, and do nothing if the device doesn't have the "connectable"
          * property set.
-         *
+         * 
          * When the connection operation is finished, `callback` will be called. You can
          * then call `bluetooth_client_connect_service_finish()` to get the result of the
          * operation.
@@ -471,24 +479,22 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(
-            path: string,
-            connect: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the connection operation. See `bluetooth_client_connect_service()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if the connection operation succeeded, `false` otherwise.
          */
         connect_service_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Returns an unfiltered {@link Gio.ListStore} representing the devices attached to the default
          * Bluetooth adapter.
          * @returns a {@link Gio.ListStore}
          */
         get_devices(): Gio.ListStore;
+
         /**
          * Returns whether there are connected devices with the input capability.
          * This can be used by an OS user interface to warn the user before disabling
@@ -498,28 +504,28 @@ export namespace GnomeBluetooth {
         has_connected_input_devices(): boolean;
     }
 
+
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::address': (pspec: GObject.ParamSpec) => void;
-            'notify::alias': (pspec: GObject.ParamSpec) => void;
-            'notify::battery-level': (pspec: GObject.ParamSpec) => void;
-            'notify::battery-percentage': (pspec: GObject.ParamSpec) => void;
-            'notify::battery-type': (pspec: GObject.ParamSpec) => void;
-            'notify::connectable': (pspec: GObject.ParamSpec) => void;
-            'notify::connected': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::legacy-pairing': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::paired': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::trusted': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::uuids': (pspec: GObject.ParamSpec) => void;
+            "notify::address": (pspec: GObject.ParamSpec) => void;
+            "notify::alias": (pspec: GObject.ParamSpec) => void;
+            "notify::battery-level": (pspec: GObject.ParamSpec) => void;
+            "notify::battery-percentage": (pspec: GObject.ParamSpec) => void;
+            "notify::battery-type": (pspec: GObject.ParamSpec) => void;
+            "notify::connectable": (pspec: GObject.ParamSpec) => void;
+            "notify::connected": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::legacy-pairing": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::paired": (pspec: GObject.ParamSpec) => void;
+            "notify::proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::trusted": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::uuids": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             address: string;
             alias: string;
@@ -550,94 +556,111 @@ export namespace GnomeBluetooth {
         static $gtype: GObject.GType<Device>;
 
         // Properties
-
         /**
          * @default null
          */
         get address(): string;
         set address(val: string);
+
         /**
          * @default null
          */
         get alias(): string;
         set alias(val: string);
+
         /**
          * @default 0
          */
         get battery_level(): number;
         set battery_level(val: number);
+
         /**
          * @default 0
          */
         get batteryLevel(): number;
         set batteryLevel(val: number);
+
         /**
          * @default 0
          */
         get battery_percentage(): number;
         set battery_percentage(val: number);
+
         /**
          * @default 0
          */
         get batteryPercentage(): number;
         set batteryPercentage(val: number);
+
         /**
          * @default GnomeBluetooth.BatteryType.NONE
          */
         get battery_type(): BatteryType;
         set battery_type(val: BatteryType);
+
         /**
          * @default GnomeBluetooth.BatteryType.NONE
          */
         get batteryType(): BatteryType;
         set batteryType(val: BatteryType);
+
         /**
          * @read-only
          * @default false
          */
         get connectable(): boolean;
+
         /**
          * @default false
          */
         get connected(): boolean;
         set connected(val: boolean);
+
         /**
          * @default null
          */
         get icon(): string;
         set icon(val: string);
+
         /**
          * @default false
          */
         get legacy_pairing(): boolean;
         set legacy_pairing(val: boolean);
+
         /**
          * @default false
          */
         get legacyPairing(): boolean;
         set legacyPairing(val: boolean);
+
         /**
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * @default false
          */
         get paired(): boolean;
         set paired(val: boolean);
+
         get proxy(): Gio.DBusProxy;
         set proxy(val: Gio.DBusProxy);
+
         /**
          * @default false
          */
         get trusted(): boolean;
         set trusted(val: boolean);
+
         /**
          * @default GnomeBluetooth.Type.ANY
          */
         get type(): Type;
         set type(val: Type);
+
         get uuids(): string[];
         set uuids(val: string[]);
 
@@ -651,52 +674,48 @@ export namespace GnomeBluetooth {
         $signals: Device.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         dump(): void;
+
         get_object_path(): string;
+
         to_string(): string;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ClientClass = typeof Client;
+
     /**
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

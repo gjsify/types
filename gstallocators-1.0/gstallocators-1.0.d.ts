@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,28 +17,32 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstAllocators {
+
     /**
      * GstAllocators-1.0
      */
 
+
     const ALLOCATOR_DMABUF: string;
+
     const ALLOCATOR_FD: string;
+
     /**
      * Constant that defines the caps feature name for DMA buffer sharing.
-     *
+     * 
      * It has to be used for non-mappable dma-buf only, i.e. when the underlying
      * memory is not mappable to user space. Or when the mapped memory contains
      * non meaningful data. It can be the case for protected content or when the
      * user wants explicitly avoid any software post processing.
-     *
+     * 
      * In these cases all elements between the exported and the importer has to work
      * in passthrough mode. This is done by adding this caps feature.
-     *
+     * 
      * When the memory is mappable for read and write requests then it is assumes
      * to be a fast path and so this caps feature should not be used. Though
      * according to the dma-buf protocol, while it is mapped it prevents the
      * exporter to migrate the buffer.
-     *
+     * 
      * This caps feature should not serve at all the purpose of selecting the
      * `GST_ALLOCATOR_DMABUF` allocator during caps negotiation.
      * When the exporter is the upstream element from the importer point of view,
@@ -50,6 +55,7 @@ export namespace GstAllocators {
      * @since 1.12
      */
     const CAPS_FEATURE_MEMORY_DMABUF: string;
+
     /**
      * Return the file descriptor associated with `mem`.
      * @param mem the memory to get the file descriptor
@@ -57,6 +63,7 @@ export namespace GstAllocators {
      * @since 1.2
      */
     function dmabuf_memory_get_fd(mem: Gst.Memory): number;
+
     /**
      * Exports a DMABuf from the DRM Bumb buffer object. One can check if this
      * feature is supported using `gst_drm_dumb_allocator_has_prime_export()`;
@@ -65,6 +72,7 @@ export namespace GstAllocators {
      * @since 1.24
      */
     function drm_dumb_memory_export_dmabuf(mem: Gst.Memory): Gst.Memory;
+
     /**
      * Return the DRM buffer object handle associated with `mem`.
      * @param mem the memory to get the handle from
@@ -72,6 +80,7 @@ export namespace GstAllocators {
      * @since 1.24
      */
     function drm_dumb_memory_get_handle(mem: Gst.Memory): number;
+
     /**
      * Get the fd from `mem`. Call `gst_is_fd_memory()` to check if `mem` has
      * an fd.
@@ -80,6 +89,7 @@ export namespace GstAllocators {
      * @since 1.6
      */
     function fd_memory_get_fd(mem: Gst.Memory): number;
+
     /**
      * Check if `mem` is dmabuf memory.
      * @param mem the memory to be check
@@ -87,12 +97,14 @@ export namespace GstAllocators {
      * @since 1.2
      */
     function is_dmabuf_memory(mem: Gst.Memory): boolean;
+
     /**
      * @param mem the memory to be checked
      * @returns `true` if `mem` is DRM Dumb memory, otherwise `false`
      * @since 1.24
      */
     function is_drm_dumb_memory(mem: Gst.Memory): boolean;
+
     /**
      * Check if `mem` is memory backed by an fd
      * @param mem {@link Gst.Memory}
@@ -100,18 +112,21 @@ export namespace GstAllocators {
      * @since 1.6
      */
     function is_fd_memory(mem: Gst.Memory): boolean;
+
     /**
      * @param mem a {@link Gst.Memory}
      * @returns whether the memory at `mem` is backed by physical memory
      * @since 1.14
      */
     function is_phys_memory(mem: Gst.Memory): boolean;
+
     /**
      * @param mem a {@link Gst.Memory}
      * @returns Physical memory address that is backing `mem`, or 0 if none
      * @since 1.14
      */
     function phys_memory_get_phys_addr(mem: Gst.Memory): number;
+
     /**
      * Various flags to control the operation of the fd backed memory.
      * @gir-type Flags
@@ -139,17 +154,17 @@ export namespace GstAllocators {
         DONT_CLOSE,
     }
 
+
     namespace DRMDumbAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::drm-device-path': (pspec: GObject.ParamSpec) => void;
-            'notify::drm-fd': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::drm-device-path": (pspec: GObject.ParamSpec) => void;
+            "notify::drm-fd": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {
             drm_device_path: string;
             drmDevicePath: string;
@@ -167,25 +182,27 @@ export namespace GstAllocators {
         static $gtype: GObject.GType<DRMDumbAllocator>;
 
         // Properties
-
         /**
          * @since 1.24
          * @construct-only
          * @default null
          */
         get drm_device_path(): string;
+
         /**
          * @since 1.24
          * @construct-only
          * @default null
          */
         get drmDevicePath(): string;
+
         /**
          * @since 1.24
          * @construct-only
          * @default -1
          */
         get drm_fd(): number;
+
         /**
          * @since 1.24
          * @construct-only
@@ -203,7 +220,6 @@ export namespace GstAllocators {
         $signals: DRMDumbAllocator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DRMDumbAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -213,28 +229,19 @@ export namespace GstAllocators {
         static new_with_fd(drm_fd: number): DRMDumbAllocator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DRMDumbAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DRMDumbAllocator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DRMDumbAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DRMDumbAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DRMDumbAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DRMDumbAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Allocated a DRM buffer object for the specific `drm_fourcc`, `width` and
          * `height`. Note that the DRM Dumb allocation interface is agnostic to the
@@ -246,11 +253,13 @@ export namespace GstAllocators {
          * @returns a new DRM Dumb {@link Gst.Memory}. Use `gst_memory_unref()`   to release the memory after usage.
          */
         alloc(drm_fourcc: number, width: number, height: number): [Gst.Memory, number];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gst.Allocator.alloc
+    // Conflicted with Gst.Allocator.alloc
         alloc(...args: never[]): any;
+
         /**
          * This function allow verifying if the driver support dma-buf exportation.
          * @returns `true` if the allocator support exporting dma-buf.
@@ -258,16 +267,18 @@ export namespace GstAllocators {
         has_prime_export(): boolean;
     }
 
+
     namespace DmaBufAllocator {
         // Signal signatures
         interface SignalSignatures extends FdAllocator.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends FdAllocator.ConstructorProps {
 
-        interface ConstructorProps extends FdAllocator.ConstructorProps {}
+        }
     }
 
     /**
@@ -288,43 +299,34 @@ export namespace GstAllocators {
         $signals: DmaBufAllocator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DmaBufAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DmaBufAllocator;
+        static ["new"](): DmaBufAllocator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DmaBufAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DmaBufAllocator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DmaBufAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DmaBufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DmaBufAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DmaBufAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Return a %GstMemory that wraps a dmabuf file descriptor.
          * @param allocator allocator to be used for this memory
          * @param fd dmabuf file descriptor
          * @param size memory size
          */
-        static alloc(allocator: Gst.Allocator, fd: number, size: bigint | number): Gst.Memory | null;
+        static alloc(allocator: Gst.Allocator, fd: number, size: (bigint | number)): (Gst.Memory | null);
+
         /**
          * Return a %GstMemory that wraps a dmabuf file descriptor.
          * @param allocator allocator to be used for this memory
@@ -332,24 +334,21 @@ export namespace GstAllocators {
          * @param size memory size
          * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
-        static alloc_with_flags(
-            allocator: Gst.Allocator,
-            fd: number,
-            size: bigint | number,
-            flags: FdMemoryFlags,
-        ): Gst.Memory | null;
+        static alloc_with_flags(allocator: Gst.Allocator, fd: number, size: (bigint | number), flags: FdMemoryFlags): (Gst.Memory | null);
     }
+
 
     namespace FdAllocator {
         // Signal signatures
         interface SignalSignatures extends Gst.Allocator.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
 
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+        }
     }
 
     /**
@@ -370,36 +369,26 @@ export namespace GstAllocators {
         $signals: FdAllocator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FdAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FdAllocator;
+        static ["new"](): FdAllocator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FdAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FdAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FdAllocator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FdAllocator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FdAllocator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FdAllocator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FdAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FdAllocator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FdAllocator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Return a %GstMemory that wraps a generic file descriptor.
          * @param allocator allocator to be used for this memory
@@ -407,48 +396,50 @@ export namespace GstAllocators {
          * @param size memory size
          * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
-        static alloc(
-            allocator: Gst.Allocator,
-            fd: number,
-            size: bigint | number,
-            flags: FdMemoryFlags,
-        ): Gst.Memory | null;
+        static alloc(allocator: Gst.Allocator, fd: number, size: (bigint | number), flags: FdMemoryFlags): (Gst.Memory | null);
     }
+
 
     /**
      * @gir-type Alias
      */
     type DRMDumbAllocatorClass = typeof DRMDumbAllocator;
+
     /**
      * @gir-type Alias
      */
     type DmaBufAllocatorClass = typeof DmaBufAllocator;
+
     /**
      * @gir-type Alias
      */
     type FdAllocatorClass = typeof FdAllocator;
+
     /**
      * @gir-type Alias
      */
     type PhysMemoryAllocatorInterface = typeof PhysMemoryAllocator;
+
     namespace PhysMemoryAllocator {
         /**
          * Interface for implementing PhysMemoryAllocator.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param mem
+             * @param mem 
              * @virtual
              */
-            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
+            vfunc_get_phys_addr(mem: Gst.Memory): (bigint | number);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
+
+        }
     }
 
     export interface PhysMemoryAllocatorNamespace {
@@ -459,7 +450,9 @@ export namespace GstAllocators {
      * @gir-type Interface
      * @since 1.14
      */
-    interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {}
+    interface PhysMemoryAllocator extends Gst.Allocator, PhysMemoryAllocator.Interface {
+    }
+
 
     export const PhysMemoryAllocator: PhysMemoryAllocatorNamespace & {
         new (): PhysMemoryAllocator; // This allows `obj instanceof PhysMemoryAllocator`
@@ -470,6 +463,7 @@ export namespace GstAllocators {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

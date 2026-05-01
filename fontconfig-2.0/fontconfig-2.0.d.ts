@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,17 +14,21 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace fontconfig {
+
     /**
      * fontconfig-2.0
      */
 
+
     function init(): void;
+
     /**
      * @gir-type Struct
      */
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
     }
+
 
     /**
      * @gir-type Struct
@@ -32,6 +37,7 @@ export namespace fontconfig {
         static $gtype: GObject.GType<CharSet>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -39,11 +45,13 @@ export namespace fontconfig {
         static $gtype: GObject.GType<Config>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

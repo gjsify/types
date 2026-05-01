@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,14 +26,17 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace CmbCatalogUtils {
+
     /**
      * CmbCatalogUtils-3.0
      */
 
+
     /**
-     * @param accessible
+     * @param accessible 
      */
     function a11y_action_get_name(accessible: Atk.Object): string;
+
     /**
      * Return internal child
      * @param buildable Object to check
@@ -40,16 +44,19 @@ export namespace CmbCatalogUtils {
      * @returns the internal child of the buildable object
      */
     function buildable_get_internal_child<T = GObject.Object>(buildable: Gtk.Buildable, childname: string): T;
+
     /**
      * Return whether buildable implements `add_child()` or not
      * @param buildable Object to check
      */
     function implements_buildable_add_child(buildable: GObject.Object): boolean;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

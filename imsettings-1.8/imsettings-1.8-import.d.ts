@@ -1,3 +1,4 @@
+
 import type IMSettings18 from '@girs/imsettings-1.8';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

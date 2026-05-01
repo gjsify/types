@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -31,9 +32,11 @@ import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace ClutterGst {
+
     /**
      * ClutterGst-2.0
      */
+
 
     /**
      * @gir-type Enum
@@ -58,42 +61,49 @@ export namespace ClutterGst {
         DOWNLOAD,
     }
 
+
     /**
      * ClutterGst major version (e.g. "1", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MAJOR_VERSION: number;
+
     /**
      * ClutterGst micro version (e.g. "3", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MICRO_VERSION: number;
+
     /**
      * ClutterGst minor version (e.g. "2", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MINOR_VERSION: number;
+
     /**
      * ClutterGst full version, encoded as an hexadecimal value.
      */
     const VERSION_HEX: number;
+
     /**
      * ClutterGst full version, encoded as a string.
      */
     const VERSION_S: string;
+
     /**
      * Utility function to initialize both Clutter and GStreamer.
-     *
+     * 
      * This function should be called before calling any other GLib functions. If
      * this is not an option, your program must initialise the GLib thread system
      * using `g_thread_init()` before any other GLib functions are called.
      * @param argv A pointer to an array
      * @returns A {@link Clutter.InitError}.
      */
-    function init(argv: string[] | null): [Clutter.InitError, string[] | null];
+    function init(argv: (string[] | null)): [Clutter.InitError, string[] | null];
+
     /**
      * This function does the same work as `clutter_gst_init()`. Additionally, it
      * allows you to add your own command line options, and it automatically
      * generates nicely formatted --help output. Clutter's and GStreamer's
      * {@link GLib.OptionGroup}<!-- -->s are added to the set of available options.
-     *
+     * 
      * Your program must initialise the GLib thread system using `g_thread_init()`
      * before any other GLib functions are called.
      * @param argv A pointer to an array
@@ -103,12 +113,8 @@ export namespace ClutterGst {
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      * @since 1.0
      */
-    function init_with_args(
-        argv: string[] | null,
-        parameter_string: string,
-        entries: GLib.OptionEntry,
-        translation_domain: string,
-    ): [Clutter.InitError, string[] | null];
+    function init_with_args(argv: (string[] | null), parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
+
     /**
      * Adds the {@link ClutterGst.Player} properties to a class and surchages the
      * set/get_property of {@link GObject.ObjectClass}. You should call this
@@ -118,6 +124,7 @@ export namespace ClutterGst {
      * @since 1.4
      */
     function player_class_init(object_class: typeof GObject.Object): void;
+
     /**
      * @gir-type Flags
      */
@@ -141,30 +148,30 @@ export namespace ClutterGst {
         ACCURATE,
     }
 
+
     namespace VideoSink {
         // Signal signatures
         interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
-            'notify::texture': (pspec: GObject.ParamSpec) => void;
-            'notify::update-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::async': (pspec: GObject.ParamSpec) => void;
-            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
-            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
-            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::sync': (pspec: GObject.ParamSpec) => void;
-            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
-            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::texture": (pspec: GObject.ParamSpec) => void;
+            "notify::update-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::async": (pspec: GObject.ParamSpec) => void;
+            "notify::blocksize": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::max-bitrate": (pspec: GObject.ParamSpec) => void;
+            "notify::max-lateness": (pspec: GObject.ParamSpec) => void;
+            "notify::processing-deadline": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::render-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::sync": (pspec: GObject.ParamSpec) => void;
+            "notify::throttle-time": (pspec: GObject.ParamSpec) => void;
+            "notify::ts-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps, GstVideo.Navigation.ConstructorProps {
             texture: Clutter.Texture;
             update_priority: number;
@@ -174,7 +181,7 @@ export namespace ClutterGst {
 
     /**
      * Class implementing a GStreamer sink element for {@link Clutter.Texture}<!-- -->s.
-     *
+     * 
      * The {@link ClutterGst.VideoSink} structure contains only private data and should
      * not be accessed directly.
      * @gir-type Class
@@ -183,7 +190,6 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoSink>;
 
         // Properties
-
         /**
          * This is the texture the video is decoded into. It can be any
          * {@link Clutter.Texture}, however Cluter-Gst has a handy subclass,
@@ -192,20 +198,22 @@ export namespace ClutterGst {
          */
         get texture(): Clutter.Texture;
         set texture(val: Clutter.Texture);
+
         /**
          * Clutter-Gst installs a {@link GLib.Source} to signal that a new frame is ready to
          * the Clutter thread. This property allows to tweak the priority of the
          * source (Lower value is higher priority).
-         *
+         * 
          * Since 1.0
          */
         get update_priority(): number;
         set update_priority(val: number);
+
         /**
          * Clutter-Gst installs a {@link GLib.Source} to signal that a new frame is ready to
          * the Clutter thread. This property allows to tweak the priority of the
          * source (Lower value is higher priority).
-         *
+         * 
          * Since 1.0
          */
         get updatePriority(): number;
@@ -221,57 +229,54 @@ export namespace ClutterGst {
         $signals: VideoSink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](texture: Clutter.Texture): VideoSink;
+        static ["new"](texture: Clutter.Texture): VideoSink;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
         send_command(command: GstVideo.NavigationCommand): void;
+
         /**
-         * @param structure
+         * @param structure 
          */
         send_event(structure: Gst.Structure): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Element.send_event
         send_event(...args: never[]): any;
+
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
          */
         send_event_simple(event: Gst.Event): void;
+
         /**
          * @param event The type of the key event. Recognised values are "key-press" and "key-release"
          * @param key Character representation of the key. This is typically as produced by XKeysymToString.
          */
         send_key_event(event: string, key: string): void;
+
         /**
          * Sends a mouse event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
@@ -283,6 +288,7 @@ export namespace ClutterGst {
          * @param y The y coordinate of the mouse event.
          */
         send_mouse_event(event: string, button: number, x: number, y: number): void;
+
         /**
          * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
@@ -294,27 +300,31 @@ export namespace ClutterGst {
          * @param delta_y The delta_y coordinate of the mouse event.
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
+
         /**
          * sending a navigation event.
-         * @param structure
+         * @param structure 
          * @virtual
          */
         vfunc_send_event(structure: Gst.Structure): void;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Gst.Element.vfunc_send_event
         vfunc_send_event(...args: never[]): any;
+
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
          * @virtual
          */
         vfunc_send_event_simple(event: Gst.Event): void;
+
         /**
          * Increases the reference count of `object`.
-         *
+         * 
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
          * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
@@ -322,15 +332,17 @@ export namespace ClutterGst {
          * @returns the same `object`
          */
         ref(): GObject.Object;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
+
         /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
+         * 
          * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
          * pointer to `null` rather than retain a dangling pointer to a potentially
@@ -339,135 +351,127 @@ export namespace ClutterGst {
         unref(): void;
     }
 
+
     namespace VideoTexture {
         // Signal signatures
         interface SignalSignatures extends Clutter.Texture.SignalSignatures {
-            'notify::pixel-aspect-ratio': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-slicing': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::filter-quality': (pspec: GObject.ParamSpec) => void;
-            'notify::keep-aspect-ratio': (pspec: GObject.ParamSpec) => void;
-            'notify::load-async': (pspec: GObject.ParamSpec) => void;
-            'notify::load-data-async': (pspec: GObject.ParamSpec) => void;
-            'notify::pick-with-alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::pixel-format': (pspec: GObject.ParamSpec) => void;
-            'notify::repeat-x': (pspec: GObject.ParamSpec) => void;
-            'notify::repeat-y': (pspec: GObject.ParamSpec) => void;
-            'notify::sync-size': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-waste': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::buffer-fill': (pspec: GObject.ParamSpec) => void;
-            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::playing': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-font-name': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-stream': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-streams': (pspec: GObject.ParamSpec) => void;
-            'notify::idle': (pspec: GObject.ParamSpec) => void;
-            'notify::in-seek': (pspec: GObject.ParamSpec) => void;
-            'notify::seek-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-track': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-tracks': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            "notify::pixel-aspect-ratio": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-slicing": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::filter-quality": (pspec: GObject.ParamSpec) => void;
+            "notify::keep-aspect-ratio": (pspec: GObject.ParamSpec) => void;
+            "notify::load-async": (pspec: GObject.ParamSpec) => void;
+            "notify::load-data-async": (pspec: GObject.ParamSpec) => void;
+            "notify::pick-with-alpha": (pspec: GObject.ParamSpec) => void;
+            "notify::pixel-format": (pspec: GObject.ParamSpec) => void;
+            "notify::repeat-x": (pspec: GObject.ParamSpec) => void;
+            "notify::repeat-y": (pspec: GObject.ParamSpec) => void;
+            "notify::sync-size": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-waste": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-fill": (pspec: GObject.ParamSpec) => void;
+            "notify::can-seek": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::playing": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-font-name": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-stream": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-streams": (pspec: GObject.ParamSpec) => void;
+            "notify::idle": (pspec: GObject.ParamSpec) => void;
+            "notify::in-seek": (pspec: GObject.ParamSpec) => void;
+            "notify::seek-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-track": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-tracks": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Texture.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Media.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps,
-                Player.ConstructorProps {
+        interface ConstructorProps extends Clutter.Texture.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Media.ConstructorProps, Clutter.Scriptable.ConstructorProps, Player.ConstructorProps {
             pixel_aspect_ratio: Gst.Fraction;
             pixelAspectRatio: Gst.Fraction;
         }
@@ -475,27 +479,18 @@ export namespace ClutterGst {
 
     /**
      * Subclass of {@link Clutter.Texture} that displays videos using GStreamer.
-     *
+     * 
      * The {@link ClutterGst.VideoTexture} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
      */
-    class VideoTexture
-        extends Clutter.Texture
-        implements
-            Atk.ImplementorIface,
-            Clutter.Animatable,
-            Clutter.Container,
-            Clutter.Media,
-            Clutter.Scriptable,
-            Player
-    {
+    class VideoTexture extends Clutter.Texture implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Media, Clutter.Scriptable, Player {
         static $gtype: GObject.GType<VideoTexture>;
 
         // Properties
-
         get pixel_aspect_ratio(): Gst.Fraction;
         set pixel_aspect_ratio(val: Gst.Fraction);
+
         get pixelAspectRatio(): Gst.Fraction;
         set pixelAspectRatio(val: Gst.Fraction);
 
@@ -509,36 +504,26 @@ export namespace ClutterGst {
         $signals: VideoTexture.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VideoTexture.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): VideoTexture;
+        static ["new"](): VideoTexture;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VideoTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VideoTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VideoTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VideoTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VideoTexture.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VideoTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VideoTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
@@ -546,36 +531,43 @@ export namespace ClutterGst {
          * @returns the index of the current audio stream, -1 if the media has no audio stream
          */
         get_audio_stream(): number;
+
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of {@link Gst.TagList} describing the available audio streams
          */
         get_audio_streams(): Gst.TagList[];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with ClutterGst.Player.get_audio_streams
+    // Conflicted with ClutterGst.Player.get_audio_streams
         get_audio_streams(...args: never[]): any;
+
         /**
          * @returns a {@link ClutterGst.BufferingMode}
          */
         get_buffering_mode(): BufferingMode;
+
         /**
          * Retrieves the material used to draw when no media is being played.
          * @returns the {@link Cogl.Handle} of the idle material
          */
         get_idle_material(): Cogl.Handle;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `texture`, for direct use with
          * GStreamer API.
          * @returns the pipeline element used by the video texture
          */
         get_pipeline(): Gst.Element;
+
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
          */
         get_seek_flags(): SeekFlags;
+
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subitles track in the list returned by
@@ -583,84 +575,96 @@ export namespace ClutterGst {
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
          */
         get_subtitle_track(): number;
+
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of {@link Gst.TagList} describing the available subtitles tracks
          */
         get_subtitle_tracks(): Gst.TagList[];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with ClutterGst.Player.get_subtitle_tracks
+    // Conflicted with ClutterGst.Player.get_subtitle_tracks
         get_subtitle_tracks(...args: never[]): any;
+
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
          */
         get_user_agent(): string;
+
         /**
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_video_texture_get_audio_streams()`.
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
+
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
          */
         set_buffering_mode(mode: BufferingMode): void;
+
         /**
          * Sets a material to use to draw when no media is being played. The
          * {@link ClutterGst.VideoTexture} holds a reference of the `material`.
-         *
+         * 
          * The default idle material will paint the {@link ClutterGst.VideoTexture} in black.
          * If `COGL_INVALID_HANDLE` is given as `material` to this function, this
          * default idle material will be used.
          * @param material the handle of a Cogl material
          */
         set_idle_material(material: Cogl.Handle): void;
+
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
          */
         set_seek_flags(flags: SeekFlags): void;
+
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_video_texture_get_subtitle_tracks()`.
-         *
+         * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
          */
         set_subtitle_track(index_: number): void;
+
         /**
          * Sets the user agent to use when streaming.
-         *
+         * 
          * When streaming content, you might want to set a custom user agent, eg. to
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
          */
         set_user_agent(user_agent: string): void;
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @since 1.0
          * @deprecated since 1.12
          * @default 0.5
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get audio_volume(): number;
         set audio_volume(val: number);
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @since 1.0
          * @deprecated since 1.12
          * @default 0.5
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get audioVolume(): number;
         set audioVolume(val: number);
+
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
@@ -668,9 +672,10 @@ export namespace ClutterGst {
          * @deprecated since 1.12
          * @read-only
          * @default 0
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get buffer_fill(): number;
+
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
@@ -678,55 +683,61 @@ export namespace ClutterGst {
          * @deprecated since 1.12
          * @read-only
          * @default 0
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get bufferFill(): number;
+
         /**
          * Whether the current stream is seekable.
          * @since 0.2
          * @deprecated since 1.12
          * @read-only
          * @default false
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get can_seek(): boolean;
+
         /**
          * Whether the current stream is seekable.
          * @since 0.2
          * @deprecated since 1.12
          * @read-only
          * @default false
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get canSeek(): boolean;
+
         /**
          * The duration of the current stream, in seconds
          * @since 0.2
          * @deprecated since 1.12
          * @read-only
          * @default 0
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get duration(): number;
+
         /**
          * Whether the {@link Clutter.Media} actor is playing.
          * @since 0.2
          * @deprecated since 1.12
          * @default false
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get playing(): boolean;
         set playing(val: boolean);
+
         /**
          * The current progress of the playback, as a normalized
          * value between 0.0 and 1.0.
          * @since 1.0
          * @deprecated since 1.12
          * @default 0
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get progress(): number;
         set progress(val: number);
+
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
@@ -734,10 +745,11 @@ export namespace ClutterGst {
          * @since 1.2
          * @deprecated since 1.12
          * @default null
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get subtitle_font_name(): string;
         set subtitle_font_name(val: string);
+
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
@@ -745,188 +757,218 @@ export namespace ClutterGst {
          * @since 1.2
          * @deprecated since 1.12
          * @default null
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get subtitleFontName(): string;
         set subtitleFontName(val: string);
+
         /**
          * The location of a subtitle file, expressed as a valid URI.
          * @since 1.2
          * @deprecated since 1.12
          * @default null
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get subtitle_uri(): string;
         set subtitle_uri(val: string);
+
         /**
          * The location of a subtitle file, expressed as a valid URI.
          * @since 1.2
          * @deprecated since 1.12
          * @default null
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get subtitleUri(): string;
         set subtitleUri(val: string);
+
         /**
          * The location of a media file, expressed as a valid URI.
          * @since 0.2
          * @deprecated since 1.12
          * @default null
-         * @category Inherited from Clutter.Media
+          * @category Inherited from Clutter.Media
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * Index of the current audio stream.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audio_stream(): number;
         set audio_stream(val: number);
+
         /**
          * Index of the current audio stream.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audioStream(): number;
         set audioStream(val: number);
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audio_streams(): any;
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audioStreams(): any;
+
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get in_seek(): boolean;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get inSeek(): boolean;
+
         /**
          * Flags to use when seeking.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
+
         /**
          * Flags to use when seeking.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
+
         /** @category Inherited from ClutterGst.Player */
         get subtitle_track(): number;
         set subtitle_track(val: number);
+
         /** @category Inherited from ClutterGst.Player */
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+
         /**
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get subtitle_tracks(): any;
+
         /**
          * @read-only
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get subtitleTracks(): any;
+
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get user_agent(): string;
         set user_agent(val: string);
+
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
          * @since 1.4
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
          * Retrieves the playback volume of `media`.
          * @returns The playback volume between 0.0 and 1.0
          */
         get_audio_volume(): number;
+
         /**
          * Retrieves the amount of the stream that is buffered.
          * @returns the fill level, between 0.0 and 1.0
          */
         get_buffer_fill(): number;
+
         /**
          * Retrieves whether `media` is seekable or not.
          * @returns `true` if `media` can seek, `false` otherwise.
          */
         get_can_seek(): boolean;
+
         /**
          * Retrieves the duration of the media stream that `media` represents.
          * @returns the duration of the media stream, in seconds
          */
         get_duration(): number;
+
         /**
          * Retrieves the playing status of `media`.
          * @returns `true` if playing, `false` if stopped.
          */
         get_playing(): boolean;
+
         /**
          * Retrieves the playback progress of `media`.
          * @returns the playback progress, between 0.0 and 1.0
          */
         get_progress(): number;
+
         /**
          * Retrieves the font name currently used.
          * @returns a string containing the font name. Use `g_free()`   to free the returned string
          */
         get_subtitle_font_name(): string;
+
         /**
          * Retrieves the URI of the subtitle file in use.
          * @returns the URI of the subtitle file. Use `g_free()`   to free the returned string
          */
         get_subtitle_uri(): string;
+
         /**
          * Retrieves the URI from `media`.
          * @returns the URI of the media stream. Use `g_free()`   to free the returned string
          */
         get_uri(): string;
+
         /**
          * Sets the playback volume of `media` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          */
         set_audio_volume(volume: number): void;
+
         /**
          * Sets the source of `media` using a file path.
          * @param filename A filename
          */
         set_filename(filename: string): void;
+
         /**
          * Starts or stops playing of `media`.
-         *
+         *  
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `media` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link Clutter.Media.playing} property and then retrieve the
@@ -935,78 +977,90 @@ export namespace ClutterGst {
          * @param playing `true` to start playing
          */
         set_playing(playing: boolean): void;
+
         /**
          * Sets the playback progress of `media`. The `progress` is
          * a normalized value between 0.0 (begin) and 1.0 (end).
          * @param progress the progress of the playback, between 0.0 and 1.0
          */
         set_progress(progress: number): void;
+
         /**
          * Sets the font used by the subtitle renderer. The `font_name` string must be
          * either `null`, which means that the default font name of the underlying
          * implementation will be used; or must follow the grammar recognized by
          * `pango_font_description_from_string()` like:
-         *
-         *
+         * 
+         * 
          * ```
          *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
          * ```
-         *
+         * 
          * @param font_name a font name, or `null` to set the default font name
          */
         set_subtitle_font_name(font_name: string): void;
+
         /**
          * Sets the location of a subtitle file to display while playing `media`.
          * @param uri the URI of a subtitle file
          */
         set_subtitle_uri(uri: string): void;
+
         /**
          * Sets the URI of `media` to `uri`.
          * @param uri the URI of the media stream
          */
         set_uri(uri: string): void;
+
         /**
          * @virtual
          */
         vfunc_eos(): void;
+
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: GLib.Error): void;
+
         /**
          * Frees the resources created by `clutter_gst_player_init()`. After
          * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
          */
         deinit(): void;
+
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
          */
         get_idle(): boolean;
+
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
          */
         get_in_seek(): boolean;
+
         /**
          * Initialize a {@link ClutterGst.Player} instance. You should call this
          * function at the beginning of the init method of the class
          * implementing {@link ClutterGst.Player}.
-         *
+         * 
          * When you're finished with the ClutterGstPlayer mixin features (usually in
          * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
          * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
          */
         init(): boolean;
+
         /**
-         * @param start
-         * @param stop
+         * @param start 
+         * @param stop 
          * @virtual
          */
         vfunc_download_buffering(start: number, stop: number): void;
+
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
@@ -1014,36 +1068,43 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_get_audio_stream(): number;
+
         /**
          * Get the list of audio streams of the current media.
          * @virtual
          */
         vfunc_get_audio_streams(): string[];
+
         /**
          * @virtual
          */
         vfunc_get_buffering_mode(): BufferingMode;
+
         /**
          * Get the idle state of the pipeline.
          * @virtual
          */
         vfunc_get_idle(): boolean;
+
         /**
          * Whether the player is seeking.
          * @virtual
          */
         vfunc_get_in_seek(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
+
         /**
          * Get the current value of the seek-flags property.
          * @virtual
          */
         vfunc_get_seek_flags(): SeekFlags;
+
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
@@ -1051,16 +1112,19 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_get_subtitle_track(): number;
+
         /**
          * Get the list of subtitles tracks of the current media.
          * @virtual
          */
         vfunc_get_subtitle_tracks(): string[];
+
         /**
          * Retrieves the user agent used when streaming.
          * @virtual
          */
         vfunc_get_user_agent(): string;
+
         /**
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_audio_streams()`.
@@ -1068,11 +1132,13 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_set_audio_stream(index_: number): void;
+
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
          * @virtual
          */
         vfunc_set_buffering_mode(mode: BufferingMode): void;
+
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
@@ -1080,18 +1146,20 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_set_seek_flags(flags: SeekFlags): void;
+
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
-         *
+         * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
          * @virtual
          */
         vfunc_set_subtitle_track(index_: number): void;
+
         /**
          * Sets the user agent to use when streaming.
-         *
+         * 
          * When streaming content, you might want to set a custom user agent, eg. to
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
@@ -1101,10 +1169,12 @@ export namespace ClutterGst {
         vfunc_set_user_agent(user_agent: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlayerIface = typeof Player;
+
     /**
      * @gir-type Struct
      */
@@ -1112,10 +1182,12 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type VideoSinkClass = typeof VideoSink;
+
     /**
      * @gir-type Struct
      */
@@ -1123,10 +1195,12 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoSinkPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type VideoTextureClass = typeof VideoTexture;
+
     /**
      * @gir-type Struct
      */
@@ -1134,20 +1208,22 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoTexturePrivate>;
     }
 
+
     namespace Player {
         /**
          * Interface for implementing Player.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface extends Clutter.Media.Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param start
-             * @param stop
+             * @param start 
+             * @param stop 
              * @virtual
              */
             vfunc_download_buffering(start: number, stop: number): void;
+
             /**
              * Get the current audio stream. The number returned in the index of the
              * audio stream playing in the list returned by
@@ -1155,36 +1231,43 @@ export namespace ClutterGst {
              * @virtual
              */
             vfunc_get_audio_stream(): number;
+
             /**
              * Get the list of audio streams of the current media.
              * @virtual
              */
             vfunc_get_audio_streams(): string[];
+
             /**
              * @virtual
              */
             vfunc_get_buffering_mode(): BufferingMode;
+
             /**
              * Get the idle state of the pipeline.
              * @virtual
              */
             vfunc_get_idle(): boolean;
+
             /**
              * Whether the player is seeking.
              * @virtual
              */
             vfunc_get_in_seek(): boolean;
+
             /**
              * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
              * GStreamer API.
              * @virtual
              */
             vfunc_get_pipeline(): Gst.Element;
+
             /**
              * Get the current value of the seek-flags property.
              * @virtual
              */
             vfunc_get_seek_flags(): SeekFlags;
+
             /**
              * Get the current subtitles track. The number returned is the index of the
              * subtiles track in the list returned by
@@ -1192,16 +1275,19 @@ export namespace ClutterGst {
              * @virtual
              */
             vfunc_get_subtitle_track(): number;
+
             /**
              * Get the list of subtitles tracks of the current media.
              * @virtual
              */
             vfunc_get_subtitle_tracks(): string[];
+
             /**
              * Retrieves the user agent used when streaming.
              * @virtual
              */
             vfunc_get_user_agent(): string;
+
             /**
              * Set the audio stream to play. `index_` is the index of the stream
              * in the list returned by `clutter_gst_player_get_audio_streams()`.
@@ -1209,11 +1295,13 @@ export namespace ClutterGst {
              * @virtual
              */
             vfunc_set_audio_stream(index_: number): void;
+
             /**
              * @param mode a {@link ClutterGst.BufferingMode}
              * @virtual
              */
             vfunc_set_buffering_mode(mode: BufferingMode): void;
+
             /**
              * Seeking can be done with several trade-offs. Clutter-gst defaults
              * to {@link ClutterGst.SeekFlags.NONE}.
@@ -1221,18 +1309,20 @@ export namespace ClutterGst {
              * @virtual
              */
             vfunc_set_seek_flags(flags: SeekFlags): void;
+
             /**
              * Set the subtitles track to play. `index_` is the index of the stream
              * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
-             *
+             * 
              * If `index_` is -1, the subtitles are turned off.
              * @param index_ the index of the subtitles track
              * @virtual
              */
             vfunc_set_subtitle_track(index_: number): void;
+
             /**
              * Sets the user agent to use when streaming.
-             *
+             * 
              * When streaming content, you might want to set a custom user agent, eg. to
              * promote your software, make it appear in statistics or because the server
              * requires a special user agent you want to impersonate.
@@ -1242,8 +1332,8 @@ export namespace ClutterGst {
             vfunc_set_user_agent(user_agent: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Clutter.Media.ConstructorProps {
             audio_stream: number;
             audioStream: number;
@@ -1266,14 +1356,13 @@ export namespace ClutterGst {
     export interface PlayerNamespace {
         $gtype: GObject.GType<Player>;
         prototype: Player;
-
         /**
-         * Adds the {@link ClutterGst.Player} properties to a class and surchages the
-         * set/get_property of {@link GObject.ObjectClass}. You should call this
-         * function at the end of the class_init method of the class
-         * implementing {@link ClutterGst.Player}.
-         * @param object_class a {@link GObject.ObjectClass}
-         */
+        * Adds the {@link ClutterGst.Player} properties to a class and surchages the
+        * set/get_property of {@link GObject.ObjectClass}. You should call this
+        * function at the end of the class_init method of the class
+        * implementing {@link ClutterGst.Player}.
+        * @param object_class a {@link GObject.ObjectClass}
+        */
         class_init(object_class: typeof GObject.Object): void;
     }
     /**
@@ -1283,80 +1372,94 @@ export namespace ClutterGst {
      * @since 1.4
      */
     interface Player extends Clutter.Media, Player.Interface {
-        // Properties
 
+        // Properties
         /**
          * Index of the current audio stream.
          * @since 1.4
          */
         get audio_stream(): number;
         set audio_stream(val: number);
+
         /**
          * Index of the current audio stream.
          * @since 1.4
          */
         get audioStream(): number;
         set audioStream(val: number);
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
         get audio_streams(): any;
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
         get audioStreams(): any;
+
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
          */
         get idle(): boolean;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
          */
         get in_seek(): boolean;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
          * @read-only
          */
         get inSeek(): boolean;
+
         /**
          * Flags to use when seeking.
          * @since 1.4
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
+
         /**
          * Flags to use when seeking.
          * @since 1.4
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
+
         get subtitle_track(): number;
         set subtitle_track(val: number);
+
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+
         /**
          * @read-only
          */
         get subtitle_tracks(): any;
+
         /**
          * @read-only
          */
         get subtitleTracks(): any;
+
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
          * @since 1.4
          */
         get user_agent(): string;
         set user_agent(val: string);
+
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
          * @since 1.4
@@ -1365,13 +1468,13 @@ export namespace ClutterGst {
         set userAgent(val: string);
 
         // Methods
-
         /**
          * Frees the resources created by `clutter_gst_player_init()`. After
          * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
          */
         deinit(): void;
+
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
@@ -1379,36 +1482,43 @@ export namespace ClutterGst {
          * @returns the index of the current audio stream, -1 if the media has no audio stream
          */
         get_audio_stream(): number;
+
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of strings describing the available audio streams
          */
         get_audio_streams(): string[];
+
         /**
          * @returns a {@link ClutterGst.BufferingMode}
          */
         get_buffering_mode(): BufferingMode;
+
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
          */
         get_idle(): boolean;
+
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
          */
         get_in_seek(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
          */
         get_pipeline(): Gst.Element;
+
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
          */
         get_seek_flags(): SeekFlags;
+
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
@@ -1416,54 +1526,62 @@ export namespace ClutterGst {
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
          */
         get_subtitle_track(): number;
+
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of strings describing the available subtitles tracks
          */
         get_subtitle_tracks(): string[];
+
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
          */
         get_user_agent(): string;
+
         /**
          * Initialize a {@link ClutterGst.Player} instance. You should call this
          * function at the beginning of the init method of the class
          * implementing {@link ClutterGst.Player}.
-         *
+         * 
          * When you're finished with the ClutterGstPlayer mixin features (usually in
          * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
          * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
          */
         init(): boolean;
+
         /**
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_audio_streams()`.
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
+
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
          */
         set_buffering_mode(mode: BufferingMode): void;
+
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
          */
         set_seek_flags(flags: SeekFlags): void;
+
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
-         *
+         * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
          */
         set_subtitle_track(index_: number): void;
+
         /**
          * Sets the user agent to use when streaming.
-         *
+         * 
          * When streaming content, you might want to set a custom user agent, eg. to
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
@@ -1471,6 +1589,7 @@ export namespace ClutterGst {
          */
         set_user_agent(user_agent: string): void;
     }
+
 
     export const Player: PlayerNamespace & {
         new (): Player; // This allows `obj instanceof Player`
@@ -1481,6 +1600,7 @@ export namespace ClutterGst {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,15 +26,22 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Thunarx {
+
     /**
      * Thunarx-3.0
      */
 
+
     const FILESYSTEM_INFO_NAMESPACE: string;
+
     const FILE_INFO_NAMESPACE: string;
+
     const MAJOR_VERSION: number;
+
     const MICRO_VERSION: number;
+
     const MINOR_VERSION: number;
+
     /**
      * Checks that the <systemitem class="library">thunarx</systemitem> library
      * in use is compatible with the given version. Generally you would pass in
@@ -42,12 +50,12 @@ export namespace Thunarx {
      * a check that the library in use is compatible with the version of
      * <systemitem class="library">thunarx</systemitem> the extension was
      * compiled against.
-     *
+     * 
      * This function should be called by extensions in the
      * `thunar_extension_initialize()` method to verify that the <systemitem
      * class="library">thunarx</systemitem> library used by file manager is
      * compatible with the version the extension was compiled with.
-     *
+     * 
      * <example>
      * <title>Checking the runtime version of the Thunar Extension library</title>
      * <programlisting>
@@ -65,6 +73,7 @@ export namespace Thunarx {
      * @returns `null` if the library is compatible with the given version,               or a string describing the version mismatch. The returned               string is owned by the library and must not be freed or               modified by the caller.
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string;
+
     /**
      * Does a deep copy of `file_infos` and returns the
      * new list.
@@ -72,6 +81,7 @@ export namespace Thunarx {
      * @returns a copy of `file_infos`.
      */
     function file_info_list_copy(file_infos: FileInfo[]): FileInfo[];
+
     /**
      * Frees the resources allocated for the `file_infos`
      * list and decreases the reference count on the
@@ -79,17 +89,21 @@ export namespace Thunarx {
      * @param file_infos a {@link GLib.List} of {@link Thunarx.FileInfo}<!---->s.
      */
     function file_info_list_free(file_infos: FileInfo[]): void;
+
     /**
      * @gir-type Alias
      */
-    type FileInfoList = object | null;
+    type FileInfoList = (object | null);
+
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -108,49 +122,42 @@ export namespace Thunarx {
         $signals: Menu.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Menu.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Menu;
+        static ["new"](): Menu;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Menu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Menu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Menu.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param item a {@link Thunarx.MenuItem}
          */
         append_item(item: MenuItem): void;
+
         /**
          * @returns the provided {@link Thunarx.MenuItem} list Must be freed with `thunarx_menu_item_list_free()` after usage
          */
         get_items(): MenuItem[];
+
         /**
          * @param item a {@link Thunarx.MenuItem}
          */
         prepend_item(item: MenuItem): void;
     }
+
 
     namespace MenuItem {
         // Signal signatures
@@ -160,17 +167,16 @@ export namespace Thunarx {
              * @run-last
              */
             activate: () => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::menu': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::priority': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::menu": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             icon: string;
             label: string;
@@ -189,34 +195,39 @@ export namespace Thunarx {
         static $gtype: GObject.GType<MenuItem>;
 
         // Properties
-
         /**
          * @default null
          */
         get icon(): string;
         set icon(val: string);
+
         /**
          * @default null
          */
         get label(): string;
         set label(val: string);
+
         get menu(): Menu;
         set menu(val: Menu);
+
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @default true
          */
         get priority(): boolean;
         set priority(val: boolean);
+
         /**
          * @default true
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
+
         /**
          * @default null
          */
@@ -233,63 +244,54 @@ export namespace Thunarx {
         $signals: MenuItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MenuItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, label: string, tooltip: string, icon: string): MenuItem;
+        static ["new"](name: string, label: string, tooltip: string, icon: string): MenuItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MenuItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MenuItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MenuItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param items a list of {@link Thunarx.MenuItem}
          */
         static list_free(items: MenuItem[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_activate(): void;
 
         // Methods
-
         /**
          * Emits the activate signal.
          */
         activate(): boolean;
+
         /**
          * Returns whether the menu item is sensitive.
          */
         get_sensitive(): boolean;
+
         /**
          * Attaches `menu` to menu item.
          * @param menu pointer to a {@link Thunarx.Menu} instance
          */
         set_menu(menu: Menu): void;
+
         /**
          * Sets the ::sensitive property of the menu item to `sensitive`.
          * @param sensitive `true` to make the menu item sensitive
@@ -297,59 +299,58 @@ export namespace Thunarx {
         set_sensitive(sensitive: boolean): void;
     }
 
+
     namespace PropertyPage {
         // Signal signatures
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::label-widget': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::label-widget": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             label: string;
             label_widget: Gtk.Widget;
             labelWidget: Gtk.Widget;
@@ -363,14 +364,15 @@ export namespace Thunarx {
         static $gtype: GObject.GType<PropertyPage>;
 
         // Properties
-
         /**
          * @default null
          */
         get label(): string;
         set label(val: string);
+
         get label_widget(): Gtk.Widget;
         set label_widget(val: Gtk.Widget);
+
         get labelWidget(): Gtk.Widget;
         set labelWidget(val: Gtk.Widget);
 
@@ -384,38 +386,28 @@ export namespace Thunarx {
         $signals: PropertyPage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PropertyPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](label: string): PropertyPage;
+        static ["new"](label: string): PropertyPage;
 
         static new_with_label_widget(label_widget: Gtk.Widget): PropertyPage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PropertyPage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PropertyPage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PropertyPage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PropertyPage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PropertyPage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PropertyPage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PropertyPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * If the `property_page`'s label widget is a {@link Gtk.Label}, returns the text
          * in the label widget (the `property_page` will have a {@link Gtk.Label} for the
@@ -423,18 +415,21 @@ export namespace Thunarx {
          * @returns the text in the label or `null` if there was no label widget or               the label widget was not a {@link Gtk.Label}. The returned string is               owned by the `property_page` and must not be modified or freed.
          */
         get_label(): string;
+
         /**
          * Returns the label widget for the `property_page`. See
          * `thunarx_property_page_set_label_widget()`.
          * @returns the label widget or `null` if there is none.
          */
         get_label_widget(): Gtk.Widget;
+
         /**
          * Sets the text of the label. If `label` is `null`, the current label is
          * removed.
          * @param label the text to use as the label of the page.
          */
         set_label(label: string): void;
+
         /**
          * Sets the label widget for the `property_page`. This is the widget
          * that will appear in the notebook header for the `property_page`.
@@ -443,13 +438,16 @@ export namespace Thunarx {
         set_label_widget(label_widget: Gtk.Widget): void;
     }
 
+
     namespace ProviderFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -468,48 +466,37 @@ export namespace Thunarx {
         $signals: ProviderFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProviderFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProviderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProviderFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProviderFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProviderFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProviderFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProviderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ProviderFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns a reference to the default {@link Thunarx.ProviderFactory}
          * instance.
-         *
+         * 
          * The caller is responsible to free the returned object
          * using `g_object_unref()` when no longer needed.
          */
         static get_default(): ProviderFactory;
 
         // Methods
-
         /**
          * Returns all providers of the given `type`.
-         *
+         * 
          * The caller is responsible to release the returned
          * list of providers using code like this:
          * <informalexample><programlisting>
@@ -521,19 +508,17 @@ export namespace Thunarx {
         list_providers(type: GObject.GType): GObject.Object[];
     }
 
+
     namespace ProviderModule {
         // Signal signatures
         interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-            'notify::resident': (pspec: GObject.ParamSpec) => void;
+            "notify::resident": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps, ProviderPlugin.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                GObject.TypeModule.ConstructorProps,
-                GObject.TypePlugin.ConstructorProps,
-                ProviderPlugin.ConstructorProps {}
+        }
     }
 
     /**
@@ -552,36 +537,26 @@ export namespace Thunarx {
         $signals: ProviderModule.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProviderModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): ProviderModule;
+        static ["new"](filename: string): ProviderModule;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProviderModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProviderModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProviderModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProviderModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProviderModule.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProviderModule.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProviderModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ProviderModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProviderModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Determines the {@link GObject.GType}<!---->s provided by `module` and returns
          * them in `types` and `n_types`.
@@ -589,19 +564,22 @@ export namespace Thunarx {
          * @param n_types return location for the number of types.
          */
         list_types(types: GObject.GType, n_types: number): void;
+
         /**
          * Wrapper for 'g_type_module_unuse' which first checks if the module is in use
          */
         unuse(): void;
+
         /**
          * Tells whether a plugin must reside in memory once loaded for
          * the first time. See `thunarx_provider_plugin_get_resident()` and
          * `thunarx_provider_plugin_set_resident()` for more details.
          * @default false
-         * @category Inherited from Thunarx.ProviderPlugin
+          * @category Inherited from Thunarx.ProviderPlugin
          */
         get resident(): boolean;
         set resident(val: boolean);
+
         /**
          * Calls the `complete_interface_info` function from the
          * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
@@ -610,11 +588,8 @@ export namespace Thunarx {
          * @param interface_type the {@link GObject.GType} of the interface whose info is completed
          * @param info the {@link GObject.InterfaceInfo} to fill in
          */
-        complete_interface_info(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            info: GObject.InterfaceInfo,
-        ): void;
+        complete_interface_info(instance_type: GObject.GType, interface_type: GObject.GType, info: GObject.InterfaceInfo): void;
+
         /**
          * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
@@ -624,31 +599,31 @@ export namespace Thunarx {
          * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
+
         /**
          * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
+
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
          * If the interface was already registered for the type in this `plugin`, nothing will be done.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
          * @param interface_type interface type to add.
          * @param interface_info type information structure.
          */
-        add_interface(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            interface_info: GObject.InterfaceInfo,
-        ): void;
+        add_interface(instance_type: GObject.GType, interface_type: GObject.GType, interface_info: GObject.InterfaceInfo): void;
+
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
@@ -658,43 +633,48 @@ export namespace Thunarx {
          * @returns `true` if `plugin` will be kept in memory once loaded               for the first time.
          */
         get_resident(): boolean;
+
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
          * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
          * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
          * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.TypeModule.register_enum
         register_enum(...args: never[]): any;
+
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
          * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
          * registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
          * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.TypeModule.register_flags
         register_flags(...args: never[]): any;
+
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
          * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
          * and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
          * @param type_parent the type for the parent class.
@@ -703,39 +683,33 @@ export namespace Thunarx {
          * @param type_flags flags field providing details about the type.
          * @returns the new or existing type id.
          */
-        register_type(
-            type_parent: GObject.GType,
-            type_name: string,
-            type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags,
-        ): GObject.GType;
+        register_type(type_parent: GObject.GType, type_name: string, type_info: GObject.TypeInfo, type_flags: GObject.TypeFlags): GObject.GType;
+
         /**
          * This method is used to instruct the application that `plugin` must be
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
          * of `true` then the application will never try to unload `plugin`.
-         *
+         * 
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
          * @param resident `true` to make `plugin` resident in memory.
          */
         set_resident(resident: boolean): void;
+
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
          * If the interface was already registered for the type in this `plugin`, nothing will be done.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
          * @param interface_type interface type to add.
          * @param interface_info type information structure.
          * @virtual
          */
-        vfunc_add_interface(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            interface_info: GObject.InterfaceInfo,
-        ): void;
+        vfunc_add_interface(instance_type: GObject.GType, interface_type: GObject.GType, interface_info: GObject.InterfaceInfo): void;
+
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
@@ -745,33 +719,36 @@ export namespace Thunarx {
          * @virtual
          */
         vfunc_get_resident(): boolean;
+
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
          * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
          * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
          * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
          * @virtual
          */
         vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
          * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
          * registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
          * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
          * @virtual
          */
         vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
          * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
          * and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
          * @param type_parent the type for the parent class.
@@ -780,19 +757,15 @@ export namespace Thunarx {
          * @param type_flags flags field providing details about the type.
          * @virtual
          */
-        vfunc_register_type(
-            type_parent: GObject.GType,
-            type_name: string,
-            type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags,
-        ): GObject.GType;
+        vfunc_register_type(type_parent: GObject.GType, type_name: string, type_info: GObject.TypeInfo, type_flags: GObject.TypeFlags): GObject.GType;
+
         /**
          * This method is used to instruct the application that `plugin` must be
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
          * of `true` then the application will never try to unload `plugin`.
-         *
+         * 
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
          * @param resident `true` to make `plugin` resident in memory.
@@ -801,6 +774,7 @@ export namespace Thunarx {
         vfunc_set_resident(resident: boolean): void;
     }
 
+
     namespace Renamer {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
@@ -808,70 +782,64 @@ export namespace Thunarx {
              * Derived classes should emit this signal using the
              * `thunarx_renamer_changed()` method whenever the user
              * changed a setting in the `renamer` GUI.
-             *
+             * 
              * The file manager will then invoke `thunarx_renamer_process()`
              * for all files that should be renamed and update the preview.
              * @signal
              * @run-first
              */
             changed: () => void;
-            'notify::help-url': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::help-url": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             help_url: string;
             helpUrl: string;
             name: string;
@@ -885,14 +853,13 @@ export namespace Thunarx {
         static $gtype: GObject.GType<Renamer>;
 
         // Properties
-
         /**
          * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
          * the general Thunar renamer documentation.
-         *
+         * 
          * May also be unset, in which case the general Thunar renamer
          * documentation will be shown when the user clicks the "Help"
          * button.
@@ -900,13 +867,14 @@ export namespace Thunarx {
          */
         get help_url(): string;
         set help_url(val: string);
+
         /**
          * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
          * the general Thunar renamer documentation.
-         *
+         * 
          * May also be unset, in which case the general Thunar renamer
          * documentation will be shown when the user clicks the "Help"
          * button.
@@ -914,6 +882,7 @@ export namespace Thunarx {
          */
         get helpUrl(): string;
         set helpUrl(val: string);
+
         /**
          * The user visible name of the renamer, that is displayed
          * in the bulk rename dialog of the file manager. Derived
@@ -933,34 +902,24 @@ export namespace Thunarx {
         $signals: Renamer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Renamer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Renamer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Renamer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Renamer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Renamer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renamer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Renamer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Renamer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Renamer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renamer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * This method should be used by derived classes
          * to emit the "changed" signal for `renamer`. See
@@ -969,13 +928,14 @@ export namespace Thunarx {
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Returns the list of {@link Thunarx.MenuItem}<!---->s provided by `renamer` for
          * the given list of `files`. By default, this method returns `null`
          * (the empty list), but derived classes may override this method
          * to provide additional items for files in the bulk renamer
          * dialog list.
-         *
+         * 
          * The returned {@link Thunarx.MenuItem}<!---->s will be displayed in the file's
          * context menu of the bulk renamer dialog, when this `renamer` is
          * active. For example, an ID3-Tag based renamer may add an menu item
@@ -983,7 +943,7 @@ export namespace Thunarx {
          * when activated, display a dialog (which should be transient and
          * modal for `window`, if not `null`), which allows the users to edit
          * media file tags on-the-fly.
-         *
+         * 
          * Derived classes that override this method should always check
          * first if all the {@link Thunarx.FileInfo}<!---->s in the list of `files`
          * are supported, and only return menu items that can be performed on
@@ -992,7 +952,7 @@ export namespace Thunarx {
          * are actually audio files. The `thunarx_file_info_has_mime_type()`
          * of the {@link Thunarx.FileInfo} interface can be used to easily test
          * whether a file in the `files` list is of a certain MIME type.
-         *
+         * 
          * Some menu items may only work properly if only a single file is
          * selected (for example, the ID3-Tag renamer will probably only
          * supporting editing one file at a time). In this case you have
@@ -1005,18 +965,18 @@ export namespace Thunarx {
          * The latter has the advantage that the user will still notice the
          * existance of the menu item and probably realize that it can only be
          * applied to a single item at once.
-         *
+         * 
          * The caller is responsible to free the returned list using something
          * like the following:
          * <informalexample><programlisting>
          * g_list_free_full (list, g_object_unref);
          * </programlisting></informalexample>
-         *
+         * 
          * As a special note, this method automatically takes a reference on the
          * `renamer` for every {@link Thunarx.MenuItem} object returned from the real implementation
          * of this method in `renamer`. This is to make sure that the extension stays
          * in memory for at least the time that the menu items are used.
-         *
+         * 
          * The name of {@link Thunarx.MenuItem}<!---->s returned from this method must be namespaced with
          * the module to avoid collision with internal file manager menu items and
          * menu items provided by other extensions. For example, the menu item
@@ -1026,7 +986,7 @@ export namespace Thunarx {
          * should be returned from extensions and the way they are used, read the
          * description of the {@link Thunarx.MenuProvider} interface or read the introduction
          * provided with this reference manual.
-         *
+         * 
          * A note of warning concerning the `window` parameter. Plugins should
          * avoid taking a reference on `window`, as that might introduce a
          * circular reference and can thereby cause a quite large memory leak.
@@ -1039,12 +999,13 @@ export namespace Thunarx {
          * @virtual
          */
         vfunc_get_menu_items(window: Gtk.Window, files: FileInfo[]): MenuItem[];
+
         /**
          * Tells `renamer` to load its internal settings from the specified
          * `settings`. The `settings` hash table contains previously saved
          * settings, see `thunarx_renamer_save()`, as key/value pairs of
          * strings. That is, both the keys and the values are strings.
-         *
+         * 
          * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom loading of settings. If you do not
          * override this method, the default method of {@link Thunarx.Renamer}
@@ -1053,18 +1014,19 @@ export namespace Thunarx {
          * provided by the parent classes) from the `settings`. The
          * {@link GObject.Object} properties must be transformable to strings and
          * from strings.
-         *
+         * 
          * If you decide to override this method for your {@link Thunarx.Renamer}
          * implementation, you should also override `thunarx_renamer_save()`.
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          * @virtual
          */
         vfunc_load(settings: GLib.HashTable<any, any>): void;
+
         /**
          * Determines the replacement for `text` (which is the relevant
          * part of the full `file` name, i.e. either the suffix, the name
          * or the name and the suffix).
-         *
+         * 
          * The caller is responsible to free the returned string using
          * `g_free()` when no longer needed.
          * @param file the {@link Thunarx.FileInfo} for the file whose new            name - according to `renamer` - should be            determined.
@@ -1073,10 +1035,11 @@ export namespace Thunarx {
          * @virtual
          */
         vfunc_process(file: FileInfo, text: string, index: number): string;
+
         /**
          * Tells `renamer` to save its internal settings to the specified
          * `settings`, which can afterwards be loaded by `thunarx_renamer_load()`.
-         *
+         * 
          * The strings saved to `settings` must be allocated by `g_strdup()`,
          * both the keys and the values. For example to store the string
          * <literal>Bar</literal> for the setting <literal>Foo</literal>,
@@ -1084,7 +1047,7 @@ export namespace Thunarx {
          * <informalexample><programlisting>
          * g_hash_table_replace (settings, g_strdup ("Foo"), g_strdup ("Bar"));
          * </programlisting></informalexample>
-         *
+         * 
          * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom saving of settings. If you do not overrride
          * this method, the default method of {@link Thunarx.Renamer} will be used,
@@ -1092,7 +1055,7 @@ export namespace Thunarx {
          * `renamer`<!---->s class (excluding the ones provided by the parent
          * classes) to the `settings`. The {@link GObject.Object} properties must be transformable
          * to strings.
-         *
+         * 
          * If you decide to override this method for your {@link Thunarx.Renamer}
          * implementation, you should also override `thunarx_renamer_load()`.
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
@@ -1101,7 +1064,6 @@ export namespace Thunarx {
         vfunc_save(settings: GLib.HashTable<any, any>): void;
 
         // Methods
-
         /**
          * This method should be used by derived classes
          * to emit the "changed" signal for `renamer`. See
@@ -1109,6 +1071,7 @@ export namespace Thunarx {
          * details.
          */
         changed(): void;
+
         /**
          * Returns the URL of the documentation for `renamer`
          * or `null` if no specific documentation is available
@@ -1117,13 +1080,14 @@ export namespace Thunarx {
          * @returns the URL of the documentation for `renamer`.
          */
         get_help_url(): string;
+
         /**
          * Returns the list of {@link Thunarx.MenuItem}<!---->s provided by `renamer` for
          * the given list of `files`. By default, this method returns `null`
          * (the empty list), but derived classes may override this method
          * to provide additional items for files in the bulk renamer
          * dialog list.
-         *
+         * 
          * The returned {@link Thunarx.MenuItem}<!---->s will be displayed in the file's
          * context menu of the bulk renamer dialog, when this `renamer` is
          * active. For example, an ID3-Tag based renamer may add an menu item
@@ -1131,7 +1095,7 @@ export namespace Thunarx {
          * when activated, display a dialog (which should be transient and
          * modal for `window`, if not `null`), which allows the users to edit
          * media file tags on-the-fly.
-         *
+         * 
          * Derived classes that override this method should always check
          * first if all the {@link Thunarx.FileInfo}<!---->s in the list of `files`
          * are supported, and only return menu items that can be performed on
@@ -1140,7 +1104,7 @@ export namespace Thunarx {
          * are actually audio files. The `thunarx_file_info_has_mime_type()`
          * of the {@link Thunarx.FileInfo} interface can be used to easily test
          * whether a file in the `files` list is of a certain MIME type.
-         *
+         * 
          * Some menu items may only work properly if only a single file is
          * selected (for example, the ID3-Tag renamer will probably only
          * supporting editing one file at a time). In this case you have
@@ -1153,18 +1117,18 @@ export namespace Thunarx {
          * The latter has the advantage that the user will still notice the
          * existance of the menu item and probably realize that it can only be
          * applied to a single item at once.
-         *
+         * 
          * The caller is responsible to free the returned list using something
          * like the following:
          * <informalexample><programlisting>
          * g_list_free_full (list, g_object_unref);
          * </programlisting></informalexample>
-         *
+         * 
          * As a special note, this method automatically takes a reference on the
          * `renamer` for every {@link Thunarx.MenuItem} object returned from the real implementation
          * of this method in `renamer`. This is to make sure that the extension stays
          * in memory for at least the time that the menu items are used.
-         *
+         * 
          * The name of {@link Thunarx.MenuItem}<!---->s returned from this method must be namespaced with
          * the module to avoid collision with internal file manager menu items and
          * menu items provided by other extensions. For example, the menu item
@@ -1174,7 +1138,7 @@ export namespace Thunarx {
          * should be returned from extensions and the way they are used, read the
          * description of the {@link Thunarx.MenuProvider} interface or read the introduction
          * provided with this reference manual.
-         *
+         * 
          * A note of warning concerning the `window` parameter. Plugins should
          * avoid taking a reference on `window`, as that might introduce a
          * circular reference and can thereby cause a quite large memory leak.
@@ -1187,18 +1151,20 @@ export namespace Thunarx {
          * @returns the list of          {@link Thunarx.MenuItem}<!---->s provided by `renamer` for the given list of          `files`.
          */
         get_menu_items(window: Gtk.Window, files: FileInfo[]): MenuItem[];
+
         /**
          * Returns the user visible name for `renamer`, previously
          * set with `thunarx_renamer_set_name()`.
          * @returns the user visible name for `renamer`.
          */
         get_name(): string;
+
         /**
          * Tells `renamer` to load its internal settings from the specified
          * `settings`. The `settings` hash table contains previously saved
          * settings, see `thunarx_renamer_save()`, as key/value pairs of
          * strings. That is, both the keys and the values are strings.
-         *
+         * 
          * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom loading of settings. If you do not
          * override this method, the default method of {@link Thunarx.Renamer}
@@ -1207,17 +1173,18 @@ export namespace Thunarx {
          * provided by the parent classes) from the `settings`. The
          * {@link GObject.Object} properties must be transformable to strings and
          * from strings.
-         *
+         * 
          * If you decide to override this method for your {@link Thunarx.Renamer}
          * implementation, you should also override `thunarx_renamer_save()`.
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          */
-        load(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        load(settings: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+
         /**
          * Determines the replacement for `text` (which is the relevant
          * part of the full `file` name, i.e. either the suffix, the name
          * or the name and the suffix).
-         *
+         * 
          * The caller is responsible to free the returned string using
          * `g_free()` when no longer needed.
          * @param file the {@link Thunarx.FileInfo} for the file whose new            name - according to `renamer` - should be            determined.
@@ -1226,10 +1193,11 @@ export namespace Thunarx {
          * @returns the string with which to replace `text`.
          */
         process(file: FileInfo, text: string, index: number): string;
+
         /**
          * Tells `renamer` to save its internal settings to the specified
          * `settings`, which can afterwards be loaded by `thunarx_renamer_load()`.
-         *
+         * 
          * The strings saved to `settings` must be allocated by `g_strdup()`,
          * both the keys and the values. For example to store the string
          * <literal>Bar</literal> for the setting <literal>Foo</literal>,
@@ -1237,7 +1205,7 @@ export namespace Thunarx {
          * <informalexample><programlisting>
          * g_hash_table_replace (settings, g_strdup ("Foo"), g_strdup ("Bar"));
          * </programlisting></informalexample>
-         *
+         * 
          * Implementations of {@link Thunarx.Renamer} may decide to override this
          * method to perform custom saving of settings. If you do not overrride
          * this method, the default method of {@link Thunarx.Renamer} will be used,
@@ -1245,25 +1213,27 @@ export namespace Thunarx {
          * `renamer`<!---->s class (excluding the ones provided by the parent
          * classes) to the `settings`. The {@link GObject.Object} properties must be transformable
          * to strings.
-         *
+         * 
          * If you decide to override this method for your {@link Thunarx.Renamer}
          * implementation, you should also override `thunarx_renamer_load()`.
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          */
-        save(settings: { [key: string]: any } | GLib.HashTable<any, any>): void;
+        save(settings: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+
         /**
          * The URL to the documentation of this {@link Thunarx.Renamer}.
          * Derived classes can set this property to point to the
          * documentation for the specific renamer. The documentation
          * of the specific renamer in turn should contain a link to
          * the general Thunar renamer documentation.
-         *
+         * 
          * May also be unset, in which case the general Thunar renamer
          * documentation will be shown when the user clicks the "Help"
          * button.
          * @param help_url the new URL to the documentation of `renamer`.
          */
         set_help_url(help_url: string): void;
+
         /**
          * Sets the user visible name for `renamer` to `name`. This method should
          * only be called by derived classes and prior to returning the `renamer`
@@ -1271,19 +1241,22 @@ export namespace Thunarx {
          * @param name the new user visible name for `renamer`.
          */
         set_name(name: string): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -1291,24 +1264,29 @@ export namespace Thunarx {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileInfoIface = typeof FileInfo;
+
     /**
      * @gir-type Alias
      */
     type MenuClass = typeof Menu;
+
     /**
      * @gir-type Alias
      */
     type MenuItemClass = typeof MenuItem;
+
     /**
      * @gir-type Struct
      */
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -1317,18 +1295,22 @@ export namespace Thunarx {
         static $gtype: GObject.GType<MenuPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MenuProviderIface = typeof MenuProvider;
+
     /**
      * @gir-type Alias
      */
     type PreferencesProviderIface = typeof PreferencesProvider;
+
     /**
      * @gir-type Alias
      */
     type PropertyPageClass = typeof PropertyPage;
+
     /**
      * @gir-type Struct
      */
@@ -1336,26 +1318,32 @@ export namespace Thunarx {
         static $gtype: GObject.GType<PropertyPagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PropertyPageProviderIface = typeof PropertyPageProvider;
+
     /**
      * @gir-type Alias
      */
     type ProviderFactoryClass = typeof ProviderFactory;
+
     /**
      * @gir-type Alias
      */
     type ProviderModuleClass = typeof ProviderModule;
+
     /**
      * @gir-type Alias
      */
     type ProviderPluginIface = typeof ProviderPlugin;
+
     /**
      * @gir-type Alias
      */
     type RenamerClass = typeof Renamer;
+
     /**
      * @gir-type Struct
      */
@@ -1363,18 +1351,20 @@ export namespace Thunarx {
         static $gtype: GObject.GType<RenamerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RenamerProviderIface = typeof RenamerProvider;
+
     namespace FileInfo {
         /**
          * Interface for implementing FileInfo.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Emits the ::changed signal on `file_info`. This method should not
              * be invoked by Thunar plugins, instead the file manager itself
@@ -1383,6 +1373,7 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_changed(): void;
+
             /**
              * Returns the {@link Gio.FileInfo} associated with `file_info`,
              * which includes additional information about the `file_info`
@@ -1392,6 +1383,7 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_get_file_info(): Gio.FileInfo;
+
             /**
              * Returns the {@link Gio.FileInfo} which includes additional information about
              * the filesystem `file_info` resides on. The caller is responsible to
@@ -1400,6 +1392,7 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_get_filesystem_info(): Gio.FileInfo;
+
             /**
              * Returns the {@link Gio.File} `file_info` points to. The {@link Gio.File} is a more
              * powerful tool than just the URI or the path. The caller
@@ -1408,16 +1401,18 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_get_location(): Gio.File;
+
             /**
              * Returns the MIME-type of the file represented by
              * `file_info` or `null` if no MIME-type is known for
              * `file_info`.
-             *
+             * 
              * The caller is responsible to free the returned
              * string using `g_free()` when no longer needed.
              * @virtual
              */
             vfunc_get_mime_type(): string;
+
             /**
              * Returns the real name of the file represented
              * by `file_info` in the local file system encoding.
@@ -1425,12 +1420,13 @@ export namespace Thunarx {
              * functions to generate an UTF-8 version of the
              * name, which is suitable for use in the user
              * interface.
-             *
+             * 
              * The caller is responsible to free the returned
              * string using `g_free()` when no longer needed.
              * @virtual
              */
             vfunc_get_name(): string;
+
             /**
              * Returns the URI to the parent file of
              * `file_info` or `null` if `file_info` has
@@ -1438,40 +1434,43 @@ export namespace Thunarx {
              * may be of a different type than the
              * URI of `file_info`. For example, the
              * parent of "file:///" is "computer:///".
-             *
+             * 
              * The caller is responsible to free the
              * returned string using `g_free()` when no
              * longer needed.
              * @virtual
              */
             vfunc_get_parent_uri(): string;
+
             /**
              * Returns the escaped, fully qualified URI
              * of the file object represented by `file_info`.
              * You may use `g_filename_from_uri()` and similar
              * functions to work with the returned URI.
-             *
+             * 
              * The caller is responsible to free the returned
              * string using `g_free()` when no longer needed.
              * @virtual
              */
             vfunc_get_uri(): string;
+
             /**
              * Returns the URI scheme of the file represented
              * by `file_info`. E.g. if `file_info` refers to the
              * file "file:///usr/home", the return value will
              * be "file".
-             *
+             * 
              * The caller is responsible to free the returned
              * string using `g_free()` when no longer needed.
              * @virtual
              */
             vfunc_get_uri_scheme(): string;
+
             /**
              * Checks whether `file_info` is of the given `mime_type`
              * or whether the MIME-type of `file_info` is a subclass
              * of `mime_type`.
-             *
+             * 
              * This is the preferred way for most extensions to check
              * whether they support a given file or not, and you should
              * consider using this method rather than
@@ -1481,7 +1480,7 @@ export namespace Thunarx {
              * {@link Thunarx.FileInfo} refers to any kind of text file, not only
              * to "text/plain" (e.g. this also includes "text/xml" and
              * "application/x-desktop").
-             *
+             * 
              * But you should be aware that this method may take some
              * time to test whether `mime_type` is valid for `file_info`,
              * so don't call it too often.
@@ -1489,16 +1488,18 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_has_mime_type(mime_type: string): boolean;
+
             /**
              * Checks whether `file_info` refers to a directory.
              * @virtual
              */
             vfunc_is_directory(): boolean;
+
             /**
              * Emits the ::renamed signal on `file_info`. This method should
              * not be invoked by Thunar plugins, instead the file manager
              * will emit this signal whenever the user renamed the `file_info`.
-             *
+             * 
              * The plugins should instead connect to the ::renamed signal
              * and update it's internal state and it's user interface
              * after the file manager renamed a file.
@@ -1507,9 +1508,11 @@ export namespace Thunarx {
             vfunc_renamed(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface FileInfoNamespace {
@@ -1520,8 +1523,8 @@ export namespace Thunarx {
      * @gir-type Interface
      */
     interface FileInfo extends GObject.Object, FileInfo.Interface {
-        // Methods
 
+        // Methods
         /**
          * Emits the ::changed signal on `file_info`. This method should not
          * be invoked by Thunar plugins, instead the file manager itself
@@ -1529,6 +1532,7 @@ export namespace Thunarx {
          * change on `file_info`.
          */
         changed(): void;
+
         /**
          * Returns the {@link Gio.FileInfo} associated with `file_info`,
          * which includes additional information about the `file_info`
@@ -1538,6 +1542,7 @@ export namespace Thunarx {
          * @returns the {@link Gio.FileInfo} object associated with `file_info`,          which MUST be freed using `g_object_unref()`.
          */
         get_file_info(): Gio.FileInfo;
+
         /**
          * Returns the {@link Gio.FileInfo} which includes additional information about
          * the filesystem `file_info` resides on. The caller is responsible to
@@ -1546,6 +1551,7 @@ export namespace Thunarx {
          * @returns the {@link Gio.FileInfo} containing information about the          filesystem of `file_info` or `null` if no filesystem information is          available. It MUST be released using `g_object_unref()`.
          */
         get_filesystem_info(): Gio.FileInfo;
+
         /**
          * Returns the {@link Gio.File} `file_info` points to. The {@link Gio.File} is a more
          * powerful tool than just the URI or the path. The caller
@@ -1554,16 +1560,18 @@ export namespace Thunarx {
          * @returns the {@link Gio.File} to which `file_info` points. It MUST be          released using `g_object_unref()`.
          */
         get_location(): Gio.File;
+
         /**
          * Returns the MIME-type of the file represented by
          * `file_info` or `null` if no MIME-type is known for
          * `file_info`.
-         *
+         * 
          * The caller is responsible to free the returned
          * string using `g_free()` when no longer needed.
          * @returns the MIME-type for `file_info` or               `null`.
          */
         get_mime_type(): string;
+
         /**
          * Returns the real name of the file represented
          * by `file_info` in the local file system encoding.
@@ -1571,12 +1579,13 @@ export namespace Thunarx {
          * functions to generate an UTF-8 version of the
          * name, which is suitable for use in the user
          * interface.
-         *
+         * 
          * The caller is responsible to free the returned
          * string using `g_free()` when no longer needed.
          * @returns the real name of the file represented               by `file_info`.
          */
         get_name(): string;
+
         /**
          * Returns the URI to the parent file of
          * `file_info` or `null` if `file_info` has
@@ -1584,40 +1593,43 @@ export namespace Thunarx {
          * may be of a different type than the
          * URI of `file_info`. For example, the
          * parent of "file:///" is "computer:///".
-         *
+         * 
          * The caller is responsible to free the
          * returned string using `g_free()` when no
          * longer needed.
          * @returns the parent URI for `file_info`               or `null`.
          */
         get_parent_uri(): string;
+
         /**
          * Returns the escaped, fully qualified URI
          * of the file object represented by `file_info`.
          * You may use `g_filename_from_uri()` and similar
          * functions to work with the returned URI.
-         *
+         * 
          * The caller is responsible to free the returned
          * string using `g_free()` when no longer needed.
          * @returns the fully qualified URI of `file_info`.
          */
         get_uri(): string;
+
         /**
          * Returns the URI scheme of the file represented
          * by `file_info`. E.g. if `file_info` refers to the
          * file "file:///usr/home", the return value will
          * be "file".
-         *
+         * 
          * The caller is responsible to free the returned
          * string using `g_free()` when no longer needed.
          * @returns the URI scheme for `file_info`.
          */
         get_uri_scheme(): string;
+
         /**
          * Checks whether `file_info` is of the given `mime_type`
          * or whether the MIME-type of `file_info` is a subclass
          * of `mime_type`.
-         *
+         * 
          * This is the preferred way for most extensions to check
          * whether they support a given file or not, and you should
          * consider using this method rather than
@@ -1627,7 +1639,7 @@ export namespace Thunarx {
          * {@link Thunarx.FileInfo} refers to any kind of text file, not only
          * to "text/plain" (e.g. this also includes "text/xml" and
          * "application/x-desktop").
-         *
+         * 
          * But you should be aware that this method may take some
          * time to test whether `mime_type` is valid for `file_info`,
          * so don't call it too often.
@@ -1635,16 +1647,18 @@ export namespace Thunarx {
          * @returns `true` if `mime_type` is valid for `file_info`,               else `false`.
          */
         has_mime_type(mime_type: string): boolean;
+
         /**
          * Checks whether `file_info` refers to a directory.
          * @returns `true` if `file_info` is a directory.
          */
         is_directory(): boolean;
+
         /**
          * Emits the ::renamed signal on `file_info`. This method should
          * not be invoked by Thunar plugins, instead the file manager
          * will emit this signal whenever the user renamed the `file_info`.
-         *
+         * 
          * The plugins should instead connect to the ::renamed signal
          * and update it's internal state and it's user interface
          * after the file manager renamed a file.
@@ -1652,14 +1666,17 @@ export namespace Thunarx {
         renamed(): void;
     }
 
+
     export const FileInfo: FileInfoNamespace & {
         new (): FileInfo; // This allows `obj instanceof FileInfo`
     };
 
     namespace MenuProvider {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface MenuProviderNamespace {
@@ -1669,16 +1686,20 @@ export namespace Thunarx {
     /**
      * @gir-type Interface
      */
-    interface MenuProvider extends GObject.Object {}
+    interface MenuProvider extends GObject.Object {
+    }
+
 
     export const MenuProvider: MenuProviderNamespace & {
         new (): MenuProvider; // This allows `obj instanceof MenuProvider`
     };
 
     namespace PreferencesProvider {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PreferencesProviderNamespace {
@@ -1688,16 +1709,20 @@ export namespace Thunarx {
     /**
      * @gir-type Interface
      */
-    interface PreferencesProvider extends GObject.Object {}
+    interface PreferencesProvider extends GObject.Object {
+    }
+
 
     export const PreferencesProvider: PreferencesProviderNamespace & {
         new (): PreferencesProvider; // This allows `obj instanceof PreferencesProvider`
     };
 
     namespace PropertyPageProvider {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PropertyPageProviderNamespace {
@@ -1707,7 +1732,9 @@ export namespace Thunarx {
     /**
      * @gir-type Interface
      */
-    interface PropertyPageProvider extends GObject.Object {}
+    interface PropertyPageProvider extends GObject.Object {
+    }
+
 
     export const PropertyPageProvider: PropertyPageProviderNamespace & {
         new (): PropertyPageProvider; // This allows `obj instanceof PropertyPageProvider`
@@ -1719,23 +1746,20 @@ export namespace Thunarx {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
              * If the interface was already registered for the type in this `plugin`, nothing will be done.
-             *
+             * 
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param instance_type type to which to add the interface.
              * @param interface_type interface type to add.
              * @param interface_info type information structure.
              * @virtual
              */
-            vfunc_add_interface(
-                instance_type: GObject.GType,
-                interface_type: GObject.GType,
-                interface_info: GObject.InterfaceInfo,
-            ): void;
+            vfunc_add_interface(instance_type: GObject.GType, interface_type: GObject.GType, interface_info: GObject.InterfaceInfo): void;
+
             /**
              * Determines whether the application is allowed to unload `plugin`
              * from memory when no longer needed and reload it on demand. If
@@ -1745,33 +1769,36 @@ export namespace Thunarx {
              * @virtual
              */
             vfunc_get_resident(): boolean;
+
             /**
              * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
              * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
              * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
-             *
+             * 
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param name the name for the type.
              * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
              * @virtual
              */
             vfunc_register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+
             /**
              * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
              * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
              * registered, and the resulting {@link GObject.GType} identifier returned.
-             *
+             * 
              * As long as any instances of the type exist, the type `plugin` will not be unloaded.
              * @param name name for the type.
              * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
              * @virtual
              */
             vfunc_register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+
             /**
              * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
              * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
              * and the resulting {@link GObject.GType} identifier returned.
-             *
+             * 
              * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
              * `type_parent` must be the same as they were previously.
              * @param type_parent the type for the parent class.
@@ -1780,19 +1807,15 @@ export namespace Thunarx {
              * @param type_flags flags field providing details about the type.
              * @virtual
              */
-            vfunc_register_type(
-                type_parent: GObject.GType,
-                type_name: string,
-                type_info: GObject.TypeInfo,
-                type_flags: GObject.TypeFlags,
-            ): GObject.GType;
+            vfunc_register_type(type_parent: GObject.GType, type_name: string, type_info: GObject.TypeInfo, type_flags: GObject.TypeFlags): GObject.GType;
+
             /**
              * This method is used to instruct the application that `plugin` must be
              * kept in memory during the lifetime of the application. The default
              * is to allow the application to unload `plugin` from the memory when
              * no longer needed. If this method is invoked with a `resident` value
              * of `true` then the application will never try to unload `plugin`.
-             *
+             * 
              * This method has no effect unless called from the
              * %thunar_extension_initialize method of the `plugin`.
              * @param resident `true` to make `plugin` resident in memory.
@@ -1801,8 +1824,8 @@ export namespace Thunarx {
             vfunc_set_resident(resident: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             resident: boolean;
         }
@@ -1816,8 +1839,8 @@ export namespace Thunarx {
      * @gir-type Interface
      */
     interface ProviderPlugin extends GObject.Object, ProviderPlugin.Interface {
-        // Properties
 
+        // Properties
         /**
          * Tells whether a plugin must reside in memory once loaded for
          * the first time. See `thunarx_provider_plugin_get_resident()` and
@@ -1828,21 +1851,17 @@ export namespace Thunarx {
         set resident(val: boolean);
 
         // Methods
-
         /**
          * Registers an additional interface for a type, whose interface lives in the given type `plugin`.
          * If the interface was already registered for the type in this `plugin`, nothing will be done.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param instance_type type to which to add the interface.
          * @param interface_type interface type to add.
          * @param interface_info type information structure.
          */
-        add_interface(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            interface_info: GObject.InterfaceInfo,
-        ): void;
+        add_interface(instance_type: GObject.GType, interface_type: GObject.GType, interface_info: GObject.InterfaceInfo): void;
+
         /**
          * Determines whether the application is allowed to unload `plugin`
          * from memory when no longer needed and reload it on demand. If
@@ -1852,33 +1871,36 @@ export namespace Thunarx {
          * @returns `true` if `plugin` will be kept in memory once loaded               for the first time.
          */
         get_resident(): boolean;
+
         /**
          * Looks up or registers an enumeration that is implemented with a particular type `plugin`. If a type
          * with name `name` was previously registered, the {@link GObject.GType} identifier for the type is returned,
          * otherwise the type is newly registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name the name for the type.
          * @param const_static_values an array of {@link GObject.EnumValue} structs for the possible enumeration values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_enum(name: string, const_static_values: GObject.EnumValue): GObject.GType;
+
         /**
          * Looks up or registers a flags type that is implemented with a particular type `plugin`. If a type with name
          * qname was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly
          * registered, and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * As long as any instances of the type exist, the type `plugin` will not be unloaded.
          * @param name name for the type.
          * @param const_static_values an array of {@link GObject.FlagsValue} structs for the possible flags values.                        The array is terminated by a struct with all members being %0.
          * @returns the new or existing type id.
          */
         register_flags(name: string, const_static_values: GObject.FlagsValue): GObject.GType;
+
         /**
          * Looks up or registers a type that is implemented with a particular type `plugin`. If a type with name `type_name`
          * was previously registered, the {@link GObject.GType} identifier for the type is returned, otherwise the type is newly registered,
          * and the resulting {@link GObject.GType} identifier returned.
-         *
+         * 
          * When reregistering a type (typically because a module is unloaded then reloaded, and reinitialized), module and
          * `type_parent` must be the same as they were previously.
          * @param type_parent the type for the parent class.
@@ -1887,19 +1909,15 @@ export namespace Thunarx {
          * @param type_flags flags field providing details about the type.
          * @returns the new or existing type id.
          */
-        register_type(
-            type_parent: GObject.GType,
-            type_name: string,
-            type_info: GObject.TypeInfo,
-            type_flags: GObject.TypeFlags,
-        ): GObject.GType;
+        register_type(type_parent: GObject.GType, type_name: string, type_info: GObject.TypeInfo, type_flags: GObject.TypeFlags): GObject.GType;
+
         /**
          * This method is used to instruct the application that `plugin` must be
          * kept in memory during the lifetime of the application. The default
          * is to allow the application to unload `plugin` from the memory when
          * no longer needed. If this method is invoked with a `resident` value
          * of `true` then the application will never try to unload `plugin`.
-         *
+         * 
          * This method has no effect unless called from the
          * %thunar_extension_initialize method of the `plugin`.
          * @param resident `true` to make `plugin` resident in memory.
@@ -1907,14 +1925,17 @@ export namespace Thunarx {
         set_resident(resident: boolean): void;
     }
 
+
     export const ProviderPlugin: ProviderPluginNamespace & {
         new (): ProviderPlugin; // This allows `obj instanceof ProviderPlugin`
     };
 
     namespace RenamerProvider {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RenamerProviderNamespace {
@@ -1924,7 +1945,9 @@ export namespace Thunarx {
     /**
      * @gir-type Interface
      */
-    interface RenamerProvider extends GObject.Object {}
+    interface RenamerProvider extends GObject.Object {
+    }
+
 
     export const RenamerProvider: RenamerProviderNamespace & {
         new (): RenamerProvider; // This allows `obj instanceof RenamerProvider`
@@ -1935,6 +1958,7 @@ export namespace Thunarx {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

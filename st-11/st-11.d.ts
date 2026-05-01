@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -36,9 +37,11 @@ import type Json from '@girs/json-1.0';
 import type Cally from '@girs/cally-11';
 
 export namespace St {
+
     /**
      * St-11
      */
+
 
     /**
      * @gir-type Enum
@@ -55,6 +58,7 @@ export namespace St {
         MIDDLE,
         END,
     }
+
 
     /**
      * @gir-type Enum
@@ -73,6 +77,7 @@ export namespace St {
         FIXED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -87,6 +92,7 @@ export namespace St {
         PRIMARY,
         CLIPBOARD,
     }
+
 
     /**
      * @gir-type Enum
@@ -117,6 +123,7 @@ export namespace St {
          */
         BOTTOMLEFT,
     }
+
 
     /**
      * @gir-type Enum
@@ -156,6 +163,7 @@ export namespace St {
         RIGHT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -186,6 +194,7 @@ export namespace St {
         RADIAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -214,6 +223,7 @@ export namespace St {
         SYMBOLIC,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -230,6 +240,7 @@ export namespace St {
         NEVER,
         EXTERNAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -261,6 +272,7 @@ export namespace St {
         LEFT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -288,6 +300,7 @@ export namespace St {
         JUSTIFY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -303,6 +316,7 @@ export namespace St {
         FOREVER,
     }
 
+
     /**
      * Creates a string describing `actor`, for use in debugging. This
      * includes the class name and actor name (if any), plus if `actor`
@@ -311,24 +325,28 @@ export namespace St {
      * @returns the debug name.
      */
     function describe_actor(actor: Clutter.Actor): string;
+
     /**
      * @gir-type Callback
      */
     interface ClipboardCallbackFunc {
         (clipboard: Clipboard, text: string): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ClipboardContentCallbackFunc {
         (clipboard: Clipboard, bytes: GLib.Bytes): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface EntryCursorFunc {
-        (entry: Entry, use_ibeam: boolean, data: any | null): void;
+        (entry: Entry, use_ibeam: boolean, data: (any | null)): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -355,6 +373,7 @@ export namespace St {
         THREE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -364,7 +383,7 @@ export namespace St {
 
     /**
      * Flags used to determine the decoration of text.
-     *
+     * 
      * Not that neither {@link St.TextDecoration.OVERLINE} or {@link St.TextDecoration.BLINK}
      * are implemented, currently.
      * @gir-type Flags
@@ -385,6 +404,7 @@ export namespace St {
         BLINK,
     }
 
+
     namespace Adjustment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -395,17 +415,16 @@ export namespace St {
              * @run-last
              */
             changed: () => void;
-            'notify::actor': (pspec: GObject.ParamSpec) => void;
-            'notify::lower': (pspec: GObject.ParamSpec) => void;
-            'notify::page-increment': (pspec: GObject.ParamSpec) => void;
-            'notify::page-size': (pspec: GObject.ParamSpec) => void;
-            'notify::step-increment': (pspec: GObject.ParamSpec) => void;
-            'notify::upper': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::actor": (pspec: GObject.ParamSpec) => void;
+            "notify::lower": (pspec: GObject.ParamSpec) => void;
+            "notify::page-increment": (pspec: GObject.ParamSpec) => void;
+            "notify::page-size": (pspec: GObject.ParamSpec) => void;
+            "notify::step-increment": (pspec: GObject.ParamSpec) => void;
+            "notify::upper": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Animatable.ConstructorProps {
             actor: Clutter.Actor;
             lower: number;
@@ -427,7 +446,6 @@ export namespace St {
         static $gtype: GObject.GType<Adjustment>;
 
         // Properties
-
         /**
          * If the adjustment is used as {@link Clutter.Animatable} for a
          * {@link Clutter.PropertyTransition}, this property is used to determine which
@@ -435,55 +453,64 @@ export namespace St {
          */
         get actor(): Clutter.Actor;
         set actor(val: Clutter.Actor);
+
         /**
          * The minimum value of the adjustment.
          */
         get lower(): number;
         set lower(val: number);
+
         /**
          * The page increment of the adjustment.
          */
         get page_increment(): number;
         set page_increment(val: number);
+
         /**
          * The page increment of the adjustment.
          */
         get pageIncrement(): number;
         set pageIncrement(val: number);
+
         /**
          * The page size of the adjustment.
-         *
+         * 
          * Note that the page-size is irrelevant and should be set to zero if the
          * adjustment is used for a simple scalar value.
          */
         get page_size(): number;
         set page_size(val: number);
+
         /**
          * The page size of the adjustment.
-         *
+         * 
          * Note that the page-size is irrelevant and should be set to zero if the
          * adjustment is used for a simple scalar value.
          */
         get pageSize(): number;
         set pageSize(val: number);
+
         /**
          * The step increment of the adjustment.
          */
         get step_increment(): number;
         set step_increment(val: number);
+
         /**
          * The step increment of the adjustment.
          */
         get stepIncrement(): number;
         set stepIncrement(val: number);
+
         /**
          * The maximum value of the adjustment.
-         *
+         * 
          * Note that values will be restricted by `upper - page-size` if
          * {@link St.Adjustment.page_size} is non-zero.
          */
         get upper(): number;
         set upper(val: number);
+
         /**
          * The value of the adjustment.
          */
@@ -500,51 +527,32 @@ export namespace St {
         $signals: Adjustment.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Adjustment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            actor: Clutter.Actor | null,
-            value: number,
-            lower: number,
-            upper: number,
-            step_increment: number,
-            page_increment: number,
-            page_size: number,
-        ): Adjustment;
+        static ["new"](actor: (Clutter.Actor | null), value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): Adjustment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_changed(): void;
 
         // Methods
-
         /**
          * Add a {@link Clutter.Transition} for the adjustment. If the transition stops, it will
          * be automatically removed if {@link Clutter.Transition.remove_on_complete} is `true`.
@@ -552,6 +560,7 @@ export namespace St {
          * @param transition a {@link Clutter.Transition}
          */
         add_transition(name: string, transition: Clutter.Transition): void;
+
         /**
          * Adjusts the adjustment using delta values from a scroll event.
          * You should use this instead of using `st_adjustment_set_value()`
@@ -561,6 +570,7 @@ export namespace St {
          * @param delta A delta, retrieved directly from `clutter_event_get_scroll_delta()`   or similar.
          */
         adjust_for_scroll_event(delta: number): void;
+
         /**
          * Set {@link St.Adjustment.value} to a value clamped between `lower` and `upper`. The
          * clamping described by `st_adjustment_set_value()` still applies.
@@ -568,35 +578,41 @@ export namespace St {
          * @param upper the upper value
          */
         clamp_page(lower: number, upper: number): void;
+
         /**
          * Get the {@link Clutter.Transition} for `name` previously added with
          * `st_adjustment_add_transition()` or `null` if not found.
          * @param name a transition name
          * @returns a {@link Clutter.Transition}
          */
-        get_transition(name: string): Clutter.Transition | null;
+        get_transition(name: string): (Clutter.Transition | null);
+
         /**
          * Gets the current value of the adjustment. See `st_adjustment_set_value()`.
          * @returns The current value of the adjustment
          */
         get_value(): number;
+
         /**
          * Gets all of `adjustment`'s values at once.
          */
         get_values(): [number, number, number, number, number, number];
+
         /**
-         * @param name
+         * @param name 
          */
         remove_transition(name: string): void;
+
         /**
          * Sets the {@link St.Adjustment} value. The value is clamped to lie between
          * {@link St.Adjustment.lower} and {@link St.Adjustment.upper} - {@link St.Adjustment.page_size}.
          * @param value the new value
          */
         set_value(value: number): void;
+
         /**
          * Sets all properties of the adjustment at once.
-         *
+         * 
          * Use this function to avoid multiple emissions of the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} and
          * {@link St.Adjustment.SignalSignatures.changed | St.Adjustment::changed} signals. See `st_adjustment_set_lower()` for an
          * alternative way of compressing multiple emissions of {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} into
@@ -608,40 +624,37 @@ export namespace St {
          * @param page_increment the new page increment
          * @param page_size the new page size
          */
-        set_values(
-            value: number,
-            lower: number,
-            upper: number,
-            step_increment: number,
-            page_increment: number,
-            page_size: number,
-        ): void;
+        set_values(value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -649,23 +662,27 @@ export namespace St {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -673,26 +690,24 @@ export namespace St {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -702,121 +717,111 @@ export namespace St {
         vfunc_set_final_state(property_name: string, value: unknown): void;
     }
 
+
     namespace Bin {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
-            child: Clutter.Actor | null;
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
+            child: (Clutter.Actor | null);
         }
     }
 
     /**
      * @gir-type Class
      */
-    class Bin<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Bin<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Bin>;
 
         // Properties
-
         /**
          * The child {@link Clutter.Actor} of the {@link St.Bin} container.
          */
-        get child(): Clutter.Actor | null;
-        set child(val: Clutter.Actor | null);
+        get child(): (Clutter.Actor | null);
+        set child(val: (Clutter.Actor | null));
 
         /**
          * Compile-time signal type information.
@@ -828,65 +833,58 @@ export namespace St {
         $signals: Bin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Bin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Bin;
+        static ["new"](): Bin;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Bin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Bin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Bin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Bin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Bin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Bin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the {@link Clutter.Actor} child for `bin`.
          * @returns a {@link Clutter.Actor}, or `null`
          */
-        get_child(): Clutter.Actor | null;
+        get_child(): (Clutter.Actor | null);
+
         /**
          * Sets `child` as the child of `bin`.
-         *
+         * 
          * If `bin` already has a child, the previous child is removed.
          * @param child a {@link Clutter.Actor}, or `null`
          */
-        set_child(child: Clutter.Actor | null): void;
+        set_child(child: (Clutter.Actor | null)): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -894,7 +892,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -903,38 +902,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -942,6 +945,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -949,34 +953,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -984,6 +992,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -993,33 +1002,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1027,12 +1039,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -1042,13 +1055,16 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace BorderImage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1067,56 +1083,41 @@ export namespace St {
         $signals: BorderImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BorderImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            file: Gio.File,
-            border_top: number,
-            border_right: number,
-            border_bottom: number,
-            border_left: number,
-            scale_factor: number,
-        ): BorderImage;
+        static ["new"](file: Gio.File, border_top: number, border_right: number, border_bottom: number, border_left: number, scale_factor: number): BorderImage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BorderImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BorderImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BorderImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BorderImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BorderImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BorderImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BorderImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BorderImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BorderImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BorderImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BorderImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BorderImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Check if two {@link St.BorderImage} objects are identical.
          * @param other a different {@link St.BorderImage}
          * @returns `true` if the two border image objects are identical
          */
         equal(other: BorderImage): boolean;
+
         /**
-         * @param border_top
-         * @param border_right
-         * @param border_bottom
-         * @param border_left
+         * @param border_top 
+         * @param border_right 
+         * @param border_bottom 
+         * @param border_left 
          */
         get_borders(border_top: number, border_right: number, border_bottom: number, border_left: number): void;
+
         /**
          * Get the {@link Gio.File} for `image`.
          * @returns a {@link Gio.File}
@@ -1124,106 +1125,99 @@ export namespace St {
         get_file(): Gio.File;
     }
 
+
     namespace BoxLayout {
         // Signal signatures
         interface SignalSignatures extends Viewport.SignalSignatures {
-            'notify::pack-start': (pspec: GObject.ParamSpec) => void;
-            'notify::vertical': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-view': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
+            "notify::pack-start": (pspec: GObject.ParamSpec) => void;
+            "notify::vertical": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-view": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Viewport.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps,
-                Scrollable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Viewport.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Scrollable.ConstructorProps {
             pack_start: boolean;
             packStart: boolean;
             vertical: boolean;
@@ -1235,26 +1229,24 @@ export namespace St {
      * through the public API.
      * @gir-type Class
      */
-    class BoxLayout<A extends Clutter.Actor = Clutter.Actor>
-        extends Viewport
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable, Scrollable
-    {
+    class BoxLayout<A extends Clutter.Actor = Clutter.Actor> extends Viewport implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable, Scrollable {
         static $gtype: GObject.GType<BoxLayout>;
 
         // Properties
-
         /**
          * A convenience property for the {@link Clutter.BoxLayout.pack_start} property of the
          * internal layout for {@link St.BoxLayout}.
          */
         get pack_start(): boolean;
         set pack_start(val: boolean);
+
         /**
          * A convenience property for the {@link Clutter.BoxLayout.pack_start} property of the
          * internal layout for {@link St.BoxLayout}.
          */
         get packStart(): boolean;
         set packStart(val: boolean);
+
         /**
          * A convenience property for the {@link Clutter.BoxLayout.vertical} property of the
          * internal layout for {@link St.BoxLayout}.
@@ -1272,63 +1264,57 @@ export namespace St {
         $signals: BoxLayout.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BoxLayout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BoxLayout;
+        static ["new"](): BoxLayout;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BoxLayout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BoxLayout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BoxLayout.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BoxLayout.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BoxLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BoxLayout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BoxLayout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the value of the {@link St.BoxLayout.pack_start} property,   always `false`
          */
         get_pack_start(): boolean;
+
         /**
          * Get the value of the {@link St.BoxLayout.vertical} property.
          * @returns `true` if the layout is vertical
          */
         get_vertical(): boolean;
+
         /**
          * @param pack_start `true` if the layout should use pack-start
          */
         set_pack_start(pack_start: boolean): void;
+
         /**
          * Set the value of the {@link St.BoxLayout.vertical} property
          * @param vertical `true` if the layout should be vertical
          */
         set_vertical(vertical: boolean): void;
+
         /**
          * The horizontal {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * JavaScript code may override this as demonstrated below:
-         *
-         *
+         * 
+         * 
          * ```javascript
          * var MyScrollable = GObject.registerClass({
          *     Properties: {
@@ -1338,54 +1324,57 @@ export namespace St {
          *         )
          *     }
          * }, class MyScrollable extends St.Scrollable {
-         *
+         * 
          *     get `hadjustment()` {
          *         return this._hadjustment || null;
          *     }
-         *
+         * 
          *     set hadjustment(adjustment) {
          *         if (this.hadjustment === adjustment)
          *             return;
-         *
+         * 
          *         this._hadjustment = adjustment;
          *         this.notify('hadjustment');
          *     }
          * });
          * ```
-         *
-         * @category Inherited from St.Scrollable
+         * 
+          * @category Inherited from St.Scrollable
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
+
         /**
          * The vertical {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * See {@link St.Scrollable.hadjustment} for an example of how to override this
          * property in JavaScript code.
-         * @category Inherited from St.Scrollable
+          * @category Inherited from St.Scrollable
          */
         get vadjustment(): Adjustment;
         set vadjustment(val: Adjustment);
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -1393,7 +1382,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -1402,38 +1392,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -1441,6 +1435,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1448,34 +1443,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -1483,6 +1482,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -1492,33 +1492,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1526,12 +1529,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -1539,31 +1543,35 @@ export namespace St {
          * @virtual
          */
         vfunc_remove(actor: A): void;
+
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          */
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
          * This method should be implemented by classes implementing the {@link St.Scrollable}
          * interface.
-         *
+         * 
          * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
          * method.
          * @param hadjustment the horizontal {@link St.Adjustment}
          * @param vadjustment the vertical {@link St.Adjustment}
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          * @virtual
          */
         vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
          * This method should be implemented by classes implementing the {@link St.Scrollable}
          * interface.
-         *
+         * 
          * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
          * method.
          * @param hadjustment the horizontal {@link St.Adjustment}
@@ -1572,6 +1580,7 @@ export namespace St {
          */
         vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
+
 
     namespace Button {
         // Signal signatures
@@ -1583,109 +1592,102 @@ export namespace St {
              * @run-last
              */
             clicked: (arg0: number) => void;
-            'notify::button-mask': (pspec: GObject.ParamSpec) => void;
-            'notify::checked': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::pressed': (pspec: GObject.ParamSpec) => void;
-            'notify::toggle-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::button-mask": (pspec: GObject.ParamSpec) => void;
+            "notify::checked": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::pressed": (pspec: GObject.ParamSpec) => void;
+            "notify::toggle-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Bin.ConstructorProps<A>,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Bin.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             button_mask: ButtonMask;
             buttonMask: ButtonMask;
             checked: boolean;
-            icon_name: string | null;
-            iconName: string | null;
+            icon_name: (string | null);
+            iconName: (string | null);
             label: string;
             pressed: boolean;
             toggle_mode: boolean;
@@ -1696,59 +1698,63 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class Button<A extends Clutter.Actor = Clutter.Actor>
-        extends Bin<A>
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Button<A extends Clutter.Actor = Clutter.Actor> extends Bin<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Button>;
 
         // Properties
-
         /**
          * Which buttons will trigger the {@link St.Button.SignalSignatures.clicked | St.Button::clicked} signal.
          */
         get button_mask(): ButtonMask;
         set button_mask(val: ButtonMask);
+
         /**
          * Which buttons will trigger the {@link St.Button.SignalSignatures.clicked | St.Button::clicked} signal.
          */
         get buttonMask(): ButtonMask;
         set buttonMask(val: ButtonMask);
+
         /**
          * If {@link St.Button.toggle_mode} is `true`, indicates if the {@link St.Button} is toggled
          * "on" or "off".
-         *
+         * 
          * When the value is `true`, the {@link St.Button} will have the `checked` CSS
          * pseudo-class set.
          */
         get checked(): boolean;
         set checked(val: boolean);
+
         /**
          * The icon name of the {@link St.Button}.
          */
-        get icon_name(): string | null;
-        set icon_name(val: string | null);
+        get icon_name(): (string | null);
+        set icon_name(val: (string | null));
+
         /**
          * The icon name of the {@link St.Button}.
          */
-        get iconName(): string | null;
-        set iconName(val: string | null);
+        get iconName(): (string | null);
+        set iconName(val: (string | null));
+
         /**
          * The label of the {@link St.Button}.
          */
         get label(): string;
         set label(val: string);
+
         /**
          * In contrast to {@link St.Button.checked}, this property indicates whether the
          * {@link St.Button} is being actively pressed, rather than just in the "on" state.
          * @read-only
          */
         get pressed(): boolean;
+
         /**
          * Whether the {@link St.Button} is operating in toggle mode (on/off).
          */
         get toggle_mode(): boolean;
         set toggle_mode(val: boolean);
+
         /**
          * Whether the {@link St.Button} is operating in toggle mode (on/off).
          */
@@ -1765,136 +1771,138 @@ export namespace St {
         $signals: Button.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Button.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Button;
+        static ["new"](): Button;
 
         static new_with_label(text: string): Button;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Button.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Button.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Button.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Button.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Button.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Button.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Button.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param clicked_button
+         * @param clicked_button 
          * @virtual
          */
         vfunc_clicked(clicked_button: number): void;
+
         /**
          * @virtual
          */
         vfunc_transition(): void;
 
         // Methods
-
         /**
          * If this widget is holding a pointer grab, this function will
          * will ungrab it, and reset the {@link St.Button.pressed} state.  The effect is
          * similar to if the user had released the mouse button, but without
          * emitting the {@link St.Button.SignalSignatures.clicked | St.Button::clicked} signal.
-         *
+         * 
          * This function is useful if for example you want to do something
          * after the user is holding the mouse button for a given period of
          * time, breaking the grab.
          */
         fake_release(): void;
+
         /**
          * Gets the mask of mouse buttons that `button` emits the
          * {@link St.Button.SignalSignatures.clicked | St.Button::clicked} signal for.
          * @returns the mask of mouse buttons that `button` emits the {@link St.Button.SignalSignatures.clicked | St.Button::clicked} signal for.
          */
         get_button_mask(): ButtonMask;
+
         /**
          * Get the {@link St.Button.checked} property of a {@link St.Button} that is in toggle mode.
          * @returns `true` if the button is checked, or `false` if not
          */
         get_checked(): boolean;
+
         /**
          * Get the icon name of the button. If the button isn't showing an icon,
          * the return value will be `null`.
          * @returns the icon name of the button
          */
-        get_icon_name(): string | null;
+        get_icon_name(): (string | null);
+
         /**
          * Get the text displayed on the button. If the label is empty, an empty string
          * will be returned instead of `null`.
          * @returns the text for the button
          */
         get_label(): string;
+
         /**
          * Get the toggle mode status of the button.
          * @returns `true` if toggle mode is set, otherwise `false`
          */
         get_toggle_mode(): boolean;
+
         /**
          * Sets which mouse buttons `button` emits {@link St.Button.SignalSignatures.clicked | St.Button::clicked} for.
          * @param mask the mask of mouse buttons that `button` responds to
          */
         set_button_mask(mask: ButtonMask): void;
+
         /**
          * Set the {@link St.Button.checked} property of the button. This is only really useful
          * if the button has {@link St.Button.toggle_mode} property set to `true`.
          * @param checked `true` or `false`
          */
         set_checked(checked: boolean): void;
+
         /**
          * Adds an {@link St.Icon} with the given icon name as a child.
-         *
+         * 
          * If `button` already contains a child actor, that child will
          * be removed and replaced with the icon.
          * @param icon_name an icon name
          */
         set_icon_name(icon_name: string): void;
+
         /**
          * Sets the text displayed on the button.
          * @param text text to set the label to
          */
-        set_label(text: string | null): void;
+        set_label(text: (string | null)): void;
+
         /**
          * Enables or disables toggle mode for the button. In toggle mode, the active
          * state will be "toggled" when the user clicks the button.
          * @param toggle `true` or `false`
          */
         set_toggle_mode(toggle: boolean): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -1902,7 +1910,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -1911,38 +1920,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -1950,6 +1963,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1957,34 +1971,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -1992,6 +2010,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2001,33 +2020,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2035,12 +2057,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -2050,13 +2073,16 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace Clipboard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2077,41 +2103,30 @@ export namespace St {
         $signals: Clipboard.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Clipboard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Clipboard.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Clipboard.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Clipboard.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Clipboard.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the global {@link St.Clipboard} object that represents the clipboard.
          */
         static get_default(): Clipboard;
 
         // Methods
-
         /**
          * Request the data from the clipboard in {@link GLib.Bytes} form. `callback` is executed
          * when the data is retrieved.
@@ -2120,12 +2135,14 @@ export namespace St {
          * @param callback function to be called when the type is retrieved
          */
         get_content(type: ClipboardType, mimetype: string, callback: ClipboardContentCallbackFunc): void;
+
         /**
          * Gets a list of the mimetypes supported by the default {@link St.Clipboard}.
-         * @param type
+         * @param type 
          * @returns the supported mimetypes
          */
         get_mimetypes(type: ClipboardType): string[];
+
         /**
          * Request the data from the clipboard in text form. `callback` is executed
          * when the data is retrieved.
@@ -2133,15 +2150,17 @@ export namespace St {
          * @param callback function to be called when the text is retrieved
          */
         get_text(type: ClipboardType, callback: ClipboardCallbackFunc): void;
+
         /**
          * Sets the clipboard content to `bytes`.
-         *
+         * 
          * `mimetype` is a semi-colon separated list of mime-type strings.
          * @param type The type of clipboard that you want to set
          * @param mimetype content mimetype
          * @param bytes content data
          */
-        set_content(type: ClipboardType, mimetype: string, bytes: GLib.Bytes | Uint8Array): void;
+        set_content(type: ClipboardType, mimetype: string, bytes: (GLib.Bytes | Uint8Array)): void;
+
         /**
          * Sets text as the current contents of the clipboard.
          * @param type The type of clipboard that you want to set
@@ -2149,6 +2168,7 @@ export namespace St {
          */
         set_text(type: ClipboardType, text: string): void;
     }
+
 
     namespace DrawingArea {
         // Signal signatures
@@ -2158,106 +2178,98 @@ export namespace St {
              * @run-last
              */
             repaint: () => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
 
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class DrawingArea<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class DrawingArea<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<DrawingArea>;
 
         /**
@@ -2270,72 +2282,63 @@ export namespace St {
         $signals: DrawingArea.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DrawingArea.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DrawingArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DrawingArea.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DrawingArea.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DrawingArea.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DrawingArea.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DrawingArea.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DrawingArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DrawingArea.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DrawingArea.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_repaint(): void;
 
         // Methods
-
         /**
          * Gets the Cairo context to paint to. This function must only be called
          * from a signal handler or virtual function for the {@link St.DrawingArea.SignalSignatures.repaint | St.DrawingArea::repaint}
          * signal.
-         *
+         * 
          * JavaScript code must call the special dispose function before returning from
          * the signal handler or virtual function to avoid leaking memory:
-         *
-         *
+         * 
+         * 
          * ```javascript
          * function onRepaint(area) {
          *     let cr = area.get_context();
-         *
+         * 
          *     // Draw to the context
-         *
+         * 
          *     cr.$dispose();
          * }
-         *
+         * 
          * let area = new St.DrawingArea();
          * area.connect('repaint', onRepaint);
          * ```
-         *
+         * 
          * @returns the Cairo context for the paint operation
          */
         get_context(): cairo.Context;
+
         /**
          * Gets the size of the cairo surface being painted to, which is equal
          * to the size of the content area of the widget. This function must
          * only be called from a signal handler for the {@link St.DrawingArea.SignalSignatures.repaint | St.DrawingArea::repaint} signal.
          */
         get_surface_size(): [number, number];
+
         /**
          * Will cause the actor to emit a {@link St.DrawingArea.SignalSignatures.repaint | St.DrawingArea::repaint} signal before it is
          * next drawn to the scene. Useful if some parameters for the area being
@@ -2344,23 +2347,25 @@ export namespace St {
          * contents being drawn to the scene again.
          */
         queue_repaint(): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -2368,7 +2373,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2377,38 +2383,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -2416,6 +2426,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2423,34 +2434,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -2458,6 +2473,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2467,33 +2483,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2501,12 +2520,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -2516,6 +2536,7 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace Entry {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
@@ -2524,126 +2545,119 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'primary-icon-clicked': () => void;
+            "primary-icon-clicked": () => void;
             /**
              * Emitted when the secondary icon is clicked.
              * @signal
              * @run-last
              */
-            'secondary-icon-clicked': () => void;
-            'notify::clutter-text': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-text': (pspec: GObject.ParamSpec) => void;
-            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "secondary-icon-clicked": () => void;
+            "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-text": (pspec: GObject.ParamSpec) => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             clutter_text: Clutter.Text;
             clutterText: Clutter.Text;
-            hint_actor: Clutter.Actor | null;
-            hintActor: Clutter.Actor | null;
-            hint_text: string | null;
-            hintText: string | null;
+            hint_actor: (Clutter.Actor | null);
+            hintActor: (Clutter.Actor | null);
+            hint_text: (string | null);
+            hintText: (string | null);
             input_hints: Clutter.InputContentHintFlags;
             inputHints: Clutter.InputContentHintFlags;
             input_purpose: Clutter.InputContentPurpose;
             inputPurpose: Clutter.InputContentPurpose;
-            primary_icon: Clutter.Actor | null;
-            primaryIcon: Clutter.Actor | null;
-            secondary_icon: Clutter.Actor | null;
-            secondaryIcon: Clutter.Actor | null;
+            primary_icon: (Clutter.Actor | null);
+            primaryIcon: (Clutter.Actor | null);
+            secondary_icon: (Clutter.Actor | null);
+            secondaryIcon: (Clutter.Actor | null);
             text: string;
         }
     }
@@ -2651,48 +2665,50 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class Entry<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Entry<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Entry>;
 
         // Properties
-
         /**
          * The internal {@link Clutter.Text} actor supporting the {@link St.Entry}.
          * @read-only
          */
         get clutter_text(): Clutter.Text;
+
         /**
          * The internal {@link Clutter.Text} actor supporting the {@link St.Entry}.
          * @read-only
          */
         get clutterText(): Clutter.Text;
+
         /**
          * A {@link Clutter.Actor} to display when the entry is empty and unfocused. Setting
          * this will replace the actor displaying {@link St.Entry.hint_text}.
          */
-        get hint_actor(): Clutter.Actor | null;
-        set hint_actor(val: Clutter.Actor | null);
+        get hint_actor(): (Clutter.Actor | null);
+        set hint_actor(val: (Clutter.Actor | null));
+
         /**
          * A {@link Clutter.Actor} to display when the entry is empty and unfocused. Setting
          * this will replace the actor displaying {@link St.Entry.hint_text}.
          */
-        get hintActor(): Clutter.Actor | null;
-        set hintActor(val: Clutter.Actor | null);
+        get hintActor(): (Clutter.Actor | null);
+        set hintActor(val: (Clutter.Actor | null));
+
         /**
          * The text to display when the entry is empty and unfocused. Setting this
          * will replace the actor of {@link St.Entry.SignalSignatures.hint_actor | St.Entry::hint-actor}.
          */
-        get hint_text(): string | null;
-        set hint_text(val: string | null);
+        get hint_text(): (string | null);
+        set hint_text(val: (string | null));
+
         /**
          * The text to display when the entry is empty and unfocused. Setting this
          * will replace the actor of {@link St.Entry.SignalSignatures.hint_actor | St.Entry::hint-actor}.
          */
-        get hintText(): string | null;
-        set hintText(val: string | null);
+        get hintText(): (string | null);
+        set hintText(val: (string | null));
+
         /**
          * The {@link Clutter.InputContentHintFlags} providing additional hints (beyond
          * {@link St.Entry.input_purpose}) that allow input methods to fine-tune their
@@ -2700,6 +2716,7 @@ export namespace St {
          */
         get input_hints(): Clutter.InputContentHintFlags;
         set input_hints(val: Clutter.InputContentHintFlags);
+
         /**
          * The {@link Clutter.InputContentHintFlags} providing additional hints (beyond
          * {@link St.Entry.input_purpose}) that allow input methods to fine-tune their
@@ -2707,38 +2724,45 @@ export namespace St {
          */
         get inputHints(): Clutter.InputContentHintFlags;
         set inputHints(val: Clutter.InputContentHintFlags);
+
         /**
          * The {@link Clutter.InputContentPurpose} that helps on-screen keyboards and similar
          * input methods to decide which keys should be presented to the user.
          */
         get input_purpose(): Clutter.InputContentPurpose;
         set input_purpose(val: Clutter.InputContentPurpose);
+
         /**
          * The {@link Clutter.InputContentPurpose} that helps on-screen keyboards and similar
          * input methods to decide which keys should be presented to the user.
          */
         get inputPurpose(): Clutter.InputContentPurpose;
         set inputPurpose(val: Clutter.InputContentPurpose);
+
         /**
          * The {@link Clutter.Actor} acting as the primary icon at the start of the {@link St.Entry}.
          */
-        get primary_icon(): Clutter.Actor | null;
-        set primary_icon(val: Clutter.Actor | null);
+        get primary_icon(): (Clutter.Actor | null);
+        set primary_icon(val: (Clutter.Actor | null));
+
         /**
          * The {@link Clutter.Actor} acting as the primary icon at the start of the {@link St.Entry}.
          */
-        get primaryIcon(): Clutter.Actor | null;
-        set primaryIcon(val: Clutter.Actor | null);
+        get primaryIcon(): (Clutter.Actor | null);
+        set primaryIcon(val: (Clutter.Actor | null));
+
         /**
          * The {@link Clutter.Actor} acting as the secondary icon at the end of the {@link St.Entry}.
          */
-        get secondary_icon(): Clutter.Actor | null;
-        set secondary_icon(val: Clutter.Actor | null);
+        get secondary_icon(): (Clutter.Actor | null);
+        set secondary_icon(val: (Clutter.Actor | null));
+
         /**
          * The {@link Clutter.Actor} acting as the secondary icon at the end of the {@link St.Entry}.
          */
-        get secondaryIcon(): Clutter.Actor | null;
-        set secondaryIcon(val: Clutter.Actor | null);
+        get secondaryIcon(): (Clutter.Actor | null);
+        set secondaryIcon(val: (Clutter.Actor | null));
+
         /**
          * The current text value of the {@link St.Entry}.
          */
@@ -2755,113 +2779,114 @@ export namespace St {
         $signals: Entry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Entry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string | null): Entry;
-        // Conflicted with Clutter.Actor.new
+        static ["new"](text: (string | null)): Entry;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Clutter.Actor.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Entry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Entry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Entry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_primary_icon_clicked(): void;
+
         /**
          * @virtual
          */
         vfunc_secondary_icon_clicked(): void;
 
         // Methods
-
         /**
          * Retrieve the internal {@link Clutter.Text} so that extra parameters can be set.
          * @returns the {@link Clutter.Text} used by `entry`
          */
         get_clutter_text(): Clutter.Actor;
+
         /**
          * Get the value of the {@link St.Entry.hint_actor} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_hint_actor(): Clutter.Actor | null;
+        get_hint_actor(): (Clutter.Actor | null);
+
         /**
          * Gets the text that is displayed when the entry is empty and unfocused or
          * `null` if the {@link St.Entry.hint_actor} was set to an actor that is not a {@link St.Label}.
-         *
+         * 
          * Unlike `st_entry_get_text()` this function may return `null` if
          * {@link St.Entry.hint_actor} is not a {@link St.Label}.
          * @returns the current value of the hint property
          */
-        get_hint_text(): string | null;
+        get_hint_text(): (string | null);
+
         /**
          * Gets the value of the {@link St.Entry.input_hints} property.
          * @returns the input hints for the entry
          */
         get_input_hints(): Clutter.InputContentHintFlags;
+
         /**
          * Gets the value of the {@link St.Entry.input_purpose} property.
          * @returns the input purpose of the entry
          */
         get_input_purpose(): Clutter.InputContentPurpose;
+
         /**
          * Get the value of the {@link St.Entry.primary_icon} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_primary_icon(): Clutter.Actor | null;
+        get_primary_icon(): (Clutter.Actor | null);
+
         /**
          * Get the value of the {@link St.Entry.secondary_icon} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_secondary_icon(): Clutter.Actor | null;
+        get_secondary_icon(): (Clutter.Actor | null);
+
         /**
          * Get the text displayed on the entry. If `entry` is empty, an empty string will
          * be returned instead of `null`.
          * @returns the text for the entry
          */
         get_text(): string;
+
         /**
          * Set the hint actor of the entry to `hint_actor`.
          * @param hint_actor a {@link Clutter.Actor}
          */
-        set_hint_actor(hint_actor: Clutter.Actor | null): void;
+        set_hint_actor(hint_actor: (Clutter.Actor | null)): void;
+
         /**
          * Sets the text to display when the entry is empty and unfocused. When the
          * entry is displaying the hint, it has a pseudo class of `indeterminate`.
          * A value of `null` unsets the hint.
          * @param text text to set as the entry hint
          */
-        set_hint_text(text: string | null): void;
+        set_hint_text(text: (string | null)): void;
+
         /**
          * Sets the {@link St.Entry.input_hints} property, which
          * allows input methods to fine-tune their behaviour.
          * @param hints the hints
          */
         set_input_hints(hints: Clutter.InputContentHintFlags): void;
+
         /**
          * Sets the {@link St.Entry.input_purpose} property which
          * can be used by on-screen keyboards and other input
@@ -2869,39 +2894,44 @@ export namespace St {
          * @param purpose the purpose
          */
         set_input_purpose(purpose: Clutter.InputContentPurpose): void;
+
         /**
          * Set the primary icon of the entry to `icon`.
          * @param icon a {@link Clutter.Actor}
          */
-        set_primary_icon(icon: Clutter.Actor | null): void;
+        set_primary_icon(icon: (Clutter.Actor | null)): void;
+
         /**
          * Set the secondary icon of the entry to `icon`.
          * @param icon an {@link Clutter.Actor}
          */
-        set_secondary_icon(icon: Clutter.Actor | null): void;
+        set_secondary_icon(icon: (Clutter.Actor | null)): void;
+
         /**
          * Sets the text displayed on the entry. If `text` is `null`, the {@link Clutter.Text}
          * will instead be set to an empty string.
          * @param text text to set the entry to
          */
-        set_text(text: string | null): void;
+        set_text(text: (string | null)): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -2909,7 +2939,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2918,38 +2949,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -2957,6 +2992,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2964,34 +3000,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -2999,6 +3039,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -3008,33 +3049,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -3042,12 +3086,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -3057,13 +3102,16 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace FocusManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3083,34 +3131,24 @@ export namespace St {
         $signals: FocusManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FocusManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FocusManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FocusManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FocusManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FocusManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FocusManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FocusManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FocusManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FocusManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FocusManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FocusManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FocusManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FocusManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the {@link St.FocusManager} for `stage`, creating it if necessary.
          * @param stage a {@link Clutter.Stage}
@@ -3118,7 +3156,6 @@ export namespace St {
         static get_for_stage(stage: Clutter.Stage): FocusManager;
 
         // Methods
-
         /**
          * Adds a new focus group to `manager`. When the focus is in an actor
          * that is a descendant of `root`, `manager` will handle moving focus
@@ -3126,6 +3163,7 @@ export namespace St {
          * @param root the root container of the group
          */
         add_group(root: Widget): void;
+
         /**
          * Checks if `widget` is inside a focus group, and if so, returns
          * the root of that group.
@@ -3133,6 +3171,7 @@ export namespace St {
          * @returns the focus group root, or `null` if `widget` is not in a focus group
          */
         get_group(widget: Widget): Widget;
+
         /**
          * Try to navigate from `event` as if it bubbled all the way up to
          * the stage. This is useful in complex event handling situations
@@ -3142,12 +3181,14 @@ export namespace St {
          * @returns Whether a new actor was navigated to
          */
         navigate_from_event(event: Clutter.Event): boolean;
+
         /**
          * Removes the group rooted at `root` from `manager`
          * @param root the root container of the group
          */
         remove_group(root: Widget): void;
     }
+
 
     namespace GenericAccessible {
         // Signal signatures
@@ -3159,7 +3200,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'get-current-value': () => number;
+            "get-current-value": () => number;
             /**
              * Emitted when `atk_value_get_maximum_value()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3167,7 +3208,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'get-maximum-value': () => number;
+            "get-maximum-value": () => number;
             /**
              * Emitted when `atk_value_get_minimum_increment()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3175,7 +3216,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'get-minimum-increment': () => number;
+            "get-minimum-increment": () => number;
             /**
              * Emitted when `atk_value_get_current_value()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3183,7 +3224,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'get-minimum-value': () => number;
+            "get-minimum-value": () => number;
             /**
              * Emitted when `atk_value_set_current_value()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3191,34 +3232,30 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'set-current-value': (arg0: number) => void;
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "set-current-value": (arg0: number) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends WidgetAccessible.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps, Atk.Value.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                WidgetAccessible.ConstructorProps,
-                Atk.Action.ConstructorProps,
-                Atk.Component.ConstructorProps,
-                Atk.Value.ConstructorProps {}
+        }
     }
 
     /**
@@ -3237,7 +3274,6 @@ export namespace St {
         $signals: GenericAccessible.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GenericAccessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -3245,29 +3281,23 @@ export namespace St {
         static new_for_actor(actor: Clutter.Actor): GenericAccessible;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GenericAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericAccessible.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GenericAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GenericAccessible.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GenericAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GenericAccessible.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GenericAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GenericAccessible.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GenericAccessible.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GenericAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GenericAccessible.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GenericAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Gets the value of this object.
          */
         get_current_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be
          * changed.  If zero, the minimum increment is undefined, which may
@@ -3276,52 +3306,60 @@ export namespace St {
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
          */
         get_increment(): number;
+
         /**
          * Gets the maximum value of this object.
          */
         get_maximum_value(): unknown;
+
         /**
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
          */
         get_minimum_increment(): unknown;
+
         /**
          * Gets the minimum value of this object.
          */
         get_minimum_value(): unknown;
+
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): Atk.Range | null;
+        get_range(): (Atk.Range | null);
+
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
          */
         get_sub_ranges(): Atk.Range[];
+
         /**
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
          */
         get_value_and_text(): [number, string];
+
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: GObject.Value | any): boolean;
+        set_current_value(value: (GObject.Value | any)): boolean;
+
         /**
          * Sets the value of this object.
-         *
+         * 
          * This method is intended to provide a way to change the value of the
          * object. In any case, it is possible that the value can't be
          * modified (ie: a read-only component). If the value changes due this
          * call, it is possible that the text could change, and will trigger
          * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-         *
+         * 
          * Note for implementors: the deprecated `atk_value_set_current_value()`
          * method returned TRUE or FALSE depending if the value was assigned
          * or not. In the practice several implementors were not able to
@@ -3331,11 +3369,13 @@ export namespace St {
          * @param new_value a double which is the desired new accessible value.
          */
         set_value(new_value: number): void;
+
         /**
          * Gets the value of this object.
          * @virtual
          */
         vfunc_get_current_value(): GObject.Value | any;
+
         /**
          * Gets the minimum increment by which the value of this object may be
          * changed.  If zero, the minimum increment is undefined, which may
@@ -3344,11 +3384,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_increment(): number;
+
         /**
          * Gets the maximum value of this object.
          * @virtual
          */
         vfunc_get_maximum_value(): GObject.Value | any;
+
         /**
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
@@ -3356,22 +3398,26 @@ export namespace St {
          * @virtual
          */
         vfunc_get_minimum_increment(): GObject.Value | any;
+
         /**
          * Gets the minimum value of this object.
          * @virtual
          */
         vfunc_get_minimum_value(): GObject.Value | any;
+
         /**
          * Gets the range of this object.
          * @virtual
          */
-        vfunc_get_range(): Atk.Range | null;
+        vfunc_get_range(): (Atk.Range | null);
+
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @virtual
          */
         vfunc_get_sub_ranges(): Atk.Range[];
+
         /**
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
@@ -3379,21 +3425,23 @@ export namespace St {
          * @virtual
          */
         vfunc_get_value_and_text(): [number, string];
+
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @virtual
          */
         vfunc_set_current_value(value: unknown): boolean;
+
         /**
          * Sets the value of this object.
-         *
+         * 
          * This method is intended to provide a way to change the value of the
          * object. In any case, it is possible that the value can't be
          * modified (ie: a read-only component). If the value changes due this
          * call, it is possible that the text could change, and will trigger
          * an {@link Atk.Value.SignalSignatures.value_changed | Atk.Value::value-changed} signal emission.
-         *
+         * 
          * Note for implementors: the deprecated `atk_value_set_current_value()`
          * method returned TRUE or FALSE depending if the value was assigned
          * or not. In the practice several implementors were not able to
@@ -3406,112 +3454,106 @@ export namespace St {
         vfunc_set_value(new_value: number): void;
     }
 
+
     namespace Icon {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
-            'notify::fallback-gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::fallback-icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-size': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::fallback-gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::fallback-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-size": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             fallback_gicon: Gio.Icon;
             fallbackGicon: Gio.Icon;
             fallback_icon_name: string;
             fallbackIconName: string;
-            gicon: Gio.Icon | null;
-            icon_name: string | null;
-            iconName: string | null;
+            gicon: (Gio.Icon | null);
+            icon_name: (string | null);
+            iconName: (string | null);
             icon_size: number;
             iconSize: number;
         }
@@ -3522,57 +3564,61 @@ export namespace St {
      * through the public API.
      * @gir-type Class
      */
-    class Icon<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Icon<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Icon>;
 
         // Properties
-
         /**
          * The fallback {@link Gio.Icon} to display if {@link St.Icon.gicon} fails to load.
          */
         get fallback_gicon(): Gio.Icon;
         set fallback_gicon(val: Gio.Icon);
+
         /**
          * The fallback {@link Gio.Icon} to display if {@link St.Icon.gicon} fails to load.
          */
         get fallbackGicon(): Gio.Icon;
         set fallbackGicon(val: Gio.Icon);
+
         /**
          * The fallback icon name of the {@link St.Icon}. See `st_icon_set_fallback_icon_name()`
          * for details.
          */
         get fallback_icon_name(): string;
         set fallback_icon_name(val: string);
+
         /**
          * The fallback icon name of the {@link St.Icon}. See `st_icon_set_fallback_icon_name()`
          * for details.
          */
         get fallbackIconName(): string;
         set fallbackIconName(val: string);
+
         /**
          * The {@link Gio.Icon} being displayed by this {@link St.Icon}.
          */
-        get gicon(): Gio.Icon | null;
-        set gicon(val: Gio.Icon | null);
+        get gicon(): (Gio.Icon | null);
+        set gicon(val: (Gio.Icon | null));
+
         /**
          * The name of the icon if the icon being displayed is a {@link Gio.ThemedIcon}.
          */
-        get icon_name(): string | null;
-        set icon_name(val: string | null);
+        get icon_name(): (string | null);
+        set icon_name(val: (string | null));
+
         /**
          * The name of the icon if the icon being displayed is a {@link Gio.ThemedIcon}.
          */
-        get iconName(): string | null;
-        set iconName(val: string | null);
+        get iconName(): (string | null);
+        set iconName(val: (string | null));
+
         /**
          * The size of the icon, if greater than `0`. Other the icon size is derived
          * from the current style.
          */
         get icon_size(): number;
         set icon_size(val: number);
+
         /**
          * The size of the icon, if greater than `0`. Other the icon size is derived
          * from the current style.
@@ -3590,71 +3636,67 @@ export namespace St {
         $signals: Icon.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Icon;
+        static ["new"](): Icon;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the currently set fallback {@link Gio.Icon}.
          * @returns The fallback {@link Gio.Icon}, if set, otherwise `null`
          */
         get_fallback_gicon(): Gio.Icon;
+
         /**
          * This is a convenience method to get the icon name of the fallback
          * {@link Gio.ThemedIcon} that is currently set.
          * @returns The name of the icon or `null` if no icon is set
          */
         get_fallback_icon_name(): string;
+
         /**
          * Gets the current {@link Gio.Icon} in use.
          * @returns The current {@link Gio.Icon}, if set, otherwise `null`
          */
-        get_gicon(): Gio.Icon | null;
+        get_gicon(): (Gio.Icon | null);
+
         /**
          * This is a convenience method to get the icon name of the current icon, if it
          * is currenyly a {@link Gio.ThemedIcon}, or `null` otherwise.
          * @returns The name of the icon or `null`
          */
-        get_icon_name(): string | null;
+        get_icon_name(): (string | null);
+
         /**
          * Gets the explicit size set using `st_icon_set_icon_size()` for the icon.
          * This is not necessarily the size that the icon will be displayed at.
          * @returns The explicitly set size, or -1 if no size has been set
          */
         get_icon_size(): number;
+
         /**
          * Sets a fallback {@link Gio.Icon} to show if the normal icon fails to load.
          * If `fallback_gicon` is `null` or fails to load, the icon is unset and no
          * texture will be visible for the fallback icon.
          * @param fallback_gicon the fallback {@link Gio.Icon}
          */
-        set_fallback_gicon(fallback_gicon: Gio.Icon | null): void;
+        set_fallback_gicon(fallback_gicon: (Gio.Icon | null)): void;
+
         /**
          * This is a convenience method to set the fallback {@link Gio.Icon} to a {@link Gio.ThemedIcon}
          * created using the given icon name. If `fallback_icon_name` is an empty
@@ -3662,43 +3704,48 @@ export namespace St {
          * be visible for the fallback icon.
          * @param fallback_icon_name the name of the fallback icon
          */
-        set_fallback_icon_name(fallback_icon_name: string | null): void;
+        set_fallback_icon_name(fallback_icon_name: (string | null)): void;
+
         /**
          * Sets a {@link Gio.Icon} to show for the icon. If `gicon` is `null` or fails to load,
          * the fallback icon set using `st_icon_set_fallback_icon()` will be shown.
          * @param gicon a {@link Gio.Icon}
          */
-        set_gicon(gicon: Gio.Icon | null): void;
+        set_gicon(gicon: (Gio.Icon | null)): void;
+
         /**
          * This is a convenience method to set the {@link Gio.Icon} to a {@link Gio.ThemedIcon} created
          * using the given icon name. If `icon_name` is an empty string, `null` or
          * fails to load, the fallback icon will be shown.
          * @param icon_name the name of the icon
          */
-        set_icon_name(icon_name: string | null): void;
+        set_icon_name(icon_name: (string | null)): void;
+
         /**
          * Sets an explicit size for the icon. Setting `size` to -1 will use the size
          * defined by the current style or the default icon size.
          * @param size if positive, the new size, otherwise the size will be   derived from the current style
          */
         set_icon_size(size: number): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -3706,7 +3753,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -3715,38 +3763,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -3754,6 +3806,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -3761,34 +3814,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -3796,6 +3853,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -3805,33 +3863,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -3839,12 +3900,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -3854,21 +3916,16 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace ImageContent {
         // Signal signatures
         interface SignalSignatures extends Clutter.Image.SignalSignatures {
-            'notify::preferred-height': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-width': (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Image.ConstructorProps,
-                Clutter.Content.ConstructorProps,
-                Gio.Icon.ConstructorProps,
-                Gio.LoadableIcon.ConstructorProps {
+        interface ConstructorProps extends Clutter.Image.ConstructorProps, Clutter.Content.ConstructorProps, Gio.Icon.ConstructorProps, Gio.LoadableIcon.ConstructorProps {
             preferred_height: number;
             preferredHeight: number;
             preferred_width: number;
@@ -3883,19 +3940,21 @@ export namespace St {
         static $gtype: GObject.GType<ImageContent>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get preferred_height(): number;
+
         /**
          * @construct-only
          */
         get preferredHeight(): number;
+
         /**
          * @construct-only
          */
         get preferred_width(): number;
+
         /**
          * @construct-only
          */
@@ -3911,123 +3970,125 @@ export namespace St {
         $signals: ImageContent.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageContent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageContent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageContent.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageContent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageContent.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageContent.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageContent.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link St.ImageContent}, a simple content for sized images.
-         *
+         * 
          * See {@link Clutter.Image} for setting the actual image to display or {@link St.Icon} for
          * displaying icons.
          * @param width The preferred width to be used when drawing the content
          * @param height The preferred width to be used when drawing the content
          */
         static new_with_preferred_size(width: number, height: number): Clutter.Content;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use `clutter_content_invalidate()`.
          */
         invalidate_size(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use `clutter_content_invalidate()`.
          * @virtual
          */
         vfunc_invalidate_size(): void;
+
         /**
-         * @param actor
-         * @param node
-         * @param paint_context
+         * @param actor 
+         * @param node 
+         * @param paint_context 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode, paint_context: Clutter.PaintContext): void;
+
         /**
          * Checks if two icons are equal.
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
-        equal(icon2: Gio.Icon | null): boolean;
+        equal(icon2: (Gio.Icon | null)): boolean;
+
         /**
          * Gets a hash for an icon.
          * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
+
         /**
          * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
          * back by calling `g_icon_deserialize()` on the returned value.
@@ -4036,38 +4097,42 @@ export namespace St {
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
-        serialize(): GLib.Variant | null;
+        serialize(): (GLib.Variant | null);
+
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
          * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
-         *
+         * 
          * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
-         *
+         * 
          * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
          *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
          *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
-         *
+         * 
          * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
-        to_string(): string | null;
+        to_string(): (string | null);
+
         /**
          * Checks if two icons are equal.
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @virtual
          */
-        vfunc_equal(icon2: Gio.Icon | null): boolean;
+        vfunc_equal(icon2: (Gio.Icon | null)): boolean;
+
         /**
          * Gets a hash for an icon.
          * @virtual
          */
         vfunc_hash(): number;
+
         /**
          * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
          * back by calling `g_icon_deserialize()` on the returned value.
@@ -4076,13 +4141,15 @@ export namespace St {
          * (as opposed to over the network), and within the same file system namespace.
          * @virtual
          */
-        vfunc_serialize(): GLib.Variant | null;
+        vfunc_serialize(): (GLib.Variant | null);
+
         /**
          * Serializes the `icon` into string tokens.
          * This is can be invoked when `g_icon_new_for_string()` is called.
          * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
+
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
          * see `g_loadable_icon_load_async()`.
@@ -4090,7 +4157,8 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
-        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
+        load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -4098,20 +4166,8 @@ export namespace St {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
-        /**
-         * Loads an icon asynchronously. To finish this function, see
-         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
-         * version of this function, see `g_loadable_icon_load()`.
-         * @param size an integer.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        load_async(
-            size: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        load_async(size: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Gio.InputStream, string]>;
+
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -4120,17 +4176,25 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        load_async(
-            size: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[Gio.InputStream, string]> | void;
+        load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_async(size: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Gio.InputStream, string]> | void);
+
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
          * see `g_loadable_icon_load_async()`.
@@ -4138,7 +4202,8 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
+        vfunc_load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+
         /**
          * Loads an icon asynchronously. To finish this function, see
          * `g_loadable_icon_load_finish()`. For the synchronous, blocking
@@ -4148,24 +4213,22 @@ export namespace St {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_load_async(
-            size: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
+
         /**
          * Each object carries around a table of associations from
          * strings to pointers.  This function lets you set an association.
-         *
+         * 
          * If the object already had an association with that name,
          * the old association will be destroyed.
-         *
+         * 
          * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
@@ -4173,110 +4236,105 @@ export namespace St {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: any | null): void;
+        set_data(key: string, data: (any | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Clutter.Image.set_data
         set_data(...args: never[]): any;
     }
 
+
     namespace Label {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
-            'notify::clutter-text': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             clutter_text: Clutter.Text;
             clutterText: Clutter.Text;
             text: string;
@@ -4288,24 +4346,22 @@ export namespace St {
      * the provided API.
      * @gir-type Class
      */
-    class Label<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Label<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Label>;
 
         // Properties
-
         /**
          * The internal {@link Clutter.Text} actor supporting the label
          * @read-only
          */
         get clutter_text(): Clutter.Text;
+
         /**
          * The internal {@link Clutter.Text} actor supporting the label
          * @read-only
          */
         get clutterText(): Clutter.Text;
+
         /**
          * The current text being display in the {@link St.Label}.
          */
@@ -4322,72 +4378,66 @@ export namespace St {
         $signals: Label.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Label.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string | null): Label;
-        // Conflicted with Clutter.Actor.new
+        static ["new"](text: (string | null)): Label;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Clutter.Actor.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieve the internal {@link Clutter.Text} used by `label` so that extra parameters
          * can be set.
          * @returns the {@link Clutter.Text} used by {@link St.Label}. The actor is owned by the {@link St.Label} and should not be destroyed by the application.
          */
         get_clutter_text(): Clutter.Actor;
+
         /**
          * Get the text displayed on the label.
          * @returns the text for the label. This must not be freed by the application
          */
         get_text(): string;
+
         /**
          * Sets the text displayed by the label.
          * @param text text to set the label to
          */
-        set_text(text: string | null): void;
+        set_text(text: (string | null)): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -4395,7 +4445,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4404,38 +4455,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -4443,6 +4498,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4450,34 +4506,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -4485,6 +4545,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4494,33 +4555,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4528,12 +4592,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -4543,110 +4608,104 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace PasswordEntry {
         // Signal signatures
         interface SignalSignatures extends Entry.SignalSignatures {
-            'notify::password-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::show-peek-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::clutter-text': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-text': (pspec: GObject.ParamSpec) => void;
-            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::password-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::show-peek-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-text": (pspec: GObject.ParamSpec) => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Entry.ConstructorProps<A>,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Entry.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             password_visible: boolean;
             passwordVisible: boolean;
             show_peek_icon: boolean;
@@ -4657,30 +4716,29 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class PasswordEntry<A extends Clutter.Actor = Clutter.Actor>
-        extends Entry<A>
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class PasswordEntry<A extends Clutter.Actor = Clutter.Actor> extends Entry<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<PasswordEntry>;
 
         // Properties
-
         /**
          * Whether the text in the entry is masked for privacy.
          */
         get password_visible(): boolean;
         set password_visible(val: boolean);
+
         /**
          * Whether the text in the entry is masked for privacy.
          */
         get passwordVisible(): boolean;
         set passwordVisible(val: boolean);
+
         /**
          * Whether to display an icon button to toggle the masking enabled by the
          * {@link St.PasswordEntry.password_visible} property.
          */
         get show_peek_icon(): boolean;
         set show_peek_icon(val: boolean);
+
         /**
          * Whether to display an icon button to toggle the masking enabled by the
          * {@link St.PasswordEntry.password_visible} property.
@@ -4698,51 +4756,44 @@ export namespace St {
         $signals: PasswordEntry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PasswordEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PasswordEntry;
+        static ["new"](): PasswordEntry;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PasswordEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PasswordEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PasswordEntry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PasswordEntry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PasswordEntry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PasswordEntry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PasswordEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PasswordEntry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PasswordEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets whether the text is masked in the password entry.
          * @returns `true` if visible
          */
         get_password_visible(): boolean;
+
         /**
          * Gets whether peek-icon is shown or hidden in the password entry.
          * @returns `true` if visible
          */
         get_show_peek_icon(): boolean;
+
         /**
          * Sets whether to show or hide text in the password entry.
          * @param value `true` to show the password in the entry, `FALSE` otherwise
          */
         set_password_visible(value: boolean): void;
+
         /**
          * Sets whether to show or hide the peek-icon in the password entry. If `true`,
          * a icon button for temporarily unmasking the password will be shown at the
@@ -4750,23 +4801,25 @@ export namespace St {
          * @param value `true` to show the peek-icon in the entry
          */
         set_show_peek_icon(value: boolean): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -4774,7 +4827,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4783,38 +4837,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -4822,6 +4880,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4829,34 +4888,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -4864,6 +4927,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4873,33 +4937,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4907,12 +4974,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -4922,6 +4990,7 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace ScrollBar {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
@@ -4930,106 +4999,99 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'scroll-start': () => void;
+            "scroll-start": () => void;
             /**
              * Emitted when the {@link St.ScrollBar} finishes scrolling.
              * @signal
              * @run-last
              */
-            'scroll-stop': () => void;
-            'notify::adjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vertical': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "scroll-stop": () => void;
+            "notify::adjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vertical": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             adjustment: Adjustment;
             vertical: boolean;
         }
@@ -5038,19 +5100,16 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class ScrollBar<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class ScrollBar<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<ScrollBar>;
 
         // Properties
-
         /**
          * The {@link St.Adjustment} controlling the {@link St.ScrollBar}.
          */
         get adjustment(): Adjustment;
         set adjustment(val: Adjustment);
+
         /**
          * Whether the {@link St.ScrollBar} is vertical. If `false` it is horizontal.
          */
@@ -5067,76 +5126,69 @@ export namespace St {
         $signals: ScrollBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScrollBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](adjustment: Adjustment): ScrollBar;
-        // Conflicted with Clutter.Actor.new
+        static ["new"](adjustment: Adjustment): ScrollBar;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Clutter.Actor.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScrollBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScrollBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScrollBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScrollBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScrollBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScrollBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScrollBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrollBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_scroll_start(): void;
+
         /**
          * @virtual
          */
         vfunc_scroll_stop(): void;
 
         // Methods
-
         /**
          * Gets the {@link St.Adjustment} that controls the current position of `bar`.
          * @returns an {@link St.Adjustment}
          */
         get_adjustment(): Adjustment;
+
         /**
-         * @param adjustment
+         * @param adjustment 
          */
         set_adjustment(adjustment: Adjustment): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -5144,7 +5196,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -5153,38 +5206,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -5192,6 +5249,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -5199,34 +5257,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -5234,6 +5296,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -5243,33 +5306,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -5277,12 +5343,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -5292,109 +5359,103 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace ScrollView {
         // Signal signatures
         interface SignalSignatures extends Bin.SignalSignatures {
-            'notify::enable-mouse-scrolling': (pspec: GObject.ParamSpec) => void;
-            'notify::hscroll': (pspec: GObject.ParamSpec) => void;
-            'notify::hscrollbar-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::hscrollbar-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::overlay-scrollbars': (pspec: GObject.ParamSpec) => void;
-            'notify::vscroll': (pspec: GObject.ParamSpec) => void;
-            'notify::vscrollbar-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::vscrollbar-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::enable-mouse-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::hscroll": (pspec: GObject.ParamSpec) => void;
+            "notify::hscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::hscrollbar-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::overlay-scrollbars": (pspec: GObject.ParamSpec) => void;
+            "notify::vscroll": (pspec: GObject.ParamSpec) => void;
+            "notify::vscrollbar-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::vscrollbar-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Bin.ConstructorProps<A>,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Bin.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             enable_mouse_scrolling: boolean;
             enableMouseScrolling: boolean;
             hscroll: ScrollBar;
@@ -5417,79 +5478,88 @@ export namespace St {
      * through the public API.
      * @gir-type Class
      */
-    class ScrollView<A extends Clutter.Actor = Clutter.Actor>
-        extends Bin<A>
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class ScrollView<A extends Clutter.Actor = Clutter.Actor> extends Bin<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<ScrollView>;
 
         // Properties
-
         /**
          * Whether to enable automatic mouse wheel scrolling.
          */
         get enable_mouse_scrolling(): boolean;
         set enable_mouse_scrolling(val: boolean);
+
         /**
          * Whether to enable automatic mouse wheel scrolling.
          */
         get enableMouseScrolling(): boolean;
         set enableMouseScrolling(val: boolean);
+
         /**
          * The horizontal {@link St.ScrollBar} for the {@link St.ScrollView}.
          * @read-only
          */
         get hscroll(): ScrollBar;
+
         /**
          * The {@link St.PolicyType} for when to show the horizontal {@link St.ScrollBar}.
          */
         get hscrollbar_policy(): PolicyType;
         set hscrollbar_policy(val: PolicyType);
+
         /**
          * The {@link St.PolicyType} for when to show the horizontal {@link St.ScrollBar}.
          */
         get hscrollbarPolicy(): PolicyType;
         set hscrollbarPolicy(val: PolicyType);
+
         /**
          * Whether the horizontal {@link St.ScrollBar} is visible.
          * @read-only
          */
         get hscrollbar_visible(): boolean;
+
         /**
          * Whether the horizontal {@link St.ScrollBar} is visible.
          * @read-only
          */
         get hscrollbarVisible(): boolean;
+
         /**
          * Whether scrollbars are painted on top of the content.
          */
         get overlay_scrollbars(): boolean;
         set overlay_scrollbars(val: boolean);
+
         /**
          * Whether scrollbars are painted on top of the content.
          */
         get overlayScrollbars(): boolean;
         set overlayScrollbars(val: boolean);
+
         /**
          * The vertical {@link St.ScrollBar} for the {@link St.ScrollView}.
          * @read-only
          */
         get vscroll(): ScrollBar;
+
         /**
          * The {@link St.PolicyType} for when to show the vertical {@link St.ScrollBar}.
          */
         get vscrollbar_policy(): PolicyType;
         set vscrollbar_policy(val: PolicyType);
+
         /**
          * The {@link St.PolicyType} for when to show the vertical {@link St.ScrollBar}.
          */
         get vscrollbarPolicy(): PolicyType;
         set vscrollbarPolicy(val: PolicyType);
+
         /**
          * Whether the vertical {@link St.ScrollBar} is visible.
          * @read-only
          */
         get vscrollbar_visible(): boolean;
+
         /**
          * Whether the vertical {@link St.ScrollBar} is visible.
          * @read-only
@@ -5506,115 +5576,118 @@ export namespace St {
         $signals: ScrollView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScrollView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ScrollView;
+        static ["new"](): ScrollView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScrollView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScrollView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScrollView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScrollView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScrollView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrollView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the step increment of the horizontal plane.
          * @returns the horizontal step increment
          */
         get_column_size(): number;
+
         /**
          * Gets the horizontal {@link St.ScrollBar} of the {@link St.ScrollView}.
          * @returns the horizontal scrollbar
          */
         get_hscroll_bar(): Clutter.Actor;
+
         /**
          * Get whether automatic mouse wheel scrolling is enabled or disabled.
          * @returns `true` if enabled, `false` otherwise
          */
         get_mouse_scrolling(): boolean;
+
         /**
          * Gets whether scrollbars are painted on top of the content.
          * @returns `true` if enabled, `false` otherwise
          */
         get_overlay_scrollbars(): boolean;
+
         /**
          * Get the step increment of the vertical plane.
          * @returns the vertical step increment
          */
         get_row_size(): number;
+
         /**
          * Gets the vertical scrollbar of the {@link St.ScrollView}.
          * @returns the vertical {@link St.ScrollBar}
          */
         get_vscroll_bar(): Clutter.Actor;
+
         /**
          * Set the step increment of the horizontal plane to `column_size`.
          * @param column_size horizontal step increment
          */
         set_column_size(column_size: number): void;
+
         /**
          * Sets automatic mouse wheel scrolling to enabled or disabled.
          * @param enabled `true` or `false`
          */
         set_mouse_scrolling(enabled: boolean): void;
+
         /**
          * Sets whether scrollbars are painted on top of the content.
          * @param enabled Whether to enable overlay scrollbars
          */
         set_overlay_scrollbars(enabled: boolean): void;
+
         /**
          * Set the scroll policy.
          * @param hscroll Whether to enable horizontal scrolling
          * @param vscroll Whether to enable vertical scrolling
          */
         set_policy(hscroll: PolicyType, vscroll: PolicyType): void;
+
         /**
          * Set the step increment of the vertical plane to `row_size`.
          * @param row_size vertical step increment
          */
         set_row_size(row_size: number): void;
+
         /**
          * Sets the fade effects in all four edges of the view. A value of 0
          * disables the effect.
          * @param fade_margins a {@link Clutter.Margin} defining the vertical fade effects, in pixels.
          */
         update_fade_effect(fade_margins: Clutter.Margin): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -5622,7 +5695,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -5631,38 +5705,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -5670,6 +5748,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -5677,34 +5756,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -5712,6 +5795,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -5721,33 +5805,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -5755,12 +5842,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -5770,20 +5858,20 @@ export namespace St {
         vfunc_remove(actor: A): void;
     }
 
+
     namespace ScrollViewFade {
         // Signal signatures
         interface SignalSignatures extends Clutter.ShaderEffect.SignalSignatures {
-            'notify::extend-fade-area': (pspec: GObject.ParamSpec) => void;
-            'notify::fade-edges': (pspec: GObject.ParamSpec) => void;
-            'notify::fade-margins': (pspec: GObject.ParamSpec) => void;
-            'notify::shader-type': (pspec: GObject.ParamSpec) => void;
-            'notify::actor': (pspec: GObject.ParamSpec) => void;
-            'notify::enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::extend-fade-area": (pspec: GObject.ParamSpec) => void;
+            "notify::fade-edges": (pspec: GObject.ParamSpec) => void;
+            "notify::fade-margins": (pspec: GObject.ParamSpec) => void;
+            "notify::shader-type": (pspec: GObject.ParamSpec) => void;
+            "notify::actor": (pspec: GObject.ParamSpec) => void;
+            "notify::enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Clutter.ShaderEffect.ConstructorProps {
             extend_fade_area: boolean;
             extendFadeArea: boolean;
@@ -5801,32 +5889,36 @@ export namespace St {
         static $gtype: GObject.GType<ScrollViewFade>;
 
         // Properties
-
         /**
          * Whether faded edges should extend beyond the faded area of the {@link St.ScrollViewFade}.
          */
         get extend_fade_area(): boolean;
         set extend_fade_area(val: boolean);
+
         /**
          * Whether faded edges should extend beyond the faded area of the {@link St.ScrollViewFade}.
          */
         get extendFadeArea(): boolean;
         set extendFadeArea(val: boolean);
+
         /**
          * Whether the faded area should extend to the edges of the {@link St.ScrollViewFade}.
          */
         get fade_edges(): boolean;
         set fade_edges(val: boolean);
+
         /**
          * Whether the faded area should extend to the edges of the {@link St.ScrollViewFade}.
          */
         get fadeEdges(): boolean;
         set fadeEdges(val: boolean);
+
         /**
          * The margins widths that are faded.
          */
         get fade_margins(): Clutter.Margin;
         set fade_margins(val: Clutter.Margin);
+
         /**
          * The margins widths that are faded.
          */
@@ -5843,51 +5935,42 @@ export namespace St {
         $signals: ScrollViewFade.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScrollViewFade.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ScrollViewFade;
+        static ["new"](): ScrollViewFade;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScrollViewFade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollViewFade.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScrollViewFade.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollViewFade.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScrollViewFade.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScrollViewFade.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScrollViewFade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScrollViewFade.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScrollViewFade.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScrollViewFade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScrollViewFade.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScrollViewFade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::disable-show-password': (pspec: GObject.ParamSpec) => void;
-            'notify::drag-threshold': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-animations': (pspec: GObject.ParamSpec) => void;
-            'notify::font-name': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-icon-theme': (pspec: GObject.ParamSpec) => void;
-            'notify::high-contrast': (pspec: GObject.ParamSpec) => void;
-            'notify::magnifier-active': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-paste': (pspec: GObject.ParamSpec) => void;
-            'notify::slow-down-factor': (pspec: GObject.ParamSpec) => void;
+            "notify::disable-show-password": (pspec: GObject.ParamSpec) => void;
+            "notify::drag-threshold": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-animations": (pspec: GObject.ParamSpec) => void;
+            "notify::font-name": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-icon-theme": (pspec: GObject.ParamSpec) => void;
+            "notify::high-contrast": (pspec: GObject.ParamSpec) => void;
+            "notify::magnifier-active": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-paste": (pspec: GObject.ParamSpec) => void;
+            "notify::slow-down-factor": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             disable_show_password: boolean;
             disableShowPassword: boolean;
@@ -5917,94 +6000,110 @@ export namespace St {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
-
         /**
          * Whether password showing can be locked down
          * @read-only
          */
         get disable_show_password(): boolean;
+
         /**
          * Whether password showing can be locked down
          * @read-only
          */
         get disableShowPassword(): boolean;
+
         /**
          * The threshold before a drag operation begins.
          * @read-only
          */
         get drag_threshold(): number;
+
         /**
          * The threshold before a drag operation begins.
          * @read-only
          */
         get dragThreshold(): number;
+
         /**
          * Whether animations are enabled.
          * @read-only
          */
         get enable_animations(): boolean;
+
         /**
          * Whether animations are enabled.
          * @read-only
          */
         get enableAnimations(): boolean;
+
         /**
          * The current font name.
          * @read-only
          */
         get font_name(): string;
+
         /**
          * The current font name.
          * @read-only
          */
         get fontName(): string;
+
         /**
          * The current GTK icon theme
          * @read-only
          */
         get gtk_icon_theme(): string;
+
         /**
          * The current GTK icon theme
          * @read-only
          */
         get gtkIconTheme(): string;
+
         /**
          * Whether the accessibility high contrast mode is enabled.
          * @read-only
          */
         get high_contrast(): boolean;
+
         /**
          * Whether the accessibility high contrast mode is enabled.
          * @read-only
          */
         get highContrast(): boolean;
+
         /**
          * Whether the accessibility magnifier is active.
          * @read-only
          */
         get magnifier_active(): boolean;
+
         /**
          * Whether the accessibility magnifier is active.
          * @read-only
          */
         get magnifierActive(): boolean;
+
         /**
          * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
          * paste).
          * @read-only
          */
         get primary_paste(): boolean;
+
         /**
          * Whether pasting from the `PRIMARY` selection is supported (eg. middle-click
          * paste).
          * @read-only
          */
         get primaryPaste(): boolean;
+
         /**
          * The slow-down factor applied to all animation durations.
          */
         get slow_down_factor(): number;
         set slow_down_factor(val: number);
+
         /**
          * The slow-down factor applied to all animation durations.
          */
@@ -6021,44 +6120,35 @@ export namespace St {
         $signals: Settings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the global {@link St.Settings} object.
          */
         static get(): Settings;
 
         // Methods
-
         inhibit_animations(): void;
+
         uninhibit_animations(): void;
     }
+
 
     namespace TextureCache {
         // Signal signatures
@@ -6068,18 +6158,19 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'icon-theme-changed': () => void;
+            "icon-theme-changed": () => void;
             /**
              * Emitted when the source file of a texture is changed.
              * @signal
              * @run-last
              */
-            'texture-file-changed': (arg0: Gio.File) => void;
+            "texture-file-changed": (arg0: Gio.File) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6098,43 +6189,32 @@ export namespace St {
         $signals: TextureCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TextureCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TextureCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextureCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TextureCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextureCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TextureCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextureCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TextureCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextureCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TextureCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TextureCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TextureCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextureCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): TextureCache;
 
         // Methods
-
         /**
          * Create a {@link Gio.Icon} which tracks the {@link cairo.Surface} value of a GObject property
          * named by `property_name`.  Unlike other methods in StTextureCache, the underlying
          * {@link Cogl.Texture} is not shared by default with other invocations to this method.
-         *
+         * 
          * If the source object is destroyed, the texture will continue to show the last
          * value of the property.
          * @param object A {@link GObject.Object} with a property `property_name` of type {@link cairo.Surface}
@@ -6142,12 +6222,14 @@ export namespace St {
          * @returns A new {@link Gio.Icon}
          */
         bind_cairo_surface_property(object: GObject.Object, property_name: string): Gio.Icon;
+
         /**
          * Create a {@link Gio.Icon} from `surface`.
          * @param surface A {@link cairo.Surface}
          * @returns A new {@link Gio.Icon}
          */
         load_cairo_surface_to_gicon(surface: cairo.Surface): Gio.Icon;
+
         /**
          * Asynchronously load an image.   Initially, the returned texture will have a natural
          * size of zero.  At some later point, either the image will be loaded successfully
@@ -6159,13 +6241,8 @@ export namespace St {
          * @param resource_scale Resource scale factor
          * @returns A new {@link Clutter.Actor} with no image loaded initially.
          */
-        load_file_async(
-            file: Gio.File,
-            available_width: number,
-            available_height: number,
-            paint_scale: number,
-            resource_scale: number,
-        ): Clutter.Actor;
+        load_file_async(file: Gio.File, available_width: number, available_height: number, paint_scale: number, resource_scale: number): Clutter.Actor;
+
         /**
          * This function synchronously loads the given file path
          * into a cairo surface.  On error, a warning is emitted
@@ -6176,6 +6253,7 @@ export namespace St {
          * @returns a new {@link cairo.Surface}
          */
         load_file_to_cairo_surface(file: Gio.File, paint_scale: number, resource_scale: number): cairo.Surface;
+
         /**
          * This method returns a new {@link Clutter.Actor} for a given {@link Gio.Icon}. If the
          * icon isn't loaded already, the texture will be filled
@@ -6187,13 +6265,8 @@ export namespace St {
          * @param resource_scale Resource scale factor
          * @returns A new {@link Clutter.Actor} for the icon, or `null` if not found
          */
-        load_gicon(
-            theme_node: ThemeNode | null,
-            icon: Gio.Icon,
-            size: number,
-            paint_scale: number,
-            resource_scale: number,
-        ): Clutter.Actor | null;
+        load_gicon(theme_node: (ThemeNode | null), icon: Gio.Icon, size: number, paint_scale: number, resource_scale: number): (Clutter.Actor | null);
+
         /**
          * This function reads a single image file which contains multiple images internally.
          * The image file will be divided using `grid_width` and `grid_height`;
@@ -6203,24 +6276,19 @@ export namespace St {
          * @param grid_width Width in pixels
          * @param grid_height Height in pixels
          * @param paint_scale Scale factor of the display
-         * @param resource_scale
+         * @param resource_scale 
          * @param load_callback Function called when the image is loaded, or `null`
          * @returns A new {@link Clutter.Actor}
          */
-        load_sliced_image(
-            file: Gio.File,
-            grid_width: number,
-            grid_height: number,
-            paint_scale: number,
-            resource_scale: number,
-            load_callback: GLib.Func | null,
-        ): Clutter.Actor;
+        load_sliced_image(file: Gio.File, grid_width: number, grid_height: number, paint_scale: number, resource_scale: number, load_callback: (GLib.Func | null)): Clutter.Actor;
+
         /**
          * Rescan the current icon theme, if necessary.
          * @returns `true` if the icon theme has changed and needed to be reloaded.
          */
         rescan_icon_theme(): boolean;
     }
+
 
     namespace Theme {
         // Signal signatures
@@ -6229,14 +6297,13 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'custom-stylesheets-changed': () => void;
-            'notify::application-stylesheet': (pspec: GObject.ParamSpec) => void;
-            'notify::default-stylesheet': (pspec: GObject.ParamSpec) => void;
-            'notify::theme-stylesheet': (pspec: GObject.ParamSpec) => void;
+            "custom-stylesheets-changed": () => void;
+            "notify::application-stylesheet": (pspec: GObject.ParamSpec) => void;
+            "notify::default-stylesheet": (pspec: GObject.ParamSpec) => void;
+            "notify::theme-stylesheet": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application_stylesheet: Gio.File;
             applicationStylesheet: Gio.File;
@@ -6254,37 +6321,41 @@ export namespace St {
         static $gtype: GObject.GType<Theme>;
 
         // Properties
-
         /**
          * The highest priority stylesheet, representing application-specific
          * styling; this is associated with the CSS "author" stylesheet.
          * @construct-only
          */
         get application_stylesheet(): Gio.File;
+
         /**
          * The highest priority stylesheet, representing application-specific
          * styling; this is associated with the CSS "author" stylesheet.
          * @construct-only
          */
         get applicationStylesheet(): Gio.File;
+
         /**
          * The lowest priority stylesheet, representing global default
          * styling; this is associated with the CSS "user agent" stylesheet.
          * @construct-only
          */
         get default_stylesheet(): Gio.File;
+
         /**
          * The lowest priority stylesheet, representing global default
          * styling; this is associated with the CSS "user agent" stylesheet.
          * @construct-only
          */
         get defaultStylesheet(): Gio.File;
+
         /**
          * The second priority stylesheet, representing theme-specific styling;
          * this is associated with the CSS "user" stylesheet.
          * @construct-only
          */
         get theme_stylesheet(): Gio.File;
+
         /**
          * The second priority stylesheet, representing theme-specific styling;
          * this is associated with the CSS "user" stylesheet.
@@ -6302,51 +6373,39 @@ export namespace St {
         $signals: Theme.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Theme.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            application_stylesheet: Gio.File,
-            theme_stylesheet: Gio.File,
-            default_stylesheet: Gio.File,
-        ): Theme;
+        static ["new"](application_stylesheet: Gio.File, theme_stylesheet: Gio.File, default_stylesheet: Gio.File): Theme;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Theme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Theme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Theme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Theme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Theme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get a list of the stylesheet files loaded with `st_theme_load_stylesheet()`.
          * @returns the list of stylesheet files          that were loaded with `st_theme_load_stylesheet()`
          */
         get_custom_stylesheets(): Gio.File[];
+
         /**
          * Load the stylesheet associated with `file`.
          * @param file a {@link Gio.File}
          * @returns `true` if successful
          */
         load_stylesheet(file: Gio.File): boolean;
+
         /**
          * Unload the stylesheet associated with `file`. If `file` was not loaded this
          * function does nothing.
@@ -6354,6 +6413,7 @@ export namespace St {
          */
         unload_stylesheet(file: Gio.File): void;
     }
+
 
     namespace ThemeContext {
         // Signal signatures
@@ -6365,11 +6425,10 @@ export namespace St {
              * @run-last
              */
             changed: () => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             scale_factor: number;
             scaleFactor: number;
@@ -6383,12 +6442,12 @@ export namespace St {
         static $gtype: GObject.GType<ThemeContext>;
 
         // Properties
-
         /**
          * The scaling factor used for HiDPI scaling.
          */
         get scale_factor(): number;
         set scale_factor(val: number);
+
         /**
          * The scaling factor used for HiDPI scaling.
          */
@@ -6405,36 +6464,26 @@ export namespace St {
         $signals: ThemeContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ThemeContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ThemeContext;
+        static ["new"](): ThemeContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ThemeContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ThemeContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThemeContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ThemeContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThemeContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ThemeContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ThemeContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThemeContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ThemeContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThemeContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets a singleton theme context associated with the stage.
          * @param stage a {@link Clutter.Stage}
@@ -6442,12 +6491,12 @@ export namespace St {
         static get_for_stage(stage: Clutter.Stage): ThemeContext;
 
         // Methods
-
         /**
          * Gets the default font for the theme context. See `st_theme_context_set_font()`.
          * @returns the default font for the theme context.
          */
         get_font(): Pango.FontDescription;
+
         /**
          * Gets the root node of the tree of theme style nodes that associated with this
          * context. For the node tree associated with a stage, this node represents
@@ -6455,16 +6504,19 @@ export namespace St {
          * @returns the root node of the context's style tree
          */
         get_root_node(): ThemeNode;
+
         /**
          * Return the current scale factor of `context`.
          * @returns an integer scale factor
          */
         get_scale_factor(): number;
+
         /**
          * Gets the default theme for the context. See `st_theme_context_set_theme()`
          * @returns the default theme for the context
          */
         get_theme(): Theme;
+
         /**
          * Return an existing node matching `node`, or if that isn't possible,
          * `node` itself.
@@ -6472,6 +6524,7 @@ export namespace St {
          * @returns a node with the same properties as `node`
          */
         intern_node(node: ThemeNode): ThemeNode;
+
         /**
          * Sets the default font for the theme context. This is the font that
          * is inherited by the root node of the tree of theme nodes. If the
@@ -6481,6 +6534,7 @@ export namespace St {
          * @param font the default font for theme context
          */
         set_font(font: Pango.FontDescription): void;
+
         /**
          * Sets the default set of theme stylesheets for the context. This theme will
          * be used for the root node and for nodes descending from it, unless some other
@@ -6490,13 +6544,16 @@ export namespace St {
         set_theme(theme: Theme): void;
     }
 
+
     namespace ThemeNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6515,45 +6572,26 @@ export namespace St {
         $signals: ThemeNode.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ThemeNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            context: ThemeContext,
-            parent_node: ThemeNode | null,
-            theme: Theme | null,
-            element_type: GObject.GType,
-            element_id: string | null,
-            element_class: string | null,
-            pseudo_class: string | null,
-            inline_style: string,
-        ): ThemeNode;
+        static ["new"](context: ThemeContext, parent_node: (ThemeNode | null), theme: (Theme | null), element_type: GObject.GType, element_id: (string | null), element_class: (string | null), pseudo_class: (string | null), inline_style: string): ThemeNode;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ThemeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeNode.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ThemeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThemeNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ThemeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThemeNode.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ThemeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThemeNode.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ThemeNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThemeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ThemeNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThemeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adjusts a "for height" passed to `clutter_actor_get_preferred_width()` to
          * account for borders and padding. This is a convenience function meant
@@ -6563,6 +6601,7 @@ export namespace St {
          * @param for_height the "for height" to adjust
          */
         adjust_for_height(for_height: number): number;
+
         /**
          * Adjusts a "for width" passed to `clutter_actor_get_preferred_height()` to
          * account for borders and padding. This is a convenience function meant
@@ -6572,6 +6611,7 @@ export namespace St {
          * @param for_width the "for width" to adjust
          */
         adjust_for_width(for_width: number): number;
+
         /**
          * Adjusts the minimum and natural height computed for an actor by
          * adding on the necessary space for borders and padding and taking
@@ -6582,6 +6622,7 @@ export namespace St {
          * @param natural_height_p the natural height to adjust
          */
         adjust_preferred_height(min_height_p: number, natural_height_p: number): [number, number];
+
         /**
          * Adjusts the minimum and natural width computed for an actor by
          * adding on the necessary space for borders and padding and taking
@@ -6592,14 +6633,15 @@ export namespace St {
          * @param natural_width_p the natural width to adjust
          */
         adjust_preferred_width(min_width_p: number, natural_width_p: number): [number, number];
+
         /**
          * Compare two `StThemeNodes`. Two nodes which compare equal will match
          * the same CSS rules and have the same style properties. However, two
          * nodes that have ended up with identical style properties do not
          * necessarily compare equal.
-         *
+         * 
          * In detail, `node_a` and `node_b` are considered equal if and only if:
-         *
+         * 
          * - they share the same {@link St.Theme} and {@link St.ThemeContext}
          * - they have the same parent
          * - they have the same element type
@@ -6608,6 +6650,7 @@ export namespace St {
          * @returns `true` if `node_a` equals `node_b`
          */
         equal(node_b: ThemeNode): boolean;
+
         /**
          * Tests if two theme nodes have the same borders and padding; this can be
          * used to optimize having to relayout when the style applied to a Clutter
@@ -6616,71 +6659,83 @@ export namespace St {
          * @returns `true` if equal, `false` otherwise
          */
         geometry_equal(other: ThemeNode): boolean;
+
         /**
          * Gets `node`'s background color.
          */
         get_background_color(): Clutter.Color;
+
         /**
          * The `start` and `end` arguments will only be set if `type` is not #ST_GRADIENT_NONE.
          */
         get_background_gradient(): [GradientType, Clutter.Color, Clutter.Color];
+
         /**
          * @returns `node`'s background image.
          */
         get_background_image(): Gio.File;
+
         /**
          * Gets the value for the -st-background-image-shadow style property
          * @returns the node's background image shadow, or   `null` if node has no such shadow
          */
-        get_background_image_shadow(): Shadow | null;
+        get_background_image_shadow(): (Shadow | null);
+
         /**
          * Gets the box used to paint the actor's background, including the area
          * occupied by properties which paint outside the actor's assigned allocation.
          * @param allocation the box allocated to a {@link Clutter.Actor}
          */
         get_background_paint_box(allocation: Clutter.ActorBox): Clutter.ActorBox;
+
         /**
          * Gets the color of `node`'s border on `side`
          * @param side a {@link St.Side}
          */
         get_border_color(side: Side): Clutter.Color;
+
         /**
          * Gets the value for the border-image style property
          * @returns the border image, or `null`   if there is no border image.
          */
         get_border_image(): BorderImage;
+
         /**
          * Get the border radius for `node` at `corner`, in physical pixels.
          * @param corner a {@link St.Corner}
          * @returns the border radius in physical pixels
          */
         get_border_radius(corner: Corner): number;
+
         /**
          * Get the border width for `node` on `side`, in physical pixels.
          * @param side a {@link St.Corner}
          * @returns the border width in physical pixels
          */
         get_border_width(side: Side): number;
+
         /**
          * Gets the value for the box-shadow style property
          * @returns the node's shadow, or `null`   if node has no shadow
          */
-        get_box_shadow(): Shadow | null;
+        get_box_shadow(): (Shadow | null);
+
         /**
          * Generically looks up a property containing a single color value. When
          * specific getters (like `st_theme_node_get_background_color()`) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * If `property_name` is not found, a warning will be logged and a
          * default color returned.
-         *
+         * 
          * See also `st_theme_node_lookup_color()`, which provides more options,
          * and lets you handle the case where the theme does not specify the
          * indicated color.
          * @param property_name The name of the color property
          */
         get_color(property_name: string): Clutter.Color;
+
         /**
          * Gets the box within an actor's allocation that contents the content
          * of an actor (excluding borders and padding). This is a convenience function
@@ -6689,10 +6744,11 @@ export namespace St {
          * @param allocation the box allocated to a `ClutterAlctor`
          */
         get_content_box(allocation: Clutter.ActorBox): Clutter.ActorBox;
+
         /**
          * Generically looks up a property containing a single numeric value
          *  without units.
-         *
+         * 
          * See also `st_theme_node_lookup_double()`, which provides more options,
          * and lets you handle the case where the theme does not specify the
          * indicated value.
@@ -6700,78 +6756,91 @@ export namespace St {
          * @returns the value found. If `property_name` is not  found, a warning will be logged and 0 will be returned.
          */
         get_double(property_name: string): number;
+
         /**
          * Get the list of element classes for `node`.
          * @returns the element's classes
          */
         get_element_classes(): string[];
+
         /**
          * Get the unique element ID for `node`.
          * @returns the element's ID
          */
         get_element_id(): string;
+
         /**
          * Get the element {@link GObject.GType} for `node`.
          * @returns the element type
          */
         get_element_type(): GObject.GType;
+
         /**
          * Get the current font of `node` as a {@link Pango.FontDescription}
          * @returns the current font
          */
         get_font(): Pango.FontDescription;
+
         /**
          * Get the CSS font-features for `node`.
          * @returns font-features as a string
          */
         get_font_features(): string;
+
         /**
          * Gets `node`'s foreground color.
          */
         get_foreground_color(): Clutter.Color;
+
         /**
          * Get the height for `node`, in physical pixels.
          * @returns the height in physical pixels
          */
         get_height(): number;
+
         /**
          * Gets the total horizontal padding (left + right padding), in physical pixels.
          * @returns the total horizontal padding in physical pixels
          */
         get_horizontal_padding(): number;
+
         /**
          * Gets the colors that should be used for colorizing symbolic icons according
          * the style of this node.
          * @returns the icon colors to use for this theme node
          */
         get_icon_colors(): IconColors;
+
         /**
          * Get the icon style for `node` (eg. symbolic, regular). This corresponds to the
          * special `-st-icon-style` CSS property.
          * @returns the icon style for `node`
          */
         get_icon_style(): IconStyle;
+
         /**
          * Generically looks up a property containing a single length value. When
          * specific getters (like `st_theme_node_get_border_width()`) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * Unlike `st_theme_node_get_color()` and `st_theme_node_get_double()`,
          * this does not print a warning if the property is not found; it just
          * returns 0.
-         *
+         * 
          * See also `st_theme_node_lookup_length()`, which provides more options. The
          * returned value is in physical pixels, as opposed to logical pixels.
          * @param property_name The name of the length property
          * @returns the length, in pixels, or 0 if the property was not found.
          */
         get_length(property_name: string): number;
+
         /**
          * Gets the value for the letter-spacing style property, in physical pixels.
          * @returns the value of the letter-spacing property, if   found, or zero if such property has not been found.
          */
         get_letter_spacing(): number;
+
         /**
          * Get the margin for `node` on `side`, in physical pixels. This corresponds to
          * the CSS properties such as `margin-top`.
@@ -6779,35 +6848,42 @@ export namespace St {
          * @returns the margin size in physical pixels
          */
         get_margin(side: Side): number;
+
         /**
          * Get the maximum height for `node`, in physical pixels.
          * @returns the maximum height in physical pixels
          */
         get_max_height(): number;
+
         /**
          * Get the maximum width for `node`, in physical pixels.
          * @returns the maximum width in physical pixels
          */
         get_max_width(): number;
+
         /**
          * Get the minimum height for `node`, in physical pixels.
          * @returns the minimum height in physical pixels
          */
         get_min_height(): number;
+
         /**
          * Get the minimum width for `node`, in physical pixels.
          * @returns the minimum width in physical pixels
          */
         get_min_width(): number;
+
         /**
          * Gets the color of `node`'s outline.
          */
         get_outline_color(): Clutter.Color;
+
         /**
          * Get the width of the outline for `node`, in physical pixels.
          * @returns the width in physical pixels
          */
         get_outline_width(): number;
+
         /**
          * Get the padding for `node` on `side`, in physical pixels. This corresponds to
          * the CSS properties such as `padding-top`.
@@ -6815,6 +6891,7 @@ export namespace St {
          * @returns the padding size in physical pixels
          */
         get_padding(side: Side): number;
+
         /**
          * Gets the box used to paint the actor, including the area occupied
          * by properties which paint outside the actor's assigned allocation.
@@ -6823,50 +6900,58 @@ export namespace St {
          * @param allocation the box allocated to a {@link Clutter.Actor}
          */
         get_paint_box(allocation: Clutter.ActorBox): Clutter.ActorBox;
+
         /**
          * Gets the parent themed element node.
          * @returns the parent {@link St.ThemeNode}, or `null` if  this is the root node of the tree of theme elements.
          */
-        get_parent(): ThemeNode | null;
+        get_parent(): (ThemeNode | null);
+
         /**
          * Get the list of pseudo-classes for `node` (eg. `:focused`).
          * @returns the element's pseudo-classes
          */
         get_pseudo_classes(): string[];
+
         /**
          * Generically looks up a property containing a set of shadow values. When
          * specific getters (like `st_theme_node_get_box_shadow()`) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * Like `st_theme_get_length()`, this does not print a warning if the property is
          * not found; it just returns `null`
-         *
+         * 
          * See also st_theme_node_lookup_shadow (), which provides more options.
          * @param property_name The name of the shadow property
          * @returns the shadow, or `null` if the property was   not found.
          */
-        get_shadow(property_name: string): Shadow | null;
+        get_shadow(property_name: string): (Shadow | null);
+
         /**
          * Get the text alignment of `node`.
          * @returns the alignment of text for `node`
          */
         get_text_align(): TextAlign;
+
         /**
          * Get the text decoration for `node` (eg. underline, line-through, etc).
          * @returns the text decoration for `node`
          */
         get_text_decoration(): TextDecoration;
+
         /**
          * Gets the value for the text-shadow style property
          * @returns the node's text-shadow, or `null`   if node has no text-shadow
          */
-        get_text_shadow(): Shadow | null;
+        get_text_shadow(): (Shadow | null);
+
         /**
          * Gets the theme stylesheet set that styles this node
          * @returns the theme stylesheet set
          */
         get_theme(): Theme;
+
         /**
          * Get the value of the transition-duration property, which
          * specifies the transition time between the previous {@link St.ThemeNode}
@@ -6874,82 +6959,93 @@ export namespace St {
          * @returns the node's transition duration in milliseconds
          */
         get_transition_duration(): number;
+
         /**
          * Looks up a property containing a single URL value.
-         *
+         * 
          * See also `st_theme_node_lookup_url()`, which provides more options,
          * and lets you handle the case where the theme does not specify the
          * indicated value.
          * @param property_name The name of the string property
          * @returns the newly allocated value if found.  If `property_name` is not found, a warning will be logged and `null`  will be returned.
          */
-        get_url(property_name: string): Gio.File | null;
+        get_url(property_name: string): (Gio.File | null);
+
         /**
          * Gets the total vertical padding (top + bottom padding), in physical pixels.
          * @returns the total vertical padding in physical pixels
          */
         get_vertical_padding(): number;
+
         /**
          * Get the width for `node`, in physical pixels.
          * @returns the width in physical pixels
          */
         get_width(): number;
+
         /**
          * Converts `node` to a hash value.
          * @returns a hash value corresponding to `node`
          */
         hash(): number;
+
         invalidate_background_image(): void;
+
         invalidate_border_image(): void;
+
         /**
          * Generically looks up a property containing a single color value. When
          * specific getters (like `st_theme_node_get_background_color()`) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * See also `st_theme_node_get_color()`, which provides a simpler API.
          * @param property_name The name of the color property
          * @param inherit if `true`, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if `false` is passed   in for `inherit`; this only affects the default behavior for inheritance.
          * @returns `true` if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
          */
         lookup_color(property_name: string, inherit: boolean): [boolean, Clutter.Color];
+
         /**
          * Generically looks up a property containing a single numeric value
          *  without units.
-         *
+         * 
          * See also `st_theme_node_get_double()`, which provides a simpler API.
          * @param property_name The name of the numeric property
          * @param inherit if `true`, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if `false` is passed   in for `inherit`; this only affects the default behavior for inheritance.
          * @returns `true` if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
          */
         lookup_double(property_name: string, inherit: boolean): [boolean, number];
+
         /**
          * Generically looks up a property containing a single length value. When
          * specific getters (like `st_theme_node_get_border_width()`) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * See also `st_theme_node_get_length()`, which provides a simpler API.
          * @param property_name The name of the length property
          * @param inherit if `true`, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if `false` is passed   in for `inherit`; this only affects the default behavior for inheritance.
          * @returns `true` if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
          */
         lookup_length(property_name: string, inherit: boolean): [boolean, number];
+
         /**
          * If the property is not found, the value in the shadow variable will not
          * be changed.
-         *
+         * 
          * Generically looks up a property containing a set of shadow values. When
          * specific getters (like st_theme_node_get_box_shadow ()) exist, they
          * should be used instead. They are cached, so more efficient, and have
          * handling for shortcut properties and other details of CSS.
-         *
+         * 
          * See also `st_theme_node_get_shadow()`, which provides a simpler API.
          * @param property_name The name of the shadow property
          * @param inherit if `true`, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if `false` is passed   in for `inherit`; this only affects the default behavior for inheritance.
          * @returns `true` if the property was found in the properties for this   theme node (or in the properties of parent nodes when inheriting.), `false`   if the property was not found, or was explicitly set to 'none'.
          */
         lookup_shadow(property_name: string, inherit: boolean): [boolean, Shadow];
+
         /**
          * Generically looks up a property containing a single time value,
          *  which is converted to milliseconds.
@@ -6958,15 +7054,17 @@ export namespace St {
          * @returns `true` if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
          */
         lookup_time(property_name: string, inherit: boolean): [boolean, number];
+
         /**
          * Looks up a property containing a single URL value.
-         *
+         * 
          * See also `st_theme_node_get_url()`, which provides a simpler API.
          * @param property_name The name of the string property
          * @param inherit if `true`, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if `false` is passed   in for `inherit`; this only affects the default behavior for inheritance.
          * @returns `true` if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
          */
         lookup_url(property_name: string, inherit: boolean): [boolean, Gio.File];
+
         /**
          * Check if `st_theme_node_paint()` will paint identically for `node` as it does
          * for `other`. Note that in some cases this function may return `true` even
@@ -6974,7 +7072,8 @@ export namespace St {
          * @param other a different {@link St.ThemeNode}
          * @returns `true` if the two theme nodes paint identically. `false` if the   two nodes potentially paint differently.
          */
-        paint_equal(other: ThemeNode | null): boolean;
+        paint_equal(other: (ThemeNode | null)): boolean;
+
         /**
          * Serialize `node` to a string of its {@link GObject.GType} name, CSS ID, classes and
          * pseudo-classes.
@@ -6983,104 +7082,97 @@ export namespace St {
         to_string(): string;
     }
 
+
     namespace Viewport {
         // Signal signatures
         interface SignalSignatures extends Widget.SignalSignatures {
-            'notify::clip-to-view': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-view": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps,
-                Scrollable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Scrollable.ConstructorProps {
             clip_to_view: boolean;
             clipToView: boolean;
         }
@@ -7089,16 +7181,13 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class Viewport<A extends Clutter.Actor = Clutter.Actor>
-        extends Widget
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable, Scrollable
-    {
+    class Viewport<A extends Clutter.Actor = Clutter.Actor> extends Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable, Scrollable {
         static $gtype: GObject.GType<Viewport>;
 
         // Properties
-
         get clip_to_view(): boolean;
         set clip_to_view(val: boolean);
+
         get clipToView(): boolean;
         set clipToView(val: boolean);
 
@@ -7112,40 +7201,32 @@ export namespace St {
         $signals: Viewport.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The horizontal {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * JavaScript code may override this as demonstrated below:
-         *
-         *
+         * 
+         * 
          * ```javascript
          * var MyScrollable = GObject.registerClass({
          *     Properties: {
@@ -7155,54 +7236,57 @@ export namespace St {
          *         )
          *     }
          * }, class MyScrollable extends St.Scrollable {
-         *
+         * 
          *     get `hadjustment()` {
          *         return this._hadjustment || null;
          *     }
-         *
+         * 
          *     set hadjustment(adjustment) {
          *         if (this.hadjustment === adjustment)
          *             return;
-         *
+         * 
          *         this._hadjustment = adjustment;
          *         this.notify('hadjustment');
          *     }
          * });
          * ```
-         *
-         * @category Inherited from St.Scrollable
+         * 
+          * @category Inherited from St.Scrollable
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
+
         /**
          * The vertical {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * See {@link St.Scrollable.hadjustment} for an example of how to override this
          * property in JavaScript code.
-         * @category Inherited from St.Scrollable
+          * @category Inherited from St.Scrollable
          */
         get vadjustment(): Adjustment;
         set vadjustment(val: Adjustment);
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -7210,7 +7294,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -7219,38 +7304,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -7258,6 +7347,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -7265,34 +7355,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -7300,6 +7394,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -7309,33 +7404,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -7343,12 +7441,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -7356,31 +7455,35 @@ export namespace St {
          * @virtual
          */
         vfunc_remove(actor: A): void;
+
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          */
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
          * This method should be implemented by classes implementing the {@link St.Scrollable}
          * interface.
-         *
+         * 
          * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
          * method.
          * @param hadjustment the horizontal {@link St.Adjustment}
          * @param vadjustment the vertical {@link St.Adjustment}
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          * @virtual
          */
         vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
          * This method should be implemented by classes implementing the {@link St.Scrollable}
          * interface.
-         *
+         * 
          * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
          * method.
          * @param hadjustment the horizontal {@link St.Adjustment}
@@ -7390,6 +7493,7 @@ export namespace St {
         vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
 
+
     namespace Widget {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
@@ -7398,105 +7502,98 @@ export namespace St {
              * @signal
              * @run-last
              */
-            'popup-menu': () => void;
+            "popup-menu": () => void;
             /**
              * Emitted when the style information that the widget derives from the
              * theme changes
              * @signal
              * @run-last
              */
-            'style-changed': () => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hover': (pspec: GObject.ParamSpec) => void;
-            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
-            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-class': (pspec: GObject.ParamSpec) => void;
-            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "style-changed": () => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hover": (pspec: GObject.ParamSpec) => void;
+            "notify::label-actor": (pspec: GObject.ParamSpec) => void;
+            "notify::pseudo-class": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-class": (pspec: GObject.ParamSpec) => void;
+            "notify::track-hover": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             accessible_name: string;
             accessibleName: string;
             accessible_role: Atk.Role;
@@ -7508,7 +7605,7 @@ export namespace St {
             labelActor: Clutter.Actor;
             pseudo_class: string;
             pseudoClass: string;
-            style: string | null;
+            style: (string | null);
             style_class: string;
             styleClass: string;
             track_hover: boolean;
@@ -7519,44 +7616,46 @@ export namespace St {
     /**
      * @gir-type Class
      */
-    class Widget<A extends Clutter.Actor = Clutter.Actor>
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
-    {
+    class Widget<A extends Clutter.Actor = Clutter.Actor> extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Widget>;
 
         // Properties
-
         /**
          * Object instance's name for assistive technology access.
          */
         get accessible_name(): string;
         set accessible_name(val: string);
+
         /**
          * Object instance's name for assistive technology access.
          */
         get accessibleName(): string;
         set accessibleName(val: string);
+
         /**
          * The accessible role of this object
          */
         get accessible_role(): Atk.Role;
         set accessible_role(val: Atk.Role);
+
         /**
          * The accessible role of this object
          */
         get accessibleRole(): Atk.Role;
         set accessibleRole(val: Atk.Role);
+
         /**
          * Whether or not the widget can be focused via keyboard navigation.
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /**
          * Whether or not the widget can be focused via keyboard navigation.
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /**
          * Whether or not the pointer is currently hovering over the widget. This is
          * only tracked automatically if {@link St.Widget.track_hover} is `true`, but you can
@@ -7564,44 +7663,52 @@ export namespace St {
          */
         get hover(): boolean;
         set hover(val: boolean);
+
         /**
          * An actor that labels this widget.
          */
         get label_actor(): Clutter.Actor;
         set label_actor(val: Clutter.Actor);
+
         /**
          * An actor that labels this widget.
          */
         get labelActor(): Clutter.Actor;
         set labelActor(val: Clutter.Actor);
+
         /**
          * The pseudo-class of the actor. Typical values include "hover", "active",
          * "focus".
          */
         get pseudo_class(): string;
         set pseudo_class(val: string);
+
         /**
          * The pseudo-class of the actor. Typical values include "hover", "active",
          * "focus".
          */
         get pseudoClass(): string;
         set pseudoClass(val: string);
+
         /**
          * Inline style information for the actor as a ';'-separated list of
          * CSS properties.
          */
-        get style(): string | null;
-        set style(val: string | null);
+        get style(): (string | null);
+        set style(val: (string | null));
+
         /**
          * The style-class of the actor for use in styling.
          */
         get style_class(): string;
         set style_class(val: string);
+
         /**
          * The style-class of the actor for use in styling.
          */
         get styleClass(): string;
         set styleClass(val: string);
+
         /**
          * Determines whether the widget tracks pointer hover state. If
          * `true` (and the widget is visible and reactive), the
@@ -7611,6 +7718,7 @@ export namespace St {
          */
         get track_hover(): boolean;
         set track_hover(val: boolean);
+
         /**
          * Determines whether the widget tracks pointer hover state. If
          * `true` (and the widget is visible and reactive), the
@@ -7631,34 +7739,24 @@ export namespace St {
         $signals: Widget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Widget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Widget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Widget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Widget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Widget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Widget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Gets a list of the focusable children of `widget`, in "Tab"
          * order. By default, this returns all visible
@@ -7666,30 +7764,32 @@ export namespace St {
          * @virtual
          */
         vfunc_get_focus_chain(): Clutter.Actor[];
+
         /**
          * @param from the actor that the focus is coming from
          * @param direction the direction focus is moving in
          * @virtual
          */
-        vfunc_navigate_focus(from: Clutter.Actor | null, direction: DirectionType): boolean;
+        vfunc_navigate_focus(from: (Clutter.Actor | null), direction: DirectionType): boolean;
+
         /**
          * Asks the widget to pop-up a context menu by emitting {@link St.Widget.SignalSignatures.popup_menu | St.Widget::popup-menu}.
          * @virtual
          */
         vfunc_popup_menu(): void;
+
         /**
          * @virtual
          */
         vfunc_style_changed(): void;
 
         // Methods
-
         /**
          * This method adds `state` as one of the accessible states for
          * `widget`. The list of states of a widget describes the current state
          * of user interface element `widget` and is provided so that assistive
          * technologies know how to present `widget` to the user.
-         *
+         * 
          * Usually you will have no need to add accessible states for an
          * object, as the accessible object can extract most of the states
          * from the object itself (ie: a {@link St.Button} knows when it is pressed).
@@ -7700,41 +7800,48 @@ export namespace St {
          * @param state {@link Atk.StateType} state to add
          */
         add_accessible_state(state: Atk.StateType): void;
+
         /**
          * Adds `style_class` to `actor`'s style class name list, if it is not
          * already present.
          * @param style_class a style class name string
          */
         add_style_class_name(style_class: string): void;
+
         /**
          * Adds `pseudo_class` to `actor`'s pseudo class list, if it is not
          * already present.
          * @param pseudo_class a pseudo class string
          */
         add_style_pseudo_class(pseudo_class: string): void;
+
         /**
          * Ensures that `widget` has read its style information and propagated any
          * changes to its children.
          */
         ensure_style(): void;
+
         /**
          * Gets the accessible name for this widget. See
          * `st_widget_set_accessible_name()` for more information.
          * @returns a character string representing the accessible name of the widget.
          */
         get_accessible_name(): string;
+
         /**
          * Gets the {@link Atk.Role} for this widget. See
          * `st_widget_set_accessible_role()` for more information.
          * @returns accessible {@link Atk.Role} for this widget
          */
         get_accessible_role(): Atk.Role;
+
         /**
          * Returns the current value of the can-focus property. See
          * `st_widget_set_can_focus()` for more information.
          * @returns current value of can-focus on `widget`
          */
         get_can_focus(): boolean;
+
         /**
          * Gets a list of the focusable children of `widget`, in "Tab"
          * order. By default, this returns all visible
@@ -7742,68 +7849,78 @@ export namespace St {
          * @returns `widget`'s focusable children
          */
         get_focus_chain(): Clutter.Actor[];
+
         /**
          * If {@link St.Widget.track_hover} is set, this returns whether the pointer
          * is currently over the widget.
          * @returns current value of hover on `widget`
          */
         get_hover(): boolean;
+
         /**
          * Gets the label that identifies `widget` if it is defined
          * @returns the label that identifies the widget
          */
         get_label_actor(): Clutter.Actor;
+
         /**
          * Get the current inline style string. See `st_widget_set_style()`.
          * @returns The inline style string, or `null`. The   string is owned by the {@link St.Widget} and should not be modified or freed.
          */
-        get_style(): string | null;
+        get_style(): (string | null);
+
         /**
          * Get the current style class name
          * @returns the class name string. The string is owned by the {@link St.Widget} and should not be modified or freed.
          */
         get_style_class_name(): string;
+
         /**
          * Get the current style pseudo class list.
-         *
+         * 
          * Note that an actor can have multiple pseudo classes; if you just
          * want to test for the presence of a specific pseudo class, use
          * `st_widget_has_style_pseudo_class()`.
          * @returns the pseudo class list string. The string is owned by the {@link St.Widget} and should not be modified or freed.
          */
         get_style_pseudo_class(): string;
+
         /**
          * Gets the theme node holding style information for the widget.
          * The theme node is used to access standard and custom CSS
          * properties of the widget.
-         *
+         * 
          * Note: it is a fatal error to call this on a widget that is
          *  not been added to a stage.
          * @returns the theme node for the widget.   This is owned by the widget. When attributes of the widget   or the environment that affect the styling change (for example   the style_class property of the widget), it will be recreated,   and the ::style-changed signal will be emitted on the widget.
          */
         get_theme_node(): ThemeNode;
+
         /**
          * Returns the current value of the {@link St.Widget.track_hover} property. See
          * `st_widget_set_track_hover()` for more information.
          * @returns current value of track-hover on `widget`
          */
         get_track_hover(): boolean;
+
         /**
          * Tests if `actor`'s style class list includes `style_class`.
          * @param style_class a style class string
          * @returns whether or not `actor`'s style class list includes `style_class`.
          */
         has_style_class_name(style_class: string): boolean;
+
         /**
          * Tests if `actor`'s pseudo class list includes `pseudo_class`.
          * @param pseudo_class a pseudo class string
          * @returns whether or not `actor`'s pseudo class list includes `pseudo_class`.
          */
         has_style_pseudo_class(pseudo_class: string): boolean;
+
         /**
          * Tries to update the keyboard focus within `widget` in response to a
          * keyboard event.
-         *
+         * 
          * If `from` is a descendant of `widget`, this attempts to move the
          * keyboard focus to the next descendant of `widget` (in the order
          * implied by `direction`) that has the {@link St.Widget.can_focus} property
@@ -7812,16 +7929,16 @@ export namespace St {
          * `direction`. If `from` is outside of `widget`, it behaves as if it was
          * a descendant if `direction` is one of the directional arrows and as
          * if it was `null` otherwise.
-         *
+         * 
          * If a container type is marked {@link St.Widget.can_focus}, the expected
          * behavior is that it will only take up a single slot on the focus
          * chain as a whole, rather than allowing navigation between its child
          * actors (or having a distinction between itself being focused and
          * one of its children being focused).
-         *
+         * 
          * Some widget classes might have slightly different behavior from the
          * above, where that would make more sense.
-         *
+         * 
          * If `wrap_around` is `true` and `from` is a child of `widget`, but the
          * widget has no further children that can accept the focus in the
          * given direction, then `st_widget_navigate_focus()` will try a second
@@ -7832,14 +7949,16 @@ export namespace St {
          * @param wrap_around whether focus should wrap around
          * @returns `true` if `clutter_actor_grab_key_focus()` has been called on an actor. `false` if not.
          */
-        navigate_focus(from: Clutter.Actor | null, direction: DirectionType, wrap_around: boolean): boolean;
+        navigate_focus(from: (Clutter.Actor | null), direction: DirectionType, wrap_around: boolean): boolean;
+
         /**
          * Paint the background of the widget. This is meant to be called by
          * subclasses of StWidget that need to paint the background without
          * painting children.
-         * @param paint_context
+         * @param paint_context 
          */
         paint_background(paint_context: Clutter.PaintContext): void;
+
         /**
          * Returns the theme node for the widget if it has already been
          * computed, `null` if the widget hasn't been added to a  stage or the theme
@@ -7848,46 +7967,52 @@ export namespace St {
          * @returns the theme node for the widget.   This is owned by the widget. When attributes of the widget   or the environment that affect the styling change (for example   the style_class property of the widget), it will be recreated,   and the ::style-changed signal will be emitted on the widget.
          */
         peek_theme_node(): ThemeNode;
+
         /**
          * Asks the widget to pop-up a context menu by emitting {@link St.Widget.SignalSignatures.popup_menu | St.Widget::popup-menu}.
          */
         popup_menu(): void;
+
         /**
          * This method removes `state` as on of the accessible states for
          * `widget`. See `st_widget_add_accessible_state()` for more information.
          * @param state {@link Atk.State} state to remove
          */
         remove_accessible_state(state: Atk.StateType): void;
+
         /**
          * Removes `style_class` from `actor`'s style class name, if it is
          * present.
          * @param style_class a style class name string
          */
         remove_style_class_name(style_class: string): void;
+
         /**
          * Removes `pseudo_class` from `actor`'s pseudo class, if it is present.
          * @param pseudo_class a pseudo class string
          */
         remove_style_pseudo_class(pseudo_class: string): void;
+
         /**
          * This method allows to set a customly created accessible object to
          * this widget. For example if you define a new subclass of
          * {@link St.WidgetAccessible} at the javascript code.
-         *
+         * 
          * NULL is a valid value for `accessible`. That contemplates the
          * hypothetical case of not needing anymore a custom accessible object
          * for the widget. Next call of `st_widget_get_accessible()` would
          * create and return a default accessible.
-         *
+         * 
          * It assumes that the call to atk_object_initialize that bound the
          * gobject with the custom accessible object was already called, so
          * not a responsibility of this method.
          * @param accessible an accessible ({@link Atk.Object})
          */
         set_accessible(accessible: Atk.Object): void;
+
         /**
          * This method sets `name` as the accessible name for `widget`.
-         *
+         * 
          * Usually you will have no need to set the accessible name for an
          * object, as usually there is a label for most of the interface
          * elements. So in general it is better to just use
@@ -7896,13 +8021,14 @@ export namespace St {
          * object.
          * @param name a character string to be set as the accessible name
          */
-        set_accessible_name(name: string | null): void;
+        set_accessible_name(name: (string | null)): void;
+
         /**
          * This method sets `role` as the accessible role for `widget`. This
          * role describes what kind of user interface element `widget` is and
          * is provided so that assistive technologies know how to present
          * `widget` to the user.
-         *
+         * 
          * Usually you will have no need to set the accessible role for an
          * object, as this information is extracted from the context of the
          * object (ie: a {@link St.Button} has by default a push button role). This
@@ -7911,28 +8037,31 @@ export namespace St {
          * used in an unusual way (ie: a {@link St.Button} used as a togglebutton), or
          * if a generic object is used directly (ie: a container as a menu
          * item).
-         *
+         * 
          * If `role` is #ATK_ROLE_INVALID, the role will not be changed
          * and the accessible's default role will be used instead.
          * @param role The role to use
          */
         set_accessible_role(role: Atk.Role): void;
+
         /**
          * Marks `widget` as being able to receive keyboard focus via
          * keyboard navigation.
          * @param can_focus `true` if the widget can receive keyboard focus   via keyboard navigation
          */
         set_can_focus(can_focus: boolean): void;
+
         /**
          * Sets `widget`'s hover property and adds or removes "hover" from its
          * pseudo class accordingly.
-         *
+         * 
          * If you have set {@link St.Widget.track_hover}, you should not need to call
          * this directly. You can call `st_widget_sync_hover()` if the hover
          * state might be out of sync due to another actor's pointer grab.
          * @param hover whether the pointer is hovering over the widget
          */
         set_hover(hover: boolean): void;
+
         /**
          * Sets `label` as the {@link Clutter.Actor} that identifies (labels)
          * `widget`. `label` can be `null` to indicate that `widget` is not
@@ -7940,13 +8069,15 @@ export namespace St {
          * @param label a {@link Clutter.Actor}
          */
         set_label_actor(label: Clutter.Actor): void;
+
         /**
          * Set the inline style string for this widget. The inline style string is an
          * optional ';'-separated list of CSS properties that override the style as
          * determined from the stylesheets of the current theme.
          * @param style a inline style string, or `null`
          */
-        set_style(style: string | null): void;
+        set_style(style: (string | null)): void;
+
         /**
          * Set the style class name list. `style_class_list` can either be
          * `null`, for no classes, or a space-separated list of style class
@@ -7954,7 +8085,8 @@ export namespace St {
          * `st_widget_remove_style_class_name()`.
          * @param style_class_list a new style class list string
          */
-        set_style_class_name(style_class_list: string | null): void;
+        set_style_class_name(style_class_list: (string | null)): void;
+
         /**
          * Set the style pseudo class list. `pseudo_class_list` can either be
          * `null`, for no classes, or a space-separated list of pseudo class
@@ -7962,16 +8094,17 @@ export namespace St {
          * `st_widget_remove_style_pseudo_class()`.
          * @param pseudo_class_list a new pseudo class list string
          */
-        set_style_pseudo_class(pseudo_class_list: string | null): void;
+        set_style_pseudo_class(pseudo_class_list: (string | null)): void;
+
         /**
          * Enables hover tracking on the {@link St.Widget}.
-         *
+         * 
          * If hover tracking is enabled, and the widget is visible and
          * reactive, then `widget`'s {@link St.Widget.hover} property will be updated
          * automatically to reflect whether the pointer is in `widget` (or one
          * of its children), and `widget`'s {@link St.Widget.pseudo_class} will have
          * the "hover" class added and removed from it accordingly.
-         *
+         * 
          * Note that currently it is not possible to correctly track the hover
          * state when another actor has a pointer grab. You can use
          * `st_widget_sync_hover()` to update the property manually in this
@@ -7979,39 +8112,45 @@ export namespace St {
          * @param track_hover `true` if the widget should track the pointer hover state
          */
         set_track_hover(track_hover: boolean): void;
+
         style_changed(): void;
+
         /**
          * Sets `widget`'s hover state according to the current pointer
          * position. This can be used to ensure that it is correct after
          * (or during) a pointer grab.
          */
         sync_hover(): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -8019,23 +8158,27 @@ export namespace St {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -8043,26 +8186,24 @@ export namespace St {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -8070,23 +8211,25 @@ export namespace St {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: A): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -8094,7 +8237,8 @@ export namespace St {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: A, property: string, value: GObject.Value | any): void;
+        child_get_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -8103,38 +8247,42 @@ export namespace St {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: A, property: string, value: GObject.Value | any): void;
+        child_set_property(child: A, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: A): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -8142,6 +8290,7 @@ export namespace St {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): A;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -8149,34 +8298,38 @@ export namespace St {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}s
          */
         get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: A): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: A): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -8184,6 +8337,7 @@ export namespace St {
          * @virtual
          */
         vfunc_add(actor: A): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -8193,33 +8347,36 @@ export namespace St {
          * @virtual
          */
         vfunc_child_notify(child: A, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: A): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: A): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -8227,12 +8384,13 @@ export namespace St {
          * @virtual
          */
         vfunc_get_child_meta(actor: A): Clutter.ChildMeta;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -8240,11 +8398,13 @@ export namespace St {
          * @virtual
          */
         vfunc_remove(actor: A): void;
+
         /**
          * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -8254,7 +8414,8 @@ export namespace St {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8262,22 +8423,25 @@ export namespace St {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using {@link Clutter.Scriptable.set_id}.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -8288,6 +8452,7 @@ export namespace St {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8297,10 +8462,11 @@ export namespace St {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Script}.
@@ -8310,32 +8476,33 @@ export namespace St {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace WidgetAccessible {
         // Signal signatures
         interface SignalSignatures extends Cally.Actor.SignalSignatures {
-            'notify::accessible-component-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-component-mdi-zorder': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-help-text': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-hypertext-nlinks': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-id': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-caption-object': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-column-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-description': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-row-header': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-table-summary': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-value': (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-help-text": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-hypertext-nlinks": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-id": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-caption-object": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-column-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-description": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-row-header": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-table-summary": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Cally.Actor.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps {
 
-        interface ConstructorProps
-            extends Cally.Actor.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps {}
+        }
     }
 
     /**
@@ -8354,54 +8521,49 @@ export namespace St {
         $signals: WidgetAccessible.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WidgetAccessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WidgetAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAccessible.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WidgetAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WidgetAccessible.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WidgetAccessible.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WidgetAccessible.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WidgetAccessible.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WidgetAccessible.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WidgetAccessible.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WidgetAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WidgetAccessible.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WidgetAccessible.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @returns `true` if success, `false` otherwise
          */
         do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): string | null;
+        get_description(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.get_description
         get_description(...args: never[]): any;
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -8414,7 +8576,7 @@ export namespace St {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -8422,13 +8584,15 @@ export namespace St {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): string | null;
+        get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): string | null;
+        get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -8436,6 +8600,7 @@ export namespace St {
          * @returns a the number of actions, or 0 if `action` does not implement this interface.
          */
         get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -8446,7 +8611,7 @@ export namespace St {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -8454,12 +8619,14 @@ export namespace St {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): string | null;
+        get_name(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.get_name
         get_name(...args: never[]): any;
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -8467,35 +8634,40 @@ export namespace St {
          * @returns a gboolean representing if the description was successfully set;
          */
         set_description(i: number, desc: string): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Atk.Object.set_description
         set_description(...args: never[]): any;
+
         /**
          * Perform the specified action on the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
         vfunc_do_action(i: number): boolean;
+
         /**
          * Returns a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): string | null;
+        vfunc_get_description(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_get_description
         vfunc_get_description(...args: never[]): any;
+
         /**
          * Gets the keybinding which can be used to activate this action, if one
          * exists. The string returned should contain localized, human-readable,
          * key sequences as they would appear when displayed on screen. It must
          * be in the format "mnemonic;sequence;shortcut".
-         *
+         * 
          * - The mnemonic key activates the object if it is presently enabled onscreen.
          *   This typically corresponds to the underlined letter within the widget.
          *   Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
@@ -8508,7 +8680,7 @@ export namespace St {
          * - The shortcut, if it exists, will invoke the same action without showing
          *   the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
          *   traditional "New..." menu item.
-         *
+         * 
          * Example: For a traditional "New..." menu item, the expected return value
          * would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
          * for the German locale. If, hypothetically, this menu item lacked a mnemonic,
@@ -8516,13 +8688,15 @@ export namespace St {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): string | null;
+        vfunc_get_keybinding(i: number): (string | null);
+
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): string | null;
+        vfunc_get_localized_name(i: number): (string | null);
+
         /**
          * Gets the number of accessible actions available on the object.
          * If there are more than one, the first one is considered the
@@ -8530,6 +8704,7 @@ export namespace St {
          * @virtual
          */
         vfunc_get_n_actions(): number;
+
         /**
          * Returns a non-localized string naming the specified action of the
          * object. This name is generally not descriptive of the end result
@@ -8540,7 +8715,7 @@ export namespace St {
          * "click", "press", "release", "drag", "drop", "popup", etc.
          * The "popup" action should be used to pop up a context menu for the
          * object, if one exists.
-         *
+         * 
          * For technical reasons, some toolkits cannot guarantee that the
          * reported action is actually 'bound' to a nontrivial user event;
          * i.e. the result of some actions via `atk_action_do_action()` may be
@@ -8548,13 +8723,15 @@ export namespace St {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): string | null;
+        vfunc_get_name(i: number): (string | null);
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_get_name
         vfunc_get_name(...args: never[]): any;
+
         /**
          * Sets a description of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
@@ -8562,15 +8739,17 @@ export namespace St {
          * @virtual
          */
         vfunc_set_description(i: number, desc: string): boolean;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Atk.Object.vfunc_set_description
         vfunc_set_description(...args: never[]): any;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -8580,6 +8759,7 @@ export namespace St {
          * @returns `true` or `false` indicating whether the specified point is within the extent of the `component` or not
          */
         contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -8587,46 +8767,53 @@ export namespace St {
          * @returns An alpha value from 0 to 1.0, inclusive.
          */
         get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_extents(coord_type: Atk.CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @returns an {@link Atk.Layer} which is the layer of the component
          */
         get_layer(): Atk.Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @returns a gint which is the zorder of the component, i.e. the depth at which the component is shown in relation to other components in the same container.
          */
         get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          */
         get_position(coord_type: Atk.CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          */
         get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @returns `true` if successful, `false` otherwise.
          */
         grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -8635,7 +8822,8 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -8643,9 +8831,10 @@ export namespace St {
          * @param handler_id the handler id of the focus handler to be removed from `component`
          */
         remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -8653,6 +8842,7 @@ export namespace St {
          * @returns whether scrolling was successful.
          */
         scroll_to(type: Atk.ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -8662,6 +8852,7 @@ export namespace St {
          * @returns whether scrolling was successful.
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -8672,9 +8863,10 @@ export namespace St {
          * @returns `true` or `false` whether the extents were set or not
          */
         set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -8683,6 +8875,7 @@ export namespace St {
          * @returns `true` or `false` whether or not the position was set or not
          */
         set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -8690,14 +8883,16 @@ export namespace St {
          * @returns `true` or `false` whether the size was set or not
          */
         set_size(width: number, height: number): boolean;
+
         /**
-         * @param bounds
+         * @param bounds 
          * @virtual
          */
         vfunc_bounds_changed(bounds: Atk.Rectangle): void;
+
         /**
          * Checks whether the specified point is within the extent of the `component`.
-         *
+         * 
          * Toolkit implementor note: ATK provides a default implementation for
          * this virtual method. In general there are little reason to
          * re-implement it.
@@ -8707,6 +8902,7 @@ export namespace St {
          * @virtual
          */
         vfunc_contains(x: number, y: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
@@ -8714,49 +8910,56 @@ export namespace St {
          * @virtual
          */
         vfunc_get_alpha(): number;
+
         /**
          * Gets the rectangle which gives the extent of the `component`.
-         *
+         * 
          * If the extent can not be obtained (e.g. a non-embedded plug or missing
          * support), all of x, y, width, height are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_extents(coord_type: Atk.CoordType): [number, number, number, number];
+
         /**
          * Gets the layer of the component.
          * @virtual
          */
         vfunc_get_layer(): Atk.Layer;
+
         /**
          * Gets the zorder of the component. The value G_MININT will be returned
          * if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
+
         /**
          * Gets the position of `component` in the form of
          * a point specifying `component`'s top-left corner.
-         *
+         * 
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
+
         /**
          * Gets the size of the `component` in terms of width and height.
-         *
+         * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
          * @virtual
          */
         vfunc_get_size(): [number, number];
+
         /**
          * Grabs focus for this `component`.
          * @virtual
          */
         vfunc_grab_focus(): boolean;
+
         /**
          * Gets a reference to the accessible child, if one exists, at the
          * coordinate point specified by `x` and `y`.
@@ -8765,7 +8968,8 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+
         /**
          * Remove the handler specified by `handler_id` from the list of
          * functions to be executed when this object receives focus events
@@ -8774,9 +8978,10 @@ export namespace St {
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
+
         /**
          * Makes `component` visible on the screen by scrolling all necessary parents.
-         *
+         * 
          * Contrary to atk_component_set_position, this does not actually move
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
@@ -8784,6 +8989,7 @@ export namespace St {
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
+
         /**
          * Move the top-left of `component` to a given position of the screen by
          * scrolling all necessary parents.
@@ -8793,6 +8999,7 @@ export namespace St {
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
+
         /**
          * Sets the extents of `component`.
          * @param x x coordinate
@@ -8803,9 +9010,10 @@ export namespace St {
          * @virtual
          */
         vfunc_set_extents(x: number, y: number, width: number, height: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Sets the position of `component`.
-         *
+         * 
          * Contrary to atk_component_scroll_to, this does not trigger any scrolling,
          * this just moves `component` in its parent.
          * @param x x coordinate
@@ -8814,6 +9022,7 @@ export namespace St {
          * @virtual
          */
         vfunc_set_position(x: number, y: number, coord_type: Atk.CoordType): boolean;
+
         /**
          * Set the size of the `component` in terms of width and height.
          * @param width width to set for `component`
@@ -8823,22 +9032,27 @@ export namespace St {
         vfunc_set_size(width: number, height: number): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AdjustmentClass = typeof Adjustment;
+
     /**
      * @gir-type Alias
      */
     type BinClass = typeof Bin;
+
     /**
      * @gir-type Alias
      */
     type BorderImageClass = typeof BorderImage;
+
     /**
      * @gir-type Alias
      */
     type BoxLayoutClass = typeof BoxLayout;
+
     /**
      * @gir-type Struct
      */
@@ -8846,26 +9060,32 @@ export namespace St {
         static $gtype: GObject.GType<BoxLayoutPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ButtonClass = typeof Button;
+
     /**
      * @gir-type Alias
      */
     type ClipboardClass = typeof Clipboard;
+
     /**
      * @gir-type Alias
      */
     type DrawingAreaClass = typeof DrawingArea;
+
     /**
      * @gir-type Alias
      */
     type EntryClass = typeof Entry;
+
     /**
      * @gir-type Alias
      */
     type FocusManagerClass = typeof FocusManager;
+
     /**
      * @gir-type Struct
      */
@@ -8873,10 +9093,12 @@ export namespace St {
         static $gtype: GObject.GType<FocusManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GenericAccessibleClass = typeof GenericAccessible;
+
     /**
      * @gir-type Struct
      */
@@ -8884,10 +9106,12 @@ export namespace St {
         static $gtype: GObject.GType<GenericAccessiblePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IconClass = typeof Icon;
+
     /**
      * The {@link St.IconColors} structure encapsulates colors for colorizing a symbolic
      * icon.
@@ -8897,29 +9121,29 @@ export namespace St {
         static $gtype: GObject.GType<IconColors>;
 
         // Fields
-
         ref_count: number;
+
         foreground: Clutter.Color;
+
         warning: Clutter.Color;
+
         error: Clutter.Color;
+
         success: Clutter.Color;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                ref_count: number;
-                foreground: Clutter.Color;
-                warning: Clutter.Color;
-                error: Clutter.Color;
-                success: Clutter.Color;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            ref_count: number;
+            foreground: Clutter.Color;
+            warning: Clutter.Color;
+            error: Clutter.Color;
+            success: Clutter.Color;
+        }>);
 
-        static ['new'](): IconColors;
+        static ["new"](): IconColors;
 
         // Methods
-
         /**
          * Creates a new StIconColors structure that is a copy of the passed
          * in `colors`. You would use this function instead of `st_icon_colors_ref()`
@@ -8927,17 +9151,20 @@ export namespace St {
          * @returns a newly created {@link St.IconColors}.
          */
         copy(): IconColors;
+
         /**
          * Check if two {@link St.IconColors} objects are identical.
          * @param other another {@link St.IconColors}
          * @returns `true` if the {@link St.IconColors} are equal
          */
         equal(other: IconColors): boolean;
+
         /**
          * Atomically increments the reference count of `colors` by one.
          * @returns the passed in {@link St.IconColors}.
          */
         ref(): IconColors;
+
         /**
          * Atomically decrements the reference count of `colors` by one.
          * If the reference count drops to 0, all memory allocated by the
@@ -8946,6 +9173,7 @@ export namespace St {
         unref(): void;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -8953,14 +9181,17 @@ export namespace St {
         static $gtype: GObject.GType<IconPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ImageContentClass = typeof ImageContent;
+
     /**
      * @gir-type Alias
      */
     type LabelClass = typeof Label;
+
     /**
      * @gir-type Struct
      */
@@ -8968,22 +9199,27 @@ export namespace St {
         static $gtype: GObject.GType<LabelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PasswordEntryClass = typeof PasswordEntry;
+
     /**
      * @gir-type Alias
      */
     type ScrollBarClass = typeof ScrollBar;
+
     /**
      * @gir-type Alias
      */
     type ScrollViewClass = typeof ScrollView;
+
     /**
      * @gir-type Alias
      */
     type ScrollViewFadeClass = typeof ScrollViewFade;
+
     /**
      * @gir-type Struct
      */
@@ -8991,14 +9227,17 @@ export namespace St {
         static $gtype: GObject.GType<ScrollViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ScrollableInterface = typeof Scrollable;
+
     /**
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
     /**
      * Attributes of the -st-shadow property.
      * @gir-type Struct
@@ -9007,40 +9246,35 @@ export namespace St {
         static $gtype: GObject.GType<Shadow>;
 
         // Fields
-
         color: Clutter.Color;
+
         xoffset: number;
+
         yoffset: number;
+
         blur: number;
+
         spread: number;
+
         inset: boolean;
+
         ref_count: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                color: Clutter.Color;
-                xoffset: number;
-                yoffset: number;
-                blur: number;
-                spread: number;
-                inset: boolean;
-                ref_count: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            color: Clutter.Color;
+            xoffset: number;
+            yoffset: number;
+            blur: number;
+            spread: number;
+            inset: boolean;
+            ref_count: number;
+        }>);
 
-        static ['new'](
-            color: Clutter.Color,
-            xoffset: number,
-            yoffset: number,
-            blur: number,
-            spread: number,
-            inset: boolean,
-        ): Shadow;
+        static ["new"](color: Clutter.Color, xoffset: number, yoffset: number, blur: number, spread: number, inset: boolean): Shadow;
 
         // Methods
-
         /**
          * Check if two shadow objects are identical. Note that two shadows may
          * compare non-identically if they differ only by floating point rounding
@@ -9049,6 +9283,7 @@ export namespace St {
          * @returns `true` if the two shadows are identical
          */
         equal(other: Shadow): boolean;
+
         /**
          * Gets the box used to paint `shadow`, which will be partly
          * outside of `actor_box`
@@ -9056,11 +9291,13 @@ export namespace St {
          * @param shadow_box computed box occupied by `shadow`
          */
         get_box(actor_box: Clutter.ActorBox, shadow_box: Clutter.ActorBox): void;
+
         /**
          * Atomically increments the reference count of `shadow` by one.
          * @returns the passed in {@link St.Shadow}.
          */
         ref(): Shadow;
+
         /**
          * Atomically decrements the reference count of `shadow` by one.
          * If the reference count drops to 0, all memory allocated by the
@@ -9069,6 +9306,7 @@ export namespace St {
         unref(): void;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -9076,21 +9314,21 @@ export namespace St {
         static $gtype: GObject.GType<ShadowHelper>;
 
         // Constructors
-
         constructor(shadow: Shadow);
 
-        static ['new'](shadow: Shadow): ShadowHelper;
+        static ["new"](shadow: Shadow): ShadowHelper;
 
         // Methods
-
         /**
          * @returns a copy of `helper`
          */
         copy(): ShadowHelper;
+
         /**
          * Free resources associated with `helper`.
          */
         free(): void;
+
         /**
          * Paints the shadow associated with `helper` This must only
          * be called from the implementation of ClutterActor::paint().
@@ -9099,6 +9337,7 @@ export namespace St {
          * @param paint_opacity the opacity at which the shadow is painted
          */
         paint(framebuffer: Cogl.Framebuffer, actor_box: Clutter.ActorBox, paint_opacity: number): void;
+
         /**
          * Update `helper` from `source`.
          * @param source a {@link Clutter.Actor}
@@ -9106,10 +9345,12 @@ export namespace St {
         update(source: Clutter.Actor): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TextureCacheClass = typeof TextureCache;
+
     /**
      * @gir-type Struct
      */
@@ -9117,18 +9358,22 @@ export namespace St {
         static $gtype: GObject.GType<TextureCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ThemeClass = typeof Theme;
+
     /**
      * @gir-type Alias
      */
     type ThemeContextClass = typeof ThemeContext;
+
     /**
      * @gir-type Alias
      */
     type ThemeNodeClass = typeof ThemeNode;
+
     /**
      * @gir-type Struct
      */
@@ -9136,45 +9381,60 @@ export namespace St {
         static $gtype: GObject.GType<ThemeNodePaintState>;
 
         // Fields
-
         node: ThemeNode;
+
         alloc_width: number;
+
         alloc_height: number;
+
         box_shadow_width: number;
+
         box_shadow_height: number;
+
         resource_scale: number;
+
         box_shadow_pipeline: Cogl.Pipeline;
+
         prerendered_texture: Cogl.Pipeline;
+
         prerendered_pipeline: Cogl.Pipeline;
+
         corner_material: Cogl.Pipeline[];
 
         // Methods
-
         /**
-         * @param other
+         * @param other 
          */
         copy(other: ThemeNodePaintState): void;
+
         free(): void;
+
         init(): void;
+
         invalidate(): void;
+
         /**
-         * @param file
+         * @param file 
          */
         invalidate_for_file(file: Gio.File): boolean;
+
         /**
-         * @param node
+         * @param node 
          */
         set_node(node: ThemeNode): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ViewportClass = typeof Viewport;
+
     /**
      * @gir-type Alias
      */
     type WidgetAccessibleClass = typeof WidgetAccessible;
+
     /**
      * @gir-type Struct
      */
@@ -9182,28 +9442,31 @@ export namespace St {
         static $gtype: GObject.GType<WidgetAccessiblePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WidgetClass = typeof Widget;
+
     namespace Scrollable {
         /**
          * Interface for implementing Scrollable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param hadjustment
-             * @param vadjustment
+             * @param hadjustment 
+             * @param vadjustment 
              * @virtual
              */
             vfunc_get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
             /**
              * This method should be implemented by classes implementing the {@link St.Scrollable}
              * interface.
-             *
+             * 
              * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
              * method.
              * @param hadjustment the horizontal {@link St.Adjustment}
@@ -9213,8 +9476,8 @@ export namespace St {
             vfunc_set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             hadjustment: Adjustment;
             vadjustment: Adjustment;
@@ -9229,17 +9492,17 @@ export namespace St {
      * @gir-type Interface
      */
     interface Scrollable extends GObject.Object, Scrollable.Interface {
-        // Properties
 
+        // Properties
         /**
          * The horizontal {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * JavaScript code may override this as demonstrated below:
-         *
-         *
+         * 
+         * 
          * ```javascript
          * var MyScrollable = GObject.registerClass({
          *     Properties: {
@@ -9249,30 +9512,31 @@ export namespace St {
          *         )
          *     }
          * }, class MyScrollable extends St.Scrollable {
-         *
+         * 
          *     get `hadjustment()` {
          *         return this._hadjustment || null;
          *     }
-         *
+         * 
          *     set hadjustment(adjustment) {
          *         if (this.hadjustment === adjustment)
          *             return;
-         *
+         * 
          *         this._hadjustment = adjustment;
          *         this.notify('hadjustment');
          *     }
          * });
          * ```
-         *
+         * 
          */
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
+
         /**
          * The vertical {@link St.Adjustment} used by the {@link St.Scrollable}.
-         *
+         * 
          * Implementations should override this property to provide read-write
          * access to the {@link St.Adjustment}.
-         *
+         * 
          * See {@link St.Scrollable.hadjustment} for an example of how to override this
          * property in JavaScript code.
          */
@@ -9280,16 +9544,16 @@ export namespace St {
         set vadjustment(val: Adjustment);
 
         // Methods
-
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          */
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
          * This method should be implemented by classes implementing the {@link St.Scrollable}
          * interface.
-         *
+         * 
          * JavaScript code should do this by overriding the `vfunc_set_adjustments()`
          * method.
          * @param hadjustment the horizontal {@link St.Adjustment}
@@ -9297,6 +9561,7 @@ export namespace St {
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
     }
+
 
     export const Scrollable: ScrollableNamespace & {
         new (): Scrollable; // This allows `obj instanceof Scrollable`
@@ -9307,6 +9572,7 @@ export namespace St {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

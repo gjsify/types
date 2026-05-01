@@ -1,3 +1,4 @@
+
 import type BudgieRaven30 from '@girs/budgieraven-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

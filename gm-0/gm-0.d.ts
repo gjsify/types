@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Gm {
+
     /**
      * Gm-0
      */
+
 
     /**
      * @gir-type Enum
@@ -30,6 +33,7 @@ export namespace Gm {
         BOTTOM_LEFT,
     }
 
+
     /**
      * Error codes returned by gmobile functions.
      * @gir-type Struct
@@ -38,22 +42,21 @@ export namespace Gm {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Parsing of the given data failed.
          */
         static ERROR_PARSING_FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * Read compatible machine types from
      * `sysfs_root/firmware/devicetree/base/compatible` on Linux.
      * If the path doesn't exist or host is not Linux return `null`.
-     *
+     * 
      * For debugging purposes `GMOBILE_DT_COMPATIBLES` can be set to a `:`
      * separated list of compatibles which will be returned instead.
      * @param sysfs_root Path where /sys is mounted. Defaults to `/sys` if `null` is passed.
@@ -61,35 +64,40 @@ export namespace Gm {
      * @since 0.0.1
      */
     function device_tree_get_compatibles(sysfs_root: string): string[];
+
     /**
      * Gets the GM Error Quark.
      * @returns a {@link GLib.Quark}.
      * @since 0.0.1
      */
     function error_quark(): GLib.Quark;
+
     /**
      * Call this function to initialize the library explicitly. This makes
      * the embedded device information available.
      * @since 0.0.1
      */
     function init(): void;
+
     /**
      * List device tree names of known devices.
      * @returns The devices
      * @since 0.2.2
      */
-    function list_devices(): string[] | null;
+    function list_devices(): (string[] | null);
+
     /**
      * Get the ISO 3316-1 country code based on a given mobile country
      * code (MCC). It's sufficient for the given string to have the
      * MCC as prefix. In other words it is o.k. to pass an IMSI.
-     *
+     * 
      * On error `NULL` is returned and `error` is set.
      * @param mcc The mcc
      * @returns The country code or NULL.
      * @since 0.4.0
      */
     function mcc_to_iso(mcc: string): string;
+
     /**
      * Returns the bounding box of an SVG path. As this is meant for
      * display cutouts we operate on integer (whole pixel) values.  When
@@ -104,17 +112,18 @@ export namespace Gm {
      * @since 0.0.1
      */
     function svg_path_get_bounding_box(path: string, x1: number, x2: number, y1: number, y2: number): boolean;
+
     /**
      * Sets a function to be called after a timeout with priority `priority`.
      * Correctly calculates the timeout even when the system is suspended in between.
-     *
+     * 
      * The timeout given is in terms of `CLOCK_BOOTTIME` time, it hence is also
      * correct across suspend and resume. If that doesn't matter use
      * `g_timeout_add_seconds_full` instead.
-     *
+     * 
      * Note that glib's `g_timeout_add_seconds()` doesn't take system
      * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
-     *
+     * 
      * Changed in 0.3.0: Returns 0 when timer setup failed
      * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
      * @param seconds the timeout in seconds
@@ -123,26 +132,22 @@ export namespace Gm {
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.0.1
      */
-    function timeout_add_seconds_once(
-        priority: number,
-        seconds: bigint | number,
-        _function: GLib.SourceOnceFunc,
-        notify: GLib.DestroyNotify | null,
-    ): number;
+    function timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc, notify: (GLib.DestroyNotify | null)): number;
+
     /**
      * Sets a function to be called after a timeout with the default
      * priority, `G_PRIORITY_DEFAULT`. Correctly calculates the timeout
      * even when the system is suspended in between. It will wake up the
      * system when needed.
-     *
+     * 
      * If the process doesn't have enough permissions to wake the system
      * creating the timer will fail. On Linux at least `CAP_WAKE_ALARM` capabilities
      * are needed.
-     *
+     * 
      * The timeout given is in terms of `CLOCK_BOOTTIME_ALARM` time, it hence is also
      * correct across suspend and resume. If that doesn't matter use
      * `g_timeout_add_seconds` instead.
-     *
+     * 
      * Note that glib's `g_timeout_add_seconds()` doesn't take system
      * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
      * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
@@ -152,22 +157,17 @@ export namespace Gm {
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.3.0
      */
-    function wakeup_timeout_add_seconds_once(
-        priority: number,
-        seconds: bigint | number,
-        _function: GLib.SourceOnceFunc,
-        notify: GLib.DestroyNotify | null,
-    ): number;
+    function wakeup_timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc, notify: (GLib.DestroyNotify | null)): number;
+
     namespace Cutout {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bounds': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "notify::bounds": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             bounds: Rect;
             name: string;
@@ -177,7 +177,7 @@ export namespace Gm {
 
     /**
      * A display cutout or notch.
-     *
+     * 
      * A display cutout is an area of a display that is not usable for
      * rendering e.g.  because a camera or speaker is placed there. This
      * includes so called "notches".  The are needs to be avoided when
@@ -193,13 +193,13 @@ export namespace Gm {
         static $gtype: GObject.GType<Cutout>;
 
         // Properties
-
         /**
          * Rectangular bounds of the cutout
          * @since 0.0.2
          * @read-only
          */
         get bounds(): Rect;
+
         /**
          * A name identifying the cutout.
          * @since 0.0.2
@@ -207,6 +207,7 @@ export namespace Gm {
          * @default null
          */
         get name(): string;
+
         /**
          * The SVG path that describes the display cutout or notch.
          * @since 0.0.2
@@ -225,46 +226,38 @@ export namespace Gm {
         $signals: Cutout.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Cutout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string): Cutout;
+        static ["new"](path: string): Cutout;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Cutout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Cutout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Cutout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Cutout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Cutout.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Cutout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Cutout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Cutout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the bounding box of the cutout.
          * @returns The bounding box.
          */
         get_bounds(): Rect;
+
         /**
          * The name of the cutout.
          * @returns The cutout's name.
          */
         get_name(): string;
+
         /**
          * Gets the SVG path describing the shape of the cutout.
          * @returns The cutout's shape as SVG path
@@ -272,14 +265,14 @@ export namespace Gm {
         get_path(): string;
     }
 
+
     namespace DeviceInfo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::compatibles': (pspec: GObject.ParamSpec) => void;
+            "notify::compatibles": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             compatibles: string[];
         }
@@ -287,10 +280,10 @@ export namespace Gm {
 
     /**
      * Get device dependent information.
-     *
+     * 
      * Allows to query device dependent information from different
      * sources (currently we only look a the built-in gresources).
-     *
+     * 
      * The lookups are currently based on device tree compatibles.
      * See {@link device_tree_get_compatibles}.
      * @gir-type Class
@@ -300,7 +293,6 @@ export namespace Gm {
         static $gtype: GObject.GType<DeviceInfo>;
 
         // Properties
-
         /**
          * The compatibles to look up device information for.
          * @since 0.0.1
@@ -318,36 +310,26 @@ export namespace Gm {
         $signals: DeviceInfo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](compatibles: string): DeviceInfo;
+        static ["new"](compatibles: string): DeviceInfo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceInfo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets display panel information. Queries the database for the best
          * matching panel based on the device's compatibles.
@@ -356,21 +338,21 @@ export namespace Gm {
         get_display_panel(): DisplayPanel;
     }
 
+
     namespace DisplayPanel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::border-radius': (pspec: GObject.ParamSpec) => void;
-            'notify::corner-radii': (pspec: GObject.ParamSpec) => void;
-            'notify::cutouts': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x-res': (pspec: GObject.ParamSpec) => void;
-            'notify::y-res': (pspec: GObject.ParamSpec) => void;
+            "notify::border-radius": (pspec: GObject.ParamSpec) => void;
+            "notify::corner-radii": (pspec: GObject.ParamSpec) => void;
+            "notify::cutouts": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x-res": (pspec: GObject.ParamSpec) => void;
+            "notify::y-res": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             border_radius: number;
             borderRadius: number;
@@ -397,7 +379,6 @@ export namespace Gm {
         static $gtype: GObject.GType<DisplayPanel>;
 
         // Properties
-
         /**
          * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
@@ -406,6 +387,7 @@ export namespace Gm {
          */
         get border_radius(): number;
         set border_radius(val: number);
+
         /**
          * The corner radius of the panel edges in device pixels.
          * @since 0.0.1
@@ -414,6 +396,7 @@ export namespace Gm {
          */
         get borderRadius(): number;
         set borderRadius(val: number);
+
         /**
          * The radii of the panels corner starting top-left and going
          * clockwise.
@@ -421,6 +404,7 @@ export namespace Gm {
          */
         get corner_radii(): any[];
         set corner_radii(val: any[]);
+
         /**
          * The radii of the panels corner starting top-left and going
          * clockwise.
@@ -428,12 +412,14 @@ export namespace Gm {
          */
         get cornerRadii(): any[];
         set cornerRadii(val: any[]);
+
         /**
          * The display cutouts as {@link Gio.ListModel} of {@link Cutout}.
          * @since 0.0.1
          */
         get cutouts(): Gio.ListStore;
         set cutouts(val: Gio.ListStore);
+
         /**
          * The display height in millimeters
          * @since 0.0.1
@@ -441,6 +427,7 @@ export namespace Gm {
          */
         get height(): number;
         set height(val: number);
+
         /**
          * The name of the display
          * @since 0.0.1
@@ -448,6 +435,7 @@ export namespace Gm {
          */
         get name(): string;
         set name(val: string);
+
         /**
          * The display width in millimeters
          * @since 0.0.1
@@ -455,6 +443,7 @@ export namespace Gm {
          */
         get width(): number;
         set width(val: number);
+
         /**
          * The panel resolution in pixels in the x direction
          * @since 0.0.1
@@ -462,6 +451,7 @@ export namespace Gm {
          */
         get x_res(): number;
         set x_res(val: number);
+
         /**
          * The panel resolution in pixels in the x direction
          * @since 0.0.1
@@ -469,6 +459,7 @@ export namespace Gm {
          */
         get xRes(): number;
         set xRes(val: number);
+
         /**
          * The panel resolution in pixels in the y direction
          * @since 0.0.1
@@ -476,6 +467,7 @@ export namespace Gm {
          */
         get y_res(): number;
         set y_res(val: number);
+
         /**
          * The panel resolution in pixels in the y direction
          * @since 0.0.1
@@ -494,40 +486,30 @@ export namespace Gm {
         $signals: DisplayPanel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DisplayPanel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DisplayPanel;
+        static ["new"](): DisplayPanel;
 
         static new_from_data(data: string): DisplayPanel;
 
         static new_from_resource(resource_name: string): DisplayPanel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DisplayPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DisplayPanel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DisplayPanel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DisplayPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DisplayPanel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DisplayPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DisplayPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DisplayPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the panels border radius. 0 indicates rectangular corners. If
          * top and bottom border radius are different then this matches the
@@ -535,37 +517,44 @@ export namespace Gm {
          * @returns The panel's border radius.
          */
         get_border_radius(): number;
+
         /**
          * Gets the panels border radii starting with the top-left corner
          * clockwise.
          * @returns The panel's border radii.
          */
         get_corner_radii(): number[];
+
         /**
          * Get the display cutouts.
          * @returns The display cutouts
          */
         get_cutouts(): Gio.ListModel;
+
         /**
          * Gets the panels height in mm.
          * @returns The panel's height.
          */
         get_height(): number;
+
         /**
          * Gets the panel's name.
          * @returns The panel's name
          */
         get_name(): string;
+
         /**
          * Gets the panels width in mm.
          * @returns The panel's width.
          */
         get_width(): number;
+
         /**
          * Gets the panels resolution (in pixels) in the x direction
          * @returns The x resolution.
          */
         get_x_res(): number;
+
         /**
          * Gets the panels resolution (in pixels) in the y direction.
          * @returns The y resolution.
@@ -573,21 +562,25 @@ export namespace Gm {
         get_y_res(): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CutoutClass = typeof Cutout;
+
     /**
      * @gir-type Alias
      */
     type DeviceInfoClass = typeof DeviceInfo;
+
     /**
      * @gir-type Alias
      */
     type DisplayPanelClass = typeof DisplayPanel;
+
     /**
      * A rectangle.
-     *
+     * 
      * Similar to GdkRectangle but we don't want to pull in gtk/gdk.
      * @gir-type Struct
      * @since 0.0.1
@@ -596,29 +589,31 @@ export namespace Gm {
         static $gtype: GObject.GType<Rect>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type Gegl04 from '@girs/gegl-0.4';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

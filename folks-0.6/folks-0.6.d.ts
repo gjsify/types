@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type Gee from '@girs/gee-0.8';
 
 export namespace Folks {
+
     /**
      * Folks-0.6
      */
+
 
     /**
      * @gir-type Enum
@@ -37,6 +40,7 @@ export namespace Folks {
         FEMALE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -51,6 +55,7 @@ export namespace Folks {
         NONE,
         PERSONAS,
     }
+
 
     /**
      * @gir-type Enum
@@ -67,6 +72,7 @@ export namespace Folks {
         PARTIAL,
         FULL,
     }
+
 
     /**
      * @gir-type Enum
@@ -107,6 +113,7 @@ export namespace Folks {
         EXTENDED_INFO,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -127,6 +134,7 @@ export namespace Folks {
         MIN,
         MAX,
     }
+
 
     /**
      * @gir-type Enum
@@ -150,6 +158,7 @@ export namespace Folks {
         ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -166,6 +175,7 @@ export namespace Folks {
         TRUE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -173,13 +183,12 @@ export namespace Folks {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_IM_ADDRESS: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -188,20 +197,23 @@ export namespace Folks {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static ADD_FAILED: number;
+
         /**
          * @deprecated since 0.6.2.1
          */
         static NO_WRITEABLE_STORE: number;
+
         static STORE_OFFLINE: number;
+
         static PROPERTY_NOT_WRITEABLE: number;
+
         static NO_PRIMARY_STORE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -210,20 +222,26 @@ export namespace Folks {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_ARGUMENT: number;
+
         static CREATE_FAILED: number;
+
         static UNSUPPORTED_ON_USER: number;
+
         static STORE_OFFLINE: number;
+
         static READ_ONLY: number;
+
         static PERMISSION_DENIED: number;
+
         static REMOVE_FAILED: number;
+
         static UNSUPPORTED_ON_NON_USER: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -232,16 +250,18 @@ export namespace Folks {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static NOT_WRITEABLE: number;
+
         static INVALID_VALUE: number;
+
         static UNKNOWN_ERROR: number;
+
         static UNAVAILABLE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -268,20 +288,20 @@ export namespace Folks {
         SEPARATED,
     }
 
+
     namespace AbstractFieldDetails {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             t_type: GObject.GTypeInput;
             tType: GObject.GTypeInput;
@@ -304,43 +324,52 @@ export namespace Folks {
         static $gtype: GObject.GType<AbstractFieldDetails>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get t_type(): GObject.GType;
+
         /**
          * @construct-only
          */
         get tType(): GObject.GType;
+
         /**
          * @construct-only
          */
         get t_dup_func(): GObject.BoxedCopyFunc;
+
         /**
          * @construct-only
          */
         get tDupFunc(): GObject.BoxedCopyFunc;
+
         /**
          * @construct-only
          */
         get t_destroy_func(): GLib.DestroyNotify;
+
         /**
          * @construct-only
          */
         get tDestroyFunc(): GLib.DestroyNotify;
+
         get value(): any;
         set value(val: any);
+
         /**
          * @read-only
          */
         get value_type(): GObject.GType;
+
         /**
          * @read-only
          */
         get valueType(): GObject.GType;
+
         get id(): string;
         set id(val: string);
+
         get parameters(): Gee.MultiMap;
         set parameters(val: Gee.MultiMap);
 
@@ -354,157 +383,171 @@ export namespace Folks {
         $signals: AbstractFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AbstractFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param left
-         * @param right
+         * @param left 
+         * @param right 
          */
         static equal_static(left: AbstractFieldDetails, right: AbstractFieldDetails): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         static hash_static(value: AbstractFieldDetails): number;
 
         // Virtual methods
-
         /**
-         * @param that
+         * @param that 
          * @virtual
          */
         vfunc_equal(that: AbstractFieldDetails): boolean;
+
         /**
-         * @param that
+         * @param that 
          * @virtual
          */
         vfunc_parameters_equal(that: AbstractFieldDetails): boolean;
+
         /**
-         * @param that
+         * @param that 
          * @virtual
          */
         vfunc_values_equal(that: AbstractFieldDetails): boolean;
+
         /**
          * @virtual
          */
         vfunc_hash(): number;
+
         /**
          * @virtual
          */
         vfunc_get_value(): any;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_value(value: any): void;
+
         /**
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_id(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_parameters(value: Gee.MultiMap): void;
 
         // Methods
-
         /**
-         * @param parameter_name
+         * @param parameter_name 
          */
         get_parameter_values(parameter_name: string): Gee.Collection;
+
         /**
-         * @param parameter_name
-         * @param parameter_value
+         * @param parameter_name 
+         * @param parameter_value 
          */
         add_parameter(parameter_name: string, parameter_value: string): void;
+
         /**
-         * @param parameter_name
-         * @param parameter_value
+         * @param parameter_name 
+         * @param parameter_value 
          */
         set_parameter(parameter_name: string, parameter_value: string): void;
+
         /**
-         * @param additional
+         * @param additional 
          */
         extend_parameters(additional: Gee.MultiMap): void;
+
         /**
-         * @param parameter_name
+         * @param parameter_name 
          */
         remove_parameter_all(parameter_name: string): void;
+
         /**
-         * @param that
+         * @param that 
          */
         equal(that: AbstractFieldDetails): boolean;
+
         /**
-         * @param that
+         * @param that 
          */
         parameters_equal(that: AbstractFieldDetails): boolean;
+
         /**
-         * @param that
+         * @param that 
          */
         values_equal(that: AbstractFieldDetails): boolean;
+
         hash(): number;
+
         get_value(): any;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: any): void;
+
         get_value_type(): GObject.GType;
+
         get_id(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_id(value: string): void;
+
         get_parameters(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: Gee.MultiMap): void;
     }
 
+
     namespace AvatarCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -523,104 +566,102 @@ export namespace Folks {
         $signals: AvatarCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AvatarCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AvatarCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AvatarCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static dup(): AvatarCache;
 
         // Methods
-
         /**
-         * @param id
+         * @param id 
          */
         load_avatar(id: string): globalThis.Promise<Gio.LoadableIcon>;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
         load_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
-        load_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.LoadableIcon> | void;
+        load_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.LoadableIcon> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon;
+
         /**
-         * @param id
-         * @param avatar
+         * @param id 
+         * @param avatar 
          */
         store_avatar(id: string, avatar: Gio.LoadableIcon): globalThis.Promise<string>;
+
         /**
-         * @param id
-         * @param avatar
-         * @param _callback_
+         * @param id 
+         * @param avatar 
+         * @param _callback_ 
          */
         store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param id
-         * @param avatar
-         * @param _callback_
+         * @param id 
+         * @param avatar 
+         * @param _callback_ 
          */
-        store_avatar(
-            id: string,
-            avatar: Gio.LoadableIcon,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<string> | void;
+        store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         store_avatar_finish(_res_: Gio.AsyncResult): string;
+
         /**
-         * @param id
+         * @param id 
          */
         remove_avatar(id: string): globalThis.Promise<void>;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
         remove_avatar(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
-        remove_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_avatar_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param id
+         * @param id 
          */
         build_uri_for_avatar(id: string): string;
     }
+
 
     namespace BackendStore {
         // Signal signatures
@@ -628,13 +669,12 @@ export namespace Folks {
             /**
              * @signal
              */
-            'backend-available': (arg0: Backend) => void;
-            'notify::enabled-backends': (pspec: GObject.ParamSpec) => void;
-            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
+            "backend-available": (arg0: Backend) => void;
+            "notify::enabled-backends": (pspec: GObject.ParamSpec) => void;
+            "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             enabled_backends: Gee.Map;
             enabledBackends: Gee.Map;
@@ -650,13 +690,15 @@ export namespace Folks {
         static $gtype: GObject.GType<BackendStore>;
 
         // Properties
-
         get enabled_backends(): Gee.Map;
         set enabled_backends(val: Gee.Map);
+
         get enabledBackends(): Gee.Map;
         set enabledBackends(val: Gee.Map);
+
         get is_prepared(): boolean;
         set is_prepared(val: boolean);
+
         get isPrepared(): boolean;
         set isPrepared(val: boolean);
 
@@ -670,116 +712,125 @@ export namespace Folks {
         $signals: BackendStore.SignalSignatures;
 
         // Fields
-
         folks_backend_store_KEY_FILE_GROUP_ALL_OTHERS: string;
 
         // Constructors
-
         constructor(properties?: Partial<BackendStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackendStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackendStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackendStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackendStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackendStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackendStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackendStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackendStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackendStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static dup(): BackendStore;
 
         // Methods
-
         prepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        prepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
+
         load_backends(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         load_backends(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        load_backends(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        load_backends(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         load_backends_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param backend
+         * @param backend 
          */
         add_backend(backend: Backend): void;
+
         /**
-         * @param name
+         * @param name 
          */
         dup_backend_by_name(name: string): Backend;
+
         list_backends(): Gee.Collection;
+
         /**
-         * @param name
+         * @param name 
          */
         enable_backend(name: string): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         enable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        enable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        enable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         enable_backend_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param name
+         * @param name 
          */
         disable_backend(name: string): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         disable_backend(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        disable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        disable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         disable_backend_finish(_res_: Gio.AsyncResult): void;
+
         get_enabled_backends(): Gee.Map;
+
         get_is_prepared(): boolean;
     }
+
 
     namespace Backend {
         // Signal signatures
@@ -787,19 +838,18 @@ export namespace Folks {
             /**
              * @signal
              */
-            'persona-store-added': (arg0: PersonaStore) => void;
+            "persona-store-added": (arg0: PersonaStore) => void;
             /**
              * @signal
              */
-            'persona-store-removed': (arg0: PersonaStore) => void;
-            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
-            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::persona-stores': (pspec: GObject.ParamSpec) => void;
+            "persona-store-removed": (arg0: PersonaStore) => void;
+            "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
+            "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::persona-stores": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_prepared: boolean;
             isPrepared: boolean;
@@ -818,31 +868,36 @@ export namespace Folks {
         static $gtype: GObject.GType<Backend>;
 
         // Properties
-
         /**
          * @read-only
          */
         get is_prepared(): boolean;
+
         /**
          * @read-only
          */
         get isPrepared(): boolean;
+
         /**
          * @read-only
          */
         get is_quiescent(): boolean;
+
         /**
          * @read-only
          */
         get isQuiescent(): boolean;
+
         /**
          * @read-only
          */
         get name(): string;
+
         /**
          * @read-only
          */
         get persona_stores(): Gee.Map;
+
         /**
          * @read-only
          */
@@ -858,131 +913,145 @@ export namespace Folks {
         $signals: Backend.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param store
+         * @param store 
          * @virtual
          */
         vfunc_disable_persona_store(store: PersonaStore): void;
+
         /**
-         * @param store
+         * @param store 
          * @virtual
          */
         vfunc_enable_persona_store(store: PersonaStore): void;
+
         /**
-         * @param storeids
+         * @param storeids 
          * @virtual
          */
         vfunc_set_persona_stores(storeids: Gee.Set): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_prepare_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_unprepare_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_is_prepared(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_quiescent(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * @virtual
          */
         vfunc_get_persona_stores(): Gee.Map;
 
         // Methods
-
         /**
-         * @param store
+         * @param store 
          */
         disable_persona_store(store: PersonaStore): void;
+
         /**
-         * @param store
+         * @param store 
          */
         enable_persona_store(store: PersonaStore): void;
+
         /**
-         * @param storeids
+         * @param storeids 
          */
         set_persona_stores(storeids: Gee.Set): void;
+
         prepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        prepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
+
         unprepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
+
         get_is_prepared(): boolean;
+
         get_is_quiescent(): boolean;
+
         get_name(): string;
+
         get_persona_stores(): Gee.Map;
     }
+
 
     namespace Debug {
         // Signal signatures
@@ -990,13 +1059,12 @@ export namespace Folks {
             /**
              * @signal
              */
-            'print-status': () => void;
-            'notify::colour-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::debug-output-enabled': (pspec: GObject.ParamSpec) => void;
+            "print-status": () => void;
+            "notify::colour-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::debug-output-enabled": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             colour_enabled: boolean;
             colourEnabled: boolean;
@@ -1012,13 +1080,15 @@ export namespace Folks {
         static $gtype: GObject.GType<Debug>;
 
         // Properties
-
         get colour_enabled(): boolean;
         set colour_enabled(val: boolean);
+
         get colourEnabled(): boolean;
         set colourEnabled(val: boolean);
+
         get debug_output_enabled(): boolean;
         set debug_output_enabled(val: boolean);
+
         get debugOutputEnabled(): boolean;
         set debugOutputEnabled(val: boolean);
 
@@ -1032,73 +1102,71 @@ export namespace Folks {
         $signals: Debug.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Debug.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Debug.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Debug.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Debug.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Debug.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Debug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Debug.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Debug.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static dup(): Debug;
+
         /**
-         * @param debug_flags
-         * @param colour_enabled
+         * @param debug_flags 
+         * @param colour_enabled 
          */
         static dup_with_flags(debug_flags: string, colour_enabled: boolean): Debug;
 
         // Methods
-
         emit_print_status(): void;
+
         indent(): void;
+
         unindent(): void;
+
         get_colour_enabled(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_colour_enabled(value: boolean): void;
+
         get_debug_output_enabled(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_debug_output_enabled(value: boolean): void;
     }
 
+
     namespace EmailFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -1117,50 +1185,43 @@ export namespace Folks {
         $signals: EmailFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EmailFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): EmailFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): EmailFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EmailFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EmailFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EmailFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EmailFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EmailFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EmailFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EmailFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EmailFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EmailFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ExtendedFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -1179,52 +1240,43 @@ export namespace Folks {
         $signals: ExtendedFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ExtendedFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): ExtendedFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): ExtendedFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ExtendedFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ExtendedFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ExtendedFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ExtendedFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ExtendedFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ExtendedFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ExtendedFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ImFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -1243,34 +1295,26 @@ export namespace Folks {
         $signals: ImFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): ImFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): ImFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace IndividualAggregator {
         // Signal signatures
@@ -1279,27 +1323,20 @@ export namespace Folks {
              * @signal
              * @deprecated since 0.6.2
              */
-            'individuals-changed': (
-                arg0: Gee.Set,
-                arg1: Gee.Set,
-                arg2: string,
-                arg3: Persona,
-                arg4: GroupDetailsChangeReason,
-            ) => void;
+            "individuals-changed": (arg0: Gee.Set, arg1: Gee.Set, arg2: string, arg3: Persona, arg4: GroupDetailsChangeReason) => void;
             /**
              * @signal
              */
-            'individuals-changed-detailed': (arg0: Gee.MultiMap) => void;
-            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
-            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-store': (pspec: GObject.ParamSpec) => void;
-            'notify::backend-store': (pspec: GObject.ParamSpec) => void;
-            'notify::individuals': (pspec: GObject.ParamSpec) => void;
-            'notify::user': (pspec: GObject.ParamSpec) => void;
+            "individuals-changed-detailed": (arg0: Gee.MultiMap) => void;
+            "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
+            "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-store": (pspec: GObject.ParamSpec) => void;
+            "notify::backend-store": (pspec: GObject.ParamSpec) => void;
+            "notify::individuals": (pspec: GObject.ParamSpec) => void;
+            "notify::user": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_prepared: boolean;
             isPrepared: boolean;
@@ -1321,41 +1358,49 @@ export namespace Folks {
         static $gtype: GObject.GType<IndividualAggregator>;
 
         // Properties
-
         /**
          * @read-only
          */
         get is_prepared(): boolean;
+
         /**
          * @read-only
          */
         get isPrepared(): boolean;
+
         /**
          * @read-only
          */
         get is_quiescent(): boolean;
+
         /**
          * @read-only
          */
         get isQuiescent(): boolean;
+
         /**
          * @read-only
          */
         get primary_store(): PersonaStore;
+
         /**
          * @read-only
          */
         get primaryStore(): PersonaStore;
+
         /**
          * @construct-only
          */
         get backend_store(): BackendStore;
+
         /**
          * @construct-only
          */
         get backendStore(): BackendStore;
+
         get individuals(): Gee.Map;
         set individuals(val: Gee.Map);
+
         get user(): Individual;
         set user(val: Individual);
 
@@ -1369,259 +1414,257 @@ export namespace Folks {
         $signals: IndividualAggregator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<IndividualAggregator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): IndividualAggregator;
+        static ["new"](): IndividualAggregator;
 
         static with_backend_store(store: BackendStore): IndividualAggregator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IndividualAggregator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IndividualAggregator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IndividualAggregator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IndividualAggregator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndividualAggregator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IndividualAggregator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IndividualAggregator.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof IndividualAggregator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndividualAggregator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static dup(): IndividualAggregator;
+
         /**
-         * @param store
+         * @param store 
          */
         static dup_with_backend_store(store: BackendStore): IndividualAggregator;
 
         // Methods
-
         prepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        prepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
+
         unprepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param matchee
-         * @param min_threshold
+         * @param matchee 
+         * @param min_threshold 
          */
         get_potential_matches(matchee: Individual, min_threshold: MatchResult): Gee.Map;
+
         /**
-         * @param min_threshold
+         * @param min_threshold 
          */
         get_all_potential_matches(min_threshold: MatchResult): Gee.Map;
+
         /**
-         * @param parent
-         * @param persona_store
-         * @param details
+         * @param parent 
+         * @param persona_store 
+         * @param details 
          */
-        add_persona_from_details(
-            parent: Individual,
-            persona_store: PersonaStore,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-        ): globalThis.Promise<Persona>;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): globalThis.Promise<Persona>;
+
         /**
-         * @param parent
-         * @param persona_store
-         * @param details
-         * @param _callback_
+         * @param parent 
+         * @param persona_store 
+         * @param details 
+         * @param _callback_ 
          */
-        add_persona_from_details(
-            parent: Individual,
-            persona_store: PersonaStore,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param parent
-         * @param persona_store
-         * @param details
-         * @param _callback_
+         * @param parent 
+         * @param persona_store 
+         * @param details 
+         * @param _callback_ 
          */
-        add_persona_from_details(
-            parent: Individual,
-            persona_store: PersonaStore,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Persona> | void;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Persona> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
+
         /**
-         * @param individual
+         * @param individual 
          */
         remove_individual(individual: Individual): globalThis.Promise<void>;
+
         /**
-         * @param individual
-         * @param _callback_
+         * @param individual 
+         * @param _callback_ 
          */
         remove_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param individual
-         * @param _callback_
+         * @param individual 
+         * @param _callback_ 
          */
-        remove_individual(
-            individual: Individual,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        remove_individual(individual: Individual, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_individual_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param persona
+         * @param persona 
          */
         remove_persona(persona: Persona): globalThis.Promise<void>;
+
         /**
-         * @param persona
-         * @param _callback_
+         * @param persona 
+         * @param _callback_ 
          */
         remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param persona
-         * @param _callback_
+         * @param persona 
+         * @param _callback_ 
          */
-        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_persona_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param personas
+         * @param personas 
          */
         link_personas(personas: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param personas
-         * @param _callback_
+         * @param personas 
+         * @param _callback_ 
          */
         link_personas(personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param personas
-         * @param _callback_
+         * @param personas 
+         * @param _callback_ 
          */
-        link_personas(personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        link_personas(personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         link_personas_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param individual
+         * @param individual 
          */
         unlink_individual(individual: Individual): globalThis.Promise<void>;
+
         /**
-         * @param individual
-         * @param _callback_
+         * @param individual 
+         * @param _callback_ 
          */
         unlink_individual(individual: Individual, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param individual
-         * @param _callback_
+         * @param individual 
+         * @param _callback_ 
          */
-        unlink_individual(
-            individual: Individual,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        unlink_individual(individual: Individual, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unlink_individual_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param individual
-         * @param property_name
+         * @param individual 
+         * @param property_name 
          */
-        ensure_individual_property_writeable(
-            individual: Individual,
-            property_name: string,
-        ): globalThis.Promise<Persona>;
+        ensure_individual_property_writeable(individual: Individual, property_name: string): globalThis.Promise<Persona>;
+
         /**
-         * @param individual
-         * @param property_name
-         * @param _callback_
+         * @param individual 
+         * @param property_name 
+         * @param _callback_ 
          */
-        ensure_individual_property_writeable(
-            individual: Individual,
-            property_name: string,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        ensure_individual_property_writeable(individual: Individual, property_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param individual
-         * @param property_name
-         * @param _callback_
+         * @param individual 
+         * @param property_name 
+         * @param _callback_ 
          */
-        ensure_individual_property_writeable(
-            individual: Individual,
-            property_name: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Persona> | void;
+        ensure_individual_property_writeable(individual: Individual, property_name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Persona> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona;
+
         /**
-         * @param id
+         * @param id 
          */
         look_up_individual(id: string): globalThis.Promise<Individual>;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
         look_up_individual(id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param id
-         * @param _callback_
+         * @param id 
+         * @param _callback_ 
          */
-        look_up_individual(
-            id: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Individual> | void;
+        look_up_individual(id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Individual> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         look_up_individual_finish(_res_: Gio.AsyncResult): Individual;
+
         get_is_prepared(): boolean;
+
         get_is_quiescent(): boolean;
+
         get_primary_store(): PersonaStore;
+
         get_backend_store(): BackendStore;
+
         get_individuals(): Gee.Map;
+
         get_user(): Individual;
     }
+
 
     namespace Individual {
         // Signal signatures
@@ -1633,67 +1676,44 @@ export namespace Folks {
             /**
              * @signal
              */
-            'personas-changed': (arg0: Gee.Set, arg1: Gee.Set) => void;
-            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
-            'notify::is-user': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::display-name': (pspec: GObject.ParamSpec) => void;
-            'notify::personas': (pspec: GObject.ParamSpec) => void;
-            'notify::alias': (pspec: GObject.ParamSpec) => void;
-            'notify::avatar': (pspec: GObject.ParamSpec) => void;
-            'notify::birthday': (pspec: GObject.ParamSpec) => void;
-            'notify::calendar-event-id': (pspec: GObject.ParamSpec) => void;
-            'notify::email-addresses': (pspec: GObject.ParamSpec) => void;
-            'notify::is-favourite': (pspec: GObject.ParamSpec) => void;
-            'notify::gender': (pspec: GObject.ParamSpec) => void;
-            'notify::groups': (pspec: GObject.ParamSpec) => void;
-            'notify::im-addresses': (pspec: GObject.ParamSpec) => void;
-            'notify::im-interaction-count': (pspec: GObject.ParamSpec) => void;
-            'notify::last-im-interaction-datetime': (pspec: GObject.ParamSpec) => void;
-            'notify::call-interaction-count': (pspec: GObject.ParamSpec) => void;
-            'notify::last-call-interaction-datetime': (pspec: GObject.ParamSpec) => void;
-            'notify::local-ids': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::structured-name': (pspec: GObject.ParamSpec) => void;
-            'notify::full-name': (pspec: GObject.ParamSpec) => void;
-            'notify::nickname': (pspec: GObject.ParamSpec) => void;
-            'notify::notes': (pspec: GObject.ParamSpec) => void;
-            'notify::presence-type': (pspec: GObject.ParamSpec) => void;
-            'notify::presence-message': (pspec: GObject.ParamSpec) => void;
-            'notify::client-types': (pspec: GObject.ParamSpec) => void;
-            'notify::presence-status': (pspec: GObject.ParamSpec) => void;
-            'notify::phone-numbers': (pspec: GObject.ParamSpec) => void;
-            'notify::postal-addresses': (pspec: GObject.ParamSpec) => void;
-            'notify::roles': (pspec: GObject.ParamSpec) => void;
-            'notify::urls': (pspec: GObject.ParamSpec) => void;
-            'notify::web-service-addresses': (pspec: GObject.ParamSpec) => void;
+            "personas-changed": (arg0: Gee.Set, arg1: Gee.Set) => void;
+            "notify::trust-level": (pspec: GObject.ParamSpec) => void;
+            "notify::is-user": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::personas": (pspec: GObject.ParamSpec) => void;
+            "notify::alias": (pspec: GObject.ParamSpec) => void;
+            "notify::avatar": (pspec: GObject.ParamSpec) => void;
+            "notify::birthday": (pspec: GObject.ParamSpec) => void;
+            "notify::calendar-event-id": (pspec: GObject.ParamSpec) => void;
+            "notify::email-addresses": (pspec: GObject.ParamSpec) => void;
+            "notify::is-favourite": (pspec: GObject.ParamSpec) => void;
+            "notify::gender": (pspec: GObject.ParamSpec) => void;
+            "notify::groups": (pspec: GObject.ParamSpec) => void;
+            "notify::im-addresses": (pspec: GObject.ParamSpec) => void;
+            "notify::im-interaction-count": (pspec: GObject.ParamSpec) => void;
+            "notify::last-im-interaction-datetime": (pspec: GObject.ParamSpec) => void;
+            "notify::call-interaction-count": (pspec: GObject.ParamSpec) => void;
+            "notify::last-call-interaction-datetime": (pspec: GObject.ParamSpec) => void;
+            "notify::local-ids": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::structured-name": (pspec: GObject.ParamSpec) => void;
+            "notify::full-name": (pspec: GObject.ParamSpec) => void;
+            "notify::nickname": (pspec: GObject.ParamSpec) => void;
+            "notify::notes": (pspec: GObject.ParamSpec) => void;
+            "notify::presence-type": (pspec: GObject.ParamSpec) => void;
+            "notify::presence-message": (pspec: GObject.ParamSpec) => void;
+            "notify::client-types": (pspec: GObject.ParamSpec) => void;
+            "notify::presence-status": (pspec: GObject.ParamSpec) => void;
+            "notify::phone-numbers": (pspec: GObject.ParamSpec) => void;
+            "notify::postal-addresses": (pspec: GObject.ParamSpec) => void;
+            "notify::roles": (pspec: GObject.ParamSpec) => void;
+            "notify::urls": (pspec: GObject.ParamSpec) => void;
+            "notify::web-service-addresses": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                AliasDetails.ConstructorProps,
-                AvatarDetails.ConstructorProps,
-                BirthdayDetails.ConstructorProps,
-                EmailDetails.ConstructorProps,
-                ExtendedInfo.ConstructorProps,
-                FavouriteDetails.ConstructorProps,
-                GenderDetails.ConstructorProps,
-                GroupDetails.ConstructorProps,
-                ImDetails.ConstructorProps,
-                InteractionDetails.ConstructorProps,
-                LocalIdDetails.ConstructorProps,
-                LocationDetails.ConstructorProps,
-                NameDetails.ConstructorProps,
-                NoteDetails.ConstructorProps,
-                PresenceDetails.ConstructorProps,
-                PhoneDetails.ConstructorProps,
-                PostalAddressDetails.ConstructorProps,
-                RoleDetails.ConstructorProps,
-                UrlDetails.ConstructorProps,
-                WebServiceDetails.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, AliasDetails.ConstructorProps, AvatarDetails.ConstructorProps, BirthdayDetails.ConstructorProps, EmailDetails.ConstructorProps, ExtendedInfo.ConstructorProps, FavouriteDetails.ConstructorProps, GenderDetails.ConstructorProps, GroupDetails.ConstructorProps, ImDetails.ConstructorProps, InteractionDetails.ConstructorProps, LocalIdDetails.ConstructorProps, LocationDetails.ConstructorProps, NameDetails.ConstructorProps, NoteDetails.ConstructorProps, PresenceDetails.ConstructorProps, PhoneDetails.ConstructorProps, PostalAddressDetails.ConstructorProps, RoleDetails.ConstructorProps, UrlDetails.ConstructorProps, WebServiceDetails.ConstructorProps {
             trust_level: TrustLevel;
             trustLevel: TrustLevel;
             is_user: boolean;
@@ -1708,52 +1728,35 @@ export namespace Folks {
     /**
      * @gir-type Class
      */
-    class Individual
-        extends GObject.Object
-        implements
-            AliasDetails,
-            AvatarDetails,
-            BirthdayDetails,
-            EmailDetails,
-            ExtendedInfo,
-            FavouriteDetails,
-            GenderDetails,
-            GroupDetails,
-            ImDetails,
-            InteractionDetails,
-            LocalIdDetails,
-            LocationDetails,
-            NameDetails,
-            NoteDetails,
-            PresenceDetails,
-            PhoneDetails,
-            PostalAddressDetails,
-            RoleDetails,
-            UrlDetails,
-            WebServiceDetails
-    {
+    class Individual extends GObject.Object implements AliasDetails, AvatarDetails, BirthdayDetails, EmailDetails, ExtendedInfo, FavouriteDetails, GenderDetails, GroupDetails, ImDetails, InteractionDetails, LocalIdDetails, LocationDetails, NameDetails, NoteDetails, PresenceDetails, PhoneDetails, PostalAddressDetails, RoleDetails, UrlDetails, WebServiceDetails {
         static $gtype: GObject.GType<Individual>;
 
         // Properties
-
         get trust_level(): TrustLevel;
         set trust_level(val: TrustLevel);
+
         get trustLevel(): TrustLevel;
         set trustLevel(val: TrustLevel);
+
         get is_user(): boolean;
         set is_user(val: boolean);
+
         get isUser(): boolean;
         set isUser(val: boolean);
+
         get id(): string;
         set id(val: string);
+
         /**
          * @read-only
          */
         get display_name(): string;
+
         /**
          * @read-only
          */
         get displayName(): string;
+
         get personas(): Gee.Set;
         set personas(val: Gee.Set);
 
@@ -1767,1312 +1770,1548 @@ export namespace Folks {
         $signals: Individual.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Individual.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](personas: Gee.Set): Individual;
+        static ["new"](personas: Gee.Set): Individual;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Individual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Individual.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Individual.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Individual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Individual.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Individual.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Individual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Individual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Individual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param p
+         * @param p 
          */
         has_anti_link_with_persona(p: Persona): boolean;
+
         /**
-         * @param i
+         * @param i 
          */
         has_anti_link_with_individual(i: Individual): boolean;
+
         get_trust_level(): TrustLevel;
+
         get_is_user(): boolean;
+
         get_id(): string;
+
         get_display_name(): string;
+
         get_personas(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_personas(value: Gee.Set): void;
+
         /** @category Inherited from Folks.AliasDetails */
         get alias(): string;
         set alias(val: string);
+
         /** @category Inherited from Folks.AvatarDetails */
         get avatar(): Gio.LoadableIcon;
         set avatar(val: Gio.LoadableIcon);
+
         /** @category Inherited from Folks.BirthdayDetails */
         get birthday(): GLib.DateTime;
         set birthday(val: GLib.DateTime);
+
         /** @category Inherited from Folks.BirthdayDetails */
         get calendar_event_id(): string;
         set calendar_event_id(val: string);
+
         /** @category Inherited from Folks.BirthdayDetails */
         get calendarEventId(): string;
         set calendarEventId(val: string);
+
         /** @category Inherited from Folks.EmailDetails */
         get email_addresses(): Gee.Set;
         set email_addresses(val: Gee.Set);
+
         /** @category Inherited from Folks.EmailDetails */
         get emailAddresses(): Gee.Set;
         set emailAddresses(val: Gee.Set);
+
         /** @category Inherited from Folks.FavouriteDetails */
         get is_favourite(): boolean;
         set is_favourite(val: boolean);
+
         /** @category Inherited from Folks.FavouriteDetails */
         get isFavourite(): boolean;
         set isFavourite(val: boolean);
+
         /** @category Inherited from Folks.GenderDetails */
         get gender(): Gender;
         set gender(val: Gender);
+
         /** @category Inherited from Folks.GroupDetails */
         get groups(): Gee.Set;
         set groups(val: Gee.Set);
+
         /** @category Inherited from Folks.ImDetails */
         get im_addresses(): Gee.MultiMap;
         set im_addresses(val: Gee.MultiMap);
+
         /** @category Inherited from Folks.ImDetails */
         get imAddresses(): Gee.MultiMap;
         set imAddresses(val: Gee.MultiMap);
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get im_interaction_count(): number;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get imInteractionCount(): number;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get last_im_interaction_datetime(): GLib.DateTime;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get lastImInteractionDatetime(): GLib.DateTime;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get call_interaction_count(): number;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get callInteractionCount(): number;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get last_call_interaction_datetime(): GLib.DateTime;
+
         /**
          * @read-only
-         * @category Inherited from Folks.InteractionDetails
+          * @category Inherited from Folks.InteractionDetails
          */
         get lastCallInteractionDatetime(): GLib.DateTime;
+
         /** @category Inherited from Folks.LocalIdDetails */
         get local_ids(): Gee.Set;
         set local_ids(val: Gee.Set);
+
         /** @category Inherited from Folks.LocalIdDetails */
         get localIds(): Gee.Set;
         set localIds(val: Gee.Set);
+
         /** @category Inherited from Folks.LocationDetails */
         get location(): Location;
         set location(val: Location);
+
         /** @category Inherited from Folks.NameDetails */
         get structured_name(): StructuredName;
         set structured_name(val: StructuredName);
+
         /** @category Inherited from Folks.NameDetails */
         get structuredName(): StructuredName;
         set structuredName(val: StructuredName);
+
         /** @category Inherited from Folks.NameDetails */
         get full_name(): string;
         set full_name(val: string);
+
         /** @category Inherited from Folks.NameDetails */
         get fullName(): string;
         set fullName(val: string);
+
         /** @category Inherited from Folks.NameDetails */
         get nickname(): string;
         set nickname(val: string);
+
         /** @category Inherited from Folks.NoteDetails */
         get notes(): Gee.Set;
         set notes(val: Gee.Set);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presence_type(): PresenceType;
         set presence_type(val: PresenceType);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presenceType(): PresenceType;
         set presenceType(val: PresenceType);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presence_message(): string;
         set presence_message(val: string);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presenceMessage(): string;
         set presenceMessage(val: string);
+
         /** @category Inherited from Folks.PresenceDetails */
         get client_types(): string[];
         set client_types(val: string[]);
+
         /** @category Inherited from Folks.PresenceDetails */
         get clientTypes(): string[];
         set clientTypes(val: string[]);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presence_status(): string;
         set presence_status(val: string);
+
         /** @category Inherited from Folks.PresenceDetails */
         get presenceStatus(): string;
         set presenceStatus(val: string);
+
         /** @category Inherited from Folks.PhoneDetails */
         get phone_numbers(): Gee.Set;
         set phone_numbers(val: Gee.Set);
+
         /** @category Inherited from Folks.PhoneDetails */
         get phoneNumbers(): Gee.Set;
         set phoneNumbers(val: Gee.Set);
+
         /** @category Inherited from Folks.PostalAddressDetails */
         get postal_addresses(): Gee.Set;
         set postal_addresses(val: Gee.Set);
+
         /** @category Inherited from Folks.PostalAddressDetails */
         get postalAddresses(): Gee.Set;
         set postalAddresses(val: Gee.Set);
+
         /** @category Inherited from Folks.RoleDetails */
         get roles(): Gee.Set;
         set roles(val: Gee.Set);
+
         /** @category Inherited from Folks.UrlDetails */
         get urls(): Gee.Set;
         set urls(val: Gee.Set);
+
         /** @category Inherited from Folks.WebServiceDetails */
         get web_service_addresses(): Gee.MultiMap;
         set web_service_addresses(val: Gee.MultiMap);
+
         /** @category Inherited from Folks.WebServiceDetails */
         get webServiceAddresses(): Gee.MultiMap;
         set webServiceAddresses(val: Gee.MultiMap);
+
         /**
-         * @param alias
+         * @param alias 
          */
         change_alias(alias: string): globalThis.Promise<void>;
+
         /**
-         * @param alias
-         * @param _callback_
+         * @param alias 
+         * @param _callback_ 
          */
         change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param alias
-         * @param _callback_
+         * @param alias 
+         * @param _callback_ 
          */
-        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_alias_finish(_res_: Gio.AsyncResult): void;
+
         get_alias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_alias(value: string): void;
+
         /**
-         * @param alias
-         * @param _callback_
+         * @param alias 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_alias(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_alias(value: string): void;
+
         /**
-         * @param avatar
+         * @param avatar 
          */
         change_avatar(avatar: Gio.LoadableIcon): globalThis.Promise<void>;
+
         /**
-         * @param avatar
-         * @param _callback_
+         * @param avatar 
+         * @param _callback_ 
          */
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param avatar
-         * @param _callback_
+         * @param avatar 
+         * @param _callback_ 
          */
-        change_avatar(
-            avatar: Gio.LoadableIcon,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
+
         get_avatar(): Gio.LoadableIcon;
+
         /**
-         * @param value
+         * @param value 
          */
         set_avatar(value: Gio.LoadableIcon): void;
+
         /**
-         * @param avatar
-         * @param _callback_
+         * @param avatar 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_avatar(): Gio.LoadableIcon;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_avatar(value: Gio.LoadableIcon): void;
+
         /**
-         * @param birthday
+         * @param birthday 
          */
         change_birthday(birthday: GLib.DateTime): globalThis.Promise<void>;
+
         /**
-         * @param birthday
-         * @param _callback_
+         * @param birthday 
+         * @param _callback_ 
          */
         change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param birthday
-         * @param _callback_
+         * @param birthday 
+         * @param _callback_ 
          */
-        change_birthday(
-            birthday: GLib.DateTime,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param event_id
+         * @param event_id 
          */
         change_calendar_event_id(event_id: string): globalThis.Promise<void>;
+
         /**
-         * @param event_id
-         * @param _callback_
+         * @param event_id 
+         * @param _callback_ 
          */
         change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param event_id
-         * @param _callback_
+         * @param event_id 
+         * @param _callback_ 
          */
-        change_calendar_event_id(
-            event_id: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
+
         get_birthday(): GLib.DateTime;
+
         /**
-         * @param value
+         * @param value 
          */
         set_birthday(value: GLib.DateTime): void;
+
         get_calendar_event_id(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_calendar_event_id(value: string): void;
+
         /**
-         * @param birthday
-         * @param _callback_
+         * @param birthday 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param event_id
-         * @param _callback_
+         * @param event_id 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_birthday(): GLib.DateTime;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_birthday(value: GLib.DateTime): void;
+
         /**
          * @virtual
          */
         vfunc_get_calendar_event_id(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_calendar_event_id(value: string): void;
+
         /**
-         * @param email_addresses
+         * @param email_addresses 
          */
         change_email_addresses(email_addresses: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param email_addresses
-         * @param _callback_
+         * @param email_addresses 
+         * @param _callback_ 
          */
         change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param email_addresses
-         * @param _callback_
+         * @param email_addresses 
+         * @param _callback_ 
          */
-        change_email_addresses(
-            email_addresses: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_email_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_email_addresses(value: Gee.Set): void;
+
         /**
-         * @param email_addresses
-         * @param _callback_
+         * @param email_addresses 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_email_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_email_addresses(value: Gee.Set): void;
+
         /**
-         * @param name
+         * @param name 
          */
         get_extended_field(name: string): ExtendedFieldDetails;
+
         /**
-         * @param name
-         * @param value
+         * @param name 
+         * @param value 
          */
         change_extended_field(name: string, value: ExtendedFieldDetails): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param value
-         * @param _callback_
+         * @param name 
+         * @param value 
+         * @param _callback_ 
          */
-        change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param value
-         * @param _callback_
+         * @param name 
+         * @param value 
+         * @param _callback_ 
          */
-        change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_extended_field(name: string, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param name
+         * @param name 
          */
         remove_extended_field(name: string): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_get_extended_field(name: string): ExtendedFieldDetails;
+
         /**
-         * @param name
-         * @param value
-         * @param _callback_
+         * @param name 
+         * @param value 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param is_favourite
+         * @param is_favourite 
          */
         change_is_favourite(is_favourite: boolean): globalThis.Promise<void>;
+
         /**
-         * @param is_favourite
-         * @param _callback_
+         * @param is_favourite 
+         * @param _callback_ 
          */
         change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param is_favourite
-         * @param _callback_
+         * @param is_favourite 
+         * @param _callback_ 
          */
-        change_is_favourite(
-            is_favourite: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
+
         get_is_favourite(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_favourite(value: boolean): void;
+
         /**
-         * @param is_favourite
-         * @param _callback_
+         * @param is_favourite 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_is_favourite(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_is_favourite(value: boolean): void;
+
         /**
-         * @param gender
+         * @param gender 
          */
         change_gender(gender: Gender): globalThis.Promise<void>;
+
         /**
-         * @param gender
-         * @param _callback_
+         * @param gender 
+         * @param _callback_ 
          */
         change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param gender
-         * @param _callback_
+         * @param gender 
+         * @param _callback_ 
          */
-        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
+
         get_gender(): Gender;
+
         /**
-         * @param value
+         * @param value 
          */
         set_gender(value: Gender): void;
+
         /**
-         * @param gender
-         * @param _callback_
+         * @param gender 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_gender(): Gender;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_gender(value: Gender): void;
+
         /**
-         * @param group
-         * @param is_member
+         * @param group 
+         * @param is_member 
          */
         change_group(group: string, is_member: boolean): globalThis.Promise<void>;
+
         /**
-         * @param group
-         * @param is_member
-         * @param _callback_
+         * @param group 
+         * @param is_member 
+         * @param _callback_ 
          */
         change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param group
-         * @param is_member
-         * @param _callback_
+         * @param group 
+         * @param is_member 
+         * @param _callback_ 
          */
-        change_group(
-            group: string,
-            is_member: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param groups
+         * @param groups 
          */
         change_groups(groups: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param groups
-         * @param _callback_
+         * @param groups 
+         * @param _callback_ 
          */
         change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param groups
-         * @param _callback_
+         * @param groups 
+         * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
+
         get_groups(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_groups(value: Gee.Set): void;
+
         /**
-         * @param group
-         * @param is_member
-         * @param _callback_
+         * @param group 
+         * @param is_member 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param groups
-         * @param _callback_
+         * @param groups 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_groups(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_groups(value: Gee.Set): void;
+
         /**
-         * @param im_addresses
+         * @param im_addresses 
          */
         change_im_addresses(im_addresses: Gee.MultiMap): globalThis.Promise<void>;
+
         /**
-         * @param im_addresses
-         * @param _callback_
+         * @param im_addresses 
+         * @param _callback_ 
          */
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param im_addresses
-         * @param _callback_
+         * @param im_addresses 
+         * @param _callback_ 
          */
-        change_im_addresses(
-            im_addresses: Gee.MultiMap,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_im_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_im_addresses(value: Gee.MultiMap): void;
+
         /**
-         * @param im_addresses
-         * @param _callback_
+         * @param im_addresses 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_im_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_im_addresses(value: Gee.MultiMap): void;
+
         get_im_interaction_count(): number;
+
         get_last_im_interaction_datetime(): GLib.DateTime;
+
         get_call_interaction_count(): number;
+
         get_last_call_interaction_datetime(): GLib.DateTime;
+
         /**
          * @virtual
          */
         vfunc_get_im_interaction_count(): number;
+
         /**
          * @virtual
          */
         vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
+
         /**
          * @virtual
          */
         vfunc_get_call_interaction_count(): number;
+
         /**
          * @virtual
          */
         vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
+
         /**
-         * @param local_ids
+         * @param local_ids 
          */
         change_local_ids(local_ids: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param local_ids
-         * @param _callback_
+         * @param local_ids 
+         * @param _callback_ 
          */
         change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param local_ids
-         * @param _callback_
+         * @param local_ids 
+         * @param _callback_ 
          */
-        change_local_ids(
-            local_ids: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
+
         get_local_ids(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_local_ids(value: Gee.Set): void;
+
         /**
-         * @param local_ids
-         * @param _callback_
+         * @param local_ids 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_local_ids(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_local_ids(value: Gee.Set): void;
+
         /**
-         * @param location
+         * @param location 
          */
         change_location(location: Location): globalThis.Promise<void>;
+
         /**
-         * @param location
-         * @param _callback_
+         * @param location 
+         * @param _callback_ 
          */
         change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param location
-         * @param _callback_
+         * @param location 
+         * @param _callback_ 
          */
-        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_location_finish(_res_: Gio.AsyncResult): void;
+
         get_location(): Location;
+
         /**
-         * @param value
+         * @param value 
          */
         set_location(value: Location): void;
+
         /**
-         * @param location
-         * @param _callback_
+         * @param location 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_location(): Location;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_location(value: Location): void;
+
         /**
-         * @param name
+         * @param name 
          */
         change_structured_name(name: StructuredName): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        change_structured_name(
-            name: StructuredName,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_structured_name(name: StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param full_name
+         * @param full_name 
          */
         change_full_name(full_name: string): globalThis.Promise<void>;
+
         /**
-         * @param full_name
-         * @param _callback_
+         * @param full_name 
+         * @param _callback_ 
          */
         change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param full_name
-         * @param _callback_
+         * @param full_name 
+         * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param nickname
+         * @param nickname 
          */
         change_nickname(nickname: string): globalThis.Promise<void>;
+
         /**
-         * @param nickname
-         * @param _callback_
+         * @param nickname 
+         * @param _callback_ 
          */
         change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param nickname
-         * @param _callback_
+         * @param nickname 
+         * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
+
         get_structured_name(): StructuredName;
+
         /**
-         * @param value
+         * @param value 
          */
         set_structured_name(value: StructuredName): void;
+
         get_full_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_full_name(value: string): void;
+
         get_nickname(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_nickname(value: string): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param full_name
-         * @param _callback_
+         * @param full_name 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param nickname
-         * @param _callback_
+         * @param nickname 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_structured_name(): StructuredName;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_structured_name(value: StructuredName): void;
+
         /**
          * @virtual
          */
         vfunc_get_full_name(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_full_name(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_nickname(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_nickname(value: string): void;
+
         /**
-         * @param notes
+         * @param notes 
          */
         change_notes(notes: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param notes
-         * @param _callback_
+         * @param notes 
+         * @param _callback_ 
          */
         change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param notes
-         * @param _callback_
+         * @param notes 
+         * @param _callback_ 
          */
-        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_notes_finish(_res_: Gio.AsyncResult): void;
+
         get_notes(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_notes(value: Gee.Set): void;
+
         /**
-         * @param notes
-         * @param _callback_
+         * @param notes 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_notes(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_notes(value: Gee.Set): void;
+
         is_online(): boolean;
+
         get_presence_type(): PresenceType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_type(value: PresenceType): void;
+
         get_presence_message(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_message(value: string): void;
+
         get_client_types(): string[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_client_types(value: string[]): void;
+
         get_presence_status(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_status(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_presence_type(): PresenceType;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_presence_type(value: PresenceType): void;
+
         /**
          * @virtual
          */
         vfunc_get_presence_message(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_presence_message(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_client_types(): string[];
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_client_types(value: string[]): void;
+
         /**
          * @virtual
          */
         vfunc_get_presence_status(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_presence_status(value: string): void;
+
         /**
-         * @param phone_numbers
+         * @param phone_numbers 
          */
         change_phone_numbers(phone_numbers: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param phone_numbers
-         * @param _callback_
+         * @param phone_numbers 
+         * @param _callback_ 
          */
         change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param phone_numbers
-         * @param _callback_
+         * @param phone_numbers 
+         * @param _callback_ 
          */
-        change_phone_numbers(
-            phone_numbers: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
+
         get_phone_numbers(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_phone_numbers(value: Gee.Set): void;
+
         /**
-         * @param phone_numbers
-         * @param _callback_
+         * @param phone_numbers 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_phone_numbers(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_phone_numbers(value: Gee.Set): void;
+
         /**
-         * @param postal_addresses
+         * @param postal_addresses 
          */
         change_postal_addresses(postal_addresses: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param postal_addresses
-         * @param _callback_
+         * @param postal_addresses 
+         * @param _callback_ 
          */
         change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param postal_addresses
-         * @param _callback_
+         * @param postal_addresses 
+         * @param _callback_ 
          */
-        change_postal_addresses(
-            postal_addresses: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_postal_addresses(postal_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_postal_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_postal_addresses(value: Gee.Set): void;
+
         /**
-         * @param postal_addresses
-         * @param _callback_
+         * @param postal_addresses 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_postal_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_postal_addresses(value: Gee.Set): void;
+
         /**
-         * @param roles
+         * @param roles 
          */
         change_roles(roles: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param roles
-         * @param _callback_
+         * @param roles 
+         * @param _callback_ 
          */
         change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param roles
-         * @param _callback_
+         * @param roles 
+         * @param _callback_ 
          */
-        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_roles_finish(_res_: Gio.AsyncResult): void;
+
         get_roles(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_roles(value: Gee.Set): void;
+
         /**
-         * @param roles
-         * @param _callback_
+         * @param roles 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_roles(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_roles(value: Gee.Set): void;
+
         /**
-         * @param urls
+         * @param urls 
          */
         change_urls(urls: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param urls
-         * @param _callback_
+         * @param urls 
+         * @param _callback_ 
          */
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param urls
-         * @param _callback_
+         * @param urls 
+         * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
+
         get_urls(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_urls(value: Gee.Set): void;
+
         /**
-         * @param urls
-         * @param _callback_
+         * @param urls 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_urls(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_urls(value: Gee.Set): void;
+
         /**
-         * @param web_service_addresses
+         * @param web_service_addresses 
          */
         change_web_service_addresses(web_service_addresses: Gee.MultiMap): globalThis.Promise<void>;
+
         /**
-         * @param web_service_addresses
-         * @param _callback_
+         * @param web_service_addresses 
+         * @param _callback_ 
          */
-        change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param web_service_addresses
-         * @param _callback_
+         * @param web_service_addresses 
+         * @param _callback_ 
          */
-        change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_web_service_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_web_service_addresses(value: Gee.MultiMap): void;
+
         /**
-         * @param web_service_addresses
-         * @param _callback_
+         * @param web_service_addresses 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_web_service_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
     }
 
+
     namespace Location {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3091,64 +3330,55 @@ export namespace Folks {
         $signals: Location.SignalSignatures;
 
         // Fields
-
         latitude: number;
+
         longitude: number;
 
         // Constructors
-
         constructor(properties?: Partial<Location.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](latitude: number, longitude: number): Location;
+        static ["new"](latitude: number, longitude: number): Location;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Location.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Location.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Location.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Location.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Location.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param other
+         * @param other 
          */
         equal(other: Location): boolean;
+
         /**
-         * @param latitude
-         * @param longitude
+         * @param latitude 
+         * @param longitude 
          */
         equal_coordinates(latitude: number, longitude: number): boolean;
     }
 
+
     namespace StructuredName {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::family-name': (pspec: GObject.ParamSpec) => void;
-            'notify::given-name': (pspec: GObject.ParamSpec) => void;
-            'notify::additional-names': (pspec: GObject.ParamSpec) => void;
-            'notify::prefixes': (pspec: GObject.ParamSpec) => void;
-            'notify::suffixes': (pspec: GObject.ParamSpec) => void;
+            "notify::family-name": (pspec: GObject.ParamSpec) => void;
+            "notify::given-name": (pspec: GObject.ParamSpec) => void;
+            "notify::additional-names": (pspec: GObject.ParamSpec) => void;
+            "notify::prefixes": (pspec: GObject.ParamSpec) => void;
+            "notify::suffixes": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             family_name: string;
             familyName: string;
@@ -3168,21 +3398,27 @@ export namespace Folks {
         static $gtype: GObject.GType<StructuredName>;
 
         // Properties
-
         get family_name(): string;
         set family_name(val: string);
+
         get familyName(): string;
         set familyName(val: string);
+
         get given_name(): string;
         set given_name(val: string);
+
         get givenName(): string;
         set givenName(val: string);
+
         get additional_names(): string;
         set additional_names(val: string);
+
         get additionalNames(): string;
         set additionalNames(val: string);
+
         get prefixes(): string;
         set prefixes(val: string);
+
         get suffixes(): string;
         set suffixes(val: string);
 
@@ -3196,96 +3432,93 @@ export namespace Folks {
         $signals: StructuredName.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StructuredName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            family_name: string,
-            given_name: string,
-            additional_names: string,
-            prefixes: string,
-            suffixes: string,
-        ): StructuredName;
+        static ["new"](family_name: string, given_name: string, additional_names: string, prefixes: string, suffixes: string): StructuredName;
 
         static simple(family_name: string, given_name: string): StructuredName;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StructuredName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StructuredName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StructuredName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StructuredName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructuredName.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StructuredName.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StructuredName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StructuredName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StructuredName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         is_empty(): boolean;
+
         /**
-         * @param other
+         * @param other 
          */
         equal(other: StructuredName): boolean;
+
         to_string(): string;
+
         /**
-         * @param name_fmt
+         * @param name_fmt 
          */
         to_string_with_format(name_fmt: string): string;
+
         get_family_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_family_name(value: string): void;
+
         get_given_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_given_name(value: string): void;
+
         get_additional_names(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_additional_names(value: string): void;
+
         get_prefixes(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_prefixes(value: string): void;
+
         get_suffixes(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_suffixes(value: string): void;
     }
 
+
     namespace NoteFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
             uid: string;
         }
@@ -3298,7 +3531,6 @@ export namespace Folks {
         static $gtype: GObject.GType<NoteFieldDetails>;
 
         // Properties
-
         /**
          * @deprecated since 0.6.5
          */
@@ -3315,55 +3547,46 @@ export namespace Folks {
         $signals: NoteFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NoteFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap, uid: string): NoteFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap, uid: string): NoteFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NoteFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NoteFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NoteFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NoteFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NoteFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NoteFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NoteFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NoteFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NoteFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_uid(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_uid(value: string): void;
     }
 
+
     namespace ObjectCache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::type-id': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::type-id": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             t_type: GObject.GTypeInput;
             tType: GObject.GTypeInput;
@@ -3384,39 +3607,46 @@ export namespace Folks {
         static $gtype: GObject.GType<ObjectCache>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get t_type(): GObject.GType;
+
         /**
          * @construct-only
          */
         get tType(): GObject.GType;
+
         /**
          * @construct-only
          */
         get t_dup_func(): GObject.BoxedCopyFunc;
+
         /**
          * @construct-only
          */
         get tDupFunc(): GObject.BoxedCopyFunc;
+
         /**
          * @construct-only
          */
         get t_destroy_func(): GLib.DestroyNotify;
+
         /**
          * @construct-only
          */
         get tDestroyFunc(): GLib.DestroyNotify;
+
         /**
          * @construct-only
          */
         get type_id(): string;
+
         /**
          * @construct-only
          */
         get typeId(): string;
+
         /**
          * @construct-only
          */
@@ -3432,133 +3662,136 @@ export namespace Folks {
         $signals: ObjectCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ObjectCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ObjectCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ObjectCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ObjectCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ObjectCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ObjectCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ObjectCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ObjectCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param object_version
+         * @param object_version 
          * @virtual
          */
         vfunc_get_serialised_object_type(object_version: number): GLib.VariantType;
+
         /**
          * @virtual
          */
         vfunc_get_serialised_object_version(): number;
+
         /**
-         * @param object
+         * @param object 
          * @virtual
          */
         vfunc_serialise_object(object: any): GLib.Variant;
+
         /**
-         * @param variant
-         * @param object_version
+         * @param variant 
+         * @param object_version 
          * @virtual
          */
         vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any;
 
         // Methods
-
         /**
-         * @param object_version
+         * @param object_version 
          */
         get_serialised_object_type(object_version: number): GLib.VariantType;
+
         get_serialised_object_version(): number;
+
         /**
-         * @param object
+         * @param object 
          */
         serialise_object(object: any): GLib.Variant;
+
         /**
-         * @param variant
-         * @param object_version
+         * @param variant 
+         * @param object_version 
          */
         deserialise_object(variant: GLib.Variant, object_version: number): any;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         load_objects(cancellable: Gio.Cancellable): globalThis.Promise<Gee.Set>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         load_objects(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        load_objects(
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Gee.Set> | void;
+        load_objects(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gee.Set> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         load_objects_finish(_res_: Gio.AsyncResult): Gee.Set;
+
         /**
-         * @param objects
-         * @param cancellable
+         * @param objects 
+         * @param cancellable 
          */
         store_objects(objects: Gee.Set, cancellable: Gio.Cancellable): globalThis.Promise<void>;
+
         /**
-         * @param objects
-         * @param cancellable
-         * @param _callback_
+         * @param objects 
+         * @param cancellable 
+         * @param _callback_ 
          */
         store_objects(objects: Gee.Set, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param objects
-         * @param cancellable
-         * @param _callback_
+         * @param objects 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        store_objects(
-            objects: Gee.Set,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        store_objects(objects: Gee.Set, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         store_objects_finish(_res_: Gio.AsyncResult): void;
+
         clear_cache(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         clear_cache(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        clear_cache(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        clear_cache(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         clear_cache_finish(_res_: Gio.AsyncResult): void;
+
         get_type_id(): string;
+
         get_id(): string;
     }
+
 
     namespace PersonaStore {
         // Signal signatures
@@ -3566,36 +3799,29 @@ export namespace Folks {
             /**
              * @signal
              */
-            'personas-changed': (
-                arg0: Gee.Set,
-                arg1: Gee.Set,
-                arg2: string,
-                arg3: Persona,
-                arg4: GroupDetailsChangeReason,
-            ) => void;
+            "personas-changed": (arg0: Gee.Set, arg1: Gee.Set, arg2: string, arg3: Persona, arg4: GroupDetailsChangeReason) => void;
             /**
              * @signal
              */
             removed: () => void;
-            'notify::type-id': (pspec: GObject.ParamSpec) => void;
-            'notify::display-name': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::personas': (pspec: GObject.ParamSpec) => void;
-            'notify::can-add-personas': (pspec: GObject.ParamSpec) => void;
-            'notify::can-alias-personas': (pspec: GObject.ParamSpec) => void;
-            'notify::can-group-personas': (pspec: GObject.ParamSpec) => void;
-            'notify::can-remove-personas': (pspec: GObject.ParamSpec) => void;
-            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
-            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
-            'notify::is-writeable': (pspec: GObject.ParamSpec) => void;
-            'notify::trust-level': (pspec: GObject.ParamSpec) => void;
-            'notify::always-writeable-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::is-primary-store': (pspec: GObject.ParamSpec) => void;
-            'notify::is-user-set-default': (pspec: GObject.ParamSpec) => void;
+            "notify::type-id": (pspec: GObject.ParamSpec) => void;
+            "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::personas": (pspec: GObject.ParamSpec) => void;
+            "notify::can-add-personas": (pspec: GObject.ParamSpec) => void;
+            "notify::can-alias-personas": (pspec: GObject.ParamSpec) => void;
+            "notify::can-group-personas": (pspec: GObject.ParamSpec) => void;
+            "notify::can-remove-personas": (pspec: GObject.ParamSpec) => void;
+            "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
+            "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
+            "notify::is-writeable": (pspec: GObject.ParamSpec) => void;
+            "notify::trust-level": (pspec: GObject.ParamSpec) => void;
+            "notify::always-writeable-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::is-primary-store": (pspec: GObject.ParamSpec) => void;
+            "notify::is-user-set-default": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             type_id: string;
             typeId: string;
@@ -3635,111 +3861,137 @@ export namespace Folks {
         static $gtype: GObject.GType<PersonaStore>;
 
         // Properties
-
         /**
          * @read-only
          */
         get type_id(): string;
+
         /**
          * @read-only
          */
         get typeId(): string;
+
         /**
          * @construct-only
          */
         get display_name(): string;
+
         /**
          * @construct-only
          */
         get displayName(): string;
+
         /**
          * @construct-only
          */
         get id(): string;
+
         /**
          * @read-only
          */
         get personas(): Gee.Map;
+
         /**
          * @read-only
          */
         get can_add_personas(): MaybeBool;
+
         /**
          * @read-only
          */
         get canAddPersonas(): MaybeBool;
+
         /**
          * @deprecated since 0.6.3.1
          * @read-only
          */
         get can_alias_personas(): MaybeBool;
+
         /**
          * @deprecated since 0.6.3.1
          * @read-only
          */
         get canAliasPersonas(): MaybeBool;
+
         /**
          * @deprecated since 0.6.3.1
          * @read-only
          */
         get can_group_personas(): MaybeBool;
+
         /**
          * @deprecated since 0.6.3.1
          * @read-only
          */
         get canGroupPersonas(): MaybeBool;
+
         /**
          * @read-only
          */
         get can_remove_personas(): MaybeBool;
+
         /**
          * @read-only
          */
         get canRemovePersonas(): MaybeBool;
+
         /**
          * @read-only
          */
         get is_prepared(): boolean;
+
         /**
          * @read-only
          */
         get isPrepared(): boolean;
+
         /**
          * @read-only
          */
         get is_quiescent(): boolean;
+
         /**
          * @read-only
          */
         get isQuiescent(): boolean;
+
         /**
          * @deprecated since 0.6.3
          */
         get is_writeable(): boolean;
         set is_writeable(val: boolean);
+
         /**
          * @deprecated since 0.6.3
          */
         get isWriteable(): boolean;
         set isWriteable(val: boolean);
+
         get trust_level(): PersonaStoreTrust;
         set trust_level(val: PersonaStoreTrust);
+
         get trustLevel(): PersonaStoreTrust;
         set trustLevel(val: PersonaStoreTrust);
+
         /**
          * @read-only
          */
         get always_writeable_properties(): string[];
+
         /**
          * @read-only
          */
         get alwaysWriteableProperties(): string[];
+
         get is_primary_store(): boolean;
         set is_primary_store(val: boolean);
+
         get isPrimaryStore(): boolean;
         set isPrimaryStore(val: boolean);
+
         get is_user_set_default(): boolean;
         set is_user_set_default(val: boolean);
+
         get isUserSetDefault(): boolean;
         set isUserSetDefault(val: boolean);
 
@@ -3753,253 +4005,272 @@ export namespace Folks {
         $signals: PersonaStore.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PersonaStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PersonaStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PersonaStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PersonaStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PersonaStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PersonaStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PersonaStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PersonaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PersonaStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PersonaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param detail
+         * @param detail 
          */
         static detail_key(detail: PersonaDetail): string;
 
         // Virtual methods
-
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_prepare_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_flush(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_flush_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param details
-         * @param _callback_
+         * @param details 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_add_persona_from_details(
-            details: GLib.HashTable<string, GObject.Value>,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_add_persona_from_details(details: GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
+
         /**
-         * @param persona
-         * @param _callback_
+         * @param persona 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_remove_persona_finish(_res_: Gio.AsyncResult): void;
+
         /**
          * @virtual
          */
         vfunc_get_type_id(): string;
+
         /**
          * @virtual
          */
         vfunc_get_personas(): Gee.Map;
+
         /**
          * @virtual
          */
         vfunc_get_can_add_personas(): MaybeBool;
+
         /**
          * @virtual
          */
         vfunc_get_can_alias_personas(): MaybeBool;
+
         /**
          * @virtual
          */
         vfunc_get_can_group_personas(): MaybeBool;
+
         /**
          * @virtual
          */
         vfunc_get_can_remove_personas(): MaybeBool;
+
         /**
          * @virtual
          */
         vfunc_get_is_prepared(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_quiescent(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_always_writeable_properties(): string[];
 
         // Methods
+        /**
+         * @param added 
+         * @param removed 
+         * @param message 
+         * @param actor 
+         * @param reason 
+         */
+        _emit_personas_changed(added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason): void;
+
+        prepare(): globalThis.Promise<void>;
 
         /**
-         * @param added
-         * @param removed
-         * @param message
-         * @param actor
-         * @param reason
-         */
-        _emit_personas_changed(
-            added: Gee.Set,
-            removed: Gee.Set,
-            message: string,
-            actor: Persona,
-            reason: GroupDetailsChangeReason,
-        ): void;
-        prepare(): globalThis.Promise<void>;
-        /**
-         * @param _callback_
+         * @param _callback_ 
          */
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        prepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
+
         flush(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         flush(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        flush(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        flush(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         flush_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param details
+         * @param details 
          */
-        add_persona_from_details(
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-        ): globalThis.Promise<Persona>;
+        add_persona_from_details(details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): globalThis.Promise<Persona>;
+
         /**
-         * @param details
-         * @param _callback_
+         * @param details 
+         * @param _callback_ 
          */
-        add_persona_from_details(
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        add_persona_from_details(details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param details
-         * @param _callback_
+         * @param details 
+         * @param _callback_ 
          */
-        add_persona_from_details(
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Persona> | void;
+        add_persona_from_details(details: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Persona> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
+
         /**
-         * @param persona
+         * @param persona 
          */
         remove_persona(persona: Persona): globalThis.Promise<void>;
+
         /**
-         * @param persona
-         * @param _callback_
+         * @param persona 
+         * @param _callback_ 
          */
         remove_persona(persona: Persona, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param persona
-         * @param _callback_
+         * @param persona 
+         * @param _callback_ 
          */
-        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_persona_finish(_res_: Gio.AsyncResult): void;
+
         get_type_id(): string;
+
         get_display_name(): string;
+
         get_id(): string;
+
         get_personas(): Gee.Map;
+
         get_can_add_personas(): MaybeBool;
+
         get_can_alias_personas(): MaybeBool;
+
         get_can_group_personas(): MaybeBool;
+
         get_can_remove_personas(): MaybeBool;
+
         get_is_prepared(): boolean;
+
         get_is_quiescent(): boolean;
+
         get_is_writeable(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_writeable(value: boolean): void;
+
         get_trust_level(): PersonaStoreTrust;
+
         /**
-         * @param value
+         * @param value 
          */
         set_trust_level(value: PersonaStoreTrust): void;
+
         get_always_writeable_properties(): string[];
+
         get_is_primary_store(): boolean;
+
         get_is_user_set_default(): boolean;
     }
+
 
     namespace Persona {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::iid': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
-            'notify::display-id': (pspec: GObject.ParamSpec) => void;
-            'notify::is-user': (pspec: GObject.ParamSpec) => void;
-            'notify::store': (pspec: GObject.ParamSpec) => void;
-            'notify::individual': (pspec: GObject.ParamSpec) => void;
-            'notify::linkable-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::writeable-properties': (pspec: GObject.ParamSpec) => void;
+            "notify::iid": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
+            "notify::display-id": (pspec: GObject.ParamSpec) => void;
+            "notify::is-user": (pspec: GObject.ParamSpec) => void;
+            "notify::store": (pspec: GObject.ParamSpec) => void;
+            "notify::individual": (pspec: GObject.ParamSpec) => void;
+            "notify::linkable-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::writeable-properties": (pspec: GObject.ParamSpec) => void;
         }
-
-        interface LinkablePropertyCallback {
-            (link: string): void;
-        }
+    interface LinkablePropertyCallback {
+        (link: string): void;
+    }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             iid: string;
             uid: string;
@@ -4023,49 +4294,59 @@ export namespace Folks {
         static $gtype: GObject.GType<Persona>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get iid(): string;
+
         /**
          * @construct-only
          */
         get uid(): string;
+
         /**
          * @construct-only
          */
         get display_id(): string;
+
         /**
          * @construct-only
          */
         get displayId(): string;
+
         /**
          * @construct-only
          */
         get is_user(): boolean;
+
         /**
          * @construct-only
          */
         get isUser(): boolean;
+
         /**
          * @construct-only
          */
         get store(): PersonaStore;
+
         get individual(): Individual;
         set individual(val: Individual);
+
         /**
          * @read-only
          */
         get linkable_properties(): string[];
+
         /**
          * @read-only
          */
         get linkableProperties(): string[];
+
         /**
          * @read-only
          */
         get writeable_properties(): string[];
+
         /**
          * @read-only
          */
@@ -4081,94 +4362,95 @@ export namespace Folks {
         $signals: Persona.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Persona.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Persona.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Persona.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Persona.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Persona.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Persona.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Persona.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Persona.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param backend_name
-         * @param persona_store_id
-         * @param persona_id
+         * @param backend_name 
+         * @param persona_store_id 
+         * @param persona_id 
          */
         static build_uid(backend_name: string, persona_store_id: string, persona_id: string): string;
+
         /**
-         * @param uid
+         * @param uid 
          */
         static split_uid(uid: string): [string, string, string];
 
         // Virtual methods
-
         /**
-         * @param prop_name
-         * @param callback
+         * @param prop_name 
+         * @param callback 
          * @virtual
          */
         vfunc_linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void;
+
         /**
          * @virtual
          */
         vfunc_get_linkable_properties(): string[];
+
         /**
          * @virtual
          */
         vfunc_get_writeable_properties(): string[];
 
         // Methods
-
         /**
-         * @param prop_name
-         * @param callback
+         * @param prop_name 
+         * @param callback 
          */
         linkable_property_to_links(prop_name: string, callback: Persona.LinkablePropertyCallback): void;
+
         get_iid(): string;
+
         get_uid(): string;
+
         get_display_id(): string;
+
         get_is_user(): boolean;
+
         get_store(): PersonaStore;
+
         get_individual(): Individual;
+
         get_linkable_properties(): string[];
+
         get_writeable_properties(): string[];
     }
+
 
     namespace PhoneFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -4187,55 +4469,45 @@ export namespace Folks {
         $signals: PhoneFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PhoneFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): PhoneFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): PhoneFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PhoneFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PhoneFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PhoneFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PhoneFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PhoneFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PhoneFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PhoneFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PhoneFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PhoneFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_normalised(): string;
     }
+
 
     namespace PostalAddress {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::po-box': (pspec: GObject.ParamSpec) => void;
-            'notify::extension': (pspec: GObject.ParamSpec) => void;
-            'notify::street': (pspec: GObject.ParamSpec) => void;
-            'notify::locality': (pspec: GObject.ParamSpec) => void;
-            'notify::region': (pspec: GObject.ParamSpec) => void;
-            'notify::postal-code': (pspec: GObject.ParamSpec) => void;
-            'notify::country': (pspec: GObject.ParamSpec) => void;
-            'notify::address-format': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            "notify::po-box": (pspec: GObject.ParamSpec) => void;
+            "notify::extension": (pspec: GObject.ParamSpec) => void;
+            "notify::street": (pspec: GObject.ParamSpec) => void;
+            "notify::locality": (pspec: GObject.ParamSpec) => void;
+            "notify::region": (pspec: GObject.ParamSpec) => void;
+            "notify::postal-code": (pspec: GObject.ParamSpec) => void;
+            "notify::country": (pspec: GObject.ParamSpec) => void;
+            "notify::address-format": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             po_box: string;
             poBox: string;
@@ -4259,29 +4531,39 @@ export namespace Folks {
         static $gtype: GObject.GType<PostalAddress>;
 
         // Properties
-
         get po_box(): string;
         set po_box(val: string);
+
         get poBox(): string;
         set poBox(val: string);
+
         get extension(): string;
         set extension(val: string);
+
         get street(): string;
         set street(val: string);
+
         get locality(): string;
         set locality(val: string);
+
         get region(): string;
         set region(val: string);
+
         get postal_code(): string;
         set postal_code(val: string);
+
         get postalCode(): string;
         set postalCode(val: string);
+
         get country(): string;
         set country(val: string);
+
         get address_format(): string;
         set address_format(val: string);
+
         get addressFormat(): string;
         set addressFormat(val: string);
+
         /**
          * @deprecated since 0.6.5
          */
@@ -4298,114 +4580,116 @@ export namespace Folks {
         $signals: PostalAddress.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PostalAddress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            po_box: string,
-            extension: string,
-            street: string,
-            locality: string,
-            region: string,
-            postal_code: string,
-            country: string,
-            address_format: string,
-            uid: string,
-        ): PostalAddress;
+        static ["new"](po_box: string, extension: string, street: string, locality: string, region: string, postal_code: string, country: string, address_format: string, uid: string): PostalAddress;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PostalAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PostalAddress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PostalAddress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PostalAddress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PostalAddress.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PostalAddress.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PostalAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PostalAddress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PostalAddress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         is_empty(): boolean;
+
         /**
-         * @param _with
+         * @param _with 
          */
         equal(_with: PostalAddress): boolean;
+
         to_string(): string;
+
         get_po_box(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_po_box(value: string): void;
+
         get_extension(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_extension(value: string): void;
+
         get_street(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_street(value: string): void;
+
         get_locality(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_locality(value: string): void;
+
         get_region(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_region(value: string): void;
+
         get_postal_code(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_postal_code(value: string): void;
+
         get_country(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_country(value: string): void;
+
         get_address_format(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_address_format(value: string): void;
+
         get_uid(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_uid(value: string): void;
     }
 
+
     namespace PostalAddressFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -4424,44 +4708,36 @@ export namespace Folks {
         $signals: PostalAddressFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PostalAddressFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: PostalAddress, parameters: Gee.MultiMap): PostalAddressFieldDetails;
+        static ["new"](value: PostalAddress, parameters: Gee.MultiMap): PostalAddressFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PostalAddressFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PostalAddressFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PostalAddressFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PostalAddressFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PostalAddressFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace PotentialMatch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4480,55 +4756,44 @@ export namespace Folks {
         $signals: PotentialMatch.SignalSignatures;
 
         // Fields
-
         folks_potential_match_known_email_aliases: Gee.Set;
 
         // Constructors
-
         constructor(properties?: Partial<PotentialMatch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PotentialMatch;
+        static ["new"](): PotentialMatch;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PotentialMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PotentialMatch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PotentialMatch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PotentialMatch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PotentialMatch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PotentialMatch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PotentialMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PotentialMatch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PotentialMatch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         potential_match(a: Individual, b: Individual): MatchResult;
     }
 
+
     namespace Query {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::match-fields': (pspec: GObject.ParamSpec) => void;
+            "notify::match-fields": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             match_fields: string[];
             matchFields: string[];
@@ -4542,11 +4807,11 @@ export namespace Folks {
         static $gtype: GObject.GType<Query>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get match_fields(): string[];
+
         /**
          * @construct-only
          */
@@ -4562,64 +4827,55 @@ export namespace Folks {
         $signals: Query.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Query.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Query.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Query.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Query.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Query.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param individual
+         * @param individual 
          * @virtual
          */
         vfunc_is_match(individual: Individual): number;
+
         /**
          * @virtual
          */
         vfunc_get_match_fields(): string[];
 
         // Methods
-
         /**
-         * @param individual
+         * @param individual 
          */
         is_match(individual: Individual): number;
+
         get_match_fields(): string[];
     }
+
 
     namespace Role {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::organisation-name': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            "notify::organisation-name": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             organisation_name: string;
             organisationName: string;
@@ -4636,15 +4892,18 @@ export namespace Folks {
         static $gtype: GObject.GType<Role>;
 
         // Properties
-
         get organisation_name(): string;
         set organisation_name(val: string);
+
         get organisationName(): string;
         set organisationName(val: string);
+
         get title(): string;
         set title(val: string);
+
         get role(): string;
         set role(val: string);
+
         /**
          * @deprecated since 0.6.5
          */
@@ -4661,87 +4920,88 @@ export namespace Folks {
         $signals: Role.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Role.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, organisation_name: string, uid: string): Role;
+        static ["new"](title: string, organisation_name: string, uid: string): Role;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Role.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Role.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Role.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Role.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Role.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Role.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Role.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Role.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Role.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         static equal(a: Role, b: Role): boolean;
+
         /**
-         * @param r
+         * @param r 
          */
         static hash(r: Role): number;
 
         // Methods
-
         is_empty(): boolean;
+
         to_string(): string;
+
         get_organisation_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_organisation_name(value: string): void;
+
         get_title(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_title(value: string): void;
+
         get_role(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_role(value: string): void;
+
         get_uid(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_uid(value: string): void;
     }
 
+
     namespace RoleFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -4760,34 +5020,26 @@ export namespace Folks {
         $signals: RoleFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RoleFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: Role, parameters: Gee.MultiMap): RoleFieldDetails;
+        static ["new"](value: Role, parameters: Gee.MultiMap): RoleFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RoleFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RoleFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RoleFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RoleFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RoleFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RoleFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RoleFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RoleFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RoleFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace SearchView {
         // Signal signatures
@@ -4795,16 +5047,15 @@ export namespace Folks {
             /**
              * @signal
              */
-            'individuals-changed-detailed': (arg0: Gee.SortedSet, arg1: Gee.SortedSet) => void;
-            'notify::aggregator': (pspec: GObject.ParamSpec) => void;
-            'notify::query': (pspec: GObject.ParamSpec) => void;
-            'notify::individuals': (pspec: GObject.ParamSpec) => void;
-            'notify::is-prepared': (pspec: GObject.ParamSpec) => void;
-            'notify::is-quiescent': (pspec: GObject.ParamSpec) => void;
+            "individuals-changed-detailed": (arg0: Gee.SortedSet, arg1: Gee.SortedSet) => void;
+            "notify::aggregator": (pspec: GObject.ParamSpec) => void;
+            "notify::query": (pspec: GObject.ParamSpec) => void;
+            "notify::individuals": (pspec: GObject.ParamSpec) => void;
+            "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
+            "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             aggregator: IndividualAggregator;
             query: Query;
@@ -4823,29 +5074,34 @@ export namespace Folks {
         static $gtype: GObject.GType<SearchView>;
 
         // Properties
-
         /**
          * @read-only
          */
         get aggregator(): IndividualAggregator;
+
         get query(): Query;
         set query(val: Query);
+
         /**
          * @read-only
          */
         get individuals(): Gee.SortedSet;
+
         /**
          * @read-only
          */
         get is_prepared(): boolean;
+
         /**
          * @read-only
          */
         get isPrepared(): boolean;
+
         /**
          * @read-only
          */
         get is_quiescent(): boolean;
+
         /**
          * @read-only
          */
@@ -4861,96 +5117,103 @@ export namespace Folks {
         $signals: SearchView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SearchView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](aggregator: IndividualAggregator, query: Query): SearchView;
+        static ["new"](aggregator: IndividualAggregator, query: Query): SearchView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SearchView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SearchView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SearchView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SearchView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SearchView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SearchView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SearchView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SearchView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SearchView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         prepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         prepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        prepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        prepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
+
         unprepare(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         unprepare(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        unprepare(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
+
         refresh(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         refresh(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        refresh(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        refresh(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         refresh_finish(_res_: Gio.AsyncResult): void;
+
         get_aggregator(): IndividualAggregator;
+
         get_query(): Query;
+
         /**
-         * @param value
+         * @param value 
          */
         set_query(value: Query): void;
+
         get_individuals(): Gee.SortedSet;
+
         get_is_prepared(): boolean;
+
         get_is_quiescent(): boolean;
     }
+
 
     namespace SimpleQuery {
         // Signal signatures
         interface SignalSignatures extends Query.SignalSignatures {
-            'notify::query-string': (pspec: GObject.ParamSpec) => void;
-            'notify::query-locale': (pspec: GObject.ParamSpec) => void;
-            'notify::match-fields': (pspec: GObject.ParamSpec) => void;
+            "notify::query-string": (pspec: GObject.ParamSpec) => void;
+            "notify::query-locale": (pspec: GObject.ParamSpec) => void;
+            "notify::match-fields": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Query.ConstructorProps {
             query_string: string;
             queryString: string;
@@ -4966,13 +5229,15 @@ export namespace Folks {
         static $gtype: GObject.GType<SimpleQuery>;
 
         // Properties
-
         get query_string(): string;
         set query_string(val: string);
+
         get queryString(): string;
         set queryString(val: string);
+
         get query_locale(): string;
         set query_locale(val: string);
+
         get queryLocale(): string;
         set queryLocale(val: string);
 
@@ -4986,63 +5251,58 @@ export namespace Folks {
         $signals: SimpleQuery.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleQuery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](query_string: string, match_fields: string[]): SimpleQuery;
+        static ["new"](query_string: string, match_fields: string[]): SimpleQuery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleQuery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleQuery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_query_string(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_query_string(value: string): void;
+
         get_query_locale(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_query_locale(value: string): void;
     }
 
+
     namespace UrlFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -5061,42 +5321,36 @@ export namespace Folks {
         $signals: UrlFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UrlFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): UrlFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): UrlFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UrlFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UrlFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UrlFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UrlFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UrlFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UrlFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UrlFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UrlFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UrlFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Utils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5115,73 +5369,68 @@ export namespace Folks {
         $signals: Utils.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Utils.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Utils;
+        static ["new"](): Utils;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         static multi_map_str_str_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
+
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         static multi_map_str_afd_equal(a: Gee.MultiMap, b: Gee.MultiMap): boolean;
+
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         static set_afd_equal(a: Gee.Set, b: Gee.Set): boolean;
+
         /**
-         * @param a
-         * @param b
+         * @param a 
+         * @param b 
          */
         static set_string_afd_equal(a: Gee.Set, b: Gee.Set): boolean;
     }
 
+
     namespace WebServiceFieldDetails {
         // Signal signatures
         interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
-            'notify::t-type': (pspec: GObject.ParamSpec) => void;
-            'notify::t-dup-func': (pspec: GObject.ParamSpec) => void;
-            'notify::t-destroy-func': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::value-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::t-type": (pspec: GObject.ParamSpec) => void;
+            "notify::t-dup-func": (pspec: GObject.ParamSpec) => void;
+            "notify::t-destroy-func": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::value-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
 
-        interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
+        }
     }
 
     /**
@@ -5200,41 +5449,32 @@ export namespace Folks {
         $signals: WebServiceFieldDetails.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebServiceFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: string, parameters: Gee.MultiMap): WebServiceFieldDetails;
+        static ["new"](value: string, parameters: Gee.MultiMap): WebServiceFieldDetails;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebServiceFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebServiceFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebServiceFieldDetails.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebServiceFieldDetails.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebServiceFieldDetails.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebServiceFieldDetails.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebServiceFieldDetails.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AbstractFieldDetailsClass = typeof AbstractFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5242,10 +5482,12 @@ export namespace Folks {
         static $gtype: GObject.GType<AbstractFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AvatarCacheClass = typeof AvatarCache;
+
     /**
      * @gir-type Struct
      */
@@ -5253,10 +5495,12 @@ export namespace Folks {
         static $gtype: GObject.GType<AvatarCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BackendStoreClass = typeof BackendStore;
+
     /**
      * @gir-type Struct
      */
@@ -5264,10 +5508,12 @@ export namespace Folks {
         static $gtype: GObject.GType<BackendStorePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BackendClass = typeof Backend;
+
     /**
      * @gir-type Struct
      */
@@ -5275,10 +5521,12 @@ export namespace Folks {
         static $gtype: GObject.GType<BackendPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DebugClass = typeof Debug;
+
     /**
      * @gir-type Struct
      */
@@ -5286,10 +5534,12 @@ export namespace Folks {
         static $gtype: GObject.GType<DebugPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EmailFieldDetailsClass = typeof EmailFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5297,10 +5547,12 @@ export namespace Folks {
         static $gtype: GObject.GType<EmailFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExtendedFieldDetailsClass = typeof ExtendedFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5308,10 +5560,12 @@ export namespace Folks {
         static $gtype: GObject.GType<ExtendedFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ImFieldDetailsClass = typeof ImFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5319,10 +5573,12 @@ export namespace Folks {
         static $gtype: GObject.GType<ImFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IndividualAggregatorClass = typeof IndividualAggregator;
+
     /**
      * @gir-type Struct
      */
@@ -5330,10 +5586,12 @@ export namespace Folks {
         static $gtype: GObject.GType<IndividualAggregatorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IndividualClass = typeof Individual;
+
     /**
      * @gir-type Struct
      */
@@ -5341,10 +5599,12 @@ export namespace Folks {
         static $gtype: GObject.GType<IndividualPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LocationClass = typeof Location;
+
     /**
      * @gir-type Struct
      */
@@ -5352,10 +5612,12 @@ export namespace Folks {
         static $gtype: GObject.GType<LocationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StructuredNameClass = typeof StructuredName;
+
     /**
      * @gir-type Struct
      */
@@ -5363,10 +5625,12 @@ export namespace Folks {
         static $gtype: GObject.GType<StructuredNamePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NoteFieldDetailsClass = typeof NoteFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5374,10 +5638,12 @@ export namespace Folks {
         static $gtype: GObject.GType<NoteFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ObjectCacheClass = typeof ObjectCache;
+
     /**
      * @gir-type Struct
      */
@@ -5385,10 +5651,12 @@ export namespace Folks {
         static $gtype: GObject.GType<ObjectCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PersonaStoreClass = typeof PersonaStore;
+
     /**
      * @gir-type Struct
      */
@@ -5396,10 +5664,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PersonaStorePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PersonaClass = typeof Persona;
+
     /**
      * @gir-type Struct
      */
@@ -5407,10 +5677,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PersonaPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PhoneFieldDetailsClass = typeof PhoneFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5418,10 +5690,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PhoneFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PostalAddressClass = typeof PostalAddress;
+
     /**
      * @gir-type Struct
      */
@@ -5429,10 +5703,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PostalAddressPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PostalAddressFieldDetailsClass = typeof PostalAddressFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5440,10 +5716,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PostalAddressFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PotentialMatchClass = typeof PotentialMatch;
+
     /**
      * @gir-type Struct
      */
@@ -5451,10 +5729,12 @@ export namespace Folks {
         static $gtype: GObject.GType<PotentialMatchPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type QueryClass = typeof Query;
+
     /**
      * @gir-type Struct
      */
@@ -5462,10 +5742,12 @@ export namespace Folks {
         static $gtype: GObject.GType<QueryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RoleClass = typeof Role;
+
     /**
      * @gir-type Struct
      */
@@ -5473,10 +5755,12 @@ export namespace Folks {
         static $gtype: GObject.GType<RolePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RoleFieldDetailsClass = typeof RoleFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5484,10 +5768,12 @@ export namespace Folks {
         static $gtype: GObject.GType<RoleFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SearchViewClass = typeof SearchView;
+
     /**
      * @gir-type Struct
      */
@@ -5495,10 +5781,12 @@ export namespace Folks {
         static $gtype: GObject.GType<SearchViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SimpleQueryClass = typeof SimpleQuery;
+
     /**
      * @gir-type Struct
      */
@@ -5506,10 +5794,12 @@ export namespace Folks {
         static $gtype: GObject.GType<SimpleQueryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UrlFieldDetailsClass = typeof UrlFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5517,10 +5807,12 @@ export namespace Folks {
         static $gtype: GObject.GType<UrlFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UtilsClass = typeof Utils;
+
     /**
      * @gir-type Struct
      */
@@ -5528,10 +5820,12 @@ export namespace Folks {
         static $gtype: GObject.GType<UtilsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WebServiceFieldDetailsClass = typeof WebServiceFieldDetails;
+
     /**
      * @gir-type Struct
      */
@@ -5539,122 +5833,147 @@ export namespace Folks {
         static $gtype: GObject.GType<WebServiceFieldDetailsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AliasDetailsIface = typeof AliasDetails;
+
     /**
      * @gir-type Alias
      */
     type AntiLinkableIface = typeof AntiLinkable;
+
     /**
      * @gir-type Alias
      */
     type AvatarDetailsIface = typeof AvatarDetails;
+
     /**
      * @gir-type Alias
      */
     type BirthdayDetailsIface = typeof BirthdayDetails;
+
     /**
      * @gir-type Alias
      */
     type EmailDetailsIface = typeof EmailDetails;
+
     /**
      * @gir-type Alias
      */
     type ExtendedInfoIface = typeof ExtendedInfo;
+
     /**
      * @gir-type Alias
      */
     type FavouriteDetailsIface = typeof FavouriteDetails;
+
     /**
      * @gir-type Alias
      */
     type GenderDetailsIface = typeof GenderDetails;
+
     /**
      * @gir-type Alias
      */
     type GroupDetailsIface = typeof GroupDetails;
+
     /**
      * @gir-type Alias
      */
     type ImDetailsIface = typeof ImDetails;
+
     /**
      * @gir-type Alias
      */
     type InteractionDetailsIface = typeof InteractionDetails;
+
     /**
      * @gir-type Alias
      */
     type LocalIdDetailsIface = typeof LocalIdDetails;
+
     /**
      * @gir-type Alias
      */
     type LocationDetailsIface = typeof LocationDetails;
+
     /**
      * @gir-type Alias
      */
     type NameDetailsIface = typeof NameDetails;
+
     /**
      * @gir-type Alias
      */
     type NoteDetailsIface = typeof NoteDetails;
+
     /**
      * @gir-type Alias
      */
     type PhoneDetailsIface = typeof PhoneDetails;
+
     /**
      * @gir-type Alias
      */
     type PostalAddressDetailsIface = typeof PostalAddressDetails;
+
     /**
      * @gir-type Alias
      */
     type PresenceDetailsIface = typeof PresenceDetails;
+
     /**
      * @gir-type Alias
      */
     type RoleDetailsIface = typeof RoleDetails;
+
     /**
      * @gir-type Alias
      */
     type UrlDetailsIface = typeof UrlDetails;
+
     /**
      * @gir-type Alias
      */
     type WebServiceDetailsIface = typeof WebServiceDetails;
+
     namespace AliasDetails {
         /**
          * Interface for implementing AliasDetails.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param alias
-             * @param _callback_
+             * @param alias 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_alias_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_alias(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_alias(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             alias: string;
         }
@@ -5668,37 +5987,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface AliasDetails extends GObject.Object, AliasDetails.Interface {
-        // Properties
 
+        // Properties
         get alias(): string;
         set alias(val: string);
 
         // Methods
-
         /**
-         * @param alias
+         * @param alias 
          */
         change_alias(alias: string): globalThis.Promise<void>;
+
         /**
-         * @param alias
-         * @param _callback_
+         * @param alias 
+         * @param _callback_ 
          */
         change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param alias
-         * @param _callback_
+         * @param alias 
+         * @param _callback_ 
          */
-        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_alias_finish(_res_: Gio.AsyncResult): void;
+
         get_alias(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_alias(value: string): void;
     }
+
 
     export const AliasDetails: AliasDetailsNamespace & {
         new (): AliasDetails; // This allows `obj instanceof AliasDetails`
@@ -5710,32 +6034,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param anti_links
-             * @param _callback_
+             * @param anti_links 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_anti_links_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_anti_links(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_anti_links(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Persona.ConstructorProps {
             anti_links: Gee.Set;
             antiLinks: Gee.Set;
@@ -5750,115 +6077,130 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface AntiLinkable extends Persona, AntiLinkable.Interface {
-        // Properties
 
+        // Properties
         get anti_links(): Gee.Set;
         set anti_links(val: Gee.Set);
+
         get antiLinks(): Gee.Set;
         set antiLinks(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param anti_links
+         * @param anti_links 
          */
         change_anti_links(anti_links: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param anti_links
-         * @param _callback_
+         * @param anti_links 
+         * @param _callback_ 
          */
         change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param anti_links
-         * @param _callback_
+         * @param anti_links 
+         * @param _callback_ 
          */
-        change_anti_links(
-            anti_links: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_anti_links(anti_links: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_anti_links_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param other_persona
+         * @param other_persona 
          */
         has_anti_link_with_persona(other_persona: Persona): boolean;
+
         /**
-         * @param other_personas
+         * @param other_personas 
          */
         add_anti_links(other_personas: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param other_personas
-         * @param _callback_
+         * @param other_personas 
+         * @param _callback_ 
          */
         add_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param other_personas
-         * @param _callback_
+         * @param other_personas 
+         * @param _callback_ 
          */
-        add_anti_links(
-            other_personas: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        add_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         add_anti_links_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param other_personas
+         * @param other_personas 
          */
         remove_anti_links(other_personas: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param other_personas
-         * @param _callback_
+         * @param other_personas 
+         * @param _callback_ 
          */
         remove_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param other_personas
-         * @param _callback_
+         * @param other_personas 
+         * @param _callback_ 
          */
-        remove_anti_links(
-            other_personas: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        remove_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_anti_links_finish(_res_: Gio.AsyncResult): void;
+
         add_global_anti_link(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         add_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        add_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        add_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         add_global_anti_link_finish(_res_: Gio.AsyncResult): void;
+
         remove_global_anti_link(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         remove_global_anti_link(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        remove_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_global_anti_link_finish(_res_: Gio.AsyncResult): void;
+
         has_global_anti_link(): boolean;
+
         get_anti_links(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_anti_links(value: Gee.Set): void;
     }
+
 
     export const AntiLinkable: AntiLinkableNamespace & {
         new (): AntiLinkable; // This allows `obj instanceof AntiLinkable`
@@ -5870,32 +6212,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param avatar
-             * @param _callback_
+             * @param avatar 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_avatar_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_avatar(): Gio.LoadableIcon;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_avatar(value: Gio.LoadableIcon): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             avatar: Gio.LoadableIcon;
         }
@@ -5909,40 +6254,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface AvatarDetails extends GObject.Object, AvatarDetails.Interface {
-        // Properties
 
+        // Properties
         get avatar(): Gio.LoadableIcon;
         set avatar(val: Gio.LoadableIcon);
 
         // Methods
-
         /**
-         * @param avatar
+         * @param avatar 
          */
         change_avatar(avatar: Gio.LoadableIcon): globalThis.Promise<void>;
+
         /**
-         * @param avatar
-         * @param _callback_
+         * @param avatar 
+         * @param _callback_ 
          */
         change_avatar(avatar: Gio.LoadableIcon, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param avatar
-         * @param _callback_
+         * @param avatar 
+         * @param _callback_ 
          */
-        change_avatar(
-            avatar: Gio.LoadableIcon,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
+
         get_avatar(): Gio.LoadableIcon;
+
         /**
-         * @param value
+         * @param value 
          */
         set_avatar(value: Gio.LoadableIcon): void;
     }
+
 
     export const AvatarDetails: AvatarDetailsNamespace & {
         new (): AvatarDetails; // This allows `obj instanceof AvatarDetails`
@@ -5954,52 +6301,59 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param birthday
-             * @param _callback_
+             * @param birthday 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_birthday_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param event_id
-             * @param _callback_
+             * @param event_id 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_birthday(): GLib.DateTime;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_birthday(value: GLib.DateTime): void;
+
             /**
              * @virtual
              */
             vfunc_get_calendar_event_id(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_calendar_event_id(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             birthday: GLib.DateTime;
             calendar_event_id: string;
@@ -6015,70 +6369,77 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface BirthdayDetails extends GObject.Object, BirthdayDetails.Interface {
-        // Properties
 
+        // Properties
         get birthday(): GLib.DateTime;
         set birthday(val: GLib.DateTime);
+
         get calendar_event_id(): string;
         set calendar_event_id(val: string);
+
         get calendarEventId(): string;
         set calendarEventId(val: string);
 
         // Methods
-
         /**
-         * @param birthday
+         * @param birthday 
          */
         change_birthday(birthday: GLib.DateTime): globalThis.Promise<void>;
+
         /**
-         * @param birthday
-         * @param _callback_
+         * @param birthday 
+         * @param _callback_ 
          */
         change_birthday(birthday: GLib.DateTime, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param birthday
-         * @param _callback_
+         * @param birthday 
+         * @param _callback_ 
          */
-        change_birthday(
-            birthday: GLib.DateTime,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param event_id
+         * @param event_id 
          */
         change_calendar_event_id(event_id: string): globalThis.Promise<void>;
+
         /**
-         * @param event_id
-         * @param _callback_
+         * @param event_id 
+         * @param _callback_ 
          */
         change_calendar_event_id(event_id: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param event_id
-         * @param _callback_
+         * @param event_id 
+         * @param _callback_ 
          */
-        change_calendar_event_id(
-            event_id: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
+
         get_birthday(): GLib.DateTime;
+
         /**
-         * @param value
+         * @param value 
          */
         set_birthday(value: GLib.DateTime): void;
+
         get_calendar_event_id(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_calendar_event_id(value: string): void;
     }
+
 
     export const BirthdayDetails: BirthdayDetailsNamespace & {
         new (): BirthdayDetails; // This allows `obj instanceof BirthdayDetails`
@@ -6090,32 +6451,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param email_addresses
-             * @param _callback_
+             * @param email_addresses 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_email_addresses_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_email_addresses(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_email_addresses(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             email_addresses: Gee.Set;
             emailAddresses: Gee.Set;
@@ -6130,42 +6494,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface EmailDetails extends GObject.Object, EmailDetails.Interface {
-        // Properties
 
+        // Properties
         get email_addresses(): Gee.Set;
         set email_addresses(val: Gee.Set);
+
         get emailAddresses(): Gee.Set;
         set emailAddresses(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param email_addresses
+         * @param email_addresses 
          */
         change_email_addresses(email_addresses: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param email_addresses
-         * @param _callback_
+         * @param email_addresses 
+         * @param _callback_ 
          */
         change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param email_addresses
-         * @param _callback_
+         * @param email_addresses 
+         * @param _callback_ 
          */
-        change_email_addresses(
-            email_addresses: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_email_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_email_addresses(value: Gee.Set): void;
     }
+
 
     export const EmailDetails: EmailDetailsNamespace & {
         new (): EmailDetails; // This allows `obj instanceof EmailDetails`
@@ -6177,45 +6544,47 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
+             * @param name 
              * @virtual
              */
             vfunc_get_extended_field(name: string): ExtendedFieldDetails;
+
             /**
-             * @param name
-             * @param value
-             * @param _callback_
+             * @param name 
+             * @param value 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_change_extended_field(
-                name: string,
-                value: ExtendedFieldDetails,
-                _callback_: Gio.AsyncReadyCallback<this>,
-            ): void;
+            vfunc_change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param name
-             * @param _callback_
+             * @param name 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ExtendedInfoNamespace {
@@ -6226,60 +6595,61 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface ExtendedInfo extends GObject.Object, ExtendedInfo.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param name
+         * @param name 
          */
         get_extended_field(name: string): ExtendedFieldDetails;
+
         /**
-         * @param name
-         * @param value
+         * @param name 
+         * @param value 
          */
         change_extended_field(name: string, value: ExtendedFieldDetails): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param value
-         * @param _callback_
+         * @param name 
+         * @param value 
+         * @param _callback_ 
          */
-        change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        change_extended_field(name: string, value: ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param value
-         * @param _callback_
+         * @param name 
+         * @param value 
+         * @param _callback_ 
          */
-        change_extended_field(
-            name: string,
-            value: ExtendedFieldDetails,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_extended_field(name: string, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param name
+         * @param name 
          */
         remove_extended_field(name: string): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
     }
+
 
     export const ExtendedInfo: ExtendedInfoNamespace & {
         new (): ExtendedInfo; // This allows `obj instanceof ExtendedInfo`
@@ -6291,32 +6661,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param is_favourite
-             * @param _callback_
+             * @param is_favourite 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_is_favourite_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_is_favourite(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_is_favourite(value: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_favourite: boolean;
             isFavourite: boolean;
@@ -6331,42 +6704,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface FavouriteDetails extends GObject.Object, FavouriteDetails.Interface {
-        // Properties
 
+        // Properties
         get is_favourite(): boolean;
         set is_favourite(val: boolean);
+
         get isFavourite(): boolean;
         set isFavourite(val: boolean);
 
         // Methods
-
         /**
-         * @param is_favourite
+         * @param is_favourite 
          */
         change_is_favourite(is_favourite: boolean): globalThis.Promise<void>;
+
         /**
-         * @param is_favourite
-         * @param _callback_
+         * @param is_favourite 
+         * @param _callback_ 
          */
         change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param is_favourite
-         * @param _callback_
+         * @param is_favourite 
+         * @param _callback_ 
          */
-        change_is_favourite(
-            is_favourite: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
+
         get_is_favourite(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_favourite(value: boolean): void;
     }
+
 
     export const FavouriteDetails: FavouriteDetailsNamespace & {
         new (): FavouriteDetails; // This allows `obj instanceof FavouriteDetails`
@@ -6378,32 +6754,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param gender
-             * @param _callback_
+             * @param gender 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_gender_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_gender(): Gender;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_gender(value: Gender): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             gender: Gender;
         }
@@ -6417,37 +6796,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface GenderDetails extends GObject.Object, GenderDetails.Interface {
-        // Properties
 
+        // Properties
         get gender(): Gender;
         set gender(val: Gender);
 
         // Methods
-
         /**
-         * @param gender
+         * @param gender 
          */
         change_gender(gender: Gender): globalThis.Promise<void>;
+
         /**
-         * @param gender
-         * @param _callback_
+         * @param gender 
+         * @param _callback_ 
          */
         change_gender(gender: Gender, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param gender
-         * @param _callback_
+         * @param gender 
+         * @param _callback_ 
          */
-        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_gender(gender: Gender, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
+
         get_gender(): Gender;
+
         /**
-         * @param value
+         * @param value 
          */
         set_gender(value: Gender): void;
     }
+
 
     export const GenderDetails: GenderDetailsNamespace & {
         new (): GenderDetails; // This allows `obj instanceof GenderDetails`
@@ -6459,44 +6843,49 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param group
-             * @param is_member
-             * @param _callback_
+             * @param group 
+             * @param is_member 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_group_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param groups
-             * @param _callback_
+             * @param groups 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_groups_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_groups(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_groups(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             groups: Gee.Set;
         }
@@ -6510,62 +6899,67 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface GroupDetails extends GObject.Object, GroupDetails.Interface {
-        // Properties
 
+        // Properties
         get groups(): Gee.Set;
         set groups(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param group
-         * @param is_member
+         * @param group 
+         * @param is_member 
          */
         change_group(group: string, is_member: boolean): globalThis.Promise<void>;
+
         /**
-         * @param group
-         * @param is_member
-         * @param _callback_
+         * @param group 
+         * @param is_member 
+         * @param _callback_ 
          */
         change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param group
-         * @param is_member
-         * @param _callback_
+         * @param group 
+         * @param is_member 
+         * @param _callback_ 
          */
-        change_group(
-            group: string,
-            is_member: boolean,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param groups
+         * @param groups 
          */
         change_groups(groups: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param groups
-         * @param _callback_
+         * @param groups 
+         * @param _callback_ 
          */
         change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param groups
-         * @param _callback_
+         * @param groups 
+         * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
+
         get_groups(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_groups(value: Gee.Set): void;
     }
+
 
     export const GroupDetails: GroupDetailsNamespace & {
         new (): GroupDetails; // This allows `obj instanceof GroupDetails`
@@ -6577,32 +6971,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param im_addresses
-             * @param _callback_
+             * @param im_addresses 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_im_addresses_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_im_addresses(): Gee.MultiMap;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_im_addresses(value: Gee.MultiMap): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             im_addresses: Gee.MultiMap;
             imAddresses: Gee.MultiMap;
@@ -6612,53 +7009,55 @@ export namespace Folks {
     export interface ImDetailsNamespace {
         $gtype: GObject.GType<ImDetails>;
         prototype: ImDetails;
-
         /**
-         * @param im_address
-         * @param protocol
-         */
+        * @param im_address 
+        * @param protocol 
+        */
         normalise_im_address(im_address: string, protocol: string): string;
     }
     /**
      * @gir-type Interface
      */
     interface ImDetails extends GObject.Object, ImDetails.Interface {
-        // Properties
 
+        // Properties
         get im_addresses(): Gee.MultiMap;
         set im_addresses(val: Gee.MultiMap);
+
         get imAddresses(): Gee.MultiMap;
         set imAddresses(val: Gee.MultiMap);
 
         // Methods
-
         /**
-         * @param im_addresses
+         * @param im_addresses 
          */
         change_im_addresses(im_addresses: Gee.MultiMap): globalThis.Promise<void>;
+
         /**
-         * @param im_addresses
-         * @param _callback_
+         * @param im_addresses 
+         * @param _callback_ 
          */
         change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param im_addresses
-         * @param _callback_
+         * @param im_addresses 
+         * @param _callback_ 
          */
-        change_im_addresses(
-            im_addresses: Gee.MultiMap,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_im_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_im_addresses(value: Gee.MultiMap): void;
     }
+
 
     export const ImDetails: ImDetailsNamespace & {
         new (): ImDetails; // This allows `obj instanceof ImDetails`
@@ -6670,28 +7069,31 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_im_interaction_count(): number;
+
             /**
              * @virtual
              */
             vfunc_get_last_im_interaction_datetime(): GLib.DateTime;
+
             /**
              * @virtual
              */
             vfunc_get_call_interaction_count(): number;
+
             /**
              * @virtual
              */
             vfunc_get_last_call_interaction_datetime(): GLib.DateTime;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             im_interaction_count: number;
             imInteractionCount: number;
@@ -6712,48 +7114,58 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface InteractionDetails extends GObject.Object, InteractionDetails.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get im_interaction_count(): number;
+
         /**
          * @read-only
          */
         get imInteractionCount(): number;
+
         /**
          * @read-only
          */
         get last_im_interaction_datetime(): GLib.DateTime;
+
         /**
          * @read-only
          */
         get lastImInteractionDatetime(): GLib.DateTime;
+
         /**
          * @read-only
          */
         get call_interaction_count(): number;
+
         /**
          * @read-only
          */
         get callInteractionCount(): number;
+
         /**
          * @read-only
          */
         get last_call_interaction_datetime(): GLib.DateTime;
+
         /**
          * @read-only
          */
         get lastCallInteractionDatetime(): GLib.DateTime;
 
         // Methods
-
         get_im_interaction_count(): number;
+
         get_last_im_interaction_datetime(): GLib.DateTime;
+
         get_call_interaction_count(): number;
+
         get_last_call_interaction_datetime(): GLib.DateTime;
     }
+
 
     export const InteractionDetails: InteractionDetailsNamespace & {
         new (): InteractionDetails; // This allows `obj instanceof InteractionDetails`
@@ -6765,32 +7177,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param local_ids
-             * @param _callback_
+             * @param local_ids 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_local_ids_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_local_ids(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_local_ids(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             local_ids: Gee.Set;
             localIds: Gee.Set;
@@ -6805,42 +7220,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface LocalIdDetails extends GObject.Object, LocalIdDetails.Interface {
-        // Properties
 
+        // Properties
         get local_ids(): Gee.Set;
         set local_ids(val: Gee.Set);
+
         get localIds(): Gee.Set;
         set localIds(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param local_ids
+         * @param local_ids 
          */
         change_local_ids(local_ids: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param local_ids
-         * @param _callback_
+         * @param local_ids 
+         * @param _callback_ 
          */
         change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param local_ids
-         * @param _callback_
+         * @param local_ids 
+         * @param _callback_ 
          */
-        change_local_ids(
-            local_ids: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
+
         get_local_ids(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_local_ids(value: Gee.Set): void;
     }
+
 
     export const LocalIdDetails: LocalIdDetailsNamespace & {
         new (): LocalIdDetails; // This allows `obj instanceof LocalIdDetails`
@@ -6852,32 +7270,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param location
-             * @param _callback_
+             * @param location 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_location_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_location(): Location;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_location(value: Location): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             location: Location;
         }
@@ -6891,37 +7312,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface LocationDetails extends GObject.Object, LocationDetails.Interface {
-        // Properties
 
+        // Properties
         get location(): Location;
         set location(val: Location);
 
         // Methods
-
         /**
-         * @param location
+         * @param location 
          */
         change_location(location: Location): globalThis.Promise<void>;
+
         /**
-         * @param location
-         * @param _callback_
+         * @param location 
+         * @param _callback_ 
          */
         change_location(location: Location, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param location
-         * @param _callback_
+         * @param location 
+         * @param _callback_ 
          */
-        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_location(location: Location, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_location_finish(_res_: Gio.AsyncResult): void;
+
         get_location(): Location;
+
         /**
-         * @param value
+         * @param value 
          */
         set_location(value: Location): void;
     }
+
 
     export const LocationDetails: LocationDetailsNamespace & {
         new (): LocationDetails; // This allows `obj instanceof LocationDetails`
@@ -6933,72 +7359,83 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param name
-             * @param _callback_
+             * @param name 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param full_name
-             * @param _callback_
+             * @param full_name 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param nickname
-             * @param _callback_
+             * @param nickname 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_structured_name(): StructuredName;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_structured_name(value: StructuredName): void;
+
             /**
              * @virtual
              */
             vfunc_get_full_name(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_full_name(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_nickname(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_nickname(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             structured_name: StructuredName;
             structuredName: StructuredName;
@@ -7016,94 +7453,112 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface NameDetails extends GObject.Object, NameDetails.Interface {
-        // Properties
 
+        // Properties
         get structured_name(): StructuredName;
         set structured_name(val: StructuredName);
+
         get structuredName(): StructuredName;
         set structuredName(val: StructuredName);
+
         get full_name(): string;
         set full_name(val: string);
+
         get fullName(): string;
         set fullName(val: string);
+
         get nickname(): string;
         set nickname(val: string);
 
         // Methods
-
         /**
-         * @param name
+         * @param name 
          */
         change_structured_name(name: StructuredName): globalThis.Promise<void>;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
         change_structured_name(name: StructuredName, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param name
-         * @param _callback_
+         * @param name 
+         * @param _callback_ 
          */
-        change_structured_name(
-            name: StructuredName,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_structured_name(name: StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param full_name
+         * @param full_name 
          */
         change_full_name(full_name: string): globalThis.Promise<void>;
+
         /**
-         * @param full_name
-         * @param _callback_
+         * @param full_name 
+         * @param _callback_ 
          */
         change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param full_name
-         * @param _callback_
+         * @param full_name 
+         * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param nickname
+         * @param nickname 
          */
         change_nickname(nickname: string): globalThis.Promise<void>;
+
         /**
-         * @param nickname
-         * @param _callback_
+         * @param nickname 
+         * @param _callback_ 
          */
         change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param nickname
-         * @param _callback_
+         * @param nickname 
+         * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
+
         get_structured_name(): StructuredName;
+
         /**
-         * @param value
+         * @param value 
          */
         set_structured_name(value: StructuredName): void;
+
         get_full_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_full_name(value: string): void;
+
         get_nickname(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_nickname(value: string): void;
     }
+
 
     export const NameDetails: NameDetailsNamespace & {
         new (): NameDetails; // This allows `obj instanceof NameDetails`
@@ -7115,32 +7570,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param notes
-             * @param _callback_
+             * @param notes 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_notes_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_notes(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_notes(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             notes: Gee.Set;
         }
@@ -7154,37 +7612,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface NoteDetails extends GObject.Object, NoteDetails.Interface {
-        // Properties
 
+        // Properties
         get notes(): Gee.Set;
         set notes(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param notes
+         * @param notes 
          */
         change_notes(notes: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param notes
-         * @param _callback_
+         * @param notes 
+         * @param _callback_ 
          */
         change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param notes
-         * @param _callback_
+         * @param notes 
+         * @param _callback_ 
          */
-        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_notes_finish(_res_: Gio.AsyncResult): void;
+
         get_notes(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_notes(value: Gee.Set): void;
     }
+
 
     export const NoteDetails: NoteDetailsNamespace & {
         new (): NoteDetails; // This allows `obj instanceof NoteDetails`
@@ -7196,32 +7659,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param phone_numbers
-             * @param _callback_
+             * @param phone_numbers 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_phone_numbers(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_phone_numbers(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             phone_numbers: Gee.Set;
             phoneNumbers: Gee.Set;
@@ -7236,42 +7702,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface PhoneDetails extends GObject.Object, PhoneDetails.Interface {
-        // Properties
 
+        // Properties
         get phone_numbers(): Gee.Set;
         set phone_numbers(val: Gee.Set);
+
         get phoneNumbers(): Gee.Set;
         set phoneNumbers(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param phone_numbers
+         * @param phone_numbers 
          */
         change_phone_numbers(phone_numbers: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param phone_numbers
-         * @param _callback_
+         * @param phone_numbers 
+         * @param _callback_ 
          */
         change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param phone_numbers
-         * @param _callback_
+         * @param phone_numbers 
+         * @param _callback_ 
          */
-        change_phone_numbers(
-            phone_numbers: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
+
         get_phone_numbers(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_phone_numbers(value: Gee.Set): void;
     }
+
 
     export const PhoneDetails: PhoneDetailsNamespace & {
         new (): PhoneDetails; // This allows `obj instanceof PhoneDetails`
@@ -7283,32 +7752,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param postal_addresses
-             * @param _callback_
+             * @param postal_addresses 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_postal_addresses(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_postal_addresses(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             postal_addresses: Gee.Set;
             postalAddresses: Gee.Set;
@@ -7323,42 +7795,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface PostalAddressDetails extends GObject.Object, PostalAddressDetails.Interface {
-        // Properties
 
+        // Properties
         get postal_addresses(): Gee.Set;
         set postal_addresses(val: Gee.Set);
+
         get postalAddresses(): Gee.Set;
         set postalAddresses(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param postal_addresses
+         * @param postal_addresses 
          */
         change_postal_addresses(postal_addresses: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param postal_addresses
-         * @param _callback_
+         * @param postal_addresses 
+         * @param _callback_ 
          */
         change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param postal_addresses
-         * @param _callback_
+         * @param postal_addresses 
+         * @param _callback_ 
          */
-        change_postal_addresses(
-            postal_addresses: Gee.Set,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_postal_addresses(postal_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_postal_addresses(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_postal_addresses(value: Gee.Set): void;
     }
+
 
     export const PostalAddressDetails: PostalAddressDetailsNamespace & {
         new (): PostalAddressDetails; // This allows `obj instanceof PostalAddressDetails`
@@ -7370,48 +7845,55 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_presence_type(): PresenceType;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_presence_type(value: PresenceType): void;
+
             /**
              * @virtual
              */
             vfunc_get_presence_message(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_presence_message(value: string): void;
+
             /**
              * @virtual
              */
             vfunc_get_client_types(): string[];
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_client_types(value: string[]): void;
+
             /**
              * @virtual
              */
             vfunc_get_presence_status(): string;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_presence_status(value: string): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             presence_type: PresenceType;
             presenceType: PresenceType;
@@ -7427,64 +7909,78 @@ export namespace Folks {
     export interface PresenceDetailsNamespace {
         $gtype: GObject.GType<PresenceDetails>;
         prototype: PresenceDetails;
-
         /**
-         * @param type
-         */
+        * @param type 
+        */
         get_default_message_from_type(type: PresenceType): string;
         /**
-         * @param type_a
-         * @param type_b
-         */
+        * @param type_a 
+        * @param type_b 
+        */
         typecmp(type_a: PresenceType, type_b: PresenceType): number;
     }
     /**
      * @gir-type Interface
      */
     interface PresenceDetails extends GObject.Object, PresenceDetails.Interface {
-        // Properties
 
+        // Properties
         get presence_type(): PresenceType;
         set presence_type(val: PresenceType);
+
         get presenceType(): PresenceType;
         set presenceType(val: PresenceType);
+
         get presence_message(): string;
         set presence_message(val: string);
+
         get presenceMessage(): string;
         set presenceMessage(val: string);
+
         get client_types(): string[];
         set client_types(val: string[]);
+
         get clientTypes(): string[];
         set clientTypes(val: string[]);
+
         get presence_status(): string;
         set presence_status(val: string);
+
         get presenceStatus(): string;
         set presenceStatus(val: string);
 
         // Methods
-
         is_online(): boolean;
+
         get_presence_type(): PresenceType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_type(value: PresenceType): void;
+
         get_presence_message(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_message(value: string): void;
+
         get_client_types(): string[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_client_types(value: string[]): void;
+
         get_presence_status(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_presence_status(value: string): void;
     }
+
 
     export const PresenceDetails: PresenceDetailsNamespace & {
         new (): PresenceDetails; // This allows `obj instanceof PresenceDetails`
@@ -7496,32 +7992,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param roles
-             * @param _callback_
+             * @param roles 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_roles_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_roles(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_roles(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             roles: Gee.Set;
         }
@@ -7535,37 +8034,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface RoleDetails extends GObject.Object, RoleDetails.Interface {
-        // Properties
 
+        // Properties
         get roles(): Gee.Set;
         set roles(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param roles
+         * @param roles 
          */
         change_roles(roles: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param roles
-         * @param _callback_
+         * @param roles 
+         * @param _callback_ 
          */
         change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param roles
-         * @param _callback_
+         * @param roles 
+         * @param _callback_ 
          */
-        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_roles_finish(_res_: Gio.AsyncResult): void;
+
         get_roles(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_roles(value: Gee.Set): void;
     }
+
 
     export const RoleDetails: RoleDetailsNamespace & {
         new (): RoleDetails; // This allows `obj instanceof RoleDetails`
@@ -7577,32 +8081,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param urls
-             * @param _callback_
+             * @param urls 
+             * @param _callback_ 
              * @virtual
              */
             vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_urls_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_urls(): Gee.Set;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_urls(value: Gee.Set): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             urls: Gee.Set;
         }
@@ -7616,37 +8123,42 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface UrlDetails extends GObject.Object, UrlDetails.Interface {
-        // Properties
 
+        // Properties
         get urls(): Gee.Set;
         set urls(val: Gee.Set);
 
         // Methods
-
         /**
-         * @param urls
+         * @param urls 
          */
         change_urls(urls: Gee.Set): globalThis.Promise<void>;
+
         /**
-         * @param urls
-         * @param _callback_
+         * @param urls 
+         * @param _callback_ 
          */
         change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param urls
-         * @param _callback_
+         * @param urls 
+         * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
+
         get_urls(): Gee.Set;
+
         /**
-         * @param value
+         * @param value 
          */
         set_urls(value: Gee.Set): void;
     }
+
 
     export const UrlDetails: UrlDetailsNamespace & {
         new (): UrlDetails; // This allows `obj instanceof UrlDetails`
@@ -7658,35 +8170,35 @@ export namespace Folks {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param web_service_addresses
-             * @param _callback_
+             * @param web_service_addresses 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_change_web_service_addresses(
-                web_service_addresses: Gee.MultiMap,
-                _callback_: Gio.AsyncReadyCallback<this>,
-            ): void;
+            vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_web_service_addresses(): Gee.MultiMap;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_web_service_addresses(value: Gee.MultiMap): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             web_service_addresses: Gee.MultiMap;
             webServiceAddresses: Gee.MultiMap;
@@ -7701,45 +8213,45 @@ export namespace Folks {
      * @gir-type Interface
      */
     interface WebServiceDetails extends GObject.Object, WebServiceDetails.Interface {
-        // Properties
 
+        // Properties
         get web_service_addresses(): Gee.MultiMap;
         set web_service_addresses(val: Gee.MultiMap);
+
         get webServiceAddresses(): Gee.MultiMap;
         set webServiceAddresses(val: Gee.MultiMap);
 
         // Methods
-
         /**
-         * @param web_service_addresses
+         * @param web_service_addresses 
          */
         change_web_service_addresses(web_service_addresses: Gee.MultiMap): globalThis.Promise<void>;
+
         /**
-         * @param web_service_addresses
-         * @param _callback_
+         * @param web_service_addresses 
+         * @param _callback_ 
          */
-        change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param web_service_addresses
-         * @param _callback_
+         * @param web_service_addresses 
+         * @param _callback_ 
          */
-        change_web_service_addresses(
-            web_service_addresses: Gee.MultiMap,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
+
         get_web_service_addresses(): Gee.MultiMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_web_service_addresses(value: Gee.MultiMap): void;
     }
+
 
     export const WebServiceDetails: WebServiceDetailsNamespace & {
         new (): WebServiceDetails; // This allows `obj instanceof WebServiceDetails`
@@ -7750,6 +8262,7 @@ export namespace Folks {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type GdkMacos40 from '@girs/gdkmacos-4.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

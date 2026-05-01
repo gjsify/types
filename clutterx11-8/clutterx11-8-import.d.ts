@@ -1,3 +1,4 @@
+
 import type ClutterX118 from '@girs/clutterx11-8';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

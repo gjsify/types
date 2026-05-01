@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Zeitgeist {
+
     /**
      * Zeitgeist-2.0
      */
+
 
     /**
      * @gir-type Enum
@@ -69,6 +72,7 @@ export namespace Zeitgeist {
         RELEVANCY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -83,6 +87,7 @@ export namespace Zeitgeist {
         RECENT,
         RELATED,
     }
+
 
     /**
      * @gir-type Enum
@@ -100,6 +105,7 @@ export namespace Zeitgeist {
         ANY,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -107,22 +113,30 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static BACKUP_FAILED: number;
+
         static DATABASE_BUSY: number;
+
         static DATABASE_CANTOPEN: number;
+
         static DATABASE_CORRUPT: number;
+
         static DATABASE_ERROR: number;
+
         static DATABASE_RETIRE_FAILED: number;
+
         static EXISTING_INSTANCE: number;
+
         static INVALID_ARGUMENT: number;
+
         static INVALID_EVENT: number;
+
         static INVALID_KEY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -131,289 +145,435 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_SIGNATURE: number;
+
         static NULL_EVENT: number;
+
         static TOO_MANY_RESULTS: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     const DataSourcesSIG_DATASOURCES: string;
+
     const TimestampSECOND: number;
+
     const TimestampMINUTE: number;
+
     const TimestampHOUR: number;
+
     const TimestampDAY: number;
+
     const TimestampWEEK: number;
+
     const TimestampYEAR: number;
+
     const NCALALARM: string;
+
     const NCALATTACHMENT: string;
+
     const NCALCALENDAR: string;
+
     const NCALCALENDAR_DATA_OBJECT: string;
+
     const NCALEVENT: string;
+
     const NCALFREEBUSY: string;
+
     const NCALJOURNAL: string;
+
     const NCALTIMEZONE: string;
+
     const NCALTODO: string;
+
     const NCOCONTACT: string;
+
     const NCOCONTACT_GROUP: string;
+
     const NCOCONTACT_LIST: string;
+
     const NCOCONTACT_LIST_DATA_OBJECT: string;
+
     const NCOORGANIZATION_CONTACT: string;
+
     const NCOPERSON_CONTACT: string;
+
     const NFOAPPLICATION: string;
+
     const NFOARCHIVE: string;
+
     const NFOARCHIVE_ITEM: string;
+
     const NFOATTACHMENT: string;
+
     const NFOAUDIO: string;
+
     const NFOBOOKMARK: string;
+
     const NFOBOOKMARK_FOLDER: string;
+
     const NFOCURSOR: string;
+
     const NFODATA_CONTAINER: string;
+
     const NFODELETED_RESOURCE: string;
+
     const NFODOCUMENT: string;
+
     const NFOEMBEDDED_FILE_DATA_OBJECT: string;
+
     const NFOEXECUTABLE: string;
+
     const NFOFILESYSTEM: string;
+
     const NFOFILESYSTEM_IMAGE: string;
+
     const NFOFILE_DATA_OBJECT: string;
+
     const NFOFOLDER: string;
+
     const NFOFONT: string;
+
     const NFOHARD_DISK_PARTITION: string;
+
     const NFOHTML_DOCUMENT: string;
+
     const NFOICON: string;
+
     const NFOIMAGE: string;
+
     const NFOMEDIA: string;
+
     const NFOMEDIA_LIST: string;
+
     const NFOMEDIA_STREAM: string;
+
     const NFOMIND_MAP: string;
+
     const NFOOPERATING_SYSTEM: string;
+
     const NFOPAGINATED_TEXT_DOCUMENT: string;
+
     const NFOPLAIN_TEXT_DOCUMENT: string;
+
     const NFOPRESENTATION: string;
+
     const NFORASTER_IMAGE: string;
+
     const NFOREMOTE_DATA_OBJECT: string;
+
     const NFOREMOTE_PORT_ADDRESS: string;
+
     const NFOSOFTWARE: string;
+
     const NFOSOFTWARE_ITEM: string;
+
     const NFOSOFTWARE_SERVICE: string;
+
     const NFOSOURCE_CODE: string;
+
     const NFOSPREADSHEET: string;
+
     const NFOTEXT_DOCUMENT: string;
+
     const NFOTRASH: string;
+
     const NFOVECTOR_IMAGE: string;
+
     const NFOVIDEO: string;
+
     const NFOVISUAL: string;
+
     const NFOWEBSITE: string;
+
     const NFOWEB_DATA_OBJECT: string;
+
     const NIEDATA_OBJECT: string;
+
     const NIEINFORMATION_ELEMENT: string;
+
     const NMMMOVIE: string;
+
     const NMMMUSIC_ALBUM: string;
+
     const NMMMUSIC_PIECE: string;
+
     const NMMTVSERIES: string;
+
     const NMMTVSHOW: string;
+
     const NMOEMAIL: string;
+
     const NMOIMMESSAGE: string;
+
     const NMOMAILBOX: string;
+
     const NMOMAILBOX_DATA_OBJECT: string;
+
     const NMOMESSAGE: string;
+
     const NMOMIME_ENTITY: string;
+
     const ZGACCEPT_EVENT: string;
+
     const ZGACCESS_EVENT: string;
+
     const ZGAPPLICATION_ACTION: string;
+
     const ZGCREATE_EVENT: string;
+
     const ZGDELETE_EVENT: string;
+
     const ZGDENY_EVENT: string;
+
     const ZGEVENT_INTERPRETATION: string;
+
     const ZGEVENT_MANIFESTATION: string;
+
     const ZGEXPIRE_EVENT: string;
+
     const ZGHEURISTIC_ACTIVITY: string;
+
     const ZGLEAVE_EVENT: string;
+
     const ZGMODIFY_EVENT: string;
+
     const ZGMOVE_EVENT: string;
+
     const ZGRECEIVE_EVENT: string;
+
     const ZGSCHEDULED_ACTIVITY: string;
+
     const ZGSEND_EVENT: string;
+
     const ZGSYSTEM_NOTIFICATION: string;
+
     const ZGUSER_ACTIVITY: string;
+
     const ZGWORLD_ACTIVITY: string;
+
     const UtilsENGINE_DBUS_NAME: string;
+
     const UtilsENGINE_DBUS_PATH: string;
+
     const UtilsSIG_EVENT: string;
+
     const UtilsMAX_DBUS_RESULT_SIZE: number;
+
     const UtilsCACHE_SIZE: number;
+
     /**
-     * @param sources_variant
+     * @param sources_variant 
      */
     function data_sources_from_variant(sources_variant: GLib.Variant): DataSource[];
+
     /**
-     * @param sources
+     * @param sources 
      */
-    function data_sources_to_variant(
-        sources: { [key: string]: any } | GLib.HashTable<string, DataSource>,
-    ): GLib.Variant;
+    function data_sources_to_variant(sources: ({ [key: string]: any } | GLib.HashTable<string, DataSource>)): GLib.Variant;
+
     /**
-     * @param vevents
+     * @param vevents 
      */
     function events_from_variant(vevents: GLib.Variant): Event[];
+
     /**
-     * @param events
+     * @param events 
      */
     function events_to_variant(events: Event[]): GLib.Variant;
+
     /**
-     * @param events
-     * @param limit
+     * @param events 
+     * @param limit 
      */
-    function events_to_variant_with_limit(events: Event[], limit: bigint | number): GLib.Variant;
+    function events_to_variant_with_limit(events: Event[], limit: (bigint | number)): GLib.Variant;
+
     /**
-     * @param timeval
+     * @param timeval 
      */
     function timestamp_from_timeval(timeval: GLib.TimeVal): number;
+
     /**
-     * @param timestamp
+     * @param timestamp 
      */
-    function timestamp_to_timeval(timestamp: bigint | number): GLib.TimeVal;
+    function timestamp_to_timeval(timestamp: (bigint | number)): GLib.TimeVal;
+
     function timestamp_from_now(): number;
+
     /**
-     * @param datetime
+     * @param datetime 
      */
     function timestamp_from_iso8601(datetime: string): number;
+
     /**
-     * @param timestamp
+     * @param timestamp 
      */
-    function timestamp_to_iso8601(timestamp: bigint | number): string;
+    function timestamp_to_iso8601(timestamp: (bigint | number)): string;
+
     /**
-     * @param date
+     * @param date 
      */
     function timestamp_from_date(date: GLib.Date): number;
+
     /**
-     * @param day
-     * @param month
-     * @param year
+     * @param day 
+     * @param month 
+     * @param year 
      */
     function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth, year: GLib.DateYear): number;
+
     /**
-     * @param timestamp
+     * @param timestamp 
      */
-    function timestamp_to_date(timestamp: bigint | number): GLib.Date;
+    function timestamp_to_date(timestamp: (bigint | number)): GLib.Date;
+
     /**
-     * @param timestamp
+     * @param timestamp 
      */
-    function timestamp_next_midnight(timestamp: bigint | number): number;
+    function timestamp_next_midnight(timestamp: (bigint | number)): number;
+
     /**
-     * @param timestamp
+     * @param timestamp 
      */
-    function timestamp_prev_midnight(timestamp: bigint | number): number;
+    function timestamp_prev_midnight(timestamp: (bigint | number)): number;
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_display_name(symbol_uri: string): string;
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_description(symbol_uri: string): string;
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_all_parents(symbol_uri: string): string[];
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_all_children(symbol_uri: string): string[];
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_children(symbol_uri: string): string[];
+
     /**
-     * @param symbol_uri
+     * @param symbol_uri 
      */
     function symbol_get_parents(symbol_uri: string): string[];
+
     /**
-     * @param symbol_uri
-     * @param parent_uri
+     * @param symbol_uri 
+     * @param parent_uri 
      */
-    function symbol_is_a(symbol_uri: string | null, parent_uri: string | null): boolean;
+    function symbol_is_a(symbol_uri: (string | null), parent_uri: (string | null)): boolean;
+
     function utils_get_data_path(): string;
+
     function utils_get_default_data_path(): string;
+
     function utils_get_database_file_path(): string;
+
     /**
-     * @param path
+     * @param path 
      */
     function utils_set_database_file_path(path: string): void;
+
     function utils_get_database_file_backup_path(): string;
+
     function utils_get_database_file_retire_name(): string;
+
     function utils_get_local_extensions_path(): string;
+
     function utils_using_in_memory_database(): boolean;
+
     function utils_backup_database(): void;
+
     /**
-     * @param val
+     * @param val 
      */
     function utils_parse_negation(val: string): [boolean, string];
+
     /**
-     * @param val
+     * @param val 
      */
     function utils_parse_noexpand(val: string): [boolean, string];
+
     /**
-     * @param val
+     * @param val 
      */
     function utils_parse_wildcard(val: string): [boolean, string];
+
     /**
-     * @param s
+     * @param s 
      */
-    function utils_is_empty_string(s: string | null): boolean;
+    function utils_is_empty_string(s: (string | null)): boolean;
+
     function utils_log_may_read_directly(): boolean;
+
     /**
-     * @param result_type
+     * @param result_type 
      */
     function result_type_is_sort_order_asc(result_type: ResultType): boolean;
+
     /**
-     * @param mimetype
-     * @param interpretation_uri
+     * @param mimetype 
+     * @param interpretation_uri 
      */
     function register_mimetype(mimetype: string, interpretation_uri: string): void;
+
     /**
-     * @param mimetype_regex
-     * @param interpretation_uri
+     * @param mimetype_regex 
+     * @param interpretation_uri 
      */
     function register_mimetype_regex(mimetype_regex: string, interpretation_uri: string): void;
+
     /**
-     * @param mimetype
+     * @param mimetype 
      */
-    function interpretation_for_mimetype(mimetype: string | null): string | null;
+    function interpretation_for_mimetype(mimetype: (string | null)): (string | null);
+
     /**
-     * @param uri_scheme
-     * @param manifestation_type
+     * @param uri_scheme 
+     * @param manifestation_type 
      */
     function register_uri_scheme(uri_scheme: string, manifestation_type: string): void;
+
     /**
-     * @param uri
+     * @param uri 
      */
-    function manifestation_for_uri(uri: string): string | null;
+    function manifestation_for_uri(uri: string): (string | null);
+
     namespace DataSourceRegistry {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
             /**
              * @signal
              */
-            'source-disconnected': (arg0: DataSource) => void;
+            "source-disconnected": (arg0: DataSource) => void;
             /**
              * @signal
              */
-            'source-enabled': (arg0: string, arg1: boolean) => void;
+            "source-enabled": (arg0: string, arg1: boolean) => void;
             /**
              * @signal
              */
-            'source-registered': (arg0: DataSource) => void;
-            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
-            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
+            "source-registered": (arg0: DataSource) => void;
+            "notify::proxy-created": (pspec: GObject.ParamSpec) => void;
+            "notify::is-connected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
 
-        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
+        }
     }
 
     /**
@@ -432,165 +592,139 @@ export namespace Zeitgeist {
         $signals: DataSourceRegistry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DataSourceRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DataSourceRegistry;
+        static ["new"](): DataSourceRegistry;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataSourceRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRegistry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataSourceRegistry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param cancellable 
+         */
+        get_data_sources(cancellable: (Gio.Cancellable | null)): globalThis.Promise<DataSource[]>;
 
         /**
-         * @param cancellable
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_sources(cancellable: Gio.Cancellable | null): globalThis.Promise<DataSource[]>;
+        get_data_sources(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_sources(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        get_data_sources(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DataSource[]> | void);
+
         /**
-         * @param cancellable
-         * @param _callback_
-         */
-        get_data_sources(
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<DataSource[]> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[];
+
         /**
-         * @param unique_id
-         * @param cancellable
+         * @param unique_id 
+         * @param cancellable 
          */
-        get_data_source_from_id(unique_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<DataSource>;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DataSource>;
+
         /**
-         * @param unique_id
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param unique_id
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<DataSource> | void;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DataSource> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): DataSource;
+
         /**
-         * @param data_source
-         * @param cancellable
+         * @param data_source 
+         * @param cancellable 
          */
-        register_data_source(data_source: DataSource, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        register_data_source(data_source: DataSource, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
-         * @param data_source
-         * @param cancellable
-         * @param _callback_
+         * @param data_source 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        register_data_source(
-            data_source: DataSource,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        register_data_source(data_source: DataSource, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param data_source
-         * @param cancellable
-         * @param _callback_
+         * @param data_source 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        register_data_source(
-            data_source: DataSource,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        register_data_source(data_source: DataSource, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         register_data_source_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<void>;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
     }
 
+
     namespace Index {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
-            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
-            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-created": (pspec: GObject.ParamSpec) => void;
+            "notify::is-connected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
 
-        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
+        }
     }
 
     /**
@@ -609,178 +743,122 @@ export namespace Zeitgeist {
         $signals: Index.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Index;
+        static ["new"](): Index;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Index.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Index.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Index.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         */
+        search(query: string, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<ResultSet>;
 
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<ResultSet>;
+        search(query: string, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        search(query: string, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ResultSet> | void);
+
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
-         */
-        search(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ResultSet> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         search_finish(_res_: Gio.AsyncResult): ResultSet;
+
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
          */
-        search_with_relevancies(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<[ResultSet, number[]]>;
+        search_with_relevancies(query: string, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[ResultSet, number[]]>;
+
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search_with_relevancies(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        search_with_relevancies(query: string, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param query
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param offset
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query 
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search_with_relevancies(
-            query: string,
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            offset: number,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[ResultSet, number[]]> | void;
+        search_with_relevancies(query: string, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[ResultSet, number[]]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [ResultSet, number[]];
     }
 
+
     namespace Log {
         // Signal signatures
         interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
-            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
-            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-created": (pspec: GObject.ParamSpec) => void;
+            "notify::is-connected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {
 
-        interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
+        }
     }
 
     /**
@@ -799,371 +877,292 @@ export namespace Zeitgeist {
         $signals: Log.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Log;
+        static ["new"](): Log;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Log.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): Log;
 
         // Methods
+        /**
+         * @param event 
+         * @param cancellable 
+         */
+        insert_event(event: Event, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number[]>;
 
         /**
-         * @param event
-         * @param cancellable
+         * @param event 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        insert_event(event: Event, cancellable: Gio.Cancellable | null): globalThis.Promise<number[]>;
+        insert_event(event: Event, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param event
-         * @param cancellable
-         * @param _callback_
+         * @param event 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        insert_event(
-            event: Event,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        insert_event(event: Event, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number[]> | void);
+
         /**
-         * @param event
-         * @param cancellable
-         * @param _callback_
-         */
-        insert_event(
-            event: Event,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number[]> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         insert_event_finish(_res_: Gio.AsyncResult): number[];
+
         /**
-         * @param events
-         * @param cancellable
+         * @param events 
+         * @param cancellable 
          */
-        insert_events(events: Event[], cancellable: Gio.Cancellable | null): globalThis.Promise<number[]>;
+        insert_events(events: Event[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<number[]>;
+
         /**
-         * @param events
-         * @param cancellable
-         * @param _callback_
+         * @param events 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        insert_events(
-            events: Event[],
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        insert_events(events: Event[], cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param events
-         * @param cancellable
-         * @param _callback_
+         * @param events 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        insert_events(
-            events: Event[],
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number[]> | void;
+        insert_events(events: Event[], cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         insert_events_finish(_res_: Gio.AsyncResult): number[];
+
         /**
-         * @param event
+         * @param event 
          */
         insert_event_no_reply(event: Event): void;
+
         /**
-         * @param events
+         * @param events 
          */
         insert_events_no_reply(events: Event[]): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
          */
-        find_events(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<ResultSet>;
+        find_events(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<ResultSet>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_events(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_events(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_events(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ResultSet> | void;
+        find_events(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ResultSet> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_events_finish(_res_: Gio.AsyncResult): ResultSet;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
          */
-        find_event_ids(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<number[]>;
+        find_event_ids(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number[]>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_event_ids(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_event_ids(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_event_ids(
-            time_range: TimeRange,
-            event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: ResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number[]> | void;
+        find_event_ids(time_range: TimeRange, event_templates: Event[], storage_state: StorageState, num_events: number, result_type: ResultType, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_event_ids_finish(_res_: Gio.AsyncResult): number[];
+
         /**
-         * @param event_ids
-         * @param cancellable
+         * @param event_ids 
+         * @param cancellable 
          */
-        get_events(event_ids: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<ResultSet>;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<ResultSet>;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ResultSet> | void;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ResultSet> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         get_events_finish(_res_: Gio.AsyncResult): ResultSet;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
          */
-        find_related_uris(
-            time_range: TimeRange,
-            event_templates: Event[],
-            result_event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: RelevantResultType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<string[]>;
+        find_related_uris(time_range: TimeRange, event_templates: Event[], result_event_templates: Event[], storage_state: StorageState, num_events: number, result_type: RelevantResultType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_related_uris(
-            time_range: TimeRange,
-            event_templates: Event[],
-            result_event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: RelevantResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_related_uris(time_range: TimeRange, event_templates: Event[], result_event_templates: Event[], storage_state: StorageState, num_events: number, result_type: RelevantResultType, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        find_related_uris(
-            time_range: TimeRange,
-            event_templates: Event[],
-            result_event_templates: Event[],
-            storage_state: StorageState,
-            num_events: number,
-            result_type: RelevantResultType,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string[]> | void;
+        find_related_uris(time_range: TimeRange, event_templates: Event[], result_event_templates: Event[], storage_state: StorageState, num_events: number, result_type: RelevantResultType, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_related_uris_finish(_res_: Gio.AsyncResult): string[];
+
         /**
-         * @param event_ids
-         * @param cancellable
+         * @param event_ids 
+         * @param cancellable 
          */
-        delete_events(event_ids: number[], cancellable: Gio.Cancellable | null): globalThis.Promise<TimeRange>;
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<TimeRange>;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        delete_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        delete_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<TimeRange> | void;
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<TimeRange> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_events_finish(_res_: Gio.AsyncResult): TimeRange;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        quit(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
+        quit(cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        quit(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        quit(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        quit(
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        quit(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         quit_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param monitor
+         * @param monitor 
          */
         install_monitor(monitor: Monitor): void;
+
         /**
-         * @param monitor
+         * @param monitor 
          */
         remove_monitor(monitor: Monitor): void;
+
         get_version(): [number, number, number];
+
         get_extensions(): string[];
+
         datapath(): string;
     }
+
 
     namespace Monitor {
         // Signal signatures
@@ -1171,17 +1170,16 @@ export namespace Zeitgeist {
             /**
              * @signal
              */
-            'events-inserted': (arg0: TimeRange, arg1: ResultSet) => void;
+            "events-inserted": (arg0: TimeRange, arg1: ResultSet) => void;
             /**
              * @signal
              */
-            'events-deleted': (arg0: TimeRange, arg1: number[]) => void;
-            'notify::time-range': (pspec: GObject.ParamSpec) => void;
-            'notify::event-templates': (pspec: GObject.ParamSpec) => void;
+            "events-deleted": (arg0: TimeRange, arg1: number[]) => void;
+            "notify::time-range": (pspec: GObject.ParamSpec) => void;
+            "notify::event-templates": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, RemoteMonitor.ConstructorProps {
             time_range: TimeRange;
             timeRange: TimeRange;
@@ -1197,13 +1195,15 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<Monitor>;
 
         // Properties
-
         get time_range(): TimeRange;
         set time_range(val: TimeRange);
+
         get timeRange(): TimeRange;
         set timeRange(val: TimeRange);
+
         get event_templates(): Event[];
         set event_templates(val: Event[]);
+
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
 
@@ -1217,149 +1217,132 @@ export namespace Zeitgeist {
         $signals: Monitor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](time_range: TimeRange, event_templates: Event[]): Monitor;
+        static ["new"](time_range: TimeRange, event_templates: Event[]): Monitor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Monitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Monitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Monitor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_templates(): Event[];
+
         get_path(): never;
+
         get_time_range(): TimeRange;
+
         /**
-         * @param value
+         * @param value 
          */
         set_time_range(value: TimeRange): void;
+
         get_event_templates(): Event[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_event_templates(value: Event[]): void;
+
         /**
-         * @param time_range
-         * @param events
+         * @param time_range 
+         * @param events 
          */
         notify_insert(time_range: GLib.Variant, events: GLib.Variant): globalThis.Promise<void>;
+
         /**
-         * @param time_range
-         * @param events
-         * @param _callback_
+         * @param time_range 
+         * @param events 
+         * @param _callback_ 
          */
-        notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param events
-         * @param _callback_
+         * @param time_range 
+         * @param events 
+         * @param _callback_ 
          */
-        notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         notify_insert_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param time_range
-         * @param event_ids
+         * @param time_range 
+         * @param event_ids 
          */
         notify_delete(time_range: GLib.Variant, event_ids: number[]): globalThis.Promise<void>;
+
         /**
-         * @param time_range
-         * @param event_ids
-         * @param _callback_
+         * @param time_range 
+         * @param event_ids 
+         * @param _callback_ 
          */
-        notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_ids
-         * @param _callback_
+         * @param time_range 
+         * @param event_ids 
+         * @param _callback_ 
          */
-        notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         notify_delete_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param time_range
-         * @param events
-         * @param _callback_
+         * @param time_range 
+         * @param events 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param time_range
-         * @param event_ids
-         * @param _callback_
+         * @param time_range 
+         * @param event_ids 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void;
     }
 
+
     namespace QueuedProxyWrapper {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::proxy-created': (pspec: GObject.ParamSpec) => void;
-            'notify::is-connected': (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-created": (pspec: GObject.ParamSpec) => void;
+            "notify::is-connected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             proxy_created: boolean;
             proxyCreated: boolean;
@@ -1375,13 +1358,15 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<QueuedProxyWrapper>;
 
         // Properties
-
         get proxy_created(): boolean;
         set proxy_created(val: boolean);
+
         get proxyCreated(): boolean;
         set proxyCreated(val: boolean);
+
         get is_connected(): boolean;
         set is_connected(val: boolean);
+
         get isConnected(): boolean;
         set isConnected(val: boolean);
 
@@ -1395,80 +1380,83 @@ export namespace Zeitgeist {
         $signals: QueuedProxyWrapper.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<QueuedProxyWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof QueuedProxyWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapper.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<QueuedProxyWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_on_connection_established(): void;
+
         /**
          * @virtual
          */
         vfunc_on_connection_lost(): void;
 
         // Methods
-
         /**
-         * @param proxy
+         * @param proxy 
          */
         proxy_acquired(proxy: GObject.Object): void;
+
         /**
-         * @param err
+         * @param err 
          */
         proxy_unavailable(err: Gio.IOErrorEnum): void;
+
         process_queued_methods(): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          */
         name_owner_changed(pspec: GObject.ParamSpec): void;
+
         on_connection_established(): void;
+
         on_connection_lost(): void;
+
         wait_for_proxy(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        wait_for_proxy(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        wait_for_proxy(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        wait_for_proxy(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        wait_for_proxy(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         wait_for_proxy_finish(_res_: Gio.AsyncResult): void;
+
         get_proxy_created(): boolean;
+
         get_is_connected(): boolean;
     }
 
+
     namespace QueuedProxyWrapperQueuedMethod {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -1478,67 +1466,54 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethod>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
+        static ["new"](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_queued_method(): [GLib.SourceFunc, any];
     }
+
 
     namespace DataSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::unique-id': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::event-templates': (pspec: GObject.ParamSpec) => void;
-            'notify::enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::running': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
+            "notify::unique-id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::event-templates": (pspec: GObject.ParamSpec) => void;
+            "notify::enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::running": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             unique_id: string;
             uniqueId: string;
             name: string;
             description: string;
-            event_templates: Event[] | null;
+            event_templates: (Event[] | null);
             eventTemplates: Event[];
             enabled: boolean;
             running: boolean;
-            timestamp: bigint | number;
+            timestamp: (bigint | number);
         }
     }
 
@@ -1549,25 +1524,32 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<DataSource>;
 
         // Properties
-
         get unique_id(): string;
         set unique_id(val: string);
+
         get uniqueId(): string;
         set uniqueId(val: string);
+
         get name(): string;
         set name(val: string);
+
         get description(): string;
         set description(val: string);
-        get event_templates(): Event[] | null;
-        set event_templates(val: Event[] | null);
+
+        get event_templates(): (Event[] | null);
+        set event_templates(val: (Event[] | null));
+
         get eventTemplates(): Event[];
         set eventTemplates(val: Event[]);
+
         get enabled(): boolean;
         set enabled(val: boolean);
+
         get running(): boolean;
         set running(val: boolean);
+
         get timestamp(): number;
-        set timestamp(val: bigint | number);
+        set timestamp(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -1579,102 +1561,106 @@ export namespace Zeitgeist {
         $signals: DataSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DataSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DataSource;
+        static ["new"](): DataSource;
 
-        static full(unique_id: string, name: string, description: string, templates: Event[] | null): DataSource;
+        static full(unique_id: string, name: string, description: string, templates: (Event[] | null)): DataSource;
 
         static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         to_variant(): GLib.Variant;
+
         get_unique_id(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_unique_id(value: string): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
+
         get_description(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_description(value: string): void;
-        get_event_templates(): Event[] | null;
+
+        get_event_templates(): (Event[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_event_templates(value: Event[] | null): void;
+        set_event_templates(value: (Event[] | null)): void;
+
         get_enabled(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_enabled(value: boolean): void;
+
         get_running(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_running(value: boolean): void;
+
         get_timestamp(): number;
+
         /**
-         * @param value
+         * @param value 
          */
-        set_timestamp(value: bigint | number): void;
+        set_timestamp(value: (bigint | number)): void;
     }
+
 
     namespace Event {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::origin': (pspec: GObject.ParamSpec) => void;
-            'notify::actor': (pspec: GObject.ParamSpec) => void;
-            'notify::interpretation': (pspec: GObject.ParamSpec) => void;
-            'notify::manifestation': (pspec: GObject.ParamSpec) => void;
-            'notify::subjects': (pspec: GObject.ParamSpec) => void;
-            'notify::payload': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::origin": (pspec: GObject.ParamSpec) => void;
+            "notify::actor": (pspec: GObject.ParamSpec) => void;
+            "notify::interpretation": (pspec: GObject.ParamSpec) => void;
+            "notify::manifestation": (pspec: GObject.ParamSpec) => void;
+            "notify::subjects": (pspec: GObject.ParamSpec) => void;
+            "notify::payload": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: number;
-            timestamp: bigint | number;
-            origin: string | null;
-            actor: string | null;
-            interpretation: string | null;
-            manifestation: string | null;
+            timestamp: (bigint | number);
+            origin: (string | null);
+            actor: (string | null);
+            interpretation: (string | null);
+            manifestation: (string | null);
             subjects: Subject[];
-            payload: GLib.ByteArray | null;
+            payload: (GLib.ByteArray | null);
         }
     }
 
@@ -1685,23 +1671,29 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<Event>;
 
         // Properties
-
         get id(): number;
         set id(val: number);
+
         get timestamp(): number;
-        set timestamp(val: bigint | number);
-        get origin(): string | null;
-        set origin(val: string | null);
-        get actor(): string | null;
-        set actor(val: string | null);
-        get interpretation(): string | null;
-        set interpretation(val: string | null);
-        get manifestation(): string | null;
-        set manifestation(val: string | null);
+        set timestamp(val: (bigint | number));
+
+        get origin(): (string | null);
+        set origin(val: (string | null));
+
+        get actor(): (string | null);
+        set actor(val: (string | null));
+
+        get interpretation(): (string | null);
+        set interpretation(val: (string | null));
+
+        get manifestation(): (string | null);
+        set manifestation(val: (string | null));
+
         get subjects(): Subject[];
         set subjects(val: Subject[]);
-        get payload(): GLib.ByteArray | null;
-        set payload(val: GLib.ByteArray | null);
+
+        get payload(): (GLib.ByteArray | null);
+        set payload(val: (GLib.ByteArray | null));
 
         /**
          * Compile-time signal type information.
@@ -1713,131 +1705,144 @@ export namespace Zeitgeist {
         $signals: Event.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static from_variant(event_variant: GLib.Variant): Event;
 
-        static ['new'](): Event;
+        static ["new"](): Event;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Event.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Event.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Event.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param index
+         * @param index 
          */
         get_subject(index: number): Subject;
+
         num_subjects(): number;
+
         /**
-         * @param subject
+         * @param subject 
          */
         add_subject(subject: Subject): void;
+
         /**
-         * @param subject
+         * @param subject 
          */
         take_subject(subject: Subject): void;
+
         /**
-         * @param info
+         * @param info 
          */
         set_actor_from_app_info(info: Gio.AppInfo): void;
+
         to_variant(): GLib.Variant;
+
         debug_print(): void;
+
         /**
-         * @param template_event
+         * @param template_event 
          */
         matches_template(template_event: Event): boolean;
+
         get_id(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_id(value: number): void;
+
         get_timestamp(): number;
+
         /**
-         * @param value
+         * @param value 
          */
-        set_timestamp(value: bigint | number): void;
-        get_origin(): string | null;
+        set_timestamp(value: (bigint | number)): void;
+
+        get_origin(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_origin(value: string | null): void;
-        get_actor(): string | null;
+        set_origin(value: (string | null)): void;
+
+        get_actor(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_actor(value: string | null): void;
-        get_interpretation(): string | null;
+        set_actor(value: (string | null)): void;
+
+        get_interpretation(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_interpretation(value: string | null): void;
-        get_manifestation(): string | null;
+        set_interpretation(value: (string | null)): void;
+
+        get_manifestation(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_manifestation(value: string | null): void;
+        set_manifestation(value: (string | null)): void;
+
         get_subjects(): Subject[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_subjects(value: Subject[]): void;
-        get_payload(): GLib.ByteArray | null;
+
+        get_payload(): (GLib.ByteArray | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_payload(value: GLib.ByteArray | null): void;
+        set_payload(value: (GLib.ByteArray | null)): void;
     }
+
 
     namespace Subject {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::origin': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::storage': (pspec: GObject.ParamSpec) => void;
-            'notify::current-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::current-origin': (pspec: GObject.ParamSpec) => void;
-            'notify::mimetype': (pspec: GObject.ParamSpec) => void;
-            'notify::interpretation': (pspec: GObject.ParamSpec) => void;
-            'notify::manifestation': (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::origin": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::storage": (pspec: GObject.ParamSpec) => void;
+            "notify::current-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::current-origin": (pspec: GObject.ParamSpec) => void;
+            "notify::mimetype": (pspec: GObject.ParamSpec) => void;
+            "notify::interpretation": (pspec: GObject.ParamSpec) => void;
+            "notify::manifestation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            uri: string | null;
-            origin: string | null;
-            text: string | null;
-            storage: string | null;
-            current_uri: string | null;
+            uri: (string | null);
+            origin: (string | null);
+            text: (string | null);
+            storage: (string | null);
+            current_uri: (string | null);
             currentUri: string;
-            current_origin: string | null;
+            current_origin: (string | null);
             currentOrigin: string;
-            mimetype: string | null;
-            interpretation: string | null;
-            manifestation: string | null;
+            mimetype: (string | null);
+            interpretation: (string | null);
+            manifestation: (string | null);
         }
     }
 
@@ -1848,29 +1853,38 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<Subject>;
 
         // Properties
+        get uri(): (string | null);
+        set uri(val: (string | null));
 
-        get uri(): string | null;
-        set uri(val: string | null);
-        get origin(): string | null;
-        set origin(val: string | null);
-        get text(): string | null;
-        set text(val: string | null);
-        get storage(): string | null;
-        set storage(val: string | null);
-        get current_uri(): string | null;
-        set current_uri(val: string | null);
+        get origin(): (string | null);
+        set origin(val: (string | null));
+
+        get text(): (string | null);
+        set text(val: (string | null));
+
+        get storage(): (string | null);
+        set storage(val: (string | null));
+
+        get current_uri(): (string | null);
+        set current_uri(val: (string | null));
+
         get currentUri(): string;
         set currentUri(val: string);
-        get current_origin(): string | null;
-        set current_origin(val: string | null);
+
+        get current_origin(): (string | null);
+        set current_origin(val: (string | null));
+
         get currentOrigin(): string;
         set currentOrigin(val: string);
-        get mimetype(): string | null;
-        set mimetype(val: string | null);
-        get interpretation(): string | null;
-        set interpretation(val: string | null);
-        get manifestation(): string | null;
-        set manifestation(val: string | null);
+
+        get mimetype(): (string | null);
+        set mimetype(val: (string | null));
+
+        get interpretation(): (string | null);
+        set interpretation(val: (string | null));
+
+        get manifestation(): (string | null);
+        set manifestation(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -1882,124 +1896,115 @@ export namespace Zeitgeist {
         $signals: Subject.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Subject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static full(
-            uri: string | null,
-            interpretation: string | null,
-            manifestation: string | null,
-            mimetype: string | null,
-            origin: string | null,
-            text: string | null,
-            storage: string | null,
-        ): Subject;
+        static full(uri: (string | null), interpretation: (string | null), manifestation: (string | null), mimetype: (string | null), origin: (string | null), text: (string | null), storage: (string | null)): Subject;
 
-        static move_event(
-            source_uri: string | null,
-            source_origin: string | null,
-            destination_uri: string | null,
-            destination_origin: string | null,
-            interpretation: string | null,
-            manifestation: string | null,
-            mimetype: string | null,
-            text: string | null,
-            storage: string | null,
-        ): Subject;
+        static move_event(source_uri: (string | null), source_origin: (string | null), destination_uri: (string | null), destination_origin: (string | null), interpretation: (string | null), manifestation: (string | null), mimetype: (string | null), text: (string | null), storage: (string | null)): Subject;
 
         static from_variant(subject_variant: GLib.Variant): Subject;
 
-        static ['new'](): Subject;
+        static ["new"](): Subject;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Subject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Subject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Subject.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Subject.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subject.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Subject.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Subject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Subject.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         to_variant(): GLib.Variant;
+
         /**
-         * @param template_subject
+         * @param template_subject 
          */
         matches_template(template_subject: Subject): boolean;
-        get_uri(): string | null;
+
+        get_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_uri(value: string | null): void;
-        get_origin(): string | null;
+        set_uri(value: (string | null)): void;
+
+        get_origin(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_origin(value: string | null): void;
-        get_text(): string | null;
+        set_origin(value: (string | null)): void;
+
+        get_text(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_text(value: string | null): void;
-        get_storage(): string | null;
+        set_text(value: (string | null)): void;
+
+        get_storage(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_storage(value: string | null): void;
-        get_current_uri(): string | null;
+        set_storage(value: (string | null)): void;
+
+        get_current_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_current_uri(value: string | null): void;
-        get_current_origin(): string | null;
+        set_current_uri(value: (string | null)): void;
+
+        get_current_origin(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_current_origin(value: string | null): void;
-        get_mimetype(): string | null;
+        set_current_origin(value: (string | null)): void;
+
+        get_mimetype(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_mimetype(value: string | null): void;
-        get_interpretation(): string | null;
+        set_mimetype(value: (string | null)): void;
+
+        get_interpretation(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_interpretation(value: string | null): void;
-        get_manifestation(): string | null;
+        set_interpretation(value: (string | null)): void;
+
+        get_manifestation(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_manifestation(value: string | null): void;
+        set_manifestation(value: (string | null)): void;
     }
+
 
     namespace TimeRange {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::start': (pspec: GObject.ParamSpec) => void;
-            'notify::end': (pspec: GObject.ParamSpec) => void;
+            "notify::start": (pspec: GObject.ParamSpec) => void;
+            "notify::end": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            start: bigint | number;
-            end: bigint | number;
+            start: (bigint | number);
+            end: (bigint | number);
         }
     }
 
@@ -2010,11 +2015,11 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<TimeRange>;
 
         // Properties
-
         get start(): number;
-        set start(val: bigint | number);
+        set start(val: (bigint | number));
+
         get end(): number;
-        set end(val: bigint | number);
+        set end(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -2026,12 +2031,11 @@ export namespace Zeitgeist {
         $signals: TimeRange.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TimeRange.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](start_msec: bigint | number, end_msec: bigint | number): TimeRange;
+        static ["new"](start_msec: (bigint | number), end_msec: (bigint | number)): TimeRange;
 
         static anytime(): TimeRange;
 
@@ -2042,44 +2046,41 @@ export namespace Zeitgeist {
         static from_variant(variant: GLib.Variant): TimeRange;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TimeRange.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TimeRange.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TimeRange.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TimeRange.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TimeRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TimeRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TimeRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         to_variant(): GLib.Variant;
+
         /**
-         * @param time_range
+         * @param time_range 
          */
-        intersect(time_range: TimeRange): TimeRange | null;
+        intersect(time_range: TimeRange): (TimeRange | null);
+
         get_start(): number;
+
         get_end(): number;
     }
 
+
     namespace SimpleResultSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {}
+        }
     }
 
     /**
@@ -2098,72 +2099,78 @@ export namespace Zeitgeist {
         $signals: SimpleResultSet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleResultSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](events: Event[]): SimpleResultSet;
+        static ["new"](events: Event[]): SimpleResultSet;
 
         static with_num_matches(events: Event[], matches: number): SimpleResultSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleResultSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleResultSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleResultSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleResultSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleResultSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleResultSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleResultSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         size(): number;
+
         estimated_matches(): number;
-        next_value(): Event | null;
+
+        next_value(): (Event | null);
+
         has_next(): boolean;
+
         tell(): number;
+
         reset(): void;
+
         iterator(): ResultSet;
+
         /**
          * @virtual
          */
         vfunc_size(): number;
+
         /**
          * @virtual
          */
         vfunc_estimated_matches(): number;
+
         /**
          * @virtual
          */
-        vfunc_next_value(): Event | null;
+        vfunc_next_value(): (Event | null);
+
         /**
          * @virtual
          */
         vfunc_has_next(): boolean;
+
         /**
          * @virtual
          */
         vfunc_tell(): number;
+
         /**
          * @virtual
          */
         vfunc_reset(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataSourceRegistryClass = typeof DataSourceRegistry;
+
     /**
      * @gir-type Struct
      */
@@ -2171,10 +2178,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<DataSourceRegistryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IndexClass = typeof Index;
+
     /**
      * @gir-type Struct
      */
@@ -2182,10 +2191,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<IndexPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LogClass = typeof Log;
+
     /**
      * @gir-type Struct
      */
@@ -2193,10 +2204,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<LogPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MonitorClass = typeof Monitor;
+
     /**
      * @gir-type Struct
      */
@@ -2204,10 +2217,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<MonitorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type QueuedProxyWrapperClass = typeof QueuedProxyWrapper;
+
     /**
      * @gir-type Struct
      */
@@ -2215,10 +2230,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<QueuedProxyWrapperPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type QueuedProxyWrapperQueuedMethodClass = typeof QueuedProxyWrapperQueuedMethod;
+
     /**
      * @gir-type Struct
      */
@@ -2226,10 +2243,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethodPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataSourceClass = typeof DataSource;
+
     /**
      * @gir-type Struct
      */
@@ -2237,10 +2256,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<DataSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EventClass = typeof Event;
+
     /**
      * @gir-type Struct
      */
@@ -2248,10 +2269,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<EventPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SubjectClass = typeof Subject;
+
     /**
      * @gir-type Struct
      */
@@ -2259,10 +2282,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<SubjectPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TimeRangeClass = typeof TimeRange;
+
     /**
      * @gir-type Struct
      */
@@ -2270,10 +2295,12 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<TimeRangePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SimpleResultSetClass = typeof SimpleResultSet;
+
     /**
      * @gir-type Struct
      */
@@ -2281,34 +2308,42 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<SimpleResultSetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RemoteRegistryIface = typeof RemoteRegistry;
+
     /**
      * @gir-type Alias
      */
     type RemoteLogIface = typeof RemoteLog;
+
     /**
      * @gir-type Alias
      */
     type RemoteMonitorIface = typeof RemoteMonitor;
+
     /**
      * @gir-type Alias
      */
     type RemoteSimpleIndexerIface = typeof RemoteSimpleIndexer;
+
     /**
      * @gir-type Alias
      */
     type NetworkManagerDBusIface = typeof NetworkManagerDBus;
+
     /**
      * @gir-type Alias
      */
     type ConnmanManagerDBusIface = typeof ConnmanManagerDBus;
+
     /**
      * @gir-type Alias
      */
     type ResultSetIface = typeof ResultSet;
+
     /**
      * @gir-type Struct
      */
@@ -2316,21 +2351,21 @@ export namespace Zeitgeist {
         static $gtype: GObject.GType<VersionStruct>;
 
         // Fields
-
         major: number;
+
         minor: number;
+
         micro: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                major: number;
-                minor: number;
-                micro: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            major: number;
+            minor: number;
+            micro: number;
+        }>);
     }
+
 
     namespace RemoteRegistry {
         /**
@@ -2338,85 +2373,74 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param cancellable
-             * @param _callback_
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_get_data_sources(
-                cancellable: Gio.Cancellable | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_get_data_sources(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
             /**
-             * @param unique_id
-             * @param name
-             * @param description
-             * @param event_templates
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param unique_id 
+             * @param name 
+             * @param description 
+             * @param event_templates 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_register_data_source(
-                unique_id: string,
-                name: string,
-                description: string,
-                event_templates: GLib.Variant,
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean;
+
             /**
-             * @param unique_id
-             * @param enabled
-             * @param cancellable
-             * @param _callback_
+             * @param unique_id 
+             * @param enabled 
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_set_data_source_enabled(
-                unique_id: string,
-                enabled: boolean,
-                cancellable: Gio.Cancellable | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param unique_id
-             * @param cancellable
-             * @param _callback_
+             * @param unique_id 
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_get_data_source_from_id(
-                unique_id: string,
-                cancellable: Gio.Cancellable | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RemoteRegistryNamespace {
@@ -2427,156 +2451,121 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface RemoteRegistry extends GObject.Object, RemoteRegistry.Interface {
+
         // Methods
+        /**
+         * @param cancellable 
+         */
+        get_data_sources(cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
 
         /**
-         * @param cancellable
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_sources(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
+        get_data_sources(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_sources(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        get_data_sources(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param cancellable
-         * @param _callback_
-         */
-        get_data_sources(
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param unique_id
-         * @param name
-         * @param description
-         * @param event_templates
-         * @param cancellable
-         * @param sender
+         * @param unique_id 
+         * @param name 
+         * @param description 
+         * @param event_templates 
+         * @param cancellable 
+         * @param sender 
          */
-        register_data_source(
-            unique_id: string,
-            name: string,
-            description: string,
-            event_templates: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<boolean>;
+        register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<boolean>;
+
         /**
-         * @param unique_id
-         * @param name
-         * @param description
-         * @param event_templates
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param unique_id 
+         * @param name 
+         * @param description 
+         * @param event_templates 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        register_data_source(
-            unique_id: string,
-            name: string,
-            description: string,
-            event_templates: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param unique_id
-         * @param name
-         * @param description
-         * @param event_templates
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param unique_id 
+         * @param name 
+         * @param description 
+         * @param event_templates 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        register_data_source(
-            unique_id: string,
-            name: string,
-            description: string,
-            event_templates: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         register_data_source_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<void>;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param unique_id
-         * @param enabled
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param enabled 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        set_data_source_enabled(
-            unique_id: string,
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param unique_id
-         * @param cancellable
+         * @param unique_id 
+         * @param cancellable 
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
-         * @param unique_id
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param unique_id
-         * @param cancellable
-         * @param _callback_
+         * @param unique_id 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        get_data_source_from_id(
-            unique_id: string,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        get_data_source_from_id(unique_id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
     }
+
 
     export const RemoteRegistry: RemoteRegistryNamespace & {
         new (): RemoteRegistry; // This allows `obj instanceof RemoteRegistry`
@@ -2588,206 +2577,175 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param event_ids
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param event_ids 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_delete_events(
-                event_ids: number[],
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
             /**
-             * @param time_range
-             * @param event_templates
-             * @param storage_state
-             * @param num_events
-             * @param result_type
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param time_range 
+             * @param event_templates 
+             * @param storage_state 
+             * @param num_events 
+             * @param result_type 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_find_event_ids(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_find_event_ids_finish(_res_: Gio.AsyncResult): number[];
+
             /**
-             * @param time_range
-             * @param event_templates
-             * @param storage_state
-             * @param num_events
-             * @param result_type
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param time_range 
+             * @param event_templates 
+             * @param storage_state 
+             * @param num_events 
+             * @param result_type 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_find_events(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
             /**
-             * @param time_range
-             * @param event_templates
-             * @param result_event_templates
-             * @param storage_state
-             * @param num_events
-             * @param result_type
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param time_range 
+             * @param event_templates 
+             * @param result_event_templates 
+             * @param storage_state 
+             * @param num_events 
+             * @param result_type 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_find_related_uris(
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                result_event_templates: GLib.Variant,
-                storage_state: number,
-                num_events: number,
-                result_type: number,
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_find_related_uris_finish(_res_: Gio.AsyncResult): string[];
+
             /**
-             * @param event_ids
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param event_ids 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_get_events(
-                event_ids: number[],
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
             /**
-             * @param events
-             * @param cancellable
-             * @param sender
-             * @param _callback_
+             * @param events 
+             * @param cancellable 
+             * @param sender 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_insert_events(
-                events: GLib.Variant,
-                cancellable: Gio.Cancellable | null,
-                sender: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_insert_events(events: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_insert_events_finish(_res_: Gio.AsyncResult): number[];
+
             /**
-             * @param monitor_path
-             * @param time_range
-             * @param event_templates
-             * @param owner
-             * @param _callback_
+             * @param monitor_path 
+             * @param time_range 
+             * @param event_templates 
+             * @param owner 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_install_monitor(
-                monitor_path: never,
-                time_range: GLib.Variant,
-                event_templates: GLib.Variant,
-                owner: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_install_monitor_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param monitor_path
-             * @param owner
-             * @param _callback_
+             * @param monitor_path 
+             * @param owner 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_remove_monitor(
-                monitor_path: never,
-                owner: never | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_remove_monitor(monitor_path: never, owner: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_remove_monitor_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param cancellable
-             * @param _callback_
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_quit(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_quit(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_quit_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_extensions(): string[];
+
             /**
              * @virtual
              */
             vfunc_get_version(): VersionStruct;
+
             /**
              * @virtual
              */
             vfunc_get_datapath(): string;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RemoteLogNamespace {
@@ -2798,408 +2756,300 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface RemoteLog extends GObject.Object, RemoteLog.Interface {
+
         // Methods
+        /**
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
+         */
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<GLib.Variant>;
 
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        delete_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<GLib.Variant>;
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        delete_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        delete_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
-         * @param _callback_
-         */
-        delete_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
          */
-        find_event_ids(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<number[]>;
+        find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<number[]>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_event_ids(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_event_ids(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number[]> | void;
+        find_event_ids(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_event_ids_finish(_res_: Gio.AsyncResult): number[];
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
          */
-        find_events(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<GLib.Variant>;
+        find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<GLib.Variant>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_events(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_events(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        find_events(time_range: GLib.Variant, event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
          */
-        find_related_uris(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            result_event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<string[]>;
+        find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<string[]>;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_related_uris(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            result_event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_templates
-         * @param result_event_templates
-         * @param storage_state
-         * @param num_events
-         * @param result_type
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param time_range 
+         * @param event_templates 
+         * @param result_event_templates 
+         * @param storage_state 
+         * @param num_events 
+         * @param result_type 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        find_related_uris(
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            result_event_templates: GLib.Variant,
-            storage_state: number,
-            num_events: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string[]> | void;
+        find_related_uris(time_range: GLib.Variant, event_templates: GLib.Variant, result_event_templates: GLib.Variant, storage_state: number, num_events: number, result_type: number, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         find_related_uris_finish(_res_: Gio.AsyncResult): string[];
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
          */
-        get_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<GLib.Variant>;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<GLib.Variant>;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        get_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param event_ids
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param event_ids 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        get_events(
-            event_ids: number[],
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        get_events(event_ids: number[], cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param events
-         * @param cancellable
-         * @param sender
+         * @param events 
+         * @param cancellable 
+         * @param sender 
          */
-        insert_events(
-            events: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-        ): globalThis.Promise<number[]>;
+        insert_events(events: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null)): globalThis.Promise<number[]>;
+
         /**
-         * @param events
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param events 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        insert_events(
-            events: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        insert_events(events: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param events
-         * @param cancellable
-         * @param sender
-         * @param _callback_
+         * @param events 
+         * @param cancellable 
+         * @param sender 
+         * @param _callback_ 
          */
-        insert_events(
-            events: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            sender: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number[]> | void;
+        insert_events(events: GLib.Variant, cancellable: (Gio.Cancellable | null), sender: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         insert_events_finish(_res_: Gio.AsyncResult): number[];
+
         /**
-         * @param monitor_path
-         * @param time_range
-         * @param event_templates
-         * @param owner
+         * @param monitor_path 
+         * @param time_range 
+         * @param event_templates 
+         * @param owner 
          */
-        install_monitor(
-            monitor_path: never,
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            owner: never | null,
-        ): globalThis.Promise<void>;
+        install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner: (never | null)): globalThis.Promise<void>;
+
         /**
-         * @param monitor_path
-         * @param time_range
-         * @param event_templates
-         * @param owner
-         * @param _callback_
+         * @param monitor_path 
+         * @param time_range 
+         * @param event_templates 
+         * @param owner 
+         * @param _callback_ 
          */
-        install_monitor(
-            monitor_path: never,
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            owner: never | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param monitor_path
-         * @param time_range
-         * @param event_templates
-         * @param owner
-         * @param _callback_
+         * @param monitor_path 
+         * @param time_range 
+         * @param event_templates 
+         * @param owner 
+         * @param _callback_ 
          */
-        install_monitor(
-            monitor_path: never,
-            time_range: GLib.Variant,
-            event_templates: GLib.Variant,
-            owner: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        install_monitor(monitor_path: never, time_range: GLib.Variant, event_templates: GLib.Variant, owner: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         install_monitor_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param monitor_path
-         * @param owner
+         * @param monitor_path 
+         * @param owner 
          */
-        remove_monitor(monitor_path: never, owner: never | null): globalThis.Promise<void>;
+        remove_monitor(monitor_path: never, owner: (never | null)): globalThis.Promise<void>;
+
         /**
-         * @param monitor_path
-         * @param owner
-         * @param _callback_
+         * @param monitor_path 
+         * @param owner 
+         * @param _callback_ 
          */
-        remove_monitor(monitor_path: never, owner: never | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        remove_monitor(monitor_path: never, owner: (never | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param monitor_path
-         * @param owner
-         * @param _callback_
+         * @param monitor_path 
+         * @param owner 
+         * @param _callback_ 
          */
-        remove_monitor(
-            monitor_path: never,
-            owner: never | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        remove_monitor(monitor_path: never, owner: (never | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         remove_monitor_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        quit(cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
+        quit(cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        quit(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        quit(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        quit(
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        quit(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         quit_finish(_res_: Gio.AsyncResult): void;
+
         get_extensions(): string[];
+
         get_version(): VersionStruct;
+
         get_datapath(): string;
     }
+
 
     export const RemoteLog: RemoteLogNamespace & {
         new (): RemoteLog; // This allows `obj instanceof RemoteLog`
@@ -3211,45 +3061,42 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param time_range
-             * @param events
-             * @param _callback_
+             * @param time_range 
+             * @param events 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_notify_insert(
-                time_range: GLib.Variant,
-                events: GLib.Variant,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_notify_insert_finish(_res_: Gio.AsyncResult): void;
+
             /**
-             * @param time_range
-             * @param event_ids
-             * @param _callback_
+             * @param time_range 
+             * @param event_ids 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_notify_delete(
-                time_range: GLib.Variant,
-                event_ids: number[],
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_notify_delete_finish(_res_: Gio.AsyncResult): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RemoteMonitorNamespace {
@@ -3260,67 +3107,59 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface RemoteMonitor extends GObject.Object, RemoteMonitor.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param time_range
-         * @param events
+         * @param time_range 
+         * @param events 
          */
         notify_insert(time_range: GLib.Variant, events: GLib.Variant): globalThis.Promise<void>;
+
         /**
-         * @param time_range
-         * @param events
-         * @param _callback_
+         * @param time_range 
+         * @param events 
+         * @param _callback_ 
          */
-        notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param events
-         * @param _callback_
+         * @param time_range 
+         * @param events 
+         * @param _callback_ 
          */
-        notify_insert(
-            time_range: GLib.Variant,
-            events: GLib.Variant,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        notify_insert(time_range: GLib.Variant, events: GLib.Variant, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         notify_insert_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param time_range
-         * @param event_ids
+         * @param time_range 
+         * @param event_ids 
          */
         notify_delete(time_range: GLib.Variant, event_ids: number[]): globalThis.Promise<void>;
+
         /**
-         * @param time_range
-         * @param event_ids
-         * @param _callback_
+         * @param time_range 
+         * @param event_ids 
+         * @param _callback_ 
          */
-        notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param time_range
-         * @param event_ids
-         * @param _callback_
+         * @param time_range 
+         * @param event_ids 
+         * @param _callback_ 
          */
-        notify_delete(
-            time_range: GLib.Variant,
-            event_ids: number[],
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        notify_delete(time_range: GLib.Variant, event_ids: number[], _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         notify_delete_finish(_res_: Gio.AsyncResult): void;
     }
+
 
     export const RemoteMonitor: RemoteMonitorNamespace & {
         new (): RemoteMonitor; // This allows `obj instanceof RemoteMonitor`
@@ -3332,67 +3171,53 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param query_string
-             * @param time_range
-             * @param filter_templates
-             * @param offset
-             * @param count
-             * @param result_type
-             * @param cancellable
-             * @param _callback_
+             * @param query_string 
+             * @param time_range 
+             * @param filter_templates 
+             * @param offset 
+             * @param count 
+             * @param result_type 
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_search(
-                query_string: string,
-                time_range: GLib.Variant,
-                filter_templates: GLib.Variant,
-                offset: number,
-                count: number,
-                result_type: number,
-                cancellable: Gio.Cancellable | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number];
+
             /**
-             * @param query_string
-             * @param time_range
-             * @param filter_templates
-             * @param storage_state
-             * @param offset
-             * @param count
-             * @param result_type
-             * @param cancellable
-             * @param _callback_
+             * @param query_string 
+             * @param time_range 
+             * @param filter_templates 
+             * @param storage_state 
+             * @param offset 
+             * @param count 
+             * @param result_type 
+             * @param cancellable 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_search_with_relevancies(
-                query_string: string,
-                time_range: GLib.Variant,
-                filter_templates: GLib.Variant,
-                storage_state: number,
-                offset: number,
-                count: number,
-                result_type: number,
-                cancellable: Gio.Cancellable | null,
-                _callback_: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RemoteSimpleIndexerNamespace {
@@ -3403,139 +3228,92 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface RemoteSimpleIndexer extends GObject.Object, RemoteSimpleIndexer.Interface {
+
         // Methods
+        /**
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
+         */
+        search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[void, GLib.Variant, number]>;
 
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<[void, GLib.Variant, number]>;
+        search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[void, GLib.Variant, number]> | void);
+
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
-         */
-        search(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[void, GLib.Variant, number]> | void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number];
+
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param storage_state
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
          */
-        search_with_relevancies(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            storage_state: number,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<[void, GLib.Variant, number[], number]>;
+        search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[void, GLib.Variant, number[], number]>;
+
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param storage_state
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search_with_relevancies(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            storage_state: number,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param query_string
-         * @param time_range
-         * @param filter_templates
-         * @param storage_state
-         * @param offset
-         * @param count
-         * @param result_type
-         * @param cancellable
-         * @param _callback_
+         * @param query_string 
+         * @param time_range 
+         * @param filter_templates 
+         * @param storage_state 
+         * @param offset 
+         * @param count 
+         * @param result_type 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        search_with_relevancies(
-            query_string: string,
-            time_range: GLib.Variant,
-            filter_templates: GLib.Variant,
-            storage_state: number,
-            offset: number,
-            count: number,
-            result_type: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[void, GLib.Variant, number[], number]> | void;
+        search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[void, GLib.Variant, number[], number]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
     }
+
 
     export const RemoteSimpleIndexer: RemoteSimpleIndexerNamespace & {
         new (): RemoteSimpleIndexer; // This allows `obj instanceof RemoteSimpleIndexer`
@@ -3547,17 +3325,19 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_state(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface NetworkManagerDBusNamespace {
@@ -3568,10 +3348,11 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface NetworkManagerDBus extends GObject.Object, NetworkManagerDBus.Interface {
-        // Methods
 
+        // Methods
         state(): number;
     }
+
 
     export const NetworkManagerDBus: NetworkManagerDBusNamespace & {
         new (): NetworkManagerDBus; // This allows `obj instanceof NetworkManagerDBus`
@@ -3583,17 +3364,19 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_state(): string;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ConnmanManagerDBusNamespace {
@@ -3604,10 +3387,11 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface ConnmanManagerDBus extends GObject.Object, ConnmanManagerDBus.Interface {
-        // Methods
 
+        // Methods
         get_state(): string;
     }
+
 
     export const ConnmanManagerDBus: ConnmanManagerDBusNamespace & {
         new (): ConnmanManagerDBus; // This allows `obj instanceof ConnmanManagerDBus`
@@ -3619,37 +3403,44 @@ export namespace Zeitgeist {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_size(): number;
+
             /**
              * @virtual
              */
             vfunc_estimated_matches(): number;
+
             /**
              * @virtual
              */
-            vfunc_next_value(): Event | null;
+            vfunc_next_value(): (Event | null);
+
             /**
              * @virtual
              */
             vfunc_has_next(): boolean;
+
             /**
              * @virtual
              */
             vfunc_tell(): number;
+
             /**
              * @virtual
              */
             vfunc_reset(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ResultSetNamespace {
@@ -3660,16 +3451,23 @@ export namespace Zeitgeist {
      * @gir-type Interface
      */
     interface ResultSet extends GObject.Object, ResultSet.Interface {
-        // Methods
 
+        // Methods
         size(): number;
+
         estimated_matches(): number;
-        next_value(): Event | null;
+
+        next_value(): (Event | null);
+
         has_next(): boolean;
+
         tell(): number;
+
         reset(): void;
+
         iterator(): ResultSet;
     }
+
 
     export const ResultSet: ResultSetNamespace & {
         new (): ResultSet; // This allows `obj instanceof ResultSet`
@@ -3680,6 +3478,7 @@ export namespace Zeitgeist {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

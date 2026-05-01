@@ -1,3 +1,4 @@
+
 import type GlyGtk42 from '@girs/glygtk4-2';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

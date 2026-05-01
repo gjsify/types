@@ -1,3 +1,4 @@
+
 import type RestExtras10 from '@girs/restextras-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 import type Abi30 from '@girs/abi-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

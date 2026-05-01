@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type Atk from '@girs/atk-1.0';
 import type GnomeAutoar from '@girs/gnomeautoar-0.1';
 
 export namespace GnomeAutoarGtk {
+
     /**
      * GnomeAutoarGtk-0.1
      */
+
 
     /**
      * Gets the selected archive format of the widget created by
@@ -39,6 +42,7 @@ export namespace GnomeAutoarGtk {
      * @returns `true` if `format` and `filter` are set. `false` if there is no selected item on `advanced`, so `format` and `filter` are not modified.
      */
     function chooser_advanced_get(advanced: Gtk.Widget, format: number, filter: number): boolean;
+
     /**
      * Create a {@link Gtk.Grid} with two lists. One list shows all available formats,
      * and the other list shows all available filters.
@@ -47,6 +51,7 @@ export namespace GnomeAutoarGtk {
      * @returns a new {@link Gtk.Grid} widget
      */
     function chooser_advanced_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget;
+
     /**
      * Gets the selected archive format of the widget created by
      * `autoar_gtk_chooser_simple_new()`.
@@ -56,6 +61,7 @@ export namespace GnomeAutoarGtk {
      * @returns `true` if `format` and `filter` are set. `false` if there is no selected item on `simple`, so `format` and `filter` are not modified.
      */
     function chooser_simple_get(simple: Gtk.Widget, format: number, filter: number): boolean;
+
     /**
      * Create a {@link Gtk.ComboBox} with a list of common archive format. There is also
      * an option called "Other format…", which will use
@@ -71,11 +77,13 @@ export namespace GnomeAutoarGtk {
      * @returns a new {@link Gtk.ComboBox} widget
      */
     function chooser_simple_new(default_format: GnomeAutoar.Format, default_filter: GnomeAutoar.Filter): Gtk.Widget;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

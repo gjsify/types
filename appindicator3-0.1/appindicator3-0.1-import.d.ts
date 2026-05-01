@@ -1,3 +1,4 @@
+
 import type AppIndicator301 from '@girs/appindicator3-0.1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

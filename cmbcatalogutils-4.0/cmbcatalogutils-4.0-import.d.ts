@@ -1,3 +1,4 @@
+
 import type CmbCatalogUtils40 from '@girs/cmbcatalogutils-4.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

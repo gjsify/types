@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace AyatanaAppIndicator3 {
+
     /**
      * AyatanaAppIndicator3-0.1
      */
+
 
     /**
      * The category provides grouping for the indicators so that
@@ -57,6 +60,7 @@ export namespace AyatanaAppIndicator3 {
         OTHER,
     }
 
+
     /**
      * These are the states that the indicator can be on in
      * the user's panel.  The indicator by default starts
@@ -79,34 +83,42 @@ export namespace AyatanaAppIndicator3 {
         ATTENTION,
     }
 
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.connection_changed | AyatanaAppIndicator3.Indicator::connection-changed} signal.
      */
     const INDICATOR_SIGNAL_CONNECTION_CHANGED: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_attention_icon | AyatanaAppIndicator3.Indicator::new-attention-icon} signal.
      */
     const INDICATOR_SIGNAL_NEW_ATTENTION_ICON: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_icon | AyatanaAppIndicator3.Indicator::new-icon} signal.
      */
     const INDICATOR_SIGNAL_NEW_ICON: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_icon_theme_path | AyatanaAppIndicator3.Indicator::new-icon-theme-path} signal.
      */
     const INDICATOR_SIGNAL_NEW_ICON_THEME_PATH: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_label | AyatanaAppIndicator3.Indicator::new-label} signal.
      */
     const INDICATOR_SIGNAL_NEW_LABEL: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_status | AyatanaAppIndicator3.Indicator::new-status} signal.
      */
     const INDICATOR_SIGNAL_NEW_STATUS: string;
+
     /**
      * String identifier for the {@link AyatanaAppIndicator3.Indicator.SignalSignatures.scroll_event | AyatanaAppIndicator3.Indicator::scroll-event} signal.
      */
     const INDICATOR_SIGNAL_SCROLL_EVENT: string;
+
     namespace Indicator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -115,63 +127,62 @@ export namespace AyatanaAppIndicator3 {
              * @signal
              * @run-last
              */
-            'connection-changed': (arg0: boolean) => void;
+            "connection-changed": (arg0: boolean) => void;
             /**
              * Emitted when {@link AyatanaAppIndicator3.Indicator.attention_icon_name} is changed
              * @signal
              * @run-last
              */
-            'new-attention-icon': () => void;
+            "new-attention-icon": () => void;
             /**
              * when {@link AyatanaAppIndicator3.Indicator.icon_name} is changed
              * @signal
              * @run-last
              */
-            'new-icon': () => void;
+            "new-icon": () => void;
             /**
              * Signaled when there is a new icon set for the
              * object.
              * @signal
              * @run-last
              */
-            'new-icon-theme-path': (arg0: string) => void;
+            "new-icon-theme-path": (arg0: string) => void;
             /**
              * Emitted when either {@link AyatanaAppIndicator3.Indicator.label} or {@link AyatanaAppIndicator3.Indicator.label_guide} are
              * changed.
              * @signal
              * @run-last
              */
-            'new-label': (arg0: string, arg1: string) => void;
+            "new-label": (arg0: string, arg1: string) => void;
             /**
              * Emitted when {@link AyatanaAppIndicator3.Indicator.status} is changed
              * @signal
              * @run-last
              */
-            'new-status': (arg0: string) => void;
+            "new-status": (arg0: string) => void;
             /**
              * Signaled when the {@link AyatanaAppIndicator3.Indicator} receives a scroll event.
              * @signal
              * @run-last
              */
-            'scroll-event': (arg0: number, arg1: Gdk.ScrollDirection) => void;
-            'notify::attention-icon-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::attention-icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::category': (pspec: GObject.ParamSpec) => void;
-            'notify::connected': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-theme-path': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::label-guide': (pspec: GObject.ParamSpec) => void;
-            'notify::menu': (pspec: GObject.ParamSpec) => void;
-            'notify::ordering-index': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
+            "scroll-event": (arg0: number, arg1: Gdk.ScrollDirection) => void;
+            "notify::attention-icon-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::attention-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::category": (pspec: GObject.ParamSpec) => void;
+            "notify::connected": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-theme-path": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::label-guide": (pspec: GObject.ParamSpec) => void;
+            "notify::menu": (pspec: GObject.ParamSpec) => void;
+            "notify::ordering-index": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             attention_icon_desc: string;
             attentionIconDesc: string;
@@ -210,7 +221,6 @@ export namespace AyatanaAppIndicator3 {
         static $gtype: GObject.GType<Indicator>;
 
         // Properties
-
         /**
          * If the indicator sets it's status to {@link AyatanaAppIndicator3.IndicatorStatus.ATTENTION}
          * then this textual description of the icon shown.
@@ -218,6 +228,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get attention_icon_desc(): string;
         set attention_icon_desc(val: string);
+
         /**
          * If the indicator sets it's status to {@link AyatanaAppIndicator3.IndicatorStatus.ATTENTION}
          * then this textual description of the icon shown.
@@ -225,6 +236,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get attentionIconDesc(): string;
         set attentionIconDesc(val: string);
+
         /**
          * If the indicator sets it's status to {@link AyatanaAppIndicator3.IndicatorStatus.ATTENTION}
          * then this icon is shown.
@@ -232,6 +244,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get attention_icon_name(): string;
         set attention_icon_name(val: string);
+
         /**
          * If the indicator sets it's status to {@link AyatanaAppIndicator3.IndicatorStatus.ATTENTION}
          * then this icon is shown.
@@ -239,6 +252,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get attentionIconName(): string;
         set attentionIconName(val: string);
+
         /**
          * The type of indicator that this represents.  Please don't use 'Other'.
          * Defaults to 'ApplicationStatus'.
@@ -246,6 +260,7 @@ export namespace AyatanaAppIndicator3 {
          * @default null
          */
         get category(): string;
+
         /**
          * Pretty simple, `true` if we have a reasonable expectation of being
          * displayed through this object. You should hide your TrayIcon if so.
@@ -253,30 +268,35 @@ export namespace AyatanaAppIndicator3 {
          * @default false
          */
         get connected(): boolean;
+
         /**
          * The description of the regular icon that is shown for the indicator.
          * @default null
          */
         get icon_desc(): string;
         set icon_desc(val: string);
+
         /**
          * The description of the regular icon that is shown for the indicator.
          * @default null
          */
         get iconDesc(): string;
         set iconDesc(val: string);
+
         /**
          * The name of the regular icon that is shown for the indicator.
          * @default null
          */
         get icon_name(): string;
         set icon_name(val: string);
+
         /**
          * The name of the regular icon that is shown for the indicator.
          * @default null
          */
         get iconName(): string;
         set iconName(val: string);
+
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
@@ -284,6 +304,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get icon_theme_path(): string;
         set icon_theme_path(val: string);
+
         /**
          * An additional place to look for icon names that may be installed by the
          * application.
@@ -291,6 +312,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get iconThemePath(): string;
         set iconThemePath(val: string);
+
         /**
          * The ID for this indicator, which should be unique, but used consistently
          * by this program and its indicator.
@@ -298,6 +320,7 @@ export namespace AyatanaAppIndicator3 {
          * @default null
          */
         get id(): string;
+
         /**
          * A label that can be shown next to the string in the application
          * indicator.  The label will not be shown unless there is an icon
@@ -309,6 +332,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get label(): string;
         set label(val: string);
+
         /**
          * An optional string to provide guidance to the panel on how big
          * the {@link AyatanaAppIndicator3.Indicator.label} string could get.  If this is set correctly
@@ -321,6 +345,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get label_guide(): string;
         set label_guide(val: string);
+
         /**
          * An optional string to provide guidance to the panel on how big
          * the {@link AyatanaAppIndicator3.Indicator.label} string could get.  If this is set correctly
@@ -333,6 +358,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get labelGuide(): string;
         set labelGuide(val: string);
+
         /**
          * The menu that should be shown when the Application Indicator
          * is clicked on in the panel.
@@ -340,6 +366,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get menu(): string;
         set menu(val: string);
+
         /**
          * The ordering index is an odd parameter, and if you think you don't need
          * it you're probably right.  In general, the application indicator try
@@ -353,6 +380,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get ordering_index(): number;
         set ordering_index(val: number);
+
         /**
          * The ordering index is an odd parameter, and if you think you don't need
          * it you're probably right.  In general, the application indicator try
@@ -366,6 +394,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get orderingIndex(): number;
         set orderingIndex(val: number);
+
         /**
          * Whether the indicator is shown or requests attention. Can be one of
          * 'Passive' (the indicator should not be shown), 'Active' (the indicator
@@ -375,6 +404,7 @@ export namespace AyatanaAppIndicator3 {
          */
         get status(): string;
         set status(val: string);
+
         /**
          * Provides a way to refer to this application indicator in a human
          * readable form.  This is used in the Unity desktop in the HUD as
@@ -395,97 +425,88 @@ export namespace AyatanaAppIndicator3 {
         $signals: Indicator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Indicator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, icon_name: string, category: IndicatorCategory): Indicator;
+        static ["new"](id: string, icon_name: string, category: IndicatorCategory): Indicator;
 
-        static new_with_path(
-            id: string,
-            icon_name: string,
-            category: IndicatorCategory,
-            icon_theme_path: string,
-        ): Indicator;
+        static new_with_path(id: string, icon_name: string, category: IndicatorCategory, icon_theme_path: string): Indicator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Indicator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Indicator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Indicator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Indicator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Indicator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.connection_changed | AyatanaAppIndicator3.Indicator::connection-changed}.
-         * @param connected
+         * @param connected 
          * @virtual
          */
         vfunc_connection_changed(connected: boolean): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_attention_icon | AyatanaAppIndicator3.Indicator::new-attention-icon}.
-         * @param user_data
+         * @param user_data 
          * @virtual
          */
-        vfunc_new_attention_icon(user_data: any | null): void;
+        vfunc_new_attention_icon(user_data: (any | null)): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_icon | AyatanaAppIndicator3.Indicator::new-icon}.
-         * @param user_data
+         * @param user_data 
          * @virtual
          */
-        vfunc_new_icon(user_data: any | null): void;
+        vfunc_new_icon(user_data: (any | null)): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_icon_theme_path | AyatanaAppIndicator3.Indicator::new-icon-theme-path}
-         * @param icon_theme_path
+         * @param icon_theme_path 
          * @virtual
          */
         vfunc_new_icon_theme_path(icon_theme_path: string): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_label | AyatanaAppIndicator3.Indicator::new-label}.
-         * @param label
-         * @param guide
+         * @param label 
+         * @param guide 
          * @virtual
          */
         vfunc_new_label(label: string, guide: string): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.new_status | AyatanaAppIndicator3.Indicator::new-status}.
-         * @param status
+         * @param status 
          * @virtual
          */
         vfunc_new_status(status: string): void;
+
         /**
          * Slot for {@link AyatanaAppIndicator3.Indicator.SignalSignatures.scroll_event | AyatanaAppIndicator3.Indicator::scroll-event}
-         * @param delta
-         * @param direction
+         * @param delta 
+         * @param direction 
          * @virtual
          */
         vfunc_scroll_event(delta: number, direction: Gdk.ScrollDirection): void;
+
         /**
          * The function that gets called if an Application
          *              Indicator area appears after the fallback has been created.
-         * @param status_icon
+         * @param status_icon 
          * @virtual
          */
         vfunc_unfallback(status_icon: Gtk.StatusIcon): void;
 
         // Methods
-
         /**
          * This function allows for building the Application Indicator menu
          * from a static desktop file.
@@ -493,112 +514,132 @@ export namespace AyatanaAppIndicator3 {
          * @param desktop_profile Which entries should be used from the desktop file
          */
         build_menu_from_desktop(desktop_file: string, desktop_profile: string): void;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.attention_icon_name}.
          * @returns The current attention icon name.
          */
         get_attention_icon(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.attention_icon_desc}.
          * @returns The current attention icon description.
          */
         get_attention_icon_desc(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.category}.
          * @returns The current category.
          */
         get_category(): IndicatorCategory;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.icon_name}.
          * @returns The current icon name.
          */
         get_icon(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.icon_desc}.
          * @returns The current icon description.
          */
         get_icon_desc(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.icon_theme_path}.
          * @returns The current icon theme path.
          */
         get_icon_theme_path(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.id}.
          * @returns The current ID
          */
         get_id(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.label}.
          * @returns The current label.
          */
         get_label(): string;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.label_guide}.
          * @returns The current label guide.
          */
         get_label_guide(): string;
+
         /**
          * Gets the menu being used for this application indicator.
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.menu}.
          * @returns A {@link Gtk.Menu} object or `null` if one hasn't been set.
          */
         get_menu(): Gtk.Menu;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.ordering_index}.
          * @returns The current ordering index.
          */
         get_ordering_index(): number;
+
         /**
          * Gets the menuitem being called on secondary-activate event.
          * @returns A {@link Gtk.Widget} object or `null` if none has been set.
          */
         get_secondary_activate_target(): Gtk.Widget;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.status}.
          * @returns The current status.
          */
         get_status(): IndicatorStatus;
+
         /**
          * Gets the title of the application indicator.  See the function
          * `app_indicator_set_title()` for information on the title.
          * @returns The current title.
          */
         get_title(): string;
+
         /**
          * Wrapper for `app_indicator_set_attention_icon_full()` with a NULL
          * description.
          * @param icon_name The name of the attention icon to set for this indicator
          */
         set_attention_icon(icon_name: string): void;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.attention_icon_name}.
          * @param icon_name The name of the attention icon to set for this indicator
          * @param icon_desc A textual description of the icon
          */
-        set_attention_icon_full(icon_name: string, icon_desc: string | null): void;
+        set_attention_icon_full(icon_name: string, icon_desc: (string | null)): void;
+
         /**
          * Wrapper function for `app_indicator_set_icon_full()` with a NULL
          * description.
          * @param icon_name The icon name to set.
          */
         set_icon(icon_name: string): void;
+
         /**
          * Sets the default icon to use when the status is active but
          * not set to attention.  In most cases, this should be the
          * application icon for the program.
-         *
+         * 
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.icon_name} and
          * {@link AyatanaAppIndicator3.Indicator.icon_desc}.
          * @param icon_name The icon name to set.
          * @param icon_desc A textual description of the icon for accessibility
          */
-        set_icon_full(icon_name: string, icon_desc: string | null): void;
+        set_icon_full(icon_name: string, icon_desc: (string | null)): void;
+
         /**
          * Sets the path to use when searching for icons.
          * @param icon_theme_path The icon theme path to set.
          */
         set_icon_theme_path(icon_theme_path: string): void;
+
         /**
          * This is a wrapper function for the {@link AyatanaAppIndicator3.Indicator.label} and
          * {@link AyatanaAppIndicator3.Indicator.label_guide} properties.  This function can take `NULL`
@@ -607,65 +648,73 @@ export namespace AyatanaAppIndicator3 {
          * @param guide A guide to size the label correctly.
          */
         set_label(label: string, guide: string): void;
+
         /**
          * Sets the menu that should be shown when the Application Indicator
          * is clicked on in the panel.  An application indicator will not
          * be rendered unless it has a menu.
-         *
+         * 
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.menu}.
          * @param menu A {@link Gtk.Menu} to set
          */
-        set_menu(menu: Gtk.Menu | null): void;
+        set_menu(menu: (Gtk.Menu | null)): void;
+
         /**
          * Sets the ordering index for the app indicator which effects the
          * placement of it on the panel.  For almost all app indicator
          * this is not the function you're looking for.
-         *
+         * 
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.ordering_index}.
          * @param ordering_index A value for the ordering of this app indicator
          */
         set_ordering_index(ordering_index: number): void;
+
         /**
          * Set the `menuitem` to be activated when a secondary activation event (i.e. a
          * middle-click) is emitted over the {@link AyatanaAppIndicator3.Indicator} icon/label.
-         *
+         * 
          * The `menuitem` can be also a complex {@link Gtk.Widget}, but to get activated when
          * a secondary activation occurs in the {@link AyatanaAppIndicator3.Indicator}, it must be a visible and
          * active child (or inner-child) of the {@link AyatanaAppIndicator3.Indicator.menu}.
-         *
+         * 
          * Setting `menuitem` to `null` causes to disable this feature.
          * @param menuitem A {@link Gtk.Widget} to be activated on secondary activation
          */
-        set_secondary_activate_target(menuitem: Gtk.Widget | null): void;
+        set_secondary_activate_target(menuitem: (Gtk.Widget | null)): void;
+
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.status}.
          * @param status The status to set for this indicator
          */
         set_status(status: IndicatorStatus): void;
+
         /**
          * Sets the title of the application indicator, or how it should be referred
          * in a human readable form.  This string should be UTF-8 and localized as it
          * expected that users will set it.
-         *
+         * 
          * In the Unity desktop the most prominent place that this is show will be
          * in the HUD.  HUD listings for this application indicator will start with
          * the title as the first part of the line for the menu items.
-         *
+         * 
          * Setting `title` to `null` removes the title.
          * @param title Title of the app indicator
          */
-        set_title(title: string | null): void;
+        set_title(title: (string | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type IndicatorClass = typeof Indicator;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

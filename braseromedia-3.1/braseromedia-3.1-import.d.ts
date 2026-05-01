@@ -1,3 +1,4 @@
+
 import type BraseroMedia31 from '@girs/braseromedia-3.1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

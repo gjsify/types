@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type Atk from '@girs/atk-1.0';
 import type EvinceDocument from '@girs/evincedocument-3.0';
 
 export namespace EvinceView {
+
     /**
      * EvinceView-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -48,6 +51,7 @@ export namespace EvinceView {
         N_PRIORITIES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -62,6 +66,7 @@ export namespace EvinceView {
         THREAD,
         MAIN_LOOP,
     }
+
 
     /**
      * @gir-type Enum
@@ -78,6 +83,7 @@ export namespace EvinceView {
         SURFACE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -93,6 +99,7 @@ export namespace EvinceView {
         DUAL,
         AUTOMATIC,
     }
+
 
     /**
      * @gir-type Enum
@@ -121,35 +128,59 @@ export namespace EvinceView {
         AUTOMATIC,
     }
 
+
     const STOCK_ANNOT_SQUIGGLY: string;
+
     const STOCK_ANNOT_TEXT: string;
+
     const STOCK_ATTACHMENT: string;
+
     const STOCK_CLOSE: string;
+
     const STOCK_FIND_UNSUPPORTED: string;
+
     const STOCK_INVERTED_COLORS: string;
+
     const STOCK_OUTLINE: string;
+
     const STOCK_RESIZE_SE: string;
+
     const STOCK_RESIZE_SW: string;
+
     const STOCK_ROTATE_LEFT: string;
+
     const STOCK_ROTATE_RIGHT: string;
+
     const STOCK_RUN_PRESENTATION: string;
+
     const STOCK_SEND_TO: string;
+
     const STOCK_VIEW_CONTINUOUS: string;
+
     const STOCK_VIEW_DUAL: string;
+
     const STOCK_VIEW_SIDEBAR: string;
+
     const STOCK_VISIBLE: string;
+
     const STOCK_ZOOM: string;
+
     const STOCK_ZOOM_PAGE: string;
+
     const STOCK_ZOOM_WIDTH: string;
+
     /**
      * Creates a new icon factory, adding the base stock icons to it.
      */
     function stock_icons_init(): void;
+
     /**
-     * @param screen
+     * @param screen 
      */
     function stock_icons_set_screen(screen: Gdk.Screen): void;
+
     function stock_icons_shutdown(): void;
+
     /**
      * @gir-type Flags
      */
@@ -175,6 +206,7 @@ export namespace EvinceView {
         ALL,
     }
 
+
     namespace DocumentModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -182,25 +214,24 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            'page-changed': (arg0: number, arg1: number) => void;
-            'notify::continuous': (pspec: GObject.ParamSpec) => void;
-            'notify::document': (pspec: GObject.ParamSpec) => void;
-            'notify::dual-odd-left': (pspec: GObject.ParamSpec) => void;
-            'notify::dual-page': (pspec: GObject.ParamSpec) => void;
-            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
-            'notify::inverted-colors': (pspec: GObject.ParamSpec) => void;
-            'notify::max-scale': (pspec: GObject.ParamSpec) => void;
-            'notify::min-scale': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::page-layout': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation': (pspec: GObject.ParamSpec) => void;
-            'notify::rtl': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::sizing-mode': (pspec: GObject.ParamSpec) => void;
+            "page-changed": (arg0: number, arg1: number) => void;
+            "notify::continuous": (pspec: GObject.ParamSpec) => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
+            "notify::dual-odd-left": (pspec: GObject.ParamSpec) => void;
+            "notify::dual-page": (pspec: GObject.ParamSpec) => void;
+            "notify::fullscreen": (pspec: GObject.ParamSpec) => void;
+            "notify::inverted-colors": (pspec: GObject.ParamSpec) => void;
+            "notify::max-scale": (pspec: GObject.ParamSpec) => void;
+            "notify::min-scale": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::page-layout": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation": (pspec: GObject.ParamSpec) => void;
+            "notify::rtl": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::sizing-mode": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             continuous: boolean;
             document: EvinceDocument.Document;
@@ -233,104 +264,123 @@ export namespace EvinceView {
         static $gtype: GObject.GType<DocumentModel>;
 
         // Properties
-
         /**
          * @default true
          */
         get continuous(): boolean;
         set continuous(val: boolean);
+
         get document(): EvinceDocument.Document;
         set document(val: EvinceDocument.Document);
+
         /**
          * @default false
          */
         get dual_odd_left(): boolean;
         set dual_odd_left(val: boolean);
+
         /**
          * @default false
          */
         get dualOddLeft(): boolean;
         set dualOddLeft(val: boolean);
+
         /**
          * @default false
          */
         get dual_page(): boolean;
         set dual_page(val: boolean);
+
         /**
          * @default false
          */
         get dualPage(): boolean;
         set dualPage(val: boolean);
+
         /**
          * @default false
          */
         get fullscreen(): boolean;
         set fullscreen(val: boolean);
+
         /**
          * @default false
          */
         get inverted_colors(): boolean;
         set inverted_colors(val: boolean);
+
         /**
          * @default false
          */
         get invertedColors(): boolean;
         set invertedColors(val: boolean);
+
         /**
          * @default 5
          */
         get max_scale(): number;
         set max_scale(val: number);
+
         /**
          * @default 5
          */
         get maxScale(): number;
         set maxScale(val: number);
+
         /**
          * @default 0.25
          */
         get min_scale(): number;
         set min_scale(val: number);
+
         /**
          * @default 0.25
          */
         get minScale(): number;
         set minScale(val: number);
+
         /**
          * @default -1
          */
         get page(): number;
         set page(val: number);
+
         /**
          * @default EvinceView.PageLayout.SINGLE
          */
         get page_layout(): PageLayout;
         set page_layout(val: PageLayout);
+
         /**
          * @default EvinceView.PageLayout.SINGLE
          */
         get pageLayout(): PageLayout;
         set pageLayout(val: PageLayout);
+
         /**
          * @default 0
          */
         get rotation(): number;
         set rotation(val: number);
+
         /**
          * @default false
          */
         get rtl(): boolean;
         set rtl(val: boolean);
+
         /**
          * @default 1
          */
         get scale(): number;
         set scale(val: number);
+
         /**
          * @default EvinceView.SizingMode.FIT_WIDTH
          */
         get sizing_mode(): SizingMode;
         set sizing_mode(val: SizingMode);
+
         /**
          * @default EvinceView.SizingMode.FIT_WIDTH
          */
@@ -347,126 +397,145 @@ export namespace EvinceView {
         $signals: DocumentModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DocumentModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DocumentModel;
+        static ["new"](): DocumentModel;
 
         static new_with_document(document: EvinceDocument.Document): DocumentModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DocumentModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DocumentModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DocumentModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DocumentModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocumentModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DocumentModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DocumentModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocumentModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_continuous(): boolean;
+
         /**
          * Returns the {@link EvinceDocument.Document} referenced by the model.
          * @returns a {@link EvinceDocument.Document}
          */
         get_document(): EvinceDocument.Document;
+
         /**
          * @returns whether the document model's page layout is set to {@link EvinceView.PageLayout.DUAL}.
          */
         get_dual_page(): boolean;
+
         get_dual_page_odd_pages_left(): boolean;
+
         get_fullscreen(): boolean;
+
         get_inverted_colors(): boolean;
+
         get_max_scale(): number;
+
         get_min_scale(): number;
+
         get_page(): number;
+
         /**
          * @returns the document model's page layout
          */
         get_page_layout(): PageLayout;
+
         get_rotation(): number;
+
         get_rtl(): boolean;
+
         get_scale(): number;
+
         get_sizing_mode(): SizingMode;
+
         /**
-         * @param continuous
+         * @param continuous 
          */
         set_continuous(continuous: boolean): void;
+
         /**
-         * @param document
+         * @param document 
          */
         set_document(document: EvinceDocument.Document): void;
+
         /**
          * Sets the document model's page layout to {@link EvinceView.PageLayout.SINGLE} or
          * {@link EvinceView.PageLayout.DUAL}.
          * @param dual_page whether to enable dual page mode
          */
         set_dual_page(dual_page: boolean): void;
+
         /**
-         * @param odd_left
+         * @param odd_left 
          */
         set_dual_page_odd_pages_left(odd_left: boolean): void;
+
         /**
-         * @param fullscreen
+         * @param fullscreen 
          */
         set_fullscreen(fullscreen: boolean): void;
+
         /**
-         * @param inverted_colors
+         * @param inverted_colors 
          */
         set_inverted_colors(inverted_colors: boolean): void;
+
         /**
-         * @param max_scale
+         * @param max_scale 
          */
         set_max_scale(max_scale: number): void;
+
         /**
-         * @param min_scale
+         * @param min_scale 
          */
         set_min_scale(min_scale: number): void;
+
         /**
-         * @param page
+         * @param page 
          */
         set_page(page: number): void;
+
         /**
-         * @param page_label
+         * @param page_label 
          */
         set_page_by_label(page_label: string): void;
+
         /**
          * Sets the document model's page layout to `layout`.
          * @param layout a {@link EvinceView.PageLayout}
          */
         set_page_layout(layout: PageLayout): void;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         set_rotation(rotation: number): void;
+
         /**
-         * @param rtl
+         * @param rtl 
          */
         set_rtl(rtl: boolean): void;
+
         /**
-         * @param scale
+         * @param scale 
          */
         set_scale(scale: number): void;
+
         /**
-         * @param mode
+         * @param mode 
          */
         set_sizing_mode(mode: SizingMode): void;
     }
+
 
     namespace Job {
         // Signal signatures
@@ -484,8 +553,9 @@ export namespace EvinceView {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -504,46 +574,43 @@ export namespace EvinceView {
         $signals: Job.SignalSignatures;
 
         // Fields
-
         document: EvinceDocument.Document;
+
         run_mode: JobRunMode;
+
         cancelled: number;
+
         finished: number;
+
         error: GLib.Error;
+
         cancellable: Gio.Cancellable;
+
         idle_finished_id: number;
+
         idle_cancelled_id: number;
 
         // Constructors
-
         constructor(properties?: Partial<Job.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Job.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Job.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Job.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Job.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Job.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Job.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Job.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static scheduler_get_running_thread_job(): Job;
+
         /**
          * Synchronously waits until all jobs are done.
          * Remember that main loop is not running already probably.
@@ -551,53 +618,65 @@ export namespace EvinceView {
         static scheduler_wait(): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_cancelled(): void;
+
         /**
          * @virtual
          */
         vfunc_finished(): void;
+
         /**
          * @virtual
          */
         vfunc_run(): boolean;
 
         // Methods
-
         cancel(): void;
+
         /**
          * @param error a {@link GLib.Error}
          */
         failed(error: GLib.Error): void;
+
         get_run_mode(): JobRunMode;
+
         is_failed(): boolean;
+
         is_finished(): boolean;
+
         run(): boolean;
+
         /**
-         * @param priority
+         * @param priority 
          */
         scheduler_push_job(priority: JobPriority): void;
+
         /**
-         * @param priority
+         * @param priority 
          */
         scheduler_update_job(priority: JobPriority): void;
+
         /**
-         * @param run_mode
+         * @param run_mode 
          */
         set_run_mode(run_mode: JobRunMode): void;
+
         succeeded(): void;
     }
 
+
     namespace JobAnnots {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -616,46 +695,39 @@ export namespace EvinceView {
         $signals: JobAnnots.SignalSignatures;
 
         // Fields
-
         annots: any[];
 
         // Constructors
-
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobAnnots;
+        static ["new"](document: EvinceDocument.Document): JobAnnots;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobAnnots.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobAnnots.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAnnots.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobAnnots.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobAnnots.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAnnots.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace JobAttachments {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -674,46 +746,39 @@ export namespace EvinceView {
         $signals: JobAttachments.SignalSignatures;
 
         // Fields
-
         attachments: any[];
 
         // Constructors
-
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobAttachments;
+        static ["new"](document: EvinceDocument.Document): JobAttachments;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobAttachments.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobAttachments.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobAttachments.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobAttachments.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobAttachments.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobAttachments.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobAttachments.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobAttachments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace JobExport {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -732,46 +797,37 @@ export namespace EvinceView {
         $signals: JobExport.SignalSignatures;
 
         // Fields
-
         page: number;
+
         rc: EvinceDocument.RenderContext;
 
         // Constructors
-
         constructor(properties?: Partial<JobExport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobExport;
+        static ["new"](document: EvinceDocument.Document): JobExport;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobExport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobExport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobExport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobExport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobExport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobExport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobExport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param page
+         * @param page 
          */
         set_page(page: number): void;
     }
+
 
     namespace JobFind {
         // Signal signatures
@@ -784,8 +840,9 @@ export namespace EvinceView {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -804,60 +861,48 @@ export namespace EvinceView {
         $signals: JobFind.SignalSignatures;
 
         // Fields
-
         start_page: number;
+
         current_page: number;
+
         n_pages: number;
+
         pages: any[];
+
         text: string;
+
         case_sensitive: boolean;
+
         options: EvinceDocument.FindOptions;
 
         // Constructors
-
         constructor(properties?: Partial<JobFind.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            document: EvinceDocument.Document,
-            start_page: number,
-            n_pages: number,
-            text: string,
-            case_sensitive: boolean,
-        ): JobFind;
+        static ["new"](document: EvinceDocument.Document, start_page: number, n_pages: number, text: string, case_sensitive: boolean): JobFind;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobFind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobFind.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobFind.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFind.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobFind.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobFind.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFind.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param page
+         * @param page 
          * @virtual
          */
         vfunc_updated(page: number): void;
 
         // Methods
-
         /**
          * This is similar to `ev_job_find_get_n_results()` but it takes
          * care to treat any multi-line matches as being only one result.
@@ -865,21 +910,27 @@ export namespace EvinceView {
          * @returns total number of match results in `page`
          */
         get_n_main_results(page: number): number;
+
         /**
-         * @param pages
+         * @param pages 
          */
         get_n_results(pages: number): number;
+
         /**
          * @returns the job's find options
          */
         get_options(): EvinceDocument.FindOptions;
+
         get_progress(): number;
+
         has_results(): boolean;
+
         /**
-         * @param options
+         * @param options 
          */
         set_options(options: EvinceDocument.FindOptions): void;
     }
+
 
     namespace JobFonts {
         // Signal signatures
@@ -892,8 +943,9 @@ export namespace EvinceView {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -912,54 +964,46 @@ export namespace EvinceView {
         $signals: JobFonts.SignalSignatures;
 
         // Fields
-
         scan_completed: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<JobFonts.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobFonts;
+        static ["new"](document: EvinceDocument.Document): JobFonts;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobFonts.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobFonts.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobFonts.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobFonts.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobFonts.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobFonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param progress
+         * @param progress 
          * @virtual
          */
         vfunc_updated(progress: number): void;
     }
 
+
     namespace JobLayers {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -978,46 +1022,39 @@ export namespace EvinceView {
         $signals: JobLayers.SignalSignatures;
 
         // Fields
-
         model: Gtk.TreeModel;
 
         // Constructors
-
         constructor(properties?: Partial<JobLayers.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobLayers;
+        static ["new"](document: EvinceDocument.Document): JobLayers;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLayers.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLayers.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLayers.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLayers.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLayers.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLayers.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace JobLinks {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1036,40 +1073,29 @@ export namespace EvinceView {
         $signals: JobLinks.SignalSignatures;
 
         // Fields
-
         model: Gtk.TreeModel;
 
         // Constructors
-
         constructor(properties?: Partial<JobLinks.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobLinks;
+        static ["new"](document: EvinceDocument.Document): JobLinks;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLinks.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLinks.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLinks.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLinks.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLinks.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLinks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get a {@link Gtk.TreeModel} loaded with the links
          * @returns The {@link Gtk.TreeModel} loaded
@@ -1077,13 +1103,16 @@ export namespace EvinceView {
         get_model(): Gtk.TreeModel;
     }
 
+
     namespace JobLoad {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1102,58 +1131,52 @@ export namespace EvinceView {
         $signals: JobLoad.SignalSignatures;
 
         // Fields
-
         uri: string;
+
         password: string;
 
         // Constructors
-
         constructor(properties?: Partial<JobLoad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string): JobLoad;
+        static ["new"](uri: string): JobLoad;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLoad.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLoad.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoad.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLoad.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLoad.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param password
+         * @param password 
          */
         set_password(password: string): void;
+
         /**
-         * @param uri
+         * @param uri 
          */
         set_uri(uri: string): void;
     }
 
+
     namespace JobLoadFd {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1175,45 +1198,37 @@ export namespace EvinceView {
         $signals: JobLoadFd.SignalSignatures;
 
         // Fields
-
         mime_type: string;
+
         password: string;
+
         fd: number;
+
         flags: EvinceDocument.DocumentLoadFlags;
 
         // Constructors
-
         constructor(properties?: Partial<JobLoadFd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd;
+        static ["new"](fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd;
 
         static new_take(fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLoadFd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadFd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLoadFd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadFd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLoadFd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadFd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLoadFd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadFd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLoadFd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLoadFd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLoadFd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoadFd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets `fd` as the file descriptor in `job`. If duplicating `fd` fails,
          * returns `false` with `error` filled in.
@@ -1221,18 +1236,22 @@ export namespace EvinceView {
          * @returns `true` if the file descriptor could be set
          */
         set_fd(fd: number): boolean;
+
         /**
-         * @param flags
+         * @param flags 
          */
         set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
+
         /**
-         * @param mime_type
+         * @param mime_type 
          */
         set_mime_type(mime_type: string): void;
+
         /**
-         * @param password
+         * @param password 
          */
         set_password(password: string): void;
+
         /**
          * Sets `fd` as the file descriptor in `job`.
          * Note that `job` takes ownership of `fd`; you must not do anything
@@ -1242,13 +1261,16 @@ export namespace EvinceView {
         take_fd(fd: number): void;
     }
 
+
     namespace JobLoadGFile {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1269,63 +1291,59 @@ export namespace EvinceView {
         $signals: JobLoadGFile.SignalSignatures;
 
         // Fields
-
         password: string;
+
         gfile: Gio.File;
+
         flags: EvinceDocument.DocumentLoadFlags;
 
         // Constructors
-
         constructor(properties?: Partial<JobLoadGFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](gfile: Gio.File, flags: EvinceDocument.DocumentLoadFlags): JobLoadGFile;
+        static ["new"](gfile: Gio.File, flags: EvinceDocument.DocumentLoadFlags): JobLoadGFile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLoadGFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadGFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLoadGFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadGFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLoadGFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadGFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLoadGFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadGFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLoadGFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLoadGFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLoadGFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoadGFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param gfile
+         * @param gfile 
          */
         set_gfile(gfile: Gio.File): void;
+
         /**
-         * @param flags
+         * @param flags 
          */
         set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
+
         /**
-         * @param password
+         * @param password 
          */
         set_password(password: string): void;
     }
 
+
     namespace JobLoadStream {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1346,67 +1364,64 @@ export namespace EvinceView {
         $signals: JobLoadStream.SignalSignatures;
 
         // Fields
-
         password: string;
+
         stream: Gio.InputStream;
+
         flags: EvinceDocument.DocumentLoadFlags;
 
         // Constructors
-
         constructor(properties?: Partial<JobLoadStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](stream: Gio.InputStream, flags: EvinceDocument.DocumentLoadFlags): JobLoadStream;
+        static ["new"](stream: Gio.InputStream, flags: EvinceDocument.DocumentLoadFlags): JobLoadStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobLoadStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobLoadStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobLoadStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobLoadStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobLoadStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobLoadStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobLoadStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobLoadStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobLoadStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobLoadStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param flags
+         * @param flags 
          */
         set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void;
+
         /**
-         * @param mime_type
+         * @param mime_type 
          */
         set_mime_type(mime_type: string): void;
+
         /**
-         * @param password
+         * @param password 
          */
         set_password(password: string): void;
+
         /**
-         * @param stream
+         * @param stream 
          */
         set_stream(stream: Gio.InputStream): void;
     }
 
+
     namespace JobPageData {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1425,52 +1440,51 @@ export namespace EvinceView {
         $signals: JobPageData.SignalSignatures;
 
         // Fields
-
         page: number;
+
         flags: JobPageDataFlags;
+
         text: string;
+
         text_layout: EvinceDocument.Rectangle;
+
         text_layout_length: number;
+
         text_log_attrs: Pango.LogAttr;
+
         text_log_attrs_length: number;
 
         // Constructors
-
         constructor(properties?: Partial<JobPageData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
+        static ["new"](document: EvinceDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobPageData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobPageData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobPageData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobPageData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPageData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobPageData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobPageData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPageData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace JobPrint {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1489,57 +1503,50 @@ export namespace EvinceView {
         $signals: JobPrint.SignalSignatures;
 
         // Fields
-
         page: number;
 
         // Constructors
-
         constructor(properties?: Partial<JobPrint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): JobPrint;
+        static ["new"](document: EvinceDocument.Document): JobPrint;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobPrint.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobPrint.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobPrint.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobPrint.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobPrint.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobPrint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param cr
+         * @param cr 
          */
         set_cairo(cr: cairo.Context): void;
+
         /**
-         * @param page
+         * @param page 
          */
         set_page(page: number): void;
     }
 
+
     namespace JobRender {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1558,78 +1565,68 @@ export namespace EvinceView {
         $signals: JobRender.SignalSignatures;
 
         // Fields
-
         page: number;
+
         rotation: number;
+
         scale: number;
+
         page_ready: boolean;
+
         target_width: number;
+
         target_height: number;
+
         include_selection: boolean;
+
         selection_points: EvinceDocument.Rectangle;
+
         selection_style: EvinceDocument.SelectionStyle;
+
         base: Gdk.Color;
+
         text: Gdk.Color;
 
         // Constructors
-
         constructor(properties?: Partial<JobRender.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            document: EvinceDocument.Document,
-            page: number,
-            rotation: number,
-            scale: number,
-            width: number,
-            height: number,
-        ): JobRender;
+        static ["new"](document: EvinceDocument.Document, page: number, rotation: number, scale: number, width: number, height: number): JobRender;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobRender.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobRender.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobRender.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobRender.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobRender.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobRender.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobRender.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobRender.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobRender.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param selection_points
-         * @param selection_style
-         * @param text
-         * @param base
+         * @param selection_points 
+         * @param selection_style 
+         * @param text 
+         * @param base 
          */
-        set_selection_info(
-            selection_points: EvinceDocument.Rectangle,
-            selection_style: EvinceDocument.SelectionStyle,
-            text: Gdk.Color,
-            base: Gdk.Color,
-        ): void;
+        set_selection_info(selection_points: EvinceDocument.Rectangle, selection_style: EvinceDocument.SelectionStyle, text: Gdk.Color, base: Gdk.Color): void;
     }
+
 
     namespace JobSave {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1648,47 +1645,41 @@ export namespace EvinceView {
         $signals: JobSave.SignalSignatures;
 
         // Fields
-
         uri: string;
+
         document_uri: string;
 
         // Constructors
-
         constructor(properties?: Partial<JobSave.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document, uri: string, document_uri: string): JobSave;
+        static ["new"](document: EvinceDocument.Document, uri: string, document_uri: string): JobSave;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobSave.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobSave.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobSave.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobSave.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobSave.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobSave.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobSave.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace JobThumbnail {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {}
+        interface SignalSignatures extends Job.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Job.ConstructorProps {
 
-        interface ConstructorProps extends Job.ConstructorProps {}
+        }
     }
 
     /**
@@ -1707,65 +1698,57 @@ export namespace EvinceView {
         $signals: JobThumbnail.SignalSignatures;
 
         // Fields
-
         page: number;
+
         rotation: number;
+
         scale: number;
+
         target_width: number;
+
         target_height: number;
+
         thumbnail: GdkPixbuf.Pixbuf;
+
         has_frame: boolean;
+
         format: JobThumbnailFormat;
 
         // Constructors
-
         constructor(properties?: Partial<JobThumbnail.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document, page: number, rotation: number, scale: number): JobThumbnail;
+        static ["new"](document: EvinceDocument.Document, page: number, rotation: number, scale: number): JobThumbnail;
 
-        static new_with_target_size(
-            document: EvinceDocument.Document,
-            page: number,
-            rotation: number,
-            target_width: number,
-            target_height: number,
-        ): JobThumbnail;
+        static new_with_target_size(document: EvinceDocument.Document, page: number, rotation: number, target_width: number, target_height: number): JobThumbnail;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof JobThumbnail.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof JobThumbnail.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof JobThumbnail.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof JobThumbnail.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, JobThumbnail.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof JobThumbnail.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<JobThumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof JobThumbnail.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<JobThumbnail.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param has_frame
+         * @param has_frame 
          */
         set_has_frame(has_frame: boolean): void;
+
         /**
          * Set the desired output format for the generated thumbnail
          * @param format a {@link EvinceView.JobThumbnailFormat}
          */
         set_output_format(format: JobThumbnailFormat): void;
     }
+
 
     namespace PrintOperation {
         // Signal signatures
@@ -1774,7 +1757,7 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            'begin-print': () => void;
+            "begin-print": () => void;
             /**
              * @signal
              * @run-last
@@ -1784,12 +1767,11 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            'status-changed': () => void;
-            'notify::document': (pspec: GObject.ParamSpec) => void;
+            "status-changed": () => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             document: EvinceDocument.Document;
         }
@@ -1802,7 +1784,6 @@ export namespace EvinceView {
         static $gtype: GObject.GType<PrintOperation>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1818,82 +1799,85 @@ export namespace EvinceView {
         $signals: PrintOperation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](document: EvinceDocument.Document): PrintOperation;
+        static ["new"](document: EvinceDocument.Document): PrintOperation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param document
+         * @param document 
          */
         static exists_for_document(document: EvinceDocument.Document): boolean;
 
         // Methods
-
         cancel(): void;
+
         /**
          * @returns a {@link Gtk.PageSetup}
          */
         get_default_page_setup(): Gtk.PageSetup;
+
         get_embed_page_setup(): boolean;
+
         get_error(): void;
+
         get_job_name(): string;
+
         /**
          * @returns a {@link Gtk.PrintSettings}
          */
         get_print_settings(): Gtk.PrintSettings;
+
         get_progress(): number;
+
         get_status(): string;
+
         /**
-         * @param parent
+         * @param parent 
          */
         run(parent: Gtk.Window): void;
+
         /**
-         * @param current_page
+         * @param current_page 
          */
         set_current_page(current_page: number): void;
+
         /**
-         * @param page_setup
+         * @param page_setup 
          */
         set_default_page_setup(page_setup: Gtk.PageSetup): void;
+
         /**
-         * @param embed
+         * @param embed 
          */
         set_embed_page_setup(embed: boolean): void;
+
         /**
-         * @param job_name
+         * @param job_name 
          */
         set_job_name(job_name: string): void;
+
         /**
-         * @param print_settings
+         * @param print_settings 
          */
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
+
 
     namespace View {
         // Signal signatures
@@ -1909,60 +1893,60 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            'annot-added': (arg0: EvinceDocument.Annotation) => void;
+            "annot-added": (arg0: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'annot-cancel-add': () => void;
+            "annot-cancel-add": () => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'annot-changed': (arg0: EvinceDocument.Annotation) => void;
+            "annot-changed": (arg0: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'annot-removed': (arg0: EvinceDocument.Annotation) => void;
+            "annot-removed": (arg0: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @run-last
              */
-            'cursor-moved': (arg0: number, arg1: number) => void;
-            /**
-             * @signal
-             * @action
-             * @run-last
-             */
-            'external-link': (arg0: GObject.Object) => void;
+            "cursor-moved": (arg0: number, arg1: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'handle-link': (arg0: number, arg1: GObject.Object) => void;
+            "external-link": (arg0: GObject.Object) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'layers-changed': () => void;
+            "handle-link": (arg0: number, arg1: GObject.Object) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'move-cursor': (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => boolean | void;
+            "layers-changed": () => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            popup: (arg0: any | null) => void;
+            "move-cursor": (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => (boolean | void);
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            popup: (arg0: (any | null)) => void;
             /**
              * @signal
              * @action
@@ -1974,72 +1958,66 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            'selection-changed': () => void;
+            "selection-changed": () => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'sync-source': (arg0: EvinceDocument.SourceLink) => void;
-            'notify::can-zoom-in': (pspec: GObject.ParamSpec) => void;
-            'notify::can-zoom-out': (pspec: GObject.ParamSpec) => void;
-            'notify::is-loading': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
+            "sync-source": (arg0: EvinceDocument.SourceLink) => void;
+            "notify::can-zoom-in": (pspec: GObject.ParamSpec) => void;
+            "notify::can-zoom-out": (pspec: GObject.ParamSpec) => void;
+            "notify::is-loading": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::hscroll-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vscroll-policy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Container.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Scrollable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
             can_zoom_in: boolean;
             canZoomIn: boolean;
             can_zoom_out: boolean;
@@ -2056,31 +2034,34 @@ export namespace EvinceView {
         static $gtype: GObject.GType<View>;
 
         // Properties
-
         /**
          * @since 3.8
          * @read-only
          * @default true
          */
         get can_zoom_in(): boolean;
+
         /**
          * @since 3.8
          * @read-only
          * @default true
          */
         get canZoomIn(): boolean;
+
         /**
          * @since 3.8
          * @read-only
          * @default true
          */
         get can_zoom_out(): boolean;
+
         /**
          * @since 3.8
          * @read-only
          * @default true
          */
         get canZoomOut(): boolean;
+
         /**
          * Allows to implement a custom notification system.
          * @since 3.8
@@ -2088,6 +2069,7 @@ export namespace EvinceView {
          * @default false
          */
         get is_loading(): boolean;
+
         /**
          * Allows to implement a custom notification system.
          * @since 3.8
@@ -2106,229 +2088,269 @@ export namespace EvinceView {
         $signals: View.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): View;
+        static ["new"](): View;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a Text Markup annotation (defaulting to a 'highlight' one) to
          * the currently selected text on the document.
-         *
+         * 
          * When the selected text spans more than one page, it will add a
          * corresponding annotation for each page that contains selected text.
          * @returns `true` if annotations were added successfully, `false` otherwise.
          */
         add_text_markup_annotation_for_selected_text(): boolean;
+
         autoscroll_start(): void;
+
         autoscroll_stop(): void;
+
         /**
-         * @param annot_type
+         * @param annot_type 
          */
         begin_add_annotation(annot_type: EvinceDocument.AnnotationType): void;
+
         cancel_add_annotation(): void;
+
         copy(): void;
+
         /**
-         * @param action
+         * @param action 
          */
         copy_link_address(action: EvinceDocument.LinkAction): void;
+
         /**
-         * @param type
+         * @param type 
          */
         current_event_is_type(type: Gdk.EventType): boolean;
+
         find_cancel(): void;
+
         find_next(): void;
+
         find_previous(): void;
+
         /**
          * Restart the current search operation from the given `page`.
          * @param page a page index
          */
         find_restart(page: number): void;
+
         find_search_changed(): void;
+
         /**
-         * @param value
+         * @param value 
          */
         find_set_highlight_search(value: boolean): void;
+
         /**
          * FIXME
-         * @param page
-         * @param result
+         * @param page 
+         * @param result 
          */
         find_set_result(page: number, result: number): void;
+
         /**
-         * @param job
+         * @param job 
          */
         find_started(job: JobFind): void;
+
         /**
-         * @param annot_mapping
+         * @param annot_mapping 
          */
         focus_annotation(annot_mapping: EvinceDocument.Mapping): void;
+
         get_allow_links_change_zoom(): boolean;
+
         get_enable_spellchecking(): boolean;
+
         get_has_selection(): boolean;
+
         /**
-         * @param page
-         * @param page_area
-         * @param border
+         * @param page 
+         * @param page_area 
+         * @param border 
          */
         get_page_extents(page: number, page_area: Gdk.Rectangle, border: Gtk.Border): boolean;
+
         /**
-         * @param page
-         * @param border
-         * @param page_area
+         * @param page 
+         * @param border 
+         * @param page_area 
          */
         get_page_extents_for_border(page: number, border: Gtk.Border, page_area: Gdk.Rectangle): boolean;
+
         /**
          * Returns a pointer to a constant string containing the selected
          * text in the view.
-         *
+         * 
          * The value returned may be NULL if there is no selected text.
          * @returns The string representing selected text.
          */
         get_selected_text(): string;
+
         /**
-         * @param link
+         * @param link 
          */
         handle_link(link: EvinceDocument.Link): void;
+
         hide_cursor(): void;
+
         /**
-         * @param link
+         * @param link 
          */
         highlight_forward_search(link: EvinceDocument.SourceLink): void;
+
         is_caret_navigation_enabled(): boolean;
+
         next_page(): boolean;
+
         previous_page(): boolean;
+
         reload(): void;
+
         /**
-         * @param annot
+         * @param annot 
          */
         remove_annotation(annot: EvinceDocument.Annotation): void;
+
         /**
-         * @param scroll
-         * @param horizontal
+         * @param scroll 
+         * @param horizontal 
          */
         scroll(scroll: Gtk.ScrollType, horizontal: boolean): void;
+
         select_all(): void;
+
         /**
-         * @param allowed
+         * @param allowed 
          */
         set_allow_links_change_zoom(allowed: boolean): void;
+
         /**
-         * @param page
-         * @param offset
+         * @param page 
+         * @param offset 
          */
         set_caret_cursor_position(page: number, offset: number): void;
+
         /**
          * Enables or disables caret navigation mode for the document.
          * @param enabled whether to enable caret navigation mode
          */
         set_caret_navigation_enabled(enabled: boolean): void;
+
         /**
-         * @param spellcheck
+         * @param spellcheck 
          */
         set_enable_spellchecking(spellcheck: boolean): void;
+
         /**
-         * @param loading
+         * @param loading 
          */
         set_loading(loading: boolean): void;
+
         /**
-         * @param model
+         * @param model 
          */
         set_model(model: DocumentModel): void;
+
         /**
          * Sets the maximum size in bytes that will be used to cache
          * rendered pages. Use 0 to disable caching rendered pages.
-         *
+         * 
          * Note that this limit doesn't affect the current visible page range,
          * which will always be rendered. In order to limit the total memory used
          * you have to use `ev_document_model_set_max_scale()` too.
          * @param cache_size size in bytes
          */
-        set_page_cache_size(cache_size: bigint | number): void;
+        set_page_cache_size(cache_size: (bigint | number)): void;
+
         show_cursor(): void;
+
         /**
          * @returns whether the document supports caret navigation
          */
         supports_caret_navigation(): boolean;
+
         zoom_in(): void;
+
         zoom_out(): void;
+
         /**
          * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
          * @since 3.0
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
+
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
+
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Verical {@link Gtk.Adjustment} of the scrollable widget. This adjustment is shared
          * between the scrollable widget and its parent.
          * @since 3.0
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
+
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
+
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -2338,31 +2360,37 @@ export namespace EvinceView {
          * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -2370,11 +2398,13 @@ export namespace EvinceView {
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -2382,6 +2412,7 @@ export namespace EvinceView {
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -2393,6 +2424,7 @@ export namespace EvinceView {
         vfunc_get_border(): [boolean, Gtk.Border];
     }
 
+
     namespace ViewPresentation {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
@@ -2401,68 +2433,66 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            'change-page': (arg0: Gtk.ScrollType) => void;
+            "change-page": (arg0: Gtk.ScrollType) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            'external-link': (arg0: GObject.Object) => void;
+            "external-link": (arg0: GObject.Object) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
             finished: () => void;
-            'notify::current-page': (pspec: GObject.ParamSpec) => void;
-            'notify::document': (pspec: GObject.ParamSpec) => void;
-            'notify::inverted-colors': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::current-page": (pspec: GObject.ParamSpec) => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
+            "notify::inverted-colors": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             current_page: number;
             currentPage: number;
             document: EvinceDocument.Document;
@@ -2479,31 +2509,35 @@ export namespace EvinceView {
         static $gtype: GObject.GType<ViewPresentation>;
 
         // Properties
-
         /**
          * @default 0
          */
         get current_page(): number;
         set current_page(val: number);
+
         /**
          * @default 0
          */
         get currentPage(): number;
         set currentPage(val: number);
+
         /**
          * @construct-only
          */
         set document(val: EvinceDocument.Document);
+
         /**
          * @construct-only
          * @default false
          */
         set inverted_colors(val: boolean);
+
         /**
          * @construct-only
          * @default false
          */
         set invertedColors(val: boolean);
+
         /**
          * @default 0
          */
@@ -2520,49 +2554,39 @@ export namespace EvinceView {
         $signals: ViewPresentation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ViewPresentation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            document: EvinceDocument.Document,
-            current_page: number,
-            rotation: number,
-            inverted_colors: boolean,
-        ): ViewPresentation;
+        static ["new"](document: EvinceDocument.Document, current_page: number, rotation: number, inverted_colors: boolean): ViewPresentation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ViewPresentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ViewPresentation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ViewPresentation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ViewPresentation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ViewPresentation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ViewPresentation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ViewPresentation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ViewPresentation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_current_page(): number;
+
         get_rotation(): number;
+
         next_page(): void;
+
         previous_page(): void;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         set_rotation(rotation: number): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2570,10 +2594,11 @@ export namespace EvinceView {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -2581,6 +2606,7 @@ export namespace EvinceView {
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2589,7 +2615,8 @@ export namespace EvinceView {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2598,7 +2625,8 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: any | null): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2606,11 +2634,8 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2618,15 +2643,17 @@ export namespace EvinceView {
          * @returns the internal child of the buildable object
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -2636,18 +2663,21 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
          */
         set_name(name: string): void;
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2656,10 +2686,11 @@ export namespace EvinceView {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Constructs a child of `buildable` with the name `name`.
-         *
+         * 
          * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
@@ -2667,6 +2698,7 @@ export namespace EvinceView {
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
+
         /**
          * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2676,12 +2708,8 @@ export namespace EvinceView {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
@@ -2691,12 +2719,8 @@ export namespace EvinceView {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * This is called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2704,11 +2728,8 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+
         /**
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2716,15 +2737,17 @@ export namespace EvinceView {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Gets the name of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
@@ -2735,6 +2758,7 @@ export namespace EvinceView {
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2743,6 +2767,7 @@ export namespace EvinceView {
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
@@ -2751,95 +2776,118 @@ export namespace EvinceView {
         vfunc_set_name(name: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DocumentModelClass = typeof DocumentModel;
+
     /**
      * @gir-type Alias
      */
     type JobAnnotsClass = typeof JobAnnots;
+
     /**
      * @gir-type Alias
      */
     type JobAttachmentsClass = typeof JobAttachments;
+
     /**
      * @gir-type Alias
      */
     type JobClass = typeof Job;
+
     /**
      * @gir-type Alias
      */
     type JobExportClass = typeof JobExport;
+
     /**
      * @gir-type Alias
      */
     type JobFindClass = typeof JobFind;
+
     /**
      * @gir-type Alias
      */
     type JobFontsClass = typeof JobFonts;
+
     /**
      * @gir-type Alias
      */
     type JobLayersClass = typeof JobLayers;
+
     /**
      * @gir-type Alias
      */
     type JobLinksClass = typeof JobLinks;
+
     /**
      * @gir-type Alias
      */
     type JobLoadClass = typeof JobLoad;
+
     /**
      * @gir-type Alias
      */
     type JobLoadFdClass = typeof JobLoadFd;
+
     /**
      * @gir-type Alias
      */
     type JobLoadGFileClass = typeof JobLoadGFile;
+
     /**
      * @gir-type Alias
      */
     type JobLoadStreamClass = typeof JobLoadStream;
+
     /**
      * @gir-type Alias
      */
     type JobPageDataClass = typeof JobPageData;
+
     /**
      * @gir-type Alias
      */
     type JobPrintClass = typeof JobPrint;
+
     /**
      * @gir-type Alias
      */
     type JobRenderClass = typeof JobRender;
+
     /**
      * @gir-type Alias
      */
     type JobSaveClass = typeof JobSave;
+
     /**
      * @gir-type Alias
      */
     type JobThumbnailClass = typeof JobThumbnail;
+
     /**
      * @gir-type Alias
      */
     type PrintOperationClass = typeof PrintOperation;
+
     /**
      * @gir-type Alias
      */
     type ViewClass = typeof View;
+
     /**
      * @gir-type Alias
      */
     type ViewPresentationClass = typeof ViewPresentation;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

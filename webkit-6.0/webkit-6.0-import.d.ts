@@ -1,3 +1,4 @@
+
 import type WebKit60 from '@girs/webkit-6.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

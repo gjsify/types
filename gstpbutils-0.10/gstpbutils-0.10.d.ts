@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstPbutils {
+
     /**
      * GstPbutils-0.10
      */
+
 
     /**
      * @gir-type Enum
@@ -51,125 +54,145 @@ export namespace GstPbutils {
         INSTALL_IN_PROGRESS,
     }
 
+
     /**
-     * @param details
-     * @param ctx
-     * @param func
+     * @param details 
+     * @param ctx 
+     * @param func 
      */
-    function gst_install_plugins_async(
-        details: string[],
-        ctx: GstInstallPluginsContext,
-        func: GstInstallPluginsResultFunc,
-    ): GstInstallPluginsReturn;
+    function gst_install_plugins_async(details: string[], ctx: GstInstallPluginsContext, func: GstInstallPluginsResultFunc): GstInstallPluginsReturn;
+
     function gst_install_plugins_installation_in_progress(): boolean;
+
     /**
-     * @param ret
+     * @param ret 
      */
     function gst_install_plugins_return_get_name(ret: GstInstallPluginsReturn): string;
+
     function gst_install_plugins_supported(): boolean;
+
     /**
-     * @param details
-     * @param ctx
+     * @param details 
+     * @param ctx 
      */
     function gst_install_plugins_sync(details: string[], ctx: GstInstallPluginsContext): GstInstallPluginsReturn;
+
     /**
-     * @param msg
+     * @param msg 
      */
     function gst_is_missing_plugin_message(msg: Gst.Message): boolean;
+
     /**
-     * @param decode_caps
+     * @param decode_caps 
      */
     function gst_missing_decoder_installer_detail_new(decode_caps: Gst.Caps): string;
+
     /**
-     * @param element
-     * @param decode_caps
+     * @param element 
+     * @param decode_caps 
      */
     function gst_missing_decoder_message_new(element: Gst.Element, decode_caps: Gst.Caps): Gst.Message;
+
     /**
-     * @param factory_name
+     * @param factory_name 
      */
     function gst_missing_element_installer_detail_new(factory_name: string): string;
+
     /**
-     * @param element
-     * @param factory_name
+     * @param element 
+     * @param factory_name 
      */
     function gst_missing_element_message_new(element: Gst.Element, factory_name: string): Gst.Message;
+
     /**
-     * @param encode_caps
+     * @param encode_caps 
      */
     function gst_missing_encoder_installer_detail_new(encode_caps: Gst.Caps): string;
+
     /**
-     * @param element
-     * @param encode_caps
+     * @param element 
+     * @param encode_caps 
      */
     function gst_missing_encoder_message_new(element: Gst.Element, encode_caps: Gst.Caps): Gst.Message;
+
     /**
-     * @param msg
+     * @param msg 
      */
     function gst_missing_plugin_message_get_description(msg: Gst.Message): string;
+
     /**
-     * @param msg
+     * @param msg 
      */
     function gst_missing_plugin_message_get_installer_detail(msg: Gst.Message): string;
+
     /**
-     * @param protocol
+     * @param protocol 
      */
     function gst_missing_uri_sink_installer_detail_new(protocol: string): string;
+
     /**
-     * @param element
-     * @param protocol
+     * @param element 
+     * @param protocol 
      */
     function gst_missing_uri_sink_message_new(element: Gst.Element, protocol: string): Gst.Message;
+
     /**
-     * @param protocol
+     * @param protocol 
      */
     function gst_missing_uri_source_installer_detail_new(protocol: string): string;
+
     /**
-     * @param element
-     * @param protocol
+     * @param element 
+     * @param protocol 
      */
     function gst_missing_uri_source_message_new(element: Gst.Element, protocol: string): Gst.Message;
+
     /**
-     * @param taglist
-     * @param codec_tag
-     * @param caps
+     * @param taglist 
+     * @param codec_tag 
+     * @param caps 
      */
-    function gst_pb_utils_add_codec_description_to_tag_list(
-        taglist: Gst.TagList,
-        codec_tag: string,
-        caps: Gst.Caps,
-    ): boolean;
+    function gst_pb_utils_add_codec_description_to_tag_list(taglist: Gst.TagList, codec_tag: string, caps: Gst.Caps): boolean;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function gst_pb_utils_get_codec_description(caps: Gst.Caps): string;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function gst_pb_utils_get_decoder_description(caps: Gst.Caps): string;
+
     /**
-     * @param factory_name
+     * @param factory_name 
      */
     function gst_pb_utils_get_element_description(factory_name: string): string;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function gst_pb_utils_get_encoder_description(caps: Gst.Caps): string;
+
     /**
-     * @param protocol
+     * @param protocol 
      */
     function gst_pb_utils_get_sink_description(protocol: string): string;
+
     /**
-     * @param protocol
+     * @param protocol 
      */
     function gst_pb_utils_get_source_description(protocol: string): string;
+
     function gst_pb_utils_init(): void;
+
     /**
      * @gir-type Callback
      */
     interface GstInstallPluginsResultFunc {
         (result: GstInstallPluginsReturn): void;
     }
+
     /**
      * Opaque context structure for the plugin installation. Use the provided
      * API to set details on it.
@@ -181,24 +204,28 @@ export namespace GstPbutils {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): GstInstallPluginsContext;
+        }>);
+
+        static ["new"](): GstInstallPluginsContext;
 
         // Methods
-
         free(): void;
+
         /**
-         * @param xid
+         * @param xid 
          */
         set_xid(xid: number): void;
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

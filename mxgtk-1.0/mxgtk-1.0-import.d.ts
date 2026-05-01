@@ -1,3 +1,4 @@
+
 import type MxGtk10 from '@girs/mxgtk-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

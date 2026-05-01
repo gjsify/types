@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Tracker {
+
     /**
      * Tracker-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -40,6 +43,7 @@ export namespace Tracker {
         BLANK_NODE,
         BOOLEAN,
     }
+
 
     /**
      * @gir-type Enum
@@ -64,34 +68,46 @@ export namespace Tracker {
         GRAPH,
     }
 
+
     const DBUS_SERVICE: string;
+
     const DBUS_INTERFACE_RESOURCES: string;
+
     const DBUS_OBJECT_RESOURCES: string;
+
     const DBUS_INTERFACE_STATISTICS: string;
+
     const DBUS_OBJECT_STATISTICS: string;
+
     const DBUS_INTERFACE_STATUS: string;
+
     const DBUS_OBJECT_STATUS: string;
+
     const DBUS_INTERFACE_STEROIDS: string;
+
     const DBUS_OBJECT_STEROIDS: string;
+
     /**
-     * @param uri
+     * @param uri 
      */
     function sparql_escape_uri(uri: string): string;
+
     /**
-     * @param literal
+     * @param literal 
      */
     function sparql_escape_string(literal: string): string;
+
     function sparql_get_uuid_urn(): string;
+
     namespace SparqlBuilder {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::result': (pspec: GObject.ParamSpec) => void;
-            'notify::length': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
+            "notify::result": (pspec: GObject.ParamSpec) => void;
+            "notify::length": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             result: string;
             length: number;
@@ -106,13 +122,14 @@ export namespace Tracker {
         static $gtype: GObject.GType<SparqlBuilder>;
 
         // Properties
-
         /**
          * @read-only
          */
         get result(): string;
+
         get length(): number;
         set length(val: number);
+
         /**
          * @read-only
          */
@@ -128,7 +145,6 @@ export namespace Tracker {
         $signals: SparqlBuilder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SparqlBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -137,130 +153,153 @@ export namespace Tracker {
 
         static embedded_insert(): SparqlBuilder;
 
-        static ['new'](): SparqlBuilder;
+        static ["new"](): SparqlBuilder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SparqlBuilder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SparqlBuilder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlBuilder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SparqlBuilder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SparqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SparqlBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param graph
+         * @param graph 
          */
         insert_open(graph: string): void;
+
         /**
-         * @param graph
+         * @param graph 
          */
         insert_silent_open(graph: string): void;
+
         insert_close(): void;
+
         /**
-         * @param graph
+         * @param graph 
          */
         delete_open(graph: string): void;
+
         delete_close(): void;
+
         /**
-         * @param graph
+         * @param graph 
          */
         graph_open(graph: string): void;
+
         graph_close(): void;
+
         where_open(): void;
+
         where_close(): void;
+
         /**
-         * @param var_name
+         * @param var_name 
          */
         subject_variable(var_name: string): void;
+
         /**
-         * @param var_name
+         * @param var_name 
          */
         object_variable(var_name: string): void;
+
         /**
-         * @param iri
+         * @param iri 
          */
         subject_iri(iri: string): void;
+
         /**
-         * @param s
+         * @param s 
          */
         subject(s: string): void;
+
         /**
-         * @param iri
+         * @param iri 
          */
         predicate_iri(iri: string): void;
+
         /**
-         * @param s
+         * @param s 
          */
         predicate(s: string): void;
+
         /**
-         * @param iri
+         * @param iri 
          */
         object_iri(iri: string): void;
+
         /**
-         * @param s
+         * @param s 
          */
         object(s: string): void;
+
         /**
-         * @param literal
+         * @param literal 
          */
         object_string(literal: string): void;
+
         /**
-         * @param value
+         * @param value 
          */
         object_unvalidated(value: string): void;
+
         /**
-         * @param literal
+         * @param literal 
          */
         object_boolean(literal: boolean): void;
+
         /**
-         * @param literal
+         * @param literal 
          */
-        object_int64(literal: bigint | number): void;
+        object_int64(literal: (bigint | number)): void;
+
         /**
-         * @param literal
+         * @param literal 
          */
-        object_date(literal: bigint | number): number;
+        object_date(literal: (bigint | number)): number;
+
         /**
-         * @param literal
+         * @param literal 
          */
         object_double(literal: number): void;
+
         object_blank_open(): void;
+
         object_blank_close(): void;
+
         /**
-         * @param raw
+         * @param raw 
          */
         prepend(raw: string): void;
+
         /**
-         * @param raw
+         * @param raw 
          */
         append(raw: string): void;
+
         get_result(): string;
+
         get_length(): number;
+
         get_state(): SparqlBuilderState;
     }
 
+
     namespace SparqlConnection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -279,411 +318,382 @@ export namespace Tracker {
         $signals: SparqlConnection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SparqlConnection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SparqlConnection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SparqlConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlConnection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SparqlConnection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SparqlConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         static get_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         static get_finish(_res_: Gio.AsyncResult): SparqlConnection;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         static get(cancellable: Gio.Cancellable): SparqlConnection;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        static get_direct_async(
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<SparqlConnection>,
-        ): void;
+        static get_direct_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<SparqlConnection>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         static get_direct_finish(_res_: Gio.AsyncResult): SparqlConnection;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         static get_direct(cancellable: Gio.Cancellable): SparqlConnection;
+
         /**
-         * @param uri_base
+         * @param uri_base 
          */
         static remote_new(uri_base: string): SparqlConnection;
 
         // Virtual methods
-
         /**
-         * @param sparql
-         * @param cancellable
+         * @param sparql 
+         * @param cancellable 
          * @virtual
          */
         vfunc_query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
+
         /**
-         * @param sparql
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_query_finish(_res_: Gio.AsyncResult): SparqlCursor;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          * @virtual
          */
         vfunc_update(sparql: string, priority: number, cancellable: Gio.Cancellable): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_update_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_update_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_update_array_async(
-            sparql: string[],
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_update_array_finish(_res_: Gio.AsyncResult): SparqlError[];
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          * @virtual
          */
         vfunc_update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_update_blank_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param file
-         * @param cancellable
+         * @param file 
+         * @param cancellable 
          * @virtual
          */
         vfunc_load(file: Gio.File, cancellable: Gio.Cancellable): void;
+
         /**
-         * @param file
-         * @param cancellable
-         * @param _callback_
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_load_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          * @virtual
          */
         vfunc_statistics(cancellable: Gio.Cancellable): SparqlCursor;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
 
         // Methods
-
         /**
-         * @param sparql
-         * @param cancellable
+         * @param sparql 
+         * @param cancellable 
          */
         query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
+
         /**
-         * @param sparql
-         * @param cancellable
+         * @param sparql 
+         * @param cancellable 
          */
         query_async(sparql: string, cancellable: Gio.Cancellable): globalThis.Promise<SparqlCursor>;
+
         /**
-         * @param sparql
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param cancellable 
+         * @param _callback_ 
          */
         query_async(sparql: string, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param sparql
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        query_async(
-            sparql: string,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<SparqlCursor> | void;
+        query_async(sparql: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlCursor> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         query_finish(_res_: Gio.AsyncResult): SparqlCursor;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          */
         update(sparql: string, priority: number, cancellable: Gio.Cancellable): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          */
         update_async(sparql: string, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<void>;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          */
-        update_array_async(
-            sparql: string[],
-            priority: number,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<SparqlError[]>;
+        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable): globalThis.Promise<SparqlError[]>;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_array_async(
-            sparql: string[],
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_array_async(
-            sparql: string[],
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<SparqlError[]> | void;
+        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlError[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_array_finish(_res_: Gio.AsyncResult): SparqlError[];
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          */
         update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
          */
-        update_blank_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<GLib.Variant>;
+        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<GLib.Variant>;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_blank_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_: Gio.AsyncReadyCallback<this>,
-        ): void;
+        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param sparql
-         * @param priority
-         * @param cancellable
-         * @param _callback_
+         * @param sparql 
+         * @param priority 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        update_blank_async(
-            sparql: string,
-            priority: number,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<GLib.Variant> | void;
+        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.Variant> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param file
-         * @param cancellable
+         * @param file 
+         * @param cancellable 
          */
         load(file: Gio.File, cancellable: Gio.Cancellable): void;
+
         /**
-         * @param file
-         * @param cancellable
+         * @param file 
+         * @param cancellable 
          */
         load_async(file: Gio.File, cancellable: Gio.Cancellable): globalThis.Promise<void>;
+
         /**
-         * @param file
-         * @param cancellable
-         * @param _callback_
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
          */
         load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param file
-         * @param cancellable
-         * @param _callback_
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        load_async(
-            file: Gio.File,
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<void> | void;
+        load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         load_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         statistics(cancellable: Gio.Cancellable): SparqlCursor;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         statistics_async(cancellable: Gio.Cancellable): globalThis.Promise<SparqlCursor>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         statistics_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        statistics_async(
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<SparqlCursor> | void;
+        statistics_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlCursor> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
     }
 
+
     namespace SparqlCursor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::n-columns': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::n-columns": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: SparqlConnection;
             n_columns: number;
@@ -698,13 +708,14 @@ export namespace Tracker {
         static $gtype: GObject.GType<SparqlCursor>;
 
         // Properties
-
         get connection(): SparqlConnection;
         set connection(val: SparqlConnection);
+
         /**
          * @read-only
          */
         get n_columns(): number;
+
         /**
          * @read-only
          */
@@ -720,167 +731,183 @@ export namespace Tracker {
         $signals: SparqlCursor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SparqlCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SparqlCursor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SparqlCursor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SparqlCursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SparqlCursor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SparqlCursor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SparqlCursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SparqlCursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_get_value_type(column: number): SparqlValueType;
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_get_variable_name(column: number): string;
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_get_string(column: number): [string, bigint | number];
+
         /**
-         * @param cancellable
+         * @param cancellable 
          * @virtual
          */
         vfunc_next(cancellable: Gio.Cancellable): boolean;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_next_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
          * @virtual
          */
         vfunc_rewind(): void;
+
         /**
          * @virtual
          */
         vfunc_close(): void;
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
-        vfunc_get_integer(column: number): bigint | number;
+        vfunc_get_integer(column: number): (bigint | number);
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_get_double(column: number): number;
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_get_boolean(column: number): boolean;
+
         /**
-         * @param column
+         * @param column 
          * @virtual
          */
         vfunc_is_bound(column: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_n_columns(): number;
 
         // Methods
-
         /**
-         * @param column
+         * @param column 
          */
         get_value_type(column: number): SparqlValueType;
+
         /**
-         * @param column
+         * @param column 
          */
         get_variable_name(column: number): string;
+
         /**
-         * @param column
+         * @param column 
          */
         get_string(column: number): [string, number];
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         next(cancellable: Gio.Cancellable): boolean;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
         next_async(cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
         next_async(cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cancellable
-         * @param _callback_
+         * @param cancellable 
+         * @param _callback_ 
          */
-        next_async(
-            cancellable: Gio.Cancellable,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        next_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         next_finish(_res_: Gio.AsyncResult): boolean;
+
         rewind(): void;
+
         close(): void;
+
         /**
-         * @param column
+         * @param column 
          */
         get_integer(column: number): number;
+
         /**
-         * @param column
+         * @param column 
          */
         get_double(column: number): number;
+
         /**
-         * @param column
+         * @param column 
          */
         get_boolean(column: number): boolean;
+
         /**
-         * @param column
+         * @param column 
          */
         is_bound(column: number): boolean;
+
         get_connection(): SparqlConnection;
+
         /**
-         * @param value
+         * @param value 
          */
         set_connection(value: SparqlConnection): void;
+
         get_n_columns(): number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type SparqlBuilderClass = typeof SparqlBuilder;
+
     /**
      * @gir-type Struct
      */
@@ -888,10 +915,12 @@ export namespace Tracker {
         static $gtype: GObject.GType<SparqlBuilderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SparqlConnectionClass = typeof SparqlConnection;
+
     /**
      * @gir-type Struct
      */
@@ -899,16 +928,19 @@ export namespace Tracker {
         static $gtype: GObject.GType<SparqlConnectionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SparqlCursorClass = typeof SparqlCursor;
+
     /**
      * @gir-type Struct
      */
     abstract class SparqlCursorPrivate {
         static $gtype: GObject.GType<SparqlCursorPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -917,26 +949,33 @@ export namespace Tracker {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static PARSE: number;
+
         static UNKNOWN_CLASS: number;
+
         static UNKNOWN_PROPERTY: number;
+
         static TYPE: number;
+
         static CONSTRAINT: number;
+
         static NO_SPACE: number;
+
         static INTERNAL: number;
+
         static UNSUPPORTED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
