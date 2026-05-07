@@ -332,7 +332,7 @@ export namespace ECalendar {
      * @gir-type Callback
      */
     interface CalRecurInstanceFn {
-        (comp: CalComponent, instance_start: number, instance_end: number, data: any): boolean;
+        (comp: CalComponent, instance_start: number, instance_end: number, data: null): boolean;
     }
 
     /**
@@ -504,7 +504,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__ENUM_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+        static marshal_VOID__ENUM_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -514,7 +514,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+        static marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -524,7 +524,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+        static marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
         /**
          * Matches `tzid` against the system timezone definitions
@@ -775,7 +775,7 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            "free-busy-data": (arg0: any) => void;
+            "free-busy-data": (arg0: null) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
             "notify::main-context": (pspec: GObject.ParamSpec) => void;
             "notify::online": (pspec: GObject.ParamSpec) => void;
@@ -1399,7 +1399,7 @@ export namespace ECalendar {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             client: CalClient;
-            view: any;
+            view: never;
         }
     }
 
@@ -1421,7 +1421,7 @@ export namespace ECalendar {
         /**
          * @construct-only
          */
-        get view(): any;
+        get view(): null;
 
         /**
          * Compile-time signal type information.
@@ -1472,7 +1472,7 @@ export namespace ECalendar {
          * Get the {@link ECalendar.CalClient} associated with this view.
          * @returns the associated client.
          */
-        get_client(): any;
+        get_client(): null;
 
         /**
          * Retunrs: Whether view is running. Not running views are ignoring
@@ -1595,14 +1595,14 @@ export namespace ECalendar {
          * functions.
          * @param geo An #icalgeotype structure.
          */
-        static free_geo(geo: any): void;
+        static free_geo(geo: never): void;
 
         /**
          * Frees a struct #icaltimetype value as returned by the calendar component
          * functions.
          * @param t An #icaltimetype structure.
          */
-        static free_icaltimetype(t: any): void;
+        static free_icaltimetype(t: never): void;
 
         /**
          * Frees the id.
@@ -1759,7 +1759,7 @@ export namespace ECalendar {
          * Queries the date at which a calendar compoment object was completed.
          * @param t Return value for the completion date.  This should be freed using the `e_cal_component_free_icaltimetype()` function.
          */
-        get_completed(t: any): void;
+        get_completed(t: never): void;
 
         /**
          * Queries the contact of a calendar component object.  The contact property can
@@ -1773,7 +1773,7 @@ export namespace ECalendar {
          * calendar store.
          * @param t Return value for the creation date.  This should be freed using the `e_cal_component_free_icaltimetype()` function.
          */
-        get_created(t: any): void;
+        get_created(t: never): void;
 
         /**
          * Queries the description of a calendar component object.  Journal components
@@ -1794,7 +1794,7 @@ export namespace ECalendar {
          * the last time at which the object was modified by a calendar user agent.
          * @param t A value for the date/timestamp.
          */
-        get_dtstamp(t: any): void;
+        get_dtstamp(t: never): void;
 
         /**
          * Queries the date/time start of a calendar component object.
@@ -1817,14 +1817,14 @@ export namespace ECalendar {
          * Gets the geographic position property of a calendar component object.
          * @param geo Return value for the geographic position property.  This should be freed using the `e_cal_component_free_geo()` function.
          */
-        get_geo(geo: any): void;
+        get_geo(geo: never): void;
 
         /**
          * Queries the time at which a calendar component object was last modified in
          * the calendar store.
          * @param t Return value for the last modified time value.
          */
-        get_last_modified(t: any): void;
+        get_last_modified(t: never): void;
 
         /**
          * Queries the location property of a calendar component object.
@@ -2059,7 +2059,7 @@ export namespace ECalendar {
          * Sets the date at which a calendar component object was completed.
          * @param t Value for the completion date.
          */
-        set_completed(t: any): void;
+        set_completed(t: never): void;
 
         /**
          * Sets the contact of a calendar component object.  The contact property can
@@ -2075,7 +2075,7 @@ export namespace ECalendar {
          * not by calendar user agents.
          * @param t Value for the creation date.
          */
-        set_created(t: any): void;
+        set_created(t: never): void;
 
         /**
          * Sets the date/time end property of a calendar component object.
@@ -2089,7 +2089,7 @@ export namespace ECalendar {
          * properties.
          * @param t Date/timestamp value.
          */
-        set_dtstamp(t: any): void;
+        set_dtstamp(t: never): void;
 
         /**
          * Sets the date/time start property of a calendar component object.
@@ -2113,7 +2113,7 @@ export namespace ECalendar {
          * Sets the geographic position property on a calendar component object.
          * @param geo Value for the geographic position property.
          */
-        set_geo(geo: any): void;
+        set_geo(geo: never): void;
 
         /**
          * Sets the contents of a calendar component object from an #icalcomponent
@@ -2132,7 +2132,7 @@ export namespace ECalendar {
          * calendar store.  This should not be called by plain calendar user agents.
          * @param t Value for the last time modified.
          */
-        set_last_modified(t: any): void;
+        set_last_modified(t: never): void;
 
         /**
          * Sets the location property of a calendar component object.
@@ -2264,7 +2264,7 @@ export namespace ECalendar {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             client: Cal;
-            view: any;
+            view: never;
         }
     }
 
@@ -2283,7 +2283,7 @@ export namespace ECalendar {
         /**
          * @construct-only
          */
-        get view(): any;
+        get view(): null;
 
         /**
          * Compile-time signal type information.
@@ -2506,13 +2506,13 @@ export namespace ECalendar {
         // Fields
         repetitions: number;
 
-        duration: any;
+        duration: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             repetitions: number;
-            duration: any;
+            duration: null;
         }>);
     }
 
@@ -2537,7 +2537,7 @@ export namespace ECalendar {
         // Fields
         comp: CalComponent;
 
-        alarms: any[];
+        alarms: null[];
 
         // Methods
         /**
@@ -2600,14 +2600,14 @@ export namespace ECalendar {
         static $gtype: GObject.GType<CalComponentDateTime>;
 
         // Fields
-        value: any;
+        value: null;
 
         tzid: string;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            value: any;
+            value: null;
             tzid: string;
         }>);
     }
@@ -2668,7 +2668,7 @@ export namespace ECalendar {
         // Fields
         type: CalComponentPeriodType;
 
-        start: any;
+        start: null;
     }
 
 

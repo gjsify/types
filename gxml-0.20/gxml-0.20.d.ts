@@ -841,7 +841,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
 
         /**
          * @param a_type 
@@ -856,7 +856,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
 
         /**
          * @param pred 
@@ -884,7 +884,7 @@ export namespace GXml {
         /**
          * @param pred 
          */
-        first_match(pred: Gee.Predicate): (any | null);
+        first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -899,12 +899,12 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        max(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          */
-        min(compare: GLib.CompareDataFunc): any;
+        min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -934,7 +934,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
 
         /**
          * @param a_type 
@@ -951,7 +951,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -984,7 +984,7 @@ export namespace GXml {
          * @param pred 
          * @virtual
          */
-        vfunc_first_match(pred: Gee.Predicate): (any | null);
+        vfunc_first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -1002,13 +1002,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_min(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
@@ -5967,7 +5967,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](document: XDocument, pointer: (any | null)): LXPathObject;
+        static ["new"](document: XDocument, pointer: null): LXPathObject;
 
         // Signals
         /** @signal */
@@ -9202,7 +9202,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XAttribute;
+        static ["new"](doc: XDocument, node: null): XAttribute;
 
         // Signals
         /** @signal */
@@ -9678,7 +9678,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XComment;
+        static ["new"](doc: XDocument, node: null): XComment;
 
         // Conflicted with GXml.XCharacterData.new
         static ["new"](...args: never[]): any;
@@ -9885,7 +9885,7 @@ export namespace GXml {
         $signals: XDocument.SignalSignatures;
 
         // Fields
-        doc: (any | null);
+        doc: null;
 
         // Constructors
         constructor(properties?: Partial<XDocument.ConstructorProps>, ...args: any[]);
@@ -10863,7 +10863,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XElement;
+        static ["new"](doc: XDocument, node: null): XElement;
 
         // Conflicted with GXml.XNonDocumentChildNode.new
         static ["new"](...args: never[]): any;
@@ -11782,7 +11782,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XHashMapAttr;
+        static ["new"](doc: XDocument, node: null): XHashMapAttr;
 
         // Signals
         /** @signal */
@@ -11945,7 +11945,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, attr: (any | null)): XHashMapAttrEntry;
+        static ["new"](doc: XDocument, attr: null): XHashMapAttrEntry;
 
         // Signals
         /** @signal */
@@ -11996,7 +11996,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XHashMapAttrIterator;
+        static ["new"](doc: XDocument, node: null): XHashMapAttrIterator;
 
         // Signals
         /** @signal */
@@ -12039,14 +12039,14 @@ export namespace GXml {
 
         has_next(): boolean;
 
-        get_key(): any;
+        get_key(): null;
 
-        get_value(): any;
+        get_value(): null;
 
         /**
          * @param value 
          */
-        set_value(value: any): void;
+        set_value(value: never): void;
 
         unset(): void;
 
@@ -12056,7 +12056,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: never): null;
 
         /**
          * @param f 
@@ -12082,18 +12082,18 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_key(): any;
+        vfunc_get_key(): never;
 
         /**
          * @virtual
          */
-        vfunc_get_value(): any;
+        vfunc_get_value(): never;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_value(value: any): void;
+        vfunc_set_value(value: null): void;
 
         /**
          * @virtual
@@ -12107,7 +12107,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: any): any;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldMapFunc, seed: null): never;
 
         /**
          * @param f 
@@ -12275,7 +12275,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XListChildren;
+        static ["new"](doc: XDocument, node: null): XListChildren;
 
         // Signals
         /** @signal */
@@ -12416,7 +12416,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XListChildrenIterator;
+        static ["new"](doc: XDocument, node: null): XListChildrenIterator;
 
         // Signals
         /** @signal */
@@ -12467,7 +12467,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
 
         /**
          * @param a_type 
@@ -12482,7 +12482,7 @@ export namespace GXml {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
 
         /**
          * @param pred 
@@ -12510,7 +12510,7 @@ export namespace GXml {
         /**
          * @param pred 
          */
-        first_match(pred: Gee.Predicate): (any | null);
+        first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -12525,12 +12525,12 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        max(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          */
-        min(compare: GLib.CompareDataFunc): any;
+        min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -12560,7 +12560,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
 
         /**
          * @param a_type 
@@ -12577,7 +12577,7 @@ export namespace GXml {
          * @param seed 
          * @virtual
          */
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -12610,7 +12610,7 @@ export namespace GXml {
          * @param pred 
          * @virtual
          */
-        vfunc_first_match(pred: Gee.Predicate): (any | null);
+        vfunc_first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -12628,13 +12628,13 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_min(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
@@ -12651,7 +12651,7 @@ export namespace GXml {
 
         has_next(): boolean;
 
-        get(): any;
+        get(): null;
 
         remove(): void;
 
@@ -12672,7 +12672,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get(): any;
+        vfunc_get(): never;
 
         /**
          * @virtual
@@ -12720,7 +12720,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        set(item: any): void;
+        set(item: never): void;
 
         /**
          * @param args 
@@ -12731,7 +12731,7 @@ export namespace GXml {
         /**
          * @param item 
          */
-        add(item: any): void;
+        add(item: never): void;
 
         index(): number;
 
@@ -12739,13 +12739,13 @@ export namespace GXml {
          * @param item 
          * @virtual
          */
-        vfunc_set(item: any): void;
+        vfunc_set(item: null): void;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): void;
+        vfunc_add(item: null): void;
 
         /**
          * @virtual
@@ -12755,13 +12755,13 @@ export namespace GXml {
         /**
          * @param item 
          */
-        insert(item: any): void;
+        insert(item: never): void;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_insert(item: any): void;
+        vfunc_insert(item: null): void;
     }
 
 
@@ -12890,7 +12890,7 @@ export namespace GXml {
          * @param node 
          * @param take_node 
          */
-        static to_gnode(doc: XDocument, node: (any | null), take_node: boolean): DomNode;
+        static to_gnode(doc: XDocument, node: null, take_node: boolean): DomNode;
 
         // Virtual methods
         /**
@@ -12974,7 +12974,7 @@ export namespace GXml {
 
         to_string(): string;
 
-        get_internal_node(): (any | null);
+        get_internal_node(): null;
 
         /**
          * @param deep 
@@ -14116,7 +14116,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XProcessingInstruction;
+        static ["new"](doc: XDocument, node: null): XProcessingInstruction;
 
         // Conflicted with GXml.XCharacterData.new
         static ["new"](...args: never[]): any;
@@ -17005,7 +17005,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: XDocument, node: (any | null)): XText;
+        static ["new"](doc: XDocument, node: null): XText;
 
         // Conflicted with GXml.XCharacterData.new
         static ["new"](...args: never[]): any;

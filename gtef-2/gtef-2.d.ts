@@ -184,7 +184,7 @@ export namespace Gtef {
      * @param user_data the user data for signal connections.
      * @since 2.0
      */
-    function action_map_add_action_entries_check_dups(action_map: Gio.ActionMap, entries: Gio.ActionEntry[], user_data: (any | null)): void;
+    function action_map_add_action_entries_check_dups(action_map: Gio.ActionMap, entries: Gio.ActionEntry[], user_data: null): void;
 
     /**
      * Gets a list of all encodings known by {@link Gtef.Encoding}.

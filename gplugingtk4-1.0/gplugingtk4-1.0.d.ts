@@ -154,8 +154,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
             plugin: (GObject.Object | null);
-            settings_backend: (Gio.SettingsBackend | null);
-            settingsBackend: (Gio.SettingsBackend | null);
+            settings_backend: Gio.SettingsBackend;
+            settingsBackend: Gio.SettingsBackend;
         }
     }
 
@@ -180,15 +180,15 @@ export namespace GPluginGtk4 {
          * The {@link Gio.SettingsBackend} to use when viewing plugin settings.
          * @since 0.40
          */
-        get settings_backend(): (Gio.SettingsBackend | null);
-        set settings_backend(val: (Gio.SettingsBackend | null));
+        get settings_backend(): Gio.SettingsBackend;
+        set settings_backend(val: Gio.SettingsBackend);
 
         /**
          * The {@link Gio.SettingsBackend} to use when viewing plugin settings.
          * @since 0.40
          */
-        get settingsBackend(): (Gio.SettingsBackend | null);
-        set settingsBackend(val: (Gio.SettingsBackend | null));
+        get settingsBackend(): Gio.SettingsBackend;
+        set settingsBackend(val: Gio.SettingsBackend);
 
         /**
          * Compile-time signal type information.
@@ -235,7 +235,7 @@ export namespace GPluginGtk4 {
          * where you need it.
          * @returns The settings backend in use.
          */
-        get_settings_backend(): (any | null);
+        get_settings_backend(): null;
 
         /**
          * Sets the {@link GPlugin.Plugin} that should be displayed.
@@ -253,7 +253,7 @@ export namespace GPluginGtk4 {
          * `GSettingsBackend *` but the type will be checked internally.
          * @param backend The settings backend to use. If `null`,           the default GSettings backend will be used.
          */
-        set_settings_backend(backend: (any | null)): void;
+        set_settings_backend(backend: null): void;
 
         /**
          * The orientation of the orientable.
@@ -748,8 +748,8 @@ export namespace GPluginGtk4 {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
             manager: GPlugin.Manager;
-            settings_backend: (Gio.SettingsBackend | null);
-            settingsBackend: (Gio.SettingsBackend | null);
+            settings_backend: Gio.SettingsBackend;
+            settingsBackend: Gio.SettingsBackend;
             show_internal: boolean;
             showInternal: boolean;
         }
@@ -773,14 +773,14 @@ export namespace GPluginGtk4 {
         /**
          * The {@link Gio.SettingsBackend} to use when viewing plugin settings.
          */
-        get settings_backend(): (Gio.SettingsBackend | null);
-        set settings_backend(val: (Gio.SettingsBackend | null));
+        get settings_backend(): Gio.SettingsBackend;
+        set settings_backend(val: Gio.SettingsBackend);
 
         /**
          * The {@link Gio.SettingsBackend} to use when viewing plugin settings.
          */
-        get settingsBackend(): (Gio.SettingsBackend | null);
-        set settingsBackend(val: (Gio.SettingsBackend | null));
+        get settingsBackend(): Gio.SettingsBackend;
+        set settingsBackend(val: Gio.SettingsBackend);
 
         /**
          * Whether or not to show internal plugins.
@@ -841,7 +841,7 @@ export namespace GPluginGtk4 {
          * where you need it.
          * @returns The settings backend.
          */
-        get_settings_backend(): (any | null);
+        get_settings_backend(): null;
 
         /**
          * Gets whether or not `view` is showing internal plugins.
@@ -863,7 +863,7 @@ export namespace GPluginGtk4 {
          * `GSettingsBackend *` but the type will be checked internally.
          * @param backend The settings backend to use. If `null`,           the default GSettings backend will be used.
          */
-        set_settings_backend(backend: (any | null)): void;
+        set_settings_backend(backend: null): void;
 
         /**
          * This function will toggle whether or not the widget will show internal

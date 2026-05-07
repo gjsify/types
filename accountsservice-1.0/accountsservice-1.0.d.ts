@@ -869,12 +869,12 @@ export namespace AccountsService {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            exclude_usernames_list: any;
-            excludeUsernamesList: any;
+            exclude_usernames_list: never;
+            excludeUsernamesList: never;
             has_multiple_users: boolean;
             hasMultipleUsers: boolean;
-            include_usernames_list: any;
-            includeUsernamesList: any;
+            include_usernames_list: never;
+            includeUsernamesList: never;
             is_loaded: boolean;
             isLoaded: boolean;
         }
@@ -888,11 +888,11 @@ export namespace AccountsService {
         static $gtype: GObject.GType<UserManager>;
 
         // Properties
-        get exclude_usernames_list(): any;
-        set exclude_usernames_list(val: any);
+        get exclude_usernames_list(): null;
+        set exclude_usernames_list(val: never);
 
-        get excludeUsernamesList(): any;
-        set excludeUsernamesList(val: any);
+        get excludeUsernamesList(): null;
+        set excludeUsernamesList(val: never);
 
         /**
          * @default false
@@ -906,11 +906,11 @@ export namespace AccountsService {
         get hasMultipleUsers(): boolean;
         set hasMultipleUsers(val: boolean);
 
-        get include_usernames_list(): any;
-        set include_usernames_list(val: any);
+        get include_usernames_list(): null;
+        set include_usernames_list(val: never);
 
-        get includeUsernamesList(): any;
-        set includeUsernamesList(val: any);
+        get includeUsernamesList(): null;
+        set includeUsernamesList(val: never);
 
         /**
          * @read-only

@@ -1487,7 +1487,7 @@ export namespace Zeitgeist {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_queued_method(): [GLib.SourceFunc, any];
+        get_queued_method(): [GLib.SourceFunc, null];
     }
 
 

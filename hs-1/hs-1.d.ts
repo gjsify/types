@@ -3391,7 +3391,7 @@ export namespace Hs {
              * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
              * @virtual
              */
-            vfunc_acquire_framebuffer(): (any | null);
+            vfunc_acquire_framebuffer(): null;
 
             /**
              * Gets the name of the default framebuffer object.
@@ -3407,7 +3407,7 @@ export namespace Hs {
              * @param name name of a GL symbol
              * @virtual
              */
-            vfunc_get_proc_address(name: string): (any | null);
+            vfunc_get_proc_address(name: string): null;
 
             /**
              * Initializes GL resources for `self`.
@@ -3520,7 +3520,7 @@ export namespace Hs {
          * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
          * @returns location of the software framebuffer
          */
-        acquire_framebuffer(): (any | null);
+        acquire_framebuffer(): null;
 
         /**
          * Gets the name of the default framebuffer object.
@@ -3535,7 +3535,7 @@ export namespace Hs {
          * @param name name of a GL symbol
          * @returns location of the symbol
          */
-        get_proc_address(name: string): (any | null);
+        get_proc_address(name: string): null;
 
         /**
          * Initializes GL resources for `self`.
@@ -4422,7 +4422,7 @@ export namespace Hs {
              * Retrieves the framebuffer to render into.
              * @virtual
              */
-            vfunc_get_framebuffer(): (any | null);
+            vfunc_get_framebuffer(): null;
 
             /**
              * Sets the usable area within the framebuffer.
@@ -4483,7 +4483,7 @@ export namespace Hs {
          * Retrieves the framebuffer to render into.
          * @returns location of the framebuffer
          */
-        get_framebuffer(): (any | null);
+        get_framebuffer(): null;
 
         /**
          * Sets the usable area within the framebuffer.

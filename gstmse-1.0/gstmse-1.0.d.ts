@@ -910,7 +910,7 @@ export namespace GstMse {
             appendWindowEnd: (bigint | number);
             append_window_start: (bigint | number);
             appendWindowStart: (bigint | number);
-            buffered: any[];
+            buffered: never[];
             content_type: string;
             contentType: string;
             timestamp_offset: (bigint | number);
@@ -1035,7 +1035,7 @@ export namespace GstMse {
          * @since 1.24
          * @read-only
          */
-        get buffered(): any[];
+        get buffered(): null[];
 
         /**
          * The MIME content-type of the data stream

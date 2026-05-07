@@ -216,7 +216,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function interfaces_marshal_VOID__OBJECT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -226,7 +226,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function interfaces_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -236,7 +236,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function interfaces_marshal_VOID__OBJECT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -246,7 +246,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function interfaces_marshal_VOID__OBJECT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -256,7 +256,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function interfaces_marshal_VOID__OBJECT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * Check a bus message to see if it is a GstMixer notification
@@ -642,7 +642,7 @@ export namespace GstInterfaces {
         $signals: MixerOptions.SignalSignatures;
 
         // Fields
-        values: any[];
+        values: null[];
 
         // Constructors
         constructor(properties?: Partial<MixerOptions.ConstructorProps>, ...args: any[]);
@@ -1027,7 +1027,7 @@ export namespace GstInterfaces {
          * be freed.
          * @returns A GList containing pointers to {@link GstInterfaces.ColorBalanceChannel} objects.
          */
-        list_channels(): any[];
+        list_channels(): null[];
 
         /**
          * Sets the current value of the channel to the passed value, which must
@@ -1108,7 +1108,7 @@ export namespace GstInterfaces {
          * or modified.
          * @returns A {@link GLib.List} consisting of zero or more `GstMixerTracks`.
          */
-        list_tracks(): any[];
+        list_tracks(): null[];
 
         /**
          * This function is called by the mixer implementation to produce
@@ -1299,7 +1299,7 @@ export namespace GstInterfaces {
              * by this element.
              * @virtual
              */
-            vfunc_get_properties(): any[];
+            vfunc_get_properties(): never[];
 
             /**
              * @param prop_id 
@@ -1346,7 +1346,7 @@ export namespace GstInterfaces {
          * by this element.
          * @returns the list of properties for which probing is supported
          */
-        get_properties(): any[];
+        get_properties(): null[];
 
         /**
          * Get {@link GObject.ParamSpec} for a property for which probing is supported.
@@ -1532,7 +1532,7 @@ export namespace GstInterfaces {
          * owned by the GstTuner and must not be freed.
          * @returns A list of channels available on this tuner. The list is
          */
-        list_channels(): any[];
+        list_channels(): null[];
 
         /**
          * Retrieve a GList of available {@link GstInterfaces.TunerNorm} settings for the currently
@@ -1541,7 +1541,7 @@ export namespace GstInterfaces {
          * be freed.
          * @returns A list of norms available on the current channel for this
          */
-        list_norms(): any[];
+        list_norms(): null[];
 
         /**
          * Called by elements implementing the {@link GstInterfaces.Tuner} interface when the

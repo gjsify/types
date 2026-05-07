@@ -1314,7 +1314,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_unused_refs_with_options(arch: (string | null), metadata_injection: (GLib.HashTable<any, any> | null), options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_unused_refs_with_options(arch: (string | null), metadata_injection: (GLib.HashTable<never, never> | null), options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): InstalledRef[];
 
         /**
          * Loads the metadata overrides file for an application.
@@ -1540,8 +1540,8 @@ export namespace Flatpak {
 
         // Constructor properties interface
         interface ConstructorProps extends Ref.ConstructorProps {
-            appdata_content_rating: (GLib.HashTable<any, any> | null);
-            appdataContentRating: (GLib.HashTable<any, any> | null);
+            appdata_content_rating: (GLib.HashTable<never, never> | null);
+            appdataContentRating: (GLib.HashTable<never, never> | null);
             appdata_content_rating_type: (string | null);
             appdataContentRatingType: (string | null);
             appdata_license: string;
@@ -1579,12 +1579,12 @@ export namespace Flatpak {
         /**
          * @construct-only
          */
-        get appdata_content_rating(): (GLib.HashTable<any, any> | null);
+        get appdata_content_rating(): (GLib.HashTable<never, never> | null);
 
         /**
          * @construct-only
          */
-        get appdataContentRating(): (GLib.HashTable<any, any> | null);
+        get appdataContentRating(): (GLib.HashTable<never, never> | null);
 
         /**
          * @construct-only

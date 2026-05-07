@@ -13536,7 +13536,7 @@ export namespace GData {
          * @param namespaces 
          * @virtual
          */
-        vfunc_get_namespaces(namespaces: GLib.HashTable<any, any>): void;
+        vfunc_get_namespaces(namespaces: GLib.HashTable<never, never>): void;
 
         /**
          * @param xml_string 
@@ -13561,13 +13561,13 @@ export namespace GData {
          * @param user_data 
          * @virtual
          */
-        vfunc_post_parse_json(user_data: (any | null)): boolean;
+        vfunc_post_parse_json(user_data: null): boolean;
 
         /**
          * @param user_data 
          * @virtual
          */
-        vfunc_post_parse_xml(user_data: (any | null)): boolean;
+        vfunc_post_parse_xml(user_data: null): boolean;
 
         /**
          * @param xml_string 

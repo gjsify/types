@@ -491,7 +491,7 @@ export namespace TotemPlParser {
          * @param metadata 
          * @virtual
          */
-        vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<any, any>): void;
+        vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<never, never>): void;
 
         /**
          * @param uri 
@@ -504,7 +504,7 @@ export namespace TotemPlParser {
          * @param metadata 
          * @virtual
          */
-        vfunc_playlist_started(uri: string, metadata: GLib.HashTable<any, any>): void;
+        vfunc_playlist_started(uri: string, metadata: GLib.HashTable<never, never>): void;
 
         // Methods
         /**

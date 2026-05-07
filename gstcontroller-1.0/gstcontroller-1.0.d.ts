@@ -109,7 +109,7 @@ export namespace GstController {
      * @gir-type Callback
      */
     interface DirectControlBindingConvertValue {
-        (self: DirectControlBinding, src_value: number, dest_value: (any | null)): void;
+        (self: DirectControlBinding, src_value: number, dest_value: null): void;
     }
 
     namespace ARGBControlBinding {

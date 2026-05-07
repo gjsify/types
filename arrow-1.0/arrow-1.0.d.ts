@@ -1020,7 +1020,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            array: any;
+            array: never;
             buffer1: Buffer;
             buffer2: Buffer;
             null_bitmap: (Buffer | null);
@@ -1041,7 +1041,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set array(val: any);
+        set array(val: never);
 
         /**
          * @construct-only
@@ -1110,7 +1110,7 @@ export namespace Arrow {
          * @param c_abi_array A `struct ArrowArray *`.
          * @param data_type A {@link Arrow.DataType} of the C ABI array.
          */
-        static ["import"](c_abi_array: any, data_type: DataType): (Array | null);
+        static ["import"](c_abi_array: never, data_type: DataType): (Array | null);
 
         // Methods
         /**
@@ -1180,7 +1180,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` on error.
          */
-        ["export"](): [boolean, any, any];
+        ["export"](): [boolean, null, null];
 
         /**
          * @param filter The values indicates which values should be filtered out.
@@ -1307,8 +1307,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            array_builder: any;
-            arrayBuilder: any;
+            array_builder: never;
+            arrayBuilder: never;
         }
     }
 
@@ -1322,12 +1322,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set array_builder(val: any);
+        set array_builder(val: never);
 
         /**
          * @construct-only
          */
-        set arrayBuilder(val: any);
+        set arrayBuilder(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1558,12 +1558,6 @@ export namespace Arrow {
          * @returns `true` if both of them have the same order, `false`   otherwise.
          */
         equal(other_options: ArraySortOptions): boolean;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Arrow.FunctionOptions.equal
-        equal(...args: never[]): any;
     }
 
 
@@ -2318,7 +2312,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: any;
+            buffer: never;
             data: (GLib.Bytes | Uint8Array);
             parent: (Buffer | null);
         }
@@ -2334,7 +2328,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set buffer(val: any);
+        set buffer(val: never);
 
         /**
          * @construct-only
@@ -3004,8 +2998,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            csv_table_reader: any;
-            csvTableReader: any;
+            csv_table_reader: never;
+            csvTableReader: never;
             input: InputStream;
         }
     }
@@ -3020,12 +3014,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set csv_table_reader(val: any);
+        set csv_table_reader(val: never);
 
         /**
          * @construct-only
          */
-        set csvTableReader(val: any);
+        set csvTableReader(val: never);
 
         /**
          * @construct-only
@@ -3305,8 +3299,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            chunked_array: any;
-            chunkedArray: any;
+            chunked_array: never;
+            chunkedArray: never;
             data_type: DataType;
             dataType: DataType;
         }
@@ -3322,12 +3316,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set chunked_array(val: any);
+        set chunked_array(val: never);
 
         /**
          * @construct-only
          */
-        set chunkedArray(val: any);
+        set chunkedArray(val: never);
 
         /**
          * @construct-only
@@ -3535,7 +3529,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            codec: any;
+            codec: never;
         }
     }
 
@@ -3549,7 +3543,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set codec(val: any);
+        set codec(val: never);
 
         /**
          * Compile-time signal type information.
@@ -3864,8 +3858,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data_type: any;
-            dataType: any;
+            data_type: never;
+            dataType: never;
         }
     }
 
@@ -3879,12 +3873,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set data_type(val: any);
+        set data_type(val: never);
 
         /**
          * @construct-only
          */
-        set dataType(val: any);
+        set dataType(val: never);
 
         /**
          * Compile-time signal type information.
@@ -3917,7 +3911,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: any): (DataType | null);
+        static ["import"](c_abi_schema: never): (DataType | null);
 
         // Methods
         /**
@@ -3929,7 +3923,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.DataType} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          */
-        ["export"](): (any | null);
+        ["export"](): null;
 
         /**
          * @returns The {@link Arrow.Type} of the data type.
@@ -4440,7 +4434,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            datum: any;
+            datum: never;
         }
     }
 
@@ -4454,7 +4448,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set datum(val: any);
+        set datum(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4842,7 +4836,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            decimal128: any;
+            decimal128: never;
         }
     }
 
@@ -4856,7 +4850,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set decimal128(val: any);
+        set decimal128(val: never);
 
         /**
          * Compile-time signal type information.
@@ -5277,7 +5271,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            decimal256: any;
+            decimal256: never;
         }
     }
 
@@ -5291,7 +5285,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set decimal256(val: any);
+        set decimal256(val: never);
 
         /**
          * Compile-time signal type information.
@@ -6533,7 +6527,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            node: any;
+            node: never;
             options: ExecuteNodeOptions;
         }
     }
@@ -6548,7 +6542,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set node(val: any);
+        set node(val: never);
 
         /**
          * @construct-only
@@ -6603,7 +6597,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            options: any;
+            options: never;
         }
     }
 
@@ -6617,7 +6611,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set options(val: any);
+        set options(val: never);
 
         /**
          * Compile-time signal type information.
@@ -6656,7 +6650,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            plan: any;
+            plan: never;
         }
     }
 
@@ -6670,7 +6664,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set plan(val: any);
+        set plan(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7030,7 +7024,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            registry: any;
+            registry: never;
         }
     }
 
@@ -7044,7 +7038,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set registry(val: any);
+        set registry(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7156,8 +7150,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            feather_reader: any;
-            featherReader: any;
+            feather_reader: never;
+            featherReader: never;
         }
     }
 
@@ -7171,12 +7165,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set feather_reader(val: any);
+        set feather_reader(val: never);
 
         /**
          * @construct-only
          */
-        set featherReader(val: any);
+        set featherReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7308,7 +7302,7 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             data_type: DataType;
             dataType: DataType;
-            field: any;
+            field: never;
         }
     }
 
@@ -7332,7 +7326,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set field(val: any);
+        set field(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7369,7 +7363,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: any): (Field | null);
+        static ["import"](c_abi_schema: never): (Field | null);
 
         // Methods
         /**
@@ -7381,7 +7375,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.Field} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          */
-        ["export"](): (any | null);
+        ["export"](): null;
 
         /**
          * @returns The data type of the field.
@@ -7902,8 +7896,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            file_system: any;
-            fileSystem: any;
+            file_system: never;
+            fileSystem: never;
         }
     }
 
@@ -7917,12 +7911,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set file_system(val: any);
+        set file_system(val: never);
 
         /**
          * @construct-only
          */
-        set fileSystem(val: any);
+        set fileSystem(val: never);
 
         /**
          * Compile-time signal type information.
@@ -8822,7 +8816,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            "function": any;
+            "function": never;
         }
     }
 
@@ -8836,7 +8830,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set "function"(val: any);
+        set "function"(val: never);
 
         /**
          * Compile-time signal type information.
@@ -8923,7 +8917,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            doc: any;
+            doc: never;
         }
     }
 
@@ -8937,7 +8931,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set doc(val: any);
+        set doc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -9709,8 +9703,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
-            input_stream: any;
-            inputStream: any;
+            input_stream: never;
+            inputStream: never;
         }
     }
 
@@ -9724,12 +9718,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set input_stream(val: any);
+        set input_stream(val: never);
 
         /**
          * @construct-only
          */
-        set inputStream(val: any);
+        set inputStream(val: never);
 
         /**
          * Compile-time signal type information.
@@ -11141,8 +11135,8 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             input: InputStream;
-            json_table_reader: any;
-            jsonTableReader: any;
+            json_table_reader: never;
+            jsonTableReader: never;
         }
     }
 
@@ -11161,12 +11155,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set json_table_reader(val: any);
+        set json_table_reader(val: never);
 
         /**
          * @construct-only
          */
-        set jsonTableReader(val: any);
+        set jsonTableReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -12823,8 +12817,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            memory_pool: any;
-            memoryPool: any;
+            memory_pool: never;
+            memoryPool: never;
         }
     }
 
@@ -12838,12 +12832,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set memory_pool(val: any);
+        set memory_pool(val: never);
 
         /**
          * @construct-only
          */
-        set memoryPool(val: any);
+        set memoryPool(val: never);
 
         /**
          * Compile-time signal type information.
@@ -13889,8 +13883,8 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             input: SeekableInputStream;
-            orc_file_reader: any;
-            orcFileReader: any;
+            orc_file_reader: never;
+            orcFileReader: never;
         }
     }
 
@@ -13909,12 +13903,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set orc_file_reader(val: any);
+        set orc_file_reader(val: never);
 
         /**
          * @construct-only
          */
-        set orcFileReader(val: any);
+        set orcFileReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -14002,8 +13996,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
-            output_stream: any;
-            outputStream: any;
+            output_stream: never;
+            outputStream: never;
         }
     }
 
@@ -14017,12 +14011,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set output_stream(val: any);
+        set output_stream(val: never);
 
         /**
          * @construct-only
          */
-        set outputStream(val: any);
+        set outputStream(val: never);
 
         /**
          * Compile-time signal type information.
@@ -14421,12 +14415,6 @@ export namespace Arrow {
         equal(other_options: RankOptions): boolean;
 
         /**
-         * @param args 
-         */
-    // Conflicted with Arrow.FunctionOptions.equal
-        equal(...args: never[]): any;
-
-        /**
          * @returns The sort keys to be used.
          */
         get_sort_keys(): SortKey[];
@@ -14544,8 +14532,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            record_batch: any;
-            recordBatch: any;
+            record_batch: never;
+            recordBatch: never;
         }
     }
 
@@ -14559,12 +14547,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set record_batch(val: any);
+        set record_batch(val: never);
 
         /**
          * @construct-only
          */
-        set recordBatch(val: any);
+        set recordBatch(val: never);
 
         /**
          * Compile-time signal type information.
@@ -14600,7 +14588,7 @@ export namespace Arrow {
          * @param c_abi_array A `struct ArrowArray *`.
          * @param schema A {@link Arrow.Schema} of the C ABI array.
          */
-        static ["import"](c_abi_array: any, schema: Schema): (RecordBatch | null);
+        static ["import"](c_abi_array: never, schema: Schema): (RecordBatch | null);
 
         // Methods
         /**
@@ -14627,7 +14615,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` on error.
          */
-        ["export"](): [boolean, any, any];
+        ["export"](): [boolean, null, null];
 
         /**
          * @param filter The values indicates which values should be filtered out.
@@ -14710,8 +14698,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            record_batch_builder: any;
-            recordBatchBuilder: any;
+            record_batch_builder: never;
+            recordBatchBuilder: never;
         }
     }
 
@@ -14725,12 +14713,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set record_batch_builder(val: any);
+        set record_batch_builder(val: never);
 
         /**
          * @construct-only
          */
-        set recordBatchBuilder(val: any);
+        set recordBatchBuilder(val: never);
 
         /**
          * Compile-time signal type information.
@@ -14870,8 +14858,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            record_batch_file_reader: any;
-            recordBatchFileReader: any;
+            record_batch_file_reader: never;
+            recordBatchFileReader: never;
         }
     }
 
@@ -14885,12 +14873,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set record_batch_file_reader(val: any);
+        set record_batch_file_reader(val: never);
 
         /**
          * @construct-only
          */
-        set recordBatchFileReader(val: any);
+        set recordBatchFileReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -15008,7 +14996,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            iterator: any;
+            iterator: never;
         }
     }
 
@@ -15022,7 +15010,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set iterator(val: any);
+        set iterator(val: never);
 
         /**
          * Compile-time signal type information.
@@ -15081,9 +15069,9 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            record_batch_reader: any;
-            recordBatchReader: any;
-            sources: any;
+            record_batch_reader: never;
+            recordBatchReader: never;
+            sources: never;
         }
     }
 
@@ -15097,17 +15085,17 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set record_batch_reader(val: any);
+        set record_batch_reader(val: never);
 
         /**
          * @construct-only
          */
-        set recordBatchReader(val: any);
+        set recordBatchReader(val: never);
 
         /**
          * @construct-only
          */
-        set sources(val: any);
+        set sources(val: never);
 
         /**
          * Compile-time signal type information.
@@ -15142,13 +15130,13 @@ export namespace Arrow {
         /**
          * @param c_abi_array_stream A `struct ArrowArrayStream *`.
          */
-        static ["import"](c_abi_array_stream: any): (RecordBatchReader | null);
+        static ["import"](c_abi_array_stream: never): (RecordBatchReader | null);
 
         // Methods
         /**
          * @returns An exported   {@link Arrow.RecordBatchReader} as `struct ArrowArrayStream *` on   success, `null` on error.   It should be freed with the `ArrowArrayStream::release` callback then   `g_free()` when no longer needed.
          */
-        ["export"](): (any | null);
+        ["export"](): null;
 
         /**
          * @returns The next record batch in the stream or `null` on end of stream.
@@ -15292,8 +15280,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            record_batch_writer: any;
-            recordBatchWriter: any;
+            record_batch_writer: never;
+            recordBatchWriter: never;
         }
     }
 
@@ -15307,12 +15295,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set record_batch_writer(val: any);
+        set record_batch_writer(val: never);
 
         /**
          * @construct-only
          */
-        set recordBatchWriter(val: any);
+        set recordBatchWriter(val: never);
 
         /**
          * Compile-time signal type information.
@@ -15937,7 +15925,7 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             data_type: DataType;
             dataType: DataType;
-            scalar: any;
+            scalar: never;
         }
     }
 
@@ -15965,7 +15953,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set scalar(val: any);
+        set scalar(val: never);
 
         /**
          * Compile-time signal type information.
@@ -16189,7 +16177,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            schema: any;
+            schema: never;
         }
     }
 
@@ -16203,7 +16191,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set schema(val: any);
+        set schema(val: never);
 
         /**
          * Compile-time signal type information.
@@ -16238,7 +16226,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: any): (Schema | null);
+        static ["import"](c_abi_schema: never): (Schema | null);
 
         // Methods
         /**
@@ -16257,7 +16245,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.Schema} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          */
-        ["export"](): (any | null);
+        ["export"](): null;
 
         /**
          * @param i The index of the target field.
@@ -16792,12 +16780,6 @@ export namespace Arrow {
          * @returns `true` if both of them have the same sort keys, `false`   otherwise.
          */
         equal(other_options: SortOptions): boolean;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Arrow.FunctionOptions.equal
-        equal(...args: never[]): any;
 
         /**
          * @returns The sort keys to be used.
@@ -18132,7 +18114,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            table: any;
+            table: never;
         }
     }
 
@@ -18146,7 +18128,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set table(val: any);
+        set table(val: never);
 
         /**
          * Compile-time signal type information.
@@ -18638,7 +18620,7 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Buffer;
-            tensor: any;
+            tensor: never;
         }
     }
 
@@ -18657,7 +18639,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set tensor(val: any);
+        set tensor(val: never);
 
         /**
          * Compile-time signal type information.
@@ -19512,7 +19494,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            parser: any;
+            parser: never;
         }
     }
 
@@ -19526,7 +19508,7 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set parser(val: any);
+        set parser(val: never);
 
         /**
          * Compile-time signal type information.

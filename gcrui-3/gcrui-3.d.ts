@@ -157,7 +157,7 @@ export namespace GcrUi {
 
         static ["new"](certificate: Gcr.Certificate): CertificateRenderer;
 
-        static new_for_attributes(label: (string | null), attrs: (any | null)): CertificateRenderer;
+        static new_for_attributes(label: (string | null), attrs: null): CertificateRenderer;
 
         // Signals
         /** @signal */
@@ -654,7 +654,7 @@ export namespace GcrUi {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
             collection: Gcr.Collection;
-            columns: any;
+            columns: never;
         }
     }
 
@@ -691,7 +691,7 @@ export namespace GcrUi {
         /**
          * @construct-only
          */
-        get columns(): any;
+        get columns(): null;
 
         /**
          * Compile-time signal type information.
@@ -3886,7 +3886,7 @@ export namespace GcrUi {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
             collection: Gcr.Collection;
-            columns: any;
+            columns: never;
         }
     }
 
@@ -3909,7 +3909,7 @@ export namespace GcrUi {
          * The columns to use to display the objects.
          * @construct-only
          */
-        get columns(): any;
+        get columns(): null;
 
         /**
          * Compile-time signal type information.

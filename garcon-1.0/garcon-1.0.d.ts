@@ -174,7 +174,7 @@ export namespace Garcon {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Sets (or unsets) the desktop environment for which menus will generated.
@@ -1592,7 +1592,7 @@ export namespace Garcon {
          * @param data 
          * @returns a {@link Garcon.MenuNode}
          */
-        copy(data: (any | null)): MenuNode;
+        copy(data: null): MenuNode;
 
         get_merge_file_filename(): string;
 

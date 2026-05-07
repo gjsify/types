@@ -1271,7 +1271,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1: (any | null), v2: (any | null)): Bool;
+    function color_equal(v1: null, v2: null): Bool;
 
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -1449,7 +1449,7 @@ export namespace Cogl {
      * @since 1.6
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   `CoglPipeline` argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function get_source(): (any | null);
+    function get_source(): null;
 
     /**
      * Stores the current viewport in `v`. `v`[0] and `v`[1] get the x and y
@@ -1487,7 +1487,7 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object: (any | null)): Bool;
+    function is_bitmap(object: null): Bool;
 
     /**
      * Gets whether the given handle references an existing material object.
@@ -1503,7 +1503,7 @@ export namespace Cogl {
      * @param object A pointer to a `CoglObject`
      * @returns `true` if `object` is a {@link Cogl.Offscreen} framebuffer,          `false` otherwise
      */
-    function is_offscreen(object: (any | null)): Bool;
+    function is_offscreen(object: null): Bool;
 
     /**
      * Gets whether the given handle references an existing program object.
@@ -1526,7 +1526,7 @@ export namespace Cogl {
      * @param object A `CoglObject` pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object: (any | null)): Bool;
+    function is_texture(object: null): Bool;
 
     /**
      * Checks whether `handle` is a Vertex Buffer Object
@@ -1573,7 +1573,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1: (any | null), v2: (any | null)): Bool;
+    function matrix_equal(v1: null, v2: null): Bool;
 
     /**
      * @param width 
@@ -1867,7 +1867,7 @@ export namespace Cogl {
      * @since 1.6
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   `CoglPipeline` argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function push_source(material: (any | null)): void;
+    function push_source(material: null): void;
 
     /**
      * This reads a rectangle of pixels from the current framebuffer where
@@ -2071,7 +2071,7 @@ export namespace Cogl {
      * @since 1.0
      * @deprecated since 1.16: Latest drawing apis all take an explicit                   `CoglPipeline` argument so this stack of                   {@link Cogl.Material}<!-- -->s shouldn't be used.
      */
-    function set_source(material: (any | null)): void;
+    function set_source(material: null): void;
 
     /**
      * This is a convenience function for creating a solid fill source material
@@ -2294,7 +2294,7 @@ export namespace Cogl {
      * @param pointer This addresses the first attribute in the vertex array. This   must remain valid until you either call `cogl_vertex_buffer_submit()` or   issue a draw call.
      * @deprecated since 1.16: Use the `CoglPrimitive` api instead
      */
-    function vertex_buffer_add(handle: Handle, attribute_name: string, n_components: number, type: AttributeType, normalized: Bool, stride: number, pointer: (any | null)): void;
+    function vertex_buffer_add(handle: Handle, attribute_name: string, n_components: number, type: AttributeType, normalized: Bool, stride: number, pointer: null): void;
 
     /**
      * Deletes an attribute from a buffer. You will need to call
@@ -2868,14 +2868,14 @@ export namespace Cogl {
          * Increments the reference count on the `offscreen` framebuffer.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static ref(offscreen: (any | null)): (any | null);
+        static ref(offscreen: null): null;
 
         /**
          * Decreases the reference count for the `offscreen` buffer and frees it when
          * the count reaches 0.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
          */
-        static unref(offscreen: (any | null)): void;
+        static unref(offscreen: null): void;
     }
 
 
@@ -2906,7 +2906,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -3864,7 +3864,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         // Methods
         /**
@@ -4356,7 +4356,7 @@ export namespace Cogl {
      * a fully opaque type without any public data members.
      * @gir-type Alias
      */
-    type Handle = any;
+    type Handle = never;
 
     /**
      * Name of the imported GIR library

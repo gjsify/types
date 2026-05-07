@@ -36,7 +36,7 @@ export namespace GtkSessionLock {
      * @param window A lock surface.
      * @returns The underlying lock surface Wayland object
      */
-    function get_ext_session_lock_surface_v1(window: Gtk.Window): (any | null);
+    function get_ext_session_lock_surface_v1(window: Gtk.Window): null;
 
     /**
      * @returns the major version number of the GTK Session Lock library
@@ -105,10 +105,10 @@ export namespace GtkSessionLock {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            lock_manager: any;
-            lockManager: any;
-            lock_obj: any;
-            lockObj: any;
+            lock_manager: never;
+            lockManager: never;
+            lock_obj: never;
+            lockObj: never;
         }
     }
 
@@ -122,18 +122,18 @@ export namespace GtkSessionLock {
         /**
          * @construct-only
          */
-        get lock_manager(): any;
+        get lock_manager(): null;
 
         /**
          * @construct-only
          */
-        get lockManager(): any;
+        get lockManager(): null;
 
-        get lock_obj(): any;
-        set lock_obj(val: any);
+        get lock_obj(): null;
+        set lock_obj(val: never);
 
-        get lockObj(): any;
-        set lockObj(val: any);
+        get lockObj(): null;
+        set lockObj(val: never);
 
         /**
          * Compile-time signal type information.

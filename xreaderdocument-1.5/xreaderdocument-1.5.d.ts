@@ -627,7 +627,7 @@ export namespace XreaderDocument {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             area: Rectangle;
-            color: any;
+            color: never;
             contents: string;
             modified: string;
             name: string;
@@ -655,8 +655,8 @@ export namespace XreaderDocument {
          * The colour of the annotation as a {@link Gdk.Color}.
          * @deprecated since 1.2.1: Use {@link XreaderDocument.Annotation.rgba} instead.
          */
-        get color(): any;
-        set color(val: any);
+        get color(): null;
+        set color(val: never);
 
         /**
          * @default null
@@ -1400,7 +1400,7 @@ export namespace XreaderDocument {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             ctime: GObject.GTypeInput;
-            data: any;
+            data: never;
             description: string;
             mtime: GObject.GTypeInput;
             name: string;
@@ -1423,7 +1423,7 @@ export namespace XreaderDocument {
         /**
          * @construct-only
          */
-        set data(val: any);
+        set data(val: never);
 
         /**
          * @construct-only
@@ -1465,7 +1465,7 @@ export namespace XreaderDocument {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, description: string, mtime: GLib.DateTime, ctime: GLib.DateTime, size: (bigint | number), data: (any | null)): Attachment;
+        static ["new"](name: string, description: string, mtime: GLib.DateTime, ctime: GLib.DateTime, size: (bigint | number), data: null): Attachment;
 
         // Signals
         /** @signal */
@@ -1983,7 +1983,7 @@ export namespace XreaderDocument {
 
         commit_on_sel_change: boolean;
 
-        selected_items: any[];
+        selected_items: null[];
 
         text: string;
 
@@ -2332,14 +2332,14 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dest: LinkDest;
             filename: string;
-            hide_list: any;
-            hideList: any;
+            hide_list: never;
+            hideList: never;
             name: string;
             params: string;
-            show_list: any;
-            showList: any;
-            toggle_list: any;
-            toggleList: any;
+            show_list: never;
+            showList: never;
+            toggle_list: never;
+            toggleList: never;
             type: LinkActionType;
             uri: string;
         }
@@ -2366,12 +2366,12 @@ export namespace XreaderDocument {
         /**
          * @construct-only
          */
-        get hide_list(): any;
+        get hide_list(): null;
 
         /**
          * @construct-only
          */
-        get hideList(): any;
+        get hideList(): null;
 
         /**
          * @construct-only
@@ -2388,22 +2388,22 @@ export namespace XreaderDocument {
         /**
          * @construct-only
          */
-        get show_list(): any;
+        get show_list(): null;
 
         /**
          * @construct-only
          */
-        get showList(): any;
+        get showList(): null;
 
         /**
          * @construct-only
          */
-        get toggle_list(): any;
+        get toggle_list(): null;
 
         /**
          * @construct-only
          */
-        get toggleList(): any;
+        get toggleList(): null;
 
         /**
          * @construct-only
@@ -3242,13 +3242,13 @@ export namespace XreaderDocument {
         // Fields
         area: Rectangle;
 
-        data: any;
+        data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             area: Rectangle;
-            data: any;
+            data: null;
         }>);
     }
 
@@ -3264,7 +3264,7 @@ export namespace XreaderDocument {
          * @param x 
          * @param y 
          */
-        get_data(x: number, y: number): (any | null);
+        get_data(x: number, y: number): null;
 
         get_page(): number;
 
@@ -4578,7 +4578,7 @@ export namespace XreaderDocument {
     /**
      * @gir-type Alias
      */
-    type BackendPage = any;
+    type BackendPage = never;
 
     /**
      * @gir-type Alias

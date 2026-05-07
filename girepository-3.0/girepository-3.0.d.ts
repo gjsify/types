@@ -341,7 +341,7 @@ export namespace GIRepository {
      * @param hash_pointer a pointer, such as a {@link GLib.HashTable} data pointer
      * @since 2.80
      */
-    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: (any | null)): Argument;
+    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: null): Argument;
 
     /**
      * Convert a {@link GIRepository.Argument} to data pointer for use in a GLib
@@ -364,7 +364,7 @@ export namespace GIRepository {
      * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable},   for example
      * @since 2.80
      */
-    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): (any | null);
+    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): null;
 
     /**
      * Obtain a string representation of `type`
@@ -902,7 +902,7 @@ export namespace GIRepository {
          * @param out_args array of ‘out’ arguments allocated by   the caller, to be populated with outputted values
          * @returns `TRUE` if the callable was executed successfully and didn’t throw   a {@link GLib.Error}; `FALSE` if `error` is set
          */
-        invoke(_function: (any | null), in_args: Argument[], out_args: Argument[]): [boolean, Argument];
+        invoke(_function: null, in_args: Argument[], out_args: Argument[]): [boolean, Argument];
 
         /**
          * Gets whether a callable is ‘async’. Async callables have a
@@ -2629,7 +2629,7 @@ export namespace GIRepository {
          * from `hash_pointer`, depending on the storage type of `info`.
          * @param hash_pointer a pointer, such as a {@link GLib.HashTable} data pointer
          */
-        argument_from_hash_pointer(hash_pointer: (any | null)): Argument;
+        argument_from_hash_pointer(hash_pointer: null): Argument;
 
         /**
          * Obtain the fixed array size of the type, in number of elements (not bytes).
@@ -2717,7 +2717,7 @@ export namespace GIRepository {
          * @param arg a {@link GIRepository.Argument} with the value to stuff into a pointer
          * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable},   for example
          */
-        hash_pointer_from_argument(arg: Argument): (any | null);
+        hash_pointer_from_argument(arg: Argument): null;
 
         /**
          * Obtain if the type is passed as a reference.
@@ -2937,7 +2937,7 @@ export namespace GIRepository {
          * @param implementor_gtype {@link GObject.Type} implementing this virtual function
          * @returns address to a function
          */
-        get_address(implementor_gtype: GObject.GType): (any | null);
+        get_address(implementor_gtype: GObject.GType): null;
 
         /**
          * Obtain the flags for this virtual function info.
@@ -3085,7 +3085,7 @@ export namespace GIRepository {
          * @param symbol_name name of symbol to be loaded
          * @returns `TRUE` on success
          */
-        symbol(symbol_name: string): [boolean, any];
+        symbol(symbol_name: string): [boolean, null];
 
         /**
          * Decrement the reference count of a {@link GIRepository.Typelib}.
@@ -3145,7 +3145,7 @@ export namespace GIRepository {
 
         v_string: string;
 
-        v_pointer: any;
+        v_pointer: null;
     }
 
 

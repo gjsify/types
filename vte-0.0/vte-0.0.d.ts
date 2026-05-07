@@ -212,7 +212,7 @@ export namespace Vte {
      * @gir-type Callback
      */
     interface SelectionFunc {
-        (terminal: Terminal, column: number, row: number, data: (any | null)): boolean;
+        (terminal: Terminal, column: number, row: number, data: null): boolean;
     }
 
     /**
@@ -2263,7 +2263,7 @@ export namespace Vte {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2273,7 +2273,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -2282,7 +2282,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2356,7 +2356,7 @@ export namespace Vte {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2367,7 +2367,7 @@ export namespace Vte {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -2376,7 +2376,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2428,7 +2428,7 @@ export namespace Vte {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -2444,7 +2444,7 @@ export namespace Vte {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count

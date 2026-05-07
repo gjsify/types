@@ -16544,7 +16544,7 @@ export namespace Clutter {
          * ```
          * @param klass a {@link GObject.ObjectClass} pointer
          */
-        static get_for_class(klass: (any | null)): BindingPool;
+        static get_for_class(klass: null): BindingPool;
 
         // Methods
         /**
@@ -23938,7 +23938,7 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            presented: (arg0: StageView, arg1: (any | null)) => void;
+            presented: (arg0: StageView, arg1: null) => void;
             /**
              * The ::skipped-paint signal is emitted after relayout, if no damage
              * was posted and the paint was skipped.
@@ -24643,7 +24643,7 @@ export namespace Clutter {
              * @action
              * @run-last
              */
-            "insert-text": (arg0: string, arg1: number, arg2: (any | null)) => void;
+            "insert-text": (arg0: string, arg1: number, arg2: null) => void;
             /**
              * The signal is emitted after `actor`'s text changes
              * @signal
@@ -29954,7 +29954,7 @@ export namespace Clutter {
     /**
      * @gir-type Alias
      */
-    type PipelineGroup = any;
+    type PipelineGroup = never;
 
     /**
      * Name of the imported GIR library

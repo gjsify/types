@@ -661,7 +661,7 @@ export namespace Snapd {
      * @gir-type Callback
      */
     interface ProgressCallback {
-        (client: Client, change: Change, deprecated: (any | null)): void;
+        (client: Client, change: Change, deprecated: null): void;
     }
 
     /**
@@ -1413,7 +1413,7 @@ export namespace Snapd {
             spawnTime: GLib.DateTime;
             status: string;
             summary: string;
-            tasks: any[];
+            tasks: never[];
         }
     }
 
@@ -1479,7 +1479,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get tasks(): any[];
+        get tasks(): null[];
 
         /**
          * Compile-time signal type information.
@@ -4360,11 +4360,11 @@ export namespace Snapd {
             manual: boolean;
             name: string;
             plug: PlugRef;
-            plug_attrs: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            plugAttrs: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            plug_attrs: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            plugAttrs: ({ [key: string]: any } | GLib.HashTable<never, never>);
             slot: SlotRef;
-            slot_attrs: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            slotAttrs: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            slot_attrs: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            slotAttrs: ({ [key: string]: any } | GLib.HashTable<never, never>);
             snap: string;
         }
     }
@@ -4406,12 +4406,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get plug_attrs(): GLib.HashTable<any, any>;
+        get plug_attrs(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
          */
-        get plugAttrs(): GLib.HashTable<any, any>;
+        get plugAttrs(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
@@ -4421,12 +4421,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get slot_attrs(): GLib.HashTable<any, any>;
+        get slot_attrs(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
          */
-        get slotAttrs(): GLib.HashTable<any, any>;
+        get slotAttrs(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
@@ -4647,8 +4647,8 @@ export namespace Snapd {
             doc_url: string;
             docUrl: string;
             name: string;
-            plugs: any[];
-            slots: any[];
+            plugs: never[];
+            slots: never[];
             summary: string;
         }
     }
@@ -4680,12 +4680,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get plugs(): any[];
+        get plugs(): null[];
 
         /**
          * @construct-only
          */
-        get slots(): any[];
+        get slots(): null[];
 
         /**
          * @construct-only
@@ -4843,7 +4843,7 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            children: any[];
+            children: never[];
             node_type: MarkdownNodeType;
             nodeType: MarkdownNodeType;
             text: string;
@@ -4863,7 +4863,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get children(): any[];
+        get children(): null[];
 
         /**
          * @construct-only
@@ -5117,8 +5117,8 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            connections: any[];
+            attributes: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            connections: never[];
             "interface": string;
             label: string;
             name: string;
@@ -5138,12 +5138,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get attributes(): GLib.HashTable<any, any>;
+        get attributes(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
          */
-        get connections(): any[];
+        get connections(): null[];
 
         /**
          * @construct-only
@@ -5502,8 +5502,8 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            connections: any[];
+            attributes: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            connections: never[];
             "interface": string;
             label: string;
             name: string;
@@ -5523,12 +5523,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get attributes(): GLib.HashTable<any, any>;
+        get attributes(): GLib.HashTable<never, never>;
 
         /**
          * @construct-only
          */
-        get connections(): any[];
+        get connections(): null[];
 
         /**
          * @construct-only
@@ -5756,11 +5756,11 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            apps: any[];
+            apps: never[];
             base: (string | null);
             broken: (string | null);
             channel: string;
-            channels: any[];
+            channels: never[];
             common_ids: string[];
             commonIds: string[];
             confinement: Confinement;
@@ -5778,11 +5778,11 @@ export namespace Snapd {
             installedSize: (bigint | number);
             jailmode: boolean;
             license: (string | null);
-            media: any[];
+            media: never[];
             mounted_from: (string | null);
             mountedFrom: string;
             name: string;
-            prices: any[];
+            prices: never[];
             "private": boolean;
             publisher_display_name: string;
             publisherDisplayName: string;
@@ -5793,7 +5793,7 @@ export namespace Snapd {
             publisher_validation: PublisherValidation;
             publisherValidation: PublisherValidation;
             revision: string;
-            screenshots: any[];
+            screenshots: never[];
             snap_type: SnapType;
             snapType: SnapType;
             status: SnapStatus;
@@ -5820,7 +5820,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get apps(): any[];
+        get apps(): null[];
 
         /**
          * @construct-only
@@ -5840,7 +5840,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get channels(): any[];
+        get channels(): null[];
 
         /**
          * @construct-only
@@ -5930,7 +5930,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get media(): any[];
+        get media(): null[];
 
         /**
          * @construct-only
@@ -5950,7 +5950,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get prices(): any[];
+        get prices(): null[];
 
         /**
          * @construct-only
@@ -6005,7 +6005,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get screenshots(): any[];
+        get screenshots(): null[];
 
         /**
          * @construct-only
@@ -6386,8 +6386,8 @@ export namespace Snapd {
             refreshSchedule: string;
             refresh_timer: (string | null);
             refreshTimer: string;
-            sandbox_features: any;
-            sandboxFeatures: any;
+            sandbox_features: never;
+            sandboxFeatures: never;
             series: string;
             store: (string | null);
             version: string;
@@ -6536,12 +6536,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get sandbox_features(): any;
+        get sandbox_features(): null;
 
         /**
          * @construct-only
          */
-        get sandboxFeatures(): any;
+        get sandboxFeatures(): null;
 
         /**
          * @construct-only

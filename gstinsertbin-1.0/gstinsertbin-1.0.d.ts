@@ -42,7 +42,7 @@ export namespace GstInsertBin {
              * @action
              * @run-last
              */
-            append: (arg0: Gst.Element, arg1: (any | null), arg2: (any | null)) => void;
+            append: (arg0: Gst.Element, arg1: null, arg2: null) => void;
             /**
              * This action signal adds the filter like element after the `sibling`
              * element in the bin.
@@ -53,7 +53,7 @@ export namespace GstInsertBin {
              * @action
              * @run-last
              */
-            "insert-after": (arg0: Gst.Element, arg1: Gst.Element, arg2: (any | null), arg3: (any | null)) => void;
+            "insert-after": (arg0: Gst.Element, arg1: Gst.Element, arg2: null, arg3: null) => void;
             /**
              * This action signal adds the filter like element before the `sibling`
              * element in the bin.
@@ -63,7 +63,7 @@ export namespace GstInsertBin {
              * @action
              * @run-last
              */
-            "insert-before": (arg0: Gst.Element, arg1: Gst.Element, arg2: (any | null), arg3: (any | null)) => void;
+            "insert-before": (arg0: Gst.Element, arg1: Gst.Element, arg2: null, arg3: null) => void;
             /**
              * This action signal adds the filter like element before any other element
              * in the bin.
@@ -73,7 +73,7 @@ export namespace GstInsertBin {
              * @action
              * @run-last
              */
-            prepend: (arg0: Gst.Element, arg1: (any | null), arg2: (any | null)) => void;
+            prepend: (arg0: Gst.Element, arg1: null, arg2: null) => void;
             /**
              * This action signal removed the filter like element from the bin.
              * 
@@ -82,7 +82,7 @@ export namespace GstInsertBin {
              * @action
              * @run-last
              */
-            remove: (arg0: Gst.Element, arg1: (any | null), arg2: (any | null)) => void;
+            remove: (arg0: Gst.Element, arg1: null, arg2: null) => void;
             "notify::async-handling": (pspec: GObject.ParamSpec) => void;
             "notify::message-forward": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;

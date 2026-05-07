@@ -132,8 +132,8 @@ export namespace Cheese {
             format: VideoFormat;
             num_camera_devices: number;
             numCameraDevices: number;
-            video_texture: any;
-            videoTexture: any;
+            video_texture: never;
+            videoTexture: never;
         }
     }
 
@@ -174,14 +174,14 @@ export namespace Cheese {
         /**
          * The video texture for the {@link Cheese.Camera} to render into.
          */
-        get video_texture(): any;
-        set video_texture(val: any);
+        get video_texture(): null;
+        set video_texture(val: never);
 
         /**
          * The video texture for the {@link Cheese.Camera} to render into.
          */
-        get videoTexture(): any;
-        set videoTexture(val: any);
+        get videoTexture(): null;
+        set videoTexture(val: never);
 
         /**
          * Compile-time signal type information.

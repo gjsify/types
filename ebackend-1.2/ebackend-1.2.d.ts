@@ -284,7 +284,7 @@ export namespace EBackend {
      * @param info an {@link EBackend.CacheColumnInfo}
      * @since 3.26
      */
-    function cache_column_info_free(info: (any | null)): void;
+    function cache_column_info_free(info: null): void;
 
     /**
      * Frees the `change` structure, previously allocated with `e_cache_offline_change_new()`
@@ -292,7 +292,7 @@ export namespace EBackend {
      * @param change an {@link EBackend.CacheOfflineChange}
      * @since 3.26
      */
-    function cache_offline_change_free(change: (any | null)): void;
+    function cache_offline_change_free(change: null): void;
 
     /**
      * @since 3.2
@@ -408,8 +408,8 @@ export namespace EBackend {
             mainContext: GLib.MainContext;
             online: boolean;
             source: EDataServer.Source;
-            user_prompter: (UserPrompter | null);
-            userPrompter: (UserPrompter | null);
+            user_prompter: UserPrompter;
+            userPrompter: UserPrompter;
         }
     }
 
@@ -458,13 +458,13 @@ export namespace EBackend {
          * User prompter instance
          * @read-only
          */
-        get user_prompter(): (UserPrompter | null);
+        get user_prompter(): UserPrompter;
 
         /**
          * User prompter instance
          * @read-only
          */
-        get userPrompter(): (UserPrompter | null);
+        get userPrompter(): UserPrompter;
 
         /**
          * Compile-time signal type information.
@@ -658,7 +658,7 @@ export namespace EBackend {
          * The returned instance is owned by the `backend`.
          * @returns an {@link EBackend.UserPrompter} instance
          */
-        get_user_prompter(): (any | null);
+        get_user_prompter(): null;
 
         /**
          * Checks whether the `backend`<!-- -->'s destination server, as returned
@@ -909,12 +909,12 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "before-put": (arg0: string, arg1: string, arg2: string, arg3: CacheColumnValues, arg4: boolean, arg5: (Gio.Cancellable | null), arg6: (any | null)) => (boolean | void);
+            "before-put": (arg0: string, arg1: string, arg2: string, arg3: CacheColumnValues, arg4: boolean, arg5: (Gio.Cancellable | null), arg6: null) => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            "before-remove": (arg0: string, arg1: (Gio.Cancellable | null), arg2: (any | null)) => (boolean | void);
+            "before-remove": (arg0: string, arg1: (Gio.Cancellable | null), arg2: null) => (boolean | void);
             /**
              * @signal
              * @run-last
@@ -1198,7 +1198,7 @@ export namespace EBackend {
         /**
          * @returns An SQLite3 database pointer. It is owned by the `cache`.
          */
-        get_sqlitedb(): (any | null);
+        get_sqlitedb(): null;
 
         /**
          * Gets a list of unique object identifiers stored in the `cache`, optionally
@@ -4264,7 +4264,7 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_open_data(backend: Backend, connection: Gio.DBusConnection, data: (any | null), cancellable: (Gio.Cancellable | null)): string;
+        vfunc_open_data(backend: Backend, connection: Gio.DBusConnection, data: null, cancellable: (Gio.Cancellable | null)): string;
 
         // Methods
         /**
@@ -5038,7 +5038,7 @@ export namespace EBackend {
          * or `e_cache_column_info_copy()`.
          * @param info an {@link EBackend.CacheColumnInfo}
          */
-        static free(info: (any | null)): void;
+        static free(info: null): void;
 
         // Methods
         /**
@@ -5188,7 +5188,7 @@ export namespace EBackend {
          * or `e_cache_offline_change_copy()`.
          * @param change an {@link EBackend.CacheOfflineChange}
          */
-        static free(change: (any | null)): void;
+        static free(change: null): void;
 
         // Methods
         /**

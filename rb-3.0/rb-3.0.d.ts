@@ -1155,7 +1155,7 @@ export namespace RB {
      * @param user_data user data to pass to autoconnected signal handlers
      * @returns {@link Gtk.Builder} object built from the file
      */
-    function builder_load(file: string, user_data: (any | null)): Gtk.Builder;
+    function builder_load(file: string, user_data: null): Gtk.Builder;
 
     /**
      * Like `rb_builder_load`, except it finds files associated with
@@ -1165,7 +1165,7 @@ export namespace RB {
      * @param user_data user data to pass to autoconnected signal handlers
      * @returns {@link Gtk.Builder} object built from the file
      */
-    function builder_load_plugin_file(plugin: GObject.Object, file: string, user_data: (any | null)): Gtk.Builder;
+    function builder_load_plugin_file(plugin: GObject.Object, file: string, user_data: null): Gtk.Builder;
 
     /**
      * Converts `uri` to canonical URI form, ensuring it doesn't contain
@@ -1204,7 +1204,7 @@ export namespace RB {
      * @param data nothing
      * @returns `true` if the row pointed to by `iter` is a separator
      */
-    function combo_box_hyphen_separator_func(model: Gtk.TreeModel, iter: Gtk.TreeIter, data: (any | null)): boolean;
+    function combo_box_hyphen_separator_func(model: Gtk.TreeModel, iter: Gtk.TreeIter, data: null): boolean;
 
     /**
      * Compares two {@link GLib.TimeVal} structures for sorting.
@@ -1694,7 +1694,7 @@ export namespace RB {
      * @param bp another `RBRefstring`
      * @returns `true` if the strings are the same
      */
-    function refstring_equal(ap: (any | null), bp: (any | null)): boolean;
+    function refstring_equal(ap: null, bp: null): boolean;
 
     /**
      * Returns an existing {@link RB.RefString} for `init` if one exists,
@@ -1710,7 +1710,7 @@ export namespace RB {
      * @param p an {@link RB.RefString}
      * @returns hash value for the string underlying `p`
      */
-    function refstring_hash(p: (any | null)): number;
+    function refstring_hash(p: null): number;
 
     /**
      * Sets up the refstring system.  Called on startup.
@@ -2023,14 +2023,14 @@ export namespace RB {
      * @gir-type Callback
      */
     interface AsyncCopyCallback {
-        (copy: AsyncCopy, success: boolean, data: (any | null)): void;
+        (copy: AsyncCopy, success: boolean, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface AsyncCopyProgressCallback {
-        (copy: AsyncCopy, position: number, total: number, data: (any | null)): void;
+        (copy: AsyncCopy, position: number, total: number, data: null): void;
     }
 
     /**
@@ -2058,7 +2058,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface DelayedSyncFunc {
-        (settings: Gio.Settings, data: (any | null)): void;
+        (settings: Gio.Settings, data: null): void;
     }
 
     /**
@@ -2093,7 +2093,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface RhythmDBEntryForeachFunc {
-        (entry: RhythmDBEntry, data: (any | null)): void;
+        (entry: RhythmDBEntry, data: null): void;
     }
 
     /**
@@ -2114,14 +2114,14 @@ export namespace RB {
      * @gir-type Callback
      */
     interface SegmentedBarValueFormatter {
-        (percent: number, data: (any | null)): string;
+        (percent: number, data: null): string;
     }
 
     /**
      * @gir-type Callback
      */
     interface SourceAddCallback {
-        (source: Source, uri: string, data: (any | null)): void;
+        (source: Source, uri: string, data: null): void;
     }
 
     /**
@@ -2142,7 +2142,7 @@ export namespace RB {
      * @gir-type Callback
      */
     interface UriRecurseFunc {
-        (file: Gio.File, info: Gio.FileInfo, data: (any | null)): boolean;
+        (file: Gio.File, info: Gio.FileInfo, data: null): boolean;
     }
 
     namespace Application {
@@ -3140,7 +3140,7 @@ export namespace RB {
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             icon: Gio.Icon;
             name: string;
-            parent: (DisplayPage | any);
+            parent: DisplayPage;
             plugin: GObject.Object;
             selected: boolean;
             shell: Shell;
@@ -3182,8 +3182,7 @@ export namespace RB {
          * The parent page in the tree (may be NULL)
          * @construct-only
          */
-    // This accessor conflicts with another accessor's type in a parent class or interface.
-        get parent(): (DisplayPage | any);
+        get parent(): DisplayPage;
 
         /**
          * The plugin that created this page.
@@ -3573,7 +3572,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "drop-received": (arg0: DisplayPage, arg1: number, arg2: (any | null)) => void;
+            "drop-received": (arg0: DisplayPage, arg1: number, arg2: null) => void;
             /**
              * Emitted when a new page is inserted into the model.
              * Use this instead of GtkTreeModel::row-inserted as this
@@ -4244,7 +4243,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "drop-received": (arg0: (any | null), arg1: (any | null)) => void;
+            "drop-received": (arg0: null, arg1: null) => void;
             /**
              * Emitted when a page is selected from the tree
              * @signal
@@ -5073,7 +5072,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            load: (arg0: unknown) => (any | null);
+            load: (arg0: unknown) => null;
             /**
              * Emitted when a metadata request cannot be satisfied from the local
              * store.  Metadata providers initiate searches in response to this
@@ -5089,7 +5088,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            store: (arg0: unknown) => (any | null);
+            store: (arg0: unknown) => null;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -5401,7 +5400,7 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -5411,7 +5410,7 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -5420,7 +5419,7 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -5494,7 +5493,7 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -5505,7 +5504,7 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -5514,7 +5513,7 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6113,7 +6112,7 @@ export namespace RB {
          * Appends `item` to the list.
          * @param item item to append
          */
-        append(item: (any | null)): void;
+        append(item: null): void;
 
         /**
          * Returns the lowest index at which `item` appears in the list,
@@ -6121,14 +6120,14 @@ export namespace RB {
          * @param item item to find
          * @returns list index
          */
-        find(item: (any | null)): number;
+        find(item: null): number;
 
         /**
          * Returns an item from the list.
          * @param index item to retrieve
          * @returns item at the specified index
          */
-        get(index: number): (any | null);
+        get(index: number): null;
 
         /**
          * Returns the list entry type.
@@ -6143,7 +6142,7 @@ export namespace RB {
          * @param index position to insert the item at
          * @param item item to insert
          */
-        insert(index: number, item: (any | null)): void;
+        insert(index: number, item: null): void;
 
         /**
          * Returns the length of the list.
@@ -6155,7 +6154,7 @@ export namespace RB {
          * Prepends `item` to the list.
          * @param item item to prepend
          */
-        prepend(item: (any | null)): void;
+        prepend(item: null): void;
 
         /**
          * Removes the item at `index` from the list.
@@ -6168,7 +6167,7 @@ export namespace RB {
          * list multiple times, only the first instance is removed.
          * @param item item to remove
          */
-        remove_item(item: (any | null)): void;
+        remove_item(item: null): void;
     }
 
 
@@ -7581,7 +7580,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            result: (arg0: (any | null)) => void;
+            result: (arg0: null) => void;
         }
 
         // Constructor properties interface
@@ -7713,7 +7712,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "properties-selected": (arg0: (any | null)) => void;
+            "properties-selected": (arg0: null) => void;
             /**
              * Emitted when a row in a property view is activated by double clicking.
              * @signal
@@ -8159,7 +8158,7 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -8169,7 +8168,7 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -8178,7 +8177,7 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -8252,7 +8251,7 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -8263,7 +8262,7 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -8272,7 +8271,7 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -8550,7 +8549,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "save-error": (arg0: string, arg1: (any | null)) => void;
+            "save-error": (arg0: string, arg1: null) => void;
             "notify::dry-run": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::no-update": (pspec: GObject.ParamSpec) => void;
@@ -10461,7 +10460,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: (any | null), arg3: (any | null)) => void;
+            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: null, arg3: null) => void;
             /**
              * Emitted when an entry is removed from the model.  There is some
              * difference between this and the {@link Gtk.TreeModel} row-removed signal
@@ -10513,15 +10512,15 @@ export namespace RB {
             limitType: RhythmDBQueryModelLimitType;
             limit_value: GLib.Variant;
             limitValue: GLib.Variant;
-            query: any;
+            query: never;
             show_hidden: boolean;
             showHidden: boolean;
-            sort_data: any;
-            sortData: any;
-            sort_data_destroy: any;
-            sortDataDestroy: any;
-            sort_func: any;
-            sortFunc: any;
+            sort_data: never;
+            sortData: never;
+            sort_data_destroy: never;
+            sortDataDestroy: never;
+            sort_func: never;
+            sortFunc: never;
             sort_reverse: boolean;
             sortReverse: boolean;
         }
@@ -10594,8 +10593,8 @@ export namespace RB {
          */
         get limitValue(): GLib.Variant;
 
-        get query(): any;
-        set query(val: any);
+        get query(): null;
+        set query(val: never);
 
         /**
          * @default false
@@ -10609,23 +10608,23 @@ export namespace RB {
         get showHidden(): boolean;
         set showHidden(val: boolean);
 
-        get sort_data(): any;
-        set sort_data(val: any);
+        get sort_data(): null;
+        set sort_data(val: never);
 
-        get sortData(): any;
-        set sortData(val: any);
+        get sortData(): null;
+        set sortData(val: never);
 
-        get sort_data_destroy(): any;
-        set sort_data_destroy(val: any);
+        get sort_data_destroy(): null;
+        set sort_data_destroy(val: never);
 
-        get sortDataDestroy(): any;
-        set sortDataDestroy(val: any);
+        get sortDataDestroy(): null;
+        set sortDataDestroy(val: never);
 
-        get sort_func(): any;
-        set sort_func(val: any);
+        get sort_func(): null;
+        set sort_func(val: never);
 
-        get sortFunc(): any;
-        set sortFunc(val: any);
+        get sortFunc(): null;
+        set sortFunc(val: never);
 
         /**
          * @default false
@@ -10678,7 +10677,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static album_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static album_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by artist.  Sorts by artist, then
@@ -10687,7 +10686,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static artist_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static artist_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by bitrate.  Lossless encodings (as identified
@@ -10697,7 +10696,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static bitrate_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static bitrate_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by composer.  Sorts by composer, then
@@ -10706,7 +10705,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static composer_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static composer_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by release date.
@@ -10715,7 +10714,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static date_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static date_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by a rounded floating point value.
@@ -10725,7 +10724,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static double_ceiling_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static double_ceiling_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by genre.  Sorts by genre, then artist,
@@ -10734,7 +10733,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static genre_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static genre_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by location.
@@ -10742,7 +10741,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static location_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static location_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by a single string property
@@ -10751,7 +10750,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static string_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static string_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by title.  Falls back to sorting
@@ -10760,7 +10759,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static title_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static title_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by track.  Sorts by artist,
@@ -10769,7 +10768,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data nothing
          */
-        static track_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static track_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         /**
          * Sort function for sorting by an unsigned integer property value.
@@ -10778,7 +10777,7 @@ export namespace RB {
          * @param b a {@link RB.RhythmDBEntry}
          * @param data property to sort on
          */
-        static ulong_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: (any | null)): number;
+        static ulong_sort_func(a: RhythmDBEntry, b: RhythmDBEntry, data: null): number;
 
         // Virtual methods
         /**
@@ -11987,7 +11986,7 @@ export namespace RB {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -11997,7 +11996,7 @@ export namespace RB {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12006,7 +12005,7 @@ export namespace RB {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -12080,7 +12079,7 @@ export namespace RB {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -12091,7 +12090,7 @@ export namespace RB {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12100,7 +12099,7 @@ export namespace RB {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -13498,8 +13497,8 @@ export namespace RB {
             currentEntry: RhythmDBEntry;
             entry_view: EntryView;
             entryView: EntryView;
-            selected_entries: any[];
-            selectedEntries: any[];
+            selected_entries: never[];
+            selectedEntries: never[];
             source: Source;
         }
     }
@@ -13569,14 +13568,14 @@ export namespace RB {
          * single-entry and multiple-entry song properties windows.
          * @read-only
          */
-        get selected_entries(): any[];
+        get selected_entries(): null[];
 
         /**
          * The set of {@link RB.RhythmDBEntry} objects currently being displayed.  Valid for both
          * single-entry and multiple-entry song properties windows.
          * @read-only
          */
-        get selectedEntries(): any[];
+        get selectedEntries(): null[];
 
         /**
          * The {@link RB.Source} that created the song properties window.  Used to update
@@ -15225,7 +15224,7 @@ export namespace RB {
          * and creates a new empty map.
          * @returns {@link GLib.HashTable} from the map
          */
-        steal_hashtable(): GLib.HashTable<any, any>;
+        steal_hashtable(): GLib.HashTable<never, never>;
     }
 
 
@@ -15509,7 +15508,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "track-done": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: (any | null)) => void;
+            "track-done": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: null) => void;
             /**
              * Emitted when a track transfer is finishing, allowing signal handlers
              * to perform any post-processing required.  The signal is emitted on the
@@ -15569,8 +15568,8 @@ export namespace RB {
             doneEntries: number;
             encoding_target: GstPbutils.EncodingTarget;
             encodingTarget: GstPbutils.EncodingTarget;
-            entry_list: any;
-            entryList: any;
+            entry_list: never;
+            entryList: never;
             progress: number;
             queue: TrackTransferQueue;
             settings: Gio.Settings;
@@ -15627,13 +15626,13 @@ export namespace RB {
          * A list of all entries in the batch.
          * @read-only
          */
-        get entry_list(): any;
+        get entry_list(): null;
 
         /**
          * A list of all entries in the batch.
          * @read-only
          */
-        get entryList(): any;
+        get entryList(): null;
 
         /**
          * Fraction of the transfer batch that has been processed.
@@ -16625,7 +16624,7 @@ export namespace RB {
 
         is_opml: boolean;
 
-        posts: any[];
+        posts: null[];
 
         num_posts: number;
 
@@ -16737,7 +16736,7 @@ export namespace RB {
          * @param ap an {@link RB.RefString}
          * @param bp another `RBRefstring`
          */
-        static equal(ap: (any | null), bp: (any | null)): boolean;
+        static equal(ap: null, bp: null): boolean;
 
         /**
          * Returns an existing {@link RB.RefString} for `init` if one exists,
@@ -16751,7 +16750,7 @@ export namespace RB {
          * Hash function suitable for use with `GHashTable`.
          * @param p an {@link RB.RefString}
          */
-        static hash(p: (any | null)): number;
+        static hash(p: null): number;
 
         /**
          * Sets up the refstring system.  Called on startup.
@@ -16926,7 +16925,7 @@ export namespace RB {
          * @param expected_size expected size of the type-specific data.
          * @returns type-specific data pointer
          */
-        get_type_data(expected_size: number): (any | null);
+        get_type_data(expected_size: number): null;
 
         /**
          * Returns the value of a 64bit unsigned integer property.
@@ -17516,7 +17515,7 @@ export namespace RB {
              * @param progress 
              * @virtual
              */
-            vfunc_buffering(stream_data: (any | null), progress: number): void;
+            vfunc_buffering(stream_data: null, progress: number): void;
 
             /**
              * If a URI is specified, this will close the stream corresponding
@@ -17535,21 +17534,21 @@ export namespace RB {
              * @param early 
              * @virtual
              */
-            vfunc_eos(stream_data: (any | null), early: boolean): void;
+            vfunc_eos(stream_data: null, early: boolean): void;
 
             /**
              * @param stream_data 
              * @param error 
              * @virtual
              */
-            vfunc_error(stream_data: (any | null), error: GLib.Error): void;
+            vfunc_error(stream_data: null, error: GLib.Error): void;
 
             /**
              * @param stream_data 
              * @param data 
              * @virtual
              */
-            vfunc_event(stream_data: (any | null), data: (any | null)): void;
+            vfunc_event(stream_data: null, data: null): void;
 
             /**
              * Returns the current playback for the current stream in nanoseconds.
@@ -17568,7 +17567,7 @@ export namespace RB {
              * @param image 
              * @virtual
              */
-            vfunc_image(stream_data: (any | null), image: GdkPixbuf.Pixbuf): void;
+            vfunc_image(stream_data: null, image: GdkPixbuf.Pixbuf): void;
 
             /**
              * @param stream_data 
@@ -17576,7 +17575,7 @@ export namespace RB {
              * @param value 
              * @virtual
              */
-            vfunc_info(stream_data: (any | null), field: MetaDataField, value: unknown): void;
+            vfunc_info(stream_data: null, field: MetaDataField, value: unknown): void;
 
             /**
              * Determines whether the player supports multiple open streams.
@@ -17594,7 +17593,7 @@ export namespace RB {
              * @param stream_data arbitrary data to associate with the stream
              * @virtual
              */
-            vfunc_open(uri: string, stream_data: (any | null)): boolean;
+            vfunc_open(uri: string, stream_data: null): boolean;
 
             /**
              * Determines whether a stream has been prepared for playback.
@@ -17646,14 +17645,14 @@ export namespace RB {
              * @param stream_data 
              * @virtual
              */
-            vfunc_playing_stream(stream_data: (any | null)): void;
+            vfunc_playing_stream(stream_data: null): void;
 
             /**
              * @param stream_data 
              * @param uri 
              * @virtual
              */
-            vfunc_redirect(stream_data: (any | null), uri: string): void;
+            vfunc_redirect(stream_data: null, uri: string): void;
 
             /**
              * Determines whether seeking is supported for the current stream.
@@ -17685,7 +17684,7 @@ export namespace RB {
              * @param duration 
              * @virtual
              */
-            vfunc_tick(stream_data: (any | null), elapsed: number, duration: number): void;
+            vfunc_tick(stream_data: null, elapsed: number, duration: number): void;
 
             /**
              * @param volume 
@@ -17797,7 +17796,7 @@ export namespace RB {
          * @param stream_data arbitrary data to associate with the stream
          * @returns TRUE if the stream preparation was not unsuccessful
          */
-        open(uri: string, stream_data: (any | null)): boolean;
+        open(uri: string, stream_data: null): boolean;
 
         /**
          * Determines whether a stream has been prepared for playback.

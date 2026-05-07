@@ -1702,7 +1702,7 @@ export namespace LangTag {
      * The type of object pointer.
      * @gir-type Alias
      */
-    type Pointer = any;
+    type Pointer = never;
 
     /**
      * Name of the imported GIR library

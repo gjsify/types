@@ -196,7 +196,7 @@ export namespace Gkbd {
          * @param ln2cnt_map 
          * @param layout_name 
          */
-        static create_label_title(group: number, ln2cnt_map: ({ [key: string]: any } | GLib.HashTable<any, any>), layout_name: string): string;
+        static create_label_title(group: number, ln2cnt_map: ({ [key: string]: any } | GLib.HashTable<never, never>), layout_name: string): string;
 
         static get(): Configuration;
 
@@ -764,7 +764,7 @@ export namespace Gkbd {
 
         settings: Gio.Settings;
 
-        image_filenames: any[];
+        image_filenames: null[];
 
         icon_theme: Gtk.IconTheme;
 

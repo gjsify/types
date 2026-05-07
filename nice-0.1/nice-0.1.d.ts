@@ -707,8 +707,8 @@ export namespace Nice {
             idleTimeout: number;
             keepalive_conncheck: boolean;
             keepaliveConncheck: boolean;
-            main_context: any;
-            mainContext: any;
+            main_context: never;
+            mainContext: never;
             max_connectivity_checks: number;
             maxConnectivityChecks: number;
             proxy_ip: string;
@@ -1115,14 +1115,14 @@ export namespace Nice {
          * This is a property being set by the `nice_agent_new()` call.
          * @construct-only
          */
-        get main_context(): any;
+        get main_context(): null;
 
         /**
          * A GLib main context is needed for all timeouts used by libnice.
          * This is a property being set by the `nice_agent_new()` call.
          * @construct-only
          */
-        get mainContext(): any;
+        get mainContext(): null;
 
         /**
          * @default 0
@@ -2160,7 +2160,7 @@ export namespace Nice {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             ack_delay: number;
             ackDelay: number;
-            callbacks: any;
+            callbacks: never;
             conversation: number;
             no_delay: boolean;
             noDelay: boolean;
@@ -2195,8 +2195,8 @@ export namespace Nice {
         get ackDelay(): number;
         set ackDelay(val: number);
 
-        get callbacks(): any;
-        set callbacks(val: any);
+        get callbacks(): null;
+        set callbacks(val: never);
 
         /**
          * @construct-only
@@ -2516,7 +2516,7 @@ export namespace Nice {
          * Fills the sockaddr structure `sin` with the address contained in `addr`
          * @param sin The sockaddr to fill
          */
-        copy_to_sockaddr(sin: (any | null)): void;
+        copy_to_sockaddr(sin: null): void;
 
         /**
          * Compares two {@link Nice.Address} structures to see if they contain the same address
@@ -2572,7 +2572,7 @@ export namespace Nice {
          * Sets an IPv4 or IPv6 address from the sockaddr structure `sin`
          * @param sin The sockaddr to set
          */
-        set_from_sockaddr(sin: (any | null)): void;
+        set_from_sockaddr(sin: null): void;
 
         /**
          * Sets an IPv4 or IPv6 address from the string `str`
@@ -2767,12 +2767,12 @@ export namespace Nice {
         static $gtype: GObject.GType<PseudoTcpCallbacks>;
 
         // Fields
-        user_data: any;
+        user_data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            user_data: any;
+            user_data: null;
         }>);
     }
 

@@ -6066,7 +6066,7 @@ export namespace LibvirtGConfig {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            node: any;
+            node: never;
             schema: string;
         }
     }
@@ -6081,7 +6081,7 @@ export namespace LibvirtGConfig {
         /**
          * @construct-only
          */
-        get node(): any;
+        get node(): null;
 
         /**
          * @construct-only

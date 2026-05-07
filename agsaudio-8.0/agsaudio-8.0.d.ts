@@ -3311,7 +3311,7 @@ export namespace AgsAudio {
      * @param word_size 
      * @param mode 
      */
-    function char_buffer_util_copy_buffer_to_buffer(destination: (any | null), dchannels: number, doffset: number, source: (any | null), schannels: number, soffset: number, frame_count: number, byte_order: number, word_size: number, mode: CharBufferUtilCopyMode): void;
+    function char_buffer_util_copy_buffer_to_buffer(destination: null, dchannels: number, doffset: number, source: null, schannels: number, soffset: number, frame_count: number, byte_order: number, word_size: number, mode: CharBufferUtilCopyMode): void;
 
     /**
      * Copy char to double buffer.
@@ -3509,7 +3509,7 @@ export namespace AgsAudio {
      * @returns the base key of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_base_key(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_base_key(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get buffer length of `pitch_util`.
@@ -3518,7 +3518,7 @@ export namespace AgsAudio {
      * @returns the buffer length of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_buffer_length(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_buffer_length(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get destination of `pitch_util`.
@@ -3527,7 +3527,7 @@ export namespace AgsAudio {
      * @returns the destination of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_destination(pitch_util: (any | null), pitch_type: GObject.GType): (any | null);
+    function common_pitch_util_get_destination(pitch_util: null, pitch_type: GObject.GType): null;
 
     /**
      * Get destination stride of `pitch_util`.
@@ -3536,7 +3536,7 @@ export namespace AgsAudio {
      * @returns the destination stride of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_destination_stride(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_destination_stride(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get format of `pitch_util`.
@@ -3545,7 +3545,7 @@ export namespace AgsAudio {
      * @returns the format of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_format(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_format(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get frame count of `pitch_util`.
@@ -3554,7 +3554,7 @@ export namespace AgsAudio {
      * @returns the frame count of `pitch_util`
      * @since 6.1.0
      */
-    function common_pitch_util_get_frame_count(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_frame_count(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get note 256th mode of `pitch_util`.
@@ -3563,7 +3563,7 @@ export namespace AgsAudio {
      * @returns `true` if note 256th mode of `pitch_util`, otherwise `false`
      * @since 6.1.0
      */
-    function common_pitch_util_get_note_256th_mode(pitch_util: (any | null), pitch_type: GObject.GType): boolean;
+    function common_pitch_util_get_note_256th_mode(pitch_util: null, pitch_type: GObject.GType): boolean;
 
     /**
      * Get offset of `pitch_util`.
@@ -3572,7 +3572,7 @@ export namespace AgsAudio {
      * @returns the offset of `pitch_util`
      * @since 6.1.0
      */
-    function common_pitch_util_get_offset(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_offset(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get offset note 256th of `pitch_util`.
@@ -3581,7 +3581,7 @@ export namespace AgsAudio {
      * @returns the offset note 256th of `pitch_util`
      * @since 6.1.0
      */
-    function common_pitch_util_get_offset_256th(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_offset_256th(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get samplerate of `pitch_util`.
@@ -3590,7 +3590,7 @@ export namespace AgsAudio {
      * @returns the samplerate of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_samplerate(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_samplerate(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get source of `pitch_util`.
@@ -3599,7 +3599,7 @@ export namespace AgsAudio {
      * @returns the source of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_source(pitch_util: (any | null), pitch_type: GObject.GType): (any | null);
+    function common_pitch_util_get_source(pitch_util: null, pitch_type: GObject.GType): null;
 
     /**
      * Get source stride of `pitch_util`.
@@ -3608,7 +3608,7 @@ export namespace AgsAudio {
      * @returns the source stride of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_source_stride(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_source_stride(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get tuning of `pitch_util`.
@@ -3617,7 +3617,7 @@ export namespace AgsAudio {
      * @returns the tuning of `pitch_util`
      * @since 4.0.0
      */
-    function common_pitch_util_get_tuning(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_tuning(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get vibrato enabled of `pitch_util`.
@@ -3626,7 +3626,7 @@ export namespace AgsAudio {
      * @returns the vibrato enabled of `pitch_util`
      * @since 5.2.0
      */
-    function common_pitch_util_get_vibrato_enabled(pitch_util: (any | null), pitch_type: GObject.GType): boolean;
+    function common_pitch_util_get_vibrato_enabled(pitch_util: null, pitch_type: GObject.GType): boolean;
 
     /**
      * Get vibrato_gain of `pitch_util`.
@@ -3635,7 +3635,7 @@ export namespace AgsAudio {
      * @returns the vibrato_gain of `pitch_util`
      * @since 5.2.0
      */
-    function common_pitch_util_get_vibrato_gain(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_vibrato_gain(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get vibrato LFO depth of `pitch_util`.
@@ -3644,7 +3644,7 @@ export namespace AgsAudio {
      * @returns the vibrato LFO depth of `pitch_util`
      * @since 5.2.0
      */
-    function common_pitch_util_get_vibrato_lfo_depth(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_vibrato_lfo_depth(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get vibrato LFO frequency of `pitch_util`.
@@ -3653,7 +3653,7 @@ export namespace AgsAudio {
      * @returns the vibrato LFO frequency of `pitch_util`
      * @since 5.2.0
      */
-    function common_pitch_util_get_vibrato_lfo_freq(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_vibrato_lfo_freq(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Get vibrato tuning of `pitch_util`.
@@ -3662,7 +3662,7 @@ export namespace AgsAudio {
      * @returns the vibrato tuning of `pitch_util`
      * @since 5.2.0
      */
-    function common_pitch_util_get_vibrato_tuning(pitch_util: (any | null), pitch_type: GObject.GType): number;
+    function common_pitch_util_get_vibrato_tuning(pitch_util: null, pitch_type: GObject.GType): number;
 
     /**
      * Pitch `pitch_util`.
@@ -3670,7 +3670,7 @@ export namespace AgsAudio {
      * @param pitch_type the pitch type
      * @since 4.0.0
      */
-    function common_pitch_util_pitch(pitch_util: (any | null), pitch_type: GObject.GType): void;
+    function common_pitch_util_pitch(pitch_util: null, pitch_type: GObject.GType): void;
 
     /**
      * Set `base_key` of `pitch_util`.
@@ -3679,7 +3679,7 @@ export namespace AgsAudio {
      * @param base_key the base key
      * @since 4.0.0
      */
-    function common_pitch_util_set_base_key(pitch_util: (any | null), pitch_type: GObject.GType, base_key: number): void;
+    function common_pitch_util_set_base_key(pitch_util: null, pitch_type: GObject.GType, base_key: number): void;
 
     /**
      * Set `buffer_length` of `pitch_util`.
@@ -3688,7 +3688,7 @@ export namespace AgsAudio {
      * @param buffer_length the buffer length
      * @since 4.0.0
      */
-    function common_pitch_util_set_buffer_length(pitch_util: (any | null), pitch_type: GObject.GType, buffer_length: number): void;
+    function common_pitch_util_set_buffer_length(pitch_util: null, pitch_type: GObject.GType, buffer_length: number): void;
 
     /**
      * Set `destination` of `pitch_util`.
@@ -3697,7 +3697,7 @@ export namespace AgsAudio {
      * @param destination the destination
      * @since 4.0.0
      */
-    function common_pitch_util_set_destination(pitch_util: (any | null), pitch_type: GObject.GType, destination: (any | null)): void;
+    function common_pitch_util_set_destination(pitch_util: null, pitch_type: GObject.GType, destination: null): void;
 
     /**
      * Set `destination_stride` of `pitch_util`.
@@ -3706,7 +3706,7 @@ export namespace AgsAudio {
      * @param destination_stride the destination stride
      * @since 4.0.0
      */
-    function common_pitch_util_set_destination_stride(pitch_util: (any | null), pitch_type: GObject.GType, destination_stride: number): void;
+    function common_pitch_util_set_destination_stride(pitch_util: null, pitch_type: GObject.GType, destination_stride: number): void;
 
     /**
      * Set `format` of `pitch_util`.
@@ -3715,7 +3715,7 @@ export namespace AgsAudio {
      * @param format the format
      * @since 4.0.0
      */
-    function common_pitch_util_set_format(pitch_util: (any | null), pitch_type: GObject.GType, format: number): void;
+    function common_pitch_util_set_format(pitch_util: null, pitch_type: GObject.GType, format: number): void;
 
     /**
      * Set `frame_count` of `pitch_util`.
@@ -3724,7 +3724,7 @@ export namespace AgsAudio {
      * @param frame_count the frame count
      * @since 6.1.0
      */
-    function common_pitch_util_set_frame_count(pitch_util: (any | null), pitch_type: GObject.GType, frame_count: number): void;
+    function common_pitch_util_set_frame_count(pitch_util: null, pitch_type: GObject.GType, frame_count: number): void;
 
     /**
      * Set `note_256th_mode` of `pitch_util`.
@@ -3733,7 +3733,7 @@ export namespace AgsAudio {
      * @param note_256th_mode `true` if note 256th mode, otherwise `false`
      * @since 6.1.0
      */
-    function common_pitch_util_set_note_256th_mode(pitch_util: (any | null), pitch_type: GObject.GType, note_256th_mode: boolean): void;
+    function common_pitch_util_set_note_256th_mode(pitch_util: null, pitch_type: GObject.GType, note_256th_mode: boolean): void;
 
     /**
      * Set `offset` of `pitch_util`.
@@ -3742,7 +3742,7 @@ export namespace AgsAudio {
      * @param offset the offset
      * @since 6.1.0
      */
-    function common_pitch_util_set_offset(pitch_util: (any | null), pitch_type: GObject.GType, offset: number): void;
+    function common_pitch_util_set_offset(pitch_util: null, pitch_type: GObject.GType, offset: number): void;
 
     /**
      * Set `offset_256th` of `pitch_util`.
@@ -3751,7 +3751,7 @@ export namespace AgsAudio {
      * @param offset_256th the offset note 256th
      * @since 6.1.0
      */
-    function common_pitch_util_set_offset_256th(pitch_util: (any | null), pitch_type: GObject.GType, offset_256th: number): void;
+    function common_pitch_util_set_offset_256th(pitch_util: null, pitch_type: GObject.GType, offset_256th: number): void;
 
     /**
      * Set `samplerate` of `pitch_util`.
@@ -3760,7 +3760,7 @@ export namespace AgsAudio {
      * @param samplerate the samplerate
      * @since 4.0.0
      */
-    function common_pitch_util_set_samplerate(pitch_util: (any | null), pitch_type: GObject.GType, samplerate: number): void;
+    function common_pitch_util_set_samplerate(pitch_util: null, pitch_type: GObject.GType, samplerate: number): void;
 
     /**
      * Set `source` of `pitch_util`.
@@ -3769,7 +3769,7 @@ export namespace AgsAudio {
      * @param source the source
      * @since 4.0.0
      */
-    function common_pitch_util_set_source(pitch_util: (any | null), pitch_type: GObject.GType, source: (any | null)): void;
+    function common_pitch_util_set_source(pitch_util: null, pitch_type: GObject.GType, source: null): void;
 
     /**
      * Set `source_stride` of `pitch_util`.
@@ -3778,7 +3778,7 @@ export namespace AgsAudio {
      * @param source_stride the source stride
      * @since 4.0.0
      */
-    function common_pitch_util_set_source_stride(pitch_util: (any | null), pitch_type: GObject.GType, source_stride: number): void;
+    function common_pitch_util_set_source_stride(pitch_util: null, pitch_type: GObject.GType, source_stride: number): void;
 
     /**
      * Set `tuning` of `pitch_util`.
@@ -3787,7 +3787,7 @@ export namespace AgsAudio {
      * @param tuning the tuning
      * @since 4.0.0
      */
-    function common_pitch_util_set_tuning(pitch_util: (any | null), pitch_type: GObject.GType, tuning: number): void;
+    function common_pitch_util_set_tuning(pitch_util: null, pitch_type: GObject.GType, tuning: number): void;
 
     /**
      * Set `vibrato_enabled` of `pitch_util`.
@@ -3796,7 +3796,7 @@ export namespace AgsAudio {
      * @param vibrato_enabled the vibrato enabled
      * @since 5.2.0
      */
-    function common_pitch_util_set_vibrato_enabled(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_enabled: boolean): void;
+    function common_pitch_util_set_vibrato_enabled(pitch_util: null, pitch_type: GObject.GType, vibrato_enabled: boolean): void;
 
     /**
      * Set `vibrato_gain` of `pitch_util`.
@@ -3805,7 +3805,7 @@ export namespace AgsAudio {
      * @param vibrato_gain the vibrato_gain
      * @since 5.2.0
      */
-    function common_pitch_util_set_vibrato_gain(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_gain: number): void;
+    function common_pitch_util_set_vibrato_gain(pitch_util: null, pitch_type: GObject.GType, vibrato_gain: number): void;
 
     /**
      * Set `vibrato_lfo_depth` of `pitch_util`.
@@ -3814,7 +3814,7 @@ export namespace AgsAudio {
      * @param vibrato_lfo_depth the vibrato LFO depth
      * @since 5.2.0
      */
-    function common_pitch_util_set_vibrato_lfo_depth(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_lfo_depth: number): void;
+    function common_pitch_util_set_vibrato_lfo_depth(pitch_util: null, pitch_type: GObject.GType, vibrato_lfo_depth: number): void;
 
     /**
      * Set `vibrato_lfo_freq` of `pitch_util`.
@@ -3823,7 +3823,7 @@ export namespace AgsAudio {
      * @param vibrato_lfo_freq the vibrato LFO frequency
      * @since 5.2.0
      */
-    function common_pitch_util_set_vibrato_lfo_freq(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_lfo_freq: number): void;
+    function common_pitch_util_set_vibrato_lfo_freq(pitch_util: null, pitch_type: GObject.GType, vibrato_lfo_freq: number): void;
 
     /**
      * Set `vibrato_tuning` of `pitch_util`.
@@ -3832,7 +3832,7 @@ export namespace AgsAudio {
      * @param vibrato_tuning the vibrato tuning
      * @since 5.2.0
      */
-    function common_pitch_util_set_vibrato_tuning(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_tuning: number): void;
+    function common_pitch_util_set_vibrato_tuning(pitch_util: null, pitch_type: GObject.GType, vibrato_tuning: number): void;
 
     /**
      * Convert MIDI `key` to note name and store in `note`.
@@ -3937,14 +3937,14 @@ export namespace AgsAudio {
      * @returns the new {@link AgsAudio.FxAnalyseChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_analyse_channel_input_data_alloc(): (any | null);
+    function fx_analyse_channel_input_data_alloc(): null;
 
     /**
      * Free `input_data`.
      * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_analyse_channel_input_data_free(input_data: (any | null)): void;
+    function fx_analyse_channel_input_data_free(input_data: null): void;
 
     /**
      * Get structure mutex.
@@ -3952,21 +3952,21 @@ export namespace AgsAudio {
      * @returns the {@link GLib.RecMutex} to lock `input_data`
      * @since 3.3.0
      */
-    function fx_analyse_channel_input_data_get_strct_mutex(input_data: (any | null)): (any | null);
+    function fx_analyse_channel_input_data_get_strct_mutex(input_data: null): null;
 
     /**
      * Allocate {@link AgsAudio.FxBufferChannelInputData}-struct
      * @returns the new {@link AgsAudio.FxBufferChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_buffer_channel_input_data_alloc(): (any | null);
+    function fx_buffer_channel_input_data_alloc(): null;
 
     /**
      * Free `input_data`.
      * @param input_data the {@link AgsAudio.FxBufferChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_buffer_channel_input_data_free(input_data: (any | null)): void;
+    function fx_buffer_channel_input_data_free(input_data: null): void;
 
     /**
      * Get structure mutex.
@@ -3974,35 +3974,35 @@ export namespace AgsAudio {
      * @returns the {@link GLib.RecMutex} to lock `input_data`
      * @since 3.3.0
      */
-    function fx_buffer_channel_input_data_get_strct_mutex(input_data: (any | null)): (any | null);
+    function fx_buffer_channel_input_data_get_strct_mutex(input_data: null): null;
 
     /**
      * Allocate {@link AgsAudio.FxEq10ChannelInputData}-struct
      * @returns the new {@link AgsAudio.FxEq10ChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_eq10_channel_input_data_alloc(): (any | null);
+    function fx_eq10_channel_input_data_alloc(): null;
 
     /**
      * Free `input_data`.
      * @param input_data the {@link AgsAudio.FxEq10ChannelInputData}-struct
      * @since 3.3.0
      */
-    function fx_eq10_channel_input_data_free(input_data: (any | null)): void;
+    function fx_eq10_channel_input_data_free(input_data: null): void;
 
     /**
      * Allocate {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
      * @returns the new {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
      * @since 3.8.0
      */
-    function fx_two_pass_aliase_channel_input_data_alloc(): (any | null);
+    function fx_two_pass_aliase_channel_input_data_alloc(): null;
 
     /**
      * Free `input_data`.
      * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
      * @since 3.8.0
      */
-    function fx_two_pass_aliase_channel_input_data_free(input_data: (any | null)): void;
+    function fx_two_pass_aliase_channel_input_data_free(input_data: null): void;
 
     /**
      * Get structure mutex.
@@ -4010,7 +4010,7 @@ export namespace AgsAudio {
      * @returns the {@link GLib.RecMutex} to lock `input_data`
      * @since 3.8.0
      */
-    function fx_two_pass_aliase_channel_input_data_get_strct_mutex(input_data: (any | null)): (any | null);
+    function fx_two_pass_aliase_channel_input_data_get_strct_mutex(input_data: null): null;
 
     /**
      * Allocate {@link AgsAudio.HQPitchUtil}-struct.
@@ -4045,7 +4045,7 @@ export namespace AgsAudio {
      * @returns the newly created {@link AgsAudio.Lv2OptionRessource}-struct
      * @since 3.0.0
      */
-    function lv2_option_ressource_alloc(): (any | null);
+    function lv2_option_ressource_alloc(): null;
 
     /**
      * Allocated {@link AgsAudio.Lv2PortPreset}-struct.
@@ -4054,14 +4054,14 @@ export namespace AgsAudio {
      * @returns the new {@link AgsAudio.Lv2PortPreset}-struct.
      * @since 3.0.0
      */
-    function lv2_port_preset_alloc(port_symbol: string, port_type: GObject.GType): (any | null);
+    function lv2_port_preset_alloc(port_symbol: string, port_type: GObject.GType): null;
 
     /**
      * Free `lv2_port_preset`.
      * @param lv2_port_preset the {@link AgsAudio.Lv2PortPreset}-struct
      * @since 3.0.0
      */
-    function lv2_port_preset_free(lv2_port_preset: (any | null)): void;
+    function lv2_port_preset_free(lv2_port_preset: null): void;
 
     /**
      * @param midi_file 
@@ -4073,28 +4073,28 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.MidiBuilderHeader}-struct
      * @since 3.0.0
      */
-    function midi_builder_header_alloc(): (any | null);
+    function midi_builder_header_alloc(): null;
 
     /**
      * Free MIDI builder header.
      * @param midi_builder_header the {@link AgsAudio.MidiBuilderHeader}-struct
      * @since 3.0.0
      */
-    function midi_builder_header_free(midi_builder_header: (any | null)): void;
+    function midi_builder_header_free(midi_builder_header: null): void;
 
     /**
      * Allocate MIDI builder track.
      * @returns the newly allocated {@link AgsAudio.MidiBuilderTrack}-struct
      * @since 3.0.0
      */
-    function midi_builder_track_alloc(): (any | null);
+    function midi_builder_track_alloc(): null;
 
     /**
      * Free MIDI builder track.
      * @param midi_builder_track the {@link AgsAudio.MidiBuilderTrack}-struct
      * @since 3.0.0
      */
-    function midi_builder_track_free(midi_builder_track: (any | null)): void;
+    function midi_builder_track_free(midi_builder_track: null): void;
 
     /**
      * Allocate MIDI CI util.
@@ -4144,14 +4144,14 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderBundle}-struct
      * @since 3.0.0
      */
-    function osc_builder_bundle_alloc(offset: (bigint | number)): (any | null);
+    function osc_builder_bundle_alloc(offset: (bigint | number)): null;
 
     /**
      * Free `bundle`.
      * @param bundle the {@link AgsAudio.OscBuilderBundle}-struct
      * @since 3.0.0
      */
-    function osc_builder_bundle_free(bundle: (any | null)): void;
+    function osc_builder_bundle_free(bundle: null): void;
 
     /**
      * Allocate {@link AgsAudio.OscBuilderMessage}-struct.
@@ -4159,14 +4159,14 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderMessage}-struct
      * @since 3.0.0
      */
-    function osc_builder_message_alloc(offset: (bigint | number)): (any | null);
+    function osc_builder_message_alloc(offset: (bigint | number)): null;
 
     /**
      * Free `message`.
      * @param message the {@link AgsAudio.OscBuilderMessage}-struct
      * @since 3.0.0
      */
-    function osc_builder_message_free(message: (any | null)): void;
+    function osc_builder_message_free(message: null): void;
 
     /**
      * Allocate {@link AgsAudio.OscBuilderPacket}-struct.
@@ -4174,35 +4174,35 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderPacket}-struct
      * @since 3.0.0
      */
-    function osc_builder_packet_alloc(offset: (bigint | number)): (any | null);
+    function osc_builder_packet_alloc(offset: (bigint | number)): null;
 
     /**
      * Free `packet`.
      * @param packet the {@link AgsAudio.OscBuilderPacket}-struct
      * @since 3.0.0
      */
-    function osc_builder_packet_free(packet: (any | null)): void;
+    function osc_builder_packet_free(packet: null): void;
 
     /**
      * Allocate {@link AgsAudio.OscMeterControllerMonitor}-struct.
      * @returns the newly allocate {@link AgsAudio.OscMeterControllerMonitor}-struct
      * @since 3.0.0
      */
-    function osc_meter_controller_monitor_alloc(): (any | null);
+    function osc_meter_controller_monitor_alloc(): null;
 
     /**
      * Free `monitor`.
      * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
      * @since 3.0.0
      */
-    function osc_meter_controller_monitor_free(monitor: (any | null)): void;
+    function osc_meter_controller_monitor_free(monitor: null): void;
 
     /**
      * Increase reference count of `monitor`.
      * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
      * @since 3.0.0
      */
-    function osc_meter_controller_monitor_ref(monitor: (any | null)): void;
+    function osc_meter_controller_monitor_ref(monitor: null): void;
 
     /**
      * Decrease reference count of `monitor`. If ref count is less or equal 0
@@ -4210,7 +4210,7 @@ export namespace AgsAudio {
      * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
      * @since 3.0.0
      */
-    function osc_meter_controller_monitor_unref(monitor: (any | null)): void;
+    function osc_meter_controller_monitor_unref(monitor: null): void;
 
     /**
      * Allocate OSC util.
@@ -4325,14 +4325,14 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.RecallHandler}-struct
      * @since 3.0.0
      */
-    function recall_handler_alloc(signal_name: string, callback: GObject.Callback, data: GObject.Object): (any | null);
+    function recall_handler_alloc(signal_name: string, callback: GObject.Callback, data: GObject.Object): null;
 
     /**
      * Free `recall_hanlder`.
      * @param recall_handler the {@link AgsAudio.RecallHandler}-struct
      * @since 3.0.0
      */
-    function recall_handler_free(recall_handler: (any | null)): void;
+    function recall_handler_free(recall_handler: null): void;
 
     /**
      * Allocate {@link AgsAudio.ResampleUtil}-struct
@@ -4448,14 +4448,14 @@ export namespace AgsAudio {
      * @returns the audio data array
      * @since 3.0.0
      */
-    function stream_alloc(buffer_size: number, format: Ags.SoundcardFormat): (any | null);
+    function stream_alloc(buffer_size: number, format: Ags.SoundcardFormat): null;
 
     /**
      * Frees an audio buffer.
      * @param buffer the buffer
      * @since 3.0.0
      */
-    function stream_free(buffer: (any | null)): void;
+    function stream_free(buffer: null): void;
 
     /**
      * Allocs an audio buffer.
@@ -4464,7 +4464,7 @@ export namespace AgsAudio {
      * @returns the audio data array
      * @since 3.3.0
      */
-    function stream_slice_alloc(buffer_size: number, format: Ags.SoundcardFormat): (any | null);
+    function stream_slice_alloc(buffer_size: number, format: Ags.SoundcardFormat): null;
 
     /**
      * Frees an audio buffer.
@@ -4473,7 +4473,7 @@ export namespace AgsAudio {
      * @param buffer the buffer
      * @since 3.3.0
      */
-    function stream_slice_free(buffer_size: number, format: Ags.SoundcardFormat, buffer: (any | null)): void;
+    function stream_slice_free(buffer_size: number, format: Ags.SoundcardFormat, buffer: null): void;
 
     /**
      * Allocate {@link AgsAudio.SynthUtil}-struct
@@ -8363,7 +8363,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.Acceleration}
          * @param b an other {@link AgsAudio.Acceleration}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -8955,9 +8955,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -8984,7 +8984,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -8999,7 +8999,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -9334,7 +9334,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -9381,7 +9381,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -9443,7 +9443,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -9496,7 +9496,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -9599,20 +9599,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -9636,7 +9636,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -9684,7 +9684,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -9751,7 +9751,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -9806,7 +9806,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -9925,14 +9925,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -9940,7 +9940,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -9961,9 +9961,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -9990,7 +9990,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -10005,7 +10005,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -10340,7 +10340,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -10387,7 +10387,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -10449,7 +10449,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -10502,7 +10502,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -10605,20 +10605,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -10642,7 +10642,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -10690,7 +10690,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -10757,7 +10757,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -10812,7 +10812,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -10931,14 +10931,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -10946,7 +10946,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -10962,9 +10962,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Sequencer.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             delay_factor: number;
             delayFactor: number;
             device: string;
@@ -10983,7 +10983,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -10998,7 +10998,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * tact
@@ -11248,7 +11248,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): (any | null);
+        get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -11273,7 +11273,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): (any | null);
+        get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -11314,7 +11314,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -11386,7 +11386,7 @@ export namespace AgsAudio {
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Get current playback bpm.
@@ -11399,7 +11399,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_buffer(buffer_length: number): (any | null);
+        vfunc_get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -11424,7 +11424,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_next_buffer(buffer_length: number): (any | null);
+        vfunc_get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -11467,7 +11467,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -11558,7 +11558,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
     }
 
 
@@ -11774,9 +11774,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends Ags.Task.ConstructorProps {
-            synth: any;
-            synth_template: any;
-            synthTemplate: any;
+            synth: never;
+            synth_template: never;
+            synthTemplate: never;
         }
     }
 
@@ -11791,22 +11791,22 @@ export namespace AgsAudio {
          * The synth to apply.
          * @since 3.16.0
          */
-        get synth(): any;
-        set synth(val: any);
+        get synth(): null;
+        set synth(val: never);
 
         /**
          * The synth template to apply.
          * @since 3.16.0
          */
-        get synth_template(): any;
-        set synth_template(val: any);
+        get synth_template(): null;
+        set synth_template(val: never);
 
         /**
          * The synth template to apply.
          * @since 3.16.0
          */
-        get synthTemplate(): any;
-        set synthTemplate(val: any);
+        get synthTemplate(): null;
+        set synthTemplate(val: never);
 
         /**
          * Compile-time signal type information.
@@ -11984,9 +11984,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends Ags.Task.ConstructorProps {
-            synth: any;
-            synth_template: any;
-            synthTemplate: any;
+            synth: never;
+            synth_template: never;
+            synthTemplate: never;
         }
     }
 
@@ -12001,22 +12001,22 @@ export namespace AgsAudio {
          * The synth to apply.
          * @since 3.17.0
          */
-        get synth(): any;
-        set synth(val: any);
+        get synth(): null;
+        set synth(val: never);
 
         /**
          * The synth template to apply.
          * @since 3.17.0
          */
-        get synth_template(): any;
-        set synth_template(val: any);
+        get synth_template(): null;
+        set synth_template(val: never);
 
         /**
          * The synth template to apply.
          * @since 3.17.0
          */
-        get synthTemplate(): any;
-        set synthTemplate(val: any);
+        get synthTemplate(): null;
+        set synthTemplate(val: never);
 
         /**
          * Compile-time signal type information.
@@ -12570,7 +12570,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "check-scope": (arg0: number) => (any | null);
+            "check-scope": (arg0: number) => null;
             /**
              * The ::cleanup-recall signal notifies about cleanup recalls.
              * @signal
@@ -12636,7 +12636,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "set-pads": (arg0: (any | null), arg1: number, arg2: number) => void;
+            "set-pads": (arg0: null, arg1: number, arg2: number) => void;
             /**
              * The ::start signal is invoked while starting playback
              * of `audio`.
@@ -12644,7 +12644,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            start: (arg0: number) => (any | null);
+            start: (arg0: number) => null;
             /**
              * The ::stop signal is invoked while stoping playback
              * of `audio`.
@@ -12652,7 +12652,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            stop: (arg0: (any | null), arg1: number) => void;
+            stop: (arg0: null, arg1: number) => void;
             "notify::absolute-key": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channels": (pspec: GObject.ParamSpec) => void;
             "notify::audio-end-mapping": (pspec: GObject.ParamSpec) => void;
@@ -13605,9 +13605,9 @@ export namespace AgsAudio {
 
         track_name: string;
 
-        machine_widget: any;
+        machine_widget: null;
 
-        file_data: any;
+        file_data: null;
 
         // Constructors
         constructor(properties?: Partial<Audio.ConstructorProps>, ...args: any[]);
@@ -14975,7 +14975,7 @@ export namespace AgsAudio {
 
         thread_pool: Ags.ThreadPool;
 
-        worker: any[];
+        worker: null[];
 
         
     // This field conflicts with a function in a parent class or interface.
@@ -14985,7 +14985,7 @@ export namespace AgsAudio {
 
         registry: Ags.Registry;
 
-        server: any[];
+        server: null[];
 
         default_soundcard: GObject.Object;
 
@@ -14993,19 +14993,19 @@ export namespace AgsAudio {
 
         default_export_thread: Ags.Thread;
 
-        soundcard: any[];
+        soundcard: null[];
 
-        sequencer: any[];
+        sequencer: null[];
 
-        audio: any[];
+        audio: null[];
 
-        sound_server: any[];
+        sound_server: null[];
 
-        osc_server: any[];
+        osc_server: null[];
 
-        program: any[];
+        program: null[];
 
-        tempo: any[];
+        tempo: null[];
 
         start_loader: boolean;
 
@@ -15021,13 +15021,13 @@ export namespace AgsAudio {
 
         vst3_loading: boolean;
 
-        ladspa_loader: any[];
+        ladspa_loader: null[];
 
-        dssi_loader: any[];
+        dssi_loader: null[];
 
-        lv2_loader: any[];
+        lv2_loader: null[];
 
-        vst3_loader: any[];
+        vst3_loader: null[];
 
         lv2_turtle_scanner: Lv2TurtleScanner;
 
@@ -15897,7 +15897,7 @@ export namespace AgsAudio {
          * @param audio_channel nth channel
          * @param format the format
          */
-        read(audio_channel: number, format: Ags.SoundcardFormat): (any | null);
+        read(audio_channel: number, format: Ags.SoundcardFormat): null;
 
         /**
          * Convert the {@link AgsAudio.AudioContainer} to a {@link GLib.List}-struct of {@link AgsAudio.AudioSignal}.
@@ -15942,7 +15942,7 @@ export namespace AgsAudio {
          * @param buffer_size 
          * @param format 
          */
-        write(buffer: (any | null), buffer_size: number, format: Ags.SoundcardFormat): void;
+        write(buffer: null, buffer_size: number, format: Ags.SoundcardFormat): void;
 
         /**
          * Add connectable to registry.
@@ -16114,8 +16114,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            audio_container: any;
-            audioContainer: any;
+            audio_container: never;
+            audioContainer: never;
         }
     }
 
@@ -16130,15 +16130,15 @@ export namespace AgsAudio {
          * The {@link GLib.List}-struct containing {@link AgsAudio.AudioContainer}.
          * @since 3.4.0
          */
-        get audio_container(): any;
-        set audio_container(val: any);
+        get audio_container(): null;
+        set audio_container(val: never);
 
         /**
          * The {@link GLib.List}-struct containing {@link AgsAudio.AudioContainer}.
          * @since 3.4.0
          */
-        get audioContainer(): any;
-        set audioContainer(val: any);
+        get audioContainer(): null;
+        set audioContainer(val: never);
 
         /**
          * Compile-time signal type information.
@@ -16532,7 +16532,7 @@ export namespace AgsAudio {
          * @param audio_channel nth channel
          * @param format the format
          */
-        read(audio_channel: number, format: number): (any | null);
+        read(audio_channel: number, format: number): null;
 
         /**
          * Convert the {@link AgsAudio.AudioFile} to a {@link GLib.List}-struct of {@link AgsAudio.AudioSignal}.
@@ -16658,7 +16658,7 @@ export namespace AgsAudio {
          * @param buffer_size the count of frames to write
          * @param format the format
          */
-        write(buffer: (any | null), buffer_size: number, format: number): void;
+        write(buffer: null, buffer_size: number, format: number): void;
 
         /**
          * Add connectable to registry.
@@ -17061,7 +17061,7 @@ export namespace AgsAudio {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -17083,7 +17083,7 @@ export namespace AgsAudio {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -17101,8 +17101,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            audio_file: any;
-            audioFile: any;
+            audio_file: never;
+            audioFile: never;
         }
     }
 
@@ -17117,15 +17117,15 @@ export namespace AgsAudio {
          * The {@link GLib.List}-struct containing {@link AgsAudio.AudioFile}.
          * @since 3.4.0
          */
-        get audio_file(): any;
-        set audio_file(val: any);
+        get audio_file(): null;
+        set audio_file(val: never);
 
         /**
          * The {@link GLib.List}-struct containing {@link AgsAudio.AudioFile}.
          * @since 3.4.0
          */
-        get audioFile(): any;
-        set audioFile(val: any);
+        get audioFile(): null;
+        set audioFile(val: never);
 
         /**
          * Compile-time signal type information.
@@ -17718,11 +17718,11 @@ export namespace AgsAudio {
             rt_template: AudioSignal;
             rtTemplate: AudioSignal;
             samplerate: number;
-            stream: any;
-            stream_current: any;
-            streamCurrent: any;
-            stream_end: any;
-            streamEnd: any;
+            stream: never;
+            stream_current: never;
+            streamCurrent: never;
+            stream_end: never;
+            streamEnd: never;
             timbre_end: number;
             timbreEnd: number;
             timbre_start: number;
@@ -18020,35 +18020,35 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get stream(): any;
+        get stream(): null;
 
         /**
          * The current stream.
          * @since 3.0.0
          * @read-only
          */
-        get stream_current(): any;
+        get stream_current(): null;
 
         /**
          * The current stream.
          * @since 3.0.0
          * @read-only
          */
-        get streamCurrent(): any;
+        get streamCurrent(): null;
 
         /**
          * The end of stream.
          * @since 3.0.0
          * @read-only
          */
-        get stream_end(): any;
+        get stream_end(): null;
 
         /**
          * The end of stream.
          * @since 3.0.0
          * @read-only
          */
-        get streamEnd(): any;
+        get streamEnd(): null;
 
         /**
          * The timbre's end frame.
@@ -19005,7 +19005,7 @@ export namespace AgsAudio {
 
         staging_program_count: number;
 
-        tree_list: any[];
+        tree_list: null[];
 
         tree_list_stamp: number;
 
@@ -19431,13 +19431,13 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             audio_unit_client: AudioUnitClient;
             audioUnitClient: AudioUnitClient;
-            audio_unit_port: any;
-            audioUnitPort: any;
+            audio_unit_port: never;
+            audioUnitPort: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -19464,7 +19464,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * The assigned {@link AgsAudio.AudioUnitClient}
@@ -19484,15 +19484,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.AudioUnitPort}
          * @since 3.0.0
          */
-        get audio_unit_port(): any;
-        set audio_unit_port(val: any);
+        get audio_unit_port(): null;
+        set audio_unit_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.AudioUnitPort}
          * @since 3.0.0
          */
-        get audioUnitPort(): any;
-        set audioUnitPort(val: any);
+        get audioUnitPort(): null;
+        set audioUnitPort(val: never);
 
         /**
          * Beats per minute
@@ -19507,7 +19507,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -19619,7 +19619,7 @@ export namespace AgsAudio {
 
         app_buffer_mode: AudioUnitDevinAppBufferMode;
 
-        app_buffer: any;
+        app_buffer: null;
 
         sub_block_count: number;
 
@@ -19893,7 +19893,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -19940,7 +19940,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -20002,7 +20002,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -20055,7 +20055,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -20158,20 +20158,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -20195,7 +20195,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -20243,7 +20243,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -20310,7 +20310,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -20365,7 +20365,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -20484,14 +20484,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -20499,7 +20499,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -20522,13 +20522,13 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             audio_unit_client: AudioUnitClient;
             audioUnitClient: AudioUnitClient;
-            audio_unit_port: any;
-            audioUnitPort: any;
+            audio_unit_port: never;
+            audioUnitPort: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -20555,7 +20555,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * The assigned {@link AgsAudio.AudioUnitClient}
@@ -20575,15 +20575,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.AudioUnitPort}
          * @since 3.0.0
          */
-        get audio_unit_port(): any;
-        set audio_unit_port(val: any);
+        get audio_unit_port(): null;
+        set audio_unit_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.AudioUnitPort}
          * @since 3.0.0
          */
-        get audioUnitPort(): any;
-        set audioUnitPort(val: any);
+        get audioUnitPort(): null;
+        set audioUnitPort(val: never);
 
         /**
          * Beats per minute
@@ -20598,7 +20598,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -20712,7 +20712,7 @@ export namespace AgsAudio {
 
         sub_block_count: number;
 
-        app_buffer: any;
+        app_buffer: null;
 
         delay: number;
 
@@ -20984,7 +20984,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -21031,7 +21031,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -21093,7 +21093,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -21146,7 +21146,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -21249,20 +21249,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -21286,7 +21286,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -21334,7 +21334,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -21401,7 +21401,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -21456,7 +21456,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -21575,14 +21575,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -21590,7 +21590,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -21692,19 +21692,19 @@ export namespace AgsAudio {
 
         format: Ags.SoundcardFormat;
 
-        data_format: any;
+        data_format: null;
 
-        graph: any;
+        graph: null;
 
-        description: any;
+        description: null;
 
-        node: any;
+        node: null;
 
-        audio_component: any;
+        audio_component: null;
 
-        audio_unit: any;
+        audio_unit: null;
 
-        render_callback: any;
+        render_callback: null;
 
         midi_port_number: number;
 
@@ -22081,7 +22081,7 @@ export namespace AgsAudio {
 
         input_client: GObject.Object;
 
-        client: any[];
+        client: null[];
 
         // Constructors
         constructor(properties?: Partial<AudioUnitServer.ConstructorProps>, ...args: any[]);
@@ -22526,8 +22526,8 @@ export namespace AgsAudio {
             audio: Audio;
             channel_type: GObject.GTypeInput;
             channelType: GObject.GTypeInput;
-            control_key: (any | null);
-            controlKey: (any | null);
+            control_key: never;
+            controlKey: never;
             control_name: string;
             controlName: string;
             default_value: number;
@@ -22580,15 +22580,15 @@ export namespace AgsAudio {
          * The effect's assigned control key.
          * @since 5.4.0
          */
-        get control_key(): (any | null);
-        set control_key(val: (any | null));
+        get control_key(): null;
+        set control_key(val: never);
 
         /**
          * The effect's assigned control key.
          * @since 5.4.0
          */
-        get controlKey(): (any | null);
-        set controlKey(val: (any | null));
+        get controlKey(): null;
+        set controlKey(val: never);
 
         /**
          * The effect's assigned control name.
@@ -22684,7 +22684,7 @@ export namespace AgsAudio {
 
         source_function: Ags.Function;
 
-        selection: any[];
+        selection: null[];
 
         // Constructors
         constructor(properties?: Partial<Automation.ConstructorProps>, ...args: any[]);
@@ -22802,7 +22802,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.Automation}
          * @param b an other {@link AgsAudio.Automation}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -22893,7 +22893,7 @@ export namespace AgsAudio {
          * Get control key.
          * @returns the control key
          */
-        get_control_key(): (any | null);
+        get_control_key(): null;
 
         /**
          * Get control name.
@@ -23040,7 +23040,7 @@ export namespace AgsAudio {
          * Set control key.
          * @param control_key the control key
          */
-        set_control_key(control_key: (any | null)): void;
+        set_control_key(control_key: null): void;
 
         /**
          * Set control name.
@@ -23119,8 +23119,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            control_name_key: any;
-            controlNameKey: any;
+            control_name_key: never;
+            controlNameKey: never;
         }
     }
 
@@ -23135,15 +23135,15 @@ export namespace AgsAudio {
          * The {@link GLib.HashTable}-struct containing gpointer of key.
          * @since 5.4.0
          */
-        get control_name_key(): any;
-        set control_name_key(val: any);
+        get control_name_key(): null;
+        set control_name_key(val: never);
 
         /**
          * The {@link GLib.HashTable}-struct containing gpointer of key.
          * @since 5.4.0
          */
-        get controlNameKey(): any;
-        set controlNameKey(val: any);
+        get controlNameKey(): null;
+        set controlNameKey(val: never);
 
         /**
          * Compile-time signal type information.
@@ -23189,7 +23189,7 @@ export namespace AgsAudio {
          * @param control_name the automation's control name
          * @returns the key found or inserted
          */
-        find_automation(control_name: string): (any | null);
+        find_automation(control_name: string): null;
     }
 
 
@@ -23202,35 +23202,35 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            activate: (arg0: (any | null)) => void;
+            activate: (arg0: null) => void;
             /**
              * The ::connect-port signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "connect-port": (arg0: (any | null), arg1: number, arg2: (any | null)) => void;
+            "connect-port": (arg0: null, arg1: number, arg2: null) => void;
             /**
              * The ::deactivate signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            deactivate: (arg0: (any | null)) => void;
+            deactivate: (arg0: null) => void;
             /**
              * The ::instantiate signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            instantiate: (arg0: number, arg1: number) => (any | null);
+            instantiate: (arg0: number, arg1: number) => null;
             /**
              * The ::instantiate-with-params signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "instantiate-with-params": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => (any | null);
+            "instantiate-with-params": (arg0: null, arg1: null, arg2: null) => null;
             /**
              * The ::load-plugin signal creates a new instance of plugin.
              * @signal
@@ -23244,7 +23244,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            run: (arg0: (any | null), arg1: (any | null), arg2: number) => void;
+            run: (arg0: null, arg1: null, arg2: number) => void;
             "notify::effect": (pspec: GObject.ParamSpec) => void;
             "notify::effect-index": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -23266,8 +23266,8 @@ export namespace AgsAudio {
             filename: string;
             plugin_port: PluginPort[];
             pluginPort: PluginPort[];
-            plugin_so: (any | null);
-            pluginSo: (any | null);
+            plugin_so: never;
+            pluginSo: never;
             ui_effect: string;
             uiEffect: string;
             ui_effect_index: number;
@@ -23276,9 +23276,9 @@ export namespace AgsAudio {
             uiFilename: string;
             ui_plugin: BasePlugin;
             uiPlugin: BasePlugin;
-            ui_plugin_so: (any | null);
-            uiPluginSo: (any | null);
-            uuid: any;
+            ui_plugin_so: never;
+            uiPluginSo: never;
+            uuid: never;
         }
     }
 
@@ -23339,15 +23339,15 @@ export namespace AgsAudio {
          * The assigned plugin.so
          * @since 3.0.0
          */
-        get plugin_so(): (any | null);
-        set plugin_so(val: (any | null));
+        get plugin_so(): null;
+        set plugin_so(val: never);
 
         /**
          * The assigned plugin.so
          * @since 3.0.0
          */
-        get pluginSo(): (any | null);
-        set pluginSo(val: (any | null));
+        get pluginSo(): null;
+        set pluginSo(val: never);
 
         /**
          * The assigned ui-effect.
@@ -23415,22 +23415,22 @@ export namespace AgsAudio {
          * The assigned ui_plugin.so
          * @since 3.0.0
          */
-        get ui_plugin_so(): (any | null);
-        set ui_plugin_so(val: (any | null));
+        get ui_plugin_so(): null;
+        set ui_plugin_so(val: never);
 
         /**
          * The assigned ui_plugin.so
          * @since 3.0.0
          */
-        get uiPluginSo(): (any | null);
-        set uiPluginSo(val: (any | null));
+        get uiPluginSo(): null;
+        set uiPluginSo(val: never);
 
         /**
          * The assigned AgsUUID
          * @since 3.0.0
          */
-        get uuid(): any;
-        set uuid(val: any);
+        get uuid(): null;
+        set uuid(val: never);
 
         /**
          * Compile-time signal type information.
@@ -23450,13 +23450,13 @@ export namespace AgsAudio {
 
         port_group: number;
 
-        plugin_descriptor: any;
+        plugin_descriptor: null;
 
-        plugin_handle: any;
+        plugin_handle: null;
 
-        ui_plugin_descriptor: any;
+        ui_plugin_descriptor: null;
 
-        ui_plugin_handle: any;
+        ui_plugin_handle: null;
 
         // Constructors
         constructor(properties?: Partial<BasePlugin.ConstructorProps>, ...args: any[]);
@@ -23513,7 +23513,7 @@ export namespace AgsAudio {
          * @param a a {@link AgsAudio.BasePlugin}
          * @param b an other {@link AgsAudio.BasePlugin}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Virtual methods
         /**
@@ -23521,7 +23521,7 @@ export namespace AgsAudio {
          * @param plugin_handle the plugin instance handle
          * @virtual
          */
-        vfunc_activate(plugin_handle: (any | null)): void;
+        vfunc_activate(plugin_handle: null): void;
 
         /**
          * Connect a plugin instance.
@@ -23530,14 +23530,14 @@ export namespace AgsAudio {
          * @param data_location the data location to connect
          * @virtual
          */
-        vfunc_connect_port(plugin_handle: (any | null), port_index: number, data_location: (any | null)): void;
+        vfunc_connect_port(plugin_handle: null, port_index: number, data_location: null): void;
 
         /**
          * Deactivat a plugin instance
          * @param plugin_handle the plugin instance handle
          * @virtual
          */
-        vfunc_deactivate(plugin_handle: (any | null)): void;
+        vfunc_deactivate(plugin_handle: null): void;
 
         /**
          * Instantiate the plugin
@@ -23545,7 +23545,7 @@ export namespace AgsAudio {
          * @param buffer_size the fixed buffer size
          * @virtual
          */
-        vfunc_instantiate(samplerate: number, buffer_size: number): (any | null);
+        vfunc_instantiate(samplerate: number, buffer_size: number): null;
 
         /**
          * Instantiate the plugin
@@ -23554,7 +23554,7 @@ export namespace AgsAudio {
          * @param value the {@link GObject.Value}-struct array
          * @virtual
          */
-        vfunc_instantiate_with_params(n_params: number, parameter_name: string, value: unknown): (any | null);
+        vfunc_instantiate_with_params(n_params: number, parameter_name: string, value: unknown): null;
 
         /**
          * Load the plugin
@@ -23569,14 +23569,14 @@ export namespace AgsAudio {
          * @param frame_count the frame counts
          * @virtual
          */
-        vfunc_run(plugin_handle: (any | null), seq_event: (any | null), frame_count: number): void;
+        vfunc_run(plugin_handle: null, seq_event: null, frame_count: number): void;
 
         // Methods
         /**
          * Activate a plugin instance
          * @param plugin_handle the plugin instance handle
          */
-        activate(plugin_handle: (any | null)): void;
+        activate(plugin_handle: null): void;
 
         apply_port_group_by_prefix(): void;
 
@@ -23586,13 +23586,13 @@ export namespace AgsAudio {
          * @param port_index the port's index to connect
          * @param data_location the data location to connect
          */
-        connect_port(plugin_handle: (any | null), port_index: number, data_location: (any | null)): void;
+        connect_port(plugin_handle: null, port_index: number, data_location: null): void;
 
         /**
          * Deactivat a plugin instance
          * @param plugin_handle the plugin instance handle
          */
-        deactivate(plugin_handle: (any | null)): void;
+        deactivate(plugin_handle: null): void;
 
         /**
          * Get effect.
@@ -23622,7 +23622,7 @@ export namespace AgsAudio {
          * Get plugin so.
          * @returns the plugin so
          */
-        get_plugin_so(): (any | null);
+        get_plugin_so(): null;
 
         /**
          * Get UI effect.
@@ -23646,7 +23646,7 @@ export namespace AgsAudio {
          * Get plugin so.
          * @returns the plugin so
          */
-        get_ui_plugin_so(): (any | null);
+        get_ui_plugin_so(): null;
 
         /**
          * Instantiate the plugin
@@ -23654,7 +23654,7 @@ export namespace AgsAudio {
          * @param buffer_size the fixed buffer size
          * @returns the new plugin instance handle
          */
-        instantiate(samplerate: number, buffer_size: number): (any | null);
+        instantiate(samplerate: number, buffer_size: number): null;
 
         /**
          * Instantiate the plugin
@@ -23663,7 +23663,7 @@ export namespace AgsAudio {
          * @param value the {@link GObject.Value}-struct array
          * @returns the new plugin instance handle
          */
-        instantiate_with_params(n_params: number, parameter_name: string, value: (GObject.Value | any)): (any | null);
+        instantiate_with_params(n_params: number, parameter_name: string, value: (GObject.Value | any)): null;
 
         /**
          * Load the plugin
@@ -23676,7 +23676,7 @@ export namespace AgsAudio {
          * @param seq_event the alsa sequencer events
          * @param frame_count the frame counts
          */
-        run(plugin_handle: (any | null), seq_event: (any | null), frame_count: number): void;
+        run(plugin_handle: null, seq_event: null, frame_count: number): void;
 
         /**
          * Set effect.
@@ -23712,7 +23712,7 @@ export namespace AgsAudio {
          * Set plugin_so.
          * @param plugin_so the plugin so
          */
-        set_plugin_so(plugin_so: (any | null)): void;
+        set_plugin_so(plugin_so: null): void;
 
         /**
          * Set UI effect.
@@ -23741,7 +23741,7 @@ export namespace AgsAudio {
          * Set ui_plugin_so.
          * @param ui_plugin_so the plugin so
          */
-        set_ui_plugin_so(ui_plugin_so: (any | null)): void;
+        set_ui_plugin_so(ui_plugin_so: null): void;
 
         /**
          * Test `flags` to be set on `recall`.
@@ -23774,7 +23774,7 @@ export namespace AgsAudio {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer_size: number;
             bufferSize: number;
-            data: (any | null);
+            data: never;
             format: number;
             samplerate: number;
             selection_x0: (bigint | number);
@@ -23812,8 +23812,8 @@ export namespace AgsAudio {
          * Buffer's audio data.
          * @since 3.0.0
          */
-        get data(): (any | null);
-        set data(val: (any | null));
+        get data(): null;
+        set data(val: never);
 
         /**
          * Buffer's audio data format.
@@ -23919,7 +23919,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.Buffer}
          * @param b an other {@link AgsAudio.Buffer}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -23938,7 +23938,7 @@ export namespace AgsAudio {
          * Gets data.
          * @returns the data
          */
-        get_data(): (any | null);
+        get_data(): null;
 
         /**
          * Gets format.
@@ -24195,7 +24195,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "check-scope": (arg0: number) => (any | null);
+            "check-scope": (arg0: number) => null;
             /**
              * The ::cleanup-recall signal is invoked during termination of playback.
              * @signal
@@ -24265,7 +24265,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            stop: (arg0: (any | null), arg1: number) => void;
+            stop: (arg0: null, arg1: number) => void;
             "notify::absolute-key": (pspec: GObject.ParamSpec) => void;
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -24734,9 +24734,9 @@ export namespace AgsAudio {
 
         uuid: Ags.UUID;
 
-        line_widget: any;
+        line_widget: null;
 
-        file_data: any;
+        file_data: null;
 
         // Constructors
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
@@ -26181,7 +26181,7 @@ export namespace AgsAudio {
 
         client_uuid: string;
 
-        graph: any;
+        graph: null;
 
         // Constructors
         constructor(properties?: Partial<CoreAudioClient.ConstructorProps>, ...args: any[]);
@@ -26455,15 +26455,15 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             core_audio_client: CoreAudioClient;
             coreAudioClient: CoreAudioClient;
-            core_audio_port: any;
-            coreAudioPort: any;
+            core_audio_port: never;
+            coreAudioPort: never;
             delay_factor: number;
             delayFactor: number;
             device: string;
@@ -26488,7 +26488,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -26503,7 +26503,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -26539,15 +26539,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.CoreAudioPort}
          * @since 3.0.0
          */
-        get core_audio_port(): any;
-        set core_audio_port(val: any);
+        get core_audio_port(): null;
+        set core_audio_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.CoreAudioPort}
          * @since 3.0.0
          */
-        get coreAudioPort(): any;
-        set coreAudioPort(val: any);
+        get coreAudioPort(): null;
+        set coreAudioPort(val: never);
 
         /**
          * tact
@@ -26866,7 +26866,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -26913,7 +26913,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -26975,7 +26975,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -27028,7 +27028,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -27131,20 +27131,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -27168,7 +27168,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -27216,7 +27216,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -27283,7 +27283,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -27338,7 +27338,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -27457,14 +27457,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -27472,7 +27472,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -27495,15 +27495,15 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             core_audio_client: CoreAudioClient;
             coreAudioClient: CoreAudioClient;
-            core_audio_port: any;
-            coreAudioPort: any;
+            core_audio_port: never;
+            coreAudioPort: never;
             delay_factor: number;
             delayFactor: number;
             device: string;
@@ -27528,7 +27528,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -27543,7 +27543,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -27579,15 +27579,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.CoreAudioPort}
          * @since 3.0.0
          */
-        get core_audio_port(): any;
-        set core_audio_port(val: any);
+        get core_audio_port(): null;
+        set core_audio_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.CoreAudioPort}
          * @since 3.0.0
          */
-        get coreAudioPort(): any;
-        set coreAudioPort(val: any);
+        get coreAudioPort(): null;
+        set coreAudioPort(val: never);
 
         /**
          * tact
@@ -27906,7 +27906,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -27953,7 +27953,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -28015,7 +28015,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -28068,7 +28068,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -28171,20 +28171,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -28208,7 +28208,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -28256,7 +28256,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -28323,7 +28323,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -28378,7 +28378,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -28497,14 +28497,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -28512,7 +28512,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -28530,9 +28530,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Sequencer.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             core_audio_client: CoreAudioClient;
             coreAudioClient: CoreAudioClient;
             core_audio_port: CoreAudioPort;
@@ -28555,7 +28555,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -28570,7 +28570,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The assigned {@link AgsAudio.CoreAudioClient}
@@ -28848,7 +28848,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): (any | null);
+        get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -28873,7 +28873,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): (any | null);
+        get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -28914,7 +28914,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -28986,7 +28986,7 @@ export namespace AgsAudio {
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Get current playback bpm.
@@ -28999,7 +28999,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_buffer(buffer_length: number): (any | null);
+        vfunc_get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -29024,7 +29024,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_next_buffer(buffer_length: number): (any | null);
+        vfunc_get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -29067,7 +29067,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -29158,7 +29158,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
     }
 
 
@@ -30286,9 +30286,9 @@ export namespace AgsAudio {
         // Fields
         gobject: GObject.Object;
 
-        dssi_plugin_blacklist: any[];
+        dssi_plugin_blacklist: null[];
 
-        dssi_plugin: any[];
+        dssi_plugin: null[];
 
         // Constructors
         constructor(properties?: Partial<DssiManager.ConstructorProps>, ...args: any[]);
@@ -30379,7 +30379,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: (any | null), arg1: number, arg2: number) => void;
+            "change-program": (arg0: null, arg1: number, arg2: number) => void;
             "notify::program": (pspec: GObject.ParamSpec) => void;
             "notify::unique-id": (pspec: GObject.ParamSpec) => void;
             "notify::effect": (pspec: GObject.ParamSpec) => void;
@@ -30471,7 +30471,7 @@ export namespace AgsAudio {
          * @param program_index 
          * @virtual
          */
-        vfunc_change_program(ladspa_handle: (any | null), bank_index: number, program_index: number): void;
+        vfunc_change_program(ladspa_handle: null, bank_index: number, program_index: number): void;
 
         // Methods
         /**
@@ -30479,7 +30479,7 @@ export namespace AgsAudio {
          * @param bank_index 
          * @param program_index 
          */
-        change_program(ladspa_handle: (any | null), bank_index: number, program_index: number): void;
+        change_program(ladspa_handle: null, bank_index: number, program_index: number): void;
     }
 
 
@@ -30927,9 +30927,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -30956,7 +30956,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -30971,7 +30971,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -31306,7 +31306,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -31353,7 +31353,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -31415,7 +31415,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -31468,7 +31468,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -31571,20 +31571,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -31608,7 +31608,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -31656,7 +31656,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -31723,7 +31723,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -31778,7 +31778,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -31897,14 +31897,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -31912,7 +31912,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -31989,7 +31989,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "compute-max-likelihood": (arg0: (any | null), arg1: (any | null)) => void;
+            "compute-max-likelihood": (arg0: null, arg1: null) => void;
             /**
              * The ::factorize signal notifies about factorizing map.
              * @signal
@@ -32189,7 +32189,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.FrequencyMap}
          * @param b an {@link AgsAudio.FrequencyMap}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Virtual methods
         /**
@@ -32284,9 +32284,9 @@ export namespace AgsAudio {
 
         flags: FrequencyMapManagerFlags;
 
-        frequency_map: any[];
+        frequency_map: null[];
 
-        factorized_frequency_map: any[];
+        factorized_frequency_map: null[];
 
         // Constructors
         constructor(properties?: Partial<FrequencyMapManager.ConstructorProps>, ...args: any[]);
@@ -32703,19 +32703,19 @@ export namespace AgsAudio {
          * Get input of `input_data`.
          * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        static input_get_in(input_data: (any | null)): (any | null);
+        static input_get_in(input_data: null): null;
 
         /**
          * Get output of `input_data`.
          * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        static input_get_out(input_data: (any | null)): (any | null);
+        static input_get_out(input_data: null): null;
 
         /**
          * Get parent of `input_data`.
          * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        static input_get_parent(input_data: (any | null)): (any | null);
+        static input_get_parent(input_data: null): null;
 
         // Methods
         /**
@@ -32723,7 +32723,7 @@ export namespace AgsAudio {
          * @param sound_scope the sound scope
          * @returns the matching {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        get_input_data(sound_scope: number): (any | null);
+        get_input_data(sound_scope: number): null;
     }
 
 
@@ -33199,13 +33199,13 @@ export namespace AgsAudio {
          * Get destination of `input_data`.
          * @param input_data the {@link AgsAudio.FxBufferChannelInputData}-struct
          */
-        static input_get_destination(input_data: (any | null)): (any | null);
+        static input_get_destination(input_data: null): null;
 
         /**
          * Get parent of `input_data`.
          * @param input_data the {@link AgsAudio.FxBufferChannelInputData}-struct
          */
-        static input_get_parent(input_data: (any | null)): (any | null);
+        static input_get_parent(input_data: null): null;
 
         // Methods
         /**
@@ -33213,7 +33213,7 @@ export namespace AgsAudio {
          * @param sound_scope the sound scope
          * @returns the matching {@link AgsAudio.FxBufferChannelInputData}-struct
          */
-        get_input_data(sound_scope: number): (any | null);
+        get_input_data(sound_scope: number): null;
     }
 
 
@@ -39972,7 +39972,7 @@ export namespace AgsAudio {
 
         note_256th_mode: boolean;
 
-        feed_note: any[];
+        feed_note: null[];
 
         // Constructors
         constructor(properties?: Partial<FxNotationAudio.ConstructorProps>, ...args: any[]);
@@ -40143,13 +40143,13 @@ export namespace AgsAudio {
 
         timestamp: Ags.Timestamp;
 
-        recording_note: any[];
+        recording_note: null[];
 
-        recording_audio_signal: any[];
+        recording_audio_signal: null[];
 
-        feeding_note: any[];
+        feeding_note: null[];
 
-        feeding_audio_signal: any[];
+        feeding_audio_signal: null[];
 
         tic_counter: number;
 
@@ -40165,7 +40165,7 @@ export namespace AgsAudio {
 
         note_256th_current_offset_upper: number;
 
-        note_256th: any[];
+        note_256th: null[];
 
         has_16th_pulse: boolean;
 
@@ -41130,7 +41130,7 @@ export namespace AgsAudio {
 
         note_256th_current_offset_upper: number;
 
-        note_256th: any[];
+        note_256th: null[];
 
         has_16th_pulse: boolean;
 
@@ -42497,9 +42497,9 @@ export namespace AgsAudio {
 
         flags: number;
 
-        feed_audio_signal: any[];
+        feed_audio_signal: null[];
 
-        master_audio_signal: any[];
+        master_audio_signal: null[];
 
         audio_file: AudioFile;
 
@@ -42675,19 +42675,19 @@ export namespace AgsAudio {
 
         timestamp: Ags.Timestamp;
 
-        playing_buffer: any[];
+        playing_buffer: null[];
 
-        playing_audio_signal: any[];
+        playing_audio_signal: null[];
 
-        recording_buffer: any[];
+        recording_buffer: null[];
 
-        recording_audio_signal: any[];
+        recording_audio_signal: null[];
 
-        feeding_audio_signal: any[];
+        feeding_audio_signal: null[];
 
-        mastering_audio_signal: any[];
+        mastering_audio_signal: null[];
 
-        capture_audio_signal: any[];
+        capture_audio_signal: null[];
 
         // Constructors
         constructor(properties?: Partial<FxPlaybackAudioProcessor.ConstructorProps>, ...args: any[]);
@@ -46398,7 +46398,7 @@ export namespace AgsAudio {
         // Fields
         fx_notation_audio_signal: FxNotationAudioSignal;
 
-        pitch_buffer: any;
+        pitch_buffer: null;
 
         // Constructors
         constructor(properties?: Partial<FxRavenSynthAudioSignal.ConstructorProps>, ...args: any[]);
@@ -55361,43 +55361,43 @@ export namespace AgsAudio {
          * Get a buffer of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_a_buffer(input_data: (any | null)): (any | null);
+        static input_get_a_buffer(input_data: null): null;
 
         /**
          * Get a mix of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_a_mix(input_data: (any | null)): (any | null);
+        static input_get_a_mix(input_data: null): null;
 
         /**
          * Get b buffer of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_b_buffer(input_data: (any | null)): (any | null);
+        static input_get_b_buffer(input_data: null): null;
 
         /**
          * Get b mix of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_b_mix(input_data: (any | null)): (any | null);
+        static input_get_b_mix(input_data: null): null;
 
         /**
          * Get final mix of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_final_mix(input_data: (any | null)): (any | null);
+        static input_get_final_mix(input_data: null): null;
 
         /**
          * Get orig buffer of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_orig_buffer(input_data: (any | null)): (any | null);
+        static input_get_orig_buffer(input_data: null): null;
 
         /**
          * Get parent of `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static input_get_parent(input_data: (any | null)): (any | null);
+        static input_get_parent(input_data: null): null;
     }
 
 
@@ -57284,9 +57284,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -57297,8 +57297,8 @@ export namespace AgsAudio {
             format: number;
             gstreamer_client: GstreamerClient;
             gstreamerClient: GstreamerClient;
-            gstreamer_port: any;
-            gstreamerPort: any;
+            gstreamer_port: never;
+            gstreamerPort: never;
             pcm_channels: number;
             pcmChannels: number;
             samplerate: number;
@@ -57317,7 +57317,7 @@ export namespace AgsAudio {
          * @since 3.6.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -57332,7 +57332,7 @@ export namespace AgsAudio {
          * @since 3.6.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -57416,15 +57416,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.GstreamerPort}
          * @since 3.6.0
          */
-        get gstreamer_port(): any;
-        set gstreamer_port(val: any);
+        get gstreamer_port(): null;
+        set gstreamer_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.GstreamerPort}
          * @since 3.6.0
          */
-        get gstreamerPort(): any;
-        set gstreamerPort(val: any);
+        get gstreamerPort(): null;
+        set gstreamerPort(val: never);
 
         /**
          * The pcm channel count
@@ -57472,7 +57472,7 @@ export namespace AgsAudio {
 
         app_buffer_mode: GstreamerDevinAppBufferMode;
 
-        app_buffer: any;
+        app_buffer: null;
 
         sub_block_count: number;
 
@@ -57504,7 +57504,7 @@ export namespace AgsAudio {
 
         note_256th_delay: number;
 
-        note_256th_attack: any[];
+        note_256th_attack: null[];
 
         note_256th_offset: number;
 
@@ -57752,7 +57752,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -57799,7 +57799,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -57861,7 +57861,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -57914,7 +57914,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -58017,20 +58017,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -58054,7 +58054,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -58102,7 +58102,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -58169,7 +58169,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -58224,7 +58224,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -58343,14 +58343,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -58358,7 +58358,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -58381,9 +58381,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -58394,8 +58394,8 @@ export namespace AgsAudio {
             format: number;
             gstreamer_client: GstreamerClient;
             gstreamerClient: GstreamerClient;
-            gstreamer_port: any;
-            gstreamerPort: any;
+            gstreamer_port: never;
+            gstreamerPort: never;
             pcm_channels: number;
             pcmChannels: number;
             samplerate: number;
@@ -58414,7 +58414,7 @@ export namespace AgsAudio {
          * @since 3.6.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -58429,7 +58429,7 @@ export namespace AgsAudio {
          * @since 3.6.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -58513,15 +58513,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.GstreamerPort}
          * @since 3.6.0
          */
-        get gstreamer_port(): any;
-        set gstreamer_port(val: any);
+        get gstreamer_port(): null;
+        set gstreamer_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.GstreamerPort}
          * @since 3.6.0
          */
-        get gstreamerPort(): any;
-        set gstreamerPort(val: any);
+        get gstreamerPort(): null;
+        set gstreamerPort(val: never);
 
         /**
          * The pcm channel count
@@ -58571,7 +58571,7 @@ export namespace AgsAudio {
 
         sub_block_count: number;
 
-        app_buffer: any;
+        app_buffer: null;
 
         delay: number;
 
@@ -58603,7 +58603,7 @@ export namespace AgsAudio {
 
         note_256th_delay: number;
 
-        note_256th_attack: any[];
+        note_256th_attack: null[];
 
         note_256th_offset: number;
 
@@ -58851,7 +58851,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -58898,7 +58898,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -58960,7 +58960,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -59013,7 +59013,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -59116,20 +59116,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -59153,7 +59153,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -59201,7 +59201,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -59268,7 +59268,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -59323,7 +59323,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -59442,14 +59442,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -59457,7 +59457,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -59570,9 +59570,9 @@ export namespace AgsAudio {
 
         buffer_offset: number;
 
-        full_buffer: any;
+        full_buffer: null;
 
-        buffer: any;
+        buffer: null;
 
         pointer: number;
 
@@ -59628,13 +59628,13 @@ export namespace AgsAudio {
 
         prev_frame_count: number;
 
-        rw_buffer: any[];
+        rw_buffer: null[];
 
-        rw_info: any[];
+        rw_info: null[];
 
-        rw_current_buffer: any[];
+        rw_current_buffer: null[];
 
-        rw_current_info: any[];
+        rw_current_info: null[];
 
         // Constructors
         constructor(properties?: Partial<GstreamerFile.ConstructorProps>, ...args: any[]);
@@ -59893,7 +59893,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @returns the count of frames actually read
          */
-        read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Read audio signal from `sound_resource`.
@@ -59958,7 +59958,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count to write
          * @param format the format to write
          */
-        write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
 
         /**
          * Close `sound_resource`.
@@ -60014,7 +60014,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @virtual
          */
-        vfunc_read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        vfunc_read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -60055,7 +60055,7 @@ export namespace AgsAudio {
          * @param format the format to write
          * @virtual
          */
-        vfunc_write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        vfunc_write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
     }
 
 
@@ -60184,9 +60184,9 @@ export namespace AgsAudio {
 
         cache_offset: number;
 
-        cache: any;
+        cache: null;
 
-        empty_buffer: any;
+        empty_buffer: null;
 
         is_empty: boolean;
 
@@ -60558,7 +60558,7 @@ export namespace AgsAudio {
 
         default_client: GObject.Object;
 
-        client: any[];
+        client: null[];
 
         // Constructors
         constructor(properties?: Partial<GstreamerServer.ConstructorProps>, ...args: any[]);
@@ -61369,7 +61369,7 @@ export namespace AgsAudio {
 
         writer: GObject.Object;
 
-        audio_signal: any[];
+        audio_signal: null[];
 
         // Constructors
         constructor(properties?: Partial<Ipatch.ConstructorProps>, ...args: any[]);
@@ -62654,9 +62654,9 @@ export namespace AgsAudio {
 
         buffer_offset: number;
 
-        full_buffer: any;
+        full_buffer: null;
 
-        buffer: any;
+        buffer: null;
 
         pointer: number;
 
@@ -62889,7 +62889,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @returns the count of frames actually read
          */
-        read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Read audio signal from `sound_resource`.
@@ -62954,7 +62954,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count to write
          * @param format the format to write
          */
-        write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
 
         /**
          * Close `sound_resource`.
@@ -63010,7 +63010,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @virtual
          */
-        vfunc_read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        vfunc_read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -63051,7 +63051,7 @@ export namespace AgsAudio {
          * @param format the format to write
          * @virtual
          */
-        vfunc_write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        vfunc_write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
     }
 
 
@@ -63412,9 +63412,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -63425,8 +63425,8 @@ export namespace AgsAudio {
             format: number;
             jack_client: JackClient;
             jackClient: JackClient;
-            jack_port: any;
-            jackPort: any;
+            jack_port: never;
+            jackPort: never;
             pcm_channels: number;
             pcmChannels: number;
             samplerate: number;
@@ -63445,7 +63445,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -63460,7 +63460,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -63544,15 +63544,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.JackPort}
          * @since 3.0.0
          */
-        get jack_port(): any;
-        set jack_port(val: any);
+        get jack_port(): null;
+        set jack_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.JackPort}
          * @since 3.0.0
          */
-        get jackPort(): any;
-        set jackPort(val: any);
+        get jackPort(): null;
+        set jackPort(val: never);
 
         /**
          * The pcm channel count
@@ -63823,7 +63823,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -63870,7 +63870,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -63932,7 +63932,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -63985,7 +63985,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -64088,20 +64088,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -64125,7 +64125,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -64173,7 +64173,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -64240,7 +64240,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -64295,7 +64295,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -64414,14 +64414,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -64429,7 +64429,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -64452,9 +64452,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -64465,8 +64465,8 @@ export namespace AgsAudio {
             format: number;
             jack_client: JackClient;
             jackClient: JackClient;
-            jack_port: any;
-            jackPort: any;
+            jack_port: never;
+            jackPort: never;
             pcm_channels: number;
             pcmChannels: number;
             samplerate: number;
@@ -64485,7 +64485,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -64500,7 +64500,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -64584,15 +64584,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.JackPort}
          * @since 3.0.0
          */
-        get jack_port(): any;
-        set jack_port(val: any);
+        get jack_port(): null;
+        set jack_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.JackPort}
          * @since 3.0.0
          */
-        get jackPort(): any;
-        set jackPort(val: any);
+        get jackPort(): null;
+        set jackPort(val: never);
 
         /**
          * The pcm channel count
@@ -64863,7 +64863,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -64910,7 +64910,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -64972,7 +64972,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -65025,7 +65025,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -65128,20 +65128,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -65165,7 +65165,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -65213,7 +65213,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -65280,7 +65280,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -65335,7 +65335,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -65454,14 +65454,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -65469,7 +65469,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -65487,9 +65487,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Sequencer.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             delay_factor: number;
             delayFactor: number;
             device: string;
@@ -65512,7 +65512,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -65527,7 +65527,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * tact
@@ -65805,7 +65805,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): (any | null);
+        get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -65830,7 +65830,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): (any | null);
+        get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -65871,7 +65871,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -65943,7 +65943,7 @@ export namespace AgsAudio {
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Get current playback bpm.
@@ -65956,7 +65956,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_buffer(buffer_length: number): (any | null);
+        vfunc_get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -65981,7 +65981,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_next_buffer(buffer_length: number): (any | null);
+        vfunc_get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -66024,7 +66024,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -66115,7 +66115,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
     }
 
 
@@ -66538,7 +66538,7 @@ export namespace AgsAudio {
 
         input_client: GObject.Object;
 
-        client: any[];
+        client: null[];
 
         // Constructors
         constructor(properties?: Partial<JackServer.ConstructorProps>, ...args: any[]);
@@ -67116,9 +67116,9 @@ export namespace AgsAudio {
         // Fields
         gobject: GObject.Object;
 
-        ladspa_plugin_blacklist: any[];
+        ladspa_plugin_blacklist: null[];
 
-        ladspa_plugin: any[];
+        ladspa_plugin: null[];
 
         // Constructors
         constructor(properties?: Partial<LadspaManager.ConstructorProps>, ...args: any[]);
@@ -67293,7 +67293,7 @@ export namespace AgsAudio {
         // Constructor properties interface
         interface ConstructorProps extends Ags.Task.ConstructorProps {
             channel: Channel;
-            error: any;
+            error: never;
             link: Channel;
         }
     }
@@ -67316,8 +67316,8 @@ export namespace AgsAudio {
          * The assigned {@link GLib.Error}-struct
          * @since 3.0.0
          */
-        get error(): any;
-        set error(val: any);
+        get error(): null;
+        set error(val: never);
 
         /**
          * The assigned {@link AgsAudio.Channel} link
@@ -67630,9 +67630,9 @@ export namespace AgsAudio {
         // Fields
         gobject: GObject.Object;
 
-        lv2_plugin_blacklist: any[];
+        lv2_plugin_blacklist: null[];
 
-        lv2_plugin: any[];
+        lv2_plugin: null[];
 
         quick_scan_plugin_filename: string;
 
@@ -67755,14 +67755,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-option": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => void;
+            "get-option": (arg0: null, arg1: null, arg2: null) => void;
             /**
              * The ::set-option signal sets options for the manager.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "set-option": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => void;
+            "set-option": (arg0: null, arg1: null, arg2: null) => void;
         }
 
         // Constructor properties interface
@@ -67823,7 +67823,7 @@ export namespace AgsAudio {
          * @param retval return value for #LV2_Options_Status-enum
          * @virtual
          */
-        vfunc_get_option(instance: (any | null), option: (any | null), retval: (any | null)): void;
+        vfunc_get_option(instance: null, option: null, retval: null): void;
 
         /**
          * Set option.
@@ -67832,7 +67832,7 @@ export namespace AgsAudio {
          * @param retval return value for #LV2_Options_Status-enum
          * @virtual
          */
-        vfunc_set_option(instance: (any | null), option: (any | null), retval: (any | null)): void;
+        vfunc_set_option(instance: null, option: null, retval: null): void;
 
         // Methods
         /**
@@ -67841,7 +67841,7 @@ export namespace AgsAudio {
          * @param option the option
          * @param retval return value for #LV2_Options_Status-enum
          */
-        get_option(instance: (any | null), option: (any | null), retval: (any | null)): void;
+        get_option(instance: null, option: null, retval: null): void;
 
         /**
          * Inserts a data into hash associated with `lv2_option_ressource`.
@@ -67849,7 +67849,7 @@ export namespace AgsAudio {
          * @param data the data
          * @returns `true` on success, otherwise `false`
          */
-        ressource_insert(lv2_option_ressource: (any | null), data: (any | null)): boolean;
+        ressource_insert(lv2_option_ressource: null, data: null): boolean;
 
         /**
          * Lookup a ressource associated with `lv2_option_ressource` in
@@ -67857,7 +67857,7 @@ export namespace AgsAudio {
          * @param lv2_option_ressource the {@link AgsAudio.Lv2OptionRessource} to lookup
          * @returns the pointer on success, else NULL
          */
-        ressource_lookup(lv2_option_ressource: (any | null)): (any | null);
+        ressource_lookup(lv2_option_ressource: null): null;
 
         /**
          * Lookup a ressource associated with `lv2_option_ressource` in
@@ -67867,14 +67867,14 @@ export namespace AgsAudio {
          * @param value the matched value
          * @returns `true` if ressource found, else `false`
          */
-        ressource_lookup_extended(lv2_option_ressource: Lv2OptionRessource, orig_key: (any | null), value: (any | null)): boolean;
+        ressource_lookup_extended(lv2_option_ressource: Lv2OptionRessource, orig_key: null, value: null): boolean;
 
         /**
          * Removes an entry associated with `lv2_option_ressource`.
          * @param lv2_option_ressource the struct to remove
          * @returns `true` as successfully removed, otherwise `false`
          */
-        ressource_remove(lv2_option_ressource: (any | null)): boolean;
+        ressource_remove(lv2_option_ressource: null): boolean;
 
         /**
          * Set option.
@@ -67882,7 +67882,7 @@ export namespace AgsAudio {
          * @param option the option
          * @param retval return value for #LV2_Options_Status-enum
          */
-        set_option(instance: (any | null), option: (any | null), retval: (any | null)): void;
+        set_option(instance: null, option: null, retval: null): void;
     }
 
 
@@ -67895,7 +67895,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: (any | null), arg1: number, arg2: number) => void;
+            "change-program": (arg0: null, arg1: number, arg2: number) => void;
             "notify::doap-name": (pspec: GObject.ParamSpec) => void;
             "notify::foaf-homepage": (pspec: GObject.ParamSpec) => void;
             "notify::foaf-mbox": (pspec: GObject.ParamSpec) => void;
@@ -68107,7 +68107,7 @@ export namespace AgsAudio {
          * Allocates a LV2_Atom_Sequence
          * @param sequence_size the requested size
          */
-        static alloc_atom_sequence(sequence_size: number): (any | null);
+        static alloc_atom_sequence(sequence_size: number): null;
 
         /**
          * Append MIDI data to atom sequence.
@@ -68116,13 +68116,13 @@ export namespace AgsAudio {
          * @param events the events to write
          * @param event_count the number of events to write
          */
-        static atom_sequence_append_midi(atom_sequence: (any | null), sequence_size: number, events: (any | null), event_count: number): boolean;
+        static atom_sequence_append_midi(atom_sequence: null, sequence_size: number, events: null, event_count: number): boolean;
 
         /**
          * Free atom sequence.
          * @param atom_sequence the atom sequence
          */
-        static atom_sequence_free(atom_sequence: (any | null)): void;
+        static atom_sequence_free(atom_sequence: null): void;
 
         /**
          * Remove MIDI data from atom sequence.
@@ -68130,27 +68130,27 @@ export namespace AgsAudio {
          * @param sequence_size the atom sequence size
          * @param note the key to remove
          */
-        static atom_sequence_remove_midi(atom_sequence: (any | null), sequence_size: number, note: number): boolean;
+        static atom_sequence_remove_midi(atom_sequence: null, sequence_size: number, note: number): boolean;
 
         /**
          * Clear the atom sequence.
          * @param atom_sequence the atom sequence
          * @param sequence_size size of `atom_sequence`
          */
-        static clear_atom_sequence(atom_sequence: (any | null), sequence_size: number): void;
+        static clear_atom_sequence(atom_sequence: null, sequence_size: number): void;
 
         /**
          * Clear the event buffer.
          * @param event_buffer the event buffer
          * @param buffer_size size of `event_buffer`
          */
-        static clear_event_buffer(event_buffer: (any | null), buffer_size: number): void;
+        static clear_event_buffer(event_buffer: null, buffer_size: number): void;
 
         /**
          * Allocate LV2_Event_Buffer struct.
          * @param buffer_size the data's buffer size
          */
-        static event_buffer_alloc(buffer_size: number): (any | null);
+        static event_buffer_alloc(buffer_size: number): null;
 
         /**
          * Append MIDI data to event buffer.
@@ -68159,20 +68159,20 @@ export namespace AgsAudio {
          * @param events the events to write
          * @param event_count the number of events to write
          */
-        static event_buffer_append_midi(event_buffer: (any | null), buffer_size: number, events: (any | null), event_count: number): boolean;
+        static event_buffer_append_midi(event_buffer: null, buffer_size: number, events: null, event_count: number): boolean;
 
         /**
          * Free LV2_Event_Buffer struct.
          * @param event_buffer the LV2_Event_Buffer struct
          */
-        static event_buffer_free(event_buffer: (any | null)): void;
+        static event_buffer_free(event_buffer: null): void;
 
         /**
          * Reallocate LV2_Event_Buffer struct's data field.
          * @param event_buffer the LV2_Event_Buffer struct
          * @param buffer_size the data's buffer size
          */
-        static event_buffer_realloc_data(event_buffer: (any | null), buffer_size: number): void;
+        static event_buffer_realloc_data(event_buffer: null, buffer_size: number): void;
 
         /**
          * Remove MIDI data from event buffer.
@@ -68180,7 +68180,7 @@ export namespace AgsAudio {
          * @param buffer_size the event buffer size
          * @param note the key to remove
          */
-        static event_buffer_remove_midi(event_buffer: (any | null), buffer_size: number, note: number): boolean;
+        static event_buffer_remove_midi(event_buffer: null, buffer_size: number, note: number): boolean;
 
         /**
          * Find pname in `lv2_plugin` {@link GLib.List}-struct
@@ -68204,7 +68204,7 @@ export namespace AgsAudio {
          * @param program_index the program index
          * @virtual
          */
-        vfunc_change_program(lv2_handle: (any | null), bank_index: number, program_index: number): void;
+        vfunc_change_program(lv2_handle: null, bank_index: number, program_index: number): void;
 
         // Methods
         /**
@@ -68213,7 +68213,7 @@ export namespace AgsAudio {
          * @param bank_index the bank index
          * @param program_index the program index
          */
-        change_program(lv2_handle: (any | null), bank_index: number, program_index: number): void;
+        change_program(lv2_handle: null, bank_index: number, program_index: number): void;
 
         /**
          * Set flags.
@@ -68275,8 +68275,8 @@ export namespace AgsAudio {
             lv2_plugin: Lv2Plugin;
             lv2Plugin: Lv2Plugin;
             manifest: Ags.Turtle;
-            port_preset: any;
-            portPreset: any;
+            port_preset: never;
+            portPreset: never;
             preset_label: string;
             presetLabel: string;
             turtle: Ags.Turtle;
@@ -68341,14 +68341,14 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get port_preset(): any;
+        get port_preset(): null;
 
         /**
          * The port preset.
          * @since 3.0.0
          * @read-only
          */
-        get portPreset(): any;
+        get portPreset(): null;
 
         /**
          * The preset label.
@@ -68467,7 +68467,7 @@ export namespace AgsAudio {
         // Fields
         gobject: GObject.Object;
 
-        lv2_preset: any[];
+        lv2_preset: null[];
 
         // Constructors
         constructor(properties?: Partial<Lv2PresetManager.ConstructorProps>, ...args: any[]);
@@ -68511,8 +68511,8 @@ export namespace AgsAudio {
             plugin: Lv2Plugin[];
             preset: Lv2Preset[];
             turtle: Ags.Turtle[];
-            ui_plugin: any;
-            uiPlugin: any;
+            ui_plugin: never;
+            uiPlugin: never;
         }
     }
 
@@ -68544,11 +68544,11 @@ export namespace AgsAudio {
         get turtle(): Ags.Turtle[];
         set turtle(val: Ags.Turtle[]);
 
-        get ui_plugin(): any;
-        set ui_plugin(val: any);
+        get ui_plugin(): null;
+        set ui_plugin(val: never);
 
-        get uiPlugin(): any;
-        set uiPlugin(val: any);
+        get uiPlugin(): null;
+        set uiPlugin(val: never);
 
         /**
          * Compile-time signal type information.
@@ -68634,7 +68634,7 @@ export namespace AgsAudio {
 
         status_flags: number;
 
-        cache_turtle: any[];
+        cache_turtle: null[];
 
         current_subject_iriref: string;
 
@@ -68855,11 +68855,11 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps {
-            handle: any;
-            response_data: any;
-            responseData: any;
-            work_data: any;
-            workData: any;
+            handle: never;
+            response_data: never;
+            responseData: never;
+            work_data: never;
+            workData: never;
             work_size: number;
             workSize: number;
             worker_thread: Ags.WorkerThread;
@@ -68878,36 +68878,36 @@ export namespace AgsAudio {
          * The assigned  #LV2_Handle-struct
          * @since 3.0.0
          */
-        get handle(): any;
-        set handle(val: any);
+        get handle(): null;
+        set handle(val: never);
 
         /**
          * The assigned {@link GLib.List}-struct containing {@link AgsAudio.Lv2WorkerResponseData}-struct
          * @since 3.0.0
          */
-        get response_data(): any;
-        set response_data(val: any);
+        get response_data(): null;
+        set response_data(val: never);
 
         /**
          * The assigned {@link GLib.List}-struct containing {@link AgsAudio.Lv2WorkerResponseData}-struct
          * @since 3.0.0
          */
-        get responseData(): any;
-        set responseData(val: any);
+        get responseData(): null;
+        set responseData(val: never);
 
         /**
          * The assigned work data
          * @since 3.0.0
          */
-        get work_data(): any;
-        set work_data(val: any);
+        get work_data(): null;
+        set work_data(val: never);
 
         /**
          * The assigned work data
          * @since 3.0.0
          */
-        get workData(): any;
-        set workData(val: any);
+        get workData(): null;
+        set workData(val: never);
 
         /**
          * The work size.
@@ -68975,7 +68975,7 @@ export namespace AgsAudio {
          * @param worker_thread the {@link Ags.WorkerThread}
          * @param data the data
          */
-        static do_poll(worker_thread: Ags.WorkerThread, data: (any | null)): void;
+        static do_poll(worker_thread: Ags.WorkerThread, data: null): void;
 
         /**
          * Free `response_data`.
@@ -69255,9 +69255,9 @@ export namespace AgsAudio {
         // Fields
         gobject: GObject.Object;
 
-        lv2ui_plugin_blacklist: any[];
+        lv2ui_plugin_blacklist: null[];
 
-        lv2ui_plugin: any[];
+        lv2ui_plugin: null[];
 
         // Constructors
         constructor(properties?: Partial<Lv2uiManager.ConstructorProps>, ...args: any[]);
@@ -69631,7 +69631,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.Marker}
          * @param b an other {@link AgsAudio.Marker}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -69780,7 +69780,7 @@ export namespace AgsAudio {
 
         flags: number;
 
-        selection: any[];
+        selection: null[];
 
         // Constructors
         constructor(properties?: Partial<Midi.ConstructorProps>, ...args: any[]);
@@ -69823,7 +69823,7 @@ export namespace AgsAudio {
          * @param a the {@link AgsAudio.Midi}
          * @param b another {@link AgsAudio.Midi}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -69979,7 +69979,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: (any | null)) => void;
+            "on-error": (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -70014,7 +70014,7 @@ export namespace AgsAudio {
              * @signal
              * @run-last
              */
-            sysex: (arg0: number, arg1: (any | null), arg2: number) => void;
+            sysex: (arg0: number, arg1: null, arg2: number) => void;
             /**
              * @signal
              * @run-last
@@ -70040,7 +70040,7 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            file: any;
+            file: never;
         }
     }
 
@@ -70055,8 +70055,8 @@ export namespace AgsAudio {
          * The file to parse data from.
          * @since 3.0.0
          */
-        get file(): any;
-        set file(val: any);
+        get file(): null;
+        set file(val: never);
 
         /**
          * Compile-time signal type information.
@@ -70078,7 +70078,7 @@ export namespace AgsAudio {
 
         length: number;
 
-        midi_track: any[];
+        midi_track: null[];
 
         // Constructors
         constructor(properties?: Partial<MidiBuilder.ConstructorProps>, ...args: any[]);
@@ -70586,7 +70586,7 @@ export namespace AgsAudio {
 
         flags: MidiFileFlags;
 
-        file: any;
+        file: null;
 
         buffer: number;
 
@@ -70608,11 +70608,11 @@ export namespace AgsAudio {
 
         clicks: number;
 
-        track: any[];
+        track: null[];
 
-        notation: any[];
+        notation: null[];
 
-        midi: any[];
+        midi: null[];
 
         // Constructors
         constructor(properties?: Partial<MidiFile.ConstructorProps>, ...args: any[]);
@@ -70804,84 +70804,84 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-channel-pressure": (arg0: number) => (any | null);
+            "change-channel-pressure": (arg0: number) => null;
             /**
              * The ::change-parameter signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-parameter": (arg0: number) => (any | null);
+            "change-parameter": (arg0: number) => null;
             /**
              * The ::change-pitch-bend signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-pitch-bend": (arg0: number) => (any | null);
+            "change-pitch-bend": (arg0: number) => null;
             /**
              * The ::change-program signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: number) => (any | null);
+            "change-program": (arg0: number) => null;
             /**
              * The ::end-of-track signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "end-of-track": (arg0: number) => (any | null);
+            "end-of-track": (arg0: number) => null;
             /**
              * The ::key-off signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-off": (arg0: number) => (any | null);
+            "key-off": (arg0: number) => null;
             /**
              * The ::key-on signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-on": (arg0: number) => (any | null);
+            "key-on": (arg0: number) => null;
             /**
              * The ::key-pressure signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-pressure": (arg0: number) => (any | null);
+            "key-pressure": (arg0: number) => null;
             /**
              * The ::key-signature signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-signature": (arg0: number) => (any | null);
+            "key-signature": (arg0: number) => null;
             /**
              * The ::meta-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "meta-event": (arg0: number) => (any | null);
+            "meta-event": (arg0: number) => null;
             /**
              * The ::meta-misc signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "meta-misc": (arg0: number) => (any | null);
+            "meta-misc": (arg0: number) => null;
             /**
              * The ::midi-channel-prefix signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "midi-channel-prefix": (arg0: number) => (any | null);
+            "midi-channel-prefix": (arg0: number) => null;
             /**
              * The ::midi-getc signal is emited during parsing of event.
              * @signal
@@ -70895,132 +70895,132 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "not-defined": (arg0: number) => (any | null);
+            "not-defined": (arg0: number) => null;
             /**
              * The ::on-error signal is emited as error occurs.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: (any | null)) => void;
+            "on-error": (arg0: null) => void;
             /**
              * The ::parse-bytes signal is emited during parsing of bytes.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-bytes": (arg0: (any | null), arg1: number) => (any | null);
+            "parse-bytes": (arg0: null, arg1: number) => null;
             /**
              * The ::parse-full signal is emited during parsing of midi file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-full": () => (any | null);
+            "parse-full": () => null;
             /**
              * The ::parse-header signal is emited during parsing of header.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-header": () => (any | null);
+            "parse-header": () => null;
             /**
              * The ::parse-track signal is emited during parsing of track.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-track": () => (any | null);
+            "parse-track": () => null;
             /**
              * The ::quarter-frame signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "quarter-frame": (arg0: number) => (any | null);
+            "quarter-frame": (arg0: number) => null;
             /**
              * The ::sequence-number signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "sequence-number": (arg0: number) => (any | null);
+            "sequence-number": (arg0: number) => null;
             /**
              * The ::sequencer-meta-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "sequencer-meta-event": (arg0: number) => (any | null);
+            "sequencer-meta-event": (arg0: number) => null;
             /**
              * The ::smtpe signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            smtpe: (arg0: number) => (any | null);
+            smtpe: (arg0: number) => null;
             /**
              * The ::song-position signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "song-position": (arg0: number) => (any | null);
+            "song-position": (arg0: number) => null;
             /**
              * The ::song-select signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "song-select": (arg0: number) => (any | null);
+            "song-select": (arg0: number) => null;
             /**
              * The ::sysex signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            sysex: (arg0: number) => (any | null);
+            sysex: (arg0: number) => null;
             /**
              * The ::system-common signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "system-common": (arg0: number) => (any | null);
+            "system-common": (arg0: number) => null;
             /**
              * The ::tempo signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            tempo: (arg0: number) => (any | null);
+            tempo: (arg0: number) => null;
             /**
              * The ::text-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "text-event": (arg0: number) => (any | null);
+            "text-event": (arg0: number) => null;
             /**
              * The ::time-signature signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "time-signature": (arg0: number) => (any | null);
+            "time-signature": (arg0: number) => null;
             /**
              * The ::tune-request signal is emited during parsing of event.
              * @signal
              * @since 6.16.18
              * @run-last
              */
-            "tune-request": (arg0: number) => (any | null);
+            "tune-request": (arg0: number) => null;
             "notify::file": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            file: any;
+            file: never;
         }
     }
 
@@ -71035,8 +71035,8 @@ export namespace AgsAudio {
          * The file to parse data from.
          * @since 3.0.0
          */
-        get file(): any;
-        set file(val: any);
+        get file(): null;
+        set file(val: never);
 
         /**
          * Compile-time signal type information.
@@ -71828,7 +71828,7 @@ export namespace AgsAudio {
 
         maximum_note_length: number;
 
-        selection: any[];
+        selection: null[];
 
         // Constructors
         constructor(properties?: Partial<Notation.ConstructorProps>, ...args: any[]);
@@ -71891,7 +71891,7 @@ export namespace AgsAudio {
          * @param a the {@link AgsAudio.Notation}
          * @param b another {@link AgsAudio.Notation}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -72528,7 +72528,7 @@ export namespace AgsAudio {
          * @param delay_factor the segmentation delay factor
          * @param n_events the arrays length
          */
-        static from_seq_event(event: (any | null), bpm: number, delay_factor: number, n_events: number): Note[];
+        static from_seq_event(event: null, bpm: number, delay_factor: number, n_events: number): Note[];
 
         /**
          * Parse `raw_midi` data and convert to {@link AgsAudio.Note}.
@@ -72542,7 +72542,7 @@ export namespace AgsAudio {
          * @param delay_factor the segmentation delay factor
          * @param n_events the count snd_seq_event_t structs
          */
-        static from_seq_event_extended(event: (any | null), nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number, n_events: number): Note[];
+        static from_seq_event_extended(event: null, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number, n_events: number): Note[];
 
         /**
          * Deserialize note.
@@ -72581,7 +72581,7 @@ export namespace AgsAudio {
          * @param a the {@link AgsAudio.Note}
          * @param b another {@link AgsAudio.Note}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -72827,7 +72827,7 @@ export namespace AgsAudio {
          * @param n_events the count of events
          * @returns The sequencer events as array.
          */
-        to_seq_event(bpm: number, delay_factor: number, n_events: number): (any | null);
+        to_seq_event(bpm: number, delay_factor: number, n_events: number): null;
 
         /**
          * Convert `note` to raw-midi.
@@ -72841,7 +72841,7 @@ export namespace AgsAudio {
          * @param n_events the return location of event count
          * @returns an array of snd_seq_event_t structs
          */
-        to_seq_event_extended(bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), n_events: number): (any | null);
+        to_seq_event_extended(bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), n_events: number): null;
 
         /**
          * Serialize note.
@@ -73551,7 +73551,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "run-action": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "run-action": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -73608,7 +73608,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_run_action(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_run_action(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -73618,7 +73618,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        run_action(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        run_action(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -73631,14 +73631,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "append-bundle": (arg0: (any | null), arg1: number, arg2: number, arg3: boolean) => void;
+            "append-bundle": (arg0: null, arg1: number, arg2: number, arg3: boolean) => void;
             /**
              * The ::append-message signal is emited during building message.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "append-message": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => void;
+            "append-message": (arg0: null, arg1: null, arg2: null) => void;
             /**
              * The ::append-packet signal is emited during building packet.
              * @signal
@@ -73652,14 +73652,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "append-value": (arg0: number, arg1: (any | null)) => void;
+            "append-value": (arg0: number, arg1: null) => void;
             /**
              * The ::on-error signal is emited during building of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: (any | null)) => void;
+            "on-error": (arg0: null) => void;
             /**
              * The ::osc-putc signal is emited during putting char to file.
              * @signal
@@ -73701,7 +73701,7 @@ export namespace AgsAudio {
 
         offset: number;
 
-        packet: any[];
+        packet: null[];
 
         current_type_tag: string;
 
@@ -73854,7 +73854,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "read-bytes": (arg0: (any | null)) => (any | null);
+            "read-bytes": (arg0: null) => null;
             /**
              * The ::resolve signal is emited during resolve of domain.
              * @signal
@@ -73868,7 +73868,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "write-bytes": (arg0: (any | null), arg1: number) => (boolean | void);
+            "write-bytes": (arg0: null, arg1: number) => (boolean | void);
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::ip4": (pspec: GObject.ParamSpec) => void;
             "notify::ip6": (pspec: GObject.ParamSpec) => void;
@@ -73962,9 +73962,9 @@ export namespace AgsAudio {
 
         max_retry_count: number;
 
-        retry_delay: any;
+        retry_delay: null;
 
-        start_time: any;
+        start_time: null;
 
         cache_data: number;
 
@@ -73978,7 +73978,7 @@ export namespace AgsAudio {
 
         has_valid_data: boolean;
 
-        timeout_delay: any;
+        timeout_delay: null;
 
         // Constructors
         constructor(properties?: Partial<OscClient.ConstructorProps>, ...args: any[]);
@@ -74089,7 +74089,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "apply-config": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "apply-config": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -74146,7 +74146,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_apply_config(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_apply_config(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -74156,7 +74156,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        apply_config(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        apply_config(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -74176,7 +74176,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "read-bytes": (arg0: (any | null)) => (any | null);
+            "read-bytes": (arg0: null) => null;
             /**
              * The ::write-response signal is emited while write response.
              * @signal
@@ -74255,7 +74255,7 @@ export namespace AgsAudio {
 
         socket: Gio.Socket;
 
-        start_time: any;
+        start_time: null;
 
         cache_data: number;
 
@@ -74269,9 +74269,9 @@ export namespace AgsAudio {
 
         has_valid_data: boolean;
 
-        timeout_delay: any;
+        timeout_delay: null;
 
-        timestamp: any;
+        timestamp: null;
 
         // Constructors
         constructor(properties?: Partial<OscConnection.ConstructorProps>, ...args: any[]);
@@ -74299,7 +74299,7 @@ export namespace AgsAudio {
          * @param start_time the start time #timespec-struct
          * @param timeout_delay the delay #timespec-struct
          */
-        static timeout_expired(start_time: (any | null), timeout_delay: (any | null)): boolean;
+        static timeout_expired(start_time: null, timeout_delay: null): boolean;
 
         // Virtual methods
         /**
@@ -74459,7 +74459,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "do-export": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "do-export": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -74516,7 +74516,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_do_export(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_do_export(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -74526,7 +74526,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        do_export(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        do_export(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -74539,7 +74539,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "do-request": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "do-request": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             /**
              * The ::start-delegate signal is emited during start of delegating messages.
              * @signal
@@ -74606,7 +74606,7 @@ export namespace AgsAudio {
          * @param packet_size 
          * @virtual
          */
-        vfunc_do_request(osc_connection: OscConnection, packet: number, packet_size: number): (any | null);
+        vfunc_do_request(osc_connection: OscConnection, packet: number, packet_size: number): null;
 
         /**
          * Start delegating.
@@ -74632,7 +74632,7 @@ export namespace AgsAudio {
          * @param packet 
          * @param packet_size 
          */
-        do_request(osc_connection: OscConnection, packet: number, packet_size: (bigint | number)): (any | null);
+        do_request(osc_connection: OscConnection, packet: number, packet_size: (bigint | number)): null;
 
         /**
          * Remove `message` from `osc_front_controller`.
@@ -74680,7 +74680,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-info": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "get-info": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -74737,7 +74737,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_get_info(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_get_info(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -74747,7 +74747,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        get_info(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        get_info(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -74765,7 +74765,7 @@ export namespace AgsAudio {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             immediately: boolean;
-            message: any;
+            message: never;
             message_size: number;
             messageSize: number;
             osc_connection: OscConnection;
@@ -74796,8 +74796,8 @@ export namespace AgsAudio {
          * The message data.
          * @since 3.0.0
          */
-        get message(): any;
-        set message(val: any);
+        get message(): null;
+        set message(val: never);
 
         /**
          * The size of message in bytes.
@@ -74902,7 +74902,7 @@ export namespace AgsAudio {
          * @param a 
          * @param b 
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
     }
 
 
@@ -74915,7 +74915,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "monitor-meter": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "monitor-meter": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             /**
              * The ::start-monitor signal is emited during start of monitoring meter.
              * @signal
@@ -74960,7 +74960,7 @@ export namespace AgsAudio {
 
         flags: OscMeterControllerFlags;
 
-        monitor: any[];
+        monitor: null[];
 
         // Constructors
         constructor(properties?: Partial<OscMeterController.ConstructorProps>, ...args: any[]);
@@ -74990,7 +74990,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_monitor_meter(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_monitor_meter(osc_connection: OscConnection, message: number, message_size: number): null;
 
         /**
          * Start monitoring.
@@ -75023,7 +75023,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        monitor_meter(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        monitor_meter(osc_connection: OscConnection, message: number, message_size: number): null;
 
         /**
          * @param monitor 
@@ -75070,7 +75070,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-data": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "get-data": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -75127,7 +75127,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_get_data(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_get_data(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -75137,7 +75137,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        get_data(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        get_data(osc_connection: OscConnection, message: number, message_size: number): null;
 
         /**
          * @param args 
@@ -75156,21 +75156,21 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            bundle: () => (any | null);
+            bundle: () => null;
             /**
              * The ::message signal is emited during parsing.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            message: () => (any | null);
+            message: () => null;
             /**
              * The ::on-error signal is emited as error occurs.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: (any | null)) => void;
+            "on-error": (arg0: null) => void;
             /**
              * The ::osc-getc signal is emited during parsing of event.
              * @signal
@@ -75184,28 +75184,28 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            packet: () => (any | null);
+            packet: () => null;
             /**
              * The ::parse-bytes signal is emited during parsing of bytes.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-bytes": (arg0: (any | null), arg1: number) => (any | null);
+            "parse-bytes": (arg0: null, arg1: number) => null;
             /**
              * The ::parse-full signal is emited during parsing of osc file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-full": () => (any | null);
+            "parse-full": () => null;
             /**
              * The ::value signal is emited during parsing.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            value: (arg0: number) => (any | null);
+            value: (arg0: number) => null;
         }
 
         // Constructor properties interface
@@ -75409,7 +75409,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "set-data": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "set-data": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -75466,7 +75466,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_set_data(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_set_data(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -75476,7 +75476,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        set_data(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        set_data(osc_connection: OscConnection, message: number, message_size: number): null;
 
         /**
          * @param args 
@@ -75501,7 +75501,7 @@ export namespace AgsAudio {
             errorMessage: string;
             osc_message: OscMessage;
             oscMessage: OscMessage;
-            packet: any;
+            packet: never;
             packet_size: number;
             packetSize: number;
         }
@@ -75548,8 +75548,8 @@ export namespace AgsAudio {
          * The response packet.
          * @since 3.0.0
          */
-        get packet(): any;
-        set packet(val: any);
+        get packet(): null;
+        set packet(val: never);
 
         /**
          * The response packet's size.
@@ -75583,7 +75583,7 @@ export namespace AgsAudio {
 
         connectable_flags: Ags.ConnectableFlags;
 
-        creation_time: any;
+        creation_time: null;
 
         // Constructors
         constructor(properties?: Partial<OscResponse.ConstructorProps>, ...args: any[]);
@@ -75784,9 +75784,9 @@ export namespace AgsAudio {
 
         ip6_address: Gio.SocketAddress;
 
-        accept_delay: any;
+        accept_delay: null;
 
-        dispatch_delay: any;
+        dispatch_delay: null;
 
         // Constructors
         constructor(properties?: Partial<OscServer.ConstructorProps>, ...args: any[]);
@@ -75914,7 +75914,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-status": (arg0: GObject.Object, arg1: (any | null), arg2: number) => (any | null);
+            "get-status": (arg0: GObject.Object, arg1: null, arg2: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -75971,7 +75971,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @virtual
          */
-        vfunc_get_status(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        vfunc_get_status(osc_connection: OscConnection, message: number, message_size: number): null;
 
         // Methods
         /**
@@ -75981,7 +75981,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        get_status(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        get_status(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -76195,9 +76195,9 @@ export namespace AgsAudio {
 
         do_reset: boolean;
 
-        message: any[];
+        message: null[];
 
-        queued_response: any[];
+        queued_response: null[];
 
         // Constructors
         constructor(properties?: Partial<OscXmlrpcController.ConstructorProps>, ...args: any[]);
@@ -76284,7 +76284,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<any, any>), security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<never, never>), security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         /**
          * Do request.
@@ -76296,7 +76296,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<any, any>, security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 
@@ -76315,7 +76315,7 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends OscMessage.ConstructorProps {
-            query: any;
+            query: never;
             server_msg: Soup.ServerMessage;
             serverMsg: Soup.ServerMessage;
         }
@@ -76332,8 +76332,8 @@ export namespace AgsAudio {
          * The current query.
          * @since 3.0.0
          */
-        get query(): any;
-        set query(val: any);
+        get query(): null;
+        set query(val: never);
 
         /**
          * The assigned {@link Soup.Message}.
@@ -76504,9 +76504,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -76533,7 +76533,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -76548,7 +76548,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -76883,7 +76883,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -76930,7 +76930,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -76992,7 +76992,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -77045,7 +77045,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -77148,20 +77148,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -77185,7 +77185,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -77233,7 +77233,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -77300,7 +77300,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -77355,7 +77355,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -77474,14 +77474,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -77489,7 +77489,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -77510,9 +77510,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -77539,7 +77539,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -77554,7 +77554,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -77889,7 +77889,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -77936,7 +77936,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -77998,7 +77998,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -78051,7 +78051,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -78154,20 +78154,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -78191,7 +78191,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -78239,7 +78239,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -78306,7 +78306,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -78361,7 +78361,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -78480,14 +78480,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -78495,7 +78495,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -78511,9 +78511,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Sequencer.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             delay_factor: number;
             delayFactor: number;
             device: string;
@@ -78532,7 +78532,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -78547,7 +78547,7 @@ export namespace AgsAudio {
          * @since 3.13.2
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * tact
@@ -78797,7 +78797,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): (any | null);
+        get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -78822,7 +78822,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): (any | null);
+        get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -78863,7 +78863,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -78935,7 +78935,7 @@ export namespace AgsAudio {
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Get current playback bpm.
@@ -78948,7 +78948,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_buffer(buffer_length: number): (any | null);
+        vfunc_get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -78973,7 +78973,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @virtual
          */
-        vfunc_get_next_buffer(buffer_length: number): (any | null);
+        vfunc_get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -79016,7 +79016,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -79107,7 +79107,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
     }
 
 
@@ -80292,24 +80292,24 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            default_value: any;
-            defaultValue: any;
-            lower_value: any;
-            lowerValue: any;
+            default_value: never;
+            defaultValue: never;
+            lower_value: never;
+            lowerValue: never;
             port_index: number;
             portIndex: number;
             port_name: string;
             portName: string;
             port_symbol: string;
             portSymbol: string;
-            scale_point: any;
-            scalePoint: any;
+            scale_point: never;
+            scalePoint: never;
             scale_steps: number;
             scaleSteps: number;
-            scale_value: any;
-            scaleValue: any;
-            upper_value: any;
-            upperValue: any;
+            scale_value: never;
+            scaleValue: never;
+            upper_value: never;
+            upperValue: never;
         }
     }
 
@@ -80324,29 +80324,29 @@ export namespace AgsAudio {
          * The default value.
          * @since 3.0.0
          */
-        get default_value(): any;
-        set default_value(val: any);
+        get default_value(): null;
+        set default_value(val: never);
 
         /**
          * The default value.
          * @since 3.0.0
          */
-        get defaultValue(): any;
-        set defaultValue(val: any);
+        get defaultValue(): null;
+        set defaultValue(val: never);
 
         /**
          * The lower value.
          * @since 3.0.0
          */
-        get lower_value(): any;
-        set lower_value(val: any);
+        get lower_value(): null;
+        set lower_value(val: never);
 
         /**
          * The lower value.
          * @since 3.0.0
          */
-        get lowerValue(): any;
-        set lowerValue(val: any);
+        get lowerValue(): null;
+        set lowerValue(val: never);
 
         /**
          * The assigned port-index.
@@ -80401,14 +80401,14 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get scale_point(): any;
+        get scale_point(): null;
 
         /**
          * The scale point string vector.
          * @since 3.0.0
          * @read-only
          */
-        get scalePoint(): any;
+        get scalePoint(): null;
 
         /**
          * The number of scale steps.
@@ -80431,28 +80431,28 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get scale_value(): any;
+        get scale_value(): null;
 
         /**
          * The scale value array.
          * @since 3.0.0
          * @read-only
          */
-        get scaleValue(): any;
+        get scaleValue(): null;
 
         /**
          * The upper value.
          * @since 3.0.0
          */
-        get upper_value(): any;
-        set upper_value(val: any);
+        get upper_value(): null;
+        set upper_value(val: never);
 
         /**
          * The upper value.
          * @since 3.0.0
          */
-        get upperValue(): any;
-        set upperValue(val: any);
+        get upperValue(): null;
+        set upperValue(val: never);
 
         /**
          * Compile-time signal type information.
@@ -80468,7 +80468,7 @@ export namespace AgsAudio {
 
         flags: number;
 
-        user_data: any;
+        user_data: null;
 
         // Constructors
         constructor(properties?: Partial<PluginPort.ConstructorProps>, ...args: any[]);
@@ -80644,28 +80644,28 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "safe-get-property": (arg0: string, arg1: (any | null)) => void;
+            "safe-get-property": (arg0: string, arg1: null) => void;
             /**
              * The ::safe-read signal is emited while doing safe read operation.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-read": (arg0: (any | null)) => void;
+            "safe-read": (arg0: null) => void;
             /**
              * The ::safe-set-property signal is emited while safe set property.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-set-property": (arg0: string, arg1: (any | null)) => void;
+            "safe-set-property": (arg0: string, arg1: null) => void;
             /**
              * The ::safe-write signal is emited while doing safe write operation.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-write": (arg0: (any | null)) => void;
+            "safe-write": (arg0: null) => void;
             "notify::automation": (pspec: GObject.ParamSpec) => void;
             "notify::channel-type": (pspec: GObject.ParamSpec) => void;
             "notify::control-port": (pspec: GObject.ParamSpec) => void;
@@ -80882,7 +80882,7 @@ export namespace AgsAudio {
 
         uuid: Ags.UUID;
 
-        port_value: any;
+        port_value: null;
 
         // Constructors
         constructor(properties?: Partial<Port.ConstructorProps>, ...args: any[]);
@@ -81613,8 +81613,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            control_key: (any | null);
-            controlKey: (any | null);
+            control_key: never;
+            controlKey: never;
             control_name: string;
             controlName: string;
             marker: Marker[];
@@ -81633,15 +81633,15 @@ export namespace AgsAudio {
          * The effect's assigned control key.
          * @since 5.4.0
          */
-        get control_key(): (any | null);
-        set control_key(val: (any | null));
+        get control_key(): null;
+        set control_key(val: never);
 
         /**
          * The effect's assigned control key.
          * @since 5.4.0
          */
-        get controlKey(): (any | null);
-        set controlKey(val: (any | null));
+        get controlKey(): null;
+        set controlKey(val: never);
 
         /**
          * The program's control-name.
@@ -81689,7 +81689,7 @@ export namespace AgsAudio {
 
         port: GObject.Object;
 
-        selection: any[];
+        selection: null[];
 
         // Constructors
         constructor(properties?: Partial<Program.ConstructorProps>, ...args: any[]);
@@ -81771,7 +81771,7 @@ export namespace AgsAudio {
          * @param a the {@link AgsAudio.Program}
          * @param b another {@link AgsAudio.Program}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -81838,7 +81838,7 @@ export namespace AgsAudio {
          * Get control key.
          * @returns the control key
          */
-        get_control_key(): (any | null);
+        get_control_key(): null;
 
         /**
          * Get control name.
@@ -81932,7 +81932,7 @@ export namespace AgsAudio {
          * Set control key.
          * @param control_key the control key
          */
-        set_control_key(control_key: (any | null)): void;
+        set_control_key(control_key: null): void;
 
         /**
          * Set control name.
@@ -81981,8 +81981,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            control_name_key: any;
-            controlNameKey: any;
+            control_name_key: never;
+            controlNameKey: never;
         }
     }
 
@@ -81997,15 +81997,15 @@ export namespace AgsAudio {
          * The {@link GLib.HashTable}-struct containing gpointer of key.
          * @since 5.4.0
          */
-        get control_name_key(): any;
-        set control_name_key(val: any);
+        get control_name_key(): null;
+        set control_name_key(val: never);
 
         /**
          * The {@link GLib.HashTable}-struct containing gpointer of key.
          * @since 5.4.0
          */
-        get controlNameKey(): any;
-        set controlNameKey(val: any);
+        get controlNameKey(): null;
+        set controlNameKey(val: never);
 
         /**
          * Compile-time signal type information.
@@ -82051,7 +82051,7 @@ export namespace AgsAudio {
          * @param control_name the program's control name
          * @returns the key found or inserted
          */
-        find_program(control_name: string): (any | null);
+        find_program(control_name: string): null;
     }
 
 
@@ -82423,9 +82423,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -82438,8 +82438,8 @@ export namespace AgsAudio {
             pcmChannels: number;
             pulse_client: PulseClient;
             pulseClient: PulseClient;
-            pulse_port: any;
-            pulsePort: any;
+            pulse_port: never;
+            pulsePort: never;
             samplerate: number;
         }
     }
@@ -82456,7 +82456,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -82471,7 +82471,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -82571,15 +82571,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.PulsePort}
          * @since 3.0.0
          */
-        get pulse_port(): any;
-        set pulse_port(val: any);
+        get pulse_port(): null;
+        set pulse_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.PulsePort}
          * @since 3.0.0
          */
-        get pulsePort(): any;
-        set pulsePort(val: any);
+        get pulsePort(): null;
+        set pulsePort(val: never);
 
         /**
          * The samplerate
@@ -82834,7 +82834,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -82881,7 +82881,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -82943,7 +82943,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -82996,7 +82996,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -83099,20 +83099,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -83136,7 +83136,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -83184,7 +83184,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -83251,7 +83251,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -83306,7 +83306,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -83425,14 +83425,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -83440,7 +83440,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -83463,9 +83463,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -83478,8 +83478,8 @@ export namespace AgsAudio {
             pcmChannels: number;
             pulse_client: PulseClient;
             pulseClient: PulseClient;
-            pulse_port: any;
-            pulsePort: any;
+            pulse_port: never;
+            pulsePort: never;
             samplerate: number;
         }
     }
@@ -83496,7 +83496,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -83511,7 +83511,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -83611,15 +83611,15 @@ export namespace AgsAudio {
          * The assigned {@link AgsAudio.PulsePort}
          * @since 3.0.0
          */
-        get pulse_port(): any;
-        set pulse_port(val: any);
+        get pulse_port(): null;
+        set pulse_port(val: never);
 
         /**
          * The assigned {@link AgsAudio.PulsePort}
          * @since 3.0.0
          */
-        get pulsePort(): any;
-        set pulsePort(val: any);
+        get pulsePort(): null;
+        set pulsePort(val: never);
 
         /**
          * The samplerate
@@ -83874,7 +83874,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -83921,7 +83921,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -83983,7 +83983,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -84036,7 +84036,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -84139,20 +84139,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -84176,7 +84176,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -84224,7 +84224,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -84291,7 +84291,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -84346,7 +84346,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -84465,14 +84465,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -84480,7 +84480,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -85397,7 +85397,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            duplicate: (arg0: GObject.Object, arg1: (any | null), arg2: (any | null), arg3: (any | null)) => GObject.Object;
+            duplicate: (arg0: GObject.Object, arg1: null, arg2: null, arg3: null) => GObject.Object;
             /**
              * The ::feed-input-queue signal notifies about running
              * feed input queue.
@@ -85555,14 +85555,14 @@ export namespace AgsAudio {
             input_soundcard_channel: number;
             inputSoundcardChannel: number;
             line: number;
-            midi1_cc_to_port_specifier: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi1CcToPortSpecifier: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi1_cc_to_value: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi1CcToValue: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi2_cc_to_port_specifier: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi2CcToPortSpecifier: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi2_cc_to_value: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            midi2CcToValue: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            midi1_cc_to_port_specifier: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi1CcToPortSpecifier: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi1_cc_to_value: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi1CcToValue: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi2_cc_to_port_specifier: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi2CcToPortSpecifier: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi2_cc_to_value: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            midi2CcToValue: ({ [key: string]: any } | GLib.HashTable<never, never>);
             output_soundcard: GObject.Object;
             outputSoundcard: GObject.Object;
             output_soundcard_channel: number;
@@ -85736,57 +85736,57 @@ export namespace AgsAudio {
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi1_cc_to_port_specifier(): GLib.HashTable<any, any>;
-        set midi1_cc_to_port_specifier(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi1_cc_to_port_specifier(): GLib.HashTable<never, never>;
+        set midi1_cc_to_port_specifier(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi1CcToPortSpecifier(): GLib.HashTable<any, any>;
-        set midi1CcToPortSpecifier(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi1CcToPortSpecifier(): GLib.HashTable<never, never>;
+        set midi1CcToPortSpecifier(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi1_cc_to_value(): GLib.HashTable<any, any>;
-        set midi1_cc_to_value(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi1_cc_to_value(): GLib.HashTable<never, never>;
+        set midi1_cc_to_value(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi1CcToValue(): GLib.HashTable<any, any>;
-        set midi1CcToValue(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi1CcToValue(): GLib.HashTable<never, never>;
+        set midi1CcToValue(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi2_cc_to_port_specifier(): GLib.HashTable<any, any>;
-        set midi2_cc_to_port_specifier(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi2_cc_to_port_specifier(): GLib.HashTable<never, never>;
+        set midi2_cc_to_port_specifier(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi2CcToPortSpecifier(): GLib.HashTable<any, any>;
-        set midi2CcToPortSpecifier(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi2CcToPortSpecifier(): GLib.HashTable<never, never>;
+        set midi2CcToPortSpecifier(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi2_cc_to_value(): GLib.HashTable<any, any>;
-        set midi2_cc_to_value(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi2_cc_to_value(): GLib.HashTable<never, never>;
+        set midi2_cc_to_value(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi2CcToValue(): GLib.HashTable<any, any>;
-        set midi2CcToValue(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get midi2CcToValue(): GLib.HashTable<never, never>;
+        set midi2CcToValue(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * The assigned soundcard.
@@ -85926,13 +85926,13 @@ export namespace AgsAudio {
 
         xml_type: string;
 
-        recall_handler: any[];
+        recall_handler: null[];
 
         n_child_params: number;
 
         child_parameter_name: string;
 
-        children: any[];
+        children: null[];
 
         midi_util: MidiUtil;
 
@@ -86231,7 +86231,7 @@ export namespace AgsAudio {
          * Connect callback to `recall` specified by `recall_handler`.
          * @param recall_handler the signal specs
          */
-        add_recall_handler(recall_handler: (any | null)): void;
+        add_recall_handler(recall_handler: null): void;
 
         /**
          * Automate port of `recall`.
@@ -86367,31 +86367,31 @@ export namespace AgsAudio {
          * Gets MIDI version 1 control change to port specifier mapped hash table.
          * @returns the MIDI version 1 control change to port specifier hash table
          */
-        get_midi1_cc_to_port_specifier(): GLib.HashTable<any, any>;
+        get_midi1_cc_to_port_specifier(): GLib.HashTable<never, never>;
 
         /**
          * Gets MIDI version 1 control change to value mapped hash table.
          * @returns the MIDI version 1 control change to value hash table
          */
-        get_midi1_cc_to_value(): GLib.HashTable<any, any>;
+        get_midi1_cc_to_value(): GLib.HashTable<never, never>;
 
         /**
          * Gets MIDI version 1 control change to port specifier mapped hash table.
          * @returns the MIDI version 1 control change to port specifier hash table
          */
-        get_midi2_cc_to_port_specifier(): GLib.HashTable<any, any>;
+        get_midi2_cc_to_port_specifier(): GLib.HashTable<never, never>;
 
         /**
          * Gets MIDI version 1 control change to value mapped hash table.
          * @returns the MIDI version 1 control change to value hash table
          */
-        get_midi2_cc_to_value(): GLib.HashTable<any, any>;
+        get_midi2_cc_to_value(): GLib.HashTable<never, never>;
 
         /**
          * Get object mutex.
          * @returns the {@link GLib.RecMutex} to lock `recall`
          */
-        get_obj_mutex(): (any | null);
+        get_obj_mutex(): null;
 
         /**
          * Get the output soundcard object of `recall`.
@@ -86491,7 +86491,7 @@ export namespace AgsAudio {
          * Remove a {@link AgsAudio.RecallHandler}-struct from `recall`.
          * @param recall_handler the signal specs
          */
-        remove_recall_handler(recall_handler: (any | null)): void;
+        remove_recall_handler(recall_handler: null): void;
 
         /**
          * A signal indicating that the inheriting object should resolve
@@ -89970,7 +89970,7 @@ export namespace AgsAudio {
 
         sound_scope: number;
 
-        children: any[];
+        children: null[];
 
         recycling: Recycling;
 
@@ -90436,7 +90436,7 @@ export namespace AgsAudio {
         // Fields
         task: Ags.Task;
 
-        fx_analyse_channel: any[];
+        fx_analyse_channel: null[];
 
         // Constructors
         constructor(properties?: Partial<ResetFxAnalyse.ConstructorProps>, ...args: any[]);
@@ -90509,7 +90509,7 @@ export namespace AgsAudio {
         // Fields
         task: Ags.Task;
 
-        fx_peak_channel: any[];
+        fx_peak_channel: null[];
 
         // Constructors
         constructor(properties?: Partial<ResetFxPeak.ConstructorProps>, ...args: any[]);
@@ -90584,7 +90584,7 @@ export namespace AgsAudio {
 
         note_offset: number;
 
-        note: any[];
+        note: null[];
 
         // Constructors
         constructor(properties?: Partial<ResetNote.ConstructorProps>, ...args: any[]);
@@ -90659,7 +90659,7 @@ export namespace AgsAudio {
 
         staging_flags: SoundStagingFlags;
 
-        recall: any[];
+        recall: null[];
 
         // Constructors
         constructor(properties?: Partial<ResetRecallStaging.ConstructorProps>, ...args: any[]);
@@ -91043,9 +91043,9 @@ export namespace AgsAudio {
             bank: number;
             filename: string;
             program: number;
-            synth: any;
-            synth_template: any;
-            synthTemplate: any;
+            synth: never;
+            synth_template: never;
+            synthTemplate: never;
         }
     }
 
@@ -91105,22 +91105,22 @@ export namespace AgsAudio {
          * The assigned synth.
          * @since 3.16.0
          */
-        get synth(): any;
-        set synth(val: any);
+        get synth(): null;
+        set synth(val: never);
 
         /**
          * The assigned synth template.
          * @since 3.16.0
          */
-        get synth_template(): any;
-        set synth_template(val: any);
+        get synth_template(): null;
+        set synth_template(val: never);
 
         /**
          * The assigned synth template.
          * @since 3.16.0
          */
-        get synthTemplate(): any;
-        set synthTemplate(val: any);
+        get synthTemplate(): null;
+        set synthTemplate(val: never);
 
         /**
          * Compile-time signal type information.
@@ -91883,7 +91883,7 @@ export namespace AgsAudio {
 
         uuid: Ags.UUID;
 
-        file: any;
+        file: null;
 
         nesting_level: number;
 
@@ -91899,9 +91899,9 @@ export namespace AgsAudio {
 
         name_selected: string;
 
-        current_sample: any;
+        current_sample: null;
 
-        audio_signal: any[];
+        audio_signal: null[];
 
         // Constructors
         constructor(properties?: Partial<SFZFile.ConstructorProps>, ...args: any[]);
@@ -92632,9 +92632,9 @@ export namespace AgsAudio {
             audio_container: AudioContainer;
             audioContainer: AudioContainer;
             filename: string;
-            synth: any;
-            synth_template: any;
-            synthTemplate: any;
+            synth: never;
+            synth_template: never;
+            synthTemplate: never;
         }
     }
 
@@ -92678,22 +92678,22 @@ export namespace AgsAudio {
          * The assigned synth.
          * @since 3.17.0
          */
-        get synth(): any;
-        set synth(val: any);
+        get synth(): null;
+        set synth(val: never);
 
         /**
          * The assigned synth template.
          * @since 3.17.0
          */
-        get synth_template(): any;
-        set synth_template(val: any);
+        get synth_template(): null;
+        set synth_template(val: never);
 
         /**
          * The assigned synth template.
          * @since 3.17.0
          */
-        get synthTemplate(): any;
-        set synthTemplate(val: any);
+        get synthTemplate(): null;
+        set synthTemplate(val: never);
 
         /**
          * Compile-time signal type information.
@@ -93426,9 +93426,9 @@ export namespace AgsAudio {
 
         buffer_offset: number;
 
-        full_buffer: any;
+        full_buffer: null;
 
-        buffer: any;
+        buffer: null;
 
         pointer: number;
 
@@ -93747,7 +93747,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @returns the count of frames actually read
          */
-        read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Read audio signal from `sound_resource`.
@@ -93812,7 +93812,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count to write
          * @param format the format to write
          */
-        write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
 
         /**
          * Close `sound_resource`.
@@ -93868,7 +93868,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @virtual
          */
-        vfunc_read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        vfunc_read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -93909,7 +93909,7 @@ export namespace AgsAudio {
          * @param format the format to write
          * @virtual
          */
-        vfunc_write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        vfunc_write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
     }
 
 
@@ -94736,7 +94736,7 @@ export namespace AgsAudio {
         interface ConstructorProps extends Ags.Task.ConstructorProps {
             has_backlog: boolean;
             hasBacklog: boolean;
-            scope: any;
+            scope: never;
         }
     }
 
@@ -94767,8 +94767,8 @@ export namespace AgsAudio {
          * The assigned {@link GObject.Object} as scope.
          * @since 6.2.0
          */
-        get scope(): any;
-        set scope(val: any);
+        get scope(): null;
+        set scope(val: never);
 
         /**
          * Compile-time signal type information.
@@ -95314,7 +95314,7 @@ export namespace AgsAudio {
             audioChannels: number;
             buffer_size: number;
             bufferSize: number;
-            file: any;
+            file: never;
             format: number;
         }
     }
@@ -95362,8 +95362,8 @@ export namespace AgsAudio {
          * The assigned output `SNDFILE`-struct.
          * @since 3.0.0
          */
-        get file(): any;
-        set file(val: any);
+        get file(): null;
+        set file(val: never);
 
         /**
          * The format to be used.
@@ -95397,9 +95397,9 @@ export namespace AgsAudio {
 
         buffer_offset: number;
 
-        full_buffer: any;
+        full_buffer: null;
 
-        buffer: any;
+        buffer: null;
 
         pointer: number;
 
@@ -95659,7 +95659,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @returns the count of frames actually read
          */
-        read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Read audio signal from `sound_resource`.
@@ -95724,7 +95724,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count to write
          * @param format the format to write
          */
-        write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
 
         /**
          * Close `sound_resource`.
@@ -95780,7 +95780,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @virtual
          */
-        vfunc_read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        vfunc_read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -95821,7 +95821,7 @@ export namespace AgsAudio {
          * @param format the format to write
          * @virtual
          */
-        vfunc_write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        vfunc_write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
     }
 
 
@@ -97419,8 +97419,8 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            smf_buffer: (any | null);
-            smfBuffer: (any | null);
+            smf_buffer: never;
+            smfBuffer: never;
             x: (bigint | number);
         }
     }
@@ -97436,15 +97436,15 @@ export namespace AgsAudio {
          * Track's SMF buffer.
          * @since 3.0.0
          */
-        get smf_buffer(): (any | null);
-        set smf_buffer(val: (any | null));
+        get smf_buffer(): null;
+        set smf_buffer(val: never);
 
         /**
          * Track's SMF buffer.
          * @since 3.0.0
          */
-        get smfBuffer(): (any | null);
-        set smfBuffer(val: (any | null));
+        get smfBuffer(): null;
+        set smfBuffer(val: never);
 
         /**
          * Track's x offset.
@@ -97498,7 +97498,7 @@ export namespace AgsAudio {
          * @param a an {@link AgsAudio.Track}
          * @param b an {@link AgsAudio.Track}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -97506,7 +97506,7 @@ export namespace AgsAudio {
          * @param smf_buffer_length SMF buffer length
          * @returns the newly allocated SMF buffer
          */
-        alloc_smf_buffer(smf_buffer_length: number): (any | null);
+        alloc_smf_buffer(smf_buffer_length: number): null;
 
         /**
          * Duplicate a track.
@@ -97517,7 +97517,7 @@ export namespace AgsAudio {
         /**
          * @param smf_buffer_length 
          */
-        get_smf_buffer(smf_buffer_length: number): (any | null);
+        get_smf_buffer(smf_buffer_length: number): null;
 
         /**
          * Gets x.
@@ -97535,7 +97535,7 @@ export namespace AgsAudio {
          * @param smf_buffer_length SMF buffer length
          * @returns the reallocated SMF buffer
          */
-        realloc_smf_buffer(smf_buffer_length: number): (any | null);
+        realloc_smf_buffer(smf_buffer_length: number): null;
 
         /**
          * Set `flags` on `track`.
@@ -97600,11 +97600,11 @@ export namespace AgsAudio {
 
         vdsp_count: number;
 
-        int_arr: any[];
+        int_arr: null[];
 
-        float_arr: any[];
+        float_arr: null[];
 
-        double_arr: any[];
+        double_arr: null[];
 
         // Constructors
         constructor(properties?: Partial<VDSP256Manager.ConstructorProps>, ...args: any[]);
@@ -97714,17 +97714,17 @@ export namespace AgsAudio {
 
         vector_count: number;
 
-        v8s8_arr: any[];
+        v8s8_arr: null[];
 
-        v8s16_arr: any[];
+        v8s16_arr: null[];
 
-        v8s32_arr: any[];
+        v8s32_arr: null[];
 
-        v8s64_arr: any[];
+        v8s64_arr: null[];
 
-        v8float_arr: any[];
+        v8float_arr: null[];
 
-        v8double_arr: any[];
+        v8double_arr: null[];
 
         // Constructors
         constructor(properties?: Partial<Vector256Manager.ConstructorProps>, ...args: any[]);
@@ -97807,9 +97807,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -97836,7 +97836,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -97851,7 +97851,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -97965,7 +97965,7 @@ export namespace AgsAudio {
 
         sub_block_count: number;
 
-        app_buffer: any;
+        app_buffer: null;
 
         delay: number;
 
@@ -97989,15 +97989,15 @@ export namespace AgsAudio {
 
         loop_offset: number;
 
-        mm_device: any;
+        mm_device: null;
 
-        audio_client: any;
+        audio_client: null;
 
         notify_soundcard: GObject.Object;
 
         note_256th_delay: number;
 
-        note_256th_attack: any[];
+        note_256th_attack: null[];
 
         note_256th_offset: number;
 
@@ -98245,7 +98245,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -98292,7 +98292,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -98354,7 +98354,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -98407,7 +98407,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -98510,20 +98510,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -98547,7 +98547,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -98595,7 +98595,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -98662,7 +98662,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -98717,7 +98717,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -98836,14 +98836,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -98851,7 +98851,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -98872,9 +98872,9 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Soundcard.ConstructorProps {
-            attack: any;
+            attack: never;
             bpm: number;
-            buffer: any;
+            buffer: never;
             buffer_size: number;
             bufferSize: number;
             delay_factor: number;
@@ -98901,7 +98901,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get attack(): any;
+        get attack(): null;
 
         /**
          * Beats per minute
@@ -98916,7 +98916,7 @@ export namespace AgsAudio {
          * @since 3.0.0
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         /**
          * The buffer size
@@ -99030,7 +99030,7 @@ export namespace AgsAudio {
 
         sub_block_count: number;
 
-        app_buffer: any;
+        app_buffer: null;
 
         use_cache: boolean;
 
@@ -99042,7 +99042,7 @@ export namespace AgsAudio {
 
         cache_offset: number;
 
-        cache: any;
+        cache: null;
 
         delay: number;
 
@@ -99066,13 +99066,13 @@ export namespace AgsAudio {
 
         loop_offset: number;
 
-        mm_device: any;
+        mm_device: null;
 
-        audio_client: any;
+        audio_client: null;
 
         note_256th_delay: number;
 
-        note_256th_attack: any[];
+        note_256th_attack: null[];
 
         note_256th_offset: number;
 
@@ -99320,7 +99320,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -99367,7 +99367,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -99429,7 +99429,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -99482,7 +99482,7 @@ export namespace AgsAudio {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -99585,20 +99585,20 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
 
         /**
          * Get current playback delay.
@@ -99622,7 +99622,7 @@ export namespace AgsAudio {
          * Get current playback buffer.
          * @virtual
          */
-        vfunc_get_buffer(): (any | null);
+        vfunc_get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -99670,7 +99670,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_next_buffer(): (any | null);
+        vfunc_get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -99737,7 +99737,7 @@ export namespace AgsAudio {
          * Get future playback buffer.
          * @virtual
          */
-        vfunc_get_prev_buffer(): (any | null);
+        vfunc_get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -99792,7 +99792,7 @@ export namespace AgsAudio {
          * @param buffer the buffer to lock
          * @virtual
          */
-        vfunc_lock_buffer(buffer: (any | null)): void;
+        vfunc_lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -99911,14 +99911,14 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          * @virtual
          */
-        vfunc_unlock_buffer(buffer: (any | null)): void;
+        vfunc_unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
@@ -99926,7 +99926,7 @@ export namespace AgsAudio {
          * @param sub_block and its sub block
          * @virtual
          */
-        vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 
@@ -100039,7 +100039,7 @@ export namespace AgsAudio {
 
         duration: number;
 
-        selection: any[];
+        selection: null[];
 
         clipboard_type: string;
 
@@ -100090,7 +100090,7 @@ export namespace AgsAudio {
          * @param a the {@link AgsAudio.Wave}
          * @param b another {@link AgsAudio.Wave}
          */
-        static sort_func(a: (any | null), b: (any | null)): number;
+        static sort_func(a: null, b: null): number;
 
         // Methods
         /**
@@ -100542,15 +100542,15 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<AmplifierUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        mix_buffer: any;
+        mix_buffer: null;
 
         buffer_length: number;
 
@@ -100609,7 +100609,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.AmplifierUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -100698,7 +100698,7 @@ export namespace AgsAudio {
          * Get destination buffer of `amplifier_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `amplifier_util`.
@@ -100728,7 +100728,7 @@ export namespace AgsAudio {
          * Get source buffer of `amplifier_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `amplifier_util`.
@@ -100863,7 +100863,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `amplifier_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `amplifier_util`.
@@ -100893,7 +100893,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `amplifier_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `amplifier_util`.
@@ -101003,13 +101003,13 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<AudioBufferUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_format: Ags.SoundcardFormat;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_format: Ags.SoundcardFormat;
 
@@ -101017,7 +101017,7 @@ export namespace AgsAudio {
 
         copy_mode: AudioBufferUtilCopyMode;
 
-        converted_source: any;
+        converted_source: null;
 
         buffer_length: number;
 
@@ -101035,7 +101035,7 @@ export namespace AgsAudio {
          * @param count number of frames
          * @param format the format
          */
-        clear_buffer(buffer: (any | null), channels: number, count: number, format: number): void;
+        clear_buffer(buffer: null, channels: number, count: number, format: number): void;
 
         /**
          * Clears a buffer.
@@ -101065,7 +101065,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.AudioBufferUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Wrapper function to copy functions. Doing type conversion.
@@ -101078,7 +101078,7 @@ export namespace AgsAudio {
          * @param count number of frames to copy
          * @param mode specified type conversion as described
          */
-        copy_buffer_to_buffer(destination: (any | null), destination_stride: number, doffset: number, source: (any | null), source_stride: number, soffset: number, count: number, mode: AudioBufferUtilCopyMode): void;
+        copy_buffer_to_buffer(destination: null, destination_stride: number, doffset: number, source: null, source_stride: number, soffset: number, count: number, mode: AudioBufferUtilCopyMode): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -101756,7 +101756,7 @@ export namespace AgsAudio {
          * Get destination buffer of `audio_buffer_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination format of `audio_buffer_util`.
@@ -101934,7 +101934,7 @@ export namespace AgsAudio {
          * Get source buffer of `audio_buffer_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source format of `audio_buffer_util`.
@@ -101957,7 +101957,7 @@ export namespace AgsAudio {
          * @param count the count of frames
          * @param format the format
          */
-        pong(destination: (any | null), destination_stride: number, source: (any | null), source_stride: number, count: number, format: number): void;
+        pong(destination: null, destination_stride: number, source: null, source_stride: number, count: number, format: number): void;
 
         /**
          * Pingpong copy `source` to `destination`.
@@ -102245,7 +102245,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `audio_buffer_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination_format` of `audio_buffer_util`.
@@ -102263,7 +102263,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `audio_buffer_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source_format` of `audio_buffer_util`.
@@ -102427,7 +102427,7 @@ export namespace AgsAudio {
          * @param word_size 
          * @param mode 
          */
-        static copy_buffer_to_buffer(destination: (any | null), dchannels: number, doffset: number, source: (any | null), schannels: number, soffset: number, frame_count: number, byte_order: number, word_size: number, mode: CharBufferUtilCopyMode): void;
+        static copy_buffer_to_buffer(destination: null, dchannels: number, doffset: number, source: null, schannels: number, soffset: number, frame_count: number, byte_order: number, word_size: number, mode: CharBufferUtilCopyMode): void;
 
         /**
          * Copy char to double buffer.
@@ -102606,19 +102606,19 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<ChorusUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        pitch_mix_buffer: any;
+        pitch_mix_buffer: null;
 
         pitch_mix_max_buffer_length: number;
 
-        pitch_mix_buffer_history: any;
+        pitch_mix_buffer_history: null;
 
         history_buffer_length: number;
 
@@ -102648,7 +102648,7 @@ export namespace AgsAudio {
 
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
         note_256th_mode: boolean;
 
@@ -102710,7 +102710,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.ChorusUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -102745,7 +102745,7 @@ export namespace AgsAudio {
          * Get destination buffer of `chorus_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `chorus_util`.
@@ -102817,7 +102817,7 @@ export namespace AgsAudio {
          * Get pitch util of `chorus_util`.
          * @returns the pitch util
          */
-        get_pitch_util(): (any | null);
+        get_pitch_util(): null;
 
         /**
          * Get samplerate of `chorus_util`.
@@ -102829,7 +102829,7 @@ export namespace AgsAudio {
          * Get source buffer of `chorus_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `chorus_util`.
@@ -102865,7 +102865,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `chorus_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `chorus_util`.
@@ -102937,7 +102937,7 @@ export namespace AgsAudio {
          * Set `pitch_util` of `chorus_util`.
          * @param pitch_util the pitch util
          */
-        set_pitch_util(pitch_util: (any | null)): void;
+        set_pitch_util(pitch_util: null): void;
 
         /**
          * Set `samplerate` of `chorus_util`.
@@ -102949,7 +102949,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `chorus_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `chorus_util`.
@@ -102981,133 +102981,133 @@ export namespace AgsAudio {
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_base_key(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_base_key(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get buffer length of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_buffer_length(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_buffer_length(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get destination of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_destination(pitch_util: (any | null), pitch_type: GObject.GType): (any | null);
+        static get_destination(pitch_util: null, pitch_type: GObject.GType): null;
 
         /**
          * Get destination stride of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_destination_stride(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_destination_stride(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get format of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_format(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_format(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get frame count of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_frame_count(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_frame_count(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get note 256th mode of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_note_256th_mode(pitch_util: (any | null), pitch_type: GObject.GType): boolean;
+        static get_note_256th_mode(pitch_util: null, pitch_type: GObject.GType): boolean;
 
         /**
          * Get offset of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_offset(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_offset(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get offset note 256th of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_offset_256th(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_offset_256th(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get samplerate of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_samplerate(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_samplerate(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get source of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_source(pitch_util: (any | null), pitch_type: GObject.GType): (any | null);
+        static get_source(pitch_util: null, pitch_type: GObject.GType): null;
 
         /**
          * Get source stride of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_source_stride(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_source_stride(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get tuning of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_tuning(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_tuning(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get vibrato enabled of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_vibrato_enabled(pitch_util: (any | null), pitch_type: GObject.GType): boolean;
+        static get_vibrato_enabled(pitch_util: null, pitch_type: GObject.GType): boolean;
 
         /**
          * Get vibrato_gain of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_vibrato_gain(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_vibrato_gain(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get vibrato LFO depth of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_vibrato_lfo_depth(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_vibrato_lfo_depth(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get vibrato LFO frequency of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_vibrato_lfo_freq(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_vibrato_lfo_freq(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Get vibrato tuning of `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static get_vibrato_tuning(pitch_util: (any | null), pitch_type: GObject.GType): number;
+        static get_vibrato_tuning(pitch_util: null, pitch_type: GObject.GType): number;
 
         /**
          * Pitch `pitch_util`.
          * @param pitch_util the pitch util
          * @param pitch_type the pitch type
          */
-        static pitch(pitch_util: (any | null), pitch_type: GObject.GType): void;
+        static pitch(pitch_util: null, pitch_type: GObject.GType): void;
 
         /**
          * Set `base_key` of `pitch_util`.
@@ -103115,7 +103115,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param base_key the base key
          */
-        static set_base_key(pitch_util: (any | null), pitch_type: GObject.GType, base_key: number): void;
+        static set_base_key(pitch_util: null, pitch_type: GObject.GType, base_key: number): void;
 
         /**
          * Set `buffer_length` of `pitch_util`.
@@ -103123,7 +103123,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param buffer_length the buffer length
          */
-        static set_buffer_length(pitch_util: (any | null), pitch_type: GObject.GType, buffer_length: number): void;
+        static set_buffer_length(pitch_util: null, pitch_type: GObject.GType, buffer_length: number): void;
 
         /**
          * Set `destination` of `pitch_util`.
@@ -103131,7 +103131,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param destination the destination
          */
-        static set_destination(pitch_util: (any | null), pitch_type: GObject.GType, destination: (any | null)): void;
+        static set_destination(pitch_util: null, pitch_type: GObject.GType, destination: null): void;
 
         /**
          * Set `destination_stride` of `pitch_util`.
@@ -103139,7 +103139,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param destination_stride the destination stride
          */
-        static set_destination_stride(pitch_util: (any | null), pitch_type: GObject.GType, destination_stride: number): void;
+        static set_destination_stride(pitch_util: null, pitch_type: GObject.GType, destination_stride: number): void;
 
         /**
          * Set `format` of `pitch_util`.
@@ -103147,7 +103147,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param format the format
          */
-        static set_format(pitch_util: (any | null), pitch_type: GObject.GType, format: number): void;
+        static set_format(pitch_util: null, pitch_type: GObject.GType, format: number): void;
 
         /**
          * Set `frame_count` of `pitch_util`.
@@ -103155,7 +103155,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param frame_count the frame count
          */
-        static set_frame_count(pitch_util: (any | null), pitch_type: GObject.GType, frame_count: number): void;
+        static set_frame_count(pitch_util: null, pitch_type: GObject.GType, frame_count: number): void;
 
         /**
          * Set `note_256th_mode` of `pitch_util`.
@@ -103163,7 +103163,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param note_256th_mode `true` if note 256th mode, otherwise `false`
          */
-        static set_note_256th_mode(pitch_util: (any | null), pitch_type: GObject.GType, note_256th_mode: boolean): void;
+        static set_note_256th_mode(pitch_util: null, pitch_type: GObject.GType, note_256th_mode: boolean): void;
 
         /**
          * Set `offset` of `pitch_util`.
@@ -103171,7 +103171,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param offset the offset
          */
-        static set_offset(pitch_util: (any | null), pitch_type: GObject.GType, offset: number): void;
+        static set_offset(pitch_util: null, pitch_type: GObject.GType, offset: number): void;
 
         /**
          * Set `offset_256th` of `pitch_util`.
@@ -103179,7 +103179,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param offset_256th the offset note 256th
          */
-        static set_offset_256th(pitch_util: (any | null), pitch_type: GObject.GType, offset_256th: number): void;
+        static set_offset_256th(pitch_util: null, pitch_type: GObject.GType, offset_256th: number): void;
 
         /**
          * Set `samplerate` of `pitch_util`.
@@ -103187,7 +103187,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param samplerate the samplerate
          */
-        static set_samplerate(pitch_util: (any | null), pitch_type: GObject.GType, samplerate: number): void;
+        static set_samplerate(pitch_util: null, pitch_type: GObject.GType, samplerate: number): void;
 
         /**
          * Set `source` of `pitch_util`.
@@ -103195,7 +103195,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param source the source
          */
-        static set_source(pitch_util: (any | null), pitch_type: GObject.GType, source: (any | null)): void;
+        static set_source(pitch_util: null, pitch_type: GObject.GType, source: null): void;
 
         /**
          * Set `source_stride` of `pitch_util`.
@@ -103203,7 +103203,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param source_stride the source stride
          */
-        static set_source_stride(pitch_util: (any | null), pitch_type: GObject.GType, source_stride: number): void;
+        static set_source_stride(pitch_util: null, pitch_type: GObject.GType, source_stride: number): void;
 
         /**
          * Set `tuning` of `pitch_util`.
@@ -103211,7 +103211,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param tuning the tuning
          */
-        static set_tuning(pitch_util: (any | null), pitch_type: GObject.GType, tuning: number): void;
+        static set_tuning(pitch_util: null, pitch_type: GObject.GType, tuning: number): void;
 
         /**
          * Set `vibrato_enabled` of `pitch_util`.
@@ -103219,7 +103219,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param vibrato_enabled the vibrato enabled
          */
-        static set_vibrato_enabled(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_enabled: boolean): void;
+        static set_vibrato_enabled(pitch_util: null, pitch_type: GObject.GType, vibrato_enabled: boolean): void;
 
         /**
          * Set `vibrato_gain` of `pitch_util`.
@@ -103227,7 +103227,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param vibrato_gain the vibrato_gain
          */
-        static set_vibrato_gain(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_gain: number): void;
+        static set_vibrato_gain(pitch_util: null, pitch_type: GObject.GType, vibrato_gain: number): void;
 
         /**
          * Set `vibrato_lfo_depth` of `pitch_util`.
@@ -103235,7 +103235,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param vibrato_lfo_depth the vibrato LFO depth
          */
-        static set_vibrato_lfo_depth(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_lfo_depth: number): void;
+        static set_vibrato_lfo_depth(pitch_util: null, pitch_type: GObject.GType, vibrato_lfo_depth: number): void;
 
         /**
          * Set `vibrato_lfo_freq` of `pitch_util`.
@@ -103243,7 +103243,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param vibrato_lfo_freq the vibrato LFO frequency
          */
-        static set_vibrato_lfo_freq(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_lfo_freq: number): void;
+        static set_vibrato_lfo_freq(pitch_util: null, pitch_type: GObject.GType, vibrato_lfo_freq: number): void;
 
         /**
          * Set `vibrato_tuning` of `pitch_util`.
@@ -103251,7 +103251,7 @@ export namespace AgsAudio {
          * @param pitch_type the pitch type
          * @param vibrato_tuning the vibrato tuning
          */
-        static set_vibrato_tuning(pitch_util: (any | null), pitch_type: GObject.GType, vibrato_tuning: number): void;
+        static set_vibrato_tuning(pitch_util: null, pitch_type: GObject.GType, vibrato_tuning: number): void;
     }
 
 
@@ -103355,11 +103355,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<EnvelopeUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -103437,7 +103437,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.EnvelopeUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -103460,7 +103460,7 @@ export namespace AgsAudio {
          * Get destination buffer of `envelope_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `envelope_util`.
@@ -103502,7 +103502,7 @@ export namespace AgsAudio {
          * Get source buffer of `envelope_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `envelope_util`.
@@ -103532,7 +103532,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `envelope_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `envelope_util`.
@@ -103574,7 +103574,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `envelope_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `envelope_util`.
@@ -103607,7 +103607,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FMSynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -103877,7 +103877,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FMSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -103960,7 +103960,7 @@ export namespace AgsAudio {
          * Get source buffer of `fm_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fm_synth_util`.
@@ -104062,7 +104062,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fm_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fm_synth_util`.
@@ -104097,27 +104097,27 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FastPitchUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        mix_buffer: any;
+        mix_buffer: null;
 
         mix_buffer_max_buffer_length: number;
 
-        im_mix_buffer: any;
+        im_mix_buffer: null;
 
         im_mix_buffer_max_buffer_length: number;
 
-        low_mix_buffer: any;
+        low_mix_buffer: null;
 
         low_mix_buffer_max_buffer_length: number;
 
-        new_mix_buffer: any;
+        new_mix_buffer: null;
 
         new_mix_buffer_max_buffer_length: number;
 
@@ -104152,17 +104152,17 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            source: any;
+            source: null;
             source_stride: number;
-            destination: any;
+            destination: null;
             destination_stride: number;
-            mix_buffer: any;
+            mix_buffer: null;
             mix_buffer_max_buffer_length: number;
-            im_mix_buffer: any;
+            im_mix_buffer: null;
             im_mix_buffer_max_buffer_length: number;
-            low_mix_buffer: any;
+            low_mix_buffer: null;
             low_mix_buffer_max_buffer_length: number;
-            new_mix_buffer: any;
+            new_mix_buffer: null;
             new_mix_buffer_max_buffer_length: number;
             buffer_length: number;
             format: number;
@@ -104191,7 +104191,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FastPitchUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -104214,7 +104214,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fast_pitch_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fast_pitch_util`.
@@ -104262,7 +104262,7 @@ export namespace AgsAudio {
          * Get source buffer of `fast_pitch_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fast_pitch_util`.
@@ -104367,7 +104367,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fast_pitch_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fast_pitch_util`.
@@ -104415,7 +104415,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fast_pitch_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fast_pitch_util`.
@@ -104473,11 +104473,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FluidIIRFilterUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -104536,7 +104536,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FluidIIRFilterUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -104553,7 +104553,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fluid_iir_filter_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fluid_iir_filter_util`.
@@ -104607,7 +104607,7 @@ export namespace AgsAudio {
          * Get source buffer of `fluid_iir_filter_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fluid_iir_filter_util`.
@@ -104670,7 +104670,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fluid_iir_filter_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fluid_iir_filter_util`.
@@ -104724,7 +104724,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fluid_iir_filter_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fluid_iir_filter_util`.
@@ -104741,11 +104741,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FluidInterpolate4thOrderUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -104790,7 +104790,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FluidInterpolate4thOrderUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -104813,7 +104813,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fluid_interpolate_4th_order_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fluid_interpolate_4th_order_util`.
@@ -104867,7 +104867,7 @@ export namespace AgsAudio {
          * Get source buffer of `fluid_interpolate_4th_order_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fluid_interpolate_4th_order_util`.
@@ -104972,7 +104972,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fluid_interpolate_4th_order_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fluid_interpolate_4th_order_util`.
@@ -105026,7 +105026,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fluid_interpolate_4th_order_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fluid_interpolate_4th_order_util`.
@@ -105079,11 +105079,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FluidInterpolate7thOrderUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -105128,7 +105128,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FluidInterpolate7thOrderUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -105151,7 +105151,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fluid_interpolate_7th_order_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fluid_interpolate_7th_order_util`.
@@ -105205,7 +105205,7 @@ export namespace AgsAudio {
          * Get source buffer of `fluid_interpolate_7th_order_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fluid_interpolate_7th_order_util`.
@@ -105310,7 +105310,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fluid_interpolate_7th_order_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fluid_interpolate_7th_order_util`.
@@ -105364,7 +105364,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fluid_interpolate_7th_order_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fluid_interpolate_7th_order_util`.
@@ -105417,11 +105417,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FluidInterpolateLinearUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -105466,7 +105466,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FluidInterpolateLinearUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -105489,7 +105489,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fluid_interpolate_linear_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fluid_interpolate_linear_util`.
@@ -105543,7 +105543,7 @@ export namespace AgsAudio {
          * Get source buffer of `fluid_interpolate_linear_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fluid_interpolate_linear_util`.
@@ -105648,7 +105648,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fluid_interpolate_linear_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fluid_interpolate_linear_util`.
@@ -105702,7 +105702,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fluid_interpolate_linear_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fluid_interpolate_linear_util`.
@@ -105755,11 +105755,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FluidInterpolateNoneUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -105804,7 +105804,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FluidInterpolateNoneUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -105827,7 +105827,7 @@ export namespace AgsAudio {
          * Get destination buffer of `fluid_interpolate_none_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `fluid_interpolate_none_util`.
@@ -105881,7 +105881,7 @@ export namespace AgsAudio {
          * Get source buffer of `fluid_interpolate_none_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fluid_interpolate_none_util`.
@@ -105986,7 +105986,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `fluid_interpolate_none_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `fluid_interpolate_none_util`.
@@ -106040,7 +106040,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fluid_interpolate_none_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fluid_interpolate_none_util`.
@@ -106101,7 +106101,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FourierTransformUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -106169,7 +106169,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FourierTransformUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -106204,7 +106204,7 @@ export namespace AgsAudio {
          * Get source buffer of `fourier_transform_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `fourier_transform_util`.
@@ -106285,7 +106285,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `fourier_transform_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `fourier_transform_util`.
@@ -106307,15 +106307,15 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FrequencyAliaseUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        phase_shifted_source: any;
+        phase_shifted_source: null;
 
         phase_shifted_source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -106336,7 +106336,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.FrequencyAliaseUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -106353,7 +106353,7 @@ export namespace AgsAudio {
          * Get destination buffer of `frequency_aliase_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `frequency_aliase_util`.
@@ -106371,7 +106371,7 @@ export namespace AgsAudio {
          * Get phase shifted source buffer of `frequency_aliase_util`.
          * @returns the phase shifted source buffer
          */
-        get_phase_shifted_source(): (any | null);
+        get_phase_shifted_source(): null;
 
         get_phase_shifted_source_stride(): number;
 
@@ -106379,7 +106379,7 @@ export namespace AgsAudio {
          * Get source buffer of `frequency_aliase_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `frequency_aliase_util`.
@@ -106442,7 +106442,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `frequency_aliase_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `frequency_aliase_util`.
@@ -106460,7 +106460,7 @@ export namespace AgsAudio {
          * Set `phase_shifted_source` buffer of `frequency_aliase_util`.
          * @param phase_shifted_source the phase shifted source buffer
          */
-        set_phase_shifted_source(phase_shifted_source: (any | null)): void;
+        set_phase_shifted_source(phase_shifted_source: null): void;
 
         /**
          * @param phase_shifted_source_stride 
@@ -106471,7 +106471,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `frequency_aliase_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `frequency_aliase_util`.
@@ -106526,19 +106526,19 @@ export namespace AgsAudio {
         /**
          * Allocate {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `input_data`.
          * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}-struct
          */
-        static free(input_data: (any | null)): void;
+        static free(input_data: null): void;
 
         /**
          * Get structure mutex.
          * @param input_data the {@link AgsAudio.FxAnalyseChannelInputData}
          */
-        static get_strct_mutex(input_data: (any | null)): (any | null);
+        static get_strct_mutex(input_data: null): null;
     }
 
 
@@ -106582,19 +106582,19 @@ export namespace AgsAudio {
         /**
          * Allocate {@link AgsAudio.FxBufferChannelInputData}-struct
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `input_data`.
          * @param input_data the {@link AgsAudio.FxBufferChannelInputData}-struct
          */
-        static free(input_data: (any | null)): void;
+        static free(input_data: null): void;
 
         /**
          * Get structure mutex.
          * @param input_data the {@link AgsAudio.FxBufferChannelInputData}
          */
-        static get_strct_mutex(input_data: (any | null)): (any | null);
+        static get_strct_mutex(input_data: null): null;
     }
 
 
@@ -106776,13 +106776,13 @@ export namespace AgsAudio {
         /**
          * Allocate {@link AgsAudio.FxEq10ChannelInputData}-struct
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `input_data`.
          * @param input_data the {@link AgsAudio.FxEq10ChannelInputData}-struct
          */
-        static free(input_data: (any | null)): void;
+        static free(input_data: null): void;
     }
 
 
@@ -106805,7 +106805,7 @@ export namespace AgsAudio {
         // Fields
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
         input_data: FxFMSynthAudioInputData[];
 
@@ -107047,9 +107047,9 @@ export namespace AgsAudio {
 
         input: number;
 
-        midiin_event_port: any;
+        midiin_event_port: null;
 
-        midiout_event_port: any;
+        midiout_event_port: null;
 
         forge_buffer: number;
 
@@ -107089,13 +107089,13 @@ export namespace AgsAudio {
 
         input: number;
 
-        midiin_event_port: any;
+        midiin_event_port: null;
 
-        midiout_event_port: any;
+        midiout_event_port: null;
 
-        midiin_atom_port: any;
+        midiin_atom_port: null;
 
-        midiout_atom_port: any;
+        midiout_atom_port: null;
 
         key_on: number;
 
@@ -107255,7 +107255,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FxPeakChannelInputData>;
 
         // Fields
-        buffer: any;
+        buffer: null;
 
         // Methods
         /**
@@ -107312,15 +107312,15 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<FxRavenSynthAudioChannelData>;
 
         // Fields
-        synth_buffer_0: any;
+        synth_buffer_0: null;
 
-        synth_buffer_1: any;
+        synth_buffer_1: null;
 
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
-        pitch_buffer: any;
+        pitch_buffer: null;
 
         input_data: FxRavenSynthAudioInputData[];
 
@@ -107567,9 +107567,9 @@ export namespace AgsAudio {
         // Fields
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
-        pitch_buffer: any;
+        pitch_buffer: null;
 
         input_data: FxSeqSynthAudioInputData[];
 
@@ -107654,9 +107654,9 @@ export namespace AgsAudio {
         // Fields
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
-        pitch_buffer: any;
+        pitch_buffer: null;
 
         input_data: FxStarSynthAudioInputData[];
 
@@ -107741,7 +107741,7 @@ export namespace AgsAudio {
         // Fields
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
         input_data: FxSynthAudioInputData[];
 
@@ -107890,19 +107890,19 @@ export namespace AgsAudio {
         /**
          * Allocate {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `input_data`.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}-struct
          */
-        static free(input_data: (any | null)): void;
+        static free(input_data: null): void;
 
         /**
          * Get structure mutex.
          * @param input_data the {@link AgsAudio.FxTwoPassAliaseChannelInputData}
          */
-        static get_strct_mutex(input_data: (any | null)): (any | null);
+        static get_strct_mutex(input_data: null): null;
     }
 
 
@@ -108023,19 +108023,19 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<HQPitchUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        low_mix_buffer: any;
+        low_mix_buffer: null;
 
         low_mix_buffer_max_buffer_length: number;
 
-        new_mix_buffer: any;
+        new_mix_buffer: null;
 
         new_mix_buffer_max_buffer_length: number;
 
@@ -108080,7 +108080,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.HQPitchUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -108103,7 +108103,7 @@ export namespace AgsAudio {
          * Get destination buffer of `hq_pitch_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `hq_pitch_util`.
@@ -108151,7 +108151,7 @@ export namespace AgsAudio {
          * Get source buffer of `hq_pitch_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `hq_pitch_util`.
@@ -108256,7 +108256,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `hq_pitch_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `hq_pitch_util`.
@@ -108304,7 +108304,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `hq_pitch_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `hq_pitch_util`.
@@ -108417,7 +108417,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<LFOSynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -108681,7 +108681,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.LFOSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -108758,7 +108758,7 @@ export namespace AgsAudio {
          * Get source buffer of `lfo_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `lfo_synth_util`.
@@ -108842,7 +108842,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `lfo_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `lfo_synth_util`.
@@ -108880,11 +108880,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<LinearInterpolateUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -108899,9 +108899,9 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            source: any;
+            source: null;
             source_stride: number;
-            destination: any;
+            destination: null;
             destination_stride: number;
             buffer_length: number;
             format: number;
@@ -108920,7 +108920,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.LinearInterpolateUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -108937,7 +108937,7 @@ export namespace AgsAudio {
          * Get destination buffer of `linear_interpolate_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `linear_interpolate_util`.
@@ -108967,7 +108967,7 @@ export namespace AgsAudio {
          * Get source buffer of `linear_interpolate_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `linear_interpolate_util`.
@@ -109030,7 +109030,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `linear_interpolate_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `linear_interpolate_util`.
@@ -109060,7 +109060,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `linear_interpolate_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `linear_interpolate_util`.
@@ -109082,11 +109082,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<LowPassFilterUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -109125,7 +109125,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.LowPassFilterUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -109148,7 +109148,7 @@ export namespace AgsAudio {
          * Get destination buffer of `low_pass_filter_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `low_pass_filter_util`.
@@ -109184,7 +109184,7 @@ export namespace AgsAudio {
          * Get source buffer of `low_pass_filter_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `low_pass_filter_util`.
@@ -109253,7 +109253,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `low_pass_filter_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `low_pass_filter_util`.
@@ -109289,7 +109289,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `low_pass_filter_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `low_pass_filter_util`.
@@ -109362,7 +109362,7 @@ export namespace AgsAudio {
         /**
          * Allocate an {@link AgsAudio.Lv2OptionRessource}.
          */
-        static alloc(): (any | null);
+        static alloc(): null;
     }
 
 
@@ -109386,13 +109386,13 @@ export namespace AgsAudio {
          * @param port_symbol the port symbol
          * @param port_type the port type
          */
-        static alloc(port_symbol: string, port_type: GObject.GType): (any | null);
+        static alloc(port_symbol: string, port_type: GObject.GType): null;
 
         /**
          * Free `lv2_port_preset`.
          * @param lv2_port_preset the {@link AgsAudio.Lv2PortPreset}-struct
          */
-        static free(lv2_port_preset: (any | null)): void;
+        static free(lv2_port_preset: null): void;
     }
 
 
@@ -109445,13 +109445,13 @@ export namespace AgsAudio {
         // Fields
         data_size: number;
 
-        data: any;
+        data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             data_size: number;
-            data: any;
+            data: null;
         }>);
     }
 
@@ -109507,13 +109507,13 @@ export namespace AgsAudio {
         /**
          * Allocate MIDI builder header.
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free MIDI builder header.
          * @param midi_builder_header the {@link AgsAudio.MidiBuilderHeader}-struct
          */
-        static free(midi_builder_header: (any | null)): void;
+        static free(midi_builder_header: null): void;
     }
 
 
@@ -109540,13 +109540,13 @@ export namespace AgsAudio {
         /**
          * Allocate MIDI builder track.
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free MIDI builder track.
          * @param midi_builder_track the {@link AgsAudio.MidiBuilderTrack}-struct
          */
-        static free(midi_builder_track: (any | null)): void;
+        static free(midi_builder_track: null): void;
 
         // Methods
         /**
@@ -112630,15 +112630,15 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<NoiseUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        noise: any;
+        noise: null;
 
         buffer_length: number;
 
@@ -112716,7 +112716,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.NoiseUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -112733,7 +112733,7 @@ export namespace AgsAudio {
          * Get destination buffer of `noise_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `noise_util`.
@@ -112787,7 +112787,7 @@ export namespace AgsAudio {
          * Get source buffer of `noise_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `noise_util`.
@@ -112811,7 +112811,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `noise_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `noise_util`.
@@ -112865,7 +112865,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `noise_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `noise_util`.
@@ -113193,22 +113193,22 @@ export namespace AgsAudio {
 
         immediately: boolean;
 
-        message: any[];
+        message: null[];
 
-        bundle: any[];
+        bundle: null[];
 
         // Static methods
         /**
          * Allocate {@link AgsAudio.OscBuilderBundle}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): (any | null);
+        static alloc(offset: (bigint | number)): null;
 
         /**
          * Free `bundle`.
          * @param bundle the {@link AgsAudio.OscBuilderBundle}-struct
          */
-        static free(bundle: (any | null)): void;
+        static free(bundle: null): void;
     }
 
 
@@ -113241,13 +113241,13 @@ export namespace AgsAudio {
          * Allocate {@link AgsAudio.OscBuilderMessage}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): (any | null);
+        static alloc(offset: (bigint | number)): null;
 
         /**
          * Free `message`.
          * @param message the {@link AgsAudio.OscBuilderMessage}-struct
          */
-        static free(message: (any | null)): void;
+        static free(message: null): void;
     }
 
 
@@ -113264,22 +113264,22 @@ export namespace AgsAudio {
 
         builder: OscBuilder;
 
-        message: any[];
+        message: null[];
 
-        bundle: any[];
+        bundle: null[];
 
         // Static methods
         /**
          * Allocate {@link AgsAudio.OscBuilderPacket}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): (any | null);
+        static alloc(offset: (bigint | number)): null;
 
         /**
          * Free `packet`.
          * @param packet the {@link AgsAudio.OscBuilderPacket}-struct
          */
-        static free(packet: (any | null)): void;
+        static free(packet: null): void;
     }
 
 
@@ -113338,26 +113338,26 @@ export namespace AgsAudio {
         /**
          * Allocate {@link AgsAudio.OscMeterControllerMonitor}-struct.
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `monitor`.
          * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
          */
-        static free(monitor: (any | null)): void;
+        static free(monitor: null): void;
 
         /**
          * Increase reference count of `monitor`.
          * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
          */
-        static ref(monitor: (any | null)): void;
+        static ref(monitor: null): void;
 
         /**
          * Decrease reference count of `monitor`. If ref count is less or equal 0
          * `monitor` is freed.
          * @param monitor the {@link AgsAudio.OscMeterControllerMonitor}-struct
          */
-        static unref(monitor: (any | null)): void;
+        static unref(monitor: null): void;
     }
 
 
@@ -113531,7 +113531,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<PeakUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -113603,7 +113603,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.PeakUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -113650,7 +113650,7 @@ export namespace AgsAudio {
          * Get source buffer of `peak_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `peak_util`.
@@ -113698,7 +113698,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `peak_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `peak_util`.
@@ -113715,11 +113715,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<PhaseShiftUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -113746,7 +113746,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.PhaseShiftUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -113769,7 +113769,7 @@ export namespace AgsAudio {
          * Get destination buffer of `phase_shift_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `phase_shift_util`.
@@ -113799,7 +113799,7 @@ export namespace AgsAudio {
          * Get source buffer of `phase_shift_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `phase_shift_util`.
@@ -113868,7 +113868,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `phase_shift_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `phase_shift_util`.
@@ -113898,7 +113898,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `phase_shift_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `phase_shift_util`.
@@ -113915,19 +113915,19 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<Pitch16xAliasUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        alias_source_buffer: any;
+        alias_source_buffer: null;
 
         alias_source_max_buffer_length: number;
 
-        alias_new_source_buffer: any;
+        alias_new_source_buffer: null;
 
         alias_new_source_max_buffer_length: number;
 
@@ -113962,13 +113962,13 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            source: any;
+            source: null;
             source_stride: number;
-            destination: any;
+            destination: null;
             destination_stride: number;
-            alias_source_buffer: any;
+            alias_source_buffer: null;
             alias_source_max_buffer_length: number;
-            alias_new_source_buffer: any;
+            alias_new_source_buffer: null;
             alias_new_source_max_buffer_length: number;
             buffer_length: number;
             format: number;
@@ -113997,7 +113997,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.Pitch16xAliasUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -114020,7 +114020,7 @@ export namespace AgsAudio {
          * Get destination buffer of `pitch_16x_alias_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `pitch_16x_alias_util`.
@@ -114068,7 +114068,7 @@ export namespace AgsAudio {
          * Get source buffer of `pitch_16x_alias_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `pitch_16x_alias_util`.
@@ -114173,7 +114173,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `pitch_16x_alias_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `pitch_16x_alias_util`.
@@ -114221,7 +114221,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `pitch_16x_alias_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `pitch_16x_alias_util`.
@@ -114274,19 +114274,19 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<Pitch2xAliasUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        alias_source_buffer: any;
+        alias_source_buffer: null;
 
         alias_source_max_buffer_length: number;
 
-        alias_new_source_buffer: any;
+        alias_new_source_buffer: null;
 
         alias_new_source_max_buffer_length: number;
 
@@ -114325,13 +114325,13 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            source: any;
+            source: null;
             source_stride: number;
-            destination: any;
+            destination: null;
             destination_stride: number;
-            alias_source_buffer: any;
+            alias_source_buffer: null;
             alias_source_max_buffer_length: number;
-            alias_new_source_buffer: any;
+            alias_new_source_buffer: null;
             alias_new_source_max_buffer_length: number;
             buffer_length: number;
             format: number;
@@ -114362,7 +114362,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.Pitch2xAliasUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -114385,7 +114385,7 @@ export namespace AgsAudio {
          * Get destination buffer of `pitch_2x_alias_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `pitch_2x_alias_util`.
@@ -114433,7 +114433,7 @@ export namespace AgsAudio {
          * Get source buffer of `pitch_2x_alias_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `pitch_2x_alias_util`.
@@ -114538,7 +114538,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `pitch_2x_alias_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `pitch_2x_alias_util`.
@@ -114586,7 +114586,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `pitch_2x_alias_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `pitch_2x_alias_util`.
@@ -114639,19 +114639,19 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<Pitch4xAliasUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        alias_source_buffer: any;
+        alias_source_buffer: null;
 
         alias_source_max_buffer_length: number;
 
-        alias_new_source_buffer: any;
+        alias_new_source_buffer: null;
 
         alias_new_source_max_buffer_length: number;
 
@@ -114690,13 +114690,13 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            source: any;
+            source: null;
             source_stride: number;
-            destination: any;
+            destination: null;
             destination_stride: number;
-            alias_source_buffer: any;
+            alias_source_buffer: null;
             alias_source_max_buffer_length: number;
-            alias_new_source_buffer: any;
+            alias_new_source_buffer: null;
             alias_new_source_max_buffer_length: number;
             buffer_length: number;
             format: number;
@@ -114727,7 +114727,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.Pitch4xAliasUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -114750,7 +114750,7 @@ export namespace AgsAudio {
          * Get destination buffer of `pitch_4x_alias_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `pitch_4x_alias_util`.
@@ -114798,7 +114798,7 @@ export namespace AgsAudio {
          * Get source buffer of `pitch_4x_alias_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `pitch_4x_alias_util`.
@@ -114903,7 +114903,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `pitch_4x_alias_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `pitch_4x_alias_util`.
@@ -114951,7 +114951,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `pitch_4x_alias_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `pitch_4x_alias_util`.
@@ -115072,7 +115072,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<RavenSynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -115376,7 +115376,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.RavenSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -115497,7 +115497,7 @@ export namespace AgsAudio {
          * Get source buffer of `raven_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `raven_synth_util`.
@@ -115708,7 +115708,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `raven_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `raven_synth_util`.
@@ -115854,13 +115854,13 @@ export namespace AgsAudio {
          * @param callback the {@link GObject.Callback} function
          * @param data the data to pass the callback
          */
-        static alloc(signal_name: string, callback: GObject.Callback, data: GObject.Object): (any | null);
+        static alloc(signal_name: string, callback: GObject.Callback, data: GObject.Object): null;
 
         /**
          * Free `recall_hanlder`.
          * @param recall_handler the {@link AgsAudio.RecallHandler}-struct
          */
-        static free(recall_handler: (any | null)): void;
+        static free(recall_handler: null): void;
     }
 
 
@@ -115911,11 +115911,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<ResampleUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -115939,11 +115939,11 @@ export namespace AgsAudio {
 
         input_frames: number;
 
-        data_in: any;
+        data_in: null;
 
         output_frames: number;
 
-        data_out: any;
+        data_out: null;
 
         increment: number;
 
@@ -115981,7 +115981,7 @@ export namespace AgsAudio {
 
         last_position: number;
 
-        buffer: any;
+        buffer: null;
 
         // Static methods
         /**
@@ -116039,7 +116039,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.ResampleUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -116056,7 +116056,7 @@ export namespace AgsAudio {
          * Get destination buffer of `resample_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `resample_util`.
@@ -116080,7 +116080,7 @@ export namespace AgsAudio {
          * Get source buffer of `resample_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `resample_util`.
@@ -116109,7 +116109,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `resample_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `resample_util`.
@@ -116133,7 +116133,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `resample_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `resample_util`.
@@ -116212,19 +116212,19 @@ export namespace AgsAudio {
 
         sf2_orig_buffer_length: number[];
 
-        sf2_orig_buffer: any;
+        sf2_orig_buffer: null;
 
         sf2_resampled_buffer_length: number[];
 
-        sf2_resampled_buffer: any;
+        sf2_resampled_buffer: null;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        sample_buffer: any;
+        sample_buffer: null;
 
-        im_buffer: any;
+        im_buffer: null;
 
         buffer_length: number;
 
@@ -116262,7 +116262,7 @@ export namespace AgsAudio {
 
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
         note_256th_mode: boolean;
 
@@ -116333,7 +116333,7 @@ export namespace AgsAudio {
          * Copy {@link AgsAudio.SF2SynthUtil}-struct.
          * @returns the newly allocated {@link AgsAudio.SF2SynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free {@link AgsAudio.SF2SynthUtil}-struct.
@@ -116428,7 +116428,7 @@ export namespace AgsAudio {
          * Get pitch util of `sf2_synth_util`.
          * @returns the pitch util
          */
-        get_pitch_util(): (any | null);
+        get_pitch_util(): null;
 
         /**
          * Get preset of `sf2_synth_util`.
@@ -116470,7 +116470,7 @@ export namespace AgsAudio {
          * Get source buffer of `sf2_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `sf2_synth_util`.
@@ -116586,7 +116586,7 @@ export namespace AgsAudio {
          * Set `pitch_util` of `sf2_synth_util`.
          * @param pitch_util the pitch util
          */
-        set_pitch_util(pitch_util: (any | null)): void;
+        set_pitch_util(pitch_util: null): void;
 
         /**
          * Set `preset` of `sf2_synth_util`.
@@ -116628,7 +116628,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `sf2_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `sf2_synth_util`.
@@ -116704,19 +116704,19 @@ export namespace AgsAudio {
 
         sfz_orig_buffer_length: number[];
 
-        sfz_orig_buffer: any;
+        sfz_orig_buffer: null;
 
         sfz_resampled_buffer_length: number[];
 
-        sfz_resampled_buffer: any;
+        sfz_resampled_buffer: null;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
-        sample_buffer: any;
+        sample_buffer: null;
 
-        im_buffer: any;
+        im_buffer: null;
 
         buffer_length: number;
 
@@ -116744,7 +116744,7 @@ export namespace AgsAudio {
 
         pitch_type: GObject.GType;
 
-        pitch_util: any;
+        pitch_util: null;
 
         note_256th_mode: boolean;
 
@@ -116806,7 +116806,7 @@ export namespace AgsAudio {
          * Copy {@link AgsAudio.SFZSynthUtil}-struct.
          * @returns the newly allocated {@link AgsAudio.SFZSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free {@link AgsAudio.SFZSynthUtil}-struct.
@@ -116889,7 +116889,7 @@ export namespace AgsAudio {
          * Get pitch util of `sfz_synth_util`.
          * @returns the pitch util
          */
-        get_pitch_util(): (any | null);
+        get_pitch_util(): null;
 
         /**
          * Get samplerate of `sfz_synth_util`.
@@ -116901,7 +116901,7 @@ export namespace AgsAudio {
          * Get source buffer of `sfz_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `sfz_synth_util`.
@@ -116996,7 +116996,7 @@ export namespace AgsAudio {
          * Set `pitch_util` of `sfz_synth_util`.
          * @param pitch_util the pitch util
          */
-        set_pitch_util(pitch_util: (any | null)): void;
+        set_pitch_util(pitch_util: null): void;
 
         /**
          * Set `samplerate` of `sfz_synth_util`.
@@ -117014,7 +117014,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `sfz_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `sfz_synth_util`.
@@ -117042,7 +117042,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<SeqSynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -117366,7 +117366,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.SeqSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -117569,7 +117569,7 @@ export namespace AgsAudio {
          * Get source buffer of `seq_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `seq_synth_util`.
@@ -117835,7 +117835,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `seq_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `seq_synth_util`.
@@ -118037,7 +118037,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<StarSynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -118321,7 +118321,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.StarSynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -118404,7 +118404,7 @@ export namespace AgsAudio {
          * Get source buffer of `star_synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `star_synth_util`.
@@ -118536,7 +118536,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `star_synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `star_synth_util`.
@@ -118646,7 +118646,7 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<SynthUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -118908,7 +118908,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.SynthUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -118973,7 +118973,7 @@ export namespace AgsAudio {
          * Get source buffer of `synth_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `synth_util`.
@@ -119000,7 +119000,7 @@ export namespace AgsAudio {
          * @param buffer_size the buffer size
          * @returns the count of zero-crossings
          */
-        get_xcross_count(buffer: (any | null), format: number, buffer_size: number): number;
+        get_xcross_count(buffer: null, format: number, buffer_size: number): number;
 
         /**
          * Get zero-cross count.
@@ -119124,7 +119124,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `synth_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `synth_util`.
@@ -119158,13 +119158,13 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<TimeStretchUtil>;
 
         // Fields
-        source: any;
+        source: null;
 
         source_stride: number;
 
         source_buffer_length: number;
 
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
@@ -119193,7 +119193,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.TimeStretchUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -119210,7 +119210,7 @@ export namespace AgsAudio {
          * Get destination buffer of `time_stretch_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination buffer length of `time_stretch_util`.
@@ -119258,7 +119258,7 @@ export namespace AgsAudio {
          * Get source buffer of `time_stretch_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source buffer length of `time_stretch_util`.
@@ -119282,7 +119282,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `time_stretch_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination_buffer_length` of `time_stretch_util`.
@@ -119330,7 +119330,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `time_stretch_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source_buffer_length` of `time_stretch_util`.
@@ -119408,11 +119408,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<TremoloUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -119494,7 +119494,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.TremoloUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -119511,7 +119511,7 @@ export namespace AgsAudio {
          * Get destination buffer of `tremolo_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `tremolo_util`.
@@ -119559,7 +119559,7 @@ export namespace AgsAudio {
          * Get source buffer of `tremolo_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `tremolo_util`.
@@ -119601,7 +119601,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `tremolo_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `tremolo_util`.
@@ -119649,7 +119649,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `tremolo_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `tremolo_util`.
@@ -119873,11 +119873,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<VolumeUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -119945,7 +119945,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.VolumeUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -119962,7 +119962,7 @@ export namespace AgsAudio {
          * Get destination buffer of `volume_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `volume_util`.
@@ -119980,7 +119980,7 @@ export namespace AgsAudio {
          * Get source buffer of `volume_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `volume_util`.
@@ -120004,7 +120004,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `volume_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `volume_util`.
@@ -120022,7 +120022,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `volume_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `volume_util`.
@@ -120045,11 +120045,11 @@ export namespace AgsAudio {
         static $gtype: GObject.GType<WahWahUtil>;
 
         // Fields
-        destination: any;
+        destination: null;
 
         destination_stride: number;
 
-        source: any;
+        source: null;
 
         source_stride: number;
 
@@ -120084,9 +120084,9 @@ export namespace AgsAudio {
         // Constructors
 
         constructor(properties?: Partial<{
-            destination: any;
+            destination: null;
             destination_stride: number;
-            source: any;
+            source: null;
             source_stride: number;
             buffer_length: number;
             format: number;
@@ -120160,7 +120160,7 @@ export namespace AgsAudio {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link AgsAudio.WahWahUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -120183,7 +120183,7 @@ export namespace AgsAudio {
          * Get destination buffer of `wah_wah_util`.
          * @returns the destination buffer
          */
-        get_destination(): (any | null);
+        get_destination(): null;
 
         /**
          * Get destination stride of `wah_wah_util`.
@@ -120225,7 +120225,7 @@ export namespace AgsAudio {
          * Get source buffer of `wah_wah_util`.
          * @returns the source buffer
          */
-        get_source(): (any | null);
+        get_source(): null;
 
         /**
          * Get source stride of `wah_wah_util`.
@@ -120273,7 +120273,7 @@ export namespace AgsAudio {
          * Set `destination` buffer of `wah_wah_util`.
          * @param destination the destination buffer
          */
-        set_destination(destination: (any | null)): void;
+        set_destination(destination: null): void;
 
         /**
          * Set `destination` stride of `wah_wah_util`.
@@ -120315,7 +120315,7 @@ export namespace AgsAudio {
          * Set `source` buffer of `wah_wah_util`.
          * @param source the source buffer
          */
-        set_source(source: (any | null)): void;
+        set_source(source: null): void;
 
         /**
          * Set `source` stride of `wah_wah_util`.
@@ -120402,7 +120402,7 @@ export namespace AgsAudio {
 
         ags_port_complex_ptr: Ags.Complex;
 
-        ags_port_pointer: any;
+        ags_port_pointer: null;
 
         ags_port_object: GObject.Object;
     }
@@ -120423,7 +120423,7 @@ export namespace AgsAudio {
              * @param message_size the message size
              * @virtual
              */
-            vfunc_do_request(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+            vfunc_do_request(osc_connection: OscConnection, message: number, message_size: number): null;
         }
 
 
@@ -120450,7 +120450,7 @@ export namespace AgsAudio {
          * @param message_size the message size
          * @returns the {@link GLib.List}-struct containing {@link AgsAudio.OscResponse}
          */
-        do_request(osc_connection: OscConnection, message: number, message_size: number): (any | null);
+        do_request(osc_connection: OscConnection, message: number, message_size: number): null;
     }
 
 
@@ -121013,7 +121013,7 @@ export namespace AgsAudio {
              * @param format the format to read
              * @virtual
              */
-            vfunc_read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+            vfunc_read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
             /**
              * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -121054,7 +121054,7 @@ export namespace AgsAudio {
              * @param format the format to write
              * @virtual
              */
-            vfunc_write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+            vfunc_write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
         }
 
 
@@ -121123,7 +121123,7 @@ export namespace AgsAudio {
          * @param format the format to read
          * @returns the count of frames actually read
          */
-        read(dbuffer: (any | null), daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
+        read(dbuffer: null, daudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): number;
 
         /**
          * Read audio signal from `sound_resource`.
@@ -121188,7 +121188,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count to write
          * @param format the format to write
          */
-        write(sbuffer: (any | null), saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
+        write(sbuffer: null, saudio_channels: number, audio_channel: number, frame_count: number, format: Ags.SoundcardFormat): void;
     }
 
 

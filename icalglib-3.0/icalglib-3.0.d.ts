@@ -1072,7 +1072,7 @@ export namespace ICalGLib {
      * @param buf The existing buffer to be added into the ical
      * @since 1.0
      */
-    function memory_add_tmp_buffer(buf: (any | null)): void;
+    function memory_add_tmp_buffer(buf: null): void;
 
     /**
      * Append the character to the buffer. Only use them on normally allocated memory, or on buffers created
@@ -1101,7 +1101,7 @@ export namespace ICalGLib {
      * @param buf The buffer to be freed
      * @since 1.0
      */
-    function memory_free_buffer(buf: (any | null)): void;
+    function memory_free_buffer(buf: null): void;
 
     /**
      * Creates a new buffer with target size. The caller should deallocate it when necessary.
@@ -1109,7 +1109,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer with the target size.
      * @since 1.0
      */
-    function memory_new_buffer(size: (bigint | number)): (any | null);
+    function memory_new_buffer(size: (bigint | number)): null;
 
     /**
      * Resizes the buffer to the target size.
@@ -1118,7 +1118,7 @@ export namespace ICalGLib {
      * @returns The buffer after being resized.
      * @since 1.0
      */
-    function memory_resize_buffer(buf: (any | null), size: (bigint | number)): (any | null);
+    function memory_resize_buffer(buf: null, size: (bigint | number)): null;
 
     /**
      * A wrapper around strdup. Partly to trap calls to strdup, partly because in -ansi, gcc on Red Hat claims
@@ -1135,7 +1135,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer
      * @since 1.0
      */
-    function memory_tmp_buffer(size: (bigint | number)): (any | null);
+    function memory_tmp_buffer(size: (bigint | number)): null;
 
     /**
      * Like strdup, but the buffer is on the ring.
@@ -2314,9 +2314,9 @@ export namespace ICalGLib {
             alwaysDestroy: boolean;
             is_global_memory: boolean;
             isGlobalMemory: boolean;
-            "native": (any | null);
-            native_destroy_func: any;
-            nativeDestroyFunc: any;
+            "native": never;
+            native_destroy_func: never;
+            nativeDestroyFunc: never;
             owner: GObject.Object;
         }
     }
@@ -2367,19 +2367,19 @@ export namespace ICalGLib {
          * The native libical structure for this ICalObject.
          * @construct-only
          */
-        get "native"(): (any | null);
+        get "native"(): null;
 
         /**
          * GDestroyNotify function to use to destroy the native libical pointer.
          */
-        get native_destroy_func(): any;
-        set native_destroy_func(val: any);
+        get native_destroy_func(): null;
+        set native_destroy_func(val: never);
 
         /**
          * GDestroyNotify function to use to destroy the native libical pointer.
          */
-        get nativeDestroyFunc(): any;
-        set nativeDestroyFunc(val: any);
+        get nativeDestroyFunc(): null;
+        set nativeDestroyFunc(val: never);
 
         /**
          * Owner of the native libical structure. If set, then it is
@@ -2490,7 +2490,7 @@ export namespace ICalGLib {
          * at `iobject` to NULL, thus it's invalid since now on.
          * @returns Native libical structure pointer associated with this `iobject`.
          */
-        steal_native(): (any | null);
+        steal_native(): null;
     }
 
 
@@ -6646,7 +6646,7 @@ export namespace ICalGLib {
          * @param fp The file handle
          * @returns 1 if success.
          */
-        dump_changes(max_year: number, fp: (any | null)): number;
+        dump_changes(max_year: number, fp: null): number;
 
         /**
          * Returns the VTIMEZONE component of a timezone.

@@ -620,7 +620,7 @@ export namespace Template {
          */
         assign_variant(v_variant: (GLib.Variant | null)): void;
 
-        get_boxed(): (any | null);
+        get_boxed(): null;
 
         /**
          * @returns A {@link Template.Expr}.

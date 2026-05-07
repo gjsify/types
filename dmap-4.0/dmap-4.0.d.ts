@@ -488,7 +488,7 @@ export namespace Dmap {
      * @param b second ID.
      * @param db A DmapDb for which a and b are valid ID's.
      */
-    function av_record_cmp_by_album(a: (any | null), b: (any | null), db: Db): number;
+    function av_record_cmp_by_album(a: null, b: null, db: Db): number;
 
     function error_quark(): GLib.Quark;
 
@@ -706,7 +706,7 @@ export namespace Dmap {
              * @signal
              * @run-first
              */
-            error: (arg0: (any | null)) => void;
+            error: (arg0: null) => void;
             /**
              * @signal
              * @run-first
@@ -1294,7 +1294,7 @@ export namespace Dmap {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, password: (string | null), db: (any | null), container_db: (any | null), transcode_mimetype: (string | null)): ImageShare;
+        static ["new"](name: string, password: (string | null), db: null, container_db: null, transcode_mimetype: (string | null)): ImageShare;
 
         // Signals
         /** @signal */
@@ -1634,7 +1634,7 @@ export namespace Dmap {
              * @signal
              * @run-first
              */
-            error: (arg0: (any | null)) => void;
+            error: (arg0: null) => void;
             "notify::auth-method": (pspec: GObject.ParamSpec) => void;
             "notify::container-db": (pspec: GObject.ParamSpec) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
@@ -1794,7 +1794,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         /**
          * @param server 
@@ -1803,7 +1803,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_databases(server: Soup.Server, message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_databases(server: Soup.Server, message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         /**
          * @param msg 
@@ -1811,7 +1811,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         /**
          * @param server 
@@ -1829,7 +1829,7 @@ export namespace Dmap {
         /**
          * @virtual
          */
-        vfunc_get_meta_data_map(): (any | null);
+        vfunc_get_meta_data_map(): null;
 
         /**
          * @virtual
@@ -1842,7 +1842,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_login(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_login(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         /**
          * @param message 
@@ -1850,7 +1850,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_logout(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_logout(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         /**
          * @param msg 
@@ -1885,7 +1885,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_update(message: Soup.ServerMessage, path: string, query: GLib.HashTable<any, any>): void;
+        vfunc_update(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
 
         // Methods
         /**
@@ -2324,7 +2324,7 @@ export namespace Dmap {
 
         id: number;
 
-        uris: any[];
+        uris: null[];
 
         // Constructors
 
@@ -2401,7 +2401,7 @@ export namespace Dmap {
             format: string;
             has_video: boolean;
             hasVideo: boolean;
-            hash: any[];
+            hash: never[];
             location: string;
             mediakind: MediaKind;
             mtime: number;
@@ -2430,7 +2430,7 @@ export namespace Dmap {
         * @param b second ID.
         * @param db A DmapDb for which a and b are valid ID's.
         */
-        cmp_by_album(a: (any | null), b: (any | null), db: Db): number;
+        cmp_by_album(a: null, b: null, db: Db): number;
     }
     /**
      * @gir-type Interface
@@ -2486,8 +2486,8 @@ export namespace Dmap {
         get hasVideo(): boolean;
         set hasVideo(val: boolean);
 
-        get hash(): any[];
-        set hash(val: any[]);
+        get hash(): null[];
+        set hash(val: never[]);
 
         /**
          * @default null
@@ -3084,7 +3084,7 @@ export namespace Dmap {
             creationDate: number;
             filename: string;
             format: string;
-            hash: any[];
+            hash: never[];
             large_filesize: number;
             largeFilesize: number;
             location: string;
@@ -3093,7 +3093,7 @@ export namespace Dmap {
             pixel_width: number;
             pixelWidth: number;
             rating: number;
-            thumbnail: any[];
+            thumbnail: never[];
         }
     }
 
@@ -3149,8 +3149,8 @@ export namespace Dmap {
         get format(): string;
         set format(val: string);
 
-        get hash(): any[];
-        set hash(val: any[]);
+        get hash(): null[];
+        set hash(val: never[]);
 
         /**
          * @default 0
@@ -3200,8 +3200,8 @@ export namespace Dmap {
         get rating(): number;
         set rating(val: number);
 
-        get thumbnail(): any[];
-        set thumbnail(val: any[]);
+        get thumbnail(): null[];
+        set thumbnail(val: never[]);
 
         // Methods
         /**
@@ -3281,7 +3281,7 @@ export namespace Dmap {
              * @param user_data Some piece of data that may be used to initialize return value.
              * @virtual
              */
-            vfunc_create(user_data: (any | null)): Record;
+            vfunc_create(user_data: null): Record;
         }
 
 
@@ -3305,7 +3305,7 @@ export namespace Dmap {
          * @param user_data Some piece of data that may be used to initialize return value.
          * @returns a new DmapRecord, else NULL with error set.
          */
-        create(user_data: (any | null)): Record;
+        create(user_data: null): Record;
     }
 
 

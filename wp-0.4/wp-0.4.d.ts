@@ -288,7 +288,7 @@ export namespace Wp {
      * @param n_fields 
      * @param user_data 
      */
-    function log_writer_default(log_level: GLib.LogLevelFlags, fields: GLib.LogField, n_fields: (bigint | number), user_data: (any | null)): GLib.LogWriterOutput;
+    function log_writer_default(log_level: GLib.LogLevelFlags, fields: GLib.LogField, n_fields: (bigint | number), user_data: null): GLib.LogWriterOutput;
 
     /**
      * Creates an iterator to iterate over configuration files in the `subdir` of the configuration directories.
@@ -330,7 +330,7 @@ export namespace Wp {
      * @param values an array of spa_type_info that contains the values of the table
      * @returns the new table
      */
-    function spa_dynamic_id_table_register(name: string, values: (any | null)): SpaIdTable;
+    function spa_dynamic_id_table_register(name: string, values: null): SpaIdTable;
 
     /**
      * Deinitializes the spa type registry.
@@ -360,7 +360,7 @@ export namespace Wp {
      * @param values an array of spa_type_info that contains the values of the type, used only for Object types
      * @returns the new type
      */
-    function spa_dynamic_type_register(name: string, parent: SpaType, values: (any | null)): SpaType;
+    function spa_dynamic_type_register(name: string, parent: SpaType, values: null): SpaType;
 
     /**
      * Finds a value in an SPA Id table.
@@ -482,20 +482,20 @@ export namespace Wp {
      * Gets WirePlumber's instance of spa_log
      * @returns WirePlumber's instance of spa_log, which can be used to redirect PipeWire's log messages to the currently installed GLogWriterFunc. This is installed automatically when you call `wp_init()` with WP_INIT_SET_PW_LOG set in the flags
      */
-    function spa_log_get_instance(): (any | null);
+    function spa_log_get_instance(): null;
 
     /**
      * @gir-type Callback
      */
     interface IteratorFoldFunc {
-        (item: unknown, ret: unknown, data: (any | null)): boolean;
+        (item: unknown, ret: unknown, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface IteratorForeachFunc {
-        (item: unknown, data: (any | null)): void;
+        (item: unknown, data: null): void;
     }
 
     /**
@@ -769,13 +769,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -856,7 +856,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -957,7 +957,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -1091,10 +1091,10 @@ export namespace Wp {
             g_main_context: (GLib.MainContext | null);
             gMainContext: (GLib.MainContext | null);
             properties: Properties;
-            pw_context: (any | null);
-            pwContext: (any | null);
-            pw_core: (any | null);
-            pwCore: (any | null);
+            pw_context: never;
+            pwContext: never;
+            pw_core: never;
+            pwCore: never;
         }
     }
 
@@ -1130,22 +1130,22 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get pw_context(): (any | null);
+        get pw_context(): null;
 
         /**
          * @construct-only
          */
-        get pwContext(): (any | null);
+        get pwContext(): null;
 
         /**
          * @read-only
          */
-        get pw_core(): (any | null);
+        get pw_core(): null;
 
         /**
          * @read-only
          */
-        get pwCore(): (any | null);
+        get pwCore(): null;
 
         /**
          * Compile-time signal type information.
@@ -1227,13 +1227,13 @@ export namespace Wp {
          * Gets the internal PipeWire context of the core.
          * @returns the internal pw_context object
          */
-        get_pw_context(): (any | null);
+        get_pw_context(): null;
 
         /**
          * Gets the internal PipeWire core of the core.
          * @returns the internal pw_core object, or NULL if the core is not connected to PipeWire
          */
-        get_pw_core(): (any | null);
+        get_pw_core(): null;
 
         /**
          * Gets the cookie of the core's connected PipeWire instance.
@@ -1550,13 +1550,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -1637,7 +1637,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -1738,7 +1738,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -1895,13 +1895,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -1982,7 +1982,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -2083,7 +2083,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -2182,13 +2182,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -2269,7 +2269,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -2370,7 +2370,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -2470,7 +2470,7 @@ export namespace Wp {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -2478,7 +2478,7 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag: (any | null)): boolean;
+        is_tagged(source_tag: null): boolean;
 
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
@@ -2505,7 +2505,7 @@ export namespace Wp {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): (any | null);
+        vfunc_get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -2513,14 +2513,14 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: (any | null)): boolean;
+        vfunc_is_tagged(source_tag: null): boolean;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -2542,7 +2542,7 @@ export namespace Wp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -2741,13 +2741,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -2828,7 +2828,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -2929,7 +2929,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -3053,11 +3053,11 @@ export namespace Wp {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             "arguments": string;
-            core: any;
+            core: never;
             name: string;
             properties: Properties;
-            pw_impl_module: any;
-            pwImplModule: any;
+            pw_impl_module: never;
+            pwImplModule: never;
         }
     }
 
@@ -3079,7 +3079,7 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get core(): any;
+        get core(): null;
 
         /**
          * @construct-only
@@ -3093,12 +3093,12 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get pw_impl_module(): any;
+        get pw_impl_module(): null;
 
         /**
          * @read-only
          */
-        get pwImplModule(): any;
+        get pwImplModule(): null;
 
         /**
          * Compile-time signal type information.
@@ -3164,8 +3164,8 @@ export namespace Wp {
 
         // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps, PipewireObject.ConstructorProps {
-            pw_impl_node: any;
-            pwImplNode: any;
+            pw_impl_node: never;
+            pwImplNode: never;
         }
     }
 
@@ -3180,12 +3180,12 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get pw_impl_node(): any;
+        get pw_impl_node(): null;
 
         /**
          * @construct-only
          */
-        get pwImplNode(): any;
+        get pwImplNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -3203,7 +3203,7 @@ export namespace Wp {
 
         static new_from_pw_factory(core: Core, factory_name: string, properties: (Properties | null)): ImplNode;
 
-        static new_wrap(core: Core, node: (any | null)): ImplNode;
+        static new_wrap(core: Core, node: null): ImplNode;
 
         // Signals
         /** @signal */
@@ -3222,13 +3222,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -3309,7 +3309,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -3410,7 +3410,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -3538,13 +3538,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -3625,7 +3625,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -3726,7 +3726,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -4085,13 +4085,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -4172,7 +4172,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -4273,7 +4273,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -4819,13 +4819,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -4906,7 +4906,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -5007,7 +5007,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): (any | null);
+        vfunc_get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -5061,7 +5061,7 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            "pw-proxy-created": (arg0: (any | null)) => void;
+            "pw-proxy-created": (arg0: null) => void;
             /**
              * @signal
              * @run-first
@@ -5078,8 +5078,8 @@ export namespace Wp {
         interface ConstructorProps extends Object.ConstructorProps {
             bound_id: number;
             boundId: number;
-            pw_proxy: (any | null);
-            pwProxy: (any | null);
+            pw_proxy: never;
+            pwProxy: never;
         }
     }
 
@@ -5107,12 +5107,12 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get pw_proxy(): (any | null);
+        get pw_proxy(): null;
 
         /**
          * @read-only
          */
-        get pwProxy(): (any | null);
+        get pwProxy(): null;
 
         /**
          * Compile-time signal type information.
@@ -5160,7 +5160,7 @@ export namespace Wp {
          * @param proxy 
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy: (any | null)): void;
+        vfunc_pw_proxy_created(proxy: null): void;
 
         /**
          * @virtual
@@ -5188,7 +5188,7 @@ export namespace Wp {
          * Gets the pw_proxy wrapped by this proxy object.
          * @returns a pointer to the underlying pw_proxy object
          */
-        get_pw_proxy(): (any | null);
+        get_pw_proxy(): null;
 
         /**
          * Private method to be used by subclasses to set the pw_proxy pointer when it is available.
@@ -5197,7 +5197,7 @@ export namespace Wp {
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
          * @param proxy 
          */
-        set_pw_proxy(proxy: (any | null)): void;
+        set_pw_proxy(proxy: null): void;
     }
 
 
@@ -5315,7 +5315,7 @@ export namespace Wp {
          * @param proxy_type 
          * @virtual
          */
-        vfunc_get_associated_proxy(proxy_type: GObject.GType): (any | null);
+        vfunc_get_associated_proxy(proxy_type: GObject.GType): null;
 
         /**
          * Resets the session item.
@@ -5546,8 +5546,8 @@ export namespace Wp {
         // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps {
             properties: Properties;
-            spa_device_handle: any;
-            spaDeviceHandle: any;
+            spa_device_handle: never;
+            spaDeviceHandle: never;
         }
     }
 
@@ -5569,12 +5569,12 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get spa_device_handle(): any;
+        get spa_device_handle(): null;
 
         /**
          * @construct-only
          */
-        get spaDeviceHandle(): any;
+        get spaDeviceHandle(): null;
 
         /**
          * Compile-time signal type information.
@@ -5592,7 +5592,7 @@ export namespace Wp {
 
         static new_from_spa_factory(core: Core, factory_name: string, properties: (Properties | null)): SpaDevice;
 
-        static new_wrap(core: Core, spa_device_handle: (any | null), properties: (Properties | null)): SpaDevice;
+        static new_wrap(core: Core, spa_device_handle: null, properties: (Properties | null)): SpaDevice;
 
         // Signals
         /** @signal */
@@ -5918,7 +5918,7 @@ export namespace Wp {
          * See `wp_transition_set_data()`.
          * @returns the transition's data
          */
-        get_data(): (any | null);
+        get_data(): null;
 
         /**
          * Gets the source object from the transition.
@@ -5936,7 +5936,7 @@ export namespace Wp {
          * See `wp_transition_set_source_tag()`.
          * @returns the transition's source tag
          */
-        get_source_tag(): (any | null);
+        get_source_tag(): null;
 
         /**
          * Checks if the transition completed with an error.
@@ -5949,7 +5949,7 @@ export namespace Wp {
          * @param tag a tag
          * @returns TRUE if `self` has the indicated `tag` , FALSE if not.
          */
-        is_tagged(tag: (any | null)): boolean;
+        is_tagged(tag: null): boolean;
 
         /**
          * Completes the transition with an error.
@@ -5965,7 +5965,7 @@ export namespace Wp {
          * Sets `self` 's data (freeing the existing data, if any). This can be an arbitrary user structure that holds data associated with this transition.
          * @param data transition-specific user data
          */
-        set_data(data: (any | null)): void;
+        set_data(data: null): void;
 
         /**
          * @param args 
@@ -5980,13 +5980,13 @@ export namespace Wp {
          * You can use this to tag a transition's return value with a particular pointer (usually a pointer to the function doing the tagging) and then later check it using `wp_transition_get_source_tag()` (or `g_async_result_is_tagged()`) in the transition's "finish" function, to figure out if the response came from a particular place.
          * @param tag an opaque pointer indicating the source of this transition
          */
-        set_source_tag(tag: (any | null)): void;
+        set_source_tag(tag: null): void;
 
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
@@ -6013,7 +6013,7 @@ export namespace Wp {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): (any | null);
+        vfunc_get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -6021,7 +6021,7 @@ export namespace Wp {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: (any | null)): boolean;
+        vfunc_is_tagged(source_tag: null): boolean;
     }
 
 
@@ -6125,7 +6125,7 @@ export namespace Wp {
          * this only for use by implementations of WpIterator
          * @returns a pointer to the implementation-specific storage area
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Gets the next item of the iterator.
@@ -6242,7 +6242,7 @@ export namespace Wp {
          * @param object the target object to check for a match
          * @returns TRUE if the object matches, FALSE otherwise
          */
-        matches(object: (any | null)): boolean;
+        matches(object: null): boolean;
 
         /**
          * A low-level version of `wp_object_interest_matches()`.
@@ -6320,19 +6320,19 @@ export namespace Wp {
 
         }>);
 
-        static new_copy(props: (any | null)): Properties;
+        static new_copy(props: null): Properties;
 
-        static new_copy_dict(dict: (any | null)): Properties;
+        static new_copy_dict(dict: null): Properties;
 
         static new_empty(): Properties;
 
         static new_string(str: string): Properties;
 
-        static new_take(props: (any | null)): Properties;
+        static new_take(props: null): Properties;
 
-        static new_wrap(props: (any | null)): Properties;
+        static new_wrap(props: null): Properties;
 
-        static new_wrap_dict(dict: (any | null)): Properties;
+        static new_wrap_dict(dict: null): Properties;
 
         // Static methods
         /**
@@ -6366,7 +6366,7 @@ export namespace Wp {
          * @param dict a spa_dict that contains properties to add
          * @returns the number of properties that were changed
          */
-        add_from_dict(dict: (any | null)): number;
+        add_from_dict(dict: null): number;
 
         /**
          * The same as `wp_properties_add_keys()`, using a NULL-terminated array for specifying the keys to add.
@@ -6428,7 +6428,7 @@ export namespace Wp {
          * Gets the dictionary wrapped by a properties object.
          * @returns the internal properties set as a struct spa_dict *
          */
-        peek_dict(): (any | null);
+        peek_dict(): null;
 
         ref(): Properties;
 
@@ -6453,7 +6453,7 @@ export namespace Wp {
          * Gets a copy of the properties object as a struct pw_properties
          * @returns a copy of the properties in `self` as a struct pw_properties
          */
-        to_pw_properties(): (any | null);
+        to_pw_properties(): null;
 
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
@@ -6467,7 +6467,7 @@ export namespace Wp {
          * If `self` is not uniquely owned (see `wp_properties_ensure_unique_owner()`), then this method does make a copy and is the same as `wp_properties_to_pw_properties()`, performance-wise.
          * @returns the properties in `self` as a struct pw_properties
          */
-        unref_and_take_pw_properties(): (any | null);
+        unref_and_take_pw_properties(): null;
 
         /**
          * Updates (adds new or modifies existing) properties in `self`, using the given `props` as a source.
@@ -6487,7 +6487,7 @@ export namespace Wp {
          * @param dict a spa_dict that contains properties to update
          * @returns the number of properties that were changed
          */
-        update_from_dict(dict: (any | null)): number;
+        update_from_dict(dict: null): number;
 
         /**
          * The same as `wp_properties_update_keys()`, using a NULL-terminated array for specifying the keys to update.
@@ -6603,7 +6603,7 @@ export namespace Wp {
 
         static new_string(value: string): SpaJson;
 
-        static new_wrap(json: (any | null)): SpaJson;
+        static new_wrap(json: null): SpaJson;
 
         // Methods
         /**
@@ -6634,7 +6634,7 @@ export namespace Wp {
          * Converts a WpSpaJson pointer to a struct spa_json one, for use with native pipewire & spa functions. The returned pointer is owned by WpSpaJson and may not be modified or freed.
          * @returns a const pointer to the underlying spa_json structure
          */
-        get_spa_json(): (any | null);
+        get_spa_json(): null;
 
         /**
          * Checks wether the spa json is of type array or not.
@@ -6891,7 +6891,7 @@ export namespace Wp {
 
         static new_boolean(value: boolean): SpaPod;
 
-        static new_bytes(value: (any | null), len: number): SpaPod;
+        static new_bytes(value: null, len: number): SpaPod;
 
         static new_double(value: number): SpaPod;
 
@@ -6909,15 +6909,15 @@ export namespace Wp {
 
         static new_none(): SpaPod;
 
-        static new_pointer(type_name: string, value: (any | null)): SpaPod;
+        static new_pointer(type_name: string, value: null): SpaPod;
 
         static new_rectangle(width: number, height: number): SpaPod;
 
         static new_string(value: string): SpaPod;
 
-        static new_wrap(pod: (any | null)): SpaPod;
+        static new_wrap(pod: null): SpaPod;
 
-        static new_wrap_const(pod: (any | null)): SpaPod;
+        static new_wrap_const(pod: null): SpaPod;
 
         // Methods
         /**
@@ -6966,7 +6966,7 @@ export namespace Wp {
          * Gets the bytes value and its len of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
-        get_bytes(): [boolean, any, number];
+        get_bytes(): [boolean, null, number];
 
         /**
          * Gets the child of a spa pod choice object.
@@ -7032,7 +7032,7 @@ export namespace Wp {
          * Gets the pointer value and its type name of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
-        get_pointer(): [boolean, any];
+        get_pointer(): [boolean, null];
 
         /**
          * Gets the name, flags and spa pod value of a spa pod property.
@@ -7050,7 +7050,7 @@ export namespace Wp {
          * Converts a WpSpaPod pointer to a struct spa_pod one, for use with native pipewire & spa functions. The returned pointer is owned by WpSpaPod and may not be modified or freed.
          * @returns a const pointer to the underlying spa_pod structure
          */
-        get_spa_pod(): (any | null);
+        get_spa_pod(): null;
 
         /**
          * Gets the SPA type of the spa pod.
@@ -7275,7 +7275,7 @@ export namespace Wp {
          * @param value the pointer value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_pointer(type_name: string, value: (any | null)): boolean;
+        set_pointer(type_name: string, value: null): boolean;
 
         /**
          * Sets the width and height values of a rectangle in the spa pod object.
@@ -7326,7 +7326,7 @@ export namespace Wp {
          * @param value the bytes value
          * @param len the length of the bytes value
          */
-        add_bytes(value: (any | null), len: number): void;
+        add_bytes(value: null, len: number): void;
 
         /**
          * Adds a control into the builder.
@@ -7394,7 +7394,7 @@ export namespace Wp {
          * @param type_name the type name that the pointer points to
          * @param value the pointer vaue
          */
-        add_pointer(type_name: string, value: (any | null)): void;
+        add_pointer(type_name: string, value: null): void;
 
         /**
          * Adds a property into the builder.
@@ -7469,7 +7469,7 @@ export namespace Wp {
          * Gets the bytes value and its length from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
-        get_bytes(): [boolean, any, number];
+        get_bytes(): [boolean, null, number];
 
         /**
          * Gets the double value from a spa pod parser object.
@@ -7523,7 +7523,7 @@ export namespace Wp {
          * Gets the pointer value and its type name from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
-        get_pointer(): [boolean, any];
+        get_pointer(): [boolean, null];
 
         /**
          * Gets the rectangle's width and height value from a spa pod parser object.
@@ -7607,7 +7607,7 @@ export namespace Wp {
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
              * @virtual
              */
-            vfunc_get_native_info(): (any | null);
+            vfunc_get_native_info(): null;
 
             /**
              * Returns the available parameters of this pipewire object.
@@ -7646,8 +7646,8 @@ export namespace Wp {
 
         // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps {
-            native_info: (any | null);
-            nativeInfo: (any | null);
+            native_info: never;
+            nativeInfo: never;
             param_info: (GLib.Variant | null);
             paramInfo: (GLib.Variant | null);
             properties: Properties;
@@ -7669,12 +7669,12 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get native_info(): (any | null);
+        get native_info(): null;
 
         /**
          * @read-only
          */
-        get nativeInfo(): (any | null);
+        get nativeInfo(): null;
 
         /**
          * @read-only
@@ -7753,7 +7753,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): (any | null);
+        get_native_info(): null;
 
         /**
          * Returns the available parameters of this pipewire object.
@@ -8309,12 +8309,12 @@ export namespace Wp {
     /**
      * @gir-type Alias
      */
-    type SpaIdTable = any;
+    type SpaIdTable = never;
 
     /**
      * @gir-type Alias
      */
-    type SpaIdValue = any;
+    type SpaIdValue = never;
 
     /**
      * Name of the imported GIR library

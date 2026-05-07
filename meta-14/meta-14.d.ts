@@ -1880,12 +1880,12 @@ export namespace Meta {
      * @param v1 
      * @param v2 
      */
-    function unsigned_long_equal(v1: (any | null), v2: (any | null)): number;
+    function unsigned_long_equal(v1: null, v2: null): number;
 
     /**
      * @param v 
      */
-    function unsigned_long_hash(v: (any | null)): number;
+    function unsigned_long_hash(v: null): number;
 
     /**
      * @gir-type Callback
@@ -1898,7 +1898,7 @@ export namespace Meta {
      * @gir-type Callback
      */
     interface KeyHandlerFunc {
-        (display: Display, window: Window, event: (any | null), binding: KeyBinding): void;
+        (display: Display, window: Window, event: null, binding: KeyBinding): void;
     }
 
     /**
@@ -2281,7 +2281,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "gpu-added": (arg0: (any | null)) => void;
+            "gpu-added": (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -4322,7 +4322,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "window-visibility-updated": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => void;
+            "window-visibility-updated": (arg0: null, arg1: null, arg2: null) => void;
             /**
              * @signal
              * @run-last
@@ -6791,7 +6791,7 @@ export namespace Meta {
         /**
          * @returns the Wayland display object
          */
-        get_wayland_display(): (any | null);
+        get_wayland_display(): null;
     }
 
 

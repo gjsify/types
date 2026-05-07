@@ -231,7 +231,7 @@ export namespace GtkLayerShell {
      * @returns The underlying layer surface Wayland object
      * @since 0.4
      */
-    function get_zwlr_layer_surface_v1(window: Gtk.Window): (any | null);
+    function get_zwlr_layer_surface_v1(window: Gtk.Window): null;
 
     /**
      * Set the `window` up to be a layer surface once it is mapped. this must be called before

@@ -884,7 +884,7 @@ export namespace Gladeui {
      * @param b a `gconstpointer` to a {@link Gtk.StockItem}
      * @returns negative value if `a` < `b`; zero if `a` = `b`;          positive value if `a` > `b`
      */
-    function util_compare_stock_labels(a: (any | null), b: (any | null)): number;
+    function util_compare_stock_labels(a: null, b: null): number;
 
     /**
      * Use this to itterate over all children in a GtkContainer,
@@ -1113,7 +1113,7 @@ export namespace Gladeui {
      * @param user_data unused
      * @returns whether the event was handled
      */
-    function utils_hijack_key_press(win: Gtk.Window, event: Gdk.EventKey, user_data: (any | null)): number;
+    function utils_hijack_key_press(win: Gtk.Window, event: Gdk.EventKey, user_data: null): number;
 
     /**
      * Creates a liststore suitable for comboboxes and such to
@@ -1266,7 +1266,7 @@ export namespace Gladeui {
      * @param tagname 
      * @param sym_location 
      */
-    function xml_load_sym_from_node(node_in: XmlNode, module: GModule.Module, tagname: string, sym_location: (any | null)): boolean;
+    function xml_load_sym_from_node(node_in: XmlNode, module: GModule.Module, tagname: string, sym_location: null): boolean;
 
     /**
      * @param node 
@@ -5091,7 +5091,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            commit: (arg0: (any | null)) => void;
+            commit: (arg0: null) => void;
             /**
              * Emitted when a contained property changes value
              * @signal
@@ -5156,8 +5156,8 @@ export namespace Gladeui {
             customText: string;
             disable_check: boolean;
             disableCheck: boolean;
-            property_def: any;
-            propertyDef: any;
+            property_def: never;
+            propertyDef: never;
             use_command: boolean;
             useCommand: boolean;
         }
@@ -5197,12 +5197,12 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        get property_def(): any;
+        get property_def(): null;
 
         /**
          * @construct-only
          */
-        get propertyDef(): any;
+        get propertyDef(): null;
 
         /**
          * @default false
@@ -5276,7 +5276,7 @@ export namespace Gladeui {
          * @param property 
          * @virtual
          */
-        vfunc_changed(property: Property): (any | null);
+        vfunc_changed(property: Property): null;
 
         /**
          * Commits `value` to the property currently being edited by `eprop`.
@@ -6595,7 +6595,7 @@ export namespace Gladeui {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6605,7 +6605,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6614,7 +6614,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6688,7 +6688,7 @@ export namespace Gladeui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6699,7 +6699,7 @@ export namespace Gladeui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6708,7 +6708,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -8120,7 +8120,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: (any | null), arg1: (any | null)) => void;
+            "value-changed": (arg0: null, arg1: null) => void;
             "notify::class": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::i18n-comment": (pspec: GObject.ParamSpec) => void;
@@ -8133,7 +8133,7 @@ export namespace Gladeui {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            "class": any;
+            "class": never;
             enabled: boolean;
             i18n_comment: string;
             i18nComment: string;
@@ -8157,7 +8157,7 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        get "class"(): any;
+        get "class"(): null;
 
         /**
          * @default true
@@ -8789,14 +8789,14 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "post-commit": (arg0: (any | null)) => void;
+            "post-commit": (arg0: null) => void;
             /**
              * Emitted before a property's value is committed, can be useful to serialize
              * commands before a property's commit command from custom editors.
              * @signal
              * @run-last
              */
-            "pre-commit": (arg0: (any | null)) => void;
+            "pre-commit": (arg0: null) => void;
             "notify::custom-text": (pspec: GObject.ParamSpec) => void;
             "notify::disable-check": (pspec: GObject.ParamSpec) => void;
             "notify::editor-type": (pspec: GObject.ParamSpec) => void;
@@ -9108,7 +9108,7 @@ export namespace Gladeui {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             after: boolean;
-            "class": any;
+            "class": never;
             detail: string;
             handler: string;
             support_warning: string;
@@ -9134,7 +9134,7 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        get "class"(): any;
+        get "class"(): null;
 
         /**
          * @default null
@@ -9487,7 +9487,7 @@ export namespace Gladeui {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps {
-            signals: any;
+            signals: never;
             widget: Widget;
         }
     }
@@ -9502,7 +9502,7 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        set signals(val: any);
+        set signals(val: never);
 
         /**
          * @construct-only
@@ -9543,7 +9543,7 @@ export namespace Gladeui {
          * @param widget The {@link Gladeui.Widget} the signals belong to
          * @param signals The signals of the {@link Gladeui.Widget}
          */
-        static ["new"](widget: Widget, signals: ({ [key: string]: any } | GLib.HashTable<any, any>)): Gtk.TreeModel;
+        static ["new"](widget: Widget, signals: ({ [key: string]: any } | GLib.HashTable<never, never>)): Gtk.TreeModel;
 
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
@@ -10144,7 +10144,7 @@ export namespace Gladeui {
             object: GObject.Object;
             parent: Widget;
             project: Project;
-            properties: any;
+            properties: never;
             reason: number;
             support_warning: string;
             supportWarning: string;
@@ -10219,7 +10219,7 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        get properties(): any;
+        get properties(): null;
 
         /**
          * @construct-only
@@ -10323,7 +10323,7 @@ export namespace Gladeui {
         /**
          * @param object A {@link GObject.Object} containing the widget
          */
-        static get_from_gobject(object: (any | null)): Widget;
+        static get_from_gobject(object: null): Widget;
 
         /**
          * Unsets superuser mode
@@ -11132,7 +11132,7 @@ export namespace Gladeui {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            definition: any;
+            definition: never;
             sensitive: boolean;
             visible: boolean;
         }
@@ -11148,7 +11148,7 @@ export namespace Gladeui {
         /**
          * @construct-only
          */
-        set definition(val: any);
+        set definition(val: never);
 
         /**
          * @default true
@@ -11233,7 +11233,7 @@ export namespace Gladeui {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             book: string;
             catalog: string;
-            cursor: any;
+            cursor: never;
             generic_name: string;
             genericName: string;
             icon_name: string;
@@ -11269,7 +11269,7 @@ export namespace Gladeui {
         /**
          * @read-only
          */
-        get cursor(): any;
+        get cursor(): null;
 
         /**
          * @construct-only
@@ -12869,7 +12869,7 @@ export namespace Gladeui {
 
         important: boolean;
 
-        actions: any[];
+        actions: null[];
 
         // Constructors
 

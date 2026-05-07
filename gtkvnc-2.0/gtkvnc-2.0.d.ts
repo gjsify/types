@@ -102,7 +102,7 @@ export namespace GtkVnc {
 
         // Constructor properties interface
         interface ConstructorProps extends GVnc.BaseFramebuffer.ConstructorProps, GVnc.Framebuffer.ConstructorProps {
-            surface: any;
+            surface: never;
         }
     }
 
@@ -116,7 +116,7 @@ export namespace GtkVnc {
         /**
          * @construct-only
          */
-        get surface(): any;
+        get surface(): null;
 
         /**
          * Compile-time signal type information.

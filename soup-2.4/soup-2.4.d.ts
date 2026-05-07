@@ -2364,14 +2364,14 @@ export namespace Soup {
      * @param v2 another ASCII string
      * @returns `true` if they are equal (modulo case)
      */
-    function str_case_equal(v1: (any | null), v2: (any | null)): boolean;
+    function str_case_equal(v1: null, v2: null): boolean;
 
     /**
      * Hashes `key` in a case-insensitive manner.
      * @param key ASCII string to hash
      * @returns the hash code.
      */
-    function str_case_hash(key: (any | null)): number;
+    function str_case_hash(key: null): number;
 
     /**
      * Looks whether the `domain` passed as argument is a public domain
@@ -3168,7 +3168,7 @@ export namespace Soup {
             physical: (string | null);
             port: number;
             protocol: string;
-            sockaddr: (any | null);
+            sockaddr: never;
         }
     }
 
@@ -3212,7 +3212,7 @@ export namespace Soup {
         /**
          * @construct-only
          */
-        get sockaddr(): (any | null);
+        get sockaddr(): null;
 
         /**
          * Compile-time signal type information.
@@ -3232,7 +3232,7 @@ export namespace Soup {
 
         static new_any(family: AddressFamily, port: number): Address;
 
-        static new_from_sockaddr(sa: (any | null), len: number): Address;
+        static new_from_sockaddr(sa: null, len: number): Address;
 
         // Signals
         /** @signal */
@@ -3339,7 +3339,7 @@ export namespace Soup {
          * is resolved before fetching its name or address.
          * @returns the sockaddr, or `null`
          */
-        get_sockaddr(): [(any | null), number];
+        get_sockaddr(): [null, number];
 
         /**
          * A hash function (for {@link GLib.HashTable}) that corresponds to
@@ -3634,7 +3634,7 @@ export namespace Soup {
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
          * @virtual
          */
-        vfunc_update(msg: Message, auth_header: GLib.HashTable<any, any>): boolean;
+        vfunc_update(msg: Message, auth_header: GLib.HashTable<never, never>): boolean;
 
         // Methods
         /**
@@ -3862,12 +3862,12 @@ export namespace Soup {
             add_path: string;
             addPath: string;
             filter: AuthDomainFilter;
-            filter_data: any;
-            filterData: any;
+            filter_data: never;
+            filterData: never;
             generic_auth_callback: AuthDomainGenericAuthCallback;
             genericAuthCallback: AuthDomainGenericAuthCallback;
-            generic_auth_data: any;
-            genericAuthData: any;
+            generic_auth_data: never;
+            genericAuthData: never;
             proxy: boolean;
             realm: string;
             remove_path: string;
@@ -3900,11 +3900,11 @@ export namespace Soup {
         get filter(): AuthDomainFilter;
         set filter(val: AuthDomainFilter);
 
-        get filter_data(): any;
-        set filter_data(val: any);
+        get filter_data(): null;
+        set filter_data(val: never);
 
-        get filterData(): any;
-        set filterData(val: any);
+        get filterData(): null;
+        set filterData(val: never);
 
         /**
          * The {@link Soup.AuthDomainGenericAuthCallback} for the domain
@@ -3918,11 +3918,11 @@ export namespace Soup {
         get genericAuthCallback(): AuthDomainGenericAuthCallback;
         set genericAuthCallback(val: AuthDomainGenericAuthCallback);
 
-        get generic_auth_data(): any;
-        set generic_auth_data(val: any);
+        get generic_auth_data(): null;
+        set generic_auth_data(val: never);
 
-        get genericAuthData(): any;
-        set genericAuthData(val: any);
+        get genericAuthData(): null;
+        set genericAuthData(val: never);
 
         /**
          * @construct-only
@@ -4128,8 +4128,8 @@ export namespace Soup {
         interface ConstructorProps extends AuthDomain.ConstructorProps {
             auth_callback: AuthDomainBasicAuthCallback;
             authCallback: AuthDomainBasicAuthCallback;
-            auth_data: any;
-            authData: any;
+            auth_data: never;
+            authData: never;
         }
     }
 
@@ -4155,14 +4155,14 @@ export namespace Soup {
         /**
          * The data to pass to the {@link Soup.AuthDomainBasicAuthCallback}
          */
-        get auth_data(): any;
-        set auth_data(val: any);
+        get auth_data(): null;
+        set auth_data(val: never);
 
         /**
          * The data to pass to the {@link Soup.AuthDomainBasicAuthCallback}
          */
-        get authData(): any;
-        set authData(val: any);
+        get authData(): null;
+        set authData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4227,8 +4227,8 @@ export namespace Soup {
         interface ConstructorProps extends AuthDomain.ConstructorProps {
             auth_callback: AuthDomainDigestAuthCallback;
             authCallback: AuthDomainDigestAuthCallback;
-            auth_data: any;
-            authData: any;
+            auth_data: never;
+            authData: never;
         }
     }
 
@@ -4254,14 +4254,14 @@ export namespace Soup {
         /**
          * The data to pass to the {@link Soup.AuthDomainDigestAuthCallback}
          */
-        get auth_data(): any;
-        set auth_data(val: any);
+        get auth_data(): null;
+        set auth_data(val: never);
 
         /**
          * The data to pass to the {@link Soup.AuthDomainDigestAuthCallback}
          */
-        get authData(): any;
-        set authData(val: any);
+        get authData(): null;
+        set authData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7106,7 +7106,7 @@ export namespace Soup {
          * @param content_type 
          * @param params 
          */
-        content_sniffed(content_type: string, params: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        content_sniffed(content_type: string, params: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * This disables the actions of {@link Soup.SessionFeature}<!-- -->s with the
@@ -8783,8 +8783,8 @@ export namespace Soup {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            async_context: (any | null);
-            asyncContext: (any | null);
+            async_context: null;
+            asyncContext: null;
             http_aliases: string[];
             httpAliases: string[];
             https_aliases: string[];
@@ -8819,7 +8819,7 @@ export namespace Soup {
          * @deprecated The new API uses the thread-default {@link GLib.MainContext} rather than having an explicitly-specified one.
          * @construct-only
          */
-        get async_context(): (any | null);
+        get async_context(): null;
 
         /**
          * The server's {@link GLib.MainContext}, if you are using the old API.
@@ -8829,7 +8829,7 @@ export namespace Soup {
          * @deprecated The new API uses the thread-default {@link GLib.MainContext} rather than having an explicitly-specified one.
          * @construct-only
          */
-        get asyncContext(): (any | null);
+        get asyncContext(): null;
 
         /**
          * A `null`-terminated array of URI schemes that should be
@@ -9633,8 +9633,8 @@ export namespace Soup {
             acceptLanguage: string;
             accept_language_auto: boolean;
             acceptLanguageAuto: boolean;
-            async_context: (any | null);
-            asyncContext: (any | null);
+            async_context: null;
+            asyncContext: null;
             http_aliases: string[];
             httpAliases: string[];
             https_aliases: string[];
@@ -9744,7 +9744,7 @@ export namespace Soup {
          * will also be used for asynchronous HTTP I/O.
          * @construct-only
          */
-        get async_context(): (any | null);
+        get async_context(): null;
 
         /**
          * The {@link GLib.MainContext} that miscellaneous session-related
@@ -9762,7 +9762,7 @@ export namespace Soup {
          * will also be used for asynchronous HTTP I/O.
          * @construct-only
          */
-        get asyncContext(): (any | null);
+        get asyncContext(): null;
 
         /**
          * A `null`-terminated array of URI schemes that should be
@@ -11178,8 +11178,8 @@ export namespace Soup {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            async_context: any;
-            asyncContext: any;
+            async_context: never;
+            asyncContext: never;
             fd: number;
             gsocket: Gio.Socket;
             iostream: Gio.IOStream;
@@ -11193,8 +11193,8 @@ export namespace Soup {
             nonBlocking: boolean;
             remote_address: Address;
             remoteAddress: Address;
-            ssl_creds: any;
-            sslCreds: any;
+            ssl_creds: never;
+            sslCreds: never;
             ssl_fallback: boolean;
             sslFallback: boolean;
             ssl_strict: boolean;
@@ -11221,12 +11221,12 @@ export namespace Soup {
         /**
          * @construct-only
          */
-        get async_context(): any;
+        get async_context(): null;
 
         /**
          * @construct-only
          */
-        get asyncContext(): any;
+        get asyncContext(): null;
 
         /**
          * @construct-only
@@ -11354,11 +11354,11 @@ export namespace Soup {
          */
         get remoteAddress(): Address;
 
-        get ssl_creds(): any;
-        set ssl_creds(val: any);
+        get ssl_creds(): null;
+        set ssl_creds(val: never);
 
-        get sslCreds(): any;
-        set sslCreds(val: any);
+        get sslCreds(): null;
+        set sslCreds(val: never);
 
         /**
          * @construct-only
@@ -11604,7 +11604,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns as for `soup_socket_read()`
          */
-        read_until(buffer: (Uint8Array | string), boundary: (any | null), boundary_len: (bigint | number), cancellable: (Gio.Cancellable | null)): [SocketIOStatus, number, boolean];
+        read_until(buffer: (Uint8Array | string), boundary: null, boundary_len: (bigint | number), cancellable: (Gio.Cancellable | null)): [SocketIOStatus, number, boolean];
 
         /**
          * Starts using SSL on `socket`, expecting to find a host named
@@ -11800,7 +11800,7 @@ export namespace Soup {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection_type: WebsocketConnectionType;
             connectionType: WebsocketConnectionType;
-            extensions: any;
+            extensions: never;
             io_stream: Gio.IOStream;
             ioStream: Gio.IOStream;
             keepalive_interval: number;
@@ -11844,7 +11844,7 @@ export namespace Soup {
          * @since 2.68
          * @construct-only
          */
-        get extensions(): any;
+        get extensions(): null;
 
         /**
          * The underlying IO stream the WebSocket is communicating
@@ -12198,7 +12198,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @virtual
          */
-        vfunc_configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<any, any> | null)): boolean;
+        vfunc_configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<never, never> | null)): boolean;
 
         /**
          * Get the parameters strings to be included in the request header. If the extension
@@ -12245,7 +12245,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
          */
-        configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<any, any> | null)): boolean;
+        configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<never, never> | null)): boolean;
 
         /**
          * Get the parameters strings to be included in the request header. If the extension
@@ -12530,7 +12530,7 @@ export namespace Soup {
         static $gtype: GObject.GType<Buffer>;
 
         // Fields
-        data: any;
+        data: null;
 
         length: number;
 
@@ -12539,7 +12539,7 @@ export namespace Soup {
 
         static ["new"](data: (Uint8Array | string)): Buffer;
 
-        static new_with_owner(data: (Uint8Array | string), owner: (any | null)): Buffer;
+        static new_with_owner(data: (Uint8Array | string), owner: null): Buffer;
 
         // Methods
         /**
@@ -12580,7 +12580,7 @@ export namespace Soup {
          * `soup_buffer_new_with_owner()`.
          * @returns the owner pointer
          */
-        get_owner(): (any | null);
+        get_owner(): null;
 
         /**
          * Creates a new {@link Soup.Buffer} containing `length` bytes "copied" from

@@ -2133,7 +2133,7 @@ export namespace GimpUi {
      * @param help_id A unique help identifier.
      * @param help_data The `help_data` passed to `gimp_help_connect()`.
      */
-    function standard_help_func(help_id: string, help_data: (any | null)): void;
+    function standard_help_func(help_id: string, help_data: null): void;
 
     /**
      * @param widget A {@link Gtk.ToggleButton}.
@@ -2321,7 +2321,7 @@ export namespace GimpUi {
      * @gir-type Callback
      */
     interface HelpFunc {
-        (help_id: string, help_data: (any | null)): void;
+        (help_id: string, help_data: null): void;
     }
 
     /**
@@ -4383,12 +4383,6 @@ export namespace GimpUi {
          * @returns The `button`'s {@link Gio.SimpleActionGroup}.
          */
         get_action_group(): Gio.SimpleActionGroup;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gtk.Widget.get_action_group
-        get_action_group(...args: never[]): any;
 
         /**
          * Retrieves the currently set color from the `button`.
@@ -6869,7 +6863,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6879,7 +6873,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6888,7 +6882,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6962,7 +6956,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6973,7 +6967,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6982,7 +6976,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -9124,8 +9118,8 @@ export namespace GimpUi {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            help_func: any;
-            helpFunc: any;
+            help_func: never;
+            helpFunc: never;
             help_id: string;
             helpId: string;
             parent: (Gtk.Widget | any);
@@ -9145,13 +9139,13 @@ export namespace GimpUi {
          * @since 2.2
          * @construct-only
          */
-        get help_func(): any;
+        get help_func(): null;
 
         /**
          * @since 2.2
          * @construct-only
          */
-        get helpFunc(): any;
+        get helpFunc(): null;
 
         /**
          * @since 2.2
@@ -11410,7 +11404,7 @@ export namespace GimpUi {
          * Retrieves the user-data of the selected (active) item in the `combo_box`.
          * @returns `true` if `user_data` has been set or `false` if no item was               active.
          */
-        get_active_user_data(): [boolean, any];
+        get_active_user_data(): [boolean, null];
 
         /**
          * Returns the label previously set with `gimp_int_combo_box_set_label()`,
@@ -11445,7 +11439,7 @@ export namespace GimpUi {
          * @param user_data an integer value
          * @returns `true` on success or `false` if there was no item for               this user-data.
          */
-        set_active_by_user_data(user_data: (any | null)): boolean;
+        set_active_by_user_data(user_data: null): boolean;
 
         /**
          * Sets a caption on the `combo_box` that will be displayed
@@ -11887,7 +11881,7 @@ export namespace GimpUi {
          * Retrieves the user-data of the selected (active) item in the `radio_frame`.
          * @returns `true` if `user_data` has been set or `false` if no item was               active.
          */
-        get_active_user_data(): [boolean, any];
+        get_active_user_data(): [boolean, null];
 
         /**
          * Looks up the item that belongs to the given `value` and makes it the
@@ -11903,7 +11897,7 @@ export namespace GimpUi {
          * @param user_data an integer value
          * @returns `true` on success or `false` if there was no item for          this user-data.
          */
-        set_active_by_user_data(user_data: (any | null)): boolean;
+        set_active_by_user_data(user_data: null): boolean;
 
         /**
          * Sets a function that is used to decide about the sensitivity of radio
@@ -12006,7 +12000,7 @@ export namespace GimpUi {
          * @param model a {@link GimpUi.IntStore}
          * @param user_data a gpointer "user-data" to lookup in the `model`
          */
-        static lookup_by_user_data(model: Gtk.TreeModel, user_data: (any | null)): [boolean, Gtk.TreeIter];
+        static lookup_by_user_data(model: Gtk.TreeModel, user_data: null): [boolean, Gtk.TreeIter];
 
         /**
          * Iterate over the `model` looking for `value`.
@@ -12043,7 +12037,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -12053,7 +12047,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12062,7 +12056,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -12136,7 +12130,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -12147,7 +12141,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12156,7 +12150,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -18229,7 +18223,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -18239,7 +18233,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -18248,7 +18242,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -18322,7 +18316,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -18333,7 +18327,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -18342,7 +18336,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

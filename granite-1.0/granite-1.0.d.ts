@@ -2474,7 +2474,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Fields
         dropped_callback: WidgetsDroppedDelegate;
 
-        dropped_callback_target: any;
+        dropped_callback_target: null;
 
         dropped_callback_target_destroy_notify: GLib.DestroyNotify;
 

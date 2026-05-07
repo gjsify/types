@@ -199,7 +199,7 @@ export namespace GModule {
          * @param symbol_name the name of the symbol to find
          * @returns `true` on success
          */
-        symbol(symbol_name: string): [boolean, any];
+        symbol(symbol_name: string): [boolean, null];
     }
 
 

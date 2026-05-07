@@ -252,7 +252,7 @@ export namespace EDataBook {
      * @param data an {@link EDataBook.BookCacheSearchData}
      * @since 3.26
      */
-    function book_cache_search_data_free(data: (any | null)): void;
+    function book_cache_search_data_free(data: null): void;
 
     /**
      * Frees the `ptr` structure, previously allocated with `e_book_meta_backend_info_new()`
@@ -260,7 +260,7 @@ export namespace EDataBook {
      * @param ptr an {@link EDataBook.BookMetaBackendInfo}
      * @since 3.26
      */
-    function book_meta_backend_info_free(ptr: (any | null)): void;
+    function book_meta_backend_info_free(ptr: null): void;
 
     /**
      * Fetches the extra data previously set for `uid`, either with
@@ -3322,12 +3322,12 @@ export namespace EDataBook {
              * @signal
              * @run-last
              */
-            "before-insert-contact": (arg0: (any | null), arg1: EBookContacts.Contact, arg2: string, arg3: boolean, arg4: GObject.Object, arg5: (any | null)) => (boolean | void);
+            "before-insert-contact": (arg0: null, arg1: EBookContacts.Contact, arg2: string, arg3: boolean, arg4: GObject.Object, arg5: null) => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            "before-remove-contact": (arg0: (any | null), arg1: string, arg2: (Gio.Cancellable | null), arg3: (any | null)) => (boolean | void);
+            "before-remove-contact": (arg0: null, arg1: string, arg2: (Gio.Cancellable | null), arg3: null) => (boolean | void);
         }
 
         // Constructor properties interface
@@ -3394,7 +3394,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_insert_contact(db: (any | null), contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_insert_contact(db: null, contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * @param db 
@@ -3402,7 +3402,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_remove_contact(db: (any | null), contact_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_remove_contact(db: null, contact_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
 
         // Methods
         /**
@@ -4316,7 +4316,7 @@ export namespace EDataBook {
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
             book_cache: BookCache;
             bookCache: BookCache;
-            cursor: any;
+            cursor: never;
         }
     }
 
@@ -4345,7 +4345,7 @@ export namespace EDataBook {
          * The {@link EDataBook.BookCacheCursor} pointer
          * @construct-only
          */
-        set cursor(val: any);
+        set cursor(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4391,7 +4391,7 @@ export namespace EDataBook {
 
         // Constructor properties interface
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
-            cursor: any;
+            cursor: never;
             ebsql: BookSqlite;
             revision_key: string;
             revisionKey: string;
@@ -4411,7 +4411,7 @@ export namespace EDataBook {
          * The {@link EDataBook.bSqlCursor} pointer
          * @construct-only
          */
-        set cursor(val: any);
+        set cursor(val: never);
 
         /**
          * The {@link EDataBook.BookSqlite} to use for queries
@@ -4704,7 +4704,7 @@ export namespace EDataBook {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             backend: BookBackend;
             connection: Gio.DBusConnection;
-            indices: any;
+            indices: never;
             n_total: number;
             nTotal: number;
             object_path: string;
@@ -4735,8 +4735,8 @@ export namespace EDataBook {
         /**
          * List of {@link EBookContacts.BookIndices} holding indices of the contacts in the view
          */
-        get indices(): any;
-        set indices(val: any);
+        get indices(): null;
+        set indices(val: never);
 
         /**
          * How many contacts are available in the view
@@ -5660,7 +5660,7 @@ export namespace EDataBook {
          * or `e_book_cache_search_data_copy()`.
          * @param data an {@link EDataBook.BookCacheSearchData}
          */
-        static free(data: (any | null)): void;
+        static free(data: null): void;
 
         // Methods
         /**
@@ -5707,7 +5707,7 @@ export namespace EDataBook {
          * or `e_book_meta_backend_info_copy()`.
          * @param ptr an {@link EDataBook.BookMetaBackendInfo}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**

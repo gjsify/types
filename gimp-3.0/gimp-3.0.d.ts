@@ -7405,7 +7405,7 @@ export namespace ParamArray {
      * @returns the name of the temporary procedure that's been installed
      * @since 2.4
      */
-    function progress_install_vtable(vtable: ProgressVtable, user_data: (any | null)): string;
+    function progress_install_vtable(vtable: ProgressVtable, user_data: null): string;
 
     /**
      * Pulses the progress bar for the current plug-in.
@@ -7583,7 +7583,7 @@ export namespace ParamArray {
      * @returns `true` if a stack trace could be generated, `false` otherwise.
      * @since 2.10
      */
-    function stack_trace_print(prog_name: string, stream: (any | null)): [boolean, string];
+    function stack_trace_print(prog_name: string, stream: null): [boolean, string];
 
     /**
      * This is mostly the same as `g_on_error_query()` except that we use our
@@ -8036,21 +8036,21 @@ export namespace ParamArray {
      * @gir-type Callback
      */
     interface ProgressVtableEndFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ProgressVtableGetWindowFunc {
-        (user_data: (any | null)): GLib.Bytes;
+        (user_data: null): GLib.Bytes;
     }
 
     /**
      * @gir-type Callback
      */
     interface ProgressVtablePulseFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
@@ -9313,7 +9313,7 @@ export namespace ParamArray {
 
         static new_from_icc_profile(data: (Uint8Array | string)): ColorProfile;
 
-        static new_from_lcms_profile(lcms_profile: (any | null)): ColorProfile;
+        static new_from_lcms_profile(lcms_profile: null): ColorProfile;
 
         static new_rgb_adobe(): ColorProfile;
 
@@ -9390,7 +9390,7 @@ export namespace ParamArray {
          * value belongs to `profile` and must not be modified or freed.
          * @returns a pointer to the cmsHPROFILE.
          */
-        get_lcms_profile(): (any | null);
+        get_lcms_profile(): null;
 
         /**
          * @returns a string containing `profile`'s manufacturer. The               returned value belongs to `profile` and must not be               modified or freed.
@@ -9562,7 +9562,7 @@ export namespace ParamArray {
          * @param dest_pixels pointer to the destination pixels
          * @param length number of pixels to process
          */
-        process_pixels(src_format: Babl.Object, src_pixels: (any | null), dest_format: Babl.Object, dest_pixels: (any | null), length: (bigint | number)): void;
+        process_pixels(src_format: Babl.Object, src_pixels: null, dest_format: Babl.Object, dest_pixels: null, length: (bigint | number)): void;
     }
 
 
@@ -22030,7 +22030,7 @@ export namespace ParamArray {
          * @param data client data.
          * @returns Whether serialization succeeded.
          */
-        deserialize(scanner: GLib.Scanner, nest_level: number, data: (any | null)): boolean;
+        deserialize(scanner: GLib.Scanner, nest_level: number, data: null): boolean;
 
         /**
          * Opens the file specified by `file`, reads configuration data from it
@@ -22041,7 +22041,7 @@ export namespace ParamArray {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_file(file: Gio.File, data: (any | null)): boolean;
+        deserialize_file(file: Gio.File, data: null): boolean;
 
         /**
          * Configures `config` from `parasite`. Basically this function creates
@@ -22051,7 +22051,7 @@ export namespace ParamArray {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_parasite(parasite: Parasite, data: (any | null)): boolean;
+        deserialize_parasite(parasite: Parasite, data: null): boolean;
 
         /**
          * This function uses the `scanner` to configure the properties of `config`.
@@ -22080,7 +22080,7 @@ export namespace ParamArray {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          */
-        deserialize_stream(input: Gio.InputStream, data: (any | null)): boolean;
+        deserialize_stream(input: Gio.InputStream, data: null): boolean;
 
         /**
          * Configures `config` from `text`. Basically this function creates a
@@ -22090,7 +22090,7 @@ export namespace ParamArray {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          */
-        deserialize_string(text: string[], data: (any | null)): boolean;
+        deserialize_string(text: string[], data: null): boolean;
 
         /**
          * Creates a copy of the passed object by copying all object
@@ -22099,7 +22099,7 @@ export namespace ParamArray {
          * properties.
          * @returns the duplicated {@link Gimp.Config} object
          */
-        duplicate(): (any | null);
+        duplicate(): null;
 
         /**
          * Returns the current XCF version of the `config`.
@@ -22130,7 +22130,7 @@ export namespace ParamArray {
          * @param data client data
          * @returns Whether serialization succeeded.
          */
-        serialize(writer: ConfigWriter, data: (any | null)): boolean;
+        serialize(writer: ConfigWriter, data: null): boolean;
 
         /**
          * This function writes all object properties that have been changed from
@@ -22170,7 +22170,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_fd(fd: number, data: (any | null)): boolean;
+        serialize_to_fd(fd: number, data: null): boolean;
 
         /**
          * Serializes the object properties of `config` to the file specified
@@ -22183,7 +22183,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_file(file: Gio.File, header: (string | null), footer: (string | null), data: (any | null)): boolean;
+        serialize_to_file(file: Gio.File, header: (string | null), footer: (string | null), data: null): boolean;
 
         /**
          * Serializes the object properties of `config` to a {@link Parasite}.
@@ -22192,7 +22192,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns the newly allocated parasite.
          */
-        serialize_to_parasite(parasite_name: string, parasite_flags: number, data: (any | null)): Parasite;
+        serialize_to_parasite(parasite_name: string, parasite_flags: number, data: null): Parasite;
 
         /**
          * Serializes the object properties of `config` to the stream specified
@@ -22203,14 +22203,14 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns Whether serialization succeeded.
          */
-        serialize_to_stream(output: Gio.OutputStream, header: (string | null), footer: (string | null), data: (any | null)): boolean;
+        serialize_to_stream(output: Gio.OutputStream, header: (string | null), footer: (string | null), data: null): boolean;
 
         /**
          * Serializes the object properties of `config` to a string.
          * @param data user data passed to the serialize implementation.
          * @returns a newly allocated NUL-terminated string.
          */
-        serialize_to_string(data: (any | null)): string;
+        serialize_to_string(data: null): string;
 
         /**
          * Sets the current XCF version of the `config`. This information can be used
@@ -22828,7 +22828,7 @@ export namespace ParamArray {
 
         size: number;
 
-        data: any[];
+        data: null[];
 
         // Constructors
 
@@ -22836,7 +22836,7 @@ export namespace ParamArray {
             name: string;
             flags: number;
             size: number;
-            data: any[];
+            data: null[];
         }>);
 
         static ["new"](name: string, flags: number, data: (number[] | null)): Parasite;

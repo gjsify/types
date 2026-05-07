@@ -733,7 +733,7 @@ export namespace SugarGestures {
         // Fields
         device: Gdk.Device;
 
-        event_data: any[];
+        event_data: null[];
 
         swiping: number;
 

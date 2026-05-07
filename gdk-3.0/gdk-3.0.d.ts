@@ -12018,8 +12018,8 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            font_options: (any | null);
-            fontOptions: (any | null);
+            font_options: null;
+            fontOptions: null;
             resolution: number;
         }
     }
@@ -12042,11 +12042,11 @@ export namespace Gdk {
         static $gtype: GObject.GType<Screen>;
 
         // Properties
-        get font_options(): (any | null);
-        set font_options(val: (any | null));
+        get font_options(): null;
+        set font_options(val: null);
 
-        get fontOptions(): (any | null);
-        set fontOptions(val: (any | null));
+        get fontOptions(): null;
+        set fontOptions(val: null);
 
         /**
          * @default -1
@@ -12809,7 +12809,7 @@ export namespace Gdk {
              * @since 3.22
              * @run-first
              */
-            "moved-to-rect": (arg0: (any | null), arg1: (any | null), arg2: boolean, arg3: boolean) => void;
+            "moved-to-rect": (arg0: null, arg1: null, arg2: boolean, arg3: boolean) => void;
             /**
              * The ::pick-embedded-child signal is emitted to find an embedded
              * child at the given position.
@@ -13393,7 +13393,7 @@ export namespace Gdk {
          * @param user_data user data to look for
          * @returns list of child windows inside `window`
          */
-        get_children_with_user_data(user_data: (any | null)): Window[];
+        get_children_with_user_data(user_data: null): Window[];
 
         /**
          * Computes the region of a window that potentially can be written
@@ -13737,7 +13737,7 @@ export namespace Gdk {
          * Retrieves the user data for `window`, which is normally the widget
          * that `window` belongs to. See `gdk_window_set_user_data()`.
          */
-        get_user_data(): any;
+        get_user_data(): null;
 
         /**
          * Computes the region of the `window` that is potentially visible.

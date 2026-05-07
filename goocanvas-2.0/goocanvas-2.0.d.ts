@@ -944,7 +944,7 @@ export namespace GooCanvas {
 
         device_to_pixels_y: number;
 
-        widget_items: any[];
+        widget_items: null[];
 
         // Constructors
         constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
@@ -982,7 +982,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_BOOLEAN__BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -992,7 +992,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1002,7 +1002,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__OBJECT_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_BOOLEAN__OBJECT_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1012,7 +1012,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1022,7 +1022,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * Parses the given SVG path specification string.
@@ -5337,7 +5337,7 @@ export namespace GooCanvas {
         // Fields
         parent_object: CanvasItemSimple;
 
-        items: any[];
+        items: null[];
 
         // Constructors
         constructor(properties?: Partial<CanvasGroup.ConstructorProps>, ...args: any[]);
@@ -6306,7 +6306,7 @@ export namespace GooCanvas {
         // Fields
         parent_object: CanvasItemModelSimple;
 
-        children: any[];
+        children: null[];
 
         // Constructors
         constructor(properties?: Partial<CanvasGroupModel.ConstructorProps>, ...args: any[]);
@@ -14947,7 +14947,7 @@ export namespace GooCanvas {
         $signals: CanvasStyle.SignalSignatures;
 
         // Fields
-        properties: any[];
+        properties: null[];
 
         // Constructors
         constructor(properties?: Partial<CanvasStyle.ConstructorProps>, ...args: any[]);
@@ -18148,7 +18148,7 @@ export namespace GooCanvas {
         // Fields
         style: CanvasStyle;
 
-        clip_path_commands: any[];
+        clip_path_commands: null[];
 
         tooltip: string;
 
@@ -18228,12 +18228,12 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPathData>;
 
         // Fields
-        path_commands: any[];
+        path_commands: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            path_commands: any[];
+            path_commands: null[];
         }>);
     }
 
@@ -18454,7 +18454,7 @@ export namespace GooCanvas {
 
         border_width: number;
 
-        children: any[];
+        children: null[];
     }
 
 

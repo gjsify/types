@@ -2851,11 +2851,11 @@ interface IconInfo extends RygelCore.IconInfo {}
         // Fields
         ref_count: number;
 
-        op: (any | null);
+        op: null;
 
-        operand1: (any | null);
+        operand1: null;
 
-        operand2: (any | null);
+        operand2: null;
 
         // Constructors
         _init(...args: any[]): void;

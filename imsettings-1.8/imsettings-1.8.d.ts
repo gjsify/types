@@ -326,7 +326,7 @@ export namespace IMSettings {
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variants_finish(result: Gio.AsyncResult): (any | null);
+        get_info_variants_finish(result: Gio.AsyncResult): null;
 
         /**
          * Request obtaining asynchronously all of the Input Method information

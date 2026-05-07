@@ -904,7 +904,7 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_56(data: (any | null), size: number, ntptime: (bigint | number)): boolean;
+    function rtp_hdrext_set_ntp_56(data: null, size: number, ntptime: (bigint | number)): boolean;
 
     /**
      * Writes the NTP time in `ntptime` to the format required for the NTP-64 header
@@ -914,7 +914,7 @@ export namespace GstRtp {
      * @param ntptime the NTP time
      * @returns `true` on success.
      */
-    function rtp_hdrext_set_ntp_64(data: (any | null), size: number, ntptime: (bigint | number)): boolean;
+    function rtp_hdrext_set_ntp_64(data: null, size: number, ntptime: (bigint | number)): boolean;
 
     /**
      * Get the {@link GstRtp.RTPPayloadInfo} for `media` and `encoding_name`. This function is
@@ -2994,7 +2994,7 @@ export namespace GstRtp {
         // Fields
         state: number;
 
-        data: any[];
+        data: null[];
 
         size: number[];
 

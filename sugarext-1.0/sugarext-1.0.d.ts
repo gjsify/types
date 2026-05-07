@@ -197,7 +197,7 @@ export namespace SugarExt {
              * @signal
              * @run-last
              */
-            "save-state": (arg0: (any | null)) => void;
+            "save-state": (arg0: null) => void;
         }
 
         // Constructor properties interface
@@ -675,7 +675,7 @@ export namespace SugarExt {
 
         root: Gdk.Window;
 
-        keys: any[];
+        keys: null[];
 
         // Constructors
         constructor(properties?: Partial<KeyGrabber.ConstructorProps>, ...args: any[]);
@@ -1005,9 +1005,9 @@ export namespace SugarExt {
         // Fields
         root_window: Gdk.Window;
 
-        controllers: any[];
+        controllers: null[];
 
-        touches: any[];
+        touches: null[];
 
         cancel_timeout_id: number;
     }

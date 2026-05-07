@@ -1876,8 +1876,8 @@ export namespace EBookContacts {
             car_phone: string;
             carPhone: string;
             categories: string;
-            category_list: any;
-            categoryList: any;
+            category_list: never;
+            categoryList: never;
             company_phone: string;
             companyPhone: string;
             contact_uri: string;
@@ -2328,11 +2328,11 @@ export namespace EBookContacts {
         get categories(): string;
         set categories(val: string);
 
-        get category_list(): any;
-        set category_list(val: any);
+        get category_list(): null;
+        set category_list(val: never);
 
-        get categoryList(): any;
-        set categoryList(val: any);
+        get categoryList(): null;
+        set categoryList(val: never);
 
         /**
          * @default null
@@ -3748,7 +3748,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @returns Depends on the field's type, owned by the caller. This may be `null` if the field isn't set.
          */
-        get(field_id: ContactField): (any | null);
+        get(field_id: ContactField): null;
 
         /**
          * Gets the value of `contact`'s field specified by `field_id`, caching
@@ -3757,7 +3757,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @returns Depends on the field's type, owned by the {@link EBookContacts.Contact}.
          */
-        get_const(field_id: ContactField): (any | null);
+        get_const(field_id: ContactField): null;
 
         /**
          * Tries to modify any {@link EBookContacts.ContactPhoto} fields which are
@@ -3772,7 +3772,7 @@ export namespace EBookContacts {
          * @param field_id an {@link EBookContacts.ContactField}
          * @param value a value whose type depends on the `field_id`
          */
-        set(field_id: ContactField, value: (any | null)): void;
+        set(field_id: ContactField, value: null): void;
 
         /**
          * @param args 

@@ -391,7 +391,7 @@ export namespace GVnc {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Framebuffer.ConstructorProps {
-            buffer: any;
+            buffer: never;
             color_map: ColorMap;
             colorMap: ColorMap;
             height: number;
@@ -414,7 +414,7 @@ export namespace GVnc {
         /**
          * @construct-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         get color_map(): ColorMap;
         set color_map(val: ColorMap);
@@ -998,7 +998,7 @@ export namespace GVnc {
          * @param data 
          * @param length 
          */
-        client_cut_text(data: (any | null), length: (bigint | number)): boolean;
+        client_cut_text(data: null, length: (bigint | number)): boolean;
 
         /**
          * Request that the server send a framebuffer update when the
@@ -1314,7 +1314,7 @@ export namespace GVnc {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: any;
+            data: never;
             height: number;
             hotx: number;
             hoty: number;
@@ -1329,8 +1329,8 @@ export namespace GVnc {
         static $gtype: GObject.GType<Cursor>;
 
         // Properties
-        get data(): any;
-        set data(val: any);
+        get data(): null;
+        set data(val: never);
 
         /**
          * @default 0

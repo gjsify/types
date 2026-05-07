@@ -6222,9 +6222,9 @@ export namespace GstCodecParsers {
 
         length_size_minus_one: number;
 
-        sps: any[];
+        sps: null[];
 
-        pps: any[];
+        pps: null[];
 
         chroma_format_present: boolean;
 
@@ -6234,7 +6234,7 @@ export namespace GstCodecParsers {
 
         bit_depth_chroma_minus8: number;
 
-        sps_ext: any[];
+        sps_ext: null[];
 
         // Constructors
 
@@ -6244,13 +6244,13 @@ export namespace GstCodecParsers {
             profile_compatibility: number;
             level_indication: number;
             length_size_minus_one: number;
-            sps: any[];
-            pps: any[];
+            sps: null[];
+            pps: null[];
             chroma_format_present: boolean;
             chroma_format: number;
             bit_depth_luma_minus8: number;
             bit_depth_chroma_minus8: number;
-            sps_ext: any[];
+            sps_ext: null[];
         }>);
 
         // Methods
@@ -7596,7 +7596,7 @@ export namespace GstCodecParsers {
 
         length_size_minus_one: number;
 
-        nalu_array: any[];
+        nalu_array: null[];
 
         // Constructors
 
@@ -7632,7 +7632,7 @@ export namespace GstCodecParsers {
             num_temporal_layers: number;
             temporal_id_nested: number;
             length_size_minus_one: number;
-            nalu_array: any[];
+            nalu_array: null[];
         }>);
 
         // Methods
@@ -7656,7 +7656,7 @@ export namespace GstCodecParsers {
 
         nal_unit_type: H265NalUnitType;
 
-        nalu: any[];
+        nalu: null[];
     }
 
 
@@ -9932,7 +9932,7 @@ export namespace GstCodecParsers {
 
         avg_frame_rate: number;
 
-        nalu_array: any[];
+        nalu_array: null[];
 
         // Constructors
 
@@ -9948,7 +9948,7 @@ export namespace GstCodecParsers {
             max_picture_width: number;
             max_picture_height: number;
             avg_frame_rate: number;
-            nalu_array: any[];
+            nalu_array: null[];
         }>);
 
         // Methods
@@ -9972,7 +9972,7 @@ export namespace GstCodecParsers {
 
         nal_unit_type: H266NalUnitType;
 
-        nalu: any[];
+        nalu: null[];
     }
 
 
@@ -14748,7 +14748,7 @@ export namespace GstCodecParsers {
         static $gtype: GObject.GType<Vp9Parser>;
 
         // Fields
-        priv: any;
+        priv: null;
 
         subsampling_x: number;
 
@@ -14769,7 +14769,7 @@ export namespace GstCodecParsers {
         // Constructors
 
         constructor(properties?: Partial<{
-            priv: any;
+            priv: null;
             subsampling_x: number;
             subsampling_y: number;
             bit_depth: number;

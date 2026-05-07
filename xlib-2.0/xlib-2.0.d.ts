@@ -125,7 +125,7 @@ export namespace xlib {
     /**
      * @gir-type Alias
      */
-    type GC = any;
+    type GC = never;
 
     /**
      * @gir-type Alias

@@ -741,8 +741,8 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             role: string;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -771,13 +771,13 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to object node in XML document.
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -855,8 +855,8 @@ export namespace GUPnPAV {
             friendlyName: string;
             include_derived: boolean;
             includeDerived: boolean;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -906,13 +906,13 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to desc node in XML document.
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -1004,8 +1004,8 @@ export namespace GUPnPAV {
             metadataType: string;
             name_space: string;
             nameSpace: string;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -1062,13 +1062,13 @@ export namespace GUPnPAV {
          * The pointer to desc node in XML document.
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to desc node in XML document.
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -1309,19 +1309,19 @@ export namespace GUPnPAV {
             author: string;
             creator: string;
             date: string;
-            dc_namespace: any;
-            dcNamespace: any;
+            dc_namespace: never;
+            dcNamespace: never;
             description: string;
             dlna_managed: OCMFlags;
             dlnaManaged: OCMFlags;
-            dlna_namespace: any;
-            dlnaNamespace: any;
+            dlna_namespace: never;
+            dlnaNamespace: never;
             genre: string;
             id: string;
             parent_id: string;
             parentId: string;
-            pv_namespace: any;
-            pvNamespace: any;
+            pv_namespace: never;
+            pvNamespace: never;
             restricted: boolean;
             title: string;
             track_number: number;
@@ -1330,12 +1330,12 @@ export namespace GUPnPAV {
             updateId: number;
             upnp_class: string;
             upnpClass: string;
-            upnp_namespace: any;
-            upnpNamespace: any;
+            upnp_namespace: never;
+            upnpNamespace: never;
             write_status: string;
             writeStatus: string;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -1402,14 +1402,14 @@ export namespace GUPnPAV {
          * containing this object.
          * @construct-only
          */
-        get dc_namespace(): any;
+        get dc_namespace(): null;
 
         /**
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
          * @construct-only
          */
-        get dcNamespace(): any;
+        get dcNamespace(): null;
 
         /**
          * The description of this object.
@@ -1437,14 +1437,14 @@ export namespace GUPnPAV {
          * document containing this object.
          * @construct-only
          */
-        get dlna_namespace(): any;
+        get dlna_namespace(): null;
 
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
          * @construct-only
          */
-        get dlnaNamespace(): any;
+        get dlnaNamespace(): null;
 
         /**
          * The genre of this object.
@@ -1479,14 +1479,14 @@ export namespace GUPnPAV {
          * document containing this object.
          * @construct-only
          */
-        get pv_namespace(): any;
+        get pv_namespace(): null;
 
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
          * @construct-only
          */
-        get pvNamespace(): any;
+        get pvNamespace(): null;
 
         /**
          * Whether this object is restricted.
@@ -1549,14 +1549,14 @@ export namespace GUPnPAV {
          * containing this object.
          * @construct-only
          */
-        get upnp_namespace(): any;
+        get upnp_namespace(): null;
 
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
          * @construct-only
          */
-        get upnpNamespace(): any;
+        get upnpNamespace(): null;
 
         /**
          * The write status of this object.
@@ -1576,13 +1576,13 @@ export namespace GUPnPAV {
          * The pointer to object node in XML document.
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to object node in XML document.
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -2154,8 +2154,8 @@ export namespace GUPnPAV {
             cleartextSize: (bigint | number);
             color_depth: number;
             colorDepth: number;
-            dlna_namespace: any;
-            dlnaNamespace: any;
+            dlna_namespace: never;
+            dlnaNamespace: never;
             duration: (bigint | number);
             height: number;
             import_uri: string;
@@ -2163,8 +2163,8 @@ export namespace GUPnPAV {
             protection: string;
             protocol_info: (ProtocolInfo | null);
             protocolInfo: (ProtocolInfo | null);
-            pv_namespace: any;
-            pvNamespace: any;
+            pv_namespace: never;
+            pvNamespace: never;
             sample_freq: number;
             sampleFreq: number;
             size: (bigint | number);
@@ -2179,8 +2179,8 @@ export namespace GUPnPAV {
             updateCount: number;
             uri: (string | null);
             width: number;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -2257,14 +2257,14 @@ export namespace GUPnPAV {
          * resource object.
          * @construct-only
          */
-        get dlna_namespace(): any;
+        get dlna_namespace(): null;
 
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
          * @construct-only
          */
-        get dlnaNamespace(): any;
+        get dlnaNamespace(): null;
 
         /**
          * The duration (in seconds) of this resource.
@@ -2318,14 +2318,14 @@ export namespace GUPnPAV {
          * resource object.
          * @construct-only
          */
-        get pv_namespace(): any;
+        get pv_namespace(): null;
 
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
          * @construct-only
          */
-        get pvNamespace(): any;
+        get pvNamespace(): null;
 
         /**
          * The sample frequency of this resource.
@@ -2427,13 +2427,13 @@ export namespace GUPnPAV {
          * The pointer to res node in XML document.
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to res node in XML document.
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -2759,8 +2759,8 @@ export namespace GUPnPAV {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             language: string;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -2782,13 +2782,13 @@ export namespace GUPnPAV {
          * The pointer to root node in XML document.
          * @read-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * The pointer to root node in XML document.
          * @read-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -3521,7 +3521,7 @@ export namespace GUPnPAV {
              * @signal
              * @run-last
              */
-            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: (any | null)) => (boolean | void);
+            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: null) => (boolean | void);
         }
 
         // Constructor properties interface

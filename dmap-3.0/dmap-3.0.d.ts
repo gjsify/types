@@ -486,14 +486,14 @@ export namespace DMAP {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            base_uri: any;
-            baseUri: any;
+            base_uri: never;
+            baseUri: never;
             database_id: number;
             databaseId: number;
-            db: any;
+            db: never;
             dmap_version: number;
             dmapVersion: number;
-            factory: any;
+            factory: never;
             host: string;
             name: string;
             password: string;
@@ -513,11 +513,11 @@ export namespace DMAP {
         static $gtype: GObject.GType<Connection>;
 
         // Properties
-        get base_uri(): any;
-        set base_uri(val: any);
+        get base_uri(): null;
+        set base_uri(val: never);
 
-        get baseUri(): any;
-        set baseUri(val: any);
+        get baseUri(): null;
+        set baseUri(val: never);
 
         get database_id(): number;
         set database_id(val: number);
@@ -528,7 +528,7 @@ export namespace DMAP {
         /**
          * @construct-only
          */
-        get db(): any;
+        get db(): null;
 
         get dmap_version(): number;
         set dmap_version(val: number);
@@ -539,7 +539,7 @@ export namespace DMAP {
         /**
          * @construct-only
          */
-        get factory(): any;
+        get factory(): null;
 
         /**
          * @construct-only
@@ -845,7 +845,7 @@ export namespace DMAP {
              * @signal
              * @run-last
              */
-            "service-added": (arg0: any) => void;
+            "service-added": (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -1041,9 +1041,9 @@ export namespace DMAP {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             auth_method: number;
             authMethod: number;
-            container_db: any;
-            containerDb: any;
-            db: any;
+            container_db: never;
+            containerDb: never;
+            db: never;
             name: string;
             password: string;
             revision_number: number;
@@ -1075,17 +1075,17 @@ export namespace DMAP {
         /**
          * @construct-only
          */
-        get container_db(): any;
+        get container_db(): null;
 
         /**
          * @construct-only
          */
-        get containerDb(): any;
+        get containerDb(): null;
 
         /**
          * @construct-only
          */
-        get db(): any;
+        get db(): null;
 
         get name(): string;
         set name(val: string);
@@ -1171,7 +1171,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1181,7 +1181,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1191,7 +1191,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, context: Soup.ClientContext): void;
+        vfunc_databases(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1201,7 +1201,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<any, any>, context: Soup.ClientContext): void;
+        vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1211,7 +1211,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<any, any>, context: Soup.ClientContext): void;
+        vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
 
         /**
          * @virtual
@@ -1231,7 +1231,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_login(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_login(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1241,7 +1241,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_logout(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_logout(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
 
         /**
          * @param msg 
@@ -1271,7 +1271,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1281,7 +1281,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_update(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<any, any>, ctx: Soup.ClientContext): void;
+        vfunc_update(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
     }
 
 
@@ -1474,7 +1474,7 @@ export namespace DMAP {
 
         id: number;
 
-        uris: any[];
+        uris: null[];
 
         // Constructors
 

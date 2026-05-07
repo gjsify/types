@@ -445,7 +445,7 @@ export namespace Grl {
     /**
      * @returns a new hash table made to contain GValues.
      */
-    function g_value_hashtable_new_direct(): GLib.HashTable<any, GObject.Value>;
+    function g_value_hashtable_new_direct(): GLib.HashTable<never, GObject.Value>;
 
     /**
      * @param g_type 
@@ -513,7 +513,7 @@ export namespace Grl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Retrieves the description associated with the key
@@ -601,7 +601,7 @@ export namespace Grl {
      * @param operation_id the identifier of a running operation
      * @returns The previously attached data.
      */
-    function operation_get_data(operation_id: number): (any | null);
+    function operation_get_data(operation_id: number): null;
 
     function operation_init(): void;
 
@@ -615,7 +615,7 @@ export namespace Grl {
      * @param operation_id the identifier of a running operation
      * @param user_data the data to attach
      */
-    function operation_set_data(operation_id: number, user_data: (any | null)): void;
+    function operation_set_data(operation_id: number, user_data: null): void;
 
     /**
      * Attach a pointer to the specific operation.
@@ -625,14 +625,14 @@ export namespace Grl {
      * @param user_data the data to attach
      * @since 0.2.7
      */
-    function operation_set_data_full(operation_id: number, user_data: (any | null)): void;
+    function operation_set_data_full(operation_id: number, user_data: null): void;
 
     /**
      * @param operation_id 
      * @param private_data 
      * @param cancel_cb 
      */
-    function operation_set_private_data(operation_id: number, private_data: (any | null), cancel_cb: OperationCancelCb): void;
+    function operation_set_private_data(operation_id: number, private_data: null, cancel_cb: OperationCancelCb): void;
 
     /**
      * Grilo browsing implements a paging mechanism through `skip` and `count` values.
@@ -668,18 +668,18 @@ export namespace Grl {
      * @param min 
      * @param max 
      */
-    function range_value_hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<any, any>), key: (any | null), min: (GObject.Value | any), max: (GObject.Value | any)): void;
+    function range_value_hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<never, never>), key: null, min: (GObject.Value | any), max: (GObject.Value | any)): void;
 
     /**
      * @returns a {@link GLib.HashTable}
      */
-    function range_value_hashtable_new(): GLib.HashTable<any, RangeValue>;
+    function range_value_hashtable_new(): GLib.HashTable<never, RangeValue>;
 
     /**
      * @gir-type Callback
      */
     interface OperationCancelCb {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     /**
@@ -1289,7 +1289,7 @@ export namespace Grl {
          * @param key key to append
          * @param boxed the new value
          */
-        add_boxed(key: KeyID, boxed: (any | null)): void;
+        add_boxed(key: KeyID, boxed: null): void;
 
         /**
          * Appends a new float value for `key` in `data`.
@@ -1364,7 +1364,7 @@ export namespace Grl {
          * @param key key to use
          * @returns the boxed instance associated with `key` if possible, or `null` in other cases. The caller should not change nor free the value.
          */
-        get_boxed(key: KeyID): (any | null);
+        get_boxed(key: KeyID): null;
 
         /**
          * Returns the first float value associated with `key` from `data`. If `key` has no
@@ -1515,7 +1515,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param boxed the new value
          */
-        set_boxed(key: KeyID, boxed: (any | null)): void;
+        set_boxed(key: KeyID, boxed: null): void;
 
         /**
          * Sets the first float value associated with `key` in `data`. If `key` already has
@@ -3218,7 +3218,7 @@ export namespace Grl {
         /**
          * @param load_function 
          */
-        set_load_func(load_function: (any | null)): void;
+        set_load_func(load_function: null): void;
 
         /**
          * @param module 
@@ -3228,17 +3228,17 @@ export namespace Grl {
         /**
          * @param info 
          */
-        set_optional_info(info: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_optional_info(info: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * @param register_keys_function 
          */
-        set_register_keys_func(register_keys_function: (any | null)): void;
+        set_register_keys_func(register_keys_function: null): void;
 
         /**
          * @param unload_function 
          */
-        set_unload_func(unload_function: (any | null)): void;
+        set_unload_func(unload_function: null): void;
 
         unload(): void;
     }
@@ -3626,7 +3626,7 @@ export namespace Grl {
          * @param key key to use
          * @returns the `GBoxed` value associated with `key` if possible, or `null` in other case. The caller should not change nor free the value.
          */
-        get_boxed(key: KeyID): (any | null);
+        get_boxed(key: KeyID): null;
 
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
@@ -3720,7 +3720,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param boxed the new value
          */
-        set_boxed(key: KeyID, boxed: (any | null)): void;
+        set_boxed(key: KeyID, boxed: null): void;
 
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -4726,9 +4726,9 @@ export namespace Grl {
          * @param min 
          * @param max 
          */
-        static hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<any, any>), key: (any | null), min: (GObject.Value | any), max: (GObject.Value | any)): void;
+        static hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<never, never>), key: null, min: (GObject.Value | any), max: (GObject.Value | any)): void;
 
-        static hashtable_new(): GLib.HashTable<any, RangeValue>;
+        static hashtable_new(): GLib.HashTable<never, RangeValue>;
 
         // Methods
         dup(): RangeValue;
@@ -4778,13 +4778,13 @@ export namespace Grl {
 
         container: Media;
 
-        keys: any[];
+        keys: null[];
 
         options: OperationOptions;
 
         callback: SourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4808,13 +4808,13 @@ export namespace Grl {
 
         uri: string;
 
-        keys: any[];
+        keys: null[];
 
         options: OperationOptions;
 
         callback: SourceResolveCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4841,13 +4841,13 @@ export namespace Grl {
 
         query: string;
 
-        keys: any[];
+        keys: null[];
 
         options: OperationOptions;
 
         callback: SourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4868,7 +4868,7 @@ export namespace Grl {
 
         callback: SourceRemoveCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4887,13 +4887,13 @@ export namespace Grl {
 
         media: Media;
 
-        keys: any[];
+        keys: null[];
 
         options: OperationOptions;
 
         callback: SourceResolveCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4912,13 +4912,13 @@ export namespace Grl {
 
         text: string;
 
-        keys: any[];
+        keys: null[];
 
         options: OperationOptions;
 
         callback: SourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4935,15 +4935,15 @@ export namespace Grl {
 
         media: Media;
 
-        keys: any[];
+        keys: null[];
 
         flags: WriteFlags;
 
         callback: SourceStoreCb;
 
-        user_data: any;
+        user_data: null;
 
-        failed_keys: any[];
+        failed_keys: null[];
     }
 
 
@@ -4962,7 +4962,7 @@ export namespace Grl {
 
         callback: SourceStoreCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 

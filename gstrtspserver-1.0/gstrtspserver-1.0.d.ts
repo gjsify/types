@@ -326,14 +326,14 @@ export namespace GstRtspServer {
      * @gir-type Callback
      */
     interface RTSPKeepAliveFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface RTSPMessageSentFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**

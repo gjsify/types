@@ -1406,7 +1406,7 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            "output-connected": (arg0: (any | null)) => void;
+            "output-connected": (arg0: null) => void;
             /**
              * This signal is emitted when a display device is disconnected from
              * a port, or a port output is hot-unplugged. The latter can happen
@@ -1423,7 +1423,7 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            "output-disconnected": (arg0: (any | null)) => void;
+            "output-disconnected": (arg0: null) => void;
             "notify::dpms-mode": (pspec: GObject.ParamSpec) => void;
             "notify::gdk-screen": (pspec: GObject.ParamSpec) => void;
         }

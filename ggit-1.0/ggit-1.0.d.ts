@@ -859,28 +859,28 @@ export namespace Ggit {
      * @gir-type Callback
      */
     interface DiffSimilarityMetricBufferSignatureCallback {
-        (file: DiffFile, buf: string, buflen: number, out: (any | null)): number;
+        (file: DiffFile, buf: string, buflen: number, out: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface DiffSimilarityMetricFileSignatureCallback {
-        (file: DiffFile, fullpath: string, out: (any | null)): number;
+        (file: DiffFile, fullpath: string, out: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface DiffSimilarityMetricFreeSignatureCallback {
-        (signature: (any | null)): void;
+        (signature: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface DiffSimilarityMetricSimilarityCallback {
-        (score: number, signature_a: (any | null), signature_b: (any | null)): number;
+        (score: number, signature_a: null, signature_b: null): number;
     }
 
     /**
@@ -4517,7 +4517,7 @@ export namespace Ggit {
 
         // Constructor properties interface
         interface ConstructorProps extends ObjectFactoryBase.ConstructorProps {
-            "native": any;
+            "native": never;
         }
     }
 
@@ -4532,7 +4532,7 @@ export namespace Ggit {
         /**
          * @construct-only
          */
-        set "native"(val: any);
+        set "native"(val: never);
 
         /**
          * Compile-time signal type information.

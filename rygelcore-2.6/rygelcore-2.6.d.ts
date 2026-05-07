@@ -2746,7 +2746,7 @@ export namespace RygelCore {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](node: (any | null)): XMLUtilsIterator;
+        static ["new"](node: null): XMLUtilsIterator;
 
         // Signals
         /** @signal */
@@ -2766,7 +2766,7 @@ export namespace RygelCore {
 
         next(): boolean;
 
-        get(): (any | null);
+        get(): null;
     }
 
 
@@ -2785,7 +2785,7 @@ export namespace RygelCore {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](node: (any | null)): XMLUtilsChildIterator;
+        static ["new"](node: null): XMLUtilsChildIterator;
 
         // Signals
         /** @signal */

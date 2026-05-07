@@ -447,14 +447,14 @@ export namespace AppIndicator3 {
          * @param user_data 
          * @virtual
          */
-        vfunc_new_attention_icon(user_data: (any | null)): void;
+        vfunc_new_attention_icon(user_data: null): void;
 
         /**
          * Slot for {@link AppIndicator3.Indicator.SignalSignatures.new_icon | AppIndicator3.Indicator::new-icon}.
          * @param user_data 
          * @virtual
          */
-        vfunc_new_icon(user_data: (any | null)): void;
+        vfunc_new_icon(user_data: null): void;
 
         /**
          * Slot for {@link AppIndicator3.Indicator.SignalSignatures.new_icon_theme_path | AppIndicator3.Indicator::new-icon-theme-path}

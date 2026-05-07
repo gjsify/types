@@ -215,8 +215,8 @@ export namespace Cvc {
             id: (bigint | number);
             index: (bigint | number);
             name: string;
-            pa_context: any;
-            paContext: any;
+            pa_context: never;
+            paContext: never;
             profile: string;
         }
     }
@@ -273,12 +273,12 @@ export namespace Cvc {
         /**
          * @construct-only
          */
-        get pa_context(): any;
+        get pa_context(): null;
 
         /**
          * @construct-only
          */
-        get paContext(): any;
+        get paContext(): null;
 
         /**
          * @default null
@@ -1071,8 +1071,8 @@ export namespace Cvc {
             is_virtual: boolean;
             isVirtual: boolean;
             name: string;
-            pa_context: any;
-            paContext: any;
+            pa_context: never;
+            paContext: never;
             port: string;
             state: MixerStreamState;
             sysfs_path: string;
@@ -1223,12 +1223,12 @@ export namespace Cvc {
         /**
          * @construct-only
          */
-        get pa_context(): any;
+        get pa_context(): null;
 
         /**
          * @construct-only
          */
-        get paContext(): any;
+        get paContext(): null;
 
         /**
          * @default null
@@ -1315,7 +1315,7 @@ export namespace Cvc {
          * @param operation 
          * @virtual
          */
-        vfunc_push_volume(operation: (any | null)): boolean;
+        vfunc_push_volume(operation: null): boolean;
 
         // Methods
         /**
@@ -1475,7 +1475,7 @@ export namespace Cvc {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            card: any;
+            card: never;
             description: string;
             icon_name: string;
             iconName: string;
@@ -1497,8 +1497,8 @@ export namespace Cvc {
         static $gtype: GObject.GType<MixerUIDevice>;
 
         // Properties
-        get card(): any;
-        set card(val: any);
+        get card(): null;
+        set card(val: never);
 
         /**
          * @default no-name-set
@@ -1705,7 +1705,7 @@ export namespace Cvc {
 
         direction: number;
 
-        profiles: any[];
+        profiles: null[];
 
         // Constructors
 

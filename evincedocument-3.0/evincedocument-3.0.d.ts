@@ -731,7 +731,7 @@ export namespace EvinceDocument {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             area: Rectangle;
-            color: any;
+            color: never;
             contents: string;
             modified: string;
             name: string;
@@ -759,8 +759,8 @@ export namespace EvinceDocument {
          * The colour of the annotation as a {@link Gdk.Color}.
          * @deprecated since 3.6: Use {@link EvinceDocument.Annotation.rgba} instead.
          */
-        get color(): any;
-        set color(val: any);
+        get color(): null;
+        set color(val: never);
 
         /**
          * @default null
@@ -1514,7 +1514,7 @@ export namespace EvinceDocument {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             ctime: (bigint | number);
-            data: any;
+            data: never;
             description: string;
             mtime: (bigint | number);
             name: string;
@@ -1538,7 +1538,7 @@ export namespace EvinceDocument {
         /**
          * @construct-only
          */
-        set data(val: any);
+        set data(val: never);
 
         /**
          * @construct-only
@@ -1581,7 +1581,7 @@ export namespace EvinceDocument {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: (bigint | number), data: (any | null)): Attachment;
+        static ["new"](name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: (bigint | number), data: null): Attachment;
 
         // Signals
         /** @signal */
@@ -2340,7 +2340,7 @@ export namespace EvinceDocument {
 
         commit_on_sel_change: boolean;
 
-        selected_items: any[];
+        selected_items: null[];
 
         text: string;
 
@@ -2698,16 +2698,16 @@ export namespace EvinceDocument {
             exclude_reset_fields: boolean;
             excludeResetFields: boolean;
             filename: string;
-            hide_list: any;
-            hideList: any;
+            hide_list: never;
+            hideList: never;
             name: string;
             params: string;
-            reset_fields: any;
-            resetFields: any;
-            show_list: any;
-            showList: any;
-            toggle_list: any;
-            toggleList: any;
+            reset_fields: never;
+            resetFields: never;
+            show_list: never;
+            showList: never;
+            toggle_list: never;
+            toggleList: never;
             type: LinkActionType;
             uri: string;
         }
@@ -2746,12 +2746,12 @@ export namespace EvinceDocument {
         /**
          * @construct-only
          */
-        get hide_list(): any;
+        get hide_list(): null;
 
         /**
          * @construct-only
          */
-        get hideList(): any;
+        get hideList(): null;
 
         /**
          * @construct-only
@@ -2768,32 +2768,32 @@ export namespace EvinceDocument {
         /**
          * @construct-only
          */
-        get reset_fields(): any;
+        get reset_fields(): null;
 
         /**
          * @construct-only
          */
-        get resetFields(): any;
+        get resetFields(): null;
 
         /**
          * @construct-only
          */
-        get show_list(): any;
+        get show_list(): null;
 
         /**
          * @construct-only
          */
-        get showList(): any;
+        get showList(): null;
 
         /**
          * @construct-only
          */
-        get toggle_list(): any;
+        get toggle_list(): null;
 
         /**
          * @construct-only
          */
-        get toggleList(): any;
+        get toggleList(): null;
 
         /**
          * @construct-only
@@ -3891,13 +3891,13 @@ export namespace EvinceDocument {
         // Fields
         area: Rectangle;
 
-        data: any;
+        data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             area: Rectangle;
-            data: any;
+            data: null;
         }>);
     }
 
@@ -3918,14 +3918,14 @@ export namespace EvinceDocument {
          * @param data mapping data to find
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find(data: (any | null)): Mapping;
+        find(data: null): Mapping;
 
         /**
          * @param data mapping data to find
          * @param func function to use for equality check
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find_custom(data: (any | null), func: GLib.CompareFunc): Mapping;
+        find_custom(data: null, func: GLib.CompareFunc): Mapping;
 
         /**
          * @param x X coordinate
@@ -3939,7 +3939,7 @@ export namespace EvinceDocument {
          * @param y Y coordinate
          * @returns the data of a mapping in the list at coordinates (x, y)
          */
-        get_data(x: number, y: number): (any | null);
+        get_data(x: number, y: number): null;
 
         /**
          * @returns the data for this mapping list
@@ -5479,7 +5479,7 @@ export namespace EvinceDocument {
     /**
      * @gir-type Alias
      */
-    type BackendPage = any;
+    type BackendPage = never;
 
     /**
      * @gir-type Alias

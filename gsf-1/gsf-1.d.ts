@@ -602,14 +602,14 @@ export namespace Gsf {
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_double(p: (any | null)): number;
+    function le_get_double(p: null): number;
 
     /**
      * Interpret binary data as a float in little endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_float(p: (any | null)): number;
+    function le_get_float(p: null): number;
 
     /**
      * Interpret binary data as a guint64 (8 byte unsigned integer type) in little
@@ -617,21 +617,21 @@ export namespace Gsf {
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_guint64(p: (any | null)): number;
+    function le_get_guint64(p: null): number;
 
     /**
      * Store a value of type double in memory in little endian order
      * @param p pointer to storage
      * @param d double to be stored
      */
-    function le_set_double(p: (any | null), d: number): void;
+    function le_set_double(p: null, d: number): void;
 
     /**
      * Store a value of type float in memory in little endian order.
      * @param p pointer to storage
      * @param f float to be stored
      */
-    function le_set_float(p: (any | null), f: number): void;
+    function le_set_float(p: null, f: number): void;
 
     /**
      * Dump `len` bytes from the memory location given by `ptr`.
@@ -842,7 +842,7 @@ export namespace Gsf {
      * @gir-type Callback
      */
     interface XMLInExtDtor {
-        (xin: XMLIn, old_state: (any | null)): void;
+        (xin: XMLIn, old_state: null): void;
     }
 
     /**
@@ -922,7 +922,7 @@ export namespace Gsf {
          * on your own.
          * @returns Pointer to the data stored in the blob, or `null` if the size of the data is zero.
          */
-        peek_data(): (any | null);
+        peek_data(): null;
     }
 
 
@@ -1006,7 +1006,7 @@ export namespace Gsf {
          * @param ret_size Location to return the size of the returned data buffer.
          * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
          */
-        peek_real_data(ret_size: (bigint | number)): (any | null);
+        peek_real_data(ret_size: (bigint | number)): null;
     }
 
 
@@ -1434,13 +1434,13 @@ export namespace Gsf {
          * a collection of names and source code.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        get_modules(): (GLib.HashTable<string, any> | null);
+        get_modules(): (GLib.HashTable<string, never> | null);
 
         /**
          * A collection of names and source code which the caller is responsible for destroying.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        steal_modules(): (GLib.HashTable<string, any> | null);
+        steal_modules(): (GLib.HashTable<string, never> | null);
     }
 
 
@@ -1878,7 +1878,7 @@ export namespace Gsf {
         /**
          * @param st 
          */
-        set_modtime_from_stat(st: (any | null)): boolean;
+        set_modtime_from_stat(st: null): boolean;
 
         /**
          * protected.
@@ -2317,7 +2317,7 @@ export namespace Gsf {
 
         static ["new"](filename: string): InputStdio;
 
-        static new_FILE(filename: string, file: (any | null), keep_open: boolean): InputStdio;
+        static new_FILE(filename: string, file: null, keep_open: boolean): InputStdio;
 
         // Signals
         /** @signal */
@@ -2452,7 +2452,7 @@ export namespace Gsf {
         // Fields
         base: XMLOut;
 
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<ODFOut.ConstructorProps>, ...args: any[]);
@@ -3837,7 +3837,7 @@ export namespace Gsf {
         // Fields
         g_object: GObject.Object;
 
-        buf: any;
+        buf: null;
 
         size: gsf_off_t;
 
@@ -3850,9 +3850,9 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static mmapped_new(buf: (any | null), size: gsf_off_t): SharedMemory;
+        static mmapped_new(buf: null, size: gsf_off_t): SharedMemory;
 
-        static ["new"](buf: (any | null), size: gsf_off_t, needs_free: boolean): SharedMemory;
+        static ["new"](buf: null, size: gsf_off_t, needs_free: boolean): SharedMemory;
 
         // Signals
         /** @signal */
@@ -3992,7 +3992,7 @@ export namespace Gsf {
 
         output: Output;
 
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<XMLOut.ConstructorProps>, ...args: any[]);
@@ -4419,7 +4419,7 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLIn>;
 
         // Fields
-        user_state: any;
+        user_state: null;
 
         // Methods
         /**
@@ -4453,7 +4453,7 @@ export namespace Gsf {
          * @param dtor {@link Gsf.XMLInExtDtor}
          * @param attrs array of xmlChar const *
          */
-        push_state(doc: XMLInDoc, new_state: (any | null), dtor: XMLInExtDtor, attrs: string[]): void;
+        push_state(doc: XMLInDoc, new_state: null, dtor: XMLInExtDtor, attrs: string[]): void;
 
         /**
          * (New in 1.14.33)
@@ -4496,7 +4496,7 @@ export namespace Gsf {
          * @param user_state arbitrary content stored in the parser
          * @returns `false` on error
          */
-        parse(input: Input, user_state: (any | null)): boolean;
+        parse(input: Input, user_state: null): boolean;
 
         /**
          * Call the function `handler` when an unexpected child node is found

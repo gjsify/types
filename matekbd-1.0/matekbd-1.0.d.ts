@@ -574,7 +574,7 @@ export namespace Matekbd {
 
         settings: Gio.Settings;
 
-        image_filenames: any[];
+        image_filenames: null[];
 
         icon_theme: Gtk.IconTheme;
 

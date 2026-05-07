@@ -124,7 +124,7 @@ export namespace GdkWayland {
          * Returns the `xkb_keymap` of a {@link Gdk.Device}.
          * @returns a `struct xkb_keymap`
          */
-        get_xkb_keymap(): (any | null);
+        get_xkb_keymap(): null;
     }
 
 
@@ -191,7 +191,7 @@ export namespace GdkWayland {
          * Retrieves the EGL display connection object for the given GDK display.
          * @returns the EGL display
          */
-        get_egl_display(): (any | null);
+        get_egl_display(): null;
 
         /**
          * Gets the startup notification ID for a Wayland display, or `NULL`
@@ -809,15 +809,15 @@ export namespace GdkWayland {
          * A list of textures to use as icon.
           * @category Inherited from Gdk.Toplevel
          */
-        get icon_list(): any;
-        set icon_list(val: any);
+        get icon_list(): null;
+        set icon_list(val: never);
 
         /**
          * A list of textures to use as icon.
           * @category Inherited from Gdk.Toplevel
          */
-        get iconList(): any;
-        set iconList(val: any);
+        get iconList(): null;
+        set iconList(val: never);
 
         /**
          * Whether the surface is modal.

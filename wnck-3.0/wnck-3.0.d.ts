@@ -693,7 +693,7 @@ export namespace Wnck {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            window: (any | any);
+            window: (never | any);
         }
     }
 
@@ -710,7 +710,7 @@ export namespace Wnck {
          * @construct-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get window(): (any | any);
+        get window(): (null | any);
 
         /**
          * Compile-time signal type information.
@@ -1843,7 +1843,7 @@ export namespace Wnck {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1853,7 +1853,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1862,7 +1862,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1936,7 +1936,7 @@ export namespace Wnck {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1947,7 +1947,7 @@ export namespace Wnck {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1956,7 +1956,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2570,13 +2570,13 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "task-enter-notify": (arg0: (any | null)) => void;
+            "task-enter-notify": (arg0: null) => void;
             /**
              * Emitted when the task is entered.
              * @signal
              * @run-last
              */
-            "task-leave-notify": (arg0: (any | null)) => void;
+            "task-leave-notify": (arg0: null) => void;
             "notify::handle": (pspec: GObject.ParamSpec) => void;
             "notify::tooltips-enabled": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;

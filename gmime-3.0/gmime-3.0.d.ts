@@ -2227,7 +2227,7 @@ export namespace GMime {
         // Fields
         parent_object: GObject.Object;
 
-        array: any[];
+        array: null[];
 
         // Constructors
         constructor(properties?: Partial<CertificateList.ConstructorProps>, ...args: any[]);
@@ -3122,7 +3122,7 @@ export namespace GMime {
         // Fields
         parent_object: GObject.Object;
 
-        priv: any;
+        priv: null;
 
         outreal: string;
 
@@ -3407,7 +3407,7 @@ export namespace GMime {
 
         to_charset: string;
 
-        cd: any;
+        cd: null;
 
         // Constructors
         constructor(properties?: Partial<FilterCharset.ConstructorProps>, ...args: any[]);
@@ -3696,7 +3696,7 @@ export namespace GMime {
         // Fields
         parent_object: Filter;
 
-        priv: any;
+        priv: null;
 
         mode: FilterGZipMode;
 
@@ -3779,7 +3779,7 @@ export namespace GMime {
         // Fields
         parent_object: Filter;
 
-        scanner: any;
+        scanner: null;
 
         flags: number;
 
@@ -4799,7 +4799,7 @@ export namespace GMime {
         // Fields
         parent_object: GObject.Object;
 
-        array: any[];
+        array: null[];
 
         // Constructors
         constructor(properties?: Partial<InternetAddressList.ConstructorProps>, ...args: any[]);
@@ -5504,7 +5504,7 @@ export namespace GMime {
         // Fields
         parent_object: Object;
 
-        children: any[];
+        children: null[];
 
         boundary: string;
 
@@ -6499,7 +6499,7 @@ export namespace GMime {
         // Fields
         parent_object: GObject.Object;
 
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
@@ -7542,9 +7542,9 @@ export namespace GMime {
         // Fields
         parent_object: Stream;
 
-        sources: any;
+        sources: null;
 
-        current: any;
+        current: null;
 
         // Constructors
         constructor(properties?: Partial<StreamCat.ConstructorProps>, ...args: any[]);
@@ -7608,16 +7608,16 @@ export namespace GMime {
 
         owner: boolean;
 
-        fp: any;
+        fp: null;
 
         // Constructors
         constructor(properties?: Partial<StreamFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ["new"](fp: (any | null)): StreamFile;
+        static ["new"](fp: null): StreamFile;
 
-        static new_with_bounds(fp: (any | null), start: (bigint | number), end: (bigint | number)): StreamFile;
+        static new_with_bounds(fp: null, start: (bigint | number), end: (bigint | number)): StreamFile;
 
         // Signals
         /** @signal */
@@ -7688,7 +7688,7 @@ export namespace GMime {
         // Fields
         parent_object: Stream;
 
-        priv: any;
+        priv: null;
 
         source: Stream;
 
@@ -9235,12 +9235,12 @@ export namespace GMime {
         static $gtype: GObject.GType<References>;
 
         // Fields
-        array: any[];
+        array: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            array: any[];
+            array: null[];
         }>);
 
         static ["new"](): References;
@@ -9352,7 +9352,7 @@ export namespace GMime {
         static $gtype: GObject.GType<StreamIOVector>;
 
         // Fields
-        data: any;
+        data: null;
 
         len: number;
     }

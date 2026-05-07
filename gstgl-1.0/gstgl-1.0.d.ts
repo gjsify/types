@@ -690,7 +690,7 @@ export namespace GstGL {
      * @returns the {@link GstGL.GLSyncMeta} added to {@link Gst.Buffer}
      * @since 1.8
      */
-    function buffer_add_gl_sync_meta_full(context: GLContext, buffer: Gst.Buffer, data: (any | null)): GLSyncMeta;
+    function buffer_add_gl_sync_meta_full(context: GLContext, buffer: Gst.Buffer, data: null): GLSyncMeta;
 
     /**
      * @param config a buffer pool config
@@ -1132,14 +1132,14 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLAllocationParamsFreeFunc {
-        (params: (any | null)): void;
+        (params: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface GLAsyncDebugLogGetMessage {
-        (user_data: (any | null)): string;
+        (user_data: null): string;
     }
 
     /**
@@ -1174,7 +1174,7 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLBaseMemoryAllocatorMapFunction {
-        (mem: GLBaseMemory, info: Gst.MapInfo, maxsize: number): (any | null);
+        (mem: GLBaseMemory, info: Gst.MapInfo, maxsize: number): null;
     }
 
     /**
@@ -1188,7 +1188,7 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLContextThreadFunc {
-        (context: GLContext, data: (any | null)): void;
+        (context: GLContext, data: null): void;
     }
 
     /**
@@ -1202,21 +1202,21 @@ export namespace GstGL {
      * @gir-type Callback
      */
     interface GLFramebufferFunc {
-        (stuff: (any | null)): boolean;
+        (stuff: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface GLWindowCB {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface GLWindowResizeCB {
-        (data: (any | null), width: number, height: number): void;
+        (data: null, width: number, height: number): void;
     }
 
     /**
@@ -2165,7 +2165,7 @@ export namespace GstGL {
          * @param gl_api a {@link GstGL.GLAPI}
          * @param name then function to get the address of
          */
-        static default_get_proc_address(gl_api: GLAPI, name: string): (any | null);
+        static default_get_proc_address(gl_api: GLAPI, name: string): null;
 
         /**
          * See also `gst_gl_context_activate()`.
@@ -2193,7 +2193,7 @@ export namespace GstGL {
          * @param gl_api a {@link GstGL.GLAPI}
          * @param name the name of the function to retrieve
          */
-        static get_proc_address_with_platform(context_type: GLPlatform, gl_api: GLAPI, name: string): (any | null);
+        static get_proc_address_with_platform(context_type: GLPlatform, gl_api: GLAPI, name: string): null;
 
         // Virtual methods
         /**
@@ -2467,7 +2467,7 @@ export namespace GstGL {
          * @param name an opengl function name
          * @returns a function pointer or `null`
          */
-        get_proc_address(name: string): (any | null);
+        get_proc_address(name: string): null;
 
         /**
          * @returns The {@link GLib.Thread}, `context` is current in or NULL
@@ -2688,7 +2688,7 @@ export namespace GstGL {
          * @param compare_func a comparison function to run
          * @returns The first {@link GstGL.GLWindow} that causes a match          from `compare_func`
          */
-        find_window(data: (any | null), compare_func: GLib.CompareFunc): (GLWindow | null);
+        find_window(data: null, compare_func: GLib.CompareFunc): (GLWindow | null);
 
         /**
          * see `gst_gl_display_filter_gl_api()` for what the returned value represents
@@ -2734,7 +2734,7 @@ export namespace GstGL {
          * @param compare_func a comparison function to run
          * @returns The first {@link GstGL.GLWindow} that causes a match          from `compare_func`
          */
-        retrieve_window(data: (any | null), compare_func: GLib.CompareFunc): (GLWindow | null);
+        retrieve_window(data: null, compare_func: GLib.CompareFunc): (GLWindow | null);
     }
 
 
@@ -4540,11 +4540,11 @@ export namespace GstGL {
 
         notify: GLib.DestroyNotify;
 
-        user_data: any;
+        user_data: null;
 
-        wrapped_data: any;
+        wrapped_data: null;
 
-        gl_handle: any;
+        gl_handle: null;
 
         // Methods
         /**
@@ -4650,7 +4650,7 @@ export namespace GstGL {
 
         gl_map_count: number;
 
-        data: any;
+        data: null;
 
         // Static methods
         /**
@@ -4683,7 +4683,7 @@ export namespace GstGL {
          * @param size the number of bytes to be allocated
          * @param user_data user data to call `notify` with
          */
-        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, params: (Gst.AllocationParams | null), size: (bigint | number), user_data: (any | null)): void;
+        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, params: (Gst.AllocationParams | null), size: (bigint | number), user_data: null): void;
 
         /**
          * @param dest the destination {@link GstGL.GLBaseMemory}
@@ -4971,7 +4971,7 @@ export namespace GstGL {
          * @param valign optional {@link GstVideo.VideoAlignment} parameters
          * @param user_data user data to call `notify` with
          */
-        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, target: GLTextureTarget, tex_format: GLFormat, params: (Gst.AllocationParams | null), info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), user_data: (any | null)): void;
+        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, target: GLTextureTarget, tex_format: GLFormat, params: (Gst.AllocationParams | null), info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), user_data: null): void;
 
         /**
          * Reads the texture in {@link GstGL.GLMemory} into `write_pointer` if no buffer is bound
@@ -4982,7 +4982,7 @@ export namespace GstGL {
          * @param write_pointer the data pointer to pass to glReadPixels
          * @returns whether theread operation succeeded
          */
-        read_pixels(write_pointer: (any | null)): boolean;
+        read_pixels(write_pointer: null): boolean;
 
         /**
          * Reads the texture in `read_pointer` into `gl_mem`.
@@ -4990,7 +4990,7 @@ export namespace GstGL {
          * See `gst_gl_memory_read_pixels()` for what `read_pointer` signifies.
          * @param read_pointer the data pointer to pass to glTexSubImage
          */
-        texsubimage(read_pointer: (any | null)): void;
+        texsubimage(read_pointer: null): void;
     }
 
 
@@ -5209,7 +5209,7 @@ export namespace GstGL {
 
         static ["new"](context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number): GLRenderbufferAllocationParams;
 
-        static new_wrapped(context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number, gl_handle: (any | null), user_data: (any | null)): GLRenderbufferAllocationParams;
+        static new_wrapped(context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number, gl_handle: null, user_data: null): GLRenderbufferAllocationParams;
     }
 
 
@@ -5255,7 +5255,7 @@ export namespace GstGL {
         // Fields
         context: GLContext;
 
-        data: any;
+        data: null;
 
         // Static methods
         static get_info(): Gst.MetaInfo;
@@ -5317,11 +5317,11 @@ export namespace GstGL {
 
         static ["new"](context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat): GLVideoAllocationParams;
 
-        static new_wrapped_data(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, wrapped_data: (any | null), user_data: (any | null)): GLVideoAllocationParams;
+        static new_wrapped_data(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, wrapped_data: null, user_data: null): GLVideoAllocationParams;
 
-        static new_wrapped_gl_handle(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, gl_handle: (any | null), user_data: (any | null)): GLVideoAllocationParams;
+        static new_wrapped_gl_handle(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, gl_handle: null, user_data: null): GLVideoAllocationParams;
 
-        static new_wrapped_texture(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, tex_id: number, user_data: (any | null)): GLVideoAllocationParams;
+        static new_wrapped_texture(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, tex_id: number, user_data: null): GLVideoAllocationParams;
 
         // Methods
         /**

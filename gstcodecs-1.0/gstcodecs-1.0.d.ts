@@ -1219,7 +1219,7 @@ export namespace GstCodecs {
          * `gst_av1_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -1229,7 +1229,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -1432,7 +1432,7 @@ export namespace GstCodecs {
          * `gst_h264_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -1442,7 +1442,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -1607,7 +1607,7 @@ export namespace GstCodecs {
          * `gst_h265_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -1617,7 +1617,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -1713,7 +1713,7 @@ export namespace GstCodecs {
          * `gst_mpeg2_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -1723,7 +1723,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -1775,7 +1775,7 @@ export namespace GstCodecs {
          * `gst_vp8_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -1785,7 +1785,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -2012,7 +2012,7 @@ export namespace GstCodecs {
          * `gst_vp9_picture_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets `user_data` on the picture and the {@link GLib.DestroyNotify} that will be called when
@@ -2022,7 +2022,7 @@ export namespace GstCodecs {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
@@ -2108,12 +2108,12 @@ export namespace GstCodecs {
         static $gtype: GObject.GType<Vp9StatefulParser>;
 
         // Fields
-        reference: any[];
+        reference: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            reference: any[];
+            reference: null[];
         }>);
 
         // Methods

@@ -266,7 +266,7 @@ export namespace Json {
      * @returns the newly allocated boxed data
      * @since 0.10
      */
-    function boxed_deserialize(gboxed_type: GObject.GType, node: Node): (any | null);
+    function boxed_deserialize(gboxed_type: GObject.GType, node: Node): null;
 
     /**
      * Serializes a pointer to a `GBoxed` of the given type into a {@link Json.Node}.
@@ -277,7 +277,7 @@ export namespace Json {
      * @returns a node with the serialized boxed type
      * @since 0.10
      */
-    function boxed_serialize(gboxed_type: GObject.GType, boxed: (any | null)): (Node | null);
+    function boxed_serialize(gboxed_type: GObject.GType, boxed: null): (Node | null);
 
     /**
      * Deserializes a JSON data stream and creates an instance of the given
@@ -508,14 +508,14 @@ export namespace Json {
      * @gir-type Callback
      */
     interface BoxedDeserializeFunc {
-        (node: Node): (any | null);
+        (node: Node): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface BoxedSerializeFunc {
-        (boxed: (any | null)): Node;
+        (boxed: null): Node;
     }
 
     /**
@@ -1011,7 +1011,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.error} virtual function
              * @run-last
              */
-            error: (arg0: (any | null)) => void;
+            error: (arg0: null) => void;
             /**
              * The `::object-end` signal is emitted each time a parser
              * has successfully parsed an entire JSON object.

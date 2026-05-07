@@ -117,14 +117,14 @@ export namespace Xkl {
      * @gir-type Callback
      */
     interface ConfigItemProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TwoConfigItemsProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: null): void;
     }
 
     /**
@@ -635,7 +635,7 @@ export namespace Xkl {
             backendName: string;
             default_group: number;
             defaultGroup: number;
-            display: any;
+            display: never;
             features: EngineFeatures;
             indicators_handling: boolean;
             indicatorsHandling: boolean;
@@ -673,7 +673,7 @@ export namespace Xkl {
         /**
          * @construct-only
          */
-        get display(): any;
+        get display(): null;
 
         /**
          * @read-only
@@ -756,7 +756,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static INT__LONG_LONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+        static INT__LONG_LONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -766,7 +766,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.

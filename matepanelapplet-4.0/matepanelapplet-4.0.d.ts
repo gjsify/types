@@ -179,7 +179,7 @@ export namespace MatePanelApplet {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             background: string;
-            closure: any;
+            closure: never;
             connection: Gio.DBusConnection;
             flags: number;
             id: string;
@@ -192,8 +192,8 @@ export namespace MatePanelApplet {
             prefs_path: string;
             prefsPath: string;
             size: number;
-            size_hints: any;
-            sizeHints: any;
+            size_hints: never;
+            sizeHints: never;
         }
     }
 
@@ -213,7 +213,7 @@ export namespace MatePanelApplet {
         /**
          * @construct-only
          */
-        get closure(): any;
+        get closure(): null;
 
         /**
          * @construct-only
@@ -286,11 +286,11 @@ export namespace MatePanelApplet {
         get size(): number;
         set size(val: number);
 
-        get size_hints(): any;
-        set size_hints(val: any);
+        get size_hints(): null;
+        set size_hints(val: never);
 
-        get sizeHints(): any;
-        set sizeHints(val: any);
+        get sizeHints(): null;
+        set sizeHints(val: never);
 
         /**
          * Compile-time signal type information.

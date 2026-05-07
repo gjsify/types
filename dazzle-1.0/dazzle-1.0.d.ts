@@ -336,12 +336,12 @@ export namespace Dazzle {
      * @param to_value 
      * @param user_data 
      */
-    function g_time_span_to_label_mapping(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: (any | null)): boolean;
+    function g_time_span_to_label_mapping(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: null): boolean;
 
     /**
      * @param data 
      */
-    function g_variant_hash(data: (any | null)): number;
+    function g_variant_hash(data: null): number;
 
     function get_current_cpu_call(): number;
 
@@ -361,7 +361,7 @@ export namespace Dazzle {
      * @param compare_func A callback to compare
      * @since 3.26
      */
-    function gtk_list_store_insert_sorted(store: Gtk.ListStore, key: (any | null), compare_column: number, compare_func: GLib.CompareDataFunc): Gtk.TreeIter;
+    function gtk_list_store_insert_sorted(store: Gtk.ListStore, key: null, compare_column: number, compare_func: GLib.CompareDataFunc): Gtk.TreeIter;
 
     /**
      * Like `gtk_text_buffer_remove_tag()` but allows specifying that the tags
@@ -494,12 +494,12 @@ export namespace Dazzle {
      * @param data1 
      * @param data2 
      */
-    function shortcut_chord_equal(data1: (any | null), data2: (any | null)): boolean;
+    function shortcut_chord_equal(data1: null, data2: null): boolean;
 
     /**
      * @param data 
      */
-    function shortcut_chord_hash(data: (any | null)): number;
+    function shortcut_chord_hash(data: null): number;
 
     function shortcut_chord_table_get_type(): GObject.GType;
 
@@ -535,7 +535,7 @@ export namespace Dazzle {
      * @gir-type Callback
      */
     interface ShortcutChordTableForeach {
-        (chord: ShortcutChord, chord_data: (any | null)): void;
+        (chord: ShortcutChord, chord_data: null): void;
     }
 
     /**
@@ -556,7 +556,7 @@ export namespace Dazzle {
      * @gir-type Callback
      */
     interface TaskCacheCallback {
-        (self: TaskCache, key: (any | null), task: Gio.Task): void;
+        (self: TaskCache, key: null, task: Gio.Task): void;
     }
 
     /**
@@ -584,7 +584,7 @@ export namespace Dazzle {
      * @gir-type Callback
      */
     interface TrieTraverseFunc {
-        (dzl_trie: Trie, key: string, value: (any | null)): boolean;
+        (dzl_trie: Trie, key: string, value: null): boolean;
     }
 
     /**
@@ -2241,7 +2241,7 @@ export namespace Dazzle {
             background: string;
             height: number;
             icon: Gio.Icon;
-            surface: any;
+            surface: never;
             target: Gtk.Widget;
             width: number;
             x: number;
@@ -2280,7 +2280,7 @@ export namespace Dazzle {
         /**
          * @construct-only
          */
-        set surface(val: any);
+        set surface(val: never);
 
         /**
          * @construct-only
@@ -12671,7 +12671,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_map(map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
     }
 
 
@@ -12789,7 +12789,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_map(map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
     }
 
 
@@ -13312,7 +13312,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * @param page_name 
@@ -13439,7 +13439,7 @@ export namespace Dazzle {
          * @param map 
          * @virtual
          */
-        vfunc_set_page(page_name: string, map: GLib.HashTable<any, any>): void;
+        vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
     }
 
 
@@ -16169,7 +16169,7 @@ export namespace Dazzle {
          * @param property 
          * @param flags 
          */
-        bind(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: null, property: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * Creates a new binding similar to `g_settings_bind_with_mapping()` but applying
@@ -16181,7 +16181,7 @@ export namespace Dazzle {
          * @param get_mapping the get mapping function
          * @param set_mapping the set mapping function
          */
-        bind_with_mapping(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void;
 
         /**
          * @param key 
@@ -17417,7 +17417,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17427,7 +17427,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -17436,7 +17436,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -17510,7 +17510,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17521,7 +17521,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -17530,7 +17530,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20207,7 +20207,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20217,7 +20217,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20226,7 +20226,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20300,7 +20300,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20311,7 +20311,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20320,7 +20320,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20903,7 +20903,7 @@ export namespace Dazzle {
          * @param target_property 
          * @param flags 
          */
-        add_binding(state: string, source_object: (any | null), source_property: string, target_object: (any | null), target_property: string, flags: GObject.BindingFlags): void;
+        add_binding(state: string, source_object: null, source_property: string, target_object: null, target_property: string, flags: GObject.BindingFlags): void;
 
         /**
          * @param state 
@@ -20911,7 +20911,7 @@ export namespace Dazzle {
          * @param property 
          * @param value 
          */
-        add_propertyv(state: string, object: (any | null), property: string, value: (GObject.Value | any)): void;
+        add_propertyv(state: string, object: null, property: string, value: (GObject.Value | any)): void;
 
         /**
          * @param state 
@@ -20984,7 +20984,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20994,7 +20994,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -21003,7 +21003,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21077,7 +21077,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -21088,7 +21088,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -21097,7 +21097,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21837,7 +21837,7 @@ export namespace Dazzle {
          * @param is_absolute 
          * @param user_data 
          */
-        default_position_func(area: Gdk.Rectangle, is_absolute: boolean, user_data: (any | null)): void;
+        default_position_func(area: Gdk.Rectangle, is_absolute: boolean, user_data: null): void;
 
         get_activate_on_single_click(): boolean;
 
@@ -21908,7 +21908,7 @@ export namespace Dazzle {
          * @param is_absolute 
          * @param user_data 
          */
-        window_position_func(area: Gdk.Rectangle, is_absolute: boolean, user_data: (any | null)): void;
+        window_position_func(area: Gdk.Rectangle, is_absolute: boolean, user_data: null): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -23252,26 +23252,26 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            key_copy_func: any;
-            keyCopyFunc: any;
-            key_destroy_func: any;
-            keyDestroyFunc: any;
-            key_equal_func: any;
-            keyEqualFunc: any;
-            key_hash_func: any;
-            keyHashFunc: any;
-            populate_callback: any;
-            populateCallback: any;
-            populate_callback_data: any;
-            populateCallbackData: any;
-            populate_callback_data_destroy: any;
-            populateCallbackDataDestroy: any;
+            key_copy_func: never;
+            keyCopyFunc: never;
+            key_destroy_func: never;
+            keyDestroyFunc: never;
+            key_equal_func: never;
+            keyEqualFunc: never;
+            key_hash_func: never;
+            keyHashFunc: never;
+            populate_callback: never;
+            populateCallback: never;
+            populate_callback_data: never;
+            populateCallbackData: never;
+            populate_callback_data_destroy: never;
+            populateCallbackDataDestroy: never;
             time_to_live: (bigint | number);
             timeToLive: (bigint | number);
-            value_copy_func: any;
-            valueCopyFunc: any;
-            value_destroy_func: any;
-            valueDestroyFunc: any;
+            value_copy_func: never;
+            valueCopyFunc: never;
+            value_destroy_func: never;
+            valueDestroyFunc: never;
         }
     }
 
@@ -23285,72 +23285,72 @@ export namespace Dazzle {
         /**
          * @construct-only
          */
-        set key_copy_func(val: any);
+        set key_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyCopyFunc(val: any);
+        set keyCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_destroy_func(val: any);
+        set key_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyDestroyFunc(val: any);
+        set keyDestroyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_equal_func(val: any);
+        set key_equal_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyEqualFunc(val: any);
+        set keyEqualFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_hash_func(val: any);
+        set key_hash_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyHashFunc(val: any);
+        set keyHashFunc(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback(val: any);
+        set populate_callback(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallback(val: any);
+        set populateCallback(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data(val: any);
+        set populate_callback_data(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackData(val: any);
+        set populateCallbackData(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data_destroy(val: any);
+        set populate_callback_data_destroy(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackDataDestroy(val: any);
+        set populateCallbackDataDestroy(val: never);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -23375,22 +23375,22 @@ export namespace Dazzle {
         /**
          * @construct-only
          */
-        set value_copy_func(val: any);
+        set value_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueCopyFunc(val: any);
+        set valueCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set value_destroy_func(val: any);
+        set value_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueDestroyFunc(val: any);
+        set valueDestroyFunc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -23423,7 +23423,7 @@ export namespace Dazzle {
         /**
          * @param key 
          */
-        evict(key: (any | null)): boolean;
+        evict(key: null): boolean;
 
         evict_all(): void;
 
@@ -23432,7 +23432,7 @@ export namespace Dazzle {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(any | null)>;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -23440,7 +23440,7 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * @param key 
@@ -23448,14 +23448,14 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(any | null)> | void);
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
 
         /**
          * Finish a call to `dzl_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
          */
-        get_finish(result: Gio.AsyncResult): (any | null);
+        get_finish(result: Gio.AsyncResult): null;
 
         /**
          * Peeks to see `key` is contained in the cache and returns the
@@ -23467,7 +23467,7 @@ export namespace Dazzle {
          * @param key The key for the cache
          * @returns A {@link GObject.Object} or   `null` if the key was not found in the cache.
          */
-        peek<T = GObject.Object>(key: (any | null)): T;
+        peek<T = GObject.Object>(key: null): T;
 
         /**
          * @param name 
@@ -23891,7 +23891,7 @@ export namespace Dazzle {
          * @param key the key for `equal_func`
          * @returns A {@link Dazzle.TreeNode} or `null`.
          */
-        find_custom(equal_func: GLib.EqualFunc, key: (any | null)): (TreeNode | null);
+        find_custom(equal_func: GLib.EqualFunc, key: null): (TreeNode | null);
 
         /**
          * Finds a {@link Dazzle.TreeNode} with an item property matching `item`.
@@ -25636,7 +25636,7 @@ export namespace Dazzle {
          * @param key A UTF-8 encoded string.
          * @param value A value to associate with key.
          */
-        insert(key: string, value: (any | null)): void;
+        insert(key: string, value: null): void;
 
         /**
          * DzlFuzzyMutableIndex searches within `fuzzy` for strings that fuzzy match `needle`.
@@ -25675,7 +25675,7 @@ export namespace Dazzle {
         // Fields
         key: string;
 
-        value: any;
+        value: null;
 
         score: number;
 
@@ -25685,7 +25685,7 @@ export namespace Dazzle {
 
         constructor(properties?: Partial<{
             key: string;
-            value: any;
+            value: null;
             score: number;
             id: number;
         }>);
@@ -25714,12 +25714,12 @@ export namespace Dazzle {
         static $gtype: GObject.GType<GraphModelIter>;
 
         // Fields
-        data: any[];
+        data: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            data: any[];
+            data: null[];
         }>);
     }
 
@@ -25800,19 +25800,19 @@ export namespace Dazzle {
         /**
          * @param result 
          */
-        extract(result: (any | null)): boolean;
+        extract(result: null): boolean;
 
         /**
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: (any | null)): boolean;
+        extract_index(index_: (bigint | number), result: null): boolean;
 
         /**
          * @param data 
          * @param len 
          */
-        insert_vals(data: (any | null), len: number): void;
+        insert_vals(data: null, len: number): void;
 
         /**
          * Increments the reference count of `heap` by one.
@@ -26038,7 +26038,7 @@ export namespace Dazzle {
          * @param len The number of values.
          * @returns the index of the first item.
          */
-        append_vals(data: (any | null), len: number): number;
+        append_vals(data: null, len: number): number;
 
         /**
          * Calls `func` for every item in the {@link Dazzle.Ring} starting from the most recently
@@ -26104,12 +26104,12 @@ export namespace Dazzle {
          * @param data1 
          * @param data2 
          */
-        static equal(data1: (any | null), data2: (any | null)): boolean;
+        static equal(data1: null, data2: null): boolean;
 
         /**
          * @param data 
          */
-        static hash(data: (any | null)): number;
+        static hash(data: null): number;
 
         // Methods
         /**
@@ -26154,7 +26154,7 @@ export namespace Dazzle {
          * @param chord 
          * @param data 
          */
-        add(chord: ShortcutChord, data: (any | null)): void;
+        add(chord: ShortcutChord, data: null): void;
 
         /**
          * This function will call `foreach_func` for each chord in the table.
@@ -26168,12 +26168,12 @@ export namespace Dazzle {
          * @param chord 
          * @param data 
          */
-        lookup(chord: ShortcutChord, data: (any | null)): ShortcutMatch;
+        lookup(chord: ShortcutChord, data: null): ShortcutMatch;
 
         /**
          * @param data 
          */
-        lookup_data(data: (any | null)): ShortcutChord;
+        lookup_data(data: null): ShortcutChord;
 
         printf(): void;
 
@@ -26185,7 +26185,7 @@ export namespace Dazzle {
         /**
          * @param data 
          */
-        remove_data(data: (any | null)): boolean;
+        remove_data(data: null): boolean;
 
         set_free_func(): void;
 
@@ -26409,14 +26409,14 @@ export namespace Dazzle {
          * @param key The key to insert.
          * @param value The value to insert.
          */
-        insert(key: string, value: (any | null)): void;
+        insert(key: string, value: null): void;
 
         /**
          * Looks up `key` in `trie` and returns the value associated.
          * @param key The key to lookup.
          * @returns The value inserted or `null`.
          */
-        lookup(key: string): (any | null);
+        lookup(key: string): null;
 
         ref(): Trie;
 
@@ -26988,7 +26988,7 @@ export namespace Dazzle {
              * @param map 
              * @virtual
              */
-            vfunc_set_page(page_name: string, map: GLib.HashTable<any, any>): void;
+            vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
         }
 
 
@@ -27122,7 +27122,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
     }
 
 

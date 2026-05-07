@@ -2759,8 +2759,8 @@ export namespace NMClient {
         interface ConstructorProps extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             activating_connection: ActiveConnection;
             activatingConnection: ActiveConnection;
-            active_connections: any[];
-            activeConnections: any[];
+            active_connections: never[];
+            activeConnections: never[];
             all_devices: ObjectArray;
             allDevices: ObjectArray;
             connectivity: number;
@@ -2816,13 +2816,13 @@ export namespace NMClient {
          * The active connections.
          * @read-only
          */
-        get active_connections(): any[];
+        get active_connections(): null[];
 
         /**
          * The active connections.
          * @read-only
          */
-        get activeConnections(): any[];
+        get activeConnections(): null[];
 
         /**
          * List of both real devices and device placeholders.
@@ -9905,11 +9905,11 @@ export namespace NMClient {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            addresses: any;
+            addresses: never;
             domains: StringArray;
             gateway: string;
             nameservers: UintArray;
-            routes: any;
+            routes: never;
             searches: StringArray;
             wins_servers: UintArray;
             winsServers: UintArray;
@@ -9927,7 +9927,7 @@ export namespace NMClient {
          * The {@link GLib.PtrArray} containing {@link NetworkManager.IP4Address}<!-- -->es of the configuration.
          * @read-only
          */
-        get addresses(): any;
+        get addresses(): null;
 
         /**
          * The {@link GLib.PtrArray} containing domain strings of the configuration.
@@ -9952,7 +9952,7 @@ export namespace NMClient {
          * The {@link GLib.PtrArray} containing `NMSettingIP4Route`<!-- -->s of the configuration.
          * @read-only
          */
-        get routes(): any;
+        get routes(): null;
 
         /**
          * The {@link GLib.PtrArray} containing dns search strings of the configuration.
@@ -10775,7 +10775,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "object-creation-failed": (arg0: (any | null), arg1: (any | null)) => void;
+            "object-creation-failed": (arg0: null, arg1: null) => void;
             "notify::dbus-path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11239,7 +11239,7 @@ export namespace NMClient {
          * @param new_settings 
          * @virtual
          */
-        vfunc_updated(new_settings: GLib.HashTable<any, any>): void;
+        vfunc_updated(new_settings: GLib.HashTable<never, never>): void;
 
         // Methods
         /**
@@ -12076,7 +12076,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "registration-result": (arg0: (any | null)) => void;
+            "registration-result": (arg0: null) => void;
             "notify::auto-register": (pspec: GObject.ParamSpec) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
             "notify::identifier": (pspec: GObject.ParamSpec) => void;

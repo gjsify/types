@@ -658,7 +658,7 @@ export namespace MyPaint {
 
         buffer: number;
 
-        context: any;
+        context: null;
 
         thread_id: number;
 
@@ -671,7 +671,7 @@ export namespace MyPaint {
             ty: number;
             readonly: boolean;
             buffer: number;
-            context: any;
+            context: null;
             thread_id: number;
             mipmap_level: number;
         }>);
@@ -701,7 +701,7 @@ export namespace MyPaint {
 
         surface_center_x: number;
 
-        operation_queue: any;
+        operation_queue: null;
 
         dirty_bbox: Rectangle;
 

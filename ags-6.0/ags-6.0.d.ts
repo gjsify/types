@@ -744,7 +744,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_BOOLEAN__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -754,7 +754,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_BOOLEAN__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -764,7 +764,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_BOOLEAN__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -774,7 +774,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -784,7 +784,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_DOUBLE__DOUBLE_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_DOUBLE__DOUBLE_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -794,7 +794,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_INT64__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_INT64__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -804,7 +804,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_INT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_INT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -814,7 +814,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -824,7 +824,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -834,7 +834,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -844,7 +844,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -854,7 +854,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -864,7 +864,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -874,7 +874,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_OBJECT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_OBJECT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -884,7 +884,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -894,7 +894,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -904,7 +904,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -914,7 +914,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -924,7 +924,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_INT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_POINTER_INT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -934,7 +934,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_POINTER_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_POINTER_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -944,7 +944,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -954,7 +954,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_POINTER_POINTER_OBJECT_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -964,7 +964,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -974,7 +974,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -984,7 +984,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -994,7 +994,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1004,7 +1004,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1014,7 +1014,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1024,7 +1024,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1034,7 +1034,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1044,7 +1044,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1054,7 +1054,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1064,7 +1064,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__POINTER_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__POINTER_UINT_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1074,7 +1074,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1084,7 +1084,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1094,7 +1094,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__STRING_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__STRING_STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1104,7 +1104,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1114,7 +1114,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1124,7 +1124,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1134,7 +1134,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_POINTER__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_POINTER__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1144,7 +1144,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_STRING__POINTER_STRING_STRING_STRING_STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_STRING__POINTER_STRING_STRING_STRING_STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1154,7 +1154,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_STRING__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_STRING__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1164,7 +1164,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_UINT__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_UINT__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1174,7 +1174,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_UINT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_UINT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1184,7 +1184,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1194,7 +1194,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__DOUBLE_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__DOUBLE_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1204,7 +1204,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT64_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT64_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1214,7 +1214,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1224,7 +1224,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1234,7 +1234,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1244,7 +1244,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1254,7 +1254,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1264,7 +1264,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1274,7 +1274,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_UINT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_UINT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1284,7 +1284,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1294,7 +1294,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__OBJECT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1304,7 +1304,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1314,7 +1314,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_INT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_INT_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1324,7 +1324,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1334,7 +1334,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_OBJECT_OBJECT_STRING_STRING_STRING_UINT_UINT_UINT_UINT_INT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_OBJECT_OBJECT_STRING_STRING_STRING_UINT_UINT_UINT_UINT_INT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1344,7 +1344,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1354,7 +1354,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1364,7 +1364,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1374,7 +1374,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_STRING_STRING_STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_STRING_STRING_STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1384,7 +1384,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1394,7 +1394,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1404,7 +1404,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1414,7 +1414,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1424,7 +1424,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1434,7 +1434,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1444,7 +1444,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1454,7 +1454,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1464,7 +1464,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_UINT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1474,7 +1474,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_UINT_STRING_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_UINT_STRING_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1484,7 +1484,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1494,7 +1494,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1504,7 +1504,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_DOUBLE(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1514,7 +1514,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_DOUBLE_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_DOUBLE_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1524,7 +1524,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1534,7 +1534,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1544,7 +1544,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1554,7 +1554,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1564,7 +1564,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1574,7 +1574,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1584,7 +1584,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1594,7 +1594,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1604,7 +1604,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -1614,7 +1614,7 @@ export namespace Ags {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Allocate {@link Ags.Complex}-struct
@@ -1631,28 +1631,28 @@ export namespace Ags {
      * @returns the newly allocated {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_alloc(group_id: string, user_id: string, access_mode: number): (any | null);
+    function controller_resource_alloc(group_id: string, user_id: string, access_mode: number): null;
 
     /**
      * Free `controller_resource`.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_free(controller_resource: (any | null)): void;
+    function controller_resource_free(controller_resource: null): void;
 
     /**
      * Increase ref-count of `controller_resource`.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_ref(controller_resource: (any | null)): void;
+    function controller_resource_ref(controller_resource: null): void;
 
     /**
      * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
      * @param controller_resource the {@link Ags.ControllerResource}-struct
      * @since 3.0.0
      */
-    function controller_resource_unref(controller_resource: (any | null)): void;
+    function controller_resource_unref(controller_resource: null): void;
 
     /**
      * Allocated a destroy entry.
@@ -1661,7 +1661,7 @@ export namespace Ags {
      * @returns the allocated {@link Ags.DestroyEntry}
      * @since 3.0.0
      */
-    function destroy_entry_alloc(ptr: (any | null), destroy_func: DestroyFunc): (any | null);
+    function destroy_entry_alloc(ptr: null, destroy_func: DestroyFunc): null;
 
     /**
      * Run dispose and unref `gobject`.
@@ -1745,28 +1745,28 @@ export namespace Ags {
      * @returns the newly allocated {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_alloc(): (any | null);
+    function login_info_alloc(): null;
 
     /**
      * Free `login_info`.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_free(login_info: (any | null)): void;
+    function login_info_free(login_info: null): void;
 
     /**
      * Increase ref-count of `login_info`.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_ref(login_info: (any | null)): void;
+    function login_info_ref(login_info: null): void;
 
     /**
      * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
      * @param login_info the {@link Ags.LoginInfo}-struct
      * @since 3.0.0
      */
-    function login_info_unref(login_info: (any | null)): void;
+    function login_info_unref(login_info: null): void;
 
     /**
      * Compute `value` from `coefficient`.
@@ -2077,7 +2077,7 @@ export namespace Ags {
      * @param req the requisition to sleep
      * @since 5.5.1
      */
-    function time_nanosleep(req: (any | null)): void;
+    function time_nanosleep(req: null): void;
 
     /**
      * Check `start_time` plus `timeout_delay` against current time.
@@ -2086,7 +2086,7 @@ export namespace Ags {
      * @returns `true` if timeout expired, otherwise `false`
      * @since 3.0.0
      */
-    function time_timeout_expired(start_time: (any | null), timeout_delay: (any | null)): boolean;
+    function time_timeout_expired(start_time: null, timeout_delay: null): boolean;
 
     /**
      * Allocate {@link Ags.UUID}.
@@ -2109,13 +2109,13 @@ export namespace Ags {
      * @param ptr the {@link Ags.WorkerThread}
      * @since 3.0.0
      */
-    function woker_thread_do_poll_loop(ptr: (any | null)): (any | null);
+    function woker_thread_do_poll_loop(ptr: null): null;
 
     /**
      * @gir-type Callback
      */
     interface DestroyFunc {
-        (ptr: (any | null)): void;
+        (ptr: null): void;
     }
 
     /**
@@ -2129,7 +2129,7 @@ export namespace Ags {
      * @gir-type Callback
      */
     interface ReturnableThreadCallback {
-        (returnable_thread: ReturnableThread, data: (any | null)): void;
+        (returnable_thread: ReturnableThread, data: null): void;
     }
 
     /**
@@ -3245,7 +3245,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        authentication: any[];
+        authentication: null[];
 
         session_timeout: number;
 
@@ -3343,7 +3343,7 @@ export namespace Ags {
          * @param login the login
          * @returns the user {@link Ags.LoginInfo}-struct or `null`
          */
-        lookup_login(login: string): (any | null);
+        lookup_login(login: string): null;
 
         /**
          * Remove `authentication` from `authentication_manager`.
@@ -3388,7 +3388,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        business_group: any[];
+        business_group: null[];
 
         // Constructors
         constructor(properties?: Partial<BusinessGroupManager.ConstructorProps>, ...args: any[]);
@@ -3466,7 +3466,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        certificate: any[];
+        certificate: null[];
 
         // Constructors
         constructor(properties?: Partial<CertificateManager.ConstructorProps>, ...args: any[]);
@@ -3777,14 +3777,14 @@ export namespace Ags {
          * @param resource_name the resource name as string
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        add_resource(resource_name: string, controller_resource: (any | null)): void;
+        add_resource(resource_name: string, controller_resource: null): void;
 
         /**
          * Lookup key `resource_name` in hash table.
          * @param resource_name the resource name as string
          * @returns the matching {@link Ags.ControllerResource}-struct
          */
-        lookup_resource(resource_name: string): (any | null);
+        lookup_resource(resource_name: string): null;
 
         /**
          * Query `security_context` for `login`.
@@ -3932,9 +3932,9 @@ export namespace Ags {
         // Fields
         worker_thread: WorkerThread;
 
-        destroy_interval: any;
+        destroy_interval: null;
 
-        destroy_list: any[];
+        destroy_list: null[];
 
         // Constructors
         constructor(properties?: Partial<DestroyWorker.ConstructorProps>, ...args: any[]);
@@ -3959,7 +3959,7 @@ export namespace Ags {
          * @param ptr the gpointer to destroy
          * @param destroy_func the AgsDestroyFunc
          */
-        static add(destroy_worker: (any | null), ptr: (any | null), destroy_func: DestroyFunc): void;
+        static add(destroy_worker: null, ptr: null, destroy_func: DestroyFunc): void;
 
         /**
          * Get your destroy worker instance.
@@ -3977,14 +3977,14 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            open: (arg0: (any | null)) => void;
+            open: (arg0: null) => void;
             /**
              * Open `file` from a buffer containing the file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "open-from-data": (arg0: string, arg1: number, arg2: (any | null)) => void;
+            "open-from-data": (arg0: string, arg1: number, arg2: null) => void;
             /**
              * Read a XML document from disk with specified filename.
              * @signal
@@ -4011,7 +4011,7 @@ export namespace Ags {
              * @signal
              * @run-last
              */
-            "rw-open": (arg0: boolean, arg1: (any | null)) => void;
+            "rw-open": (arg0: boolean, arg1: null) => void;
             /**
              * Write XML Document to disk.
              * @signal
@@ -4047,8 +4047,8 @@ export namespace Ags {
             audioFormat: string;
             encoding: string;
             filename: string;
-            xml_doc: any;
-            xmlDoc: any;
+            xml_doc: never;
+            xmlDoc: never;
         }
     }
 
@@ -4111,15 +4111,15 @@ export namespace Ags {
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xml_doc(): any;
-        set xml_doc(val: any);
+        get xml_doc(): null;
+        set xml_doc(val: never);
 
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xmlDoc(): any;
-        set xmlDoc(val: any);
+        get xmlDoc(): null;
+        set xmlDoc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4137,7 +4137,7 @@ export namespace Ags {
 
         app_encoding: string;
 
-        out: any;
+        out: null;
 
         dtd: string;
 
@@ -4145,17 +4145,17 @@ export namespace Ags {
 
         write_charset_converter: Gio.CharsetConverter;
 
-        id_refs: any[];
+        id_refs: null[];
 
-        lookup: any[];
+        lookup: null[];
 
-        launch: any[];
+        launch: null[];
 
         clipboard: GObject.Object;
 
-        property: any[];
+        property: null[];
 
-        script: any[];
+        script: null[];
 
         cluster: GObject.Object;
 
@@ -4165,9 +4165,9 @@ export namespace Ags {
 
         history: GObject.Object;
 
-        embedded_audio: any[];
+        embedded_audio: null[];
 
-        file_link: any[];
+        file_link: null[];
 
         // Constructors
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
@@ -4289,7 +4289,7 @@ export namespace Ags {
          * @param ref a %gpointer
          * @returns the matching {@link GObject.Object}
          */
-        find_id_ref_by_reference<T = GObject.Object>(ref: (any | null)): T;
+        find_id_ref_by_reference<T = GObject.Object>(ref: null): T;
 
         /**
          * Lookup a reference by `xpath`.
@@ -4510,8 +4510,8 @@ export namespace Ags {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
-            node: any;
-            reference: any;
+            node: never;
+            reference: never;
             xpath: string;
         }
     }
@@ -4534,15 +4534,15 @@ export namespace Ags {
          * The assigned xmlNode being referred by this {@link Ags.FileIdRef}.
          * @since 3.0.0
          */
-        get node(): any;
-        set node(val: any);
+        get node(): null;
+        set node(val: never);
 
         /**
          * The object referred by this {@link Ags.FileIdRef}.
          * @since 3.0.0
          */
-        get reference(): any;
-        set reference(val: any);
+        get reference(): null;
+        set reference(val: never);
 
         /**
          * The XPath short-cut that can be used with this {@link Ags.FileIdRef}.
@@ -4566,7 +4566,7 @@ export namespace Ags {
 
         
     // This field conflicts with a function in a parent class or interface.
-    ref: (any | any);
+    ref: (null | any);
 
         // Constructors
         constructor(properties?: Partial<FileIdRef.ConstructorProps>, ...args: any[]);
@@ -4621,8 +4621,8 @@ export namespace Ags {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
-            node: any;
-            reference: any;
+            node: never;
+            reference: never;
         }
     }
 
@@ -4644,15 +4644,15 @@ export namespace Ags {
          * The assigned xmlNode being referred by this {@link Ags.FileLaunch}.
          * @since 3.0.0
          */
-        get node(): any;
-        set node(val: any);
+        get node(): null;
+        set node(val: never);
 
         /**
          * The object referred by this {@link Ags.FileLaunch}.
          * @since 3.0.0
          */
-        get reference(): any;
-        set reference(val: any);
+        get reference(): null;
+        set reference(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4952,8 +4952,8 @@ export namespace Ags {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: GObject.Object;
-            node: any;
-            reference: any;
+            node: never;
+            reference: never;
         }
     }
 
@@ -4967,11 +4967,11 @@ export namespace Ags {
         get file(): GObject.Object;
         set file(val: GObject.Object);
 
-        get node(): any;
-        set node(val: any);
+        get node(): null;
+        set node(val: never);
 
-        get reference(): any;
-        set reference(val: any);
+        get reference(): null;
+        set reference(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4987,7 +4987,7 @@ export namespace Ags {
 
         
     // This field conflicts with a function in a parent class or interface.
-    ref: (any | any);
+    ref: (null | any);
 
         // Constructors
         constructor(properties?: Partial<FileLookup.ConstructorProps>, ...args: any[]);
@@ -5022,7 +5022,7 @@ export namespace Ags {
          * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param ref a `gpointer`
          */
-        static find_by_reference(file_lookup: FileLookup[], ref: (any | null)): FileLookup[];
+        static find_by_reference(file_lookup: FileLookup[], ref: null): FileLookup[];
 
         // Virtual methods
         /**
@@ -5048,7 +5048,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "do-request": (arg0: GObject.Object, arg1: (any | null), arg2: GObject.Object, arg3: string, arg4: string, arg5: string) => (any | null);
+            "do-request": (arg0: GObject.Object, arg1: null, arg2: GObject.Object, arg3: string, arg4: string, arg5: string) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
         }
@@ -5108,7 +5108,7 @@ export namespace Ags {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<any, any>, security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         // Methods
         /**
@@ -5121,7 +5121,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the response on success, otherwise `null`.
          */
-        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<any, any>), security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<never, never>), security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 
@@ -5137,8 +5137,8 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             normalized_function: string;
             normalizedFunction: string;
-            pivot_table: any;
-            pivotTable: any;
+            pivot_table: never;
+            pivotTable: never;
             source_function: string;
             sourceFunction: string;
         }
@@ -5171,15 +5171,15 @@ export namespace Ags {
          * The pivot table.
          * @since 3.0.0
          */
-        get pivot_table(): any;
-        set pivot_table(val: any);
+        get pivot_table(): null;
+        set pivot_table(val: never);
 
         /**
          * The pivot table.
          * @since 3.0.0
          */
-        get pivotTable(): any;
-        set pivotTable(val: any);
+        get pivotTable(): null;
+        set pivotTable(val: never);
 
         /**
          * The source function.
@@ -5219,7 +5219,7 @@ export namespace Ags {
 
         symbol: string;
 
-        solver_matrix: any[];
+        solver_matrix: null[];
 
         pivot_table_count: number;
 
@@ -5614,7 +5614,7 @@ export namespace Ags {
 
         flags: number;
 
-        messages: any[];
+        messages: null[];
 
         // Constructors
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
@@ -5686,7 +5686,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        message_queue: any[];
+        message_queue: null[];
 
         // Constructors
         constructor(properties?: Partial<MessageDelivery.ConstructorProps>, ...args: any[]);
@@ -5808,8 +5808,8 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             recipient: GObject.Object;
             sender: GObject.Object;
-            xml_doc: any;
-            xmlDoc: any;
+            xml_doc: never;
+            xmlDoc: never;
         }
     }
 
@@ -5838,15 +5838,15 @@ export namespace Ags {
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xml_doc(): any;
-        set xml_doc(val: any);
+        get xml_doc(): null;
+        set xml_doc(val: never);
 
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xmlDoc(): any;
-        set xmlDoc(val: any);
+        get xmlDoc(): null;
+        set xmlDoc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -5984,7 +5984,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        message_envelope: any[];
+        message_envelope: null[];
 
         // Constructors
         constructor(properties?: Partial<MessageQueue.ConstructorProps>, ...args: any[]);
@@ -6109,7 +6109,7 @@ export namespace Ags {
 
         salt: string;
 
-        password_store: any[];
+        password_store: null[];
 
         // Constructors
         constructor(properties?: Partial<PasswordStoreManager.ConstructorProps>, ...args: any[]);
@@ -6344,7 +6344,7 @@ export namespace Ags {
 
         counter: number;
 
-        entry: any[];
+        entry: null[];
 
         // Constructors
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
@@ -6434,7 +6434,7 @@ export namespace Ags {
 
         flags: number;
 
-        safe_data: any;
+        safe_data: null;
 
         handler: number;
 
@@ -7071,7 +7071,7 @@ export namespace Ags {
 
         thread_pool: ThreadPool;
 
-        worker: any[];
+        worker: null[];
 
         
     // This field conflicts with a function in a parent class or interface.
@@ -7081,7 +7081,7 @@ export namespace Ags {
 
         registry: Registry;
 
-        server: any[];
+        server: null[];
 
         // Constructors
         constructor(properties?: Partial<ServerApplicationContext.ConstructorProps>, ...args: any[]);
@@ -7629,8 +7629,8 @@ export namespace Ags {
             columnCount: number;
             row_count: number;
             rowCount: number;
-            solver_path: any;
-            solverPath: any;
+            solver_path: never;
+            solverPath: never;
             source_function: string;
             sourceFunction: string;
         }
@@ -7679,15 +7679,15 @@ export namespace Ags {
          * The assigned solver path.
          * @since 6.7.1
          */
-        get solver_path(): any;
-        set solver_path(val: any);
+        get solver_path(): null;
+        set solver_path(val: never);
 
         /**
          * The assigned solver path.
          * @since 6.7.1
          */
-        get solverPath(): any;
-        set solverPath(val: any);
+        get solverPath(): null;
+        set solverPath(val: never);
 
         /**
          * The assigned source-function.
@@ -7820,11 +7820,11 @@ export namespace Ags {
             coefficient: string;
             coefficient_value: Complex;
             coefficientValue: Complex;
-            exponent: any;
-            exponent_value: any;
-            exponentValue: any;
+            exponent: never;
+            exponent_value: never;
+            exponentValue: never;
             polynomial: string;
-            symbol: any;
+            symbol: never;
         }
     }
 
@@ -7862,21 +7862,21 @@ export namespace Ags {
          * @since 3.2.0
          * @read-only
          */
-        get exponent(): any;
+        get exponent(): null;
 
         /**
          * Exponent value.
          * @since 3.2.0
          * @read-only
          */
-        get exponent_value(): any;
+        get exponent_value(): null;
 
         /**
          * Exponent value.
          * @since 3.2.0
          * @read-only
          */
-        get exponentValue(): any;
+        get exponentValue(): null;
 
         /**
          * The assigned polynomial.
@@ -7890,8 +7890,8 @@ export namespace Ags {
          * The assigned symbol.
          * @since 3.2.0
          */
-        get symbol(): any;
-        set symbol(val: any);
+        get symbol(): null;
+        set symbol(val: never);
 
         /**
          * Compile-time signal type information.
@@ -8172,7 +8172,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            failure: (arg0: (any | null)) => void;
+            failure: (arg0: null) => void;
             /**
              * The ::launch signal is emited in a thread safe context
              * @signal
@@ -8345,14 +8345,14 @@ export namespace Ags {
 
         uuid: UUID;
 
-        data: any;
+        data: null;
 
         // Constructors
         constructor(properties?: Partial<TaskCompletion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ["new"](task: GObject.Object, data: (any | null)): TaskCompletion;
+        static ["new"](task: GObject.Object, data: null): TaskCompletion;
 
         // Signals
         /** @signal */
@@ -8943,7 +8943,7 @@ export namespace Ags {
 
         last_run_end: number;
 
-        start_queue: any[];
+        start_queue: null[];
 
         // Constructors
         constructor(properties?: Partial<Thread.ConstructorProps>, ...args: any[]);
@@ -9484,7 +9484,7 @@ export namespace Ags {
 
         build_id: string;
 
-        worker: any[];
+        worker: null[];
 
         // Constructors
         constructor(properties?: Partial<ThreadApplicationContext.ConstructorProps>, ...args: any[]);
@@ -9846,7 +9846,7 @@ export namespace Ags {
 
         idle: boolean;
 
-        returnable_thread: any[];
+        returnable_thread: null[];
 
         // Constructors
         constructor(properties?: Partial<ThreadPool.ConstructorProps>, ...args: any[]);
@@ -10001,8 +10001,8 @@ export namespace Ags {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filename: string;
-            xml_doc: any;
-            xmlDoc: any;
+            xml_doc: never;
+            xmlDoc: never;
         }
     }
 
@@ -10025,15 +10025,15 @@ export namespace Ags {
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xml_doc(): any;
-        set xml_doc(val: any);
+        get xml_doc(): null;
+        set xml_doc(val: never);
 
         /**
          * The assigned xml-doc.
          * @since 3.0.0
          */
-        get xmlDoc(): any;
-        set xmlDoc(val: any);
+        get xmlDoc(): null;
+        set xmlDoc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -10521,7 +10521,7 @@ export namespace Ags {
         // Fields
         gobject: GObject.Object;
 
-        turtle: any[];
+        turtle: null[];
 
         // Constructors
         constructor(properties?: Partial<TurtleManager.ConstructorProps>, ...args: any[]);
@@ -11894,7 +11894,7 @@ export namespace Ags {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.Complex}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -11967,25 +11967,25 @@ export namespace Ags {
          * @param user_id the user id
          * @param access_mode the access mode
          */
-        static alloc(group_id: string, user_id: string, access_mode: number): (any | null);
+        static alloc(group_id: string, user_id: string, access_mode: number): null;
 
         /**
          * Free `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static free(controller_resource: (any | null)): void;
+        static free(controller_resource: null): void;
 
         /**
          * Increase ref-count of `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static ref(controller_resource: (any | null)): void;
+        static ref(controller_resource: null): void;
 
         /**
          * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
-        static unref(controller_resource: (any | null)): void;
+        static unref(controller_resource: null): void;
     }
 
 
@@ -12012,12 +12012,12 @@ export namespace Ags {
         static $gtype: GObject.GType<DestroyEntry>;
 
         // Fields
-        ptr: any;
+        ptr: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            ptr: any;
+            ptr: null;
         }>);
 
         // Static methods
@@ -12026,7 +12026,7 @@ export namespace Ags {
          * @param ptr a pointer
          * @param destroy_func the `ptr`'s destroy function
          */
-        static alloc(ptr: (any | null), destroy_func: DestroyFunc): (any | null);
+        static alloc(ptr: null, destroy_func: DestroyFunc): null;
     }
 
 
@@ -12101,7 +12101,7 @@ export namespace Ags {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.FileUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -12301,25 +12301,25 @@ export namespace Ags {
         /**
          * Alloc {@link Ags.LoginInfo}-struct.
          */
-        static alloc(): (any | null);
+        static alloc(): null;
 
         /**
          * Free `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static free(login_info: (any | null)): void;
+        static free(login_info: null): void;
 
         /**
          * Increase ref-count of `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static ref(login_info: (any | null)): void;
+        static ref(login_info: null): void;
 
         /**
          * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
          * @param login_info the {@link Ags.LoginInfo}-struct
          */
-        static unref(login_info: (any | null)): void;
+        static unref(login_info: null): void;
     }
 
 
@@ -12554,7 +12554,7 @@ export namespace Ags {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.RegexUtil}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Execute `regex_util` and fill `match`.
@@ -12742,7 +12742,7 @@ export namespace Ags {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.SolverPath}-struct
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -12923,7 +12923,7 @@ export namespace Ags {
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.UUID}
          */
-        copy(): (any | null);
+        copy(): null;
 
         /**
          * Free the memory of `ptr`.
@@ -14583,7 +14583,7 @@ export namespace Ags {
              * @param security_token the security token
              * @virtual
              */
-            vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<any, any>, security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+            vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
         }
 
 
@@ -14613,7 +14613,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<any, any>), security_context: GObject.Object, path: string, login: string, security_token: string): (any | null);
+        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<never, never>), security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 
@@ -14786,7 +14786,7 @@ export namespace Ags {
              * @param buffer_length the buffer's length
              * @virtual
              */
-            vfunc_get_buffer(buffer_length: number): (any | null);
+            vfunc_get_buffer(buffer_length: number): null;
 
             /**
              * Get current playback delay factor.
@@ -14805,7 +14805,7 @@ export namespace Ags {
              * @param buffer_length the buffer's length
              * @virtual
              */
-            vfunc_get_next_buffer(buffer_length: number): (any | null);
+            vfunc_get_next_buffer(buffer_length: number): null;
 
             /**
              * Get current playback note offset.
@@ -14848,7 +14848,7 @@ export namespace Ags {
              * @param buffer the buffer to lock
              * @virtual
              */
-            vfunc_lock_buffer(buffer: (any | null)): void;
+            vfunc_lock_buffer(buffer: null): void;
 
             /**
              * Callback when counter expires minor note offset.
@@ -14933,7 +14933,7 @@ export namespace Ags {
              * @param buffer the buffer to unlock
              * @virtual
              */
-            vfunc_unlock_buffer(buffer: (any | null)): void;
+            vfunc_unlock_buffer(buffer: null): void;
         }
 
 
@@ -14964,7 +14964,7 @@ export namespace Ags {
          * @param buffer_length the buffer's length
          * @returns current playback buffer
          */
-        get_buffer(buffer_length: number): (any | null);
+        get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
@@ -14983,7 +14983,7 @@ export namespace Ags {
          * @param buffer_length the buffer's length
          * @returns next playback buffer
          */
-        get_next_buffer(buffer_length: number): (any | null);
+        get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
@@ -15024,7 +15024,7 @@ export namespace Ags {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -15096,7 +15096,7 @@ export namespace Ags {
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
     }
 
 
@@ -15412,7 +15412,7 @@ export namespace Ags {
              * Get current playback buffer.
              * @virtual
              */
-            vfunc_get_buffer(): (any | null);
+            vfunc_get_buffer(): null;
 
             /**
              * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -15460,7 +15460,7 @@ export namespace Ags {
              * Get future playback buffer.
              * @virtual
              */
-            vfunc_get_next_buffer(): (any | null);
+            vfunc_get_next_buffer(): null;
 
             /**
              * Get current playback note 256th attack.
@@ -15527,7 +15527,7 @@ export namespace Ags {
              * Get future playback buffer.
              * @virtual
              */
-            vfunc_get_prev_buffer(): (any | null);
+            vfunc_get_prev_buffer(): null;
 
             /**
              * Get start playback note offset.
@@ -15582,7 +15582,7 @@ export namespace Ags {
              * @param buffer the buffer to lock
              * @virtual
              */
-            vfunc_lock_buffer(buffer: (any | null)): void;
+            vfunc_lock_buffer(buffer: null): void;
 
             /**
              * Callback when counter expires minor note offset.
@@ -15701,14 +15701,14 @@ export namespace Ags {
              * @param sub_block and its sub block
              * @virtual
              */
-            vfunc_trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+            vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
 
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
              * @virtual
              */
-            vfunc_unlock_buffer(buffer: (any | null)): void;
+            vfunc_unlock_buffer(buffer: null): void;
 
             /**
              * Unlock sub block.
@@ -15716,7 +15716,7 @@ export namespace Ags {
              * @param sub_block and its sub block
              * @virtual
              */
-            vfunc_unlock_sub_block(buffer: (any | null), sub_block: number): void;
+            vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
         }
 
 
@@ -15793,7 +15793,7 @@ export namespace Ags {
          * Get current playback buffer.
          * @returns current playback buffer
          */
-        get_buffer(): (any | null);
+        get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
@@ -15840,7 +15840,7 @@ export namespace Ags {
          * Get future playback buffer.
          * @returns next playback buffer
          */
-        get_next_buffer(): (any | null);
+        get_next_buffer(): null;
 
         /**
          * Get current playback note 256th attack.
@@ -15902,7 +15902,7 @@ export namespace Ags {
          * Get future playback buffer.
          * @returns prev playback buffer
          */
-        get_prev_buffer(): (any | null);
+        get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
@@ -15955,7 +15955,7 @@ export namespace Ags {
          * Lock `buffer`.
          * @param buffer the buffer to lock
          */
-        lock_buffer(buffer: (any | null)): void;
+        lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
@@ -16058,20 +16058,20 @@ export namespace Ags {
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
          */
-        trylock_sub_block(buffer: (any | null), sub_block: number): boolean;
+        trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
          */
-        unlock_buffer(buffer: (any | null)): void;
+        unlock_buffer(buffer: null): void;
 
         /**
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          */
-        unlock_sub_block(buffer: (any | null), sub_block: number): void;
+        unlock_sub_block(buffer: null, sub_block: number): void;
     }
 
 

@@ -23339,7 +23339,7 @@ export namespace Clutter {
          * 
          * @param klass a {@link GObject.ObjectClass} pointer
          */
-        static get_for_class(klass: (any | null)): BindingPool;
+        static get_for_class(klass: null): BindingPool;
 
         // Methods
         /**
@@ -33788,7 +33788,7 @@ export namespace Clutter {
          * the platform Clutter is running on.
          * @param user_data data to be passed to the signal handlers, or `null`
          */
-        connect_signals(user_data: (any | null)): void;
+        connect_signals(user_data: null): void;
 
         /**
          * Connects all the signals defined into a UI definition file to their
@@ -37374,7 +37374,7 @@ export namespace Clutter {
              * @action
              * @run-last
              */
-            "insert-text": (arg0: string, arg1: number, arg2: (any | null)) => void;
+            "insert-text": (arg0: string, arg1: number, arg2: null) => void;
             /**
              * The ::text-changed signal is emitted after `actor`'s text changes
              * @signal

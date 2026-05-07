@@ -1020,7 +1020,7 @@ export namespace Thunarx {
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          * @virtual
          */
-        vfunc_load(settings: GLib.HashTable<any, any>): void;
+        vfunc_load(settings: GLib.HashTable<never, never>): void;
 
         /**
          * Determines the replacement for `text` (which is the relevant
@@ -1061,7 +1061,7 @@ export namespace Thunarx {
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          * @virtual
          */
-        vfunc_save(settings: GLib.HashTable<any, any>): void;
+        vfunc_save(settings: GLib.HashTable<never, never>): void;
 
         // Methods
         /**
@@ -1178,7 +1178,7 @@ export namespace Thunarx {
          * implementation, you should also override `thunarx_renamer_save()`.
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          */
-        load(settings: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        load(settings: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Determines the replacement for `text` (which is the relevant
@@ -1218,7 +1218,7 @@ export namespace Thunarx {
          * implementation, you should also override `thunarx_renamer_load()`.
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          */
-        save(settings: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        save(settings: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * The URL to the documentation of this {@link Thunarx.Renamer}.

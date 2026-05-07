@@ -2863,11 +2863,11 @@ export namespace RygelServer {
         // Fields
         ref_count: number;
 
-        op: any;
+        op: null;
 
-        operand1: any;
+        operand1: null;
 
-        operand2: any;
+        operand2: null;
 
         // Constructors
         _init(...args: any[]): void;

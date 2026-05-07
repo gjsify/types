@@ -400,7 +400,7 @@ export namespace Dee {
          * @param key2 The second key to compare
          * @param analyzer The {@link Dee.Analyzer} to use for the comparison
          */
-        static collate_cmp_func(key1: string, key2: string, analyzer: (any | null)): number;
+        static collate_cmp_func(key1: string, key2: string, analyzer: null): number;
 
         // Virtual methods
         /**
@@ -1789,7 +1789,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @returns Returns `null` if `tag` is unset otherwise the               value of the tag as it was set with `dee_model_set_tag()`.
          */
-        get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -1989,7 +1989,7 @@ export namespace Dee {
          * @param tag The tag handle for the tag as obtained from `dee_model_register_tag()`
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          */
-        set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -2215,7 +2215,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @virtual
          */
-        vfunc_get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        vfunc_get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -2429,7 +2429,7 @@ export namespace Dee {
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          * @virtual
          */
-        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -2748,7 +2748,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @returns Returns `null` if `tag` is unset otherwise the               value of the tag as it was set with `dee_model_set_tag()`.
          */
-        get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -2948,7 +2948,7 @@ export namespace Dee {
          * @param tag The tag handle for the tag as obtained from `dee_model_register_tag()`
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          */
-        set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -3174,7 +3174,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @virtual
          */
-        vfunc_get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        vfunc_get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -3388,7 +3388,7 @@ export namespace Dee {
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          * @virtual
          */
-        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -3722,7 +3722,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @returns Returns `null` if `tag` is unset otherwise the               value of the tag as it was set with `dee_model_set_tag()`.
          */
-        get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -3922,7 +3922,7 @@ export namespace Dee {
          * @param tag The tag handle for the tag as obtained from `dee_model_register_tag()`
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          */
-        set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -4148,7 +4148,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @virtual
          */
-        vfunc_get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        vfunc_get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -4362,7 +4362,7 @@ export namespace Dee {
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          * @virtual
          */
-        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -5233,7 +5233,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @returns Returns `null` if `tag` is unset otherwise the               value of the tag as it was set with `dee_model_set_tag()`.
          */
-        get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -5433,7 +5433,7 @@ export namespace Dee {
          * @param tag The tag handle for the tag as obtained from `dee_model_register_tag()`
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          */
-        set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -5659,7 +5659,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @virtual
          */
-        vfunc_get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        vfunc_get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -5873,7 +5873,7 @@ export namespace Dee {
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          * @virtual
          */
-        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -6020,7 +6020,7 @@ export namespace Dee {
 
         map_notify: FilterMapNotify;
 
-        userdata: any;
+        userdata: null;
 
         // Static methods
         /**
@@ -6209,7 +6209,7 @@ export namespace Dee {
         // Fields
         reader_func: ModelReaderFunc;
 
-        userdata: any;
+        userdata: null;
 
         // Static methods
         /**
@@ -6643,7 +6643,7 @@ export namespace Dee {
              * @param tag The tag handle to retrieve the tag value for
              * @virtual
              */
-            vfunc_get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+            vfunc_get_tag(iter: ModelIter, tag: ModelTag): null;
 
             /**
              * @param iter a {@link Dee.ModelIter}
@@ -6857,7 +6857,7 @@ export namespace Dee {
              * @param value The value to set for `tag`. Note that `null` represents an unset tag
              * @virtual
              */
-            vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+            vfunc_set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
             /**
              * Sets the data in `column` for the row `iter` points to, to `value`. The type
@@ -7113,7 +7113,7 @@ export namespace Dee {
          * @param tag The tag handle to retrieve the tag value for
          * @returns Returns `null` if `tag` is unset otherwise the               value of the tag as it was set with `dee_model_set_tag()`.
          */
-        get_tag(iter: ModelIter, tag: ModelTag): (any | null);
+        get_tag(iter: ModelIter, tag: ModelTag): null;
 
         /**
          * @param iter a {@link Dee.ModelIter}
@@ -7313,7 +7313,7 @@ export namespace Dee {
          * @param tag The tag handle for the tag as obtained from `dee_model_register_tag()`
          * @param value The value to set for `tag`. Note that `null` represents an unset tag
          */
-        set_tag(iter: ModelIter, tag: ModelTag, value: (any | null)): void;
+        set_tag(iter: ModelIter, tag: ModelTag, value: null): void;
 
         /**
          * Sets the data in `column` for the row `iter` points to, to `value`. The type

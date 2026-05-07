@@ -11579,7 +11579,7 @@ export namespace Goa {
          * @param interface_name Interface name of the remote object or `null` to get the object proxy {@link GObject.GType}.
          * @param user_data User data (unused).
          */
-        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: (any | null)): GObject.GType;
+        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: null): GObject.GType;
 
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `goa_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.

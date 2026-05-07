@@ -666,7 +666,7 @@ export namespace GstCuda {
          * returned device context.
          * @returns the {@link CudaGst.context} of `ctx`
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Get required texture alignment by device
@@ -847,7 +847,7 @@ export namespace GstCuda {
          * close the handle.
          * @returns `true` if successful
          */
-        ["export"](): [boolean, any];
+        ["export"](): [boolean, null];
 
         /**
          * Query allocation method
@@ -873,20 +873,20 @@ export namespace GstCuda {
          * @param token an user token
          * @returns user data pointer or `null`
          */
-        get_token_data(token: (bigint | number)): (any | null);
+        get_token_data(token: (bigint | number)): null;
 
         /**
          * Gets user data pointer stored via `gst_cuda_allocator_alloc_wrapped()`
          * @returns the user data pointer
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets an opaque user data on a {@link GstCuda.CudaMemory}
          * @param token an user token
          * @param data an user data
          */
-        set_token_data(token: (bigint | number), data: (any | null)): void;
+        set_token_data(token: (bigint | number), data: null): void;
 
         /**
          * Performs synchronization if needed

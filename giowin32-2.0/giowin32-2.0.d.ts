@@ -43,7 +43,7 @@ export namespace GioWin32 {
         interface ConstructorProps extends Gio.InputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: (any | null);
+            handle: never;
         }
     }
 
@@ -81,7 +81,7 @@ export namespace GioWin32 {
          * @since 2.26
          * @construct-only
          */
-        get handle(): (any | null);
+        get handle(): null;
 
         /**
          * Compile-time signal type information.
@@ -97,7 +97,7 @@ export namespace GioWin32 {
 
         _init(...args: any[]): void;
 
-        static ["new"](handle: (any | null), close_handle: boolean): InputStream;
+        static ["new"](handle: null, close_handle: boolean): InputStream;
 
         // Signals
         /** @signal */
@@ -124,7 +124,7 @@ export namespace GioWin32 {
          * Return the Windows file handle that the stream reads from.
          * @returns The file handle of `stream`
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Sets whether the handle of `stream` shall be closed
@@ -146,7 +146,7 @@ export namespace GioWin32 {
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: (any | null);
+            handle: never;
         }
     }
 
@@ -184,7 +184,7 @@ export namespace GioWin32 {
          * @since 2.26
          * @construct-only
          */
-        get handle(): (any | null);
+        get handle(): null;
 
         /**
          * Compile-time signal type information.
@@ -200,7 +200,7 @@ export namespace GioWin32 {
 
         _init(...args: any[]): void;
 
-        static ["new"](handle: (any | null), close_handle: boolean): OutputStream;
+        static ["new"](handle: null, close_handle: boolean): OutputStream;
 
         // Signals
         /** @signal */
@@ -227,7 +227,7 @@ export namespace GioWin32 {
          * Return the Windows handle that the stream writes to.
          * @returns The handle descriptor of `stream`
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Sets whether the handle of `stream` shall be closed when the stream
@@ -268,7 +268,7 @@ export namespace GioWin32 {
         // Constructors
 
         constructor(properties?: Partial<{
-            parent_class: any;
+            parent_class: null;
         }>);
     }
 

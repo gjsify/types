@@ -114,7 +114,7 @@ export namespace P11Kit {
      * @gir-type Callback
      */
     interface pin_destroy_func {
-        (data: any): void;
+        (data: null): void;
     }
 
     /**

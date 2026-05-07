@@ -5656,7 +5656,7 @@ export namespace Skk {
         // Fields
         get_time_func: GetTime;
 
-        get_time_func_target: any;
+        get_time_func_target: null;
 
         get_time_func_target_destroy_notify: GLib.DestroyNotify;
 

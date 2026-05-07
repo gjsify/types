@@ -130,7 +130,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            dataset: any;
+            dataset: never;
         }
     }
 
@@ -144,7 +144,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set dataset(val: any);
+        set dataset(val: never);
 
         /**
          * Compile-time signal type information.
@@ -204,8 +204,8 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            dataset_factory: any;
-            datasetFactory: any;
+            dataset_factory: never;
+            datasetFactory: never;
         }
     }
 
@@ -219,12 +219,12 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set dataset_factory(val: any);
+        set dataset_factory(val: never);
 
         /**
          * @construct-only
          */
-        set datasetFactory(val: any);
+        set datasetFactory(val: never);
 
         /**
          * Compile-time signal type information.
@@ -319,7 +319,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            format: any;
+            format: never;
         }
     }
 
@@ -333,7 +333,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set format(val: any);
+        set format(val: never);
 
         /**
          * Compile-time signal type information.
@@ -746,7 +746,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            options: any;
+            options: never;
         }
     }
 
@@ -760,7 +760,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set options(val: any);
+        set options(val: never);
 
         /**
          * Compile-time signal type information.
@@ -799,7 +799,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            writer: any;
+            writer: never;
         }
     }
 
@@ -813,7 +813,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set writer(val: any);
+        set writer(val: never);
 
         /**
          * Compile-time signal type information.
@@ -874,8 +874,8 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            finish_options: any;
-            finishOptions: any;
+            finish_options: never;
+            finishOptions: never;
             inspect_n_fragments: number;
             inspectNFragments: number;
             schema: Arrow.Schema;
@@ -894,12 +894,12 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set finish_options(val: any);
+        set finish_options(val: never);
 
         /**
          * @construct-only
          */
-        set finishOptions(val: any);
+        set finishOptions(val: never);
 
         /**
          * The number of fragments to be used to inspect schema.
@@ -979,7 +979,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            fragment: any;
+            fragment: never;
         }
     }
 
@@ -993,7 +993,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set fragment(val: any);
+        set fragment(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1420,7 +1420,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            partitioning: any;
+            partitioning: never;
         }
     }
 
@@ -1434,7 +1434,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set partitioning(val: any);
+        set partitioning(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1589,7 +1589,7 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            scanner: any;
+            scanner: never;
         }
     }
 
@@ -1603,7 +1603,7 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set scanner(val: any);
+        set scanner(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1653,8 +1653,8 @@ export namespace ArrowDataset {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            scanner_builder: any;
-            scannerBuilder: any;
+            scanner_builder: never;
+            scannerBuilder: never;
         }
     }
 
@@ -1668,12 +1668,12 @@ export namespace ArrowDataset {
         /**
          * @construct-only
          */
-        set scanner_builder(val: any);
+        set scanner_builder(val: never);
 
         /**
          * @construct-only
          */
-        set scannerBuilder(val: any);
+        set scannerBuilder(val: never);
 
         /**
          * Compile-time signal type information.

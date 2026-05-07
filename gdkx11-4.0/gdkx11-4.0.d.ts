@@ -347,7 +347,7 @@ export namespace GdkX11 {
              * @signal
              * @run-last
              */
-            xevent: (arg0: (any | null)) => (boolean | void);
+            xevent: (arg0: null) => (boolean | void);
             "notify::composited": (pspec: GObject.ParamSpec) => void;
             "notify::dmabuf-formats": (pspec: GObject.ParamSpec) => void;
             "notify::input-shapes": (pspec: GObject.ParamSpec) => void;
@@ -457,7 +457,7 @@ export namespace GdkX11 {
          * This function returns `NULL` if GDK is using GLX.
          * @returns the EGL display object
          */
-        get_egl_display(): (any | null);
+        get_egl_display(): null;
 
         /**
          * Retrieves the version of the EGL implementation.

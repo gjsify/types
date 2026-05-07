@@ -142,7 +142,7 @@ export namespace Xfconf {
      * @param object_property A valid property on `object`.
      * @returns an ID number that can be used to later remove the          binding.
      */
-    function property_bind(channel: Channel, xfconf_property: string, xfconf_property_type: GObject.GType, object: any, object_property: string): number;
+    function property_bind(channel: Channel, xfconf_property: string, xfconf_property_type: GObject.GType, object: never, object_property: string): number;
 
     /**
      * Binds an Xfconf property to a {@link GObject.Object} property of type
@@ -164,7 +164,7 @@ export namespace Xfconf {
      * @returns an ID number that can be used to later remove the          binding.
      * @deprecated since 4.19.3: Use `xfconf_g_property_bind`() with #G_TYPE_PTR_ARRAY instead.
      */
-    function property_bind_gdkcolor(channel: Channel, xfconf_property: string, object: any, object_property: string): number;
+    function property_bind_gdkcolor(channel: Channel, xfconf_property: string, object: never, object_property: string): number;
 
     /**
      * Binds an Xfconf property to a {@link GObject.Object} property of type
@@ -185,7 +185,7 @@ export namespace Xfconf {
      * @since 4.12.1
      * @deprecated since 4.19.3: Use `xfconf_g_property_bind`() with #G_TYPE_PTR_ARRAY instead.
      */
-    function property_bind_gdkrgba(channel: Channel, xfconf_property: string, object: any, object_property: string): number;
+    function property_bind_gdkrgba(channel: Channel, xfconf_property: string, object: never, object_property: string): number;
 
     /**
      * Removes an Xfconf/GObject property binding based on the binding
@@ -202,7 +202,7 @@ export namespace Xfconf {
      * removed.
      * @param channel_or_object A {@link GObject.Object} or {@link Xfconf.Channel}.
      */
-    function property_unbind_all(channel_or_object: any): void;
+    function property_unbind_all(channel_or_object: never): void;
 
     /**
      * Causes an Xfconf channel previously bound to a {@link GObject.Object} property
@@ -212,7 +212,7 @@ export namespace Xfconf {
      * @param object A {@link GObject.Object}.
      * @param object_property A bound property on `object`.
      */
-    function property_unbind_by_property(channel: Channel, xfconf_property: string, object: any, object_property: string): void;
+    function property_unbind_by_property(channel: Channel, xfconf_property: string, object: never, object_property: string): void;
 
     /**
      * Shuts down and frees any resources consumed by the Xfconf library.
@@ -450,7 +450,7 @@ export namespace Xfconf {
          * @param value_struct A pointer to a struct.
          * @returns `true` if the property was retrieved successfully,          `false` otherwise.
          */
-        get_named_struct(property: string, struct_name: string, value_struct: (any | null)): boolean;
+        get_named_struct(property: string, struct_name: string, value_struct: null): boolean;
 
         /**
          * Retrieves multiple properties from `channel` and stores
@@ -519,7 +519,7 @@ export namespace Xfconf {
          * @param member_types An array of `n_members` {@link GObject.GType}<!-- -->s.
          * @returns `true` if the property was retrieved successfully,          `false` oherwise.
          */
-        get_structv(property: string, value_struct: (any | null), n_members: number, member_types: GObject.GType): boolean;
+        get_structv(property: string, value_struct: null, n_members: number, member_types: GObject.GType): boolean;
 
         /**
          * Retrieves the unsigned int value associated with `property` on `channel`.
@@ -617,7 +617,7 @@ export namespace Xfconf {
          * @param value_struct A pointer to a struct.
          * @returns `true` if the property was set successfully,          `false` otherwise.
          */
-        set_named_struct(property: string, struct_name: string, value_struct: (any | null)): boolean;
+        set_named_struct(property: string, struct_name: string, value_struct: null): boolean;
 
         /**
          * Sets the value stored in `value`  to a property on `channel`.
@@ -664,7 +664,7 @@ export namespace Xfconf {
          * @param member_types An array of `n_members` {@link GObject.GType}<!-- -->s.
          * @returns `true` if the property was set successfully,          `false` oherwise.
          */
-        set_structv(property: string, value_struct: (any | null), n_members: number, member_types: GObject.GType): boolean;
+        set_structv(property: string, value_struct: null, n_members: number, member_types: GObject.GType): boolean;
 
         /**
          * Sets `value` for `property` on `channel` in the configuration store.

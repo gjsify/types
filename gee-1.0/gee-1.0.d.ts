@@ -40,7 +40,7 @@ export namespace Gee {
      * @param _val1 
      * @param _val2 
      */
-    function direct_compare(_val1: any, _val2: any): number;
+    function direct_compare(_val1: never, _val2: never): number;
 
     namespace AbstractCollection {
         // Signal signatures
@@ -125,19 +125,19 @@ export namespace Gee {
          * @param item 
          * @virtual
          */
-        vfunc_contains(item: any): boolean;
+        vfunc_contains(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): boolean;
+        vfunc_add(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_remove(item: any): boolean;
+        vfunc_remove(item: null): boolean;
 
         /**
          * @virtual
@@ -147,7 +147,7 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_to_array(): any[];
+        vfunc_to_array(): never[];
 
         /**
          * @param collection 
@@ -182,21 +182,21 @@ export namespace Gee {
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
-        to_array(): any[];
+        to_array(): null[];
 
         /**
          * @param collection 
@@ -304,33 +304,33 @@ export namespace Gee {
          * @param index 
          * @virtual
          */
-        vfunc_get(index: number): any;
+        vfunc_get(index: number): never;
 
         /**
          * @param index 
          * @param item 
          * @virtual
          */
-        vfunc_set(index: number, item: any): void;
+        vfunc_set(index: number, item: null): void;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_index_of(item: any): number;
+        vfunc_index_of(item: null): number;
 
         /**
          * @param index 
          * @param item 
          * @virtual
          */
-        vfunc_insert(index: number, item: any): void;
+        vfunc_insert(index: number, item: null): void;
 
         /**
          * @param index 
          * @virtual
          */
-        vfunc_remove_at(index: number): any;
+        vfunc_remove_at(index: number): never;
 
         /**
          * @param start 
@@ -342,12 +342,12 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_first(): any;
+        vfunc_first(): never;
 
         /**
          * @virtual
          */
-        vfunc_last(): any;
+        vfunc_last(): never;
 
         /**
          * @param index 
@@ -362,13 +362,13 @@ export namespace Gee {
         /**
          * @param index 
          */
-        get(index: number): any;
+        get(index: number): null;
 
         /**
          * @param index 
          * @param item 
          */
-        set(index: number, item: any): void;
+        set(index: number, item: never): void;
 
         /**
          * @param args 
@@ -379,18 +379,18 @@ export namespace Gee {
         /**
          * @param item 
          */
-        index_of(item: any): number;
+        index_of(item: never): number;
 
         /**
          * @param index 
          * @param item 
          */
-        insert(index: number, item: any): void;
+        insert(index: number, item: never): void;
 
         /**
          * @param index 
          */
-        remove_at(index: number): any;
+        remove_at(index: number): null;
 
         /**
          * @param start 
@@ -398,9 +398,9 @@ export namespace Gee {
          */
         slice(start: number, stop: number): List;
 
-        first(): any;
+        first(): null;
 
-        last(): any;
+        last(): null;
 
         /**
          * @param index 
@@ -452,17 +452,17 @@ export namespace Gee {
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
@@ -486,25 +486,25 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
 
-        to_array(): any[];
+        to_array(): null[];
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_contains(item: any): boolean;
+        vfunc_contains(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): boolean;
+        vfunc_add(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_remove(item: any): boolean;
+        vfunc_remove(item: null): boolean;
 
         /**
          * @virtual
@@ -538,7 +538,7 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_to_array(): any[];
+        vfunc_to_array(): never[];
 
         iterator(): Iterator;
 
@@ -655,33 +655,33 @@ export namespace Gee {
          * @param key 
          * @virtual
          */
-        vfunc_has_key(key: any): boolean;
+        vfunc_has_key(key: null): boolean;
 
         /**
          * @param key 
          * @param value 
          * @virtual
          */
-        vfunc_has(key: any, value: any): boolean;
+        vfunc_has(key: null, value: null): boolean;
 
         /**
          * @param key 
          * @virtual
          */
-        vfunc_get(key: any): any;
+        vfunc_get(key: null): never;
 
         /**
          * @param key 
          * @param value 
          * @virtual
          */
-        vfunc_set(key: any, value: any): void;
+        vfunc_set(key: null, value: null): void;
 
         /**
          * @param key 
          * @virtual
          */
-        vfunc_unset(key: any): [boolean, any];
+        vfunc_unset(key: null): [boolean, never];
 
         /**
          * @virtual
@@ -715,24 +715,24 @@ export namespace Gee {
         /**
          * @param key 
          */
-        has_key(key: any): boolean;
+        has_key(key: never): boolean;
 
         /**
          * @param key 
          * @param value 
          */
-        has(key: any, value: any): boolean;
+        has(key: never, value: never): boolean;
 
         /**
          * @param key 
          */
-        get(key: any): any;
+        get(key: never): null;
 
         /**
          * @param key 
          * @param value 
          */
-        set(key: any, value: any): void;
+        set(key: never, value: never): void;
 
         /**
          * @param args 
@@ -743,7 +743,7 @@ export namespace Gee {
         /**
          * @param key 
          */
-        unset(key: any): [boolean, any];
+        unset(key: never): [boolean, null];
 
         map_iterator(): MapIterator;
 
@@ -810,12 +810,12 @@ export namespace Gee {
         /**
          * @param key 
          */
-        contains(key: any): boolean;
+        contains(key: never): boolean;
 
         /**
          * @param key 
          */
-        remove(key: any): [boolean, any];
+        remove(key: never): [boolean, null];
 
         /**
          * @param map 
@@ -831,13 +831,13 @@ export namespace Gee {
          * @param key 
          * @virtual
          */
-        vfunc_contains(key: any): boolean;
+        vfunc_contains(key: null): boolean;
 
         /**
          * @param key 
          * @virtual
          */
-        vfunc_remove(key: any): [boolean, any];
+        vfunc_remove(key: null): [boolean, never];
 
         /**
          * @param map 
@@ -936,18 +936,18 @@ export namespace Gee {
         /**
          * @param key 
          */
-        contains(key: any): boolean;
+        contains(key: never): boolean;
 
         /**
          * @param key 
          */
-        get(key: any): Collection;
+        get(key: never): Collection;
 
         /**
          * @param key 
          * @param value 
          */
-        set(key: any, value: any): void;
+        set(key: never, value: never): void;
 
         /**
          * @param args 
@@ -959,12 +959,12 @@ export namespace Gee {
          * @param key 
          * @param value 
          */
-        remove(key: any, value: any): boolean;
+        remove(key: never, value: never): boolean;
 
         /**
          * @param key 
          */
-        remove_all(key: any): boolean;
+        remove_all(key: never): boolean;
 
         clear(): void;
 
@@ -987,33 +987,33 @@ export namespace Gee {
          * @param key 
          * @virtual
          */
-        vfunc_contains(key: any): boolean;
+        vfunc_contains(key: null): boolean;
 
         /**
          * @param key 
          * @virtual
          */
-        vfunc_get(key: any): Collection;
-
-        /**
-         * @param key 
-         * @param value 
-         * @virtual
-         */
-        vfunc_set(key: any, value: any): void;
+        vfunc_get(key: null): Collection;
 
         /**
          * @param key 
          * @param value 
          * @virtual
          */
-        vfunc_remove(key: any, value: any): boolean;
+        vfunc_set(key: null, value: null): void;
+
+        /**
+         * @param key 
+         * @param value 
+         * @virtual
+         */
+        vfunc_remove(key: null, value: null): boolean;
 
         /**
          * @param key 
          * @virtual
          */
-        vfunc_remove_all(key: any): boolean;
+        vfunc_remove_all(key: null): boolean;
 
         /**
          * @virtual
@@ -1115,28 +1115,28 @@ export namespace Gee {
         /**
          * @param item 
          */
-        count(item: any): number;
+        count(item: never): number;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_count(item: any): number;
+        vfunc_count(item: null): number;
 
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
@@ -1160,25 +1160,25 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
 
-        to_array(): any[];
+        to_array(): null[];
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_contains(item: any): boolean;
+        vfunc_contains(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): boolean;
+        vfunc_add(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_remove(item: any): boolean;
+        vfunc_remove(item: null): boolean;
 
         /**
          * @virtual
@@ -1212,7 +1212,7 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_to_array(): any[];
+        vfunc_to_array(): never[];
 
         iterator(): Iterator;
 
@@ -1309,17 +1309,17 @@ export namespace Gee {
          * @param element 
          * @virtual
          */
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element: null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_peek(): any;
+        vfunc_peek(): never;
 
         /**
          * @virtual
          */
-        vfunc_poll(): any;
+        vfunc_poll(): never;
 
         /**
          * @param recipient 
@@ -1332,11 +1332,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer(element: any): boolean;
+        offer(element: never): boolean;
 
-        peek(): any;
+        peek(): null;
 
-        poll(): any;
+        poll(): null;
 
         /**
          * @param recipient 
@@ -1389,17 +1389,17 @@ export namespace Gee {
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
@@ -1423,25 +1423,25 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
 
-        to_array(): any[];
+        to_array(): null[];
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_contains(item: any): boolean;
+        vfunc_contains(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): boolean;
+        vfunc_add(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_remove(item: any): boolean;
+        vfunc_remove(item: null): boolean;
 
         /**
          * @virtual
@@ -1475,7 +1475,7 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_to_array(): any[];
+        vfunc_to_array(): never[];
 
         iterator(): Iterator;
 
@@ -1579,17 +1579,17 @@ export namespace Gee {
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
@@ -1613,25 +1613,25 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
 
-        to_array(): any[];
+        to_array(): null[];
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_contains(item: any): boolean;
+        vfunc_contains(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_add(item: any): boolean;
+        vfunc_add(item: null): boolean;
 
         /**
          * @param item 
          * @virtual
          */
-        vfunc_remove(item: any): boolean;
+        vfunc_remove(item: null): boolean;
 
         /**
          * @virtual
@@ -1665,7 +1665,7 @@ export namespace Gee {
         /**
          * @virtual
          */
-        vfunc_to_array(): any[];
+        vfunc_to_array(): never[];
 
         iterator(): Iterator;
 
@@ -2167,11 +2167,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer(element: any): boolean;
+        offer(element: never): boolean;
 
-        peek(): any;
+        peek(): null;
 
-        poll(): any;
+        poll(): null;
 
         /**
          * @param recipient 
@@ -2183,17 +2183,17 @@ export namespace Gee {
          * @param element 
          * @virtual
          */
-        vfunc_offer(element: any): boolean;
+        vfunc_offer(element: null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_peek(): any;
+        vfunc_peek(): never;
 
         /**
          * @virtual
          */
-        vfunc_poll(): any;
+        vfunc_poll(): never;
 
         /**
          * @param recipient 
@@ -2205,11 +2205,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer_head(element: any): boolean;
+        offer_head(element: never): boolean;
 
-        peek_head(): any;
+        peek_head(): null;
 
-        poll_head(): any;
+        poll_head(): null;
 
         /**
          * @param recipient 
@@ -2220,11 +2220,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer_tail(element: any): boolean;
+        offer_tail(element: never): boolean;
 
-        peek_tail(): any;
+        peek_tail(): null;
 
-        poll_tail(): any;
+        poll_tail(): null;
 
         /**
          * @param recipient 
@@ -2236,17 +2236,17 @@ export namespace Gee {
          * @param element 
          * @virtual
          */
-        vfunc_offer_head(element: any): boolean;
+        vfunc_offer_head(element: null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_peek_head(): any;
+        vfunc_peek_head(): never;
 
         /**
          * @virtual
          */
-        vfunc_poll_head(): any;
+        vfunc_poll_head(): never;
 
         /**
          * @param recipient 
@@ -2259,17 +2259,17 @@ export namespace Gee {
          * @param element 
          * @virtual
          */
-        vfunc_offer_tail(element: any): boolean;
+        vfunc_offer_tail(element: null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_peek_tail(): any;
+        vfunc_peek_tail(): never;
 
         /**
          * @virtual
          */
-        vfunc_poll_tail(): any;
+        vfunc_poll_tail(): never;
 
         /**
          * @param recipient 
@@ -2619,62 +2619,62 @@ export namespace Gee {
          */
         get readOnlyView(): Set;
 
-        first(): any;
+        first(): null;
 
-        last(): any;
+        last(): null;
 
         bidir_iterator(): BidirIterator;
 
         /**
          * @param element 
          */
-        iterator_at(element: any): BidirIterator;
+        iterator_at(element: never): BidirIterator;
 
         /**
          * @param element 
          */
-        lower(element: any): any;
+        lower(element: never): null;
 
         /**
          * @param element 
          */
-        higher(element: any): any;
+        higher(element: never): null;
 
         /**
          * @param element 
          */
-        floor(element: any): any;
+        floor(element: never): null;
 
         /**
          * @param element 
          */
-        ceil(element: any): any;
+        ceil(element: never): null;
 
         /**
          * @param before 
          */
-        head_set(before: any): SortedSet;
+        head_set(before: never): SortedSet;
 
         /**
          * @param after 
          */
-        tail_set(after: any): SortedSet;
+        tail_set(after: never): SortedSet;
 
         /**
          * @param from 
          * @param to 
          */
-        sub_set(from: any, to: any): SortedSet;
+        sub_set(from: never, to: never): SortedSet;
 
         /**
          * @virtual
          */
-        vfunc_first(): any;
+        vfunc_first(): never;
 
         /**
          * @virtual
          */
-        vfunc_last(): any;
+        vfunc_last(): never;
 
         /**
          * @virtual
@@ -2685,50 +2685,50 @@ export namespace Gee {
          * @param element 
          * @virtual
          */
-        vfunc_iterator_at(element: any): BidirIterator;
+        vfunc_iterator_at(element: null): BidirIterator;
 
         /**
          * @param element 
          * @virtual
          */
-        vfunc_lower(element: any): any;
+        vfunc_lower(element: null): never;
 
         /**
          * @param element 
          * @virtual
          */
-        vfunc_higher(element: any): any;
+        vfunc_higher(element: null): never;
 
         /**
          * @param element 
          * @virtual
          */
-        vfunc_floor(element: any): any;
+        vfunc_floor(element: null): never;
 
         /**
          * @param element 
          * @virtual
          */
-        vfunc_ceil(element: any): any;
+        vfunc_ceil(element: null): never;
 
         /**
          * @param before 
          * @virtual
          */
-        vfunc_head_set(before: any): SortedSet;
+        vfunc_head_set(before: null): SortedSet;
 
         /**
          * @param after 
          * @virtual
          */
-        vfunc_tail_set(after: any): SortedSet;
+        vfunc_tail_set(after: null): SortedSet;
 
         /**
          * @param from 
          * @param to 
          * @virtual
          */
-        vfunc_sub_set(from: any, to: any): SortedSet;
+        vfunc_sub_set(from: null, to: null): SortedSet;
     }
 
 
@@ -2741,8 +2741,8 @@ export namespace Gee {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            key: any;
-            value: any;
+            key: never;
+            value: never;
         }
     }
 
@@ -2756,10 +2756,10 @@ export namespace Gee {
         /**
          * @read-only
          */
-        get key(): any;
+        get key(): null;
 
-        get value(): any;
-        set value(val: any);
+        get value(): null;
+        set value(val: never);
 
         /**
          * Compile-time signal type information.
@@ -3172,19 +3172,19 @@ export namespace Gee {
              * @param item 
              * @virtual
              */
-            vfunc_contains(item: any): boolean;
+            vfunc_contains(item: null): boolean;
 
             /**
              * @param item 
              * @virtual
              */
-            vfunc_add(item: any): boolean;
+            vfunc_add(item: null): boolean;
 
             /**
              * @param item 
              * @virtual
              */
-            vfunc_remove(item: any): boolean;
+            vfunc_remove(item: null): boolean;
 
             /**
              * @virtual
@@ -3218,7 +3218,7 @@ export namespace Gee {
             /**
              * @virtual
              */
-            vfunc_to_array(): any[];
+            vfunc_to_array(): never[];
         }
 
 
@@ -3272,17 +3272,17 @@ export namespace Gee {
         /**
          * @param item 
          */
-        contains(item: any): boolean;
+        contains(item: never): boolean;
 
         /**
          * @param item 
          */
-        add(item: any): boolean;
+        add(item: never): boolean;
 
         /**
          * @param item 
          */
-        remove(item: any): boolean;
+        remove(item: never): boolean;
 
         clear(): void;
 
@@ -3306,7 +3306,7 @@ export namespace Gee {
          */
         retain_all(collection: Collection): boolean;
 
-        to_array(): any[];
+        to_array(): null[];
     }
 
 
@@ -3326,7 +3326,7 @@ export namespace Gee {
              * @param object 
              * @virtual
              */
-            vfunc_compare_to(object: any): number;
+            vfunc_compare_to(object: null): number;
         }
 
 
@@ -3349,7 +3349,7 @@ export namespace Gee {
         /**
          * @param object 
          */
-        compare_to(object: any): number;
+        compare_to(object: never): number;
     }
 
 
@@ -3369,17 +3369,17 @@ export namespace Gee {
              * @param element 
              * @virtual
              */
-            vfunc_offer_head(element: any): boolean;
+            vfunc_offer_head(element: null): boolean;
 
             /**
              * @virtual
              */
-            vfunc_peek_head(): any;
+            vfunc_peek_head(): never;
 
             /**
              * @virtual
              */
-            vfunc_poll_head(): any;
+            vfunc_poll_head(): never;
 
             /**
              * @param recipient 
@@ -3392,17 +3392,17 @@ export namespace Gee {
              * @param element 
              * @virtual
              */
-            vfunc_offer_tail(element: any): boolean;
+            vfunc_offer_tail(element: null): boolean;
 
             /**
              * @virtual
              */
-            vfunc_peek_tail(): any;
+            vfunc_peek_tail(): never;
 
             /**
              * @virtual
              */
-            vfunc_poll_tail(): any;
+            vfunc_poll_tail(): never;
 
             /**
              * @param recipient 
@@ -3432,11 +3432,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer_head(element: any): boolean;
+        offer_head(element: never): boolean;
 
-        peek_head(): any;
+        peek_head(): null;
 
-        poll_head(): any;
+        poll_head(): null;
 
         /**
          * @param recipient 
@@ -3447,11 +3447,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer_tail(element: any): boolean;
+        offer_tail(element: never): boolean;
 
-        peek_tail(): any;
+        peek_tail(): null;
 
-        poll_tail(): any;
+        poll_tail(): null;
 
         /**
          * @param recipient 
@@ -3542,7 +3542,7 @@ export namespace Gee {
             /**
              * @virtual
              */
-            vfunc_get(): any;
+            vfunc_get(): never;
 
             /**
              * @virtual
@@ -3573,7 +3573,7 @@ export namespace Gee {
 
         first(): boolean;
 
-        get(): any;
+        get(): null;
 
         remove(): void;
     }
@@ -3600,33 +3600,33 @@ export namespace Gee {
              * @param index 
              * @virtual
              */
-            vfunc_get(index: number): any;
+            vfunc_get(index: number): never;
 
             /**
              * @param index 
              * @param item 
              * @virtual
              */
-            vfunc_set(index: number, item: any): void;
+            vfunc_set(index: number, item: null): void;
 
             /**
              * @param item 
              * @virtual
              */
-            vfunc_index_of(item: any): number;
+            vfunc_index_of(item: null): number;
 
             /**
              * @param index 
              * @param item 
              * @virtual
              */
-            vfunc_insert(index: number, item: any): void;
+            vfunc_insert(index: number, item: null): void;
 
             /**
              * @param index 
              * @virtual
              */
-            vfunc_remove_at(index: number): any;
+            vfunc_remove_at(index: number): never;
 
             /**
              * @param start 
@@ -3638,12 +3638,12 @@ export namespace Gee {
             /**
              * @virtual
              */
-            vfunc_first(): any;
+            vfunc_first(): never;
 
             /**
              * @virtual
              */
-            vfunc_last(): any;
+            vfunc_last(): never;
 
             /**
              * @param index 
@@ -3694,13 +3694,13 @@ export namespace Gee {
         /**
          * @param index 
          */
-        get(index: number): any;
+        get(index: number): null;
 
         /**
          * @param index 
          * @param item 
          */
-        set(index: number, item: any): void;
+        set(index: number, item: never): void;
 
         /**
          * @param args 
@@ -3711,18 +3711,18 @@ export namespace Gee {
         /**
          * @param item 
          */
-        index_of(item: any): number;
+        index_of(item: never): number;
 
         /**
          * @param index 
          * @param item 
          */
-        insert(index: number, item: any): void;
+        insert(index: number, item: never): void;
 
         /**
          * @param index 
          */
-        remove_at(index: number): any;
+        remove_at(index: number): null;
 
         /**
          * @param start 
@@ -3730,9 +3730,9 @@ export namespace Gee {
          */
         slice(start: number, stop: number): List;
 
-        first(): any;
+        first(): null;
 
-        last(): any;
+        last(): null;
 
         /**
          * @param index 
@@ -3763,19 +3763,19 @@ export namespace Gee {
              * @param item 
              * @virtual
              */
-            vfunc_set(item: any): void;
+            vfunc_set(item: null): void;
 
             /**
              * @param item 
              * @virtual
              */
-            vfunc_insert(item: any): void;
+            vfunc_insert(item: null): void;
 
             /**
              * @param item 
              * @virtual
              */
-            vfunc_add(item: any): void;
+            vfunc_add(item: null): void;
 
             /**
              * @virtual
@@ -3803,7 +3803,7 @@ export namespace Gee {
         /**
          * @param item 
          */
-        set(item: any): void;
+        set(item: never): void;
 
         /**
          * @param args 
@@ -3814,12 +3814,12 @@ export namespace Gee {
         /**
          * @param item 
          */
-        insert(item: any): void;
+        insert(item: never): void;
 
         /**
          * @param item 
          */
-        add(item: any): void;
+        add(item: never): void;
 
         index(): number;
     }
@@ -3841,45 +3841,45 @@ export namespace Gee {
              * @param key 
              * @virtual
              */
-            vfunc_has_key(key: any): boolean;
+            vfunc_has_key(key: null): boolean;
 
             /**
              * @param key 
              * @virtual
              */
-            vfunc_contains(key: any): boolean;
-
-            /**
-             * @param key 
-             * @param value 
-             * @virtual
-             */
-            vfunc_has(key: any, value: any): boolean;
-
-            /**
-             * @param key 
-             * @virtual
-             */
-            vfunc_get(key: any): any;
+            vfunc_contains(key: null): boolean;
 
             /**
              * @param key 
              * @param value 
              * @virtual
              */
-            vfunc_set(key: any, value: any): void;
+            vfunc_has(key: null, value: null): boolean;
 
             /**
              * @param key 
              * @virtual
              */
-            vfunc_unset(key: any): [boolean, any];
+            vfunc_get(key: null): never;
+
+            /**
+             * @param key 
+             * @param value 
+             * @virtual
+             */
+            vfunc_set(key: null, value: null): void;
 
             /**
              * @param key 
              * @virtual
              */
-            vfunc_remove(key: any): [boolean, any];
+            vfunc_unset(key: null): [boolean, never];
+
+            /**
+             * @param key 
+             * @virtual
+             */
+            vfunc_remove(key: null): [boolean, never];
 
             /**
              * @virtual
@@ -4015,29 +4015,29 @@ export namespace Gee {
         /**
          * @param key 
          */
-        has_key(key: any): boolean;
+        has_key(key: never): boolean;
 
         /**
          * @param key 
          */
-        contains(key: any): boolean;
-
-        /**
-         * @param key 
-         * @param value 
-         */
-        has(key: any, value: any): boolean;
-
-        /**
-         * @param key 
-         */
-        get(key: any): any;
+        contains(key: never): boolean;
 
         /**
          * @param key 
          * @param value 
          */
-        set(key: any, value: any): void;
+        has(key: never, value: never): boolean;
+
+        /**
+         * @param key 
+         */
+        get(key: never): null;
+
+        /**
+         * @param key 
+         * @param value 
+         */
+        set(key: never, value: never): void;
 
         /**
          * @param args 
@@ -4048,12 +4048,12 @@ export namespace Gee {
         /**
          * @param key 
          */
-        unset(key: any): [boolean, any];
+        unset(key: never): [boolean, null];
 
         /**
          * @param key 
          */
-        remove(key: any): [boolean, any];
+        remove(key: never): [boolean, null];
 
         clear(): void;
 
@@ -4116,18 +4116,18 @@ export namespace Gee {
             /**
              * @virtual
              */
-            vfunc_get_key(): any;
+            vfunc_get_key(): never;
 
             /**
              * @virtual
              */
-            vfunc_get_value(): any;
+            vfunc_get_value(): never;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_value(value: any): void;
+            vfunc_set_value(value: null): void;
 
             /**
              * @virtual
@@ -4158,14 +4158,14 @@ export namespace Gee {
 
         first(): boolean;
 
-        get_key(): any;
+        get_key(): null;
 
-        get_value(): any;
+        get_value(): null;
 
         /**
          * @param value 
          */
-        set_value(value: any): void;
+        set_value(value: never): void;
 
         unset(): void;
     }
@@ -4202,33 +4202,33 @@ export namespace Gee {
              * @param key 
              * @virtual
              */
-            vfunc_contains(key: any): boolean;
+            vfunc_contains(key: null): boolean;
 
             /**
              * @param key 
              * @virtual
              */
-            vfunc_get(key: any): Collection;
-
-            /**
-             * @param key 
-             * @param value 
-             * @virtual
-             */
-            vfunc_set(key: any, value: any): void;
+            vfunc_get(key: null): Collection;
 
             /**
              * @param key 
              * @param value 
              * @virtual
              */
-            vfunc_remove(key: any, value: any): boolean;
+            vfunc_set(key: null, value: null): void;
+
+            /**
+             * @param key 
+             * @param value 
+             * @virtual
+             */
+            vfunc_remove(key: null, value: null): boolean;
 
             /**
              * @param key 
              * @virtual
              */
-            vfunc_remove_all(key: any): boolean;
+            vfunc_remove_all(key: null): boolean;
 
             /**
              * @virtual
@@ -4268,18 +4268,18 @@ export namespace Gee {
         /**
          * @param key 
          */
-        contains(key: any): boolean;
+        contains(key: never): boolean;
 
         /**
          * @param key 
          */
-        get(key: any): Collection;
+        get(key: never): Collection;
 
         /**
          * @param key 
          * @param value 
          */
-        set(key: any, value: any): void;
+        set(key: never, value: never): void;
 
         /**
          * @param args 
@@ -4291,12 +4291,12 @@ export namespace Gee {
          * @param key 
          * @param value 
          */
-        remove(key: any, value: any): boolean;
+        remove(key: never, value: never): boolean;
 
         /**
          * @param key 
          */
-        remove_all(key: any): boolean;
+        remove_all(key: never): boolean;
 
         clear(): void;
     }
@@ -4318,7 +4318,7 @@ export namespace Gee {
              * @param item 
              * @virtual
              */
-            vfunc_count(item: any): number;
+            vfunc_count(item: null): number;
         }
 
 
@@ -4341,7 +4341,7 @@ export namespace Gee {
         /**
          * @param item 
          */
-        count(item: any): number;
+        count(item: never): number;
     }
 
 
@@ -4361,17 +4361,17 @@ export namespace Gee {
              * @param element 
              * @virtual
              */
-            vfunc_offer(element: any): boolean;
+            vfunc_offer(element: null): boolean;
 
             /**
              * @virtual
              */
-            vfunc_peek(): any;
+            vfunc_peek(): never;
 
             /**
              * @virtual
              */
-            vfunc_poll(): any;
+            vfunc_poll(): never;
 
             /**
              * @param recipient 
@@ -4431,11 +4431,11 @@ export namespace Gee {
         /**
          * @param element 
          */
-        offer(element: any): boolean;
+        offer(element: never): boolean;
 
-        peek(): any;
+        peek(): null;
 
-        poll(): any;
+        poll(): null;
 
         /**
          * @param recipient 
@@ -4496,12 +4496,12 @@ export namespace Gee {
             /**
              * @virtual
              */
-            vfunc_first(): any;
+            vfunc_first(): never;
 
             /**
              * @virtual
              */
-            vfunc_last(): any;
+            vfunc_last(): never;
 
             /**
              * @virtual
@@ -4512,50 +4512,50 @@ export namespace Gee {
              * @param element 
              * @virtual
              */
-            vfunc_iterator_at(element: any): BidirIterator;
+            vfunc_iterator_at(element: null): BidirIterator;
 
             /**
              * @param element 
              * @virtual
              */
-            vfunc_lower(element: any): any;
+            vfunc_lower(element: null): never;
 
             /**
              * @param element 
              * @virtual
              */
-            vfunc_higher(element: any): any;
+            vfunc_higher(element: null): never;
 
             /**
              * @param element 
              * @virtual
              */
-            vfunc_floor(element: any): any;
+            vfunc_floor(element: null): never;
 
             /**
              * @param element 
              * @virtual
              */
-            vfunc_ceil(element: any): any;
+            vfunc_ceil(element: null): never;
 
             /**
              * @param before 
              * @virtual
              */
-            vfunc_head_set(before: any): SortedSet;
+            vfunc_head_set(before: null): SortedSet;
 
             /**
              * @param after 
              * @virtual
              */
-            vfunc_tail_set(after: any): SortedSet;
+            vfunc_tail_set(after: null): SortedSet;
 
             /**
              * @param from 
              * @param to 
              * @virtual
              */
-            vfunc_sub_set(from: any, to: any): SortedSet;
+            vfunc_sub_set(from: null, to: null): SortedSet;
         }
 
 
@@ -4575,52 +4575,52 @@ export namespace Gee {
     interface SortedSet extends Set, SortedSet.Interface {
 
         // Methods
-        first(): any;
+        first(): null;
 
-        last(): any;
+        last(): null;
 
         bidir_iterator(): BidirIterator;
 
         /**
          * @param element 
          */
-        iterator_at(element: any): BidirIterator;
+        iterator_at(element: never): BidirIterator;
 
         /**
          * @param element 
          */
-        lower(element: any): any;
+        lower(element: never): null;
 
         /**
          * @param element 
          */
-        higher(element: any): any;
+        higher(element: never): null;
 
         /**
          * @param element 
          */
-        floor(element: any): any;
+        floor(element: never): null;
 
         /**
          * @param element 
          */
-        ceil(element: any): any;
+        ceil(element: never): null;
 
         /**
          * @param before 
          */
-        head_set(before: any): SortedSet;
+        head_set(before: never): SortedSet;
 
         /**
          * @param after 
          */
-        tail_set(after: any): SortedSet;
+        tail_set(after: never): SortedSet;
 
         /**
          * @param from 
          * @param to 
          */
-        sub_set(from: any, to: any): SortedSet;
+        sub_set(from: never, to: never): SortedSet;
     }
 
 

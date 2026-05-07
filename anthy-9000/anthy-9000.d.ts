@@ -78,7 +78,7 @@ export namespace Anthy {
      * @param arg0 
      * @param arg1 
      */
-    function get_prediction_stat(arg0: anthy_context_t, arg1: (any | null)): number;
+    function get_prediction_stat(arg0: anthy_context_t, arg1: null): number;
 
     /**
      * @param arg0 
@@ -94,13 +94,13 @@ export namespace Anthy {
      * @param arg1 
      * @param arg2 
      */
-    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: (any | null)): number;
+    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: null): number;
 
     /**
      * @param arg0 
      * @param arg1 
      */
-    function get_stat(arg0: anthy_context_t, arg1: (any | null)): number;
+    function get_stat(arg0: anthy_context_t, arg1: null): number;
 
     function get_version_string(): string;
 

@@ -3968,7 +3968,7 @@ export namespace Champlain {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: (any | null);
+            data: never;
             id: string;
             license: string;
             license_uri: string;
@@ -4001,7 +4001,7 @@ export namespace Champlain {
          * @since 0.10
          * @construct-only
          */
-        get data(): (any | null);
+        get data(): null;
 
         /**
          * The id of the map source
@@ -4140,7 +4140,7 @@ export namespace Champlain {
          * Gets user data.
          * @returns the user data.
          */
-        get_data(): (any | null);
+        get_data(): null;
 
         /**
          * Gets map source's id.
@@ -7403,7 +7403,7 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            "render-complete": (arg0: (any | null), arg1: number, arg2: boolean) => void;
+            "render-complete": (arg0: null, arg1: number, arg2: boolean) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::etag": (pspec: GObject.ParamSpec) => void;
             "notify::fade-in": (pspec: GObject.ParamSpec) => void;

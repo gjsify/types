@@ -244,7 +244,7 @@ export namespace Totem {
      * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
      * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
-    function interface_load(name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: (any | null)): Gtk.Builder;
+    function interface_load(name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
 
     /**
      * Load the image called `name` in the directory given by `totem_interface_get_full_path()` into a {@link GdkPixbuf.Pixbuf}.
@@ -261,7 +261,7 @@ export namespace Totem {
      * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
      * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
-    function interface_load_with_full_path(filename: string, fatal: boolean, parent: (Gtk.Window | null), user_data: (any | null)): Gtk.Builder;
+    function interface_load_with_full_path(filename: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
 
     /**
      * Finds the specified `file` by looking in the plugin paths
@@ -288,7 +288,7 @@ export namespace Totem {
      * @param user_data a pointer to be passed to each signal handler in the interface when they're called
      * @returns the {@link Gtk.Builder} instance for the interface
      */
-    function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: (any | null)): Gtk.Builder;
+    function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
 
     function remote_command_quark(): GLib.Quark;
 

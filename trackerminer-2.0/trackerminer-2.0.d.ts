@@ -378,7 +378,7 @@ export namespace TrackerMiner {
         $signals: Decorator.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<Decorator.ConstructorProps>, ...args: any[]);
@@ -636,7 +636,7 @@ export namespace TrackerMiner {
         $signals: DecoratorFS.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<DecoratorFS.ConstructorProps>, ...args: any[]);
@@ -759,7 +759,7 @@ export namespace TrackerMiner {
         $signals: IndexingTree.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<IndexingTree.ConstructorProps>, ...args: any[]);

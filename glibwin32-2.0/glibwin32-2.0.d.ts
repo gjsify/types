@@ -72,7 +72,7 @@ export namespace GLibWin32 {
     /**
      * @param hmodule 
      */
-    function get_package_installation_directory_of_module(hmodule: (any | null)): string;
+    function get_package_installation_directory_of_module(hmodule: null): string;
 
     /**
      * @param _package 

@@ -1441,7 +1441,7 @@ export namespace Camel {
      * @returns Value of a named property of the `cert_info`,    or `null` when no such property exists. The returned value is owned by    the `cert_info` and is valid until the `cert_info` is freed.
      * @since 3.22
      */
-    function cipher_certinfo_get_property(cert_info: CipherCertInfo, name: string): (any | null);
+    function cipher_certinfo_get_property(cert_info: CipherCertInfo, name: string): null;
 
     /**
      * Sets a named property `name` value `value` for the given `cert_info`.
@@ -1453,7 +1453,7 @@ export namespace Camel {
      * @param value_clone a clone function for the `value`
      * @since 3.22
      */
-    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: (any | null), value_clone: (CipherCloneFunc | null)): void;
+    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: null, value_clone: (CipherCloneFunc | null)): void;
 
     /**
      * @param _in 
@@ -1576,7 +1576,7 @@ export namespace Camel {
      * @param _object a {@link GObject.Object}, for which add the backtrace
      * @since 3.20
      */
-    function debug_ref_unref_push_backtrace_for_object(_object: (any | null)): void;
+    function debug_ref_unref_push_backtrace_for_object(_object: null): void;
 
     /**
      * Start debug output for a given mode, used to make sure debug output
@@ -1603,7 +1603,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_fixed_int32(_in: (any | null), dest: number): number;
+    function file_util_decode_fixed_int32(_in: null, dest: number): number;
 
     /**
      * Decode a normal string from the input file.
@@ -1612,7 +1612,7 @@ export namespace Camel {
      * @param len total-len to decode.
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_fixed_string(_in: (any | null), str: string, len: (bigint | number)): number;
+    function file_util_decode_fixed_string(_in: null, str: string, len: (bigint | number)): number;
 
     /**
      * Decode a gint64 type.
@@ -1621,7 +1621,7 @@ export namespace Camel {
      * @returns 0 on success, -1 on failure.
      * @since 3.50
      */
-    function file_util_decode_gint64(_in: (any | null), dest: (bigint | number)): number;
+    function file_util_decode_gint64(_in: null, dest: (bigint | number)): number;
 
     /**
      * Decode an gsize type.
@@ -1629,7 +1629,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_gsize(_in: (any | null), dest: (bigint | number)): number;
+    function file_util_decode_gsize(_in: null, dest: (bigint | number)): number;
 
     /**
      * Decode an off_t type.
@@ -1637,7 +1637,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_off_t(_in: (any | null), dest: (bigint | number)): number;
+    function file_util_decode_off_t(_in: null, dest: (bigint | number)): number;
 
     /**
      * Decode a normal string from the input file.
@@ -1645,7 +1645,7 @@ export namespace Camel {
      * @param str pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_string(_in: (any | null), str: string): number;
+    function file_util_decode_string(_in: null, str: string): number;
 
     /**
      * Decode a time_t value.
@@ -1653,7 +1653,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_time_t(_in: (any | null), dest: (bigint | number)): number;
+    function file_util_decode_time_t(_in: null, dest: (bigint | number)): number;
 
     /**
      * Retrieve an encoded uint32 from a file.
@@ -1661,7 +1661,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.  @*dest will contain the decoded value.
      */
-    function file_util_decode_uint32(_in: (any | null), dest: number): number;
+    function file_util_decode_uint32(_in: null, dest: number): number;
 
     /**
      * Encode a gint32, performing no compression, but converting
@@ -1670,7 +1670,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_fixed_int32(out: (any | null), value: number): number;
+    function file_util_encode_fixed_int32(out: null, value: number): number;
 
     /**
      * Encode a normal string and save it in the output file.
@@ -1681,7 +1681,7 @@ export namespace Camel {
      * @param len total-len of str to store
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_fixed_string(out: (any | null), str: string, len: (bigint | number)): number;
+    function file_util_encode_fixed_string(out: null, str: string, len: (bigint | number)): number;
 
     /**
      * Encode a gint64 type.
@@ -1690,7 +1690,7 @@ export namespace Camel {
      * @returns 0 on success, -1 on error.
      * @since 3.50
      */
-    function file_util_encode_gint64(out: (any | null), value: (bigint | number)): number;
+    function file_util_encode_gint64(out: null, value: (bigint | number)): number;
 
     /**
      * Encode an gsize type.
@@ -1698,7 +1698,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_gsize(out: (any | null), value: (bigint | number)): number;
+    function file_util_encode_gsize(out: null, value: (bigint | number)): number;
 
     /**
      * Encode an off_t type.
@@ -1706,7 +1706,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_off_t(out: (any | null), value: (bigint | number)): number;
+    function file_util_encode_off_t(out: null, value: (bigint | number)): number;
 
     /**
      * Encode a normal string and save it in the output file.
@@ -1714,7 +1714,7 @@ export namespace Camel {
      * @param str value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_string(out: (any | null), str: string): number;
+    function file_util_encode_string(out: null, str: string): number;
 
     /**
      * Encode a time_t value to the file.
@@ -1722,7 +1722,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_time_t(out: (any | null), value: (bigint | number)): number;
+    function file_util_encode_time_t(out: null, value: (bigint | number)): number;
 
     /**
      * Utility function to save an uint32 to a file.
@@ -1730,7 +1730,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_uint32(out: (any | null), value: number): number;
+    function file_util_encode_uint32(out: null, value: number): number;
 
     /**
      * 'Flattens' `name` into a safe filename string by hex encoding any
@@ -1773,7 +1773,7 @@ export namespace Camel {
      * @param host a host address information structure to free, or `null`
      * @since 2.22
      */
-    function freeaddrinfo(host: (any | null)): void;
+    function freeaddrinfo(host: null): void;
 
     /**
      * Resolves a host `name` and returns an information about its address.
@@ -1784,7 +1784,7 @@ export namespace Camel {
      * @returns a newly allocated #addrinfo. Free it    with `camel_freeaddrinfo()` when done with it.
      * @since 2.22
      */
-    function getaddrinfo(name: string, service: string, hints: (any | null), cancellable: (Gio.Cancellable | null)): (any | null);
+    function getaddrinfo(name: string, service: string, hints: null, cancellable: (Gio.Cancellable | null)): null;
 
     /**
      * @param _in 
@@ -1944,30 +1944,30 @@ export namespace Camel {
      * @param name name of param to find
      * @returns the value of the `name` param
      */
-    function header_param(params: (any | null), name: string): string;
+    function header_param(params: null, name: string): string;
 
     /**
      * @param _in a header param value to decode
      * @returns Decode list of parameters.    Free with `camel_header_param_list_free()` when done with it.
      */
-    function header_param_list_decode(_in: (string | null)): (any | null);
+    function header_param_list_decode(_in: (string | null)): null;
 
     /**
      * @param params 
      */
-    function header_param_list_format(params: (any | null)): string;
+    function header_param_list_format(params: null): string;
 
     /**
      * @param out 
      * @param params 
      */
-    function header_param_list_format_append(out: GLib.String, params: (any | null)): void;
+    function header_param_list_format_append(out: GLib.String, params: null): void;
 
     /**
      * Free the list of params.
      * @param params a list of params
      */
-    function header_param_list_free(params: (any | null)): void;
+    function header_param_list_free(params: null): void;
 
     /**
      * Generate a list of references, from most recent up.
@@ -1983,7 +1983,7 @@ export namespace Camel {
      * @param value value to set
      * @returns the set param
      */
-    function header_set_param(paramsp: (any | null), name: string, value: string): (any | null);
+    function header_set_param(paramsp: null, name: string, value: string): null;
 
     /**
      * Gets the first token in the string according to the rules of
@@ -2055,7 +2055,7 @@ export namespace Camel {
      * @param tm the #tm to store the result in
      * @param offset the `gint` to store the offset in
      */
-    function localtime_with_offset(tt: (bigint | number), tm: (any | null), offset: number): void;
+    function localtime_with_offset(tt: (bigint | number), tm: null, offset: number): void;
 
     /**
      * Create an exclusive lock using .lock semantics.
@@ -2122,7 +2122,7 @@ export namespace Camel {
      * @returns the calendar time representation of `tm`
      * @since 3.4
      */
-    function mktime_utc(tm: (any | null)): number;
+    function mktime_utc(tm: null): number;
 
     /**
      * This copies an mbox file from a shared directory with multiple
@@ -2159,7 +2159,7 @@ export namespace Camel {
      * @param info info to print in tracker summary
      * @since 3.6
      */
-    function pointer_tracker_track_with_info(ptr: (any | null), info: string): void;
+    function pointer_tracker_track_with_info(ptr: null, info: string): void;
 
     /**
      * Removes pointer from the pointer tracker. It's an error to try
@@ -2169,7 +2169,7 @@ export namespace Camel {
      * @param ptr pointer to remove from the tracker
      * @since 3.6
      */
-    function pointer_tracker_untrack(ptr: (any | null)): void;
+    function pointer_tracker_untrack(ptr: null): void;
 
     /**
      * Returns the registered {@link Camel.Provider} for `protocol`, loading it
@@ -2391,17 +2391,17 @@ export namespace Camel {
     /**
      * @param words 
      */
-    function search_words_free(words: (any | null)): void;
+    function search_words_free(words: null): void;
 
     /**
      * @param words 
      */
-    function search_words_simple(words: (any | null)): (any | null);
+    function search_words_simple(words: null): null;
 
     /**
      * @param _in 
      */
-    function search_words_split(_in: number): (any | null);
+    function search_words_split(_in: number): null;
 
     function service_error_quark(): GLib.Quark;
 
@@ -2444,12 +2444,12 @@ export namespace Camel {
      * @param a 
      * @param b 
      */
-    function strcase_equal(a: (any | null), b: (any | null)): number;
+    function strcase_equal(a: null, b: null): number;
 
     /**
      * @param v 
      */
-    function strcase_hash(v: (any | null)): number;
+    function strcase_hash(v: null): number;
 
     /**
      * @param str 
@@ -2942,28 +2942,28 @@ export namespace Camel {
      * @gir-type Callback
      */
     interface CipherCloneFunc {
-        (value: (any | null)): (any | null);
+        (value: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface CopyFunc {
-        (object: (any | null)): (any | null);
+        (object: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface DBCollate {
-        (enc: (any | null), length1: number, data1: (any | null), length2: number, data2: (any | null)): number;
+        (enc: null, length1: number, data1: null, length2: number, data2: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface DBSelectCB {
-        (user_data: (any | null), colvalues: string[], colnames: string[]): number;
+        (user_data: null, colvalues: string[], colnames: string[]): number;
     }
 
     /**
@@ -2991,7 +2991,7 @@ export namespace Camel {
      * @gir-type Callback
      */
     interface FilterStatusFunc {
-        (driver: FilterDriver, status: (any | null), pc: number, desc: string): void;
+        (driver: FilterDriver, status: null, pc: number, desc: string): void;
     }
 
     /**
@@ -4093,26 +4093,26 @@ export namespace Camel {
          * @param istream 
          * @virtual
          */
-        vfunc_cert_load(istream: (any | null)): Cert;
+        vfunc_cert_load(istream: null): Cert;
 
         /**
          * @param cert 
          * @param ostream 
          * @virtual
          */
-        vfunc_cert_save(cert: Cert, ostream: (any | null)): number;
+        vfunc_cert_save(cert: Cert, ostream: null): number;
 
         /**
          * @param istream 
          * @virtual
          */
-        vfunc_header_load(istream: (any | null)): number;
+        vfunc_header_load(istream: null): number;
 
         /**
          * @param ostream 
          * @virtual
          */
-        vfunc_header_save(ostream: (any | null)): number;
+        vfunc_header_save(ostream: null): number;
 
         // Methods
         clear(): void;
@@ -4621,7 +4621,7 @@ export namespace Camel {
          * @param index an index to start with, between 0 and `ncols`
          * @param col_names column names to traverse
          */
-        static get_column_ident(hash: ({ [key: string]: any } | GLib.HashTable<any, any>), index: number, col_names: string[]): [DBKnownColumnNames, GLib.HashTable<any, any>];
+        static get_column_ident(hash: ({ [key: string]: any } | GLib.HashTable<never, never>), index: number, col_names: string[]): [DBKnownColumnNames, GLib.HashTable<never, never>];
 
         /**
          * @param raw_name raw name to find the column name for
@@ -5295,7 +5295,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_data_sync(data: any, data_len: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        construct_from_data_sync(data: never, data_len: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
@@ -5863,7 +5863,7 @@ export namespace Camel {
          * Sets a log file to use for logging.
          * @param logfile a FILE handle where to write logging
          */
-        set_logfile(logfile: (any | null)): void;
+        set_logfile(logfile: null): void;
 
         /**
          * Sets a callback to call when a play of a sound is requested.
@@ -6058,8 +6058,8 @@ export namespace Camel {
             markSeen: ThreeState;
             mark_seen_timeout: number;
             markSeenTimeout: number;
-            parent_store: (Store | null);
-            parentStore: (Store | null);
+            parent_store: Store;
+            parentStore: Store;
         }
     }
 
@@ -6145,13 +6145,13 @@ export namespace Camel {
          * The {@link Camel.Store} to which the folder belongs.
          * @construct-only
          */
-        get parent_store(): (Store | null);
+        get parent_store(): Store;
 
         /**
          * The {@link Camel.Store} to which the folder belongs.
          * @construct-only
          */
-        get parentStore(): (Store | null);
+        get parentStore(): Store;
 
         /**
          * Compile-time signal type information.
@@ -6890,7 +6890,7 @@ export namespace Camel {
         /**
          * @returns the parent {@link Camel.Store} of the folder
          */
-        get_parent_store(): (any | null);
+        get_parent_store(): null;
 
         /**
          * @returns the set of {@link Camel.MessageFlags} that can be permanently stored on a message between sessions. If it includes #CAMEL_MESSAGE_USER, then user-defined flags will be remembered.
@@ -7642,7 +7642,7 @@ export namespace Camel {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             deleted_count: number;
             deletedCount: number;
-            folder: (Folder | null);
+            folder: Folder;
             junk_count: number;
             junkCount: number;
             junk_not_deleted_count: number;
@@ -7681,7 +7681,7 @@ export namespace Camel {
          * The {@link Camel.Folder} to which the folder summary belongs.
          * @construct-only
          */
-        get folder(): (Folder | null);
+        get folder(): Folder;
 
         /**
          * How many junk infos is saved in a summary.
@@ -7847,12 +7847,12 @@ export namespace Camel {
          * @param fir 
          * @virtual
          */
-        vfunc_summary_header_load(fir: (any | null)): boolean;
+        vfunc_summary_header_load(fir: null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_summary_header_save(): (any | null);
+        vfunc_summary_header_save(): null;
 
         // Methods
         /**
@@ -7927,7 +7927,7 @@ export namespace Camel {
         /**
          * @returns a {@link Camel.Folder} to which the summary if associated.
          */
-        get_folder(): (any | null);
+        get_folder(): null;
 
         /**
          * Returns hash of current stored 'uids' in summary, where key is 'uid'
@@ -7999,7 +7999,7 @@ export namespace Camel {
          * @param folder_name a folder name corresponding to `summary`
          * @returns whether succeeded
          */
-        header_load(store: (any | null), folder_name: string): boolean;
+        header_load(store: null, folder_name: string): boolean;
 
         /**
          * Saves summary header information into the disk. The function does
@@ -8495,7 +8495,7 @@ export namespace Camel {
 
         normalize: IndexNorm;
 
-        normalize_data: any;
+        normalize_data: null;
 
         // Constructors
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
@@ -9465,7 +9465,7 @@ export namespace Camel {
             messageId: (bigint | number);
             mlist: string;
             preview: (string | null);
-            references: (any[] | null);
+            references: (never[] | null);
             size: number;
             subject: string;
             summary: FolderSummary;
@@ -9665,8 +9665,8 @@ export namespace Camel {
          * cast to {@link Camel.SummaryMessageID}.
          * @since 3.24
          */
-        get references(): (any[] | null);
-        set references(val: (any[] | null));
+        get references(): (never[] | null);
+        set references(val: (never[] | null));
 
         /**
          * Size of the associated message.
@@ -10473,7 +10473,7 @@ export namespace Camel {
         /**
          * @returns Referenced {@link Camel.FolderSummary} to which the `mi` belongs, or `null`, if there is none. Use `g_object_unref()` for non-NULL returned values when done with it.
          */
-        ref_summary(): (any | null);
+        ref_summary(): null;
 
         /**
          * Save the `mi` content to the message info record `record`. It can populate all
@@ -12186,7 +12186,7 @@ export namespace Camel {
          * @param headers 
          * @virtual
          */
-        vfunc_message(headers: (any | null)): void;
+        vfunc_message(headers: null): void;
 
         /**
          * @virtual
@@ -13225,13 +13225,13 @@ export namespace Camel {
          * @param fp 
          * @virtual
          */
-        vfunc_state_read(fp: (any | null)): number;
+        vfunc_state_read(fp: null): number;
 
         /**
          * @param fp 
          * @virtual
          */
-        vfunc_state_write(fp: (any | null)): number;
+        vfunc_state_write(fp: null): number;
 
         // Methods
         /**
@@ -14123,7 +14123,7 @@ export namespace Camel {
         /**
          * @param part 
          */
-        describe_part(part: (any | null)): number;
+        describe_part(part: null): number;
 
         /**
          * @param use 
@@ -18022,7 +18022,7 @@ export namespace Camel {
          * @param file 
          * @virtual
          */
-        vfunc_store_info_load(file: (any | null)): StoreInfo;
+        vfunc_store_info_load(file: null): StoreInfo;
 
         /**
          * @param path 
@@ -18035,7 +18035,7 @@ export namespace Camel {
          * @param info 
          * @virtual
          */
-        vfunc_store_info_save(file: (any | null), info: StoreInfo): number;
+        vfunc_store_info_save(file: null, info: StoreInfo): number;
 
         /**
          * @param info 
@@ -18049,13 +18049,13 @@ export namespace Camel {
          * @param file 
          * @virtual
          */
-        vfunc_summary_header_load(file: (any | null)): number;
+        vfunc_summary_header_load(file: null): number;
 
         /**
          * @param file 
          * @virtual
          */
-        vfunc_summary_header_save(file: (any | null)): number;
+        vfunc_summary_header_save(file: null): number;
 
         // Methods
         /**
@@ -20324,7 +20324,7 @@ export namespace Camel {
          * @param mi_data a {@link Camel.VeeMessageInfoData} to add
          * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
          */
-        add_vuid(mi_data: (any | null), changes: (FolderChangeInfo | null)): void;
+        add_vuid(mi_data: null, changes: (FolderChangeInfo | null)): void;
 
         /**
          * Initializes internal structures of the `vf`. This is meant to be
@@ -20423,7 +20423,7 @@ export namespace Camel {
          * @param mi_data a {@link Camel.VeeMessageInfoData} to remove
          * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
          */
-        remove_vuid(mi_data: (any | null), changes: (FolderChangeInfo | null)): void;
+        remove_vuid(mi_data: null, changes: (FolderChangeInfo | null)): void;
 
         /**
          * Sets whether the `vfolder` can automatically update when of its
@@ -20673,7 +20673,7 @@ export namespace Camel {
         /**
          * @returns the Unmatched folder instance,    or `null`, when it's disabled.
          */
-        get_unmatched_folder(): (any | null);
+        get_unmatched_folder(): null;
 
         /**
          * @returns the associated {@link Camel.VeeDataCache}
@@ -21114,13 +21114,13 @@ export namespace Camel {
 
         email: string;
 
-        cert_data: any;
+        cert_data: null;
 
         cert_data_free: GLib.DestroyNotify;
 
         cert_data_clone: CipherCloneFunc;
 
-        properties: any[];
+        properties: null[];
     }
 
 
@@ -21133,7 +21133,7 @@ export namespace Camel {
         // Fields
         name: string;
 
-        value: any;
+        value: null;
 
         value_free: GLib.DestroyNotify;
 
@@ -21163,16 +21163,16 @@ export namespace Camel {
         // Fields
         children: GLib.Queue;
 
-        sign: any;
+        sign: null;
 
-        encrypt: any;
+        encrypt: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             children: GLib.Queue;
-            sign: any;
-            encrypt: any;
+            sign: null;
+            encrypt: null;
         }>);
 
         static ["new"](): CipherValidity;
@@ -21196,7 +21196,7 @@ export namespace Camel {
          * @param cert_data_clone a copy function for `cert_data`, to copy the data; required, when `cert_data` is not `null`
          * @returns Index of the added certinfo; -1 on error
          */
-        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: (any | null), cert_data_clone: (CipherCloneFunc | null)): number;
+        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: null, cert_data_clone: (CipherCloneFunc | null)): number;
 
         clear(): void;
 
@@ -21218,7 +21218,7 @@ export namespace Camel {
          * @param name a property name
          * @returns Value of a named property of a {@link Camel.CipherCertInfo}, or `null` when no such    property exists. The returned value is owned by the associated {@link Camel.CipherCertInfo}    and is valid until the cert info is freed.
          */
-        get_certinfo_property(mode: CipherValidityMode, info_index: number, name: string): (any | null);
+        get_certinfo_property(mode: CipherValidityMode, info_index: number, name: string): null;
 
         get_description(): string;
 
@@ -21237,7 +21237,7 @@ export namespace Camel {
          * @param value a property value, or `null`
          * @param value_clone a clone function for the `value`
          */
-        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: (any | null), value_clone: (CipherCloneFunc | null)): void;
+        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: null, value_clone: (CipherCloneFunc | null)): void;
 
         /**
          * @param description 
@@ -21260,7 +21260,7 @@ export namespace Camel {
         // Fields
         disposition: string;
 
-        params: any;
+        params: null;
 
         refcount: number;
 
@@ -21268,7 +21268,7 @@ export namespace Camel {
 
         constructor(properties?: Partial<{
             disposition: string;
-            params: any;
+            params: null;
             refcount: number;
         }>);
 
@@ -21311,7 +21311,7 @@ export namespace Camel {
 
         subtype: string;
 
-        params: any;
+        params: null;
 
         refcount: number;
 
@@ -21320,7 +21320,7 @@ export namespace Camel {
         constructor(properties?: Partial<{
             type: string;
             subtype: string;
-            params: any;
+            params: null;
             refcount: number;
         }>);
 
@@ -21495,21 +21495,21 @@ export namespace Camel {
         static $gtype: GObject.GType<FolderChangeInfo>;
 
         // Fields
-        uid_added: any[];
+        uid_added: null[];
 
-        uid_removed: any[];
+        uid_removed: null[];
 
-        uid_changed: any[];
+        uid_changed: null[];
 
-        uid_recent: any[];
+        uid_recent: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            uid_added: any[];
-            uid_removed: any[];
-            uid_changed: any[];
-            uid_recent: any[];
+            uid_added: null[];
+            uid_removed: null[];
+            uid_changed: null[];
+            uid_recent: null[];
         }>);
 
         static ["new"](): FolderChangeInfo;
@@ -21651,9 +21651,9 @@ export namespace Camel {
         static $gtype: GObject.GType<FolderInfo>;
 
         // Fields
-        next: any;
+        next: null;
 
-        child: any;
+        child: null;
 
         full_name: string;
 
@@ -21668,9 +21668,9 @@ export namespace Camel {
         // Constructors
 
         constructor(properties?: Partial<{
-            next: any;
-            parent: any;
-            child: any;
+            next: null;
+            parent: null;
+            child: null;
             full_name: string;
             display_name: string;
             flags: FolderInfoFlags;
@@ -21732,7 +21732,7 @@ export namespace Camel {
 
         total: number;
 
-        next: any;
+        next: null;
 
         // Constructors
         constructor(name: string, used: (bigint | number), total: (bigint | number));
@@ -21789,11 +21789,11 @@ export namespace Camel {
 
         subject: number;
 
-        tree: any;
+        tree: null;
 
         folder: Folder;
 
-        summary: any[];
+        summary: null[];
 
         // Constructors
         constructor(folder: Folder, uids: string[], thread_subject: boolean);
@@ -21827,9 +21827,9 @@ export namespace Camel {
         static $gtype: GObject.GType<FolderThreadNode>;
 
         // Fields
-        next: any;
+        next: null;
 
-        child: any;
+        child: null;
 
         message: MessageInfo;
 
@@ -21927,7 +21927,7 @@ export namespace Camel {
         static $gtype: GObject.GType<HeaderAddress>;
 
         // Fields
-        next: any;
+        next: null;
 
         type: HeaderAddressType;
 
@@ -21938,7 +21938,7 @@ export namespace Camel {
         // Constructors
 
         constructor(properties?: Partial<{
-            next: any;
+            next: null;
             type: HeaderAddressType;
             name: string;
             refcount: number;
@@ -22030,7 +22030,7 @@ export namespace Camel {
         static $gtype: GObject.GType<HeaderParam>;
 
         // Fields
-        next: any;
+        next: null;
 
         name: string;
 
@@ -22039,7 +22039,7 @@ export namespace Camel {
         // Constructors
 
         constructor(properties?: Partial<{
-            next: any;
+            next: null;
             name: string;
             value: string;
         }>);
@@ -22048,24 +22048,24 @@ export namespace Camel {
         /**
          * @param _in a header param value to decode
          */
-        static list_decode(_in: (string | null)): (any | null);
+        static list_decode(_in: (string | null)): null;
 
         /**
          * @param params 
          */
-        static list_format(params: (any | null)): string;
+        static list_format(params: null): string;
 
         /**
          * @param out 
          * @param params 
          */
-        static list_format_append(out: GLib.String, params: (any | null)): void;
+        static list_format_append(out: GLib.String, params: null): void;
 
         /**
          * Free the list of params.
          * @param params a list of params
          */
-        static list_free(params: (any | null)): void;
+        static list_free(params: null): void;
     }
 
 
@@ -22987,7 +22987,7 @@ export namespace Camel {
          * Aborts a key reservation.
          * @param key a reserved key
          */
-        abort(key: (any | null)): void;
+        abort(key: null): void;
 
         /**
          * Adds `object` to `bag`.  The `key` MUST have been previously reserved using
@@ -22995,7 +22995,7 @@ export namespace Camel {
          * @param key a reserved key
          * @param object a {@link GObject.Object}
          */
-        add(key: (any | null), object: (any | null)): void;
+        add(key: null, object: null): void;
 
         /**
          * Frees `bag`.  As a precaution, the function will emit a warning to standard
@@ -23011,7 +23011,7 @@ export namespace Camel {
          * @param key a key
          * @returns the object corresponding to `key`, or `null` if not found
          */
-        get(key: (any | null)): (any | null);
+        get(key: null): null;
 
         /**
          * Returns a {@link GLib.PtrArray} of all the objects in the bag.  The caller owns
@@ -23037,7 +23037,7 @@ export namespace Camel {
          * @param key an unreserved key
          * @returns the object for `key`, or `null` if `key` is reserved or not found
          */
-        peek(key: (any | null)): (any | null);
+        peek(key: null): null;
 
         /**
          * Changes the key for `object` to `new_key`, atomically.
@@ -23047,13 +23047,13 @@ export namespace Camel {
          * @param object a {@link GObject.Object}
          * @param new_key a new key for `object`
          */
-        rekey(object: (any | null), new_key: (any | null)): void;
+        rekey(object: null, new_key: null): void;
 
         /**
          * Removes `object` from `bag`.
          * @param object a {@link GObject.Object}
          */
-        remove(object: (any | null)): void;
+        remove(object: null): void;
 
         /**
          * Reserves `key` in `bag`.  If `key` is already reserved in another thread,
@@ -23066,7 +23066,7 @@ export namespace Camel {
          * @param key the key to reserve
          * @returns the object for `key`, or `null` if `key` is not found
          */
-        reserve(key: (any | null)): (any | null);
+        reserve(key: null): null;
     }
 
 
@@ -23164,13 +23164,13 @@ export namespace Camel {
         // Fields
         used: number;
 
-        keys: any[];
+        keys: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
             used: number;
-            keys: any[];
+            keys: null[];
         }>);
     }
 
@@ -23206,14 +23206,14 @@ export namespace Camel {
 
         used: number;
 
-        partition: any[];
+        partition: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
             next: _block_t;
             used: number;
-            partition: any[];
+            partition: null[];
         }>);
     }
 
@@ -23254,7 +23254,7 @@ export namespace Camel {
 
         object_types: GObject.GType[];
 
-        authtypes: any[];
+        authtypes: null[];
 
         url_hash: GLib.HashFunc;
 
@@ -23262,7 +23262,7 @@ export namespace Camel {
 
         translation_domain: string;
 
-        priv: any;
+        priv: null;
 
         // Static methods
         /**
@@ -23362,7 +23362,7 @@ export namespace Camel {
         // Fields
         path: string;
 
-        types: any[];
+        types: null[];
 
         loaded: number;
 
@@ -23446,14 +23446,14 @@ export namespace Camel {
 
         name: string;
 
-        data: any;
+        data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             type: number;
             name: string;
-            data: any;
+            data: null;
         }>);
     }
 
@@ -24452,7 +24452,7 @@ export namespace Camel {
         /**
          * @returns A referenced object associated with    `group`, or `null`, when no object had been set to it. Use `g_object_unref()`    to free it, when no longer needed.
          */
-        get(): (any | null);
+        get(): null;
 
         /**
          * Increases a reference count of the `group`.
@@ -24465,7 +24465,7 @@ export namespace Camel {
          * the `object` is `null`, then unsets any previously set.
          * @param object a {@link GObject.Object} descendant, or `null`
          */
-        set(object: (any | null)): void;
+        set(object: null): void;
 
         /**
          * Decreases a reference count of the `group`. The `group` is
@@ -24548,7 +24548,7 @@ export namespace Camel {
 
         type: _search_word_t;
 
-        words: any;
+        words: null;
     }
 
 

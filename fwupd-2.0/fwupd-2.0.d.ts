@@ -4690,7 +4690,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns attributes
          */
-        get_report_metadata(cancellable: (Gio.Cancellable | null)): GLib.HashTable<any, any>;
+        get_report_metadata(cancellable: (Gio.Cancellable | null)): GLib.HashTable<never, never>;
 
         /**
          * Gets all the report metadata from the daemon.
@@ -4699,7 +4699,7 @@ export namespace Fwupd {
          * this method.
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        get_report_metadata_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable<any, any>>;
+        get_report_metadata_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable<never, never>>;
 
         /**
          * Gets all the report metadata from the daemon.
@@ -4719,14 +4719,14 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback the function to run on completion
          */
-        get_report_metadata_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable<any, any>> | void);
+        get_report_metadata_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable<never, never>> | void);
 
         /**
          * Gets the result of {@link FwupdClient.get_report_metadata_async}.
          * @param res the asynchronous result
          * @returns attributes
          */
-        get_report_metadata_finish(res: Gio.AsyncResult): GLib.HashTable<any, any>;
+        get_report_metadata_finish(res: Gio.AsyncResult): GLib.HashTable<never, never>;
 
         /**
          * Gets the results of a previous firmware update for a specific device.
@@ -5077,7 +5077,7 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns `true` for success
          */
-        modify_bios_setting(settings: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null)): boolean;
+        modify_bios_setting(settings: ({ [key: string]: any } | GLib.HashTable<never, never>), cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * Modifies a BIOS setting using kernel API.
@@ -5085,16 +5085,7 @@ export namespace Fwupd {
          * @param settings BIOS settings
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Modifies a BIOS setting using kernel API.
-         * The daemon will only respond to this request with proper permissions.
-         * @param settings BIOS settings
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback the function to run on completion
-         */
-        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<never, never>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Modifies a BIOS setting using kernel API.
@@ -5103,7 +5094,16 @@ export namespace Fwupd {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback the function to run on completion
          */
-        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<never, never>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Modifies a BIOS setting using kernel API.
+         * The daemon will only respond to this request with proper permissions.
+         * @param settings BIOS settings
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback the function to run on completion
+         */
+        modify_bios_setting_async(settings: ({ [key: string]: any } | GLib.HashTable<never, never>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * Gets the result of {@link FwupdClient.modify_bios_setting_async}.
@@ -7587,7 +7587,7 @@ export namespace Fwupd {
          * Sets multiple release metadata items.
          * @param hash the key-values
          */
-        add_metadata(hash: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        add_metadata(hash: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Sets a release metadata item.
@@ -7717,7 +7717,7 @@ export namespace Fwupd {
          * Gets the release metadata.
          * @returns the metadata, which may be empty
          */
-        get_metadata(): GLib.HashTable<any, any>;
+        get_metadata(): GLib.HashTable<never, never>;
 
         /**
          * Gets a release metadata item.
@@ -8875,7 +8875,7 @@ export namespace Fwupd {
          * Gets the report metadata.
          * @returns the metadata, which may be empty
          */
-        get_metadata(): GLib.HashTable<any, any>;
+        get_metadata(): GLib.HashTable<never, never>;
 
         /**
          * Gets a report metadata item.

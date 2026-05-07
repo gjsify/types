@@ -354,8 +354,8 @@ export namespace Gm {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             border_radius: number;
             borderRadius: number;
-            corner_radii: any[];
-            cornerRadii: any[];
+            corner_radii: never[];
+            cornerRadii: never[];
             cutouts: Gio.ListStore;
             height: number;
             name: string;
@@ -400,16 +400,16 @@ export namespace Gm {
          * clockwise.
          * @since 0.6.0
          */
-        get corner_radii(): any[];
-        set corner_radii(val: any[]);
+        get corner_radii(): null[];
+        set corner_radii(val: never[]);
 
         /**
          * The radii of the panels corner starting top-left and going
          * clockwise.
          * @since 0.6.0
          */
-        get cornerRadii(): any[];
-        set cornerRadii(val: any[]);
+        get cornerRadii(): null[];
+        set cornerRadii(val: never[]);
 
         /**
          * The display cutouts as {@link Gio.ListModel} of {@link Cutout}.

@@ -155,7 +155,7 @@ export namespace GstPlayer {
      * @gir-type Callback
      */
     interface PlayerSignalDispatcherFunc {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     namespace Player {
@@ -1333,8 +1333,8 @@ export namespace GstPlayer {
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayerVideoRenderer.ConstructorProps {
             video_sink: Gst.Element;
             videoSink: Gst.Element;
-            window_handle: (any | null);
-            windowHandle: (any | null);
+            window_handle: never;
+            windowHandle: never;
         }
     }
 
@@ -1351,11 +1351,11 @@ export namespace GstPlayer {
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
 
-        get window_handle(): (any | null);
-        set window_handle(val: (any | null));
+        get window_handle(): null;
+        set window_handle(val: never);
 
-        get windowHandle(): (any | null);
-        set windowHandle(val: (any | null));
+        get windowHandle(): null;
+        set windowHandle(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1388,13 +1388,13 @@ export namespace GstPlayer {
         /**
          * @param window_handle Window handle to use or `null`
          */
-        static ["new"](window_handle: (any | null)): PlayerVideoRenderer;
+        static ["new"](window_handle: null): PlayerVideoRenderer;
 
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
          */
-        static new_with_sink(window_handle: (any | null), video_sink: Gst.Element): PlayerVideoRenderer;
+        static new_with_sink(window_handle: null, video_sink: Gst.Element): PlayerVideoRenderer;
 
         // Methods
         /**
@@ -1412,7 +1412,7 @@ export namespace GstPlayer {
         /**
          * @returns The currently set, platform specific window handle
          */
-        get_window_handle(): (any | null);
+        get_window_handle(): null;
 
         /**
          * Configure a subregion as a video target within the window set by
@@ -1437,7 +1437,7 @@ export namespace GstPlayer {
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
          */
-        set_window_handle(window_handle: (any | null)): void;
+        set_window_handle(window_handle: null): void;
     }
 
 

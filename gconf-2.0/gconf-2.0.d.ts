@@ -176,13 +176,13 @@ export namespace GConf {
      * @param app 
      * @param mod_info 
      */
-    function postinit(app: (any | null), mod_info: (any | null)): void;
+    function postinit(app: null, mod_info: null): void;
 
     /**
      * @param app 
      * @param mod_info 
      */
-    function preinit(app: (any | null), mod_info: (any | null)): void;
+    function preinit(app: null, mod_info: null): void;
 
     /**
      * @param lookup_table 
@@ -238,14 +238,14 @@ export namespace GConf {
      * @gir-type Callback
      */
     interface ListenersForeach {
-        (location: string, cnxn_id: number, listener_data: (any | null)): void;
+        (location: string, cnxn_id: number, listener_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ListenersPredicate {
-        (location: string, cnxn_id: number, listener_data: (any | null)): boolean;
+        (location: string, cnxn_id: number, listener_data: null): boolean;
     }
 
     /**
@@ -270,17 +270,17 @@ export namespace GConf {
              * @signal
              * @run-last
              */
-            error: (arg0: (any | null)) => void;
+            error: (arg0: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "unreturned-error": (arg0: (any | null)) => void;
+            "unreturned-error": (arg0: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: string, arg1: (any | null)) => void;
+            "value-changed": (arg0: string, arg1: null) => void;
         }
 
         // Constructor properties interface
@@ -447,7 +447,7 @@ export namespace GConf {
          * @param car_retloc 
          * @param cdr_retloc 
          */
-        get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: (any | null), cdr_retloc: (any | null)): boolean;
+        get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: null, cdr_retloc: null): boolean;
 
         /**
          * @param key 
@@ -545,7 +545,7 @@ export namespace GConf {
          * @param address_of_car 
          * @param address_of_cdr 
          */
-        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: (any | null), address_of_cdr: (any | null)): boolean;
+        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: null, address_of_cdr: null): boolean;
 
         /**
          * @param key 
@@ -650,7 +650,7 @@ export namespace GConf {
          * @param address_of_car 
          * @param address_of_cdr 
          */
-        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: (any | null), address_of_cdr: (any | null)): void;
+        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: null, address_of_cdr: null): void;
 
         /**
          * @param key 

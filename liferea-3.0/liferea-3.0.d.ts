@@ -140,7 +140,7 @@ export namespace Liferea {
      * Save given authentication info of a given subscription into password store (if available).
      * @param subscription 
      */
-    function auth_info_store(subscription: (any | null)): void;
+    function auth_info_store(subscription: null): void;
 
     function download_show(): void;
 
@@ -210,28 +210,28 @@ export namespace Liferea {
      * @param parameter 
      * @param user_data 
      */
-    function on_action_launch_item_in_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: (any | null)): void;
+    function on_action_launch_item_in_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
 
     /**
      * @param action 
      * @param parameter 
      * @param user_data 
      */
-    function on_action_launch_item_in_external_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: (any | null)): void;
+    function on_action_launch_item_in_external_browser(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
 
     /**
      * @param action 
      * @param parameter 
      * @param user_data 
      */
-    function on_action_launch_item_in_tab(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: (any | null)): void;
+    function on_action_launch_item_in_tab(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
 
     /**
      * @param action 
      * @param parameter 
      * @param user_data 
      */
-    function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: (any | null)): void;
+    function on_remove_items_activate(action: Gio.SimpleAction, parameter: GLib.Variant, user_data: null): void;
 
     /**
      * @returns the name of the currently configured social bookmarking site.
@@ -322,7 +322,7 @@ export namespace Liferea {
      * @gir-type Callback
      */
     interface itemActionFunc {
-        (item: itemPtr, userdata: (any | null)): void;
+        (item: itemPtr, userdata: null): void;
     }
 
     /**
@@ -723,7 +723,7 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "new-items": (arg0: (any | null)) => void;
+            "new-items": (arg0: null) => void;
             /**
              * @signal
              * @action
@@ -947,7 +947,7 @@ export namespace Liferea {
 
         description: string;
 
-        metadata: any[];
+        metadata: null[];
 
         time: number;
 
@@ -1507,17 +1507,17 @@ export namespace Liferea {
         $signals: Node.SignalSignatures;
 
         // Fields
-        data: any;
+        data: null;
 
-        subscription: any;
+        subscription: null;
 
-        provider: any;
+        provider: null;
 
-        source: any;
+        source: null;
 
         iconFile: string;
 
-        children: any[];
+        children: null[];
 
         id: string;
 
@@ -1531,7 +1531,7 @@ export namespace Liferea {
 
         title: string;
 
-        icon: any;
+        icon: null;
 
         available: boolean;
 
@@ -1610,7 +1610,7 @@ export namespace Liferea {
          * @param params 0 if func should be called without user_data, 1 if func should be called with user_data
          * @param user_data specifies the second argument that func should be passed
          */
-        foreach_child_full(func: (any | null), params: number, user_data: (any | null)): void;
+        foreach_child_full(func: null, params: number, user_data: null): void;
 
         /**
          * Returns the base URL for the given node.
@@ -1699,7 +1699,7 @@ export namespace Liferea {
          * Attaches a data structure to the given node.
          * @param data the structure
          */
-        set_data(data: (any | null)): void;
+        set_data(data: null): void;
 
         /**
          * @param args 
@@ -1736,7 +1736,7 @@ export namespace Liferea {
          * Attaches the subscription to the given node.
          * @param subscription the subscription
          */
-        set_subscription(subscription: (any | null)): void;
+        set_subscription(subscription: null): void;
 
         /**
          * Sets the node's title for the feed list.
@@ -1771,7 +1771,7 @@ export namespace Liferea {
          * to mass-update subscriptions.
          * @param user_data update flags
          */
-        update_subscription(user_data: (any | null)): void;
+        update_subscription(user_data: null): void;
     }
 
 
@@ -1950,11 +1950,11 @@ export namespace Liferea {
 
         result: UpdateResult;
 
-        owner: any;
+        owner: null;
 
         callback: update_result_cb;
 
-        user_data: any;
+        user_data: null;
 
         flags: updateFlags;
 
@@ -1984,7 +1984,7 @@ export namespace Liferea {
          * @param job the job to queue
          * @param flags request/result processing flags
          */
-        static queue_add(job: (any | null), flags: updateFlags): void;
+        static queue_add(job: null, flags: updateFlags): void;
 
         // Methods
         /**
@@ -2325,11 +2325,11 @@ export namespace Liferea {
         static $gtype: GObject.GType<itemSet>;
 
         // Fields
-        rules: any[];
+        rules: null[];
 
         anyMatch: boolean;
 
-        ids: any[];
+        ids: null[];
 
         nodeId: string;
 

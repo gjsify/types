@@ -222,7 +222,7 @@ export namespace Tepl {
      * @returns `true` if the transformation was successful, and `false` otherwise.
      * @since 5.0
      */
-    function utils_binding_transform_func_smart_bool(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: (any | null)): boolean;
+    function utils_binding_transform_func_smart_bool(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: null): boolean;
 
     /**
      * @returns a new close button (a {@link Gtk.Button}).

@@ -505,14 +505,14 @@ export function registerClass<
      * @param src_boxed The boxed structure to be copied.
      * @returns The newly created copy of the boxed    structure.
      */
-    function boxed_copy(boxed_type: GType, src_boxed: any): any;
+    function boxed_copy(boxed_type: GType, src_boxed: never): null;
 
     /**
      * Free the boxed structure `boxed` which is of type `boxed_type`.
      * @param boxed_type The type of `boxed`.
      * @param boxed The boxed structure to be freed.
      */
-    function boxed_free(boxed_type: GType, boxed: any): void;
+    function boxed_free(boxed_type: GType, boxed: never): void;
 
     /**
      * This function creates a new `G_TYPE_BOXED` derived type id for a new
@@ -543,7 +543,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_BOOLEAN__BOXED_BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__BOXED_BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -557,7 +557,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_BOOLEAN__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_BOOLEAN__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -570,7 +570,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_STRING__OBJECT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_STRING__OBJECT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -582,7 +582,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__BOOLEAN(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__BOOLEAN(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -594,7 +594,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -606,7 +606,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__CHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__CHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -618,7 +618,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__DOUBLE(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__DOUBLE(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -630,7 +630,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__ENUM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__ENUM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -642,7 +642,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -654,7 +654,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__FLOAT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__FLOAT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -666,7 +666,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__INT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -678,7 +678,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__LONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__LONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -690,7 +690,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__OBJECT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__OBJECT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -702,7 +702,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__PARAM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__PARAM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single raw
@@ -718,7 +718,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single string
@@ -730,7 +730,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__STRING(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -742,7 +742,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__UCHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UCHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -754,7 +754,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__UINT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with an unsigned int
@@ -766,7 +766,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__UINT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__UINT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -778,7 +778,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__ULONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__ULONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -790,7 +790,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__VARIANT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__VARIANT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A {@link GObject.ClosureMarshal} function for use with signals with no arguments.
@@ -801,7 +801,7 @@ export function registerClass<
      * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      */
-    function cclosure_marshal_VOID__VOID(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__VOID(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * A generic marshaller function implemented via
@@ -817,7 +817,7 @@ export function registerClass<
      * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
      * @since 2.30
      */
-    function cclosure_marshal_generic(closure: Closure, return_gvalue: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_generic(closure: Closure, return_gvalue: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Disconnects a handler from `instance` so it will not be called during
@@ -1387,7 +1387,7 @@ export function registerClass<
      * @returns standard {@link GObject.SignalAccumulator} result
      * @since 2.28
      */
-    function signal_accumulator_first_wins(ihint: SignalInvocationHint, return_accu: (Value | any), handler_return: (Value | any), dummy: (any | null)): boolean;
+    function signal_accumulator_first_wins(ihint: SignalInvocationHint, return_accu: (Value | any), handler_return: (Value | any), dummy: null): boolean;
 
     /**
      * A predefined {@link GObject.SignalAccumulator} for signals that return a
@@ -1404,7 +1404,7 @@ export function registerClass<
      * @returns standard {@link GObject.SignalAccumulator} result
      * @since 2.4
      */
-    function signal_accumulator_true_handled(ihint: SignalInvocationHint, return_accu: (Value | any), handler_return: (Value | any), dummy: (any | null)): boolean;
+    function signal_accumulator_true_handled(ihint: SignalInvocationHint, return_accu: (Value | any), handler_return: (Value | any), dummy: null): boolean;
 
     /**
      * Adds an emission hook for a signal, which will get called for any emission
@@ -1566,7 +1566,7 @@ export function registerClass<
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
      */
-    function signal_handlers_block_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: (any | null), data: (any | null)): number;
+    function signal_handlers_block_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: null, data: null): number;
 
     /**
      * Destroy all signal handlers of a type instance. This function is
@@ -1600,7 +1600,7 @@ export function registerClass<
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
      */
-    function signal_handlers_disconnect_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: (any | null), data: (any | null)): number;
+    function signal_handlers_disconnect_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: null, data: null): number;
 
     /**
      * Unblocks all handlers on an instance that match a certain selection
@@ -1627,7 +1627,7 @@ export function registerClass<
      * @param data The closure data of the handlers' closures.
      * @returns The number of handlers that matched.
      */
-    function signal_handlers_unblock_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: (any | null), data: (any | null)): number;
+    function signal_handlers_unblock_matched(instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: (Closure | null), func: null, data: null): number;
 
     /**
      * Returns whether there are any handlers connected to `instance` for the
@@ -1927,7 +1927,7 @@ export function registerClass<
      * @param g_class 
      * @param private_size_or_offset 
      */
-    function type_class_adjust_private_offset(g_class: (any | null), private_size_or_offset: number): void;
+    function type_class_adjust_private_offset(g_class: null, private_size_or_offset: number): void;
 
     /**
      * Retrieves the type class of the given `type`.
@@ -2128,7 +2128,7 @@ export function registerClass<
      * @param quark a {@link GLib.Quark} id to identify the data
      * @returns the data, or `null` if no data was found
      */
-    function type_get_qdata(type: GType, quark: GLib.Quark): (any | null);
+    function type_get_qdata(type: GType, quark: GLib.Quark): null;
 
     /**
      * Returns an opaque serial number that represents the state of the set
@@ -2348,7 +2348,7 @@ export function registerClass<
      * @param quark a {@link GLib.Quark} id to identify the data
      * @param data the data
      */
-    function type_set_qdata(type: GType, quark: GLib.Quark, data: (any | null)): void;
+    function type_set_qdata(type: GType, quark: GLib.Quark, data: null): void;
 
     /**
      * @param type 
@@ -2405,14 +2405,14 @@ export function registerClass<
      * @gir-type Callback
      */
     interface BoxedCopyFunc {
-        (boxed: any): any;
+        (boxed: null): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface BoxedFreeFunc {
-        (boxed: any): void;
+        (boxed: null): void;
     }
 
     /**
@@ -2426,28 +2426,28 @@ export function registerClass<
      * @gir-type Callback
      */
     interface ClassFinalizeFunc {
-        (g_class: TypeClass, class_data: (any | null)): void;
+        (g_class: TypeClass, class_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClassInitFunc {
-        (g_class: TypeClass, class_data: (any | null)): void;
+        (g_class: TypeClass, class_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClosureMarshal {
-        (closure: Closure, return_value: (Value | null), param_values: unknown[], invocation_hint: (any | null), marshal_data: (any | null)): void;
+        (closure: Closure, return_value: (Value | null), param_values: unknown[], invocation_hint: null, marshal_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClosureNotify {
-        (data: (any | null), closure: Closure): void;
+        (data: null, closure: Closure): void;
     }
 
     /**
@@ -2461,14 +2461,14 @@ export function registerClass<
      * @gir-type Callback
      */
     interface InterfaceFinalizeFunc {
-        (g_iface: TypeInterface, iface_data: (any | null)): void;
+        (g_iface: TypeInterface, iface_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface InterfaceInitFunc {
-        (g_iface: TypeInterface, iface_data: (any | null)): void;
+        (g_iface: TypeInterface, iface_data: null): void;
     }
 
     /**
@@ -2496,35 +2496,35 @@ export function registerClass<
      * @gir-type Callback
      */
     interface SignalAccumulator {
-        (ihint: SignalInvocationHint, return_accu: unknown, handler_return: unknown, data: (any | null)): boolean;
+        (ihint: SignalInvocationHint, return_accu: unknown, handler_return: unknown, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface SignalEmissionHook {
-        (ihint: SignalInvocationHint, param_values: unknown[], data: (any | null)): boolean;
+        (ihint: SignalInvocationHint, param_values: unknown[], data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface ToggleNotify<A = Object> {
-        (data: (any | null), object: A, is_last_ref: boolean): void;
+        (data: null, object: A, is_last_ref: boolean): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TypeClassCacheFunc {
-        (cache_data: (any | null), g_class: TypeClass): boolean;
+        (cache_data: null, g_class: TypeClass): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TypeInterfaceCheckFunc {
-        (check_data: (any | null), g_iface: TypeInterface): void;
+        (check_data: null, g_iface: TypeInterface): void;
     }
 
     /**
@@ -2594,7 +2594,7 @@ export function registerClass<
      * @gir-type Callback
      */
     interface TypeValuePeekPointerFunc {
-        (value: unknown): (any | null);
+        (value: unknown): null;
     }
 
     /**
@@ -2608,7 +2608,7 @@ export function registerClass<
      * @gir-type Callback
      */
     interface WeakNotify<A = Object> {
-        (data: (any | null), where_the_object_was: A): void;
+        (data: null, where_the_object_was: A): void;
     }
 
     /**
@@ -3703,7 +3703,7 @@ export function registerClass<
          * @param what 
          * @param data 
          */
-        static compat_control(what: (bigint | number), data: (any | null)): number;
+        static compat_control(what: (bigint | number), data: null): number;
 
         /**
          * Find the {@link GObject.ParamSpec} with the given name for an
@@ -3943,7 +3943,7 @@ export function registerClass<
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Gets a property of an object.
@@ -3967,7 +3967,7 @@ export function registerClass<
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @returns The user data pointer set, or `null`
          */
-        get_qdata(quark: GLib.Quark): (any | null);
+        get_qdata(quark: GLib.Quark): null;
 
         /**
          * Gets `n_properties` properties for an `object`.
@@ -4095,7 +4095,7 @@ export function registerClass<
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Sets a property on an object.
@@ -4110,7 +4110,7 @@ export function registerClass<
          * @param key name of the key
          * @returns the data if found, or `null`          if no such data exists.
          */
-        steal_data(key: string): (any | null);
+        steal_data(key: string): null;
 
         /**
          * This function gets back user data pointers stored via
@@ -4153,7 +4153,7 @@ export function registerClass<
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @returns The user data pointer set, or `null`
          */
-        steal_qdata(quark: GLib.Quark): (any | null);
+        steal_qdata(quark: GLib.Quark): null;
 
         /**
          * Reverts the effect of a previous call to
@@ -4562,7 +4562,7 @@ export function registerClass<
          * @param quark a {@link GLib.Quark}, naming the user data pointer
          * @returns the user data pointer set, or `null`
          */
-        get_qdata(quark: GLib.Quark): (any | null);
+        get_qdata(quark: GLib.Quark): null;
 
         /**
          * If the paramspec redirects operations to another paramspec,
@@ -4586,7 +4586,7 @@ export function registerClass<
          * @param quark a {@link GLib.Quark}, naming the user data pointer
          * @param data an opaque user data pointer
          */
-        set_qdata(quark: GLib.Quark, data: (any | null)): void;
+        set_qdata(quark: GLib.Quark, data: null): void;
 
         /**
          * The initial reference count of a newly created {@link GObject.ParamSpec} is 1,
@@ -4607,7 +4607,7 @@ export function registerClass<
          * @param quark a {@link GLib.Quark}, naming the user data pointer
          * @returns the user data pointer set, or `null`
          */
-        steal_qdata(quark: GLib.Quark): (any | null);
+        steal_qdata(quark: GLib.Quark): null;
 
         /**
          * Registers a property override for a property introduced in a parent class or inherited interface.
@@ -4868,9 +4868,9 @@ export function registerClass<
         // Fields
         use_count: number;
 
-        type_infos: any[];
+        type_infos: null[];
 
-        interface_infos: any[];
+        interface_infos: null[];
 
         name: string;
 
@@ -5040,7 +5040,7 @@ export function registerClass<
         static $gtype: GType<CClosure>;
 
         // Fields
-        callback: any;
+        callback: null;
 
         // Static methods
         /**
@@ -5055,7 +5055,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_BOOLEAN__BOXED_BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_BOOLEAN__BOXED_BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -5069,7 +5069,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_BOOLEAN__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_BOOLEAN__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with handlers that
@@ -5082,7 +5082,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_STRING__OBJECT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_STRING__OBJECT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5094,7 +5094,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__BOOLEAN(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__BOOLEAN(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5106,7 +5106,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__BOXED(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5118,7 +5118,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__CHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__CHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -5130,7 +5130,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__DOUBLE(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__DOUBLE(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5142,7 +5142,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__ENUM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__ENUM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5154,7 +5154,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__FLAGS(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with one
@@ -5166,7 +5166,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__FLOAT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__FLOAT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5178,7 +5178,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__INT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__INT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -5190,7 +5190,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__LONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__LONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5202,7 +5202,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__OBJECT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__OBJECT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5214,7 +5214,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__PARAM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__PARAM(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single raw
@@ -5230,7 +5230,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single string
@@ -5242,7 +5242,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__STRING(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__STRING(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5254,7 +5254,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__UCHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__UCHAR(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with with a single
@@ -5266,7 +5266,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__UINT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__UINT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with an unsigned int
@@ -5278,7 +5278,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__UINT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__UINT_POINTER(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5290,7 +5290,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__ULONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__ULONG(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with a single
@@ -5302,7 +5302,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__VARIANT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__VARIANT(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A {@link GObject.ClosureMarshal} function for use with signals with no arguments.
@@ -5313,7 +5313,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_VOID__VOID(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_VOID__VOID(closure: Closure, return_value: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
 
         /**
          * A generic marshaller function implemented via
@@ -5328,7 +5328,7 @@ export function registerClass<
          * @param invocation_hint The invocation hint given as the last argument to   `g_closure_invoke()`.
          * @param marshal_data Additional data specified when registering the   marshaller, see `g_closure_set_marshal()` and   `g_closure_set_meta_marshal()`
          */
-        static marshal_generic(closure: Closure, return_gvalue: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+        static marshal_generic(closure: Closure, return_gvalue: (Value | any), n_param_values: number, param_values: (Value | any), invocation_hint: null, marshal_data: null): void;
     }
 
 
@@ -5339,7 +5339,7 @@ export function registerClass<
         static $gtype: GType<ClosureNotifyData>;
 
         // Fields
-        data: any;
+        data: null;
 
         notify: ClosureNotify;
     }
@@ -5449,7 +5449,7 @@ export function registerClass<
 
         interface_finalize: InterfaceFinalizeFunc;
 
-        interface_data: any;
+        interface_data: null;
     }
 
 
@@ -5625,7 +5625,7 @@ export function registerClass<
          * @param g_class 
          * @param private_size_or_offset 
          */
-        static adjust_private_offset(g_class: (any | null), private_size_or_offset: number): void;
+        static adjust_private_offset(g_class: null, private_size_or_offset: number): void;
 
         /**
          * Retrieves the type class of the given `type`.
@@ -5740,7 +5740,7 @@ export function registerClass<
         /**
          * @param private_type 
          */
-        get_private(private_type: GType): (any | null);
+        get_private(private_type: GType): null;
 
         /**
          * Retrieves the class structure of the immediate parent type of the
@@ -5807,7 +5807,7 @@ export function registerClass<
 
         class_finalize: ClassFinalizeFunc;
 
-        class_data: any;
+        class_data: null;
 
         instance_size: number;
 
@@ -5828,7 +5828,7 @@ export function registerClass<
         /**
          * @param private_type 
          */
-        get_private(private_type: GType): (any | null);
+        get_private(private_type: GType): null;
     }
 
 
@@ -6071,7 +6071,7 @@ export function registerClass<
          * Get the contents of a `G_TYPE_BOXED` derived {@link GObject.Value}.
          * @returns boxed contents of `value`
          */
-        get_boxed(): (any | null);
+        get_boxed(): null;
 
         /**
          * Do not use this function; it is broken on platforms where the %char
@@ -6146,7 +6146,7 @@ export function registerClass<
          * Get the contents of a pointer {@link GObject.Value}.
          * @returns pointer contents of `value`
          */
-        get_pointer(): (any | null);
+        get_pointer(): null;
 
         /**
          * Get the contents of a `G_TYPE_CHAR` {@link GObject.Value}.
@@ -6232,7 +6232,7 @@ export function registerClass<
          * This is an internal function introduced mainly for C marshallers.
          * @returns the value contents as a pointer
          */
-        peek_pointer(): (any | null);
+        peek_pointer(): null;
 
         /**
          * Clears the current value in `value` and resets it to the default value
@@ -6252,13 +6252,13 @@ export function registerClass<
          * Set the contents of a `G_TYPE_BOXED` derived {@link GObject.Value} to `v_boxed`.
          * @param v_boxed caller-owned boxed object to be duplicated for the {@link GObject.Value}
          */
-        set_boxed(v_boxed: (any | null)): void;
+        set_boxed(v_boxed: null): void;
 
         /**
          * This is an internal function introduced mainly for C marshallers.
          * @param v_boxed duplicated unowned boxed value to be set
          */
-        set_boxed_take_ownership(v_boxed: (any | null)): void;
+        set_boxed_take_ownership(v_boxed: null): void;
 
         /**
          * Set the contents of a `G_TYPE_CHAR` {@link GObject.Value} to `v_char`.
@@ -6303,7 +6303,7 @@ export function registerClass<
          * the {@link GObject.Value} contains.
          * @param instance the instance
          */
-        set_instance(instance: (any | null)): void;
+        set_instance(instance: null): void;
 
         /**
          * Set the contents of a `G_TYPE_INT` {@link GObject.Value} to `v_int`.
@@ -6357,7 +6357,7 @@ export function registerClass<
          * Set the contents of a pointer {@link GObject.Value} to `v_pointer`.
          * @param v_pointer pointer value to be set
          */
-        set_pointer(v_pointer: (any | null)): void;
+        set_pointer(v_pointer: null): void;
 
         /**
          * Set the contents of a `G_TYPE_CHAR` {@link GObject.Value} to `v_char`.
@@ -6372,7 +6372,7 @@ export function registerClass<
          * when setting the {@link GObject.Value}.
          * @param v_boxed static boxed value to be set
          */
-        set_static_boxed(v_boxed: (any | null)): void;
+        set_static_boxed(v_boxed: null): void;
 
         /**
          * Set the contents of a `G_TYPE_STRING` {@link GObject.Value} to `v_string`.
@@ -6448,7 +6448,7 @@ export function registerClass<
          * the caller doesn’t have to unref it any more.
          * @param v_boxed duplicated unowned boxed value to be set
          */
-        take_boxed(v_boxed: (any | null)): void;
+        take_boxed(v_boxed: null): void;
 
         /**
          * Sets the contents of a `G_TYPE_STRING` {@link GObject.Value} to `v_string`.
@@ -6653,7 +6653,7 @@ export function registerClass<
 
         v_double: number;
 
-        v_pointer: any;
+        v_pointer: null;
     }
 
 
@@ -6680,7 +6680,7 @@ export function registerClass<
 
         v_double: number;
 
-        v_pointer: any;
+        v_pointer: null;
     }
 
 

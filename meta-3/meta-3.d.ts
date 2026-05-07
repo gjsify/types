@@ -1804,12 +1804,12 @@ export namespace Meta {
      * @param v1 
      * @param v2 
      */
-    function unsigned_long_equal(v1: (any | null), v2: (any | null)): number;
+    function unsigned_long_equal(v1: null, v2: null): number;
 
     /**
      * @param v 
      */
-    function unsigned_long_hash(v: (any | null)): number;
+    function unsigned_long_hash(v: null): number;
 
     /**
      * @param x11_display 
@@ -1839,7 +1839,7 @@ export namespace Meta {
      * @gir-type Callback
      */
     interface KeyHandlerFunc {
-        (display: Display, window: Window, event: (any | null), binding: KeyBinding): void;
+        (display: Display, window: Window, event: null, binding: KeyBinding): void;
     }
 
     /**
@@ -4426,7 +4426,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "startup-sequence-changed": (arg0: (any | null)) => void;
+            "startup-sequence-changed": (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -6425,13 +6425,13 @@ export namespace Meta {
             gtkUniqueBusName: string;
             gtk_window_object_path: string;
             gtkWindowObjectPath: string;
-            icon: any;
+            icon: never;
             maximized_horizontally: boolean;
             maximizedHorizontally: boolean;
             maximized_vertically: boolean;
             maximizedVertically: boolean;
-            mini_icon: any;
-            miniIcon: any;
+            mini_icon: never;
+            miniIcon: never;
             minimized: boolean;
             mutter_hints: string;
             mutterHints: string;
@@ -6556,7 +6556,7 @@ export namespace Meta {
         /**
          * @read-only
          */
-        get icon(): any;
+        get icon(): null;
 
         /**
          * @read-only
@@ -6581,12 +6581,12 @@ export namespace Meta {
         /**
          * @read-only
          */
-        get mini_icon(): any;
+        get mini_icon(): null;
 
         /**
          * @read-only
          */
-        get miniIcon(): any;
+        get miniIcon(): null;
 
         /**
          * @read-only

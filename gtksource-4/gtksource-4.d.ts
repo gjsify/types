@@ -1705,7 +1705,7 @@ export namespace GtkSource {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1715,7 +1715,7 @@ export namespace GtkSource {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1724,7 +1724,7 @@ export namespace GtkSource {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1798,7 +1798,7 @@ export namespace GtkSource {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1809,7 +1809,7 @@ export namespace GtkSource {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1818,7 +1818,7 @@ export namespace GtkSource {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6047,8 +6047,8 @@ export namespace GtkSource {
             matchStyle: Style;
             occurrences_count: number;
             occurrencesCount: number;
-            regex_error: (any | null);
-            regexError: (any | null);
+            regex_error: null;
+            regexError: null;
             settings: SearchSettings;
         }
     }
@@ -6118,7 +6118,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regex_error(): (any | null);
+        get regex_error(): null;
 
         /**
          * If the regex search pattern doesn't follow all the rules, this
@@ -6129,7 +6129,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regexError(): (any | null);
+        get regexError(): null;
 
         /**
          * The {@link GtkSource.SearchSettings} associated to the search context.

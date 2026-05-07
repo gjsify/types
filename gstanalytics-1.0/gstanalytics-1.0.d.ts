@@ -960,7 +960,7 @@ export namespace GstAnalytics {
          * @param state Opaque data to store state of the query.    If `state` point to NULL, the first analytics-metadata directly related    to `an_meta_id` will be set in `rlt_mtd`. Doesn't need to be free.
          * @returns TRUE if `rlt_mtd` was updated, other wise FALSE
          */
-        get_direct_related(an_meta_id: number, relation_type: RelTypes, type: MtdType, state: any): [boolean, any, Mtd];
+        get_direct_related(an_meta_id: number, relation_type: RelTypes, type: MtdType, state: never): [boolean, null, Mtd];
 
         /**
          * Fill `rlt` if a analytics-meta with id == `an_meta_id` exist in `meta` instance,
@@ -1018,7 +1018,7 @@ export namespace GstAnalytics {
          * @param type Type of GstAnalyticsMtd to iterate on or use  `GST_ANALYTICS_MTD_TYPE_ANY` for any.
          * @returns FALSE if end was reached and iteration is completed.
          */
-        iterate(state: (any | null), type: MtdType): [boolean, Mtd];
+        iterate(state: null, type: MtdType): [boolean, Mtd];
 
         /**
          * Sets the relation ({@link GstAnalytics.RelTypes}) between `an_meta_first` and

@@ -311,28 +311,28 @@ export namespace Rest {
      * @gir-type Callback
      */
     interface OAuthProxyAuthCallback<A = GObject.Object> {
-        (proxy: OAuthProxy, error: GLib.Error, weak_object: A, userdata: (any | null)): void;
+        (proxy: OAuthProxy, error: GLib.Error, weak_object: A, userdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ProxyCallAsyncCallback<A = GObject.Object> {
-        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata: (any | null)): void;
+        (call: ProxyCall, error: GLib.Error, weak_object: A, userdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ProxyCallContinuousCallback<A = GObject.Object> {
-        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata: (any | null)): void;
+        (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ProxyCallUploadCallback<A = GObject.Object> {
-        (call: ProxyCall, total: number, uploaded: number, error: GLib.Error, weak_object: A, userdata: (any | null)): void;
+        (call: ProxyCall, total: number, uploaded: number, error: GLib.Error, weak_object: A, userdata: null): void;
     }
 
     namespace OAuth2Proxy {
@@ -475,7 +475,7 @@ export namespace Rest {
          * @param extra_params any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
          * @returns a newly allocated uri string
          */
-        build_login_url_full(redirect_uri: string, extra_params: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
+        build_login_url_full(redirect_uri: string, extra_params: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
 
         /**
          * Get the current request or access token.
@@ -1297,7 +1297,7 @@ export namespace Rest {
         /**
          * @returns pointer to a hash table of headers. This hash table must not be changed. You should call `g_hash_table_unref()` when you have finished with it.
          */
-        get_response_headers(): GLib.HashTable<any, any>;
+        get_response_headers(): GLib.HashTable<never, never>;
 
         /**
          * Get the HTTP status code for the call.
@@ -1518,7 +1518,7 @@ export namespace Rest {
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
 
-        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: (any | null)): Param;
+        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: null): Param;
 
         // Methods
         /**
@@ -1526,7 +1526,7 @@ export namespace Rest {
          * not modified in any way.
          * @returns the content.
          */
-        get_content(): (any | null);
+        get_content(): null;
 
         /**
          * Get the length of the content of `param`.

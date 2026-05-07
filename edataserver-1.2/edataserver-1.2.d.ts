@@ -1239,7 +1239,7 @@ export namespace EDataServer {
      * @returns `true` if the enum nickname has a corresponding value
      * @since 3.4
      */
-    function binding_transform_enum_nick_to_value(binding: GObject.Binding, source_value: (GObject.Value | any), target_value: (GObject.Value | any), not_used: (any | null)): boolean;
+    function binding_transform_enum_nick_to_value(binding: GObject.Binding, source_value: (GObject.Value | any), target_value: (GObject.Value | any), not_used: null): boolean;
 
     /**
      * Transforms an enumeration value to its corresponding nickname.
@@ -1250,7 +1250,7 @@ export namespace EDataServer {
      * @returns `true` if the enum value has a corresponding nickname
      * @since 3.4
      */
-    function binding_transform_enum_value_to_nick(binding: GObject.Binding, source_value: (GObject.Value | any), target_value: (GObject.Value | any), not_used: (any | null)): boolean;
+    function binding_transform_enum_value_to_nick(binding: GObject.Binding, source_value: (GObject.Value | any), target_value: (GObject.Value | any), not_used: null): boolean;
 
     /**
      * Adds a new category, with its corresponding icon, to the
@@ -1867,14 +1867,14 @@ export namespace EDataServer {
      * @param tm The #tm to store the result in.
      * @param offset The #int to store the offset in.
      */
-    function localtime_with_offset(tt: (bigint | number), tm: (any | null), offset: number): void;
+    function localtime_with_offset(tt: (bigint | number), tm: null, offset: number): void;
 
     /**
      * Like mktime(3), but assumes UTC instead of local timezone.
      * @param tm The #tm to convert to a calendar time representation.
      * @returns The calendar time representation of `tm`.
      */
-    function mktime_utc(tm: (any | null)): number;
+    function mktime_utc(tm: null): number;
 
     /**
      * Processes the `compile_value` and returns the result, which is stored
@@ -2018,7 +2018,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function strftime(string: string, max: (bigint | number), fmt: string, tm: (any | null)): number;
+    function strftime(string: string, max: (bigint | number), fmt: string, tm: null): number;
 
     /**
      * Creates a string representation of the time value `date_tm` and
@@ -2034,7 +2034,7 @@ export namespace EDataServer {
      * @param buffer A #char buffer to store the time string in.
      * @param buffer_size The length of `buffer`.
      */
-    function time_format_date_and_time(date_tm: (any | null), use_24_hour_format: boolean, show_midnight: boolean, show_zero_seconds: boolean, buffer: string, buffer_size: number): void;
+    function time_format_date_and_time(date_tm: null, use_24_hour_format: boolean, show_midnight: boolean, show_zero_seconds: boolean, buffer: string, buffer_size: number): void;
 
     /**
      * Creates a string representation of a time value in `date_tm` and
@@ -2045,7 +2045,7 @@ export namespace EDataServer {
      * @param buffer The #char buffer to store the result in.
      * @param buffer_size The length of `buffer`.
      */
-    function time_format_time(date_tm: (any | null), use_24_hour_format: boolean, show_zero_seconds: boolean, buffer: string, buffer_size: number): void;
+    function time_format_time(date_tm: null, use_24_hour_format: boolean, show_zero_seconds: boolean, buffer: string, buffer_size: number): void;
 
     /**
      * Retrieves a date format string with a 4-digit year (D_FMT on systems with
@@ -2065,7 +2065,7 @@ export namespace EDataServer {
      * @param result Return value for the parsed date.
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether `value` was an empty string, a valid date, or an invalid date.
      */
-    function time_parse_date(value: string, result: (any | null)): TimeParseStatus;
+    function time_parse_date(value: string, result: null): TimeParseStatus;
 
     /**
      * Parses a string `value` containing a date and a time and stores the
@@ -2078,7 +2078,7 @@ export namespace EDataServer {
      * @param result a #tm to store the result in
      * @returns E_TIME_PARSE_OK if the string was successfully parsed,          E_TIME_PARSE_NONE if the string was empty, or          E_TIME_PARSE_INVALID if the string could not be parsed.
      */
-    function time_parse_date_and_time(value: string, result: (any | null)): TimeParseStatus;
+    function time_parse_date_and_time(value: string, result: null): TimeParseStatus;
 
     /**
      * Parses a string `value` containing a date and a time and stores the
@@ -2093,7 +2093,7 @@ export namespace EDataServer {
      * @returns E_TIME_PARSE_OK if the string was successfully parsed,          E_TIME_PARSE_NONE if the string was empty, or          E_TIME_PARSE_INVALID if the string could not be parsed.
      * @since 2.22
      */
-    function time_parse_date_and_time_ex(value: string, result: (any | null), two_digit_year: boolean): TimeParseStatus;
+    function time_parse_date_and_time_ex(value: string, result: null, two_digit_year: boolean): TimeParseStatus;
 
     /**
      * Takes in a date string entered by the user and tries to convert it to
@@ -2104,7 +2104,7 @@ export namespace EDataServer {
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether `value` was an empty string, a valid date, or an invalid date.
      * @since 2.22
      */
-    function time_parse_date_ex(value: string, result: (any | null), two_digit_year: boolean): TimeParseStatus;
+    function time_parse_date_ex(value: string, result: null, two_digit_year: boolean): TimeParseStatus;
 
     /**
      * Parses `value` using the `format` saving the parsed date into `out_result`.
@@ -2114,7 +2114,7 @@ export namespace EDataServer {
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether    the `value` was an empty string, a valid date, or an invalid date.
      * @since 3.50
      */
-    function time_parse_date_format(value: string, format: string): [TimeParseStatus, any, boolean];
+    function time_parse_date_format(value: string, format: string): [TimeParseStatus, null, boolean];
 
     /**
      * Parses `value`, a string containing a time. `value` is expected to be
@@ -2126,7 +2126,7 @@ export namespace EDataServer {
      * @param result A #tm to store the result in.
      * @returns An {@link EDataServer.TimeParseStatus} result code indicating whether `value` was an empty string, a valid date, or an invalid date.
      */
-    function time_parse_time(value: string, result: (any | null)): TimeParseStatus;
+    function time_parse_time(value: string, result: null): TimeParseStatus;
 
     /**
      * Similar to `g_timeout_add_seconds_full()`, but also names the {@link GLib.Source} as
@@ -2186,7 +2186,7 @@ export namespace EDataServer {
      * @param tm The time value to format.
      * @returns The number of characters placed in `s`.
      */
-    function utf8_strftime(string: string, max: (bigint | number), fmt: string, tm: (any | null)): number;
+    function utf8_strftime(string: string, max: (bigint | number), fmt: string, tm: null): number;
 
     /**
      * Checks whether the `collection_source` can be used as a credential source
@@ -2197,7 +2197,7 @@ export namespace EDataServer {
      * @returns whether `collection_source` can be used as a credential source    for `child_source`, that is, whether they share credentials.
      * @since 3.28
      */
-    function util_can_use_collection_as_credential_source(collection_source: (any | null), child_source: (any | null)): boolean;
+    function util_can_use_collection_as_credential_source(collection_source: null, child_source: null): boolean;
 
     /**
      * Changes component `component` in the `inout_uri` to value `value`.
@@ -2371,7 +2371,7 @@ export namespace EDataServer {
      * @param source an {@link EDataServer.Source}
      * @returns Full name of the `source` as a newly allocated    string, which should be freed with `g_free()` when done with it. Since 3.18
      */
-    function util_get_source_full_name(registry: (any | null), source: (any | null)): string;
+    function util_get_source_full_name(registry: null, source: null): string;
 
     /**
      * Returns a 64-bit integer hopefully uniquely identifying the
@@ -2402,7 +2402,7 @@ export namespace EDataServer {
      * @returns `true`, when the `source` is well-known read-only source, or `false` otherwise
      * @since 3.50
      */
-    function util_guess_source_is_readonly(source: (any | null)): boolean;
+    function util_guess_source_is_readonly(source: null): boolean;
 
     /**
      * Check whether the hostname `host` is equal to or a subdomain of `domain`.
@@ -2423,7 +2423,7 @@ export namespace EDataServer {
      * @returns Whether `identity_source` can be used to send messages
      * @since 3.26
      */
-    function util_identity_can_send(registry: (any | null), identity_source: (any | null)): boolean;
+    function util_identity_can_send(registry: null, identity_source: null): boolean;
 
     /**
      * Calls `g_free()` on `string`, but before it rewrites its content with zeros.
@@ -2451,7 +2451,7 @@ export namespace EDataServer {
      * @returns an integer less than, equal to, or greater than zero,    if `source_a` is <, == or > than `source_b`.
      * @since 3.40
      */
-    function util_source_compare_for_sort(source_a: (any | null), source_b: (any | null)): number;
+    function util_source_compare_for_sort(source_a: null, source_b: null): number;
 
     /**
      * Splits a "data:" URI (of form data:[mime type][;charset=charset][;base64][,]encoded-data) into
@@ -2527,7 +2527,7 @@ export namespace EDataServer {
      * @param object a {@link GObject.Object}
      * @since 3.26
      */
-    function util_unref_in_thread(object: (any | null)): void;
+    function util_unref_in_thread(object: null): void;
 
     /**
      * Returns a newly-allocated NULL-terminated string with invalid characters
@@ -2610,7 +2610,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVAccessControlEntry}
      * @since 3.26
      */
-    function webdav_access_control_entry_free(ptr: (any | null)): void;
+    function webdav_access_control_entry_free(ptr: null): void;
 
     /**
      * Frees a `GSList` of discovered sources returned from
@@ -2773,7 +2773,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVPrivilege}
      * @since 3.26
      */
-    function webdav_privilege_free(ptr: (any | null)): void;
+    function webdav_privilege_free(ptr: null): void;
 
     /**
      * Frees an {@link EDataServer.WebDAVPropertyChange} previously created with `e_webdav_property_change_new_set()`,
@@ -2782,7 +2782,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVPropertyChange}
      * @since 3.26
      */
-    function webdav_property_change_free(ptr: (any | null)): void;
+    function webdav_property_change_free(ptr: null): void;
 
     /**
      * Frees an {@link EDataServer.WebDAVResource} previously created with `e_webdav_resource_new()`
@@ -2790,7 +2790,7 @@ export namespace EDataServer {
      * @param ptr an {@link EDataServer.WebDAVResource}
      * @since 3.26
      */
-    function webdav_resource_free(ptr: (any | null)): void;
+    function webdav_resource_free(ptr: null): void;
 
     /**
      * Frees the memory used by `hash` and its contents.
@@ -2890,7 +2890,7 @@ export namespace EDataServer {
      * @gir-type Callback
      */
     interface OAuth2ServiceRefSourceFunc {
-        (user_data: (any | null), uid: string): (Source | null);
+        (user_data: null, uid: string): (Source | null);
     }
 
     /**
@@ -2911,7 +2911,7 @@ export namespace EDataServer {
      * @gir-type Callback
      */
     interface WebDAVDiscoverRefSourceFunc {
-        (user_data: (any | null), uid: string): (Source | null);
+        (user_data: null, uid: string): (Source | null);
     }
 
     /**
@@ -3063,7 +3063,7 @@ export namespace EDataServer {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            capabilities: any;
+            capabilities: never;
             main_context: GLib.MainContext;
             mainContext: GLib.MainContext;
             online: boolean;
@@ -3087,7 +3087,7 @@ export namespace EDataServer {
          * The capabilities of this client
          * @read-only
          */
-        get capabilities(): any;
+        get capabilities(): null;
 
         /**
          * The main loop context in which notifications for
@@ -6992,7 +6992,7 @@ export namespace EDataServer {
          * @param data the request body data
          * @param length length of the `data`
          */
-        static util_set_message_request_body_from_data(message: Soup.Message, create_copy: boolean, content_type: (string | null), data: (any | null), length: (bigint | number)): void;
+        static util_set_message_request_body_from_data(message: Soup.Message, create_copy: boolean, content_type: (string | null), data: null, length: (bigint | number)): void;
 
         /**
          * Returns the `reason_phrase`, if it's non-`null` and non-empty, a static string
@@ -7013,7 +7013,7 @@ export namespace EDataServer {
          * @param bytes_length how many bytes had been read; ignored when `read_bytes` is `null`
          * @returns Whether succeeded, aka `true`, when no error recognized    and `false` otherwise.
          */
-        check_result(message: Soup.Message, read_bytes: (any | null), bytes_length: (bigint | number)): boolean;
+        check_result(message: Soup.Message, read_bytes: null, bytes_length: (bigint | number)): boolean;
 
         /**
          * @returns A copy of the credentials being    previously set with `e_soup_session_set_credentials()`, or `null` when    none are set. Free the returned pointer with `e_named_parameters_free()`,    when no longer needed.
@@ -7103,7 +7103,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns prepare data for `e_soup_session_send_message()`,   or `null` on error.
          */
-        prepare_message_send_sync(message: Soup.Message, cancellable: (Gio.Cancellable | null)): (any | null);
+        prepare_message_send_sync(message: Soup.Message, cancellable: (Gio.Cancellable | null)): null;
 
         /**
          * Asynchronously sends the `message`. Finish the call with
@@ -7117,22 +7117,7 @@ export namespace EDataServer {
          * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        send_message(message: Soup.Message, io_priority: number, prepare_data: (any | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Gio.InputStream | null), string, (Gio.TlsCertificateFlags | null)]>;
-
-        /**
-         * Asynchronously sends the `message`. Finish the call with
-         * `e_soup_session_send_message_finish()`.
-         * 
-         * The `prepare_data` is a result of the `e_soup_session_prepare_message_send_sync()`
-         * and this function assumes ownership of it. The `prepare_data` cannot be used
-         * again after this call.
-         * @param message a {@link Soup.Message} to send
-         * @param io_priority the I/O priority of the request, like `G_PRIORITY_DEFAULT`
-         * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback the callback to invoke once the request is finished
-         */
-        send_message(message: Soup.Message, io_priority: number, prepare_data: (any | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Gio.InputStream | null), string, (Gio.TlsCertificateFlags | null)]>;
 
         /**
          * Asynchronously sends the `message`. Finish the call with
@@ -7147,7 +7132,22 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback the callback to invoke once the request is finished
          */
-        send_message(message: Soup.Message, io_priority: number, prepare_data: (any | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Gio.InputStream | null), string, (Gio.TlsCertificateFlags | null)]> | void);
+        send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously sends the `message`. Finish the call with
+         * `e_soup_session_send_message_finish()`.
+         * 
+         * The `prepare_data` is a result of the `e_soup_session_prepare_message_send_sync()`
+         * and this function assumes ownership of it. The `prepare_data` cannot be used
+         * again after this call.
+         * @param message a {@link Soup.Message} to send
+         * @param io_priority the I/O priority of the request, like `G_PRIORITY_DEFAULT`
+         * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback the callback to invoke once the request is finished
+         */
+        send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Gio.InputStream | null), string, (Gio.TlsCertificateFlags | null)]> | void);
 
         /**
          * Finishes the call of `e_soup_session_send_message()`. This is supposed to
@@ -7531,7 +7531,7 @@ export namespace EDataServer {
          * @param cancellable 
          * @virtual
          */
-        vfunc_invoke_authenticate_impl(dbus_source: (any | null), arg_credentials: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_invoke_authenticate_impl(dbus_source: null, arg_credentials: string, cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * @param dbus_source 
@@ -7543,7 +7543,7 @@ export namespace EDataServer {
          * @param cancellable 
          * @virtual
          */
-        vfunc_invoke_credentials_required_impl(dbus_source: (any | null), arg_reason: string, arg_certificate_pem: string, arg_certificate_errors: string, arg_dbus_error_name: string, arg_dbus_error_message: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_invoke_credentials_required_impl(dbus_source: null, arg_reason: string, arg_certificate_pem: string, arg_certificate_errors: string, arg_dbus_error_name: string, arg_dbus_error_message: string, cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * Asynchronously creates a new remote resource by picking out relevant
@@ -8617,7 +8617,7 @@ export namespace EDataServer {
          * @param user_data user data to match against timeout callbacks
          * @returns the number of timeouts found and removed
          */
-        refresh_remove_timeouts_by_data(user_data: (any | null)): number;
+        refresh_remove_timeouts_by_data(user_data: null): number;
 
         /**
          * Asynchronously creates a new remote resource by picking out relevant
@@ -11262,7 +11262,7 @@ export namespace EDataServer {
          * Returns an {@link EDataServer.SourceCredentialsProvider} with which the `provider_impl` is associated.
          * @returns an {@link EDataServer.SourceCredentialsProvider}
          */
-        get_provider(): (any | null);
+        get_provider(): null;
 
         /**
          * Asks `provider_impl` to lookup for stored credentials for `source`.
@@ -17702,7 +17702,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_current_user_privilege_set_full_sync(uri: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, WebDAVPrivilege[], GLib.HashTable<any, any> | null, GLib.HashTable<any, any> | null];
+        get_current_user_privilege_set_full_sync(uri: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, WebDAVPrivilege[], GLib.HashTable<never, never> | null, GLib.HashTable<never, never> | null];
 
         /**
          * Gets current user privileges for the `uri`, or, in case it's `null`, for the URI
@@ -17959,7 +17959,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        options_sync(uri: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
+        options_sync(uri: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
 
         /**
          * Issues POST request on the provided `uri`, or, in case it's `null`, on the URI
@@ -19101,7 +19101,7 @@ export namespace EDataServer {
          * provided in `e_operation_pool_new()`.
          * @param opdata user data for the operation
          */
-        push(opdata: (any | null)): void;
+        push(opdata: null): void;
 
         /**
          * Releases `opid` previously reserved by `e_operation_pool_reserve_opid()`.
@@ -19732,7 +19732,7 @@ export namespace EDataServer {
 
         inherited_href: string;
 
-        privileges: any[];
+        privileges: null[];
 
         // Constructors
         constructor(principal_kind: WebDAVACEPrincipalKind, principal_href: (string | null), flags: number, inherited_href: (string | null));
@@ -19745,7 +19745,7 @@ export namespace EDataServer {
          * or `e_webdav_access_control_entry_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVAccessControlEntry}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**
@@ -19840,7 +19840,7 @@ export namespace EDataServer {
          * or `e_webdav_privilege_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPrivilege}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**
@@ -19879,7 +19879,7 @@ export namespace EDataServer {
          * The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPropertyChange}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**
@@ -19931,7 +19931,7 @@ export namespace EDataServer {
          * or `e_webdav_resource_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVResource}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**

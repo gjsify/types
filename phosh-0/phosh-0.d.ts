@@ -1687,8 +1687,8 @@ export namespace Phosh {
             kbd_interactivity: boolean;
             kbdInteractivity: boolean;
             layer: number;
-            layer_shell: any;
-            layerShell: any;
+            layer_shell: never;
+            layerShell: never;
             margin_bottom: number;
             marginBottom: number;
             margin_left: number;
@@ -1699,8 +1699,8 @@ export namespace Phosh {
             marginTop: number;
             namespace: string;
             width: number;
-            wl_output: any;
-            wlOutput: any;
+            wl_output: never;
+            wlOutput: never;
         }
     }
 
@@ -1782,11 +1782,11 @@ export namespace Phosh {
         get layer(): number;
         set layer(val: number);
 
-        get layer_shell(): any;
-        set layer_shell(val: any);
+        get layer_shell(): null;
+        set layer_shell(val: never);
 
-        get layerShell(): any;
-        set layerShell(val: any);
+        get layerShell(): null;
+        set layerShell(val: never);
 
         /**
          * @default 0
@@ -1845,11 +1845,11 @@ export namespace Phosh {
         get width(): number;
         set width(val: number);
 
-        get wl_output(): any;
-        set wl_output(val: any);
+        get wl_output(): null;
+        set wl_output(val: never);
 
-        get wlOutput(): any;
-        set wlOutput(val: any);
+        get wlOutput(): null;
+        set wlOutput(val: never);
 
         /**
          * Compile-time signal type information.

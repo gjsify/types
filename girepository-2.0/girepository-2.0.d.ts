@@ -567,7 +567,7 @@ export namespace GIRepository {
      * @param is_method TODO
      * @param _throws TODO
      */
-    function callable_info_invoke(info: CallableInfo, _function: (any | null), in_args: Argument[], out_args: Argument[], return_value: Argument, is_method: boolean, _throws: boolean): boolean;
+    function callable_info_invoke(info: CallableInfo, _function: null, in_args: Argument[], out_args: Argument[], return_value: Argument, is_method: boolean, _throws: boolean): boolean;
 
     /**
      * Determines if the callable info is a method. For {@link GIRepository.VFuncInfo}<!-- -->s,
@@ -644,7 +644,7 @@ export namespace GIRepository {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_generic(closure: GObject.Closure, return_gvalue: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_generic(closure: GObject.Closure, return_gvalue: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Obtain the type of the constant as a {@link GIRepository.TypeInfo}.
@@ -1412,7 +1412,7 @@ export namespace GIRepository {
      * @param arg A {@link GIRepository.Argument} to fill in
      * @since 1.66
      */
-    function type_info_argument_from_hash_pointer(info: TypeInfo, hash_pointer: (any | null), arg: Argument): void;
+    function type_info_argument_from_hash_pointer(info: TypeInfo, hash_pointer: null, arg: Argument): void;
 
     /**
      * Obtain the fixed array size of the type. The type tag must be a
@@ -1492,7 +1492,7 @@ export namespace GIRepository {
      * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable}, for example
      * @since 1.66
      */
-    function type_info_hash_pointer_from_argument(info: TypeInfo, arg: Argument): (any | null);
+    function type_info_hash_pointer_from_argument(info: TypeInfo, arg: Argument): null;
 
     /**
      * Obtain if the type is passed as a reference.
@@ -1531,7 +1531,7 @@ export namespace GIRepository {
      * @param arg A {@link GIRepository.Argument} to fill in
      * @since 1.72
      */
-    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: (any | null), arg: Argument): void;
+    function type_tag_argument_from_hash_pointer(storage_type: TypeTag, hash_pointer: null, arg: Argument): void;
 
     /**
      * GLib data structures, such as {@link GLib.List}, {@link GLib.SList}, and {@link GLib.HashTable}, all store
@@ -1550,7 +1550,7 @@ export namespace GIRepository {
      * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable}, for example
      * @since 1.72
      */
-    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): (any | null);
+    function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argument): null;
 
     /**
      * Obtain a string representation of `type`
@@ -1672,7 +1672,7 @@ export namespace GIRepository {
      * @param implementor_gtype {@link GObject.GType} implementing this virtual function
      * @returns address to a function or `null` if an error happened
      */
-    function vfunc_info_get_address(info: VFuncInfo, implementor_gtype: GObject.GType): (any | null);
+    function vfunc_info_get_address(info: VFuncInfo, implementor_gtype: GObject.GType): null;
 
     /**
      * Obtain the flags for this virtual function info. See {@link GIRepository.VFuncInfoFlags} for
@@ -2316,7 +2316,7 @@ export namespace GIRepository {
          * @param symbol_name 
          * @param symbol 
          */
-        symbol(symbol_name: string, symbol: (any | null)): boolean;
+        symbol(symbol_name: string, symbol: null): boolean;
     }
 
 
@@ -2377,7 +2377,7 @@ export namespace GIRepository {
 
         v_string: string;
 
-        v_pointer: any;
+        v_pointer: null;
     }
 
 
