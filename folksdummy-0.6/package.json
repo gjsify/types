@@ -1,6 +1,6 @@
 {
     "name": "@girs/folksdummy-0.6",
-    "version": "0.6.0-4.0.0-rc.11",
+    "version": "0.6.0-4.0.0-rc.12",
     "description": "GJS TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "folksdummy-0.6.js",
@@ -31,13 +31,13 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.11",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.11",
-      "@girs/gee-0.8": "0.8.0-4.0.0-rc.11",
-      "@girs/folks-0.6": "0.6.0-4.0.0-rc.11"    },
+      "@girs/gjs": "4.0.0-rc.12",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.12",
+      "@girs/gee-0.8": "0.8.0-4.0.0-rc.12",
+      "@girs/folks-0.6": "0.6.0-4.0.0-rc.12"    },
     "devDependencies": {
       "typescript": "*"
     },

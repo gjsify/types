@@ -1,6 +1,6 @@
 {
     "name": "@girs/nautilus-4.1",
-    "version": "4.1.0-4.0.0-rc.11",
+    "version": "4.1.0-4.0.0-rc.12",
     "description": "GJS TypeScript type definitions for Nautilus-4.1, generated from library version 4.1.0",
     "type": "module",
     "module": "nautilus-4.1.js",
@@ -31,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.11",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.11"    },
+      "@girs/gjs": "4.0.0-rc.12",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.12"    },
     "devDependencies": {
       "typescript": "*"
     },

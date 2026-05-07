@@ -1,6 +1,6 @@
 {
     "name": "@girs/jsonrpc-1.0",
-    "version": "3.44.2-4.0.0-rc.11",
+    "version": "3.44.2-4.0.0-rc.12",
     "description": "GJS TypeScript type definitions for Jsonrpc-1.0, generated from library version 3.44.2",
     "type": "module",
     "module": "jsonrpc-1.0.js",
@@ -31,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.11",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.11"    },
+      "@girs/gjs": "4.0.0-rc.12",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.12"    },
     "devDependencies": {
       "typescript": "*"
     },

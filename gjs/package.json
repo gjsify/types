@@ -1,6 +1,6 @@
 {
     "name": "@girs/gjs",
-    "version": "4.0.0-rc.11",
+    "version": "4.0.0-rc.12",
     "description": "GJS TypeScript type definitions for Gjs",
     "type": "module",
     "module": "gjs.js",
@@ -56,10 +56,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.11",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-rc.11"    },
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.12",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-rc.12"    },
     "devDependencies": {
       "typescript": "*"
     },
