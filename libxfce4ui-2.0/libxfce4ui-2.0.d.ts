@@ -275,7 +275,7 @@ export namespace Libxfce4ui {
      * @param callback_data data which should be passed to the callback of each {@link Libxfce4ui.GtkActionEntry}
      * @since 4.16
      */
-    function gtk_accel_group_connect_action_entries(accel_group: Gtk.AccelGroup, action_entries: GtkActionEntry, n_action_entries: number, callback_data: (any | null)): void;
+    function gtk_accel_group_connect_action_entries(accel_group: Gtk.AccelGroup, action_entries: GtkActionEntry, n_action_entries: number, callback_data: null): void;
 
     /**
      * This method will disconnect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries.
@@ -330,7 +330,7 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is TRUE if the action was found, otherwise it is FALSE
      */
-    function gtk_execute_tab_accel(accel_path: string, data: (any | null), entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+    function gtk_execute_tab_accel(accel_path: string, data: null, entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
 
     /**
      * Creates an Xfce-styled frame. The frame is a {@link Gtk.Frame}, without
@@ -374,7 +374,7 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is GDK_EVENT_STOP (TRUE) if the event was handled, otherwise it is GDK_EVENT_PROPAGATE (FALSE)
      */
-    function gtk_handle_tab_accels(key_event: Gdk.EventKey, accel_group: Gtk.AccelGroup, data: (any | null), entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+    function gtk_handle_tab_accels(key_event: Gdk.EventKey, accel_group: Gtk.AccelGroup, data: null, entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
 
     /**
      * Convenience method to create a deprecated {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.

@@ -669,14 +669,14 @@ export namespace AgsGui {
      * @returns the new {@link AgsGui.ExpanderChild}-struct
      * @since 3.0.0
      */
-    function expander_child_alloc(x: number, y: number, width: number, height: number): (any | null);
+    function expander_child_alloc(x: number, y: number, width: number, height: number): null;
 
     /**
      * Free `expander_child`.
      * @param expander_child the {@link AgsGui.ExpanderChild}-struct
      * @since 3.2.2
      */
-    function expander_child_free(expander_child: (any | null)): void;
+    function expander_child_free(expander_child: null): void;
 
     /**
      * Allocate {@link AgsGui.ExpanderSetChild}-struct.
@@ -687,14 +687,14 @@ export namespace AgsGui {
      * @returns the new {@link AgsGui.ExpanderSetChild}-struct
      * @since 3.0.0
      */
-    function expander_set_child_alloc(x: number, y: number, width: number, height: number): (any | null);
+    function expander_set_child_alloc(x: number, y: number, width: number, height: number): null;
 
     /**
      * Free `expander_set_child`.
      * @param expander_set_child the {@link AgsGui.ExpanderSetChild}-struct
      * @since 3.2.2
      */
-    function expander_set_child_free(expander_set_child: (any | null)): void;
+    function expander_set_child_free(expander_set_child: null): void;
 
     /**
      * Allocate {@link AgsGui.Plot}-struct.
@@ -704,14 +704,14 @@ export namespace AgsGui {
      * @returns the newly allocated {@link AgsGui.Plot}-struct
      * @since 3.0.0
      */
-    function plot_alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): (any | null);
+    function plot_alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): null;
 
     /**
      * Free `plot`.
      * @param plot the {@link AgsGui.Plot}-struct
      * @since 3.0.0
      */
-    function plot_free(plot: (any | null)): void;
+    function plot_free(plot: null): void;
 
     /**
      * Get bitmaps.
@@ -719,7 +719,7 @@ export namespace AgsGui {
      * @returns bitmap field
      * @since 3.2.0
      */
-    function plot_get_bitmap(plot: (any | null)): number;
+    function plot_get_bitmap(plot: null): number;
 
     /**
      * Get bitmap colors.
@@ -727,7 +727,7 @@ export namespace AgsGui {
      * @returns bitmap color field
      * @since 3.2.0
      */
-    function plot_get_bitmap_color(plot: (any | null)): number;
+    function plot_get_bitmap_color(plot: null): number;
 
     /**
      * Get join points.
@@ -735,7 +735,7 @@ export namespace AgsGui {
      * @returns join_points field
      * @since 3.2.0
      */
-    function plot_get_join_points(plot: (any | null)): boolean;
+    function plot_get_join_points(plot: null): boolean;
 
     /**
      * Get number of bitmaps.
@@ -743,7 +743,7 @@ export namespace AgsGui {
      * @returns n_bitmaps field
      * @since 3.2.0
      */
-    function plot_get_n_bitmaps(plot: (any | null)): number;
+    function plot_get_n_bitmaps(plot: null): number;
 
     /**
      * Get number of pixmaps.
@@ -751,7 +751,7 @@ export namespace AgsGui {
      * @returns n_pixmaps field
      * @since 3.2.0
      */
-    function plot_get_n_pixmaps(plot: (any | null)): number;
+    function plot_get_n_pixmaps(plot: null): number;
 
     /**
      * Get number of points.
@@ -759,7 +759,7 @@ export namespace AgsGui {
      * @returns n_points field
      * @since 3.2.0
      */
-    function plot_get_n_points(plot: (any | null)): number;
+    function plot_get_n_points(plot: null): number;
 
     /**
      * Get pixmaps.
@@ -767,7 +767,7 @@ export namespace AgsGui {
      * @returns pixmap field
      * @since 3.2.0
      */
-    function plot_get_pixmap(plot: (any | null)): number;
+    function plot_get_pixmap(plot: null): number;
 
     /**
      * Get points.
@@ -775,7 +775,7 @@ export namespace AgsGui {
      * @returns point field
      * @since 3.2.0
      */
-    function plot_get_point(plot: (any | null)): number;
+    function plot_get_point(plot: null): number;
 
     /**
      * Get point colors.
@@ -783,7 +783,7 @@ export namespace AgsGui {
      * @returns point color field
      * @since 3.2.0
      */
-    function plot_get_point_color(plot: (any | null)): number;
+    function plot_get_point_color(plot: null): number;
 
     /**
      * Get point labels.
@@ -791,7 +791,7 @@ export namespace AgsGui {
      * @returns point label field
      * @since 3.2.0
      */
-    function plot_get_point_label(plot: (any | null)): string[];
+    function plot_get_point_label(plot: null): string[];
 
     /**
      * Set bitmap field of `plot`.
@@ -799,7 +799,7 @@ export namespace AgsGui {
      * @param bitmap the bitmaps
      * @since 3.2.0
      */
-    function plot_set_bitmap(plot: (any | null), bitmap: number): void;
+    function plot_set_bitmap(plot: null, bitmap: number): void;
 
     /**
      * Set bitmap color field of `plot`.
@@ -807,7 +807,7 @@ export namespace AgsGui {
      * @param bitmap_color the bitmaps colors as array of RGB value
      * @since 3.2.0
      */
-    function plot_set_bitmap_color(plot: (any | null), bitmap_color: number): void;
+    function plot_set_bitmap_color(plot: null, bitmap_color: number): void;
 
     /**
      * Set join_points field of `plot`.
@@ -815,7 +815,7 @@ export namespace AgsGui {
      * @param join_points if `true` join points, otherwise not
      * @since 3.2.0
      */
-    function plot_set_join_points(plot: (any | null), join_points: boolean): void;
+    function plot_set_join_points(plot: null, join_points: boolean): void;
 
     /**
      * Set n_bitmaps field of `plot`.
@@ -823,7 +823,7 @@ export namespace AgsGui {
      * @param n_bitmaps the number of bitmaps
      * @since 3.2.0
      */
-    function plot_set_n_bitmaps(plot: (any | null), n_bitmaps: number): void;
+    function plot_set_n_bitmaps(plot: null, n_bitmaps: number): void;
 
     /**
      * Set n_pixmaps field of `plot`.
@@ -831,7 +831,7 @@ export namespace AgsGui {
      * @param n_pixmaps the number of pixmaps
      * @since 3.2.0
      */
-    function plot_set_n_pixmaps(plot: (any | null), n_pixmaps: number): void;
+    function plot_set_n_pixmaps(plot: null, n_pixmaps: number): void;
 
     /**
      * Set n_points field of `plot`.
@@ -839,7 +839,7 @@ export namespace AgsGui {
      * @param n_points the number of points
      * @since 3.2.0
      */
-    function plot_set_n_points(plot: (any | null), n_points: number): void;
+    function plot_set_n_points(plot: null, n_points: number): void;
 
     /**
      * Set pixmap field of `plot`.
@@ -847,7 +847,7 @@ export namespace AgsGui {
      * @param pixmap the pixmaps
      * @since 3.2.0
      */
-    function plot_set_pixmap(plot: (any | null), pixmap: number): void;
+    function plot_set_pixmap(plot: null, pixmap: number): void;
 
     /**
      * Set point field of `plot`.
@@ -855,7 +855,7 @@ export namespace AgsGui {
      * @param point the points as array of coordinates
      * @since 3.2.0
      */
-    function plot_set_point(plot: (any | null), point: number): void;
+    function plot_set_point(plot: null, point: number): void;
 
     /**
      * Set point color field of `plot`.
@@ -863,7 +863,7 @@ export namespace AgsGui {
      * @param point_color the points colors as array of RGB value
      * @since 3.2.0
      */
-    function plot_set_point_color(plot: (any | null), point_color: number): void;
+    function plot_set_point_color(plot: null, point_color: number): void;
 
     /**
      * Set point label field of `plot`.
@@ -871,7 +871,7 @@ export namespace AgsGui {
      * @param point_label the points labels as string vector
      * @since 3.2.0
      */
-    function plot_set_point_label(plot: (any | null), point_label: string): void;
+    function plot_set_point_label(plot: null, point_label: string): void;
 
     /**
      * @param closure 
@@ -881,7 +881,7 @@ export namespace AgsGui {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function widget_cclosure_marshal_OBJECT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function widget_cclosure_marshal_OBJECT__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -891,7 +891,7 @@ export namespace AgsGui {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function widget_cclosure_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function widget_cclosure_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -901,34 +901,34 @@ export namespace AgsGui {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function widget_cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function widget_cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @gir-type Callback
      */
     interface CartesianLabelFunc {
-        (value: number, data: (any | null)): string;
+        (value: number, data: null): string;
     }
 
     /**
      * @gir-type Callback
      */
     interface CartesianScaleFunc {
-        (value: number, data: (any | null)): number;
+        (value: number, data: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface CartesianStepConversionFunc {
-        (current: number, is_abscissae: boolean, data: (any | null)): number;
+        (current: number, is_abscissae: boolean, data: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface CartesianTranslateFunc {
-        (x: number, y: number, ret_x: number, ret_y: number, data: (any | null)): void;
+        (x: number, y: number, ret_x: number, ret_y: number, data: null): void;
     }
 
     /**
@@ -1143,20 +1143,20 @@ export namespace AgsGui {
             fontSize: number;
             line_width: number;
             lineWidth: number;
-            plot: any;
+            plot: never;
             point_radius: number;
             pointRadius: number;
-            surface: any;
-            translate_data: any;
-            translateData: any;
+            surface: never;
+            translate_data: never;
+            translateData: never;
             x_big_scale_factor: number;
             xBigScaleFactor: number;
             x_end: number;
             xEnd: number;
-            x_label: any;
-            xLabel: any;
-            x_label_data: any;
-            xLabelData: any;
+            x_label: never;
+            xLabel: never;
+            x_label_data: never;
+            xLabelData: never;
             x_label_factor: number;
             xLabelFactor: number;
             x_label_precision: number;
@@ -1167,8 +1167,8 @@ export namespace AgsGui {
             xLabelStepWidth: number;
             x_margin: number;
             xMargin: number;
-            x_scale_data: any;
-            xScaleData: any;
+            x_scale_data: never;
+            xScaleData: never;
             x_scale_step_width: number;
             xScaleStepWidth: number;
             x_small_scale_factor: number;
@@ -1177,8 +1177,8 @@ export namespace AgsGui {
             xStart: number;
             x_step: number;
             xStep: number;
-            x_step_data: any;
-            xStepData: any;
+            x_step_data: never;
+            xStepData: never;
             x_step_factor: number;
             xStepFactor: number;
             x_step_width: number;
@@ -1197,10 +1197,10 @@ export namespace AgsGui {
             yBigScaleFactor: number;
             y_end: number;
             yEnd: number;
-            y_label: any;
-            yLabel: any;
-            y_label_data: any;
-            yLabelData: any;
+            y_label: never;
+            yLabel: never;
+            y_label_data: never;
+            yLabelData: never;
             y_label_factor: number;
             yLabelFactor: number;
             y_label_precision: number;
@@ -1211,8 +1211,8 @@ export namespace AgsGui {
             yLabelStepHeight: number;
             y_margin: number;
             yMargin: number;
-            y_scale_data: any;
-            yScaleData: any;
+            y_scale_data: never;
+            yScaleData: never;
             y_scale_step_height: number;
             yScaleStepHeight: number;
             y_small_scale_factor: number;
@@ -1221,8 +1221,8 @@ export namespace AgsGui {
             yStart: number;
             y_step: number;
             yStep: number;
-            y_step_data: any;
-            yStepData: any;
+            y_step_data: never;
+            yStepData: never;
             y_step_factor: number;
             yStepFactor: number;
             y_step_height: number;
@@ -1291,8 +1291,8 @@ export namespace AgsGui {
          * The {@link GLib.List}-struct containig {@link AgsGui.Plot}.
          * @since 4.0.0
          */
-        get plot(): any;
-        set plot(val: any);
+        get plot(): null;
+        set plot(val: never);
 
         /**
          * The points radius.
@@ -1314,22 +1314,22 @@ export namespace AgsGui {
          * The cairo surface.
          * @since 4.0.0
          */
-        get surface(): any;
-        set surface(val: any);
+        get surface(): null;
+        set surface(val: never);
 
         /**
          * The data to pass to translate function.
          * @since 4.0.0
          */
-        get translate_data(): any;
-        set translate_data(val: any);
+        get translate_data(): null;
+        set translate_data(val: never);
 
         /**
          * The data to pass to translate function.
          * @since 4.0.0
          */
-        get translateData(): any;
-        set translateData(val: any);
+        get translateData(): null;
+        set translateData(val: never);
 
         /**
          * The scale factor to use with x big scale function.
@@ -1367,29 +1367,29 @@ export namespace AgsGui {
          * The x labels as a string array.
          * @since 3.0.0
          */
-        get x_label(): any;
-        set x_label(val: any);
+        get x_label(): null;
+        set x_label(val: never);
 
         /**
          * The x labels as a string array.
          * @since 3.0.0
          */
-        get xLabel(): any;
-        set xLabel(val: any);
+        get xLabel(): null;
+        set xLabel(val: never);
 
         /**
          * The data to pass to x label conversion function.
          * @since 4.0.0
          */
-        get x_label_data(): any;
-        set x_label_data(val: any);
+        get x_label_data(): null;
+        set x_label_data(val: never);
 
         /**
          * The data to pass to x label conversion function.
          * @since 4.0.0
          */
-        get xLabelData(): any;
-        set xLabelData(val: any);
+        get xLabelData(): null;
+        set xLabelData(val: never);
 
         /**
          * The factor to use with x label function.
@@ -1475,15 +1475,15 @@ export namespace AgsGui {
          * The data to pass to x scale conversion function.
          * @since 4.0.0
          */
-        get x_scale_data(): any;
-        set x_scale_data(val: any);
+        get x_scale_data(): null;
+        set x_scale_data(val: never);
 
         /**
          * The data to pass to x scale conversion function.
          * @since 4.0.0
          */
-        get xScaleData(): any;
-        set xScaleData(val: any);
+        get xScaleData(): null;
+        set xScaleData(val: never);
 
         /**
          * The width of a x scale step.
@@ -1553,15 +1553,15 @@ export namespace AgsGui {
          * The data to pass to x step conversion function.
          * @since 4.0.0
          */
-        get x_step_data(): any;
-        set x_step_data(val: any);
+        get x_step_data(): null;
+        set x_step_data(val: never);
 
         /**
          * The data to pass to x step conversion function.
          * @since 4.0.0
          */
-        get xStepData(): any;
-        set xStepData(val: any);
+        get xStepData(): null;
+        set xStepData(val: never);
 
         /**
          * The step factor to use with x step conversion function.
@@ -1711,29 +1711,29 @@ export namespace AgsGui {
          * The y labels as a string array.
          * @since 3.0.0
          */
-        get y_label(): any;
-        set y_label(val: any);
+        get y_label(): null;
+        set y_label(val: never);
 
         /**
          * The y labels as a string array.
          * @since 3.0.0
          */
-        get yLabel(): any;
-        set yLabel(val: any);
+        get yLabel(): null;
+        set yLabel(val: never);
 
         /**
          * The data to pass to y label conversion function.
          * @since 4.0.0
          */
-        get y_label_data(): any;
-        set y_label_data(val: any);
+        get y_label_data(): null;
+        set y_label_data(val: never);
 
         /**
          * The data to pass to y label conversion function.
          * @since 4.0.0
          */
-        get yLabelData(): any;
-        set yLabelData(val: any);
+        get yLabelData(): null;
+        set yLabelData(val: never);
 
         /**
          * The factor to use with y label function.
@@ -1819,15 +1819,15 @@ export namespace AgsGui {
          * The data to pass to y scale conversion function.
          * @since 4.0.0
          */
-        get y_scale_data(): any;
-        set y_scale_data(val: any);
+        get y_scale_data(): null;
+        set y_scale_data(val: never);
 
         /**
          * The data to pass to y scale conversion function.
          * @since 4.0.0
          */
-        get yScaleData(): any;
-        set yScaleData(val: any);
+        get yScaleData(): null;
+        set yScaleData(val: never);
 
         /**
          * The height of a y scale step.
@@ -1897,15 +1897,15 @@ export namespace AgsGui {
          * The data to pass to y step conversion function.
          * @since 4.0.0
          */
-        get y_step_data(): any;
-        set y_step_data(val: any);
+        get y_step_data(): null;
+        set y_step_data(val: never);
 
         /**
          * The data to pass to y step conversion function.
          * @since 4.0.0
          */
-        get yStepData(): any;
-        set yStepData(val: any);
+        get yStepData(): null;
+        set yStepData(val: never);
 
         /**
          * The step factor to use with y step conversion function.
@@ -2060,7 +2060,7 @@ export namespace AgsGui {
          * @param is_abscissae is abscissae
          * @param data the data
          */
-        static linear_step_conversion_func(current: number, is_abscissae: boolean, data: (any | null)): number;
+        static linear_step_conversion_func(current: number, is_abscissae: boolean, data: null): number;
 
         /**
          * Perform linear translation.
@@ -2068,56 +2068,56 @@ export namespace AgsGui {
          * @param y the y position
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_translate_func(x: number, y: number, data: (any | null)): [number, number];
+        static linear_translate_func(x: number, y: number, data: null): [number, number];
 
         /**
          * Labeling function of x big scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_x_big_scale_func(value: number, data: (any | null)): number;
+        static linear_x_big_scale_func(value: number, data: null): number;
 
         /**
          * Format x label `value` appropriately.
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_x_label_func(value: number, data: (any | null)): string;
+        static linear_x_label_func(value: number, data: null): string;
 
         /**
          * Labeling function of x small scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_x_small_scale_func(value: number, data: (any | null)): number;
+        static linear_x_small_scale_func(value: number, data: null): number;
 
         /**
          * Labeling function of y big scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_y_big_scale_func(value: number, data: (any | null)): number;
+        static linear_y_big_scale_func(value: number, data: null): number;
 
         /**
          * Format y label `value` appropriately.
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_y_label_func(value: number, data: (any | null)): string;
+        static linear_y_label_func(value: number, data: null): string;
 
         /**
          * Labeling function of y small scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
          */
-        static linear_y_small_scale_func(value: number, data: (any | null)): number;
+        static linear_y_small_scale_func(value: number, data: null): number;
 
         // Methods
         /**
          * Add `plot` to `cartesian`.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        add_plot(plot: (any | null)): void;
+        add_plot(plot: null): void;
 
         /**
          * Fill x label if `do_x_label`, otherwise y label.
@@ -2380,7 +2380,7 @@ export namespace AgsGui {
          * Remove `plot` from `cartesian`.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        remove_plot(plot: (any | null)): void;
+        remove_plot(plot: null): void;
 
         /**
          * Set center of `cartesian`.
@@ -2897,7 +2897,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2908,7 +2908,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2917,7 +2917,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3637,7 +3637,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -3648,7 +3648,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -3657,7 +3657,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3784,7 +3784,7 @@ export namespace AgsGui {
 
         grid: Gtk.Grid;
 
-        children: any[];
+        children: null[];
 
         // Constructors
         constructor(properties?: Partial<Expander.ConstructorProps>, ...args: any[]);
@@ -3822,7 +3822,7 @@ export namespace AgsGui {
          * @param child the {@link Gtk.Widget}
          * @returns the matching {@link AgsGui.ExpanderChild}-struct
          */
-        child_find(child: Gtk.Widget): (any | null);
+        child_find(child: Gtk.Widget): null;
 
         /**
          * Removes a {@link Gtk.Widget} of {@link AgsGui.Expander}
@@ -3924,9 +3924,9 @@ export namespace AgsGui {
 
         flags: ExpanderSetFlags;
 
-        ghost: any[];
+        ghost: null[];
 
-        location: any[];
+        location: null[];
 
         // Constructors
         constructor(properties?: Partial<ExpanderSet.ConstructorProps>, ...args: any[]);
@@ -3964,7 +3964,7 @@ export namespace AgsGui {
          * @param child the {@link Gtk.Widget}
          * @returns the matching {@link AgsGui.ExpanderSetChild}-struct
          */
-        child_find(child: Gtk.Widget): (any | null);
+        child_find(child: Gtk.Widget): null;
 
         /**
          * Removes a {@link Gtk.Widget} of {@link AgsGui.ExpanderSet}
@@ -4070,8 +4070,8 @@ export namespace AgsGui {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-            file_widget: any;
-            fileWidget: any;
+            file_widget: never;
+            fileWidget: never;
         }
     }
 
@@ -4082,11 +4082,11 @@ export namespace AgsGui {
         static $gtype: GObject.GType<FileDialog>;
 
         // Properties
-        get file_widget(): any;
-        set file_widget(val: any);
+        get file_widget(): null;
+        set file_widget(val: never);
 
-        get fileWidget(): any;
-        set fileWidget(val: any);
+        get fileWidget(): null;
+        set fileWidget(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4607,7 +4607,7 @@ export namespace AgsGui {
          * Get bookmark from `file_widget`.
          * @returns the bookmark {@link GLib.HashTable}
          */
-        get_bookmark(): GLib.HashTable<any, any>;
+        get_bookmark(): GLib.HashTable<never, never>;
 
         /**
          * Get bookmark filename of `file_widget`.
@@ -4661,7 +4661,7 @@ export namespace AgsGui {
          * Get location from `file_widget`.
          * @returns the location {@link GLib.HashTable}
          */
-        get_location(): GLib.HashTable<any, any>;
+        get_location(): GLib.HashTable<never, never>;
 
         /**
          * Get recently used from `file_widget`.
@@ -5577,7 +5577,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -5588,7 +5588,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -5597,7 +5597,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -6383,7 +6383,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -6394,7 +6394,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -6403,7 +6403,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -7192,7 +7192,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -7203,7 +7203,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -7212,7 +7212,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -7359,7 +7359,7 @@ export namespace AgsGui {
         // Fields
         box: Gtk.Box;
 
-        level: any[];
+        level: null[];
 
         // Constructors
         constructor(properties?: Partial<LevelBox.ConstructorProps>, ...args: any[]);
@@ -7570,7 +7570,7 @@ export namespace AgsGui {
 
         tab_box: Gtk.Box;
 
-        tab: any[];
+        tab: null[];
 
         // Constructors
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
@@ -8272,7 +8272,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -8283,7 +8283,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -8292,7 +8292,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -8930,7 +8930,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -8941,7 +8941,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -8950,7 +8950,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -9522,7 +9522,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -9533,7 +9533,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -9542,7 +9542,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -9689,7 +9689,7 @@ export namespace AgsGui {
         // Fields
         box: Gtk.Box;
 
-        scale: any[];
+        scale: null[];
 
         // Constructors
         constructor(properties?: Partial<ScaleBox.ConstructorProps>, ...args: any[]);
@@ -10670,7 +10670,7 @@ export namespace AgsGui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -10681,7 +10681,7 @@ export namespace AgsGui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -10690,7 +10690,7 @@ export namespace AgsGui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -10789,13 +10789,13 @@ export namespace AgsGui {
          * @param width the width
          * @param height the height
          */
-        static alloc(x: number, y: number, width: number, height: number): (any | null);
+        static alloc(x: number, y: number, width: number, height: number): null;
 
         /**
          * Free `expander_child`.
          * @param expander_child the {@link AgsGui.ExpanderChild}-struct
          */
-        static free(expander_child: (any | null)): void;
+        static free(expander_child: null): void;
     }
 
 
@@ -10829,13 +10829,13 @@ export namespace AgsGui {
          * @param width the width
          * @param height the height
          */
-        static alloc(x: number, y: number, width: number, height: number): (any | null);
+        static alloc(x: number, y: number, width: number, height: number): null;
 
         /**
          * Free `expander_set_child`.
          * @param expander_set_child the {@link AgsGui.ExpanderSetChild}-struct
          */
-        static free(expander_set_child: (any | null)): void;
+        static free(expander_set_child: null): void;
     }
 
 
@@ -10935,143 +10935,143 @@ export namespace AgsGui {
          * @param n_bitmaps number of bitmaps
          * @param n_pixmaps number of pixmaps
          */
-        static alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): (any | null);
+        static alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): null;
 
         /**
          * Free `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static free(plot: (any | null)): void;
+        static free(plot: null): void;
 
         /**
          * Get bitmaps.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_bitmap(plot: (any | null)): number;
+        static get_bitmap(plot: null): number;
 
         /**
          * Get bitmap colors.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_bitmap_color(plot: (any | null)): number;
+        static get_bitmap_color(plot: null): number;
 
         /**
          * Get join points.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_join_points(plot: (any | null)): boolean;
+        static get_join_points(plot: null): boolean;
 
         /**
          * Get number of bitmaps.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_n_bitmaps(plot: (any | null)): number;
+        static get_n_bitmaps(plot: null): number;
 
         /**
          * Get number of pixmaps.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_n_pixmaps(plot: (any | null)): number;
+        static get_n_pixmaps(plot: null): number;
 
         /**
          * Get number of points.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_n_points(plot: (any | null)): number;
+        static get_n_points(plot: null): number;
 
         /**
          * Get pixmaps.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_pixmap(plot: (any | null)): number;
+        static get_pixmap(plot: null): number;
 
         /**
          * Get points.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_point(plot: (any | null)): number;
+        static get_point(plot: null): number;
 
         /**
          * Get point colors.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_point_color(plot: (any | null)): number;
+        static get_point_color(plot: null): number;
 
         /**
          * Get point labels.
          * @param plot the {@link AgsGui.Plot}-struct
          */
-        static get_point_label(plot: (any | null)): string[];
+        static get_point_label(plot: null): string[];
 
         /**
          * Set bitmap field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap the bitmaps
          */
-        static set_bitmap(plot: (any | null), bitmap: number): void;
+        static set_bitmap(plot: null, bitmap: number): void;
 
         /**
          * Set bitmap color field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap_color the bitmaps colors as array of RGB value
          */
-        static set_bitmap_color(plot: (any | null), bitmap_color: number): void;
+        static set_bitmap_color(plot: null, bitmap_color: number): void;
 
         /**
          * Set join_points field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param join_points if `true` join points, otherwise not
          */
-        static set_join_points(plot: (any | null), join_points: boolean): void;
+        static set_join_points(plot: null, join_points: boolean): void;
 
         /**
          * Set n_bitmaps field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_bitmaps the number of bitmaps
          */
-        static set_n_bitmaps(plot: (any | null), n_bitmaps: number): void;
+        static set_n_bitmaps(plot: null, n_bitmaps: number): void;
 
         /**
          * Set n_pixmaps field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_pixmaps the number of pixmaps
          */
-        static set_n_pixmaps(plot: (any | null), n_pixmaps: number): void;
+        static set_n_pixmaps(plot: null, n_pixmaps: number): void;
 
         /**
          * Set n_points field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_points the number of points
          */
-        static set_n_points(plot: (any | null), n_points: number): void;
+        static set_n_points(plot: null, n_points: number): void;
 
         /**
          * Set pixmap field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param pixmap the pixmaps
          */
-        static set_pixmap(plot: (any | null), pixmap: number): void;
+        static set_pixmap(plot: null, pixmap: number): void;
 
         /**
          * Set point field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point the points as array of coordinates
          */
-        static set_point(plot: (any | null), point: number): void;
+        static set_point(plot: null, point: number): void;
 
         /**
          * Set point color field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point_color the points colors as array of RGB value
          */
-        static set_point_color(plot: (any | null), point_color: number): void;
+        static set_point_color(plot: null, point_color: number): void;
 
         /**
          * Set point label field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point_label the points labels as string vector
          */
-        static set_point_label(plot: (any | null), point_label: string): void;
+        static set_point_label(plot: null, point_label: string): void;
     }
 
 

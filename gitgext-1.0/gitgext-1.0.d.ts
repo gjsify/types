@@ -140,7 +140,7 @@ export namespace GitgExt {
          * @param t_type 
          * @param t_dup_func 
          */
-        get_for(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): (any | null);
+        get_for(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): null;
 
         parse_finished(): void;
 

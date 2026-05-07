@@ -1481,7 +1481,7 @@ export namespace Cogl {
      * @param v2 a {@link Cogl.Color}
      * @returns `true` if the two colors are the same.
      */
-    function color_equal(v1: (any | null), v2: (any | null)): boolean;
+    function color_equal(v1: null, v2: null): boolean;
 
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -1659,7 +1659,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_project_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+    function graphene_matrix_project_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
     /**
      * Transforms an array of input points and writes the result to
@@ -1705,7 +1705,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
     /**
      * Checks if a given `feature` is currently available
@@ -1725,7 +1725,7 @@ export namespace Cogl {
      * @param object A `CoglObject` pointer
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      */
-    function is_framebuffer(object: (any | null)): boolean;
+    function is_framebuffer(object: null): boolean;
 
     /**
      * Allows you to manually iterate the low-level textures that define a
@@ -1840,13 +1840,13 @@ export namespace Cogl {
     /**
      * @param data 
      */
-    function set_tracing_disabled_on_thread(data: (any | null)): void;
+    function set_tracing_disabled_on_thread(data: null): void;
 
     /**
      * @param data 
      * @param group 
      */
-    function set_tracing_enabled_on_thread(data: (any | null), group: string): void;
+    function set_tracing_enabled_on_thread(data: null, group: string): void;
 
     /**
      * @param fd 
@@ -1920,7 +1920,7 @@ export namespace Cogl {
      * @gir-type Callback
      */
     interface XlibFilterFunc {
-        (event: xlib.XEvent, data: (any | null)): FilterReturn;
+        (event: xlib.XEvent, data: null): FilterReturn;
     }
 
     /**
@@ -2523,7 +2523,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map(access: BufferAccess, hints: BufferMapHint): (any | null);
+        map(access: BufferAccess, hints: BufferMapHint): null;
 
         /**
          * Maps a sub-region of the buffer into the application's address space
@@ -2547,7 +2547,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map_range(offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): (any | null);
+        map_range(offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): null;
 
         /**
          * Updates part of the buffer with new data from `data`. Where to put this new
@@ -2952,8 +2952,8 @@ export namespace Cogl {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             context: Context;
-            driver_config: any;
-            driverConfig: any;
+            driver_config: never;
+            driverConfig: never;
             height: number;
             width: number;
         }
@@ -2974,12 +2974,12 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        get driver_config(): any;
+        get driver_config(): null;
 
         /**
          * @construct-only
          */
-        get driverConfig(): any;
+        get driverConfig(): null;
 
         /**
          * @default -1
@@ -3961,7 +3961,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, type: IndicesType, indices_data: (any | null), n_indices: number): Indices;
+        static ["new"](context: Context, type: IndicesType, indices_data: null, n_indices: number): Indices;
 
         static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: (bigint | number)): Indices;
 
@@ -4541,7 +4541,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        direct_scanout(scanout: Scanout, info: FrameInfo, user_data: (any | null)): boolean;
+        direct_scanout(scanout: Scanout, info: FrameInfo, user_data: null): boolean;
 
         /**
          * Gets the current age of the buffer contents.
@@ -4688,7 +4688,7 @@ export namespace Cogl {
          * @param frame_info 
          * @param user_data 
          */
-        swap_buffers(frame_info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers(frame_info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps the current back buffer being rendered too, to the front for
@@ -4732,7 +4732,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_buffers_with_damage(rectangles: number[], info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers_with_damage(rectangles: number[], info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps a region of the back buffer being rendered too, to the front for
@@ -4748,7 +4748,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_region(rectangles: number[], info: FrameInfo, user_data: (any | null)): void;
+        swap_region(rectangles: number[], info: FrameInfo, user_data: null): void;
     }
 
 
@@ -6808,7 +6808,7 @@ export namespace Cogl {
             context: Context;
             format: PixelFormat;
             height: number;
-            loader: any;
+            loader: never;
             width: number;
         }
     }
@@ -6845,7 +6845,7 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        set loader(val: any);
+        set loader(val: never);
 
         /**
          * @construct-only
@@ -7317,7 +7317,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1: (any | null), v2: (any | null)): boolean;
+        static equal(v1: null, v2: null): boolean;
 
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -7566,12 +7566,12 @@ export namespace Cogl {
 
         get_width(): number;
 
-        mmap(): (any | null);
+        mmap(): null;
 
         /**
          * @param data 
          */
-        munmap(data: (any | null)): boolean;
+        munmap(data: null): boolean;
 
         sync_read_end(): boolean;
 
@@ -7601,7 +7601,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<FenceClosure>;
 
         // Methods
-        get_user_data(): (any | null);
+        get_user_data(): null;
     }
 
 

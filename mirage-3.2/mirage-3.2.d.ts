@@ -923,7 +923,7 @@ export namespace Mirage {
      * @param dictionary a {@link GLib.HashTable} containing replacement token/value pairs
      * @returns string with all replacement tokens either replaced or removed. The string should be freed using `g_free()` when no longer needed.
      */
-    function helper_format_stringd(format: string, dictionary: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
+    function helper_format_stringd(format: string, dictionary: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
 
     /**
      * Retrieves suffix from `filename`.
@@ -1256,7 +1256,7 @@ export namespace Mirage {
      * @gir-type Callback
      */
     interface PasswordFunction {
-        (user_data: (any | null)): string;
+        (user_data: null): string;
     }
 
     namespace CdTextCoder {
@@ -2384,7 +2384,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: (any | null), count: (bigint | number)): number;
+        read(buffer: null, count: (bigint | number)): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2407,7 +2407,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: (any | null), count: (bigint | number)): number;
+        write(buffer: null, count: (bigint | number)): number;
 
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
@@ -2442,7 +2442,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @virtual
          */
-        vfunc_read(buffer: (any | null), count: number): (bigint | number);
+        vfunc_read(buffer: null, count: number): (bigint | number);
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2465,7 +2465,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @virtual
          */
-        vfunc_write(buffer: (any | null), count: number): (bigint | number);
+        vfunc_write(buffer: null, count: number): (bigint | number);
     }
 
 
@@ -2531,7 +2531,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_read(buffer: (any | null), count: number): (bigint | number);
+        vfunc_read(buffer: null, count: number): (bigint | number);
 
         /**
          * seeks to a location within stream
@@ -2547,7 +2547,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_simplified_partial_read(buffer: (any | null), count: number): (bigint | number);
+        vfunc_simplified_partial_read(buffer: null, count: number): (bigint | number);
 
         /**
          * writes a chunk of requested data to stream (part of simplified interface)
@@ -2555,7 +2555,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_simplified_partial_write(buffer: (any | null), count: number): (bigint | number);
+        vfunc_simplified_partial_write(buffer: null, count: number): (bigint | number);
 
         /**
          * tells the current location within stream
@@ -2569,7 +2569,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_write(buffer: (any | null), count: number): (bigint | number);
+        vfunc_write(buffer: null, count: number): (bigint | number);
 
         // Methods
         /**
@@ -2752,7 +2752,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: (any | null), count: (bigint | number)): number;
+        read(buffer: null, count: (bigint | number)): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2775,7 +2775,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: (any | null), count: (bigint | number)): number;
+        write(buffer: null, count: (bigint | number)): number;
 
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
@@ -6258,7 +6258,7 @@ export namespace Mirage {
              * @param count number of bytes to read from stream
              * @virtual
              */
-            vfunc_read(buffer: (any | null), count: number): (bigint | number);
+            vfunc_read(buffer: null, count: number): (bigint | number);
 
             /**
              * Seeks in the stream by the given `offset`, modified by `type`.
@@ -6281,7 +6281,7 @@ export namespace Mirage {
              * @param count number of bytes to write to stream
              * @virtual
              */
-            vfunc_write(buffer: (any | null), count: number): (bigint | number);
+            vfunc_write(buffer: null, count: number): (bigint | number);
         }
 
 
@@ -6343,7 +6343,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: (any | null), count: (bigint | number)): number;
+        read(buffer: null, count: (bigint | number)): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -6366,7 +6366,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: (any | null), count: (bigint | number)): number;
+        write(buffer: null, count: (bigint | number)): number;
     }
 
 

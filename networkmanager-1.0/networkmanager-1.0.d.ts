@@ -3525,7 +3525,7 @@ export namespace NetworkManager {
      * @param hash a {@link GLib.HashTable} mapping string:GValue
      * @returns a newly allocated duplicated {@link GLib.HashTable}, caller must free the returned hash with `g_hash_table_unref()` or `g_hash_table_destroy()`
      */
-    function utils_gvalue_hash_dup(hash: ({ [key: string]: any } | GLib.HashTable<any, any>)): GLib.HashTable<string, GObject.Value>;
+    function utils_gvalue_hash_dup(hash: ({ [key: string]: any } | GLib.HashTable<never, never>)): GLib.HashTable<string, GObject.Value>;
 
     /**
      * Converts a hex string (2 characters) into its byte representation.
@@ -3566,7 +3566,7 @@ export namespace NetworkManager {
      * @param buffer buffer to store the result into
      * @returns `buffer`, or `null` if `asc` couldn't be parsed
      */
-    function utils_hwaddr_aton(asc: string, type: number, buffer: (any | null)): number;
+    function utils_hwaddr_aton(asc: string, type: number, buffer: null): number;
 
     /**
      * Parses `asc` and converts it to binary form in `buffer`.
@@ -3577,7 +3577,7 @@ export namespace NetworkManager {
      * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
      * @since 0.9.10
      */
-    function utils_hwaddr_aton_len(asc: string, buffer: (any | null), length: (bigint | number)): number;
+    function utils_hwaddr_aton_len(asc: string, buffer: null, length: (bigint | number)): number;
 
     /**
      * Returns the length in octets of a hardware address of type `type`.
@@ -3595,7 +3595,7 @@ export namespace NetworkManager {
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
      * @returns the textual form of `addr`
      */
-    function utils_hwaddr_ntoa(addr: (any | null), type: number): string;
+    function utils_hwaddr_ntoa(addr: null, type: number): string;
 
     /**
      * Converts `addr` to textual form.
@@ -3604,7 +3604,7 @@ export namespace NetworkManager {
      * @returns the textual form of `addr`
      * @since 0.9.10
      */
-    function utils_hwaddr_ntoa_len(addr: (any | null), length: (bigint | number)): string;
+    function utils_hwaddr_ntoa_len(addr: null, length: (bigint | number)): string;
 
     /**
      * Returns the type (either <literal>ARPHRD_ETHER</literal> or
@@ -4578,7 +4578,7 @@ export namespace NetworkManager {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, any> | null)): [boolean, boolean];
+        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
 
         /**
          * Removes the {@link NetworkManager.Setting} with the given {@link GObject.GType} from the {@link NetworkManager.Connection}.  This
@@ -8487,7 +8487,7 @@ export namespace NetworkManager {
          * @param dns the IPv6 address of the DNS server to add
          * @returns `true` if the DNS server was added; `false` if the server was already known
          */
-        add_dns(dns: (any | null)): boolean;
+        add_dns(dns: null): boolean;
 
         /**
          * Adds a new DNS search domain to the setting.
@@ -8541,7 +8541,7 @@ export namespace NetworkManager {
          * @param i index number of the DNS server to return
          * @returns the IPv6 address of the DNS server at index `i`
          */
-        get_dns(i: number): (any | null);
+        get_dns(i: number): null;
 
         /**
          * @param i index number of the DNS search domain to return
@@ -8646,7 +8646,7 @@ export namespace NetworkManager {
          * @param dns the IPv6 address of the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not.
          */
-        remove_dns_by_value(dns: (any | null)): boolean;
+        remove_dns_by_value(dns: null): boolean;
 
         /**
          * Removes the DNS search domain at index `i`.
@@ -11452,13 +11452,13 @@ export namespace NetworkManager {
          * Sets the IPv6 address property of this object.
          * @param addr the IPv6 address
          */
-        set_address(addr: (any | null)): void;
+        set_address(addr: null): void;
 
         /**
          * Sets the IPv6 default gateway property of this address object.
          * @param gateway the IPv6 default gateway
          */
-        set_gateway(gateway: (any | null)): void;
+        set_gateway(gateway: null): void;
 
         /**
          * Sets the IPv6 address prefix.
@@ -11536,7 +11536,7 @@ export namespace NetworkManager {
          * Sets the IPv6 destination address property of this route object.
          * @param dest the destination address
          */
-        set_dest(dest: (any | null)): void;
+        set_dest(dest: null): void;
 
         /**
          * Sets the route metric property of this route object; lower values indicate
@@ -11549,7 +11549,7 @@ export namespace NetworkManager {
          * Sets the IPv6 address of the next hop of this route.
          * @param next_hop the IPv6 address of the next hop
          */
-        set_next_hop(next_hop: (any | null)): void;
+        set_next_hop(next_hop: null): void;
 
         /**
          * Sets the IPv6 prefix of this route.

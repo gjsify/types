@@ -206,7 +206,7 @@ export namespace Grl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
 
     /**
      * Retrieves the description associated with the key
@@ -296,7 +296,7 @@ export namespace Grl {
      * @returns The previously attached data.
      * @since 0.1.16
      */
-    function operation_get_data(operation_id: number): any;
+    function operation_get_data(operation_id: number): null;
 
     /**
      * Attach a pointer to the specific operation.
@@ -304,7 +304,7 @@ export namespace Grl {
      * @param user_data the data to attach
      * @since 0.1.16
      */
-    function operation_set_data(operation_id: number, user_data: any): void;
+    function operation_set_data(operation_id: number, user_data: never): void;
 
     /**
      * Grilo browsing implements a paging mechanism through `skip` and `count` values.
@@ -1969,7 +1969,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "content-changed": (arg0: any[], arg1: MediaSourceChangeType, arg2: boolean) => void;
+            "content-changed": (arg0: null[], arg1: MediaSourceChangeType, arg2: boolean) => void;
             "notify::auto-split-threshold": (pspec: GObject.ParamSpec) => void;
             "notify::source-desc": (pspec: GObject.ParamSpec) => void;
             "notify::source-id": (pspec: GObject.ParamSpec) => void;
@@ -2206,7 +2206,7 @@ export namespace Grl {
          * @param operation_id the identifier of a running operation
          * @returns The previously attached data.
          */
-        get_operation_data(operation_id: number): any;
+        get_operation_data(operation_id: number): null;
 
         /**
          * This method is intended to fetch the requested keys of metadata of
@@ -2393,7 +2393,7 @@ export namespace Grl {
          * @param operation_id the identifier of a running operation
          * @param data the data to attach
          */
-        set_operation_data(operation_id: number, data: any): void;
+        set_operation_data(operation_id: number, data: never): void;
 
         /**
          * Store the `media` into the `parent` container
@@ -2864,7 +2864,7 @@ export namespace Grl {
          * @param operation_id the identifier of a running operation
          * @returns The previously attached data.
          */
-        get_operation_data(operation_id: number): any;
+        get_operation_data(operation_id: number): null;
 
         /**
          * Get the list of {@link Grl.KeyID} which are needed a priori, in order to fetch
@@ -2982,7 +2982,7 @@ export namespace Grl {
          * @param operation_id the identifier of a running operation
          * @param data the data to attach
          */
-        set_operation_data(operation_id: number, data: any): void;
+        set_operation_data(operation_id: number, data: never): void;
 
         /**
          * @param operation_id 
@@ -3542,7 +3542,7 @@ export namespace Grl {
 
         container: Media;
 
-        keys: any[];
+        keys: null[];
 
         skip: number;
 
@@ -3552,7 +3552,7 @@ export namespace Grl {
 
         callback: MediaSourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3576,13 +3576,13 @@ export namespace Grl {
 
         uri: string;
 
-        keys: any[];
+        keys: null[];
 
         flags: MetadataResolutionFlags;
 
         callback: MediaSourceMetadataCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3601,13 +3601,13 @@ export namespace Grl {
 
         media: Media;
 
-        keys: any[];
+        keys: null[];
 
         flags: MetadataResolutionFlags;
 
         callback: MediaSourceMetadataCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3634,7 +3634,7 @@ export namespace Grl {
 
         query: string;
 
-        keys: any[];
+        keys: null[];
 
         skip: number;
 
@@ -3644,7 +3644,7 @@ export namespace Grl {
 
         callback: MediaSourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3665,7 +3665,7 @@ export namespace Grl {
 
         callback: MediaSourceRemoveCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3684,7 +3684,7 @@ export namespace Grl {
 
         text: string;
 
-        keys: any[];
+        keys: null[];
 
         skip: number;
 
@@ -3694,7 +3694,7 @@ export namespace Grl {
 
         callback: MediaSourceResultCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3713,7 +3713,7 @@ export namespace Grl {
 
         callback: MediaSourceStoreCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3748,7 +3748,7 @@ export namespace Grl {
 
         resolve_id: number;
 
-        keys: any[];
+        keys: null[];
 
         media: Media;
 
@@ -3756,7 +3756,7 @@ export namespace Grl {
 
         callback: MetadataSourceResolveCb;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -3772,15 +3772,15 @@ export namespace Grl {
 
         media: Media;
 
-        keys: any[];
+        keys: null[];
 
         flags: MetadataWritingFlags;
 
         callback: MetadataSourceSetMetadataCb;
 
-        user_data: any;
+        user_data: null;
 
-        failed_keys: any[];
+        failed_keys: null[];
     }
 
 
@@ -3840,7 +3840,7 @@ export namespace Grl {
     /**
      * @gir-type Alias
      */
-    type KeyID = any;
+    type KeyID = never;
 
     /**
      * Name of the imported GIR library

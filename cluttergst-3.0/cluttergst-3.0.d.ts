@@ -1491,8 +1491,8 @@ export namespace ClutterGst {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Player.ConstructorProps {
             audio_stream: number;
             audioStream: number;
-            audio_streams: any;
-            audioStreams: any;
+            audio_streams: never;
+            audioStreams: never;
             buffer_fill: number;
             bufferFill: number;
             can_seek: boolean;
@@ -1507,8 +1507,8 @@ export namespace ClutterGst {
             subtitleFontName: string;
             subtitle_track: number;
             subtitleTrack: number;
-            subtitle_tracks: any;
-            subtitleTracks: any;
+            subtitle_tracks: never;
+            subtitleTracks: never;
             subtitle_uri: string;
             subtitleUri: string;
             uri: string;
@@ -1550,14 +1550,14 @@ export namespace ClutterGst {
          * @since 1.4
          * @read-only
          */
-        get audio_streams(): any;
+        get audio_streams(): null;
 
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
-        get audioStreams(): any;
+        get audioStreams(): null;
 
         /**
          * The fill level of the buffer for the current stream,
@@ -1675,14 +1675,14 @@ export namespace ClutterGst {
          * @since 1.4
          * @read-only
          */
-        get subtitle_tracks(): any;
+        get subtitle_tracks(): null;
 
         /**
          * List of subtitle tracks available.
          * @since 1.4
          * @read-only
          */
-        get subtitleTracks(): any;
+        get subtitleTracks(): null;
 
         /**
          * The location of a subtitle file, expressed as a valid URI.
@@ -2671,12 +2671,12 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Overlays>;
 
         // Fields
-        overlays: any[];
+        overlays: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            overlays: any[];
+            overlays: null[];
         }>);
     }
 

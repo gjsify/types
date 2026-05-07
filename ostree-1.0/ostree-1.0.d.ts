@@ -535,7 +535,7 @@ export namespace OSTree {
      * Use this function with {@link GLib.HashTable} and `ostree_object_name_serialize()`.
      * @param a A {@link GLib.Variant} containing a serialized object
      */
-    function hash_object_name(a: (any | null)): number;
+    function hash_object_name(a: null): number;
 
     /**
      * @param objtype 
@@ -615,7 +615,7 @@ export namespace OSTree {
     /**
      * @param p 
      */
-    function repo_commit_traverse_iter_cleanup(p: (any | null)): void;
+    function repo_commit_traverse_iter_cleanup(p: null): void;
 
     /**
      * Use this function to see if input strings are checksums.
@@ -869,7 +869,7 @@ export namespace OSTree {
 
         static ["new"](): AsyncProgress;
 
-        static new_and_connect(changed: (any | null), user_data: (any | null)): AsyncProgress;
+        static new_and_connect(changed: null, user_data: null): AsyncProgress;
 
         // Signals
         /** @signal */
@@ -889,7 +889,7 @@ export namespace OSTree {
          * @param user_data 
          * @virtual
          */
-        vfunc_changed(user_data: (any | null)): void;
+        vfunc_changed(user_data: null): void;
 
         // Methods
         /**
@@ -1038,7 +1038,7 @@ export namespace OSTree {
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
-            checksum: any;
+            checksum: never;
         }
     }
 
@@ -1052,7 +1052,7 @@ export namespace OSTree {
         /**
          * @construct-only
          */
-        get checksum(): any;
+        get checksum(): null;
 
         /**
          * Compile-time signal type information.
@@ -1135,7 +1135,7 @@ export namespace OSTree {
         /**
          * @param v 
          */
-        static hash(v: (any | null)): number;
+        static hash(v: null): number;
 
         /**
          * @param state 
@@ -1679,7 +1679,7 @@ export namespace OSTree {
          * @param progress Async progress
          * @param user_data User data
          */
-        static pull_default_console_progress_changed(progress: AsyncProgress, user_data: (any | null)): void;
+        static pull_default_console_progress_changed(progress: AsyncProgress, user_data: null): void;
 
         /**
          * This hash table is a set of {@link GLib.Variant} which can be accessed via
@@ -1932,7 +1932,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_commit_objects_starting_with(start: string, out_commits: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null)): boolean;
+        list_commit_objects_starting_with(start: string, out_commits: ({ [key: string]: any } | GLib.HashTable<never, never>), cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * This function synchronously enumerates all objects in the
@@ -1943,7 +1943,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_objects(flags: RepoListObjectsFlags, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<any, any>];
+        list_objects(flags: RepoListObjectsFlags, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<never, never>];
 
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
@@ -5164,7 +5164,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the attribute was set, `false` otherwise.
          */
-        set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: (any | null), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: null, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.BYTE_STRING} to `value`.
@@ -7069,7 +7069,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: (any | null), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: null, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
          * Asynchronously sets the attributes of `file` with `info`.
@@ -7373,7 +7373,7 @@ export namespace OSTree {
          * Cleanup function for `ostree_sepolicy_setfscreatecon()`.
          * @param unused 
          */
-        static fscreatecon_cleanup(unused: (any | null)): void;
+        static fscreatecon_cleanup(unused: null): void;
 
         // Methods
         /**
@@ -8256,7 +8256,7 @@ export namespace OSTree {
 
         unused_ints: number[];
 
-        unused_ptrs: any[];
+        unused_ptrs: null[];
     }
 
 
@@ -8325,7 +8325,7 @@ export namespace OSTree {
         // Fields
         initialized: boolean;
 
-        dummy: any[];
+        dummy: null[];
 
         dummy_checksum_data: number[];
 
@@ -8333,7 +8333,7 @@ export namespace OSTree {
 
         constructor(properties?: Partial<{
             initialized: boolean;
-            dummy: any[];
+            dummy: null[];
             dummy_checksum_data: number[];
         }>);
 
@@ -8341,7 +8341,7 @@ export namespace OSTree {
         /**
          * @param p 
          */
-        static cleanup(p: (any | null)): void;
+        static cleanup(p: null): void;
 
         // Methods
         clear(): void;
@@ -8481,7 +8481,7 @@ export namespace OSTree {
 
         match_size: number;
 
-        matches: any[];
+        matches: null[];
     }
 
 

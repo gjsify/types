@@ -393,7 +393,7 @@ export namespace GtkSource {
      * @returns an integer according to {@link GLib.CompareFunc}.
      * @since 299.6
      */
-    function encoding_compare_func(a: (any | null), b: (any | null)): number;
+    function encoding_compare_func(a: null, b: null): number;
 
     /**
      * A {@link GLib.CopyFunc} provided for convenience. It does the same as
@@ -403,7 +403,7 @@ export namespace GtkSource {
      * @returns a copy of `src`.
      * @since 299.6
      */
-    function encoding_copy_func(src: (any | null), data: (any | null)): (any | null);
+    function encoding_copy_func(src: null, data: null): null;
 
     /**
      * Gets a list of all encodings known by {@link GtkSource.Encoding}.
@@ -5354,8 +5354,8 @@ export namespace GtkSource {
             matchStyle: Style;
             occurrences_count: number;
             occurrencesCount: number;
-            regex_error: (any | null);
-            regexError: (any | null);
+            regex_error: null;
+            regexError: null;
             settings: SearchSettings;
         }
     }
@@ -5425,7 +5425,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regex_error(): (any | null);
+        get regex_error(): null;
 
         /**
          * If the regex search pattern doesn't follow all the rules, this
@@ -5436,7 +5436,7 @@ export namespace GtkSource {
          * @since 3.10
          * @read-only
          */
-        get regexError(): (any | null);
+        get regexError(): null;
 
         /**
          * The {@link GtkSource.SearchSettings} associated to the search context.
@@ -7465,7 +7465,7 @@ export namespace GtkSource {
          * @param a a {@link GtkSource.Encoding}.
          * @param b a {@link GtkSource.Encoding}.
          */
-        static compare_func(a: (any | null), b: (any | null)): number;
+        static compare_func(a: null, b: null): number;
 
         /**
          * A {@link GLib.CopyFunc} provided for convenience. It does the same as
@@ -7473,7 +7473,7 @@ export namespace GtkSource {
          * @param src a {@link GtkSource.Encoding}.
          * @param data Additional data (ignored).
          */
-        static copy_func(src: (any | null), data: (any | null)): (any | null);
+        static copy_func(src: null, data: null): null;
 
         /**
          * Gets a list of all encodings known by {@link GtkSource.Encoding}.

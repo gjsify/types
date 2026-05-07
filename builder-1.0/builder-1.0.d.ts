@@ -588,7 +588,7 @@ export namespace Builder {
          * @param key the key for `equal_func`
          * @returns A {@link Builder.TreeNode} or `null`.
          */
-        find_custom(equal_func: GLib.EqualFunc, key: (any | null)): (TreeNode | null);
+        find_custom(equal_func: GLib.EqualFunc, key: null): (TreeNode | null);
 
         /**
          * Finds a {@link Builder.TreeNode} with an item property matching `item`.

@@ -405,7 +405,7 @@ export namespace Unity {
     /**
      * @param object 
      */
-    function object_unref(object: any): void;
+    function object_unref(object: never): void;
 
     /**
      * @gir-type Callback

@@ -320,8 +320,8 @@ export namespace GUsb {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             debug_level: number;
             debugLevel: number;
-            libusb_context: any;
-            libusbContext: any;
+            libusb_context: never;
+            libusbContext: never;
         }
     }
 
@@ -347,12 +347,12 @@ export namespace GUsb {
         /**
          * @read-only
          */
-        get libusb_context(): any;
+        get libusb_context(): null;
 
         /**
          * @read-only
          */
-        get libusbContext(): any;
+        get libusbContext(): null;
 
         /**
          * Compile-time signal type information.
@@ -641,8 +641,8 @@ export namespace GUsb {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             context: Context;
-            libusb_device: any;
-            libusbDevice: any;
+            libusb_device: never;
+            libusbDevice: never;
             platform_id: string;
             platformId: string;
         }
@@ -663,12 +663,12 @@ export namespace GUsb {
         /**
          * @construct-only
          */
-        get libusb_device(): any;
+        get libusb_device(): null;
 
         /**
          * @construct-only
          */
-        get libusbDevice(): any;
+        get libusbDevice(): null;
 
         /**
          * @construct-only

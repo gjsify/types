@@ -392,7 +392,7 @@ export namespace EDataServerUI {
          * @param der_data certificate data in DER format, or `null`
          * @param der_data_len length of the `der_data`
          */
-        set_der(der_data: (any | null), der_data_len: number): void;
+        set_der(der_data: null, der_data_len: number): void;
 
         /**
          * Updates the content of the `self` with the certificate information
@@ -749,7 +749,7 @@ export namespace EDataServerUI {
              * @since 3.16
              * @run-last
              */
-            "prompt-finished": (arg0: (any | null), arg1: (EDataServer.NamedParameters | null)) => void;
+            "prompt-finished": (arg0: null, arg1: (EDataServer.NamedParameters | null)) => void;
             "notify::extensible": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -803,7 +803,7 @@ export namespace EDataServerUI {
          * @param prompt_id a prompt ID to cancel
          * @virtual
          */
-        vfunc_cancel_prompt(prompt_id: (any | null)): void;
+        vfunc_cancel_prompt(prompt_id: null): void;
 
         /**
          * @param prompt_id 
@@ -813,27 +813,27 @@ export namespace EDataServerUI {
          * @param credentials 
          * @virtual
          */
-        vfunc_process_prompt(prompt_id: (any | null), auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void;
+        vfunc_process_prompt(prompt_id: null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void;
 
         /**
          * @param prompt_id 
          * @param credentials 
          * @virtual
          */
-        vfunc_prompt_finished(prompt_id: (any | null), credentials: EDataServer.NamedParameters): void;
+        vfunc_prompt_finished(prompt_id: null, credentials: EDataServer.NamedParameters): void;
 
         // Methods
         /**
          * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
          * @param prompt_id a prompt ID to cancel
          */
-        cancel_prompt(prompt_id: (any | null)): void;
+        cancel_prompt(prompt_id: null): void;
 
         /**
          * Returns an {@link EDataServerUI.CredentialsPrompter} with which the `prompter_impl` is associated.
          * @returns an {@link EDataServerUI.CredentialsPrompter}
          */
-        get_credentials_prompter(): (any | null);
+        get_credentials_prompter(): null;
 
         /**
          * Runs a credentials prompt for the `prompter_impl`. The actual prompter implementation
@@ -853,7 +853,7 @@ export namespace EDataServerUI {
          * @param error_text an optional error text from the previous credentials prompt; can be `null`
          * @param credentials credentials, as saved in keyring; can be empty, but not `null`
          */
-        prompt(prompt_id: (any | null), auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: (string | null), credentials: EDataServer.NamedParameters): void;
+        prompt(prompt_id: null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: (string | null), credentials: EDataServer.NamedParameters): void;
 
         /**
          * The actual credentials prompt implementation finishes a previously started
@@ -866,7 +866,7 @@ export namespace EDataServerUI {
          * @param prompt_id a prompt ID
          * @param credentials credentials to use; can be `null` for cancelled prompts
          */
-        prompt_finish(prompt_id: (any | null), credentials: (EDataServer.NamedParameters | null)): void;
+        prompt_finish(prompt_id: null, credentials: (EDataServer.NamedParameters | null)): void;
     }
 
 

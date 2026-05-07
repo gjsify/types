@@ -124,7 +124,7 @@ export namespace Egg {
      * @gir-type Callback
      */
     interface TaskCacheCallback {
-        (self: TaskCache, key: (any | null), task: Gio.Task): void;
+        (self: TaskCache, key: null, task: Gio.Task): void;
     }
 
     namespace Animation {
@@ -3069,7 +3069,7 @@ export namespace Egg {
          * @param property 
          * @param flags 
          */
-        bind(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: null, property: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * Creates a new binding similar to `g_settings_bind_with_mapping()` but applying
@@ -3081,7 +3081,7 @@ export namespace Egg {
          * @param get_mapping the get mapping function
          * @param set_mapping the set mapping function
          */
-        bind_with_mapping(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void;
 
         /**
          * @param key 
@@ -3492,7 +3492,7 @@ export namespace Egg {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -3502,7 +3502,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -3511,7 +3511,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -3585,7 +3585,7 @@ export namespace Egg {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -3596,7 +3596,7 @@ export namespace Egg {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -3605,7 +3605,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -4025,7 +4025,7 @@ export namespace Egg {
          * @param target_property 
          * @param flags 
          */
-        add_binding(state: string, source_object: (any | null), source_property: string, target_object: (any | null), target_property: string, flags: GObject.BindingFlags): void;
+        add_binding(state: string, source_object: null, source_property: string, target_object: null, target_property: string, flags: GObject.BindingFlags): void;
 
         /**
          * @param state 
@@ -4033,7 +4033,7 @@ export namespace Egg {
          * @param property 
          * @param value 
          */
-        add_propertyv(state: string, object: (any | null), property: string, value: (GObject.Value | any)): void;
+        add_propertyv(state: string, object: null, property: string, value: (GObject.Value | any)): void;
 
         /**
          * @param state 
@@ -4099,7 +4099,7 @@ export namespace Egg {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -4109,7 +4109,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -4118,7 +4118,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -4192,7 +4192,7 @@ export namespace Egg {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -4203,7 +4203,7 @@ export namespace Egg {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -4212,7 +4212,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -5356,26 +5356,26 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            key_copy_func: any;
-            keyCopyFunc: any;
-            key_destroy_func: any;
-            keyDestroyFunc: any;
-            key_equal_func: any;
-            keyEqualFunc: any;
-            key_hash_func: any;
-            keyHashFunc: any;
-            populate_callback: any;
-            populateCallback: any;
-            populate_callback_data: any;
-            populateCallbackData: any;
-            populate_callback_data_destroy: any;
-            populateCallbackDataDestroy: any;
+            key_copy_func: never;
+            keyCopyFunc: never;
+            key_destroy_func: never;
+            keyDestroyFunc: never;
+            key_equal_func: never;
+            keyEqualFunc: never;
+            key_hash_func: never;
+            keyHashFunc: never;
+            populate_callback: never;
+            populateCallback: never;
+            populate_callback_data: never;
+            populateCallbackData: never;
+            populate_callback_data_destroy: never;
+            populateCallbackDataDestroy: never;
             time_to_live: (bigint | number);
             timeToLive: (bigint | number);
-            value_copy_func: any;
-            valueCopyFunc: any;
-            value_destroy_func: any;
-            valueDestroyFunc: any;
+            value_copy_func: never;
+            valueCopyFunc: never;
+            value_destroy_func: never;
+            valueDestroyFunc: never;
         }
     }
 
@@ -5389,72 +5389,72 @@ export namespace Egg {
         /**
          * @construct-only
          */
-        set key_copy_func(val: any);
+        set key_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyCopyFunc(val: any);
+        set keyCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_destroy_func(val: any);
+        set key_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyDestroyFunc(val: any);
+        set keyDestroyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_equal_func(val: any);
+        set key_equal_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyEqualFunc(val: any);
+        set keyEqualFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_hash_func(val: any);
+        set key_hash_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyHashFunc(val: any);
+        set keyHashFunc(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback(val: any);
+        set populate_callback(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallback(val: any);
+        set populateCallback(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data(val: any);
+        set populate_callback_data(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackData(val: any);
+        set populateCallbackData(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data_destroy(val: any);
+        set populate_callback_data_destroy(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackDataDestroy(val: any);
+        set populateCallbackDataDestroy(val: never);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -5477,22 +5477,22 @@ export namespace Egg {
         /**
          * @construct-only
          */
-        set value_copy_func(val: any);
+        set value_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueCopyFunc(val: any);
+        set valueCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set value_destroy_func(val: any);
+        set value_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueDestroyFunc(val: any);
+        set valueDestroyFunc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -5525,7 +5525,7 @@ export namespace Egg {
         /**
          * @param key 
          */
-        evict(key: (any | null)): boolean;
+        evict(key: null): boolean;
 
         evict_all(): void;
 
@@ -5534,7 +5534,7 @@ export namespace Egg {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(any | null)>;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -5542,7 +5542,7 @@ export namespace Egg {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * @param key 
@@ -5550,14 +5550,14 @@ export namespace Egg {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(any | null)> | void);
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
 
         /**
          * Finish a call to `egg_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
          */
-        get_finish(result: Gio.AsyncResult): (any | null);
+        get_finish(result: Gio.AsyncResult): null;
 
         /**
          * Peeks to see `key` is contained in the cache and returns the
@@ -5569,7 +5569,7 @@ export namespace Egg {
          * @param key The key for the cache
          * @returns A {@link GObject.Object} or   `null` if the key was not found in the cache.
          */
-        peek<T = GObject.Object>(key: (any | null)): T;
+        peek<T = GObject.Object>(key: null): T;
 
         /**
          * @param name 
@@ -6398,19 +6398,19 @@ export namespace Egg {
         /**
          * @param result 
          */
-        extract(result: (any | null)): boolean;
+        extract(result: null): boolean;
 
         /**
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: (any | null)): boolean;
+        extract_index(index_: (bigint | number), result: null): boolean;
 
         /**
          * @param data 
          * @param len 
          */
-        insert_vals(data: (any | null), len: number): void;
+        insert_vals(data: null, len: number): void;
 
         /**
          * Increments the reference count of `heap` by one.

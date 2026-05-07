@@ -142,7 +142,7 @@ export namespace Xmlb {
      * @gir-type Callback
      */
     interface MachineMethodFunc {
-        (self: Machine, stack: Stack, result_unused: boolean, exec_data: (any | null)): boolean;
+        (self: Machine, stack: Stack, result_unused: boolean, exec_data: null): boolean;
     }
 
     /**
@@ -1192,7 +1192,7 @@ export namespace Xmlb {
          * @param exec_data per-run user data that is passed to all the {@link Xmlb.MachineMethodFunc} functions
          * @returns a new {@link Xmlb.Opcode}, or `null`
          */
-        run(opcodes: Stack, exec_data: (any | null)): [boolean, boolean];
+        run(opcodes: Stack, exec_data: null): [boolean, boolean];
 
         /**
          * Runs a set of opcodes on the virtual machine, using the bound values given in
@@ -1205,7 +1205,7 @@ export namespace Xmlb {
          * @param exec_data per-run user data that is passed to all the {@link Xmlb.MachineMethodFunc} functions
          * @returns a new {@link Xmlb.Opcode}, or `null`
          */
-        run_with_bindings(opcodes: Stack, bindings: (ValueBindings | null), exec_data: (any | null)): [boolean, boolean];
+        run_with_bindings(opcodes: Stack, bindings: (ValueBindings | null), exec_data: null): [boolean, boolean];
 
         /**
          * Sets the debug level of the virtual machine.

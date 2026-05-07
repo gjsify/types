@@ -2496,7 +2496,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            changed: (arg0: (BackForwardListItem | null), arg1: (any | null)) => void;
+            changed: (arg0: (BackForwardListItem | null), arg1: null) => void;
         }
 
         // Constructor properties interface
@@ -4729,7 +4729,7 @@ export namespace WebKit2 {
          * function does not reliably return all text fields.
          * @returns a {@link GLib.HashTable} with the form    text fields, or `null` if the form doesn't contain text fields.
          */
-        get_text_fields(): (GLib.HashTable<any, any> | null);
+        get_text_fields(): (GLib.HashTable<never, never> | null);
 
         /**
          * Get lists of the text fields contained in the form associated to `request`.
@@ -12677,7 +12677,7 @@ export namespace WebKit2 {
             editable: boolean;
             estimated_load_progress: number;
             estimatedLoadProgress: number;
-            favicon: any;
+            favicon: never;
             is_controlled_by_automation: boolean;
             isControlledByAutomation: boolean;
             is_ephemeral: boolean;
@@ -12901,7 +12901,7 @@ export namespace WebKit2 {
          * See `webkit_web_view_get_favicon()` for more details.
          * @read-only
          */
-        get favicon(): any;
+        get favicon(): null;
 
         /**
          * Whether the {@link WebKit2.WebView} is controlled by automation tools (e.g. WebDriver, Selenium). This is

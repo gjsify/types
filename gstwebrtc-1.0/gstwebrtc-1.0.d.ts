@@ -2068,7 +2068,7 @@ export namespace GstWebRTC {
             relay_proto: string;
             prio: number;
             url: string;
-            _gst_reserved: any[];
+            _gst_reserved: null[];
         }>);
 
         // Methods

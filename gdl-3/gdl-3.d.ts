@@ -180,7 +180,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_ENUM_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__OBJECT_ENUM_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -190,7 +190,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__OBJECT_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -200,7 +200,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @gir-type Flags
@@ -1383,7 +1383,7 @@ export namespace Gdl {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1393,7 +1393,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1402,7 +1402,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1476,7 +1476,7 @@ export namespace Gdl {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1487,7 +1487,7 @@ export namespace Gdl {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1496,7 +1496,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2183,8 +2183,8 @@ export namespace Gdl {
             longName: string;
             master: DockMaster;
             name: string;
-            pixbuf_icon: any;
-            pixbufIcon: any;
+            pixbuf_icon: never;
+            pixbufIcon: never;
             stock_id: string;
             stockId: string;
         }
@@ -2229,15 +2229,15 @@ export namespace Gdl {
          * A GdkPixbuf to use for the icon of the dock object.
          * @since 3.3.2
          */
-        get pixbuf_icon(): any;
-        set pixbuf_icon(val: any);
+        get pixbuf_icon(): null;
+        set pixbuf_icon(val: never);
 
         /**
          * A GdkPixbuf to use for the icon of the dock object.
          * @since 3.3.2
          */
-        get pixbufIcon(): any;
-        set pixbufIcon(val: any);
+        get pixbufIcon(): null;
+        set pixbufIcon(val: never);
 
         /**
          * A stock id to use for the icon of the dock object.
@@ -2484,12 +2484,6 @@ export namespace Gdl {
          * @returns A {@link Gdl.Dock} or `null`.
          */
         get_toplevel(): (Dock | null);
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gtk.Widget.get_toplevel
-        get_toplevel(...args: never[]): any;
 
         /**
          * Determine if an object is managed by the dock master, such object is

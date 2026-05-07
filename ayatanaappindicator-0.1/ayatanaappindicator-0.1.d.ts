@@ -458,14 +458,14 @@ export namespace AyatanaAppIndicator {
          * @param user_data 
          * @virtual
          */
-        vfunc_new_attention_icon(user_data: (any | null)): void;
+        vfunc_new_attention_icon(user_data: null): void;
 
         /**
          * Slot for {@link AyatanaAppIndicator.Indicator.SignalSignatures.new_icon | AyatanaAppIndicator.Indicator::new-icon}.
          * @param user_data 
          * @virtual
          */
-        vfunc_new_icon(user_data: (any | null)): void;
+        vfunc_new_icon(user_data: null): void;
 
         /**
          * Slot for {@link AyatanaAppIndicator.Indicator.SignalSignatures.new_icon_theme_path | AyatanaAppIndicator.Indicator::new-icon-theme-path}

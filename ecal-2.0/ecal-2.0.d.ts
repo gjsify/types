@@ -572,7 +572,7 @@ export namespace ECal {
      * @returns whether the `item1` and `item2` are equal regarding    the component reference stored in them
      * @since 3.58
      */
-    function component_bag_item_equal_by_comp(item1: (any | null), item2: (any | null)): boolean;
+    function component_bag_item_equal_by_comp(item1: null, item2: null): boolean;
 
     /**
      * Calculates hash of the `self`, considering only the client, uid and
@@ -584,7 +584,7 @@ export namespace ECal {
      * @returns hash value for the `self`'s component
      * @since 3.58
      */
-    function component_bag_item_hash_by_comp(self: (any | null)): number;
+    function component_bag_item_hash_by_comp(self: null): number;
 
     /**
      * Creates an ISO 8601 UTC representation from a time value.
@@ -1276,7 +1276,7 @@ export namespace ECal {
      * @returns a list of all the alarms found    for the given component in the given time range.
      * @since 3.48
      */
-    function util_generate_alarms_for_uid_sync(client: (any | null), uid: string, start: (bigint | number), end: (bigint | number), omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, def_reminder_before_start_seconds: number, cancellable: (Gio.Cancellable | null)): (ComponentAlarms | null);
+    function util_generate_alarms_for_uid_sync(client: null, uid: string, start: (bigint | number), end: (bigint | number), omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, def_reminder_before_start_seconds: number, cancellable: (Gio.Cancellable | null)): (ComponentAlarms | null);
 
     /**
      * Returns an attendee email, without the "mailto:" prefix, if
@@ -1380,7 +1380,7 @@ export namespace ECal {
      * @returns The converted time as a struct tm. All fields will be    set properly except for tm.tm_yday.
      * @since 2.22
      */
-    function util_icaltime_to_tm(itt: ICalGLib.Time): (any | null);
+    function util_icaltime_to_tm(itt: ICalGLib.Time): null;
 
     /**
      * Converts a time value from one timezone to another, and returns a struct tm
@@ -1391,7 +1391,7 @@ export namespace ECal {
      * @returns The converted time as a struct tm. All fields will be    set properly except for tm.tm_yday.
      * @since 2.22
      */
-    function util_icaltime_to_tm_with_zone(itt: ICalGLib.Time, from_zone: ICalGLib.Timezone, to_zone: ICalGLib.Timezone): (any | null);
+    function util_icaltime_to_tm_with_zone(itt: ICalGLib.Time, from_zone: ICalGLib.Timezone, to_zone: ICalGLib.Timezone): null;
 
     /**
      * Initializes properties of a recurring `vtodo`, like normalizing
@@ -1676,7 +1676,7 @@ export namespace ECal {
      * @returns The converted time as an {@link ICalGLib.Time}.
      * @since 2.22
      */
-    function util_tm_to_icaltime(tm: (any | null), is_date: boolean): ICalGLib.Time;
+    function util_tm_to_icaltime(tm: null, is_date: boolean): ICalGLib.Time;
 
     /**
      * @gir-type Callback
@@ -4990,7 +4990,7 @@ export namespace ECal {
          * @param copy_user_data a copy function for the `user_data`, or `null`
          * @param free_user_data a free function for the `user_data`, or `null`
          */
-        add_with_user_data(client: Client, comp: Component, user_data: (any | null), copy_user_data: (GObject.BoxedCopyFunc | null), free_user_data: (GObject.BoxedFreeFunc | null)): void;
+        add_with_user_data(client: Client, comp: Component, user_data: null, copy_user_data: (GObject.BoxedCopyFunc | null), free_user_data: (GObject.BoxedFreeFunc | null)): void;
 
         /**
          * Removes all components from the bag.
@@ -5158,7 +5158,7 @@ export namespace ECal {
              * @since 3.30
              * @action
              */
-            "format-time": (arg0: ReminderData, arg1: ICalGLib.Time, arg2: any, arg3: number) => void;
+            "format-time": (arg0: ReminderData, arg1: ICalGLib.Time, arg2: null, arg3: number) => void;
             /**
              * Signal is emitted when any reminder is either overdue or triggered.
              * @signal
@@ -5791,7 +5791,7 @@ export namespace ECal {
         /**
          * @returns component associated with the instance, or `null`
          */
-        get_component(): (any | null);
+        get_component(): null;
 
         /**
          * @returns actual event occurrence end to which this `instance` corresponds
@@ -5823,7 +5823,7 @@ export namespace ECal {
          * It can be `null` to unset it.
          * @param component an {@link ECal.Component} or `null`
          */
-        set_component(component: (any | null)): void;
+        set_component(component: null): void;
 
         /**
          * Set the actual event occurrence end to which this `instance` corresponds.
@@ -6350,7 +6350,7 @@ export namespace ECal {
 
         span_index: number;
 
-        user_data: any;
+        user_data: null;
 
         copy_user_data: GObject.BoxedCopyFunc;
 
@@ -6371,7 +6371,7 @@ export namespace ECal {
          * @param item1 the first {@link ECal.ComponentBagItem}
          * @param item2 the second {@link ECal.ComponentBagItem}
          */
-        static equal_by_comp(item1: (any | null), item2: (any | null)): boolean;
+        static equal_by_comp(item1: null, item2: null): boolean;
 
         /**
          * Calculates hash of the `self`, considering only the client, uid and
@@ -6381,7 +6381,7 @@ export namespace ECal {
          * See: `e_cal_component_bag_item_equal_by_comp()`
          * @param self an {@link ECal.ComponentBagItem}
          */
-        static hash_by_comp(self: (any | null)): number;
+        static hash_by_comp(self: null): number;
 
         // Methods
         /**
@@ -6423,7 +6423,7 @@ export namespace ECal {
          * @param copy_user_data a copy function for the `user_data`, or `null`
          * @param free_user_data a free function for the `user_data`, or `null`
          */
-        set_user_data(user_data: (any | null), copy_user_data: (GObject.BoxedCopyFunc | null), free_user_data: (GObject.BoxedFreeFunc | null)): void;
+        set_user_data(user_data: null, copy_user_data: (GObject.BoxedCopyFunc | null), free_user_data: (GObject.BoxedFreeFunc | null)): void;
     }
 
 

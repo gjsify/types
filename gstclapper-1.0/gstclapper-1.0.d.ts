@@ -195,7 +195,7 @@ export namespace GstClapper {
      * @gir-type Callback
      */
     interface ClapperSignalDispatcherFunc {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     namespace Clapper {
@@ -1577,8 +1577,8 @@ export namespace GstClapper {
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperVideoRenderer.ConstructorProps {
             video_sink: Gst.Element;
             videoSink: Gst.Element;
-            window_handle: (any | null);
-            windowHandle: (any | null);
+            window_handle: never;
+            windowHandle: never;
         }
     }
 
@@ -1595,11 +1595,11 @@ export namespace GstClapper {
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
 
-        get window_handle(): (any | null);
-        set window_handle(val: (any | null));
+        get window_handle(): null;
+        set window_handle(val: never);
 
-        get windowHandle(): (any | null);
-        set windowHandle(val: (any | null));
+        get windowHandle(): null;
+        set windowHandle(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1632,13 +1632,13 @@ export namespace GstClapper {
         /**
          * @param window_handle Window handle to use or `null`
          */
-        static ["new"](window_handle: (any | null)): ClapperVideoRenderer;
+        static ["new"](window_handle: null): ClapperVideoRenderer;
 
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
          */
-        static new_with_sink(window_handle: (any | null), video_sink: Gst.Element): ClapperVideoRenderer;
+        static new_with_sink(window_handle: null, video_sink: Gst.Element): ClapperVideoRenderer;
 
         // Methods
         /**
@@ -1656,7 +1656,7 @@ export namespace GstClapper {
         /**
          * @returns The currently set, platform specific window handle
          */
-        get_window_handle(): (any | null);
+        get_window_handle(): null;
 
         /**
          * Configure a subregion as a video target within the window set by
@@ -1681,7 +1681,7 @@ export namespace GstClapper {
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
          */
-        set_window_handle(window_handle: (any | null)): void;
+        set_window_handle(window_handle: null): void;
     }
 
 

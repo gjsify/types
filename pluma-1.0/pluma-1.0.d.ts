@@ -309,7 +309,7 @@ export namespace Pluma {
      * @param push_in 
      * @param user_data 
      */
-    function utils_menu_position_under_widget(menu: Gtk.Menu, x: number, y: number, push_in: boolean, user_data: (any | null)): void;
+    function utils_menu_position_under_widget(menu: Gtk.Menu, x: number, y: number, push_in: boolean, user_data: null): void;
 
     /**
      * @param uri 
@@ -384,14 +384,14 @@ export namespace Pluma {
      * @gir-type Callback
      */
     interface MessageBusForeach {
-        (message_type: MessageType, userdata: (any | null)): void;
+        (message_type: MessageType, userdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface MessageCallback {
-        (bus: MessageBus, message: Message, userdata: (any | null)): void;
+        (bus: MessageBus, message: Message, userdata: null): void;
     }
 
     /**
@@ -698,7 +698,7 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            loaded: (arg0: (any | null)) => void;
+            loaded: (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -714,7 +714,7 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            saved: (arg0: (any | null)) => void;
+            saved: (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -1640,7 +1640,7 @@ export namespace Pluma {
          */
         get_key_type(key: string): GObject.GType;
 
-        get_message_type(): (any | null);
+        get_message_type(): null;
 
         /**
          * Get the message method.

@@ -371,7 +371,7 @@ export namespace St {
      * @gir-type Callback
      */
     interface EntryCursorFunc {
-        (entry: Entry, use_ibeam: boolean, data: (any | null)): void;
+        (entry: Entry, use_ibeam: boolean, data: null): void;
     }
 
     /**
@@ -4880,7 +4880,7 @@ export namespace St {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 

@@ -1826,7 +1826,7 @@ export namespace Cogl {
      * @returns A pointer to the mapped memory or        `null` is the call fails
      * @since 1.2
      */
-    function buffer_map(buffer: Buffer, access: BufferAccess, hints: BufferMapHint): (any | null);
+    function buffer_map(buffer: Buffer, access: BufferAccess, hints: BufferMapHint): null;
 
     /**
      * Maps a sub-region of the buffer into the application's address space
@@ -1852,7 +1852,7 @@ export namespace Cogl {
      * @returns A pointer to the mapped memory or        `null` is the call fails
      * @since 2.0
      */
-    function buffer_map_range(buffer: Buffer, offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): (any | null);
+    function buffer_map_range(buffer: Buffer, offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): null;
 
     /**
      * Updates part of the buffer with new data from `data`. Where to put this new
@@ -1865,7 +1865,7 @@ export namespace Cogl {
      * @returns `true` is the operation succeeded, `false` otherwise
      * @since 1.2
      */
-    function buffer_set_data(buffer: Buffer, offset: (bigint | number), data: (any | null), size: (bigint | number)): Bool;
+    function buffer_set_data(buffer: Buffer, offset: (bigint | number), data: null, size: (bigint | number)): Bool;
 
     /**
      * Sets the update hint on a buffer. See {@link Cogl.BufferUpdateHint} for a description
@@ -1893,7 +1893,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1: (any | null), v2: (any | null)): Bool;
+    function color_equal(v1: null, v2: null): Bool;
 
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -1974,7 +1974,7 @@ export namespace Cogl {
      * @returns `true` if `v1` and `v2` are equal else `false`.
      * @since 2.0
      */
-    function euler_equal(v1: (any | null), v2: (any | null)): Bool;
+    function euler_equal(v1: null, v2: null): Bool;
 
     /**
      * Iterates through all the context level features currently supported
@@ -2141,14 +2141,14 @@ export namespace Cogl {
      * @returns `true` if the passed object represents an atlas   texture and `false` otherwise
      * @since 1.16
      */
-    function is_atlas_texture(object: (any | null)): Bool;
+    function is_atlas_texture(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Attribute}.
      * @param object A {@link Cogl.Object}
      * @returns `true` if the `object` references a {@link Cogl.Attribute},   `false` otherwise
      */
-    function is_attribute(object: (any | null)): Bool;
+    function is_attribute(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.AttributeBuffer}.
@@ -2156,7 +2156,7 @@ export namespace Cogl {
      * @returns `true` if `object` references a {@link Cogl.AttributeBuffer},   `false` otherwise
      * @since 1.4
      */
-    function is_attribute_buffer(object: (any | null)): Bool;
+    function is_attribute_buffer(object: null): Bool;
 
     /**
      * Checks whether `object` is a {@link Cogl.Bitmap}
@@ -2164,7 +2164,7 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object: (any | null)): Bool;
+    function is_bitmap(object: null): Bool;
 
     /**
      * Checks whether `buffer` is a buffer object.
@@ -2172,7 +2172,7 @@ export namespace Cogl {
      * @returns `true` if the handle is a CoglBuffer, and `false` otherwise
      * @since 1.2
      */
-    function is_buffer(object: (any | null)): Bool;
+    function is_buffer(object: null): Bool;
 
     /**
      * Gets whether the given object references an existing context object.
@@ -2180,7 +2180,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Context},   `false` otherwise
      * @since 1.10
      */
-    function is_context(object: (any | null)): Bool;
+    function is_context(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Display}.
@@ -2188,7 +2188,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Display}   and `false` otherwise.
      * @since 1.10
      */
-    function is_display(object: (any | null)): Bool;
+    function is_display(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.FrameInfo}.
@@ -2196,7 +2196,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.FrameInfo}   and `false` otherwise.
      * @since 2.0
      */
-    function is_frame_info(object: (any | null)): Bool;
+    function is_frame_info(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
@@ -2204,7 +2204,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      * @since 1.10
      */
-    function is_framebuffer(object: (any | null)): Bool;
+    function is_framebuffer(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.GLES2Context}.
@@ -2212,7 +2212,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.GLES2Context}   and `false` otherwise.
      * @since 2.0
      */
-    function is_gles2_context(object: (any | null)): Bool;
+    function is_gles2_context(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.IndexBuffer}.
@@ -2220,7 +2220,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.IndexBuffer},   `false` otherwise
      * @since 1.4
      */
-    function is_index_buffer(object: (any | null)): Bool;
+    function is_index_buffer(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Indices}.
@@ -2228,14 +2228,14 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Indices}   and `false` otherwise.
      * @since 1.10
      */
-    function is_indices(object: (any | null)): Bool;
+    function is_indices(object: null): Bool;
 
     /**
      * Determines if the given {@link Cogl.Object} refers to a {@link Cogl.MatrixStack}.
      * @param object a {@link Cogl.Object}
      * @returns `true` if `object` is a {@link Cogl.MatrixStack}, otherwise               `false`.
      */
-    function is_matrix_stack(object: (any | null)): Bool;
+    function is_matrix_stack(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Onscreen}.
@@ -2243,7 +2243,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Onscreen}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen(object: (any | null)): Bool;
+    function is_onscreen(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.OnscreenTemplate}.
@@ -2251,7 +2251,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.OnscreenTemplate}   and `false` otherwise.
      * @since 1.10
      */
-    function is_onscreen_template(object: (any | null)): Bool;
+    function is_onscreen_template(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Output}.
@@ -2259,7 +2259,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Output}   and `false` otherwise.
      * @since 1.14
      */
-    function is_output(object: (any | null)): Bool;
+    function is_output(object: null): Bool;
 
     /**
      * Gets whether the given `object` references an existing pipeline object.
@@ -2267,7 +2267,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Pipeline},   `false` otherwise
      * @since 2.0
      */
-    function is_pipeline(object: (any | null)): Bool;
+    function is_pipeline(object: null): Bool;
 
     /**
      * Checks whether `object` is a pixel buffer.
@@ -2275,7 +2275,7 @@ export namespace Cogl {
      * @returns `true` if the `object` is a pixel buffer, and `false`   otherwise
      * @since 1.2
      */
-    function is_pixel_buffer(object: (any | null)): Bool;
+    function is_pixel_buffer(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Primitive}.
@@ -2283,7 +2283,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Primitive},   `false` otherwise
      * @since 1.6
      */
-    function is_primitive(object: (any | null)): Bool;
+    function is_primitive(object: null): Bool;
 
     /**
      * Gets whether the given object references a primitive texture object.
@@ -2291,7 +2291,7 @@ export namespace Cogl {
      * @returns `true` if the pointer references a primitive texture, and   `false` otherwise
      * @since 2.0
      */
-    function is_primitive_texture(object: (any | null)): Bool;
+    function is_primitive_texture(object: null): Bool;
 
     /**
      * Determines if the given `object` is a {@link Cogl.Renderer}
@@ -2299,7 +2299,7 @@ export namespace Cogl {
      * @returns `true` if `object` is a {@link Cogl.Renderer}, else `false`.
      * @since 1.10
      */
-    function is_renderer(object: (any | null)): Bool;
+    function is_renderer(object: null): Bool;
 
     /**
      * Gets whether the given `object` references an existing snippet object.
@@ -2307,7 +2307,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Snippet},   `false` otherwise
      * @since 1.10
      */
-    function is_snippet(object: (any | null)): Bool;
+    function is_snippet(object: null): Bool;
 
     /**
      * Checks whether `object` is a {@link Cogl.SubTexture}.
@@ -2315,19 +2315,19 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a               {@link Cogl.SubTexture} and `false` otherwise.
      * @since 1.10
      */
-    function is_sub_texture(object: (any | null)): Bool;
+    function is_sub_texture(object: null): Bool;
 
     /**
      * @param object 
      */
-    function is_swap_chain(object: (any | null)): Bool;
+    function is_swap_chain(object: null): Bool;
 
     /**
      * Gets whether the given object references a texture object.
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object: (any | null)): Bool;
+    function is_texture(object: null): Bool;
 
     /**
      * Gets whether the given object references an existing {@link Cogl.Texture2D}
@@ -2335,7 +2335,7 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a {@link Cogl.Texture2D},   `false` otherwise
      */
-    function is_texture_2d(object: (any | null)): Bool;
+    function is_texture_2d(object: null): Bool;
 
     /**
      * Gets whether the given object references a {@link Cogl.Texture2DSliced}.
@@ -2343,7 +2343,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Texture2DSliced}   and `false` otherwise.
      * @since 1.10
      */
-    function is_texture_2d_sliced(object: (any | null)): Bool;
+    function is_texture_2d_sliced(object: null): Bool;
 
     /**
      * Checks whether the given object references a {@link Cogl.Texture3D}
@@ -2351,7 +2351,7 @@ export namespace Cogl {
      * @returns `true` if the passed object represents a 3D texture   and `false` otherwise
      * @since 1.4
      */
-    function is_texture_3d(object: (any | null)): Bool;
+    function is_texture_3d(object: null): Bool;
 
     /**
      * Checks whether `object` points to a {@link Cogl.TexturePixmapX11} instance.
@@ -2359,7 +2359,7 @@ export namespace Cogl {
      * @returns `true` if the object is a {@link Cogl.TexturePixmapX11}, and   `false` otherwise
      * @since 1.4
      */
-    function is_texture_pixmap_x11(object: (any | null)): Bool;
+    function is_texture_pixmap_x11(object: null): Bool;
 
     /**
      * Gets whether the given object references an existing
@@ -2367,7 +2367,7 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a               {@link Cogl.TextureRectangle}, `false` otherwise.
      */
-    function is_texture_rectangle(object: (any | null)): Bool;
+    function is_texture_rectangle(object: null): Bool;
 
     /**
      * Asks Cogl to explicitly reset the crtc output modes at the next
@@ -2415,7 +2415,7 @@ export namespace Cogl {
     /**
      * @param renderer 
      */
-    function kms_renderer_get_gbm(renderer: Renderer): (any | null);
+    function kms_renderer_get_gbm(renderer: Renderer): null;
 
     /**
      * Queries the file descriptor Cogl is using internally for
@@ -2444,7 +2444,7 @@ export namespace Cogl {
      * @param v2 A 4x4 transformation matrix
      * @since 1.4
      */
-    function matrix_equal(v1: (any | null), v2: (any | null)): Bool;
+    function matrix_equal(v1: null, v2: null): Bool;
 
     /**
      * This should be called whenever an application is woken up from
@@ -2554,7 +2554,7 @@ export namespace Cogl {
      * @returns `true` if the quaternions are equal else `false`.
      * @since 2.0
      */
-    function quaternion_equal(v1: (any | null), v2: (any | null)): Bool;
+    function quaternion_equal(v1: null, v2: null): Bool;
 
     function renderer_error_quark(): number;
 
@@ -2675,7 +2675,7 @@ export namespace Cogl {
      * @returns TRUE if the vectors are equal else FALSE.
      * @since 1.4
      */
-    function vector3_equal(v1: (any | null), v2: (any | null)): Bool;
+    function vector3_equal(v1: null, v2: null): Bool;
 
     /**
      * Compares the components of two vectors using the given epsilon and
@@ -2777,17 +2777,17 @@ export namespace Cogl {
      * @param wayland_display A compositor's Wayland display pointer
      * @since 1.10
      */
-    function wayland_display_set_compositor_display(display: Display, wayland_display: (any | null)): void;
+    function wayland_display_set_compositor_display(display: Display, wayland_display: null): void;
 
     /**
      * @param onscreen 
      */
-    function wayland_onscreen_get_shell_surface(onscreen: Onscreen): (any | null);
+    function wayland_onscreen_get_shell_surface(onscreen: Onscreen): null;
 
     /**
      * @param onscreen 
      */
-    function wayland_onscreen_get_surface(onscreen: Onscreen): (any | null);
+    function wayland_onscreen_get_surface(onscreen: Onscreen): null;
 
     /**
      * Resizes the backbuffer of the given `onscreen` framebuffer to the
@@ -2832,7 +2832,7 @@ export namespace Cogl {
      * @param surface 
      * @since 1.16
      */
-    function wayland_onscreen_set_foreign_surface(onscreen: Onscreen, surface: (any | null)): void;
+    function wayland_onscreen_set_foreign_surface(onscreen: Onscreen, surface: null): void;
 
     /**
      * Retrieves the Wayland display that Cogl is using. If a foreign
@@ -2846,7 +2846,7 @@ export namespace Cogl {
      * @returns The wayland display currently associated with `renderer`,          or `null` if the renderer hasn't yet been connected and no          foreign display has been specified.
      * @since 1.8
      */
-    function wayland_renderer_get_display(renderer: Renderer): (any | null);
+    function wayland_renderer_get_display(renderer: Renderer): null;
 
     /**
      * Sets whether Cogl should handle calling `wl_display_dispatch()` and
@@ -2872,7 +2872,7 @@ export namespace Cogl {
      * @param display A Wayland display
      * @since 1.8
      */
-    function wayland_renderer_set_foreign_display(renderer: Renderer, display: (any | null)): void;
+    function wayland_renderer_set_foreign_display(renderer: Renderer, display: null): void;
 
     /**
      * Sets the pixels in a rectangular subregion of `texture` from a
@@ -2899,7 +2899,7 @@ export namespace Cogl {
      * @returns `true` if the subregion upload was successful, and   `false` otherwise
      * @since 1.18
      */
-    function wayland_texture_set_region_from_shm_buffer(texture: Texture, src_x: number, src_y: number, width: number, height: number, shm_buffer: (any | null), dst_x: number, dst_y: number, level: number): Bool;
+    function wayland_texture_set_region_from_shm_buffer(texture: Texture, src_x: number, src_y: number, width: number, height: number, shm_buffer: null, dst_x: number, dst_y: number, level: number): Bool;
 
     /**
      * @param onscreen 
@@ -3929,7 +3929,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, type: IndicesType, indices_data: (any | null), n_indices: number): Indices;
+        static ["new"](context: Context, type: IndicesType, indices_data: null, n_indices: number): Indices;
 
         static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: (bigint | number)): Indices;
 
@@ -4221,13 +4221,13 @@ export namespace Cogl {
         /**
          * @param value 
          */
-        static value_get_object(value: (GObject.Value | any)): (any | null);
+        static value_get_object(value: (GObject.Value | any)): null;
 
         /**
          * @param value 
          * @param object 
          */
-        static value_set_object(value: (GObject.Value | any), object: (any | null)): void;
+        static value_set_object(value: (GObject.Value | any), object: null): void;
     }
 
 
@@ -6609,7 +6609,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, size: (bigint | number), data: (any | null)): PixelBuffer;
+        static ["new"](context: Context, size: (bigint | number), data: null): PixelBuffer;
 
         // Signals
         /** @signal */
@@ -8247,7 +8247,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -8685,7 +8685,7 @@ export namespace Cogl {
          * @param v1 The first euler angle to compare
          * @param v2 The second euler angle to compare
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         // Methods
         /**
@@ -8750,7 +8750,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<FenceClosure>;
 
         // Methods
-        get_user_data(): (any | null);
+        get_user_data(): null;
     }
 
 
@@ -8908,7 +8908,7 @@ export namespace Cogl {
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         // Methods
         /**
@@ -9137,7 +9137,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        project_points(n_components: number, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+        project_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a rotation matrix that applies a rotation
@@ -9227,7 +9227,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        transform_points(n_components: number, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+        transform_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a transform matrix that translates along
@@ -9584,7 +9584,7 @@ export namespace Cogl {
          * @param v1 A {@link Cogl.Quaternion}
          * @param v2 A {@link Cogl.Quaternion}
          */
-        static equal(v1: (any | null), v2: (any | null)): Bool;
+        static equal(v1: null, v2: null): Bool;
 
         // Methods
         /**
@@ -11404,7 +11404,7 @@ export namespace Cogl {
      * a fully opaque type without any public data members.
      * @gir-type Alias
      */
-    type Handle = any;
+    type Handle = never;
 
     /**
      * @gir-type Alias

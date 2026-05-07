@@ -617,8 +617,8 @@ export namespace GUPnP {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            main_context: any;
-            mainContext: any;
+            main_context: never;
+            mainContext: never;
             port: number;
             white_list: WhiteList;
             whiteList: WhiteList;
@@ -637,12 +637,12 @@ export namespace GUPnP {
         /**
          * @construct-only
          */
-        get main_context(): any;
+        get main_context(): null;
 
         /**
          * @construct-only
          */
-        get mainContext(): any;
+        get mainContext(): null;
 
         /**
          * Port the contexts listen on, or 0 if you don't care what
@@ -988,7 +988,7 @@ export namespace GUPnP {
             device_type: string;
             deviceType: string;
             document: XMLDoc;
-            element: any;
+            element: never;
             location: string;
             resource_factory: ResourceFactory;
             resourceFactory: ResourceFactory;
@@ -1035,7 +1035,7 @@ export namespace GUPnP {
          * Private property.
          * @construct-only
          */
-        set element(val: any);
+        set element(val: never);
 
         /**
          * The location of the device description file.
@@ -1900,7 +1900,7 @@ export namespace GUPnP {
          * particular naming schemes described above.</warning>
          * @param user_data the data to pass to each of the callbacks
          */
-        signals_autoconnect(user_data: (any | null)): void;
+        signals_autoconnect(user_data: null): void;
 
         /**
          * Sends out any pending notifications, and stops queuing of new ones.
@@ -1925,7 +1925,7 @@ export namespace GUPnP {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             context: Context;
             document: XMLDoc;
-            element: any;
+            element: never;
             location: string;
             service_type: string;
             serviceType: string;
@@ -1960,7 +1960,7 @@ export namespace GUPnP {
          * Private property.
          * @construct-only
          */
-        set element(val: any);
+        set element(val: never);
 
         /**
          * The location of the device description file.
@@ -2122,7 +2122,7 @@ export namespace GUPnP {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            scpd: any;
+            scpd: never;
         }
     }
 
@@ -2139,7 +2139,7 @@ export namespace GUPnP {
          * The scpd of the device description file.
          * @construct-only
          */
-        set scpd(val: any);
+        set scpd(val: never);
 
         /**
          * Compile-time signal type information.
@@ -2928,7 +2928,7 @@ export namespace GUPnP {
              * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
              * @virtual
              */
-            vfunc_is_allowed(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null)): boolean;
+            vfunc_is_allowed(device: null, service: null, path: string, address: string, agent: (string | null)): boolean;
 
             /**
              * Optional. Check asynchronously whether an IP address is allowed to access
@@ -2947,7 +2947,7 @@ export namespace GUPnP {
              * @param callback Callback to call after the function is done.
              * @virtual
              */
-            vfunc_is_allowed_async(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
             /**
              * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`
@@ -2987,7 +2987,7 @@ export namespace GUPnP {
          * @param address IP address of the peer.
          * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
          */
-        is_allowed(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null)): boolean;
+        is_allowed(device: null, service: null, path: string, address: string, agent: (string | null)): boolean;
 
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
@@ -3004,25 +3004,7 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          */
-        is_allowed_async(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Optional. Check asynchronously whether an IP address is allowed to access
-         * this resource. Use this function if the process of verifying the access right
-         * is expected to take some time, for example when using D-Bus etc.
-         * 
-         * If this function is supported, `gupnp_acl_can_sync()` should return `true`.
-         * 
-         * Use `gupnp_acl_is_allowed_finish()` to retrieve the result.
-         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
-         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
-         * @param path The path being served.
-         * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or `null` if not unknown.
-         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
-         * @param callback Callback to call after the function is done.
-         */
-        is_allowed_async(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
@@ -3040,7 +3022,25 @@ export namespace GUPnP {
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
-        is_allowed_async(device: (any | null), service: (any | null), path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Optional. Check asynchronously whether an IP address is allowed to access
+         * this resource. Use this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         * 
+         * If this function is supported, `gupnp_acl_can_sync()` should return `true`.
+         * 
+         * Use `gupnp_acl_is_allowed_finish()` to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
+         * @param callback Callback to call after the function is done.
+         */
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`

@@ -269,7 +269,7 @@ export namespace ArrowCUDA {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            context: any;
+            context: never;
         }
     }
 
@@ -284,7 +284,7 @@ export namespace ArrowCUDA {
          * @since 0.8.0
          * @construct-only
          */
-        set context(val: any);
+        set context(val: never);
 
         /**
          * Compile-time signal type information.
@@ -443,8 +443,8 @@ export namespace ArrowCUDA {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ipc_memory_handle: any;
-            ipcMemoryHandle: any;
+            ipc_memory_handle: never;
+            ipcMemoryHandle: never;
         }
     }
 
@@ -459,13 +459,13 @@ export namespace ArrowCUDA {
          * @since 0.8.0
          * @construct-only
          */
-        set ipc_memory_handle(val: any);
+        set ipc_memory_handle(val: never);
 
         /**
          * @since 0.8.0
          * @construct-only
          */
-        set ipcMemoryHandle(val: any);
+        set ipcMemoryHandle(val: never);
 
         /**
          * Compile-time signal type information.

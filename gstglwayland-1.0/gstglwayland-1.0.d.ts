@@ -57,15 +57,15 @@ export namespace GstGLWayland {
         $signals: GLDisplayWayland.SignalSignatures;
 
         // Fields
-        display: any;
+        display: null;
 
-        registry: any;
+        registry: null;
 
-        compositor: any;
+        compositor: null;
 
-        subcompositor: any;
+        subcompositor: null;
 
-        shell: any;
+        shell: null;
 
         // Constructors
         constructor(properties?: Partial<GLDisplayWayland.ConstructorProps>, ...args: any[]);
@@ -77,7 +77,7 @@ export namespace GstGLWayland {
         // Conflicted with GstGL.GLDisplay.new
         static ["new"](...args: never[]): any;
 
-        static new_with_display(display: (any | null)): GLDisplayWayland;
+        static new_with_display(display: null): GLDisplayWayland;
 
         // Signals
         /** @signal */

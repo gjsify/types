@@ -5259,7 +5259,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddLibvirtDom containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        add_libvirt_dom(dom: (any | null), optargs: (AddLibvirtDom | null)): number;
+        add_libvirt_dom(dom: null, optargs: (AddLibvirtDom | null)): number;
 
         /**
          * clear Augeas path

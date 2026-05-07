@@ -169,7 +169,7 @@ export namespace GdkX11 {
     /**
      * @param font 
      */
-    function x11_font_get_xfont(font: Gdk.Font): (any | null);
+    function x11_font_get_xfont(font: Gdk.Font): null;
 
     /**
      * @param ctext 
@@ -359,7 +359,7 @@ export namespace GdkX11 {
      * @returns the associated Gdk object, which may be a {@link Gdk.Pixmap},     a {@link Gdk.Window} or a {@link Gdk.Font} or `null` if no object is associated     with the X id.
      * @deprecated since 2.24: This function will be removed in GTK+ 3.0. GTK+     only stores windows in its X id table nowadays, so use     `gdk_x11_window_lookup_for_display()` instead.
      */
-    function xid_table_lookup(xid: xlib.XID): (any | null);
+    function xid_table_lookup(xid: xlib.XID): null;
 
     /**
      * Returns the GDK object associated with the given X id.
@@ -369,7 +369,7 @@ export namespace GdkX11 {
      * @since 2.2
      * @deprecated since 2.24: This function will be removed in GTK+ 3.0. GTK+     only stores windows in its X id table nowadays, so use     `gdk_x11_window_lookup_for_display()` instead.
      */
-    function xid_table_lookup_for_display(display: Gdk.Display, xid: xlib.XID): (any | null);
+    function xid_table_lookup_for_display(display: Gdk.Display, xid: xlib.XID): null;
 
     /**
      * Name of the imported GIR library

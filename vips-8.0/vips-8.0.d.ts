@@ -2191,7 +2191,7 @@ export namespace Vips {
      * @param mem 
      * @param area 
      */
-    function area_free_cb(mem: (any | null), area: Area): number;
+    function area_free_cb(mem: null, area: Area): number;
 
     /**
      * Loop over the {@link Argument} of an object. Stop when `fn` returns non-`NULL`
@@ -2201,7 +2201,7 @@ export namespace Vips {
      * @param b client data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function argument_map(object: Object, fn: ArgumentMapFn, b: (any | null)): (any | null);
+    function argument_map(object: Object, fn: ArgumentMapFn, b: null): null;
 
     /**
      * Return `TRUE` if `format` is uchar or schar.
@@ -3306,14 +3306,14 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function hash_table_map(hash: ({ [key: string]: any } | GLib.HashTable<any, any>), fn: SListMap2Fn, a: (any | null), b: (any | null)): (any | null);
+    function hash_table_map(hash: ({ [key: string]: any } | GLib.HashTable<never, never>), fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * @param image 
      * @param data 
      * @param data_length 
      */
-    function icc_is_compatible_profile(image: Image, data: (any | null), data_length: (bigint | number)): boolean;
+    function icc_is_compatible_profile(image: Image, data: null, data_length: (bigint | number)): boolean;
 
     /**
      * VIPS can optionally be built without the ICC library. Use this function to
@@ -3389,13 +3389,13 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory.
      */
-    function malloc(object: (Object | null), size: (bigint | number)): (any | null);
+    function malloc(object: (Object | null), size: (bigint | number)): null;
 
     /**
      * @param a 
      * @param b 
      */
-    function map_equal(a: (any | null), b: (any | null)): (any | null);
+    function map_equal(a: null, b: null): null;
 
     /**
      * Return the maximum coordinate value. This can be the default, a value set
@@ -3516,7 +3516,7 @@ export namespace Vips {
      * @param b user data
      * @returns new head of `list`
      */
-    function slist_filter(list: (Uint8Array | string), fn: SListMap2Fn, a: (any | null), b: (any | null)): Uint8Array;
+    function slist_filter(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): Uint8Array;
 
     /**
      * Fold over a slist, applying `fn` to each element.
@@ -3527,7 +3527,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_fold2(list: (Uint8Array | string), start: (any | null), fn: SListFold2Fn, a: (any | null), b: (any | null)): (any | null);
+    function slist_fold2(list: (Uint8Array | string), start: null, fn: SListFold2Fn, a: null, b: null): null;
 
     /**
      * Free a {@link GLib.SList} of things which need {@link GLib.free}ing.
@@ -3543,7 +3543,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2(list: (Uint8Array | string), fn: SListMap2Fn, a: (any | null), b: (any | null)): (any | null);
+    function slist_map2(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * Map backwards. We _reverse() rather than recurse and unwind to save stack.
@@ -3553,7 +3553,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2_rev(list: (Uint8Array | string), fn: SListMap2Fn, a: (any | null), b: (any | null)): (any | null);
+    function slist_map2_rev(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * Map over a slist. _copy() the list in case the callback changes it.
@@ -3565,7 +3565,7 @@ export namespace Vips {
      * @param d user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map4(list: (Uint8Array | string), fn: SListMap4Fn, a: (any | null), b: (any | null), c: (any | null), d: (any | null)): (any | null);
+    function slist_map4(list: (Uint8Array | string), fn: SListMap4Fn, a: null, b: null, c: null, d: null): null;
 
     /**
      * Start function for many images in. `a` is a pointer to
@@ -3577,7 +3577,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function start_many(out: Image, a: (any | null), b: (any | null)): (any | null);
+    function start_many(out: Image, a: null, b: null): null;
 
     /**
      * Start function for one image in. Input image is `a`.
@@ -3588,7 +3588,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function start_one(out: Image, a: (any | null), b: (any | null)): (any | null);
+    function start_one(out: Image, a: null, b: null): null;
 
     /**
      * Stop function for many images in. `a` is a pointer to
@@ -3600,7 +3600,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function stop_many(seq: (any | null), a: (any | null), b: (any | null)): number;
+    function stop_many(seq: null, a: null, b: null): number;
 
     /**
      * Stop function for one image in. Input image is `a`.
@@ -3611,7 +3611,7 @@ export namespace Vips {
      * @param a user data
      * @param b user data
      */
-    function stop_one(seq: (any | null), a: (any | null), b: (any | null)): number;
+    function stop_one(seq: null, a: null, b: null): number;
 
     /**
      * {@link GLib.strdup} a string. When `object` is freed, the string will be freed for
@@ -3677,7 +3677,7 @@ export namespace Vips {
      * @param align specifies the alignment
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_aligned_alloc(size: (bigint | number), align: (bigint | number)): (any | null);
+    function tracked_aligned_alloc(size: (bigint | number), align: (bigint | number)): null;
 
     /**
      * Only use it to free memory that was
@@ -3688,7 +3688,7 @@ export namespace Vips {
      *     {@link tracked_aligned_alloc}.
      * @param s memory to free
      */
-    function tracked_aligned_free(s: (any | null)): void;
+    function tracked_aligned_free(s: null): void;
 
     /**
      * Exactly as [`close()`](man:close(2)), but update the number of files currently open via
@@ -3714,7 +3714,7 @@ export namespace Vips {
      *     {@link tracked_malloc}.
      * @param s memory to free
      */
-    function tracked_free(s: (any | null)): void;
+    function tracked_free(s: null): void;
 
     /**
      * Returns the number of active allocations.
@@ -3758,7 +3758,7 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_malloc(size: (bigint | number)): (any | null);
+    function tracked_malloc(size: (bigint | number)): null;
 
     /**
      * Exactly as [`open()`](man:open(2)), but the number of files currently open via
@@ -3804,7 +3804,7 @@ export namespace Vips {
      * @param value get from this value
      * @returns The pointer held by `value`.
      */
-    function value_get_area(value: (GObject.Value | any)): [(any | null), number];
+    function value_get_area(value: (GObject.Value | any)): [null, number];
 
     /**
      * Return the pointer to the array held by `value`.
@@ -3816,7 +3816,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @returns The array address.
      */
-    function value_get_array(value: (GObject.Value | any)): [(any | null), number, GObject.GType | null, number];
+    function value_get_array(value: (GObject.Value | any)): [null, number, GObject.GType | null, number];
 
     /**
      * Return the start of the array of doubles held by `value`.
@@ -4051,56 +4051,56 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface ArgumentClassMapFn {
-        (object_class: typeof Object, pspec: GObject.ParamSpec, argument_class: ArgumentClass, a: (any | null), b: (any | null)): (any | null);
+        (object_class: typeof Object, pspec: GObject.ParamSpec, argument_class: ArgumentClass, a: null, b: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface ArgumentMapFn {
-        (object: Object, pspec: GObject.ParamSpec, argument_class: ArgumentClass, argument_instance: ArgumentInstance, a: (any | null), b: (any | null)): (any | null);
+        (object: Object, pspec: GObject.ParamSpec, argument_class: ArgumentClass, argument_instance: ArgumentInstance, a: null, b: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface CallbackFn {
-        (a: (any | null), b: (any | null)): number;
+        (a: null, b: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClassMapFn {
-        (cls: typeof Object, a: (any | null)): (any | null);
+        (cls: typeof Object, a: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface GenerateFn {
-        (out: Region, seq: (any | null), a: (any | null), b: (any | null), stop: boolean): number;
+        (out: Region, seq: null, a: null, b: null, stop: boolean): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface ImageMapFn {
-        (image: Image, name: string, value: unknown, a: (any | null)): (any | null);
+        (image: Image, name: string, value: unknown, a: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface InterpolateMethod {
-        (interpolate: Interpolate, out: (any | null), _in: Region, x: number, y: number): void;
+        (interpolate: Interpolate, out: null, _in: Region, x: number, y: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ObjectSetArguments {
-        (object: Object, a: (any | null), b: (any | null)): (any | null);
+        (object: Object, a: null, b: null): null;
     }
 
     /**
@@ -4114,84 +4114,84 @@ export namespace Vips {
      * @gir-type Callback
      */
     interface RegionWrite {
-        (region: Region, area: Rect, a: (any | null)): number;
+        (region: Region, area: Rect, a: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface SListFold2Fn {
-        (item: (any | null), a: (any | null), b: (any | null), c: (any | null)): (any | null);
+        (item: null, a: null, b: null, c: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface SListMap2Fn {
-        (item: (any | null), a: (any | null), b: (any | null)): (any | null);
+        (item: null, a: null, b: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface SListMap4Fn {
-        (item: (any | null), a: (any | null), b: (any | null), c: (any | null), d: (any | null)): (any | null);
+        (item: null, a: null, b: null, c: null, d: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface SinkNotify {
-        (im: Image, rect: Rect, a: (any | null)): void;
+        (im: Image, rect: Rect, a: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface StartFn {
-        (out: Image, a: (any | null), b: (any | null)): (any | null);
+        (out: Image, a: null, b: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface StopFn {
-        (seq: (any | null), a: (any | null), b: (any | null)): number;
+        (seq: null, a: null, b: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface ThreadpoolAllocateFn {
-        (state: ThreadState, a: (any | null), stop: boolean): number;
+        (state: ThreadState, a: null, stop: boolean): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface ThreadpoolProgressFn {
-        (a: (any | null)): number;
+        (a: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface ThreadpoolWorkFn {
-        (state: ThreadState, a: (any | null)): number;
+        (state: ThreadState, a: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface TypeMap2Fn {
-        (type: GObject.GType, a: (any | null), b: (any | null)): (any | null);
+        (type: GObject.GType, a: null, b: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface TypeMapFn {
-        (type: GObject.GType, a: (any | null)): (any | null);
+        (type: GObject.GType, a: null): null;
     }
 
     /**
@@ -4872,7 +4872,7 @@ export namespace Vips {
          * @param a user data
          * @param b user data
          */
-        static map(base: string, fn: SListMap2Fn, a: (any | null), b: (any | null)): (any | null);
+        static map(base: string, fn: SListMap2Fn, a: null, b: null): null;
     }
 
 
@@ -5586,8 +5586,8 @@ export namespace Vips {
             coding: Coding;
             demand: DemandStyle;
             filename: string;
-            foreign_buffer: any;
-            foreignBuffer: any;
+            foreign_buffer: never;
+            foreignBuffer: never;
             format: BandFormat;
             height: number;
             interpretation: Interpretation;
@@ -5691,11 +5691,11 @@ export namespace Vips {
         get filename(): string;
         set filename(val: string);
 
-        get foreign_buffer(): any;
-        set foreign_buffer(val: any);
+        get foreign_buffer(): null;
+        set foreign_buffer(val: never);
 
-        get foreignBuffer(): any;
-        set foreignBuffer(val: any);
+        get foreignBuffer(): null;
+        set foreignBuffer(val: never);
 
         /**
          * @default Vips.BandFormat.UCHAR
@@ -5860,40 +5860,40 @@ export namespace Vips {
          * @param data 
          * @virtual
          */
-        vfunc_eval(progress: Progress, data: (any | null)): void;
+        vfunc_eval(progress: Progress, data: null): void;
 
         /**
          * @param data 
          * @virtual
          */
-        vfunc_invalidate(data: (any | null)): void;
+        vfunc_invalidate(data: null): void;
 
         /**
          * @param data 
          * @virtual
          */
-        vfunc_minimise(data: (any | null)): void;
-
-        /**
-         * @param progress 
-         * @param data 
-         * @virtual
-         */
-        vfunc_posteval(progress: Progress, data: (any | null)): void;
+        vfunc_minimise(data: null): void;
 
         /**
          * @param progress 
          * @param data 
          * @virtual
          */
-        vfunc_preeval(progress: Progress, data: (any | null)): void;
+        vfunc_posteval(progress: Progress, data: null): void;
+
+        /**
+         * @param progress 
+         * @param data 
+         * @virtual
+         */
+        vfunc_preeval(progress: Progress, data: null): void;
 
         /**
          * @param result 
          * @param data 
          * @virtual
          */
-        vfunc_written(result: number, data: (any | null)): void;
+        vfunc_written(result: number, data: null): void;
 
         // Methods
         /**
@@ -5988,7 +5988,7 @@ export namespace Vips {
          * is intended to be used with g_signal_connect.
          * @param buffer the original buffer that was stolen
          */
-        free_buffer(buffer: (any | null)): void;
+        free_buffer(buffer: null): void;
 
         /**
          * Generates an image. The action depends on the image type.
@@ -6013,7 +6013,7 @@ export namespace Vips {
          * @param b user data
          * @returns 0 on success, or -1 on error.
          */
-        generate(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: (any | null), b: (any | null)): number;
+        generate(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: null, b: null): number;
 
         /**
          * Fill `value_copy` with a copy of the header field. `value_copy` must be zeroed
@@ -6064,7 +6064,7 @@ export namespace Vips {
          * @param name metadata name
          * @returns 0 on success, -1 otherwise.
          */
-        get_area(name: string): [number, any];
+        get_area(name: string): [number, null];
 
         /**
          * Gets `out` from `im` under the name `name`.
@@ -6157,7 +6157,7 @@ export namespace Vips {
          *     {@link Image.wio_input}, {@link Image.copy_memory}.
          * @returns a pointer to pixel data, if possible.
          */
-        get_data(): (any | null);
+        get_data(): null;
 
         /**
          * Gets `out` from `im` under the name `name`.
@@ -6541,7 +6541,7 @@ export namespace Vips {
          * @param fn function to call for each header field
          * @returns `NULL` on success, the failing   pointer otherwise.
          */
-        map(fn: ImageMapFn): (any | null);
+        map(fn: ImageMapFn): null;
 
         /**
          * Minimise memory use on this image and any upstream images, that is, images
@@ -6804,7 +6804,7 @@ export namespace Vips {
          * @param b user data
          * @returns 0 on success, or -1 on error.
          */
-        sink(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: (any | null), b: (any | null)): number;
+        sink(start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: null, b: null): number;
 
         /**
          * {@link Image.sink_disc} loops over `im`, top-to-bottom, generating it in sections.
@@ -6891,7 +6891,7 @@ export namespace Vips {
          * @param b user data
          * @returns 0 on success, or -1 on error.
          */
-        sink_tile(tile_width: number, tile_height: number, start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: (any | null), b: (any | null)): number;
+        sink_tile(tile_width: number, tile_height: number, start_fn: StartFn, generate_fn: GenerateFn, stop_fn: StopFn, a: null, b: null): number;
 
         /**
          * Check that an image is readable via the {@link IMAGE_ADDR} macro, that is,
@@ -7050,7 +7050,7 @@ export namespace Vips {
          * @param y interpolate value at this position
          * @virtual
          */
-        vfunc_interpolate(out: (any | null), _in: Region, x: number, y: number): void;
+        vfunc_interpolate(out: null, _in: Region, x: number, y: number): void;
 
         // Methods
         /**
@@ -7305,7 +7305,7 @@ export namespace Vips {
          * @param data 
          * @virtual
          */
-        vfunc_postbuild(data: (any | null)): number;
+        vfunc_postbuild(data: null): number;
 
         /**
          * @virtual
@@ -8164,7 +8164,7 @@ export namespace Vips {
 
         static new_from_file(filename: string): Source;
 
-        static new_from_memory(data: (any | null), length: (bigint | number)): Source;
+        static new_from_memory(data: null, length: (bigint | number)): Source;
 
         static new_from_options(options: string): Source;
 
@@ -8194,7 +8194,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: (any | null), length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): (bigint | number);
 
         /**
          * Move the file read position. You can't call this after pixel decode starts.
@@ -8256,7 +8256,7 @@ export namespace Vips {
          * @param length return the file length here, or `NULL`
          * @returns a pointer to the start of the file contents, or `NULL` on error.
          */
-        map(length: (bigint | number)): (any | null);
+        map(length: (bigint | number)): null;
 
         /**
          * Just like {@link Source.map}, but return a {@link Blob} containing the
@@ -8285,7 +8285,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: (any | null), length: (bigint | number)): number;
+        read(buffer: null, length: (bigint | number)): number;
 
         /**
          * Rewind the source to the start.
@@ -8350,7 +8350,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: (any | null), arg1: number) => (bigint | number);
+            read: (arg0: null, arg1: number) => (bigint | number);
             /**
              * This signal is emitted to seek the source. The handler should
              * change the source position appropriately.
@@ -8420,7 +8420,7 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_read(buffer: (any | null), length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): (bigint | number);
 
         /**
          * @param offset 
@@ -8594,7 +8594,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: (any | null), length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): (bigint | number);
 
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
@@ -8612,7 +8612,7 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_write(data: (any | null), length: number): (bigint | number);
+        vfunc_write(data: null, length: number): (bigint | number);
 
         // Methods
         /**
@@ -8645,7 +8645,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: (any | null), length: (bigint | number)): number;
+        read(buffer: null, length: (bigint | number)): number;
 
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
@@ -8687,7 +8687,7 @@ export namespace Vips {
          * @param length length of `data` in bytes
          * @returns 0 on success, -1 on error.
          */
-        write(data: (any | null), length: (bigint | number)): number;
+        write(data: null, length: (bigint | number)): number;
 
         /**
          * Write `str` to `target`, but escape stuff that xml hates in text. Our
@@ -8735,7 +8735,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: (any | null), arg1: number) => (bigint | number);
+            read: (arg0: null, arg1: number) => (bigint | number);
             /**
              * This signal is emitted to seek the target. The handler should
              * change the target position appropriately.
@@ -8750,7 +8750,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            write: (arg0: (any | null), arg1: number) => (bigint | number);
+            write: (arg0: null, arg1: number) => (bigint | number);
             "notify::blob": (pspec: GObject.ParamSpec) => void;
             "notify::memory": (pspec: GObject.ParamSpec) => void;
             "notify::descriptor": (pspec: GObject.ParamSpec) => void;
@@ -8822,7 +8822,7 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_read(buffer: (any | null), length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): (bigint | number);
 
         /**
          * @param offset 
@@ -8836,7 +8836,7 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_write(data: (any | null), length: number): (bigint | number);
+        vfunc_write(data: null, length: number): (bigint | number);
     }
 
 
@@ -8890,7 +8890,7 @@ export namespace Vips {
 
         stop: boolean;
 
-        a: any;
+        a: null;
 
         stall: boolean;
 
@@ -8899,7 +8899,7 @@ export namespace Vips {
 
         _init(...args: any[]): void;
 
-        static ["new"](im: Image, a: (any | null)): ThreadState;
+        static ["new"](im: Image, a: null): ThreadState;
 
         // Signals
         /** @signal */
@@ -8920,7 +8920,7 @@ export namespace Vips {
          * @param a 
          * @param b 
          */
-        static set(object: Object, a: (any | null), b: (any | null)): (any | null);
+        static set(object: Object, a: null, b: null): null;
     }
 
 
@@ -8931,7 +8931,7 @@ export namespace Vips {
         static $gtype: GObject.GType<Area>;
 
         // Fields
-        data: any;
+        data: null;
 
         length: number;
 
@@ -8951,7 +8951,7 @@ export namespace Vips {
          * @param mem 
          * @param area 
          */
-        static free_cb(mem: (any | null), area: Area): number;
+        static free_cb(mem: null, area: Area): number;
 
         // Methods
         copy(): Area;
@@ -8962,7 +8962,7 @@ export namespace Vips {
          * `sizeof()` each element.
          * @returns The pointer held by `area`.
          */
-        get_data(): [(any | null), number, number, GObject.GType | null, number];
+        get_data(): [null, number, number, GObject.GType | null, number];
 
         unref(): void;
     }
@@ -8991,7 +8991,7 @@ export namespace Vips {
          * @param fn call this function for every argument
          * @param b client data
          */
-        static map(object: Object, fn: ArgumentMapFn, b: (any | null)): (any | null);
+        static map(object: Object, fn: ArgumentMapFn, b: null): null;
     }
 
 

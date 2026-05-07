@@ -338,14 +338,14 @@ export namespace GstBase {
      * @gir-type Callback
      */
     interface DataQueueEmptyCallback {
-        (queue: DataQueue, checkdata: (any | null)): void;
+        (queue: DataQueue, checkdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface DataQueueFullCallback {
-        (queue: DataQueue, checkdata: (any | null)): void;
+        (queue: DataQueue, checkdata: null): void;
     }
 
     /**
@@ -4370,7 +4370,7 @@ export namespace GstBase {
          * @param buf buffer being clipped
          * @param user_data user data (unused)
          */
-        clip_running_time(cdata: CollectData, buf: Gst.Buffer, user_data: (any | null)): [Gst.FlowReturn, Gst.Buffer | null];
+        clip_running_time(cdata: CollectData, buf: Gst.Buffer, user_data: null): [Gst.FlowReturn, Gst.Buffer | null];
 
         /**
          * Default {@link GstBase.CollectPads} event handling that elements should always

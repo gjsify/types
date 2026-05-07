@@ -447,13 +447,13 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "event-result": (arg0: GObject.Object, arg1: string, arg2: GLib.Variant, arg3: number, arg4: (any | null)) => void;
+            "event-result": (arg0: GObject.Object, arg1: string, arg2: GLib.Variant, arg3: number, arg4: null) => void;
             /**
              * Signaled when the theme directories are changed by the server.
              * @signal
              * @run-last
              */
-            "icon-theme-dirs-changed": (arg0: (any | null)) => void;
+            "icon-theme-dirs-changed": (arg0: null) => void;
             /**
              * Signaled when the server wants to activate an item in
              * 		order to display the menu.
@@ -820,7 +820,7 @@ export namespace Dbusmenu {
          * @param cb_data 
          * @virtual
          */
-        vfunc_show_to_user(timestamp: number, cb_data: (any | null)): void;
+        vfunc_show_to_user(timestamp: number, cb_data: null): void;
 
         // Methods
         /**
@@ -892,7 +892,7 @@ export namespace Dbusmenu {
          * @param func Function to call on every node in the tree
          * @param data User data to pass to the function
          */
-        foreach(func: (any | null), data: (any | null)): void;
+        foreach(func: null, data: null): void;
 
         /**
          * Returns simply the list of children that this menu item
@@ -965,7 +965,7 @@ export namespace Dbusmenu {
          * to destroy the created {@link GLib.HashTable}.
          * @returns A brand new {@link GLib.HashTable} that contains all of    theroperties that are on this {@link Dbusmenu.Menuitem} `mi`.
          */
-        properties_copy(): GLib.HashTable<any, any>;
+        properties_copy(): GLib.HashTable<never, never>;
 
         /**
          * This functiong gets a list of the names of all the properties
@@ -1107,7 +1107,7 @@ export namespace Dbusmenu {
          * @param cb Callback to call when the call has returned.
          * @param cb_data Data to pass to the callback.
          */
-        send_about_to_show(cb: (any | null), cb_data: (any | null)): void;
+        send_about_to_show(cb: null, cb_data: null): void;
 
         /**
          * Sets the parent of `mi` to `parent`. If `mi` already

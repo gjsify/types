@@ -481,17 +481,17 @@ export namespace GUPnPDLNA {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            audio_restrictions: any;
-            audioRestrictions: any;
-            container_restrictions: any;
-            containerRestrictions: any;
+            audio_restrictions: never;
+            audioRestrictions: never;
+            container_restrictions: never;
+            containerRestrictions: never;
             extended: boolean;
-            image_restrictions: any;
-            imageRestrictions: any;
+            image_restrictions: never;
+            imageRestrictions: never;
             mime: string;
             name: string;
-            video_restrictions: any;
-            videoRestrictions: any;
+            video_restrictions: never;
+            videoRestrictions: never;
         }
     }
 
@@ -507,22 +507,22 @@ export namespace GUPnPDLNA {
         /**
          * @construct-only
          */
-        get audio_restrictions(): any;
+        get audio_restrictions(): null;
 
         /**
          * @construct-only
          */
-        get audioRestrictions(): any;
+        get audioRestrictions(): null;
 
         /**
          * @construct-only
          */
-        get container_restrictions(): any;
+        get container_restrictions(): null;
 
         /**
          * @construct-only
          */
-        get containerRestrictions(): any;
+        get containerRestrictions(): null;
 
         /**
          * Whether the DLNA profile is not a part of DLNA specification.
@@ -534,12 +534,12 @@ export namespace GUPnPDLNA {
         /**
          * @construct-only
          */
-        get image_restrictions(): any;
+        get image_restrictions(): null;
 
         /**
          * @construct-only
          */
-        get imageRestrictions(): any;
+        get imageRestrictions(): null;
 
         /**
          * MIME type of the DLNA profile.
@@ -558,12 +558,12 @@ export namespace GUPnPDLNA {
         /**
          * @construct-only
          */
-        get video_restrictions(): any;
+        get video_restrictions(): null;
 
         /**
          * @construct-only
          */
-        get videoRestrictions(): any;
+        get videoRestrictions(): null;
 
         /**
          * Compile-time signal type information.

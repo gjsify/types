@@ -304,7 +304,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__BOXED_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__BOXED_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -314,7 +314,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_INT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_INT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -324,7 +324,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -334,7 +334,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -344,7 +344,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__POINTER_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -354,7 +354,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -364,7 +364,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -374,7 +374,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -384,7 +384,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Check if autogen version 5 is installed.
@@ -707,28 +707,28 @@ export namespace Anjuta {
      * @gir-type Callback
      */
     interface AutogenFunc {
-        (autogen: Autogen, data: (any | null)): void;
+        (autogen: Autogen, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface AutogenOutputFunc {
-        (output: string, data: (any | null)): void;
+        (output: string, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface CompletionFilterFunc {
-        (item: (any | null)): boolean;
+        (item: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface CompletionNameFunc {
-        (item: (any | null)): string;
+        (item: null): string;
     }
 
     /**
@@ -742,7 +742,7 @@ export namespace Anjuta {
      * @gir-type Callback
      */
     interface PluginDescriptionLineFunc {
-        (df: PluginDescription, key: string, locale: string, value: string, data: (any | null)): void;
+        (df: PluginDescription, key: string, locale: string, value: string, data: null): void;
     }
 
     /**
@@ -770,7 +770,7 @@ export namespace Anjuta {
      * @gir-type Callback
      */
     interface PreferencesCallback {
-        (pr: Preferences, key: string, data: (any | null)): boolean;
+        (pr: Preferences, key: string, data: null): boolean;
     }
 
     /**
@@ -784,21 +784,21 @@ export namespace Anjuta {
      * @gir-type Callback
      */
     interface ProjectNodeTraverseFunc {
-        (node: ProjectNode, data: (any | null)): boolean;
+        (node: ProjectNode, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface SavePromptSaveFunc {
-        (save_prompt: SavePrompt, item: (any | null)): boolean;
+        (save_prompt: SavePrompt, item: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TokenForeachFunc {
-        (token: Token, data: (any | null)): void;
+        (token: Token, data: null): void;
     }
 
     /**
@@ -2485,7 +2485,7 @@ export namespace Anjuta {
          * @param entries A list of entries to add
          * @param user_data User data to pass to the entry callback
          */
-        add_action_group(group_name: string, entries: CommandBarEntry[], user_data: (any | null)): void;
+        add_action_group(group_name: string, entries: CommandBarEntry[], user_data: null): void;
 
         /**
          * Removes an action group from an AnjutaCommandBar.
@@ -2629,7 +2629,7 @@ export namespace Anjuta {
          * Add an item to the completion.
          * @param item the item to be added.
          */
-        add_item(item: (any | null)): void;
+        add_item(item: null): void;
 
         /**
          * Clear all items added to the completion.
@@ -2759,7 +2759,7 @@ export namespace Anjuta {
          * @param user_data User data to pass to the entry callback
          * @returns `true` if the pane was added, or `false` if a pane with the same name already exists in the dock
          */
-        add_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: (any | null)): boolean;
+        add_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null): boolean;
 
         /**
          * Does the same thing as anjuta_dock_add_pane, but allows GDL dock behavior
@@ -2774,7 +2774,7 @@ export namespace Anjuta {
          * @param behavior Any combination of {@link Gdl.DockItemBehavior} flags
          * @returns `true` if the pane was added, or `false` if a pane with the same name already exists in the dock
          */
-        add_pane_full(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: (any | null), behavior: Gdl.DockItemBehavior): boolean;
+        add_pane_full(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null, behavior: Gdl.DockItemBehavior): boolean;
 
         /**
          * @returns the {@link Anjuta.CommandBar} associated with this dock or `null`.
@@ -2813,7 +2813,7 @@ export namespace Anjuta {
          * @param entries {@link Anjuta.CommandBar} entries 		 for this pane. Can be `null`
          * @param user_data User data to pass to the entry callback
          */
-        replace_command_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: (any | null)): void;
+        replace_command_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null): void;
 
         /**
          * Associates an {@link Anjuta.CommandBar} with this dock. Command bars can be used to
@@ -4003,7 +4003,7 @@ export namespace Anjuta {
          * @param iter the cursor
          * @param data the ProposalData
          */
-        activate(iprov: GObject.Object, iter: GObject.Object, data: (any | null)): void;
+        activate(iprov: GObject.Object, iter: GObject.Object, data: null): void;
 
         /**
          * Searches for a calltip context
@@ -4718,15 +4718,15 @@ export namespace Anjuta {
             can_unload: boolean;
             canUnload: boolean;
             checked: boolean;
-            dependencies: any;
-            dependency_names: any;
-            dependencyNames: any;
-            dependents: any;
-            description: any;
+            dependencies: never;
+            dependency_names: never;
+            dependencyNames: never;
+            dependents: never;
+            description: never;
             icon_path: string;
             iconPath: string;
             id: string;
-            interfaces: any;
+            interfaces: never;
             language: string;
             name: string;
             path: string;
@@ -4778,27 +4778,27 @@ export namespace Anjuta {
         /**
          * @read-only
          */
-        get dependencies(): any;
+        get dependencies(): null;
 
         /**
          * @read-only
          */
-        get dependency_names(): any;
+        get dependency_names(): null;
 
         /**
          * @read-only
          */
-        get dependencyNames(): any;
+        get dependencyNames(): null;
 
         /**
          * @read-only
          */
-        get dependents(): any;
+        get dependents(): null;
 
         /**
          * @read-only
          */
-        get description(): any;
+        get description(): null;
 
         /**
          * @read-only
@@ -4818,7 +4818,7 @@ export namespace Anjuta {
         /**
          * @read-only
          */
-        get interfaces(): any;
+        get interfaces(): null;
 
         /**
          * @read-only
@@ -4947,12 +4947,12 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "plugin-activated": (arg0: (any | null), arg1: Plugin) => void;
+            "plugin-activated": (arg0: null, arg1: Plugin) => void;
             /**
              * @signal
              * @run-first
              */
-            "plugin-deactivated": (arg0: (any | null), arg1: Plugin) => void;
+            "plugin-deactivated": (arg0: null, arg1: Plugin) => void;
             "notify::activated-plugins": (pspec: GObject.ParamSpec) => void;
             "notify::available-plugins": (pspec: GObject.ParamSpec) => void;
             "notify::profiles": (pspec: GObject.ParamSpec) => void;
@@ -4962,11 +4962,11 @@ export namespace Anjuta {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            activated_plugins: any;
-            activatedPlugins: any;
-            available_plugins: any;
-            availablePlugins: any;
-            profiles: any;
+            activated_plugins: never;
+            activatedPlugins: never;
+            available_plugins: never;
+            availablePlugins: never;
+            profiles: never;
             shell: GObject.Object;
             status: Status;
         }
@@ -4982,27 +4982,27 @@ export namespace Anjuta {
         /**
          * @read-only
          */
-        get activated_plugins(): any;
+        get activated_plugins(): null;
 
         /**
          * @read-only
          */
-        get activatedPlugins(): any;
+        get activatedPlugins(): null;
 
         /**
          * @read-only
          */
-        get available_plugins(): any;
+        get available_plugins(): null;
 
         /**
          * @read-only
          */
-        get availablePlugins(): any;
+        get availablePlugins(): null;
 
         /**
          * @read-only
          */
-        get profiles(): any;
+        get profiles(): null;
 
         get shell(): GObject.Object;
         set shell(val: GObject.Object);
@@ -5357,13 +5357,13 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "plugin-added": (arg0: (any | null)) => void;
+            "plugin-added": (arg0: null) => void;
             /**
              * Emitted when a plugin is removed from the list.
              * @signal
              * @run-first
              */
-            "plugin-removed": (arg0: (any | null)) => void;
+            "plugin-removed": (arg0: null) => void;
             /**
              * @signal
              * @run-first
@@ -5672,12 +5672,12 @@ export namespace Anjuta {
              * @signal
              * @run-last
              */
-            loaded: (arg0: (any | null), arg1: GLib.Error) => void;
+            loaded: (arg0: null, arg1: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            updated: (arg0: (any | null), arg1: GLib.Error) => void;
+            updated: (arg0: null, arg1: GLib.Error) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -7189,7 +7189,7 @@ export namespace Anjuta {
          * @param user_data User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
          * @returns A {@link Gtk.ActionGroup} object holding all the action objects.
          */
-        add_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ActionEntry[], translation_domain: string, can_customize: boolean, user_data: (any | null)): Gtk.ActionGroup;
+        add_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ActionEntry[], translation_domain: string, can_customize: boolean, user_data: null): Gtk.ActionGroup;
 
         /**
          * This is similar to `anjuta_ui_add_action_group_entries()`, except that
@@ -7202,7 +7202,7 @@ export namespace Anjuta {
          * @param user_data User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
          * @returns A {@link Gtk.ActionGroup} object holding all the action objects.
          */
-        add_toggle_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ToggleActionEntry[], translation_domain: string, can_customize: boolean, user_data: (any | null)): Gtk.ActionGroup;
+        add_toggle_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ToggleActionEntry[], translation_domain: string, can_customize: boolean, user_data: null): Gtk.ActionGroup;
 
         /**
          * Dumps the current UI XML tree in STDOUT. Useful for debugging.
@@ -7300,7 +7300,7 @@ export namespace Anjuta {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -7310,7 +7310,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -7319,7 +7319,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -7393,7 +7393,7 @@ export namespace Anjuta {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -7404,7 +7404,7 @@ export namespace Anjuta {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -7413,7 +7413,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -8354,12 +8354,12 @@ export namespace Anjuta {
 
         value: string;
 
-        user_data: any;
+        user_data: null;
 
         // Constructors
-        constructor(value: string, name: (string | null), user_data: (any | null));
+        constructor(value: string, name: (string | null), user_data: null);
 
-        static ["new"](value: string, name: (string | null), user_data: (any | null)): ProjectProperty;
+        static ["new"](value: string, name: (string | null), user_data: null): ProjectProperty;
 
         // Methods
         copy(): ProjectProperty;
@@ -8385,12 +8385,12 @@ export namespace Anjuta {
 
         description: string;
 
-        user_data: any;
+        user_data: null;
 
         // Constructors
-        constructor(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: (any | null));
+        constructor(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: null);
 
-        static ["new"](id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: (any | null)): ProjectPropertyInfo;
+        static ["new"](id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: null): ProjectPropertyInfo;
 
         // Methods
         copy(): ProjectPropertyInfo;

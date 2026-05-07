@@ -455,7 +455,7 @@ export namespace LibvirtGObject {
      * @gir-type Callback
      */
     interface StreamIOFunc {
-        (stream: Stream, cond: StreamIOCondition, opaque: (any | null)): boolean;
+        (stream: Stream, cond: StreamIOCondition, opaque: null): boolean;
     }
 
     /**
@@ -2342,7 +2342,7 @@ export namespace LibvirtGObject {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            handle: any;
+            handle: never;
         }
     }
 
@@ -2356,7 +2356,7 @@ export namespace LibvirtGObject {
         /**
          * @construct-only
          */
-        get handle(): any;
+        get handle(): null;
 
         /**
          * Compile-time signal type information.

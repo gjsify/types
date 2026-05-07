@@ -498,7 +498,7 @@ export namespace TelepathyLogger {
         $signals: LogManager.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<LogManager.ConstructorProps>, ...args: any[]);
@@ -755,9 +755,9 @@ export namespace TelepathyLogger {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            filter: any;
-            filter_data: any;
-            filterData: any;
+            filter: never;
+            filter_data: never;
+            filterData: never;
         }
     }
 
@@ -773,17 +773,17 @@ export namespace TelepathyLogger {
         /**
          * @construct-only
          */
-        get filter(): any;
+        get filter(): null;
 
         /**
          * @construct-only
          */
-        get filter_data(): any;
+        get filter_data(): null;
 
         /**
          * @construct-only
          */
-        get filterData(): any;
+        get filterData(): null;
 
         /**
          * Compile-time signal type information.

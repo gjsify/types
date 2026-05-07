@@ -57,8 +57,8 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            arrow_file_reader: any;
-            arrowFileReader: any;
+            arrow_file_reader: never;
+            arrowFileReader: never;
         }
     }
 
@@ -72,12 +72,12 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set arrow_file_reader(val: any);
+        set arrow_file_reader(val: never);
 
         /**
          * @construct-only
          */
-        set arrowFileReader(val: any);
+        set arrowFileReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -169,8 +169,8 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            arrow_file_writer: any;
-            arrowFileWriter: any;
+            arrow_file_writer: never;
+            arrowFileWriter: never;
         }
     }
 
@@ -184,12 +184,12 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set arrow_file_writer(val: any);
+        set arrow_file_writer(val: never);
 
         /**
          * @construct-only
          */
-        set arrowFileWriter(val: any);
+        set arrowFileWriter(val: never);
 
         /**
          * Compile-time signal type information.
@@ -404,7 +404,7 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            metadata: any;
+            metadata: never;
             owner: RowGroupMetadata;
         }
     }
@@ -419,7 +419,7 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set metadata(val: any);
+        set metadata(val: never);
 
         /**
          * @construct-only
@@ -553,7 +553,7 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            metadata: any;
+            metadata: never;
         }
     }
 
@@ -567,7 +567,7 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set metadata(val: any);
+        set metadata(val: never);
 
         /**
          * Compile-time signal type information.
@@ -887,7 +887,7 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            metadata: any;
+            metadata: never;
             owner: FileMetadata;
         }
     }
@@ -902,7 +902,7 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set metadata(val: any);
+        set metadata(val: never);
 
         /**
          * @construct-only
@@ -989,7 +989,7 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            statistics: any;
+            statistics: never;
         }
     }
 
@@ -1003,7 +1003,7 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set statistics(val: any);
+        set statistics(val: never);
 
         /**
          * Compile-time signal type information.

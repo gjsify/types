@@ -31971,7 +31971,7 @@ export namespace ModemManager {
          * @param interface_name Interface name of the remote object or `null` to get the object proxy {@link GObject.GType}.
          * @param user_data User data (unused).
          */
-        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: (any | null)): GObject.GType;
+        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: null): GObject.GType;
 
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `mm_gdbus_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.
@@ -55119,12 +55119,6 @@ export namespace ModemManager {
         get_modem(): Modem;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem
-        get_modem(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.Modem3gpp} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modem3gpp on `self`, if any.
          * @returns A {@link ModemManager.Modem3gpp} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
@@ -55153,23 +55147,11 @@ export namespace ModemManager {
         get_modem_cdma(): ModemCdma;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_cdma
-        get_modem_cdma(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemCellBroadcast} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.ModemCellBroadcast on `self`, if any.
          * @returns A {@link ModemManager.ModemCellBroadcast} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
          */
         get_modem_cell_broadcast(): ModemCellBroadcast;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_cell_broadcast
-        get_modem_cell_broadcast(...args: never[]): any;
 
         /**
          * Gets the {@link ModemManager.ModemFirmware} instance for the D-Bus interface
@@ -55179,23 +55161,11 @@ export namespace ModemManager {
         get_modem_firmware(): ModemFirmware;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_firmware
-        get_modem_firmware(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemLocation} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemlocation on `self`, if any.
          * @returns A {@link ModemManager.ModemLocation} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
          */
         get_modem_location(): ModemLocation;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_location
-        get_modem_location(...args: never[]): any;
 
         /**
          * Gets the {@link ModemManager.ModemMessaging} instance for the D-Bus interface
@@ -55205,23 +55175,11 @@ export namespace ModemManager {
         get_modem_messaging(): ModemMessaging;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_messaging
-        get_modem_messaging(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemOma} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Oma on `self`, if any.
          * @returns A {@link ModemManager.ModemOma} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
          */
         get_modem_oma(): ModemOma;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_oma
-        get_modem_oma(...args: never[]): any;
 
         /**
          * Gets the {@link ModemManager.ModemSar} instance for the D-Bus interface
@@ -55231,23 +55189,11 @@ export namespace ModemManager {
         get_modem_sar(): ModemSar;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_sar
-        get_modem_sar(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemSignal} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Signal on `self`, if any.
          * @returns A {@link ModemManager.ModemSignal} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
          */
         get_modem_signal(): ModemSignal;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_signal
-        get_modem_signal(...args: never[]): any;
 
         /**
          * Gets the {@link ModemManager.ModemSimple} instance for the D-Bus interface
@@ -55257,12 +55203,6 @@ export namespace ModemManager {
         get_modem_simple(): ModemSimple;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_simple
-        get_modem_simple(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemTime} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Time on `self`, if any.
          * @returns A {@link ModemManager.ModemTime} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
@@ -55270,23 +55210,11 @@ export namespace ModemManager {
         get_modem_time(): ModemTime;
 
         /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_time
-        get_modem_time(...args: never[]): any;
-
-        /**
          * Gets the {@link ModemManager.ModemVoice} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemvoice on `self`, if any.
          * @returns A {@link ModemManager.ModemVoice} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
          */
         get_modem_voice(): ModemVoice;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with ModemManager.GdbusObject.get_modem_voice
-        get_modem_voice(...args: never[]): any;
 
         /**
          * The {@link ModemManager.GdbusModem} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>, if any.

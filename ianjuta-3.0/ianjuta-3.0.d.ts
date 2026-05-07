@@ -1414,7 +1414,7 @@ export namespace IAnjuta {
      * @gir-type Callback
      */
     interface DebuggerCallback {
-        (data: (any | null), err: GLib.Error): void;
+        (data: null, err: GLib.Error): void;
     }
 
     /**
@@ -1714,7 +1714,7 @@ export namespace IAnjuta {
 
         icon: GdkPixbuf.Pixbuf;
 
-        data: any;
+        data: null;
     }
 
 
@@ -6868,7 +6868,7 @@ export namespace IAnjuta {
              * @param node 
              * @virtual
              */
-            vfunc_file_changed(node: (any | null)): void;
+            vfunc_file_changed(node: null): void;
 
             /**
              * Return a list of possible node;
@@ -6900,21 +6900,21 @@ export namespace IAnjuta {
              * @param error 
              * @virtual
              */
-            vfunc_node_changed(node: (any | null), error: GLib.Error): void;
+            vfunc_node_changed(node: null, error: GLib.Error): void;
 
             /**
              * @param node 
              * @param error 
              * @virtual
              */
-            vfunc_node_loaded(node: (any | null), error: GLib.Error): void;
+            vfunc_node_loaded(node: null, error: GLib.Error): void;
 
             /**
              * @param node 
              * @param error 
              * @virtual
              */
-            vfunc_node_saved(node: (any | null), error: GLib.Error): void;
+            vfunc_node_saved(node: null, error: GLib.Error): void;
 
             /**
              * Remove a node
@@ -7094,7 +7094,7 @@ export namespace IAnjuta {
      * @param node 
      * @virtual
      */
-    vfunc_file_changed(node: (any | null)): void;
+    vfunc_file_changed(node: null): void;
         /**
          * Return a list of possible node;
          * @ignore
@@ -7138,21 +7138,21 @@ export namespace IAnjuta {
      * @param error 
      * @virtual
      */
-    vfunc_node_changed(node: (any | null), error: GLib.Error): void;
+    vfunc_node_changed(node: null, error: GLib.Error): void;
         /** @ignore */
     /**
      * @param node 
      * @param error 
      * @virtual
      */
-    vfunc_node_loaded(node: (any | null), error: GLib.Error): void;
+    vfunc_node_loaded(node: null, error: GLib.Error): void;
         /** @ignore */
     /**
      * @param node 
      * @param error 
      * @virtual
      */
-    vfunc_node_saved(node: (any | null), error: GLib.Error): void;
+    vfunc_node_saved(node: null, error: GLib.Error): void;
         /**
          * Remove a node
          * @ignore
@@ -7711,7 +7711,7 @@ export namespace IAnjuta {
              * @param data data assigned to the proposal
              * @virtual
              */
-            vfunc_activate(iter: Iterable, data: (any | null)): void;
+            vfunc_activate(iter: Iterable, data: null): void;
 
             /**
              * Return a (translatable) name for the provider
@@ -7760,7 +7760,7 @@ export namespace IAnjuta {
          * @param iter position where the completion occurs
          * @param data data assigned to the proposal
          */
-        activate(iter: Iterable, data: (any | null)): void;
+        activate(iter: Iterable, data: null): void;
 
         /**
          * Return a (translatable) name for the provider
@@ -7850,7 +7850,7 @@ export namespace IAnjuta {
              * @param stream Stream to open from.
              * @virtual
              */
-            vfunc_open(stream: (any | null)): void;
+            vfunc_open(stream: null): void;
         }
 
 
@@ -7875,7 +7875,7 @@ export namespace IAnjuta {
          * The implementor opens the given stream.
          * @param stream Stream to open from.
          */
-        open(stream: (any | null)): void;
+        open(stream: null): void;
     }
 
 
@@ -7897,7 +7897,7 @@ export namespace IAnjuta {
              * @param stream Stream to load
              * @virtual
              */
-            vfunc_peek_interface(stream: (any | null)): string;
+            vfunc_peek_interface(stream: null): string;
         }
 
 
@@ -7924,7 +7924,7 @@ export namespace IAnjuta {
          * @param stream Stream to load
          * @returns Plugin interface name that can load the stream.
          */
-        peek_interface(stream: (any | null)): string;
+        peek_interface(stream: null): string;
     }
 
 
@@ -7944,7 +7944,7 @@ export namespace IAnjuta {
              * @param stream 
              * @virtual
              */
-            vfunc_save(stream: (any | null)): void;
+            vfunc_save(stream: null): void;
         }
 
 
@@ -7968,7 +7968,7 @@ export namespace IAnjuta {
         /**
          * @param stream 
          */
-        save(stream: (any | null)): void;
+        save(stream: null): void;
     }
 
 
@@ -8569,7 +8569,7 @@ export namespace IAnjuta {
     /**
      * @gir-type Alias
      */
-    type BuilderHandle = any;
+    type BuilderHandle = never;
 
     /**
      * @gir-type Alias

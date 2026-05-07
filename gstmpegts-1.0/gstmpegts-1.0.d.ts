@@ -1975,7 +1975,7 @@ export namespace GstMpegts {
 
         dimensions: AtscRRTDimension[];
 
-        descriptors: any[];
+        descriptors: null[];
 
         // Constructors
 
@@ -1984,7 +1984,7 @@ export namespace GstMpegts {
             names: AtscMultString[];
             dimensions_defined: number;
             dimensions: AtscRRTDimension[];
-            descriptors: any[];
+            descriptors: null[];
         }>);
 
         static ["new"](): AtscRRT;
@@ -2300,14 +2300,14 @@ export namespace GstMpegts {
 
         original_network_id: number;
 
-        descriptors: any[];
+        descriptors: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
             transport_stream_id: number;
             original_network_id: number;
-            descriptors: any[];
+            descriptors: null[];
         }>);
     }
 
@@ -3386,9 +3386,9 @@ export namespace GstMpegts {
 
         splice_time: number;
 
-        splices: any[];
+        splices: null[];
 
-        descriptors: any[];
+        descriptors: null[];
 
         fully_parsed: boolean;
 
@@ -3406,8 +3406,8 @@ export namespace GstMpegts {
             splice_command_type: SCTESpliceCommandType;
             splice_time_specified: boolean;
             splice_time: number;
-            splices: any[];
-            descriptors: any[];
+            splices: null[];
+            descriptors: null[];
             fully_parsed: boolean;
             is_running_time: boolean;
         }>);
@@ -3467,7 +3467,7 @@ export namespace GstMpegts {
 
         utc_splice_time: number;
 
-        components: any[];
+        components: null[];
 
         break_duration_auto_return: boolean;
 
@@ -3492,7 +3492,7 @@ export namespace GstMpegts {
             program_splice_time_specified: boolean;
             program_splice_time: number;
             utc_splice_time: number;
-            components: any[];
+            components: null[];
             break_duration_auto_return: boolean;
             break_duration: number;
             unique_program_id: number;

@@ -52,7 +52,7 @@ export namespace Peas {
      * @gir-type Callback
      */
     interface ExtensionSetForeachFunc<A = GObject.Object> {
-        (set: ExtensionSet, info: PluginInfo, extension: A, data: (any | null)): void;
+        (set: ExtensionSet, info: PluginInfo, extension: A, data: null): void;
     }
 
     /**
@@ -614,8 +614,8 @@ export namespace Peas {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            construct_properties: any;
-            constructProperties: any;
+            construct_properties: never;
+            constructProperties: never;
             engine: Engine;
             extension_type: GObject.GTypeInput;
             extensionType: GObject.GTypeInput;
@@ -683,12 +683,12 @@ export namespace Peas {
         /**
          * @construct-only
          */
-        set construct_properties(val: any);
+        set construct_properties(val: never);
 
         /**
          * @construct-only
          */
-        set constructProperties(val: any);
+        set constructProperties(val: never);
 
         /**
          * @construct-only

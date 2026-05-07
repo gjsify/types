@@ -2390,14 +2390,14 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface ConnectionOpenFunc {
-        (cnc: Connection, job_id: number, result: boolean, error: GLib.Error, data: (any | null)): void;
+        (cnc: Connection, job_id: number, result: boolean, error: GLib.Error, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SqlForeachFunc {
-        (part: SqlAnyPart, data: (any | null)): boolean;
+        (part: SqlAnyPart, data: null): boolean;
     }
 
     /**
@@ -2425,14 +2425,14 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface WorkerCallback {
-        (worker: Worker, job_id: number, result_data: (any | null), error: GLib.Error): void;
+        (worker: Worker, job_id: number, result_data: null, error: GLib.Error): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface WorkerFunc {
-        (user_data: (any | null)): (any | null);
+        (user_data: null): null;
     }
 
     /**
@@ -3099,25 +3099,25 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "dsn-added": (arg0: (any | null)) => void;
+            "dsn-added": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN's definition has been changed
              * @signal
              * @run-first
              */
-            "dsn-changed": (arg0: (any | null)) => void;
+            "dsn-changed": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN has been removed
              * @signal
              * @run-first
              */
-            "dsn-removed": (arg0: (any | null)) => void;
+            "dsn-removed": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN is about to be removed
              * @signal
              * @run-first
              */
-            "dsn-to-be-removed": (arg0: (any | null)) => void;
+            "dsn-to-be-removed": (arg0: null) => void;
             "notify::system-filename": (pspec: GObject.ParamSpec) => void;
             "notify::user-filename": (pspec: GObject.ParamSpec) => void;
         }
@@ -4835,7 +4835,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -5223,7 +5223,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "diff-computed": (arg0: (any | null)) => (boolean | void);
+            "diff-computed": (arg0: null) => (boolean | void);
             "notify::new-model": (pspec: GObject.ParamSpec) => void;
             "notify::old-model": (pspec: GObject.ParamSpec) => void;
         }
@@ -5540,7 +5540,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -6092,7 +6092,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -6493,8 +6493,8 @@ export namespace Gda {
             random_access: boolean;
             randomAccess: boolean;
             strict: boolean;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -6562,13 +6562,13 @@ export namespace Gda {
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -6753,7 +6753,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -7667,7 +7667,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -8257,7 +8257,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -9179,7 +9179,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -10028,7 +10028,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -11168,14 +11168,14 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        create(cnc: Connection, user_data: (any | null)): boolean;
+        create(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        drop(cnc: Connection, user_data: (any | null)): boolean;
+        drop(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
@@ -11183,7 +11183,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        rename(cnc: Connection, user_data: (any | null)): boolean;
+        rename(cnc: Connection, user_data: null): boolean;
 
         /**
          * This method executes CREATE operation. That is, {@link Gda.DbTable}, {@link Gda.DbIndex}, and {@link Gda.DbView}
@@ -11450,14 +11450,14 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        create(cnc: Connection, user_data: (any | null)): boolean;
+        create(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        drop(cnc: Connection, user_data: (any | null)): boolean;
+        drop(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
@@ -11465,7 +11465,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        rename(cnc: Connection, user_data: (any | null)): boolean;
+        rename(cnc: Connection, user_data: null): boolean;
 
         /**
          * This method executes CREATE operation. That is, {@link Gda.DbTable}, {@link Gda.DbIndex}, and {@link Gda.DbView}
@@ -11754,14 +11754,14 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        create(cnc: Connection, user_data: (any | null)): boolean;
+        create(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        drop(cnc: Connection, user_data: (any | null)): boolean;
+        drop(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
@@ -11769,7 +11769,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        rename(cnc: Connection, user_data: (any | null)): boolean;
+        rename(cnc: Connection, user_data: null): boolean;
 
         /**
          * This method executes CREATE operation. That is, {@link Gda.DbTable}, {@link Gda.DbIndex}, and {@link Gda.DbView}
@@ -11959,14 +11959,14 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        create(cnc: Connection, user_data: (any | null)): boolean;
+        create(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        drop(cnc: Connection, user_data: (any | null)): boolean;
+        drop(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
@@ -11974,7 +11974,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        rename(cnc: Connection, user_data: (any | null)): boolean;
+        rename(cnc: Connection, user_data: null): boolean;
 
         /**
          * This method executes CREATE operation. That is, {@link Gda.DbTable}, {@link Gda.DbIndex}, and {@link Gda.DbView}
@@ -15320,7 +15320,7 @@ export namespace Gda {
          * @param klass 
          * @param type 
          */
-        static get_impl_functions_for_class(klass: typeof GObject.Object, type: ServerProviderFunctionsType): (any | null);
+        static get_impl_functions_for_class(klass: typeof GObject.Object, type: ServerProviderFunctionsType): null;
 
         /**
          * Obtain a {@link GLib.MainContext} on which to iterate. This function is reserved to database provider's implementations.
@@ -15351,7 +15351,7 @@ export namespace Gda {
          * @param type a {@link Gda.ServerProviderFunctionsType} type
          * @param functions_set a pointer to the function set, or `null`
          */
-        static set_impl_functions(klass: typeof ServerProvider, type: ServerProviderFunctionsType, functions_set: (any | null)): void;
+        static set_impl_functions(klass: typeof ServerProvider, type: ServerProviderFunctionsType, functions_set: null): void;
 
         // Methods
         /**
@@ -15645,7 +15645,7 @@ export namespace Gda {
              * @since 4.2
              * @run-first
              */
-            "source-model-changed": (arg0: (any | null)) => void;
+            "source-model-changed": (arg0: null) => void;
             /**
              * Gets emitted when a {@link Gda.Holder}'s in `set` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
@@ -15670,7 +15670,7 @@ export namespace Gda {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
-            holders: any;
+            holders: never;
             id: string;
             name: string;
             validate_changes: boolean;
@@ -15694,7 +15694,7 @@ export namespace Gda {
         /**
          * @construct-only
          */
-        set holders(val: any);
+        set holders(val: never);
 
         /**
          * @default null
@@ -16973,7 +16973,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
          */
-        dump(node: (TreeNode | null), stream: (any | null)): void;
+        dump(node: (TreeNode | null), stream: null): void;
 
         /**
          * Locates a {@link Gda.TreeNode} using the `tree_path` path.
@@ -17979,7 +17979,7 @@ export namespace Gda {
         /**
          * @returns associated data to {@link Gda.Binary}.
          */
-        get_data(): (any | null);
+        get_data(): null;
 
         /**
          * @returns size of associated data to {@link Gda.Binary} or -1 in case of error.
@@ -19038,7 +19038,7 @@ export namespace Gda {
 
         param: Holder;
 
-        priv: any;
+        priv: null;
 
         // Methods
         copy(): ServerOperationNode;
@@ -19079,9 +19079,9 @@ export namespace Gda {
         // Fields
         provider_data_destroy_func: GLib.DestroyNotify;
 
-        pad1: any;
+        pad1: null;
 
-        pad2: any;
+        pad2: null;
     }
 
 
@@ -19344,9 +19344,9 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlCase>;
 
         // Fields
-        when_expr_list: any[];
+        when_expr_list: null[];
 
-        then_expr_list: any[];
+        then_expr_list: null[];
 
         // Constructors
         constructor(parent: SqlAnyPart);
@@ -19484,7 +19484,7 @@ export namespace Gda {
         // Fields
         function_name: string;
 
-        args_list: any[];
+        args_list: null[];
 
         // Constructors
         constructor(parent: SqlAnyPart);
@@ -19597,7 +19597,7 @@ export namespace Gda {
 
         g_type: GObject.GType;
 
-        validity_meta_dict: any;
+        validity_meta_dict: null;
 
         // Constructors
         constructor(simple_spec: (GObject.Value | any));
@@ -19799,7 +19799,7 @@ export namespace Gda {
 
         position: number;
 
-        use: any[];
+        use: null[];
 
         // Constructors
         constructor(parent: SqlAnyPart);
@@ -19943,7 +19943,7 @@ export namespace Gda {
 
         stmt_type: SqlStatementType;
 
-        contents: any;
+        contents: null;
 
         validity_meta_struct: MetaStruct;
 
@@ -20284,7 +20284,7 @@ export namespace Gda {
         // Fields
         compound_type: SqlStatementCompoundType;
 
-        stmt_list: any[];
+        stmt_list: null[];
     }
 
 
@@ -20348,9 +20348,9 @@ export namespace Gda {
         // Fields
         on_conflict: string;
 
-        fields_list: any[];
+        fields_list: null[];
 
-        values_list: any[];
+        values_list: null[];
     }
 
 
@@ -20363,11 +20363,11 @@ export namespace Gda {
         // Fields
         distinct: boolean;
 
-        expr_list: any[];
+        expr_list: null[];
 
-        group_by: any[];
+        group_by: null[];
 
-        order_by: any[];
+        order_by: null[];
     }
 
 
@@ -20398,7 +20398,7 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatementUnknown>;
 
         // Fields
-        expressions: any[];
+        expressions: null[];
     }
 
 
@@ -20411,9 +20411,9 @@ export namespace Gda {
         // Fields
         on_conflict: string;
 
-        fields_list: any[];
+        fields_list: null[];
 
-        expr_list: any[];
+        expr_list: null[];
     }
 
 
@@ -20783,7 +20783,7 @@ export namespace Gda {
          * @param func the function to call from the worker thread
          * @returns `true` if no error occurred
          */
-        do_job(context: (GLib.MainContext | null), timeout_ms: number, out_result: (any | null), out_job_id: (number | null), func: WorkerFunc): boolean;
+        do_job(context: (GLib.MainContext | null), timeout_ms: number, out_result: null, out_job_id: (number | null), func: WorkerFunc): boolean;
 
         /**
          * Fetch the value returned by execution the `job_id` job.
@@ -20798,7 +20798,7 @@ export namespace Gda {
          * @param out_result a place to store the value returned by the execution of the requested function within the worker thread, or `null`
          * @returns `true` if the jobs has completed
          */
-        fetch_job_result(job_id: number, out_result: (any | null)): boolean;
+        fetch_job_result(job_id: number, out_result: null): boolean;
 
         /**
          * Forget all about the job with ID `job_id`. As opposed to `gda_worker_cancel_job()`, this function can be used to tell
@@ -20889,7 +20889,7 @@ export namespace Gda {
          * @param func the function to call from the worker thread
          * @returns the result of `func`'s execution
          */
-        wait_job(func: WorkerFunc): (any | null);
+        wait_job(func: WorkerFunc): null;
     }
 
 
@@ -21245,7 +21245,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -21748,14 +21748,14 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        create(cnc: Connection, user_data: (any | null)): boolean;
+        create(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        drop(cnc: Connection, user_data: (any | null)): boolean;
+        drop(cnc: Connection, user_data: null): boolean;
 
         /**
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
@@ -21763,7 +21763,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          */
-        rename(cnc: Connection, user_data: (any | null)): boolean;
+        rename(cnc: Connection, user_data: null): boolean;
     }
 
 

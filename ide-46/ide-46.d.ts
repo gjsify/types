@@ -882,7 +882,7 @@ export namespace Ide {
      * @param action 
      * @param enabled 
      */
-    function action_mixin_set_enabled(instance: (any | null), action: string, enabled: boolean): void;
+    function action_mixin_set_enabled(instance: null, action: string, enabled: boolean): void;
 
     function build_error_quark(): GLib.Quark;
 
@@ -1912,7 +1912,7 @@ export namespace Ide {
      * @gir-type Callback
      */
     interface ActionActivateFunc {
-        (instance: (any | null), action_name: string, param: GLib.Variant): void;
+        (instance: null, action_name: string, param: GLib.Variant): void;
     }
 
     /**
@@ -2010,14 +2010,14 @@ export namespace Ide {
      * @gir-type Callback
      */
     interface TaskCacheCallback {
-        (self: TaskCache, key: (any | null), task: Gio.Task): void;
+        (self: TaskCache, key: null, task: Gio.Task): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TaskThreadFunc {
-        (task: Task, source_object: (any | null), task_data: (any | null), cancellable: (Gio.Cancellable | null)): void;
+        (task: Task, source_object: null, task_data: null, cancellable: (Gio.Cancellable | null)): void;
     }
 
     /**
@@ -2031,7 +2031,7 @@ export namespace Ide {
      * @gir-type Callback
      */
     interface ThreadFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
@@ -2308,7 +2308,7 @@ export namespace Ide {
          * @param instance 
          * @param actions 
          */
-        connect_actions(instance: (any | null), actions: Action): void;
+        connect_actions(instance: null, actions: Action): void;
 
         /**
          * Locates the {@link Gio.ActionGroup} inserted as `prefix`.
@@ -13374,12 +13374,6 @@ export namespace Ide {
         add(diagnostic: Diagnostic): void;
 
         /**
-         * @param args 
-         */
-    // Conflicted with Ide.Object.add
-        add(...args: never[]): any;
-
-        /**
          * This function calls `callback` for every line with diagnostics between
          * `begin_line` and `end_line`. This is useful when drawing information about
          * diagnostics in an editor where a known number of lines are visible.
@@ -15726,7 +15720,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -15737,7 +15731,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -15746,7 +15740,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -17066,7 +17060,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -17077,7 +17071,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -17086,7 +17080,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -20465,7 +20459,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -20476,7 +20470,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -20485,7 +20479,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -21219,7 +21213,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -21230,7 +21224,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -21239,7 +21233,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -25193,7 +25187,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -25204,7 +25198,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -25213,7 +25207,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -25576,7 +25570,7 @@ export namespace Ide {
          * @param total_num_bytes 
          * @param user_data 
          */
-        static file_progress_callback(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: (any | null)): void;
+        static file_progress_callback(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: null): void;
 
         /**
          * @param status 
@@ -25584,7 +25578,7 @@ export namespace Ide {
          * @param estimating 
          * @param user_data 
          */
-        static flatpak_progress_callback(status: string, notification: number, estimating: boolean, user_data: (any | null)): void;
+        static flatpak_progress_callback(status: string, notification: number, estimating: boolean, user_data: null): void;
 
         // Methods
         /**
@@ -26407,7 +26401,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -26418,7 +26412,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -26427,7 +26421,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -26576,7 +26570,7 @@ export namespace Ide {
          * @param instance a `IdeObjectNotify`
          * @param pspec a {@link GObject.ParamSpec}
          */
-        static notify_by_pspec(instance: (any | null), pspec: GObject.ParamSpec): void;
+        static notify_by_pspec(instance: null, pspec: GObject.ParamSpec): void;
 
         /**
          * This helper will perform a `g_object_notify_by_pspec()` with the
@@ -31630,14 +31624,14 @@ export namespace Ide {
          */
         add_string(action_name: string, property_name: string, treat_null_as_empty: boolean): void;
 
-        dup_item(): (any | null);
+        dup_item(): null;
 
         get_item_type(): GObject.GType;
 
         /**
          * @param item 
          */
-        set_item(item: (any | null)): void;
+        set_item(item: null): void;
 
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
@@ -32529,7 +32523,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -32540,7 +32534,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -32549,7 +32543,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -33324,7 +33318,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -33335,7 +33329,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -33344,7 +33338,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -36378,7 +36372,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -36389,7 +36383,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -36398,7 +36392,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -37578,7 +37572,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -37589,7 +37583,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -37598,7 +37592,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -38602,7 +38596,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -38613,7 +38607,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -38622,7 +38616,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -38805,7 +38799,7 @@ export namespace Ide {
          * @param a 
          * @param b 
          */
-        static compare(a: (any | null), b: (any | null)): number;
+        static compare(a: null, b: null): number;
 
         // Virtual methods
         /**
@@ -39535,7 +39529,7 @@ export namespace Ide {
          * @param property 
          * @param flags 
          */
-        bind(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: null, property: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * Like `ide_settings_bind()` but allows transforming to and from settings storage using
@@ -39549,7 +39543,7 @@ export namespace Ide {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
 
         /**
          * @param key 
@@ -42216,7 +42210,7 @@ export namespace Ide {
          */
         get_return_on_cancel(): boolean;
 
-        get_source_tag(): (any | null);
+        get_source_tag(): null;
 
         /**
          * Checks to see if the task had an error.
@@ -42229,11 +42223,11 @@ export namespace Ide {
          * @param source_object a {@link GObject.Object} or `null`
          * @returns `true` is source_object matches
          */
-        is_valid(source_object: (any | null)): boolean;
+        is_valid(source_object: null): boolean;
 
         propagate_boolean(): boolean;
 
-        propagate_boxed(): (any | null);
+        propagate_boxed(): null;
 
         propagate_int(): number;
 
@@ -42246,7 +42240,7 @@ export namespace Ide {
          */
         propagate_object<T = GObject.Object>(): T;
 
-        propagate_pointer(): (any | null);
+        propagate_pointer(): null;
 
         /**
          * Sets the result of the task to `result`.
@@ -42361,12 +42355,12 @@ export namespace Ide {
          * of the function that created the task.
          * @param source_tag a tag to identify the task, usual a function pointer
          */
-        set_source_tag(source_tag: (any | null)): void;
+        set_source_tag(source_tag: null): void;
 
         /**
          * @param task_data 
          */
-        set_task_data(task_data: (any | null)): void;
+        set_task_data(task_data: null): void;
 
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
@@ -42378,7 +42372,7 @@ export namespace Ide {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -42386,7 +42380,7 @@ export namespace Ide {
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag: (any | null)): boolean;
+        is_tagged(source_tag: null): boolean;
 
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
@@ -42413,7 +42407,7 @@ export namespace Ide {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): (any | null);
+        vfunc_get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -42421,7 +42415,7 @@ export namespace Ide {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: (any | null)): boolean;
+        vfunc_is_tagged(source_tag: null): boolean;
     }
 
 
@@ -42442,26 +42436,26 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            key_copy_func: any;
-            keyCopyFunc: any;
-            key_destroy_func: any;
-            keyDestroyFunc: any;
-            key_equal_func: any;
-            keyEqualFunc: any;
-            key_hash_func: any;
-            keyHashFunc: any;
-            populate_callback: any;
-            populateCallback: any;
-            populate_callback_data: any;
-            populateCallbackData: any;
-            populate_callback_data_destroy: any;
-            populateCallbackDataDestroy: any;
+            key_copy_func: never;
+            keyCopyFunc: never;
+            key_destroy_func: never;
+            keyDestroyFunc: never;
+            key_equal_func: never;
+            keyEqualFunc: never;
+            key_hash_func: never;
+            keyHashFunc: never;
+            populate_callback: never;
+            populateCallback: never;
+            populate_callback_data: never;
+            populateCallbackData: never;
+            populate_callback_data_destroy: never;
+            populateCallbackDataDestroy: never;
             time_to_live: (bigint | number);
             timeToLive: (bigint | number);
-            value_copy_func: any;
-            valueCopyFunc: any;
-            value_destroy_func: any;
-            valueDestroyFunc: any;
+            value_copy_func: never;
+            valueCopyFunc: never;
+            value_destroy_func: never;
+            valueDestroyFunc: never;
         }
     }
 
@@ -42475,72 +42469,72 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        set key_copy_func(val: any);
+        set key_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyCopyFunc(val: any);
+        set keyCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_destroy_func(val: any);
+        set key_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyDestroyFunc(val: any);
+        set keyDestroyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_equal_func(val: any);
+        set key_equal_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyEqualFunc(val: any);
+        set keyEqualFunc(val: never);
 
         /**
          * @construct-only
          */
-        set key_hash_func(val: any);
+        set key_hash_func(val: never);
 
         /**
          * @construct-only
          */
-        set keyHashFunc(val: any);
+        set keyHashFunc(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback(val: any);
+        set populate_callback(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallback(val: any);
+        set populateCallback(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data(val: any);
+        set populate_callback_data(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackData(val: any);
+        set populateCallbackData(val: never);
 
         /**
          * @construct-only
          */
-        set populate_callback_data_destroy(val: any);
+        set populate_callback_data_destroy(val: never);
 
         /**
          * @construct-only
          */
-        set populateCallbackDataDestroy(val: any);
+        set populateCallbackDataDestroy(val: never);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -42565,22 +42559,22 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        set value_copy_func(val: any);
+        set value_copy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueCopyFunc(val: any);
+        set valueCopyFunc(val: never);
 
         /**
          * @construct-only
          */
-        set value_destroy_func(val: any);
+        set value_destroy_func(val: never);
 
         /**
          * @construct-only
          */
-        set valueDestroyFunc(val: any);
+        set valueDestroyFunc(val: never);
 
         /**
          * Compile-time signal type information.
@@ -42613,7 +42607,7 @@ export namespace Ide {
         /**
          * @param key 
          */
-        evict(key: (any | null)): boolean;
+        evict(key: null): boolean;
 
         evict_all(): void;
 
@@ -42622,7 +42616,7 @@ export namespace Ide {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(any | null)>;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -42630,7 +42624,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * @param key 
@@ -42638,14 +42632,14 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: (any | null), force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(any | null)> | void);
+        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
 
         /**
          * Finish a call to `ide_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
          */
-        get_finish(result: Gio.AsyncResult): (any | null);
+        get_finish(result: Gio.AsyncResult): null;
 
         /**
          * Peeks to see `key` is contained in the cache and returns the
@@ -42657,7 +42651,7 @@ export namespace Ide {
          * @param key The key for the cache
          * @returns A {@link GObject.Object} or   `null` if the key was not found in the cache.
          */
-        peek<T = GObject.Object>(key: (any | null)): T;
+        peek<T = GObject.Object>(key: null): T;
 
         /**
          * @param name 
@@ -44512,7 +44506,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -44523,7 +44517,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -44532,7 +44526,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -46994,7 +46988,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -47005,7 +46999,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -47014,7 +47008,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -47634,7 +47628,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -47645,7 +47639,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -47654,7 +47648,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -47750,7 +47744,7 @@ export namespace Ide {
             iconName: string;
             is_header: boolean;
             isHeader: boolean;
-            item: (GObject.Object | null);
+            item: GObject.Object;
             loading: boolean;
             parent: (GObject.Object | null);
             reset_on_collapse: boolean;
@@ -47857,8 +47851,8 @@ export namespace Ide {
         get isHeader(): boolean;
         set isHeader(val: boolean);
 
-        get item(): (GObject.Object | null);
-        set item(val: (GObject.Object | null));
+        get item(): GObject.Object;
+        set item(val: GObject.Object);
 
         /**
          * @read-only
@@ -47973,7 +47967,7 @@ export namespace Ide {
          * Gets the {@link Ide.TreeNode.item} property.
          * @returns a {@link GObject.Object} or `null`
          */
-        get_item(): (any | null);
+        get_item(): null;
 
         /**
          * @param args 
@@ -48603,7 +48597,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -48614,7 +48608,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -48623,7 +48617,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -48856,7 +48850,7 @@ export namespace Ide {
          * @param instance 
          * @param property_name 
          */
-        bind(instance: (any | null), property_name: string): void;
+        bind(instance: null, property_name: string): void;
 
         /**
          * Binds the value with an optional transform.
@@ -48865,7 +48859,7 @@ export namespace Ide {
          * @param get_transform an {@link Ide.TweaksBindingTransform} or `null`
          * @param set_transform an {@link Ide.TweaksBindingTransform} or `null`
          */
-        bind_with_transform(instance: (any | null), property_name: string, get_transform: (TweaksBindingTransform | null), set_transform: (TweaksBindingTransform | null)): void;
+        bind_with_transform(instance: null, property_name: string, get_transform: (TweaksBindingTransform | null), set_transform: (TweaksBindingTransform | null)): void;
 
         changed(): void;
 
@@ -48951,7 +48945,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -48962,7 +48956,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -48971,7 +48965,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -49214,7 +49208,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -49225,7 +49219,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -49234,7 +49228,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -49792,7 +49786,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -49803,7 +49797,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -49812,7 +49806,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50040,7 +50034,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50051,7 +50045,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50060,7 +50054,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50298,7 +50292,7 @@ export namespace Ide {
          * @param ancestor_type the {@link GObject.GType} of {@link Ide.TweaksItem} or subclass
          * @returns an {@link Ide.TweaksItem} or `null`
          */
-        get_ancestor(ancestor_type: GObject.GType): (any | null);
+        get_ancestor(ancestor_type: GObject.GType): null;
 
         /**
          * Gets the first child of `self`.
@@ -50427,7 +50421,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50438,7 +50432,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50447,7 +50441,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50692,7 +50686,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50703,7 +50697,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50712,7 +50706,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -51060,7 +51054,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -51071,7 +51065,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -51080,7 +51074,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -51537,7 +51531,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -51548,7 +51542,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -51557,7 +51551,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -53857,7 +53851,7 @@ export namespace Ide {
         static $gtype: GObject.GType<Action>;
 
         // Fields
-        next: any;
+        next: null;
 
         name: string;
 
@@ -53886,13 +53880,13 @@ export namespace Ide {
          * @param action 
          * @param enabled 
          */
-        static set_enabled(instance: (any | null), action: string, enabled: boolean): void;
+        static set_enabled(instance: null, action: string, enabled: boolean): void;
 
         // Methods
         /**
          * @param instance 
          */
-        constructed(instance: (any | null)): void;
+        constructed(instance: null): void;
 
         /**
          * @param object_class 
@@ -54444,7 +54438,7 @@ export namespace Ide {
          * @param key A UTF-8 encoded string.
          * @param value A value to associate with key.
          */
-        insert(key: string, value: (any | null)): void;
+        insert(key: string, value: null): void;
 
         /**
          * IdeFuzzyMutableIndex searches within `fuzzy` for strings that fuzzy match `needle`.
@@ -54483,7 +54477,7 @@ export namespace Ide {
         // Fields
         key: string;
 
-        value: any;
+        value: null;
 
         score: number;
 
@@ -54493,7 +54487,7 @@ export namespace Ide {
 
         constructor(properties?: Partial<{
             key: string;
-            value: any;
+            value: null;
             score: number;
             id: number;
         }>);
@@ -54601,19 +54595,19 @@ export namespace Ide {
         /**
          * @param result 
          */
-        extract(result: (any | null)): boolean;
+        extract(result: null): boolean;
 
         /**
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: (any | null)): boolean;
+        extract_index(index_: (bigint | number), result: null): boolean;
 
         /**
          * @param data 
          * @param len 
          */
-        insert_vals(data: (any | null), len: number): void;
+        insert_vals(data: null, len: number): void;
 
         /**
          * Increments the reference count of `heap` by one.
@@ -54657,7 +54651,7 @@ export namespace Ide {
          * @param word 
          * @param tag 
          */
-        insert(word: string, tag: (any | null)): void;
+        insert(word: string, tag: null): void;
 
         /**
          * Gets the pointer tag that was registered for `word`, or `null`.  This can be
@@ -54666,7 +54660,7 @@ export namespace Ide {
          * @param word 
          * @returns Highlighter specific tag.
          */
-        lookup(word: string): (any | null);
+        lookup(word: string): null;
 
         ref(): HighlightIndex;
 
@@ -55181,7 +55175,7 @@ export namespace Ide {
 
         callback: PtyInterceptCallback;
 
-        callback_data: any;
+        callback_data: null;
     }
 
 

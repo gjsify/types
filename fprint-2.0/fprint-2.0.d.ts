@@ -2001,8 +2001,8 @@ export namespace FPrint {
             finger: Finger;
             fpi_data: GLib.Variant;
             fpiData: GLib.Variant;
-            fpi_prints: any;
-            fpiPrints: any;
+            fpi_prints: never;
+            fpiPrints: never;
             image: (Image | null);
             username: (string | null);
         }
@@ -2069,11 +2069,11 @@ export namespace FPrint {
         get fpiData(): GLib.Variant;
         set fpiData(val: GLib.Variant);
 
-        get fpi_prints(): any;
-        set fpi_prints(val: any);
+        get fpi_prints(): null;
+        set fpi_prints(val: never);
 
-        get fpiPrints(): any;
-        set fpiPrints(val: any);
+        get fpiPrints(): null;
+        set fpiPrints(val: never);
 
         /**
          * @read-only

@@ -362,7 +362,7 @@ export namespace Gandiva {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            expression: any;
+            expression: never;
             result_field: Arrow.Field;
             resultField: Arrow.Field;
             root_node: Node;
@@ -380,7 +380,7 @@ export namespace Gandiva {
         /**
          * @construct-only
          */
-        set expression(val: any);
+        set expression(val: never);
 
         /**
          * @construct-only
@@ -683,8 +683,8 @@ export namespace Gandiva {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            function_signature: any;
-            functionSignature: any;
+            function_signature: never;
+            functionSignature: never;
         }
     }
 
@@ -698,12 +698,12 @@ export namespace Gandiva {
         /**
          * @construct-only
          */
-        set function_signature(val: any);
+        set function_signature(val: never);
 
         /**
          * @construct-only
          */
-        set functionSignature(val: any);
+        set functionSignature(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1132,8 +1132,8 @@ export namespace Gandiva {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            native_function: any;
-            nativeFunction: any;
+            native_function: never;
+            nativeFunction: never;
         }
     }
 
@@ -1147,12 +1147,12 @@ export namespace Gandiva {
         /**
          * @construct-only
          */
-        set native_function(val: any);
+        set native_function(val: never);
 
         /**
          * @construct-only
          */
-        set nativeFunction(val: any);
+        set nativeFunction(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1229,7 +1229,7 @@ export namespace Gandiva {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            node: any;
+            node: never;
             return_type: Arrow.DataType;
             returnType: Arrow.DataType;
         }
@@ -1245,7 +1245,7 @@ export namespace Gandiva {
         /**
          * @construct-only
          */
-        set node(val: any);
+        set node(val: never);
 
         /**
          * @construct-only
@@ -1400,7 +1400,7 @@ export namespace Gandiva {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            projector: any;
+            projector: never;
         }
     }
 
@@ -1414,7 +1414,7 @@ export namespace Gandiva {
         /**
          * @construct-only
          */
-        set projector(val: any);
+        set projector(val: never);
 
         /**
          * Compile-time signal type information.

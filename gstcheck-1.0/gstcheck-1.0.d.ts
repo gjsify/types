@@ -82,7 +82,7 @@ export namespace GstCheck {
      * @param data data to compare to
      * @param size size of data to compare
      */
-    function check_buffer_data(buffer: Gst.Buffer, data: (any | null), size: (bigint | number)): void;
+    function check_buffer_data(buffer: Gst.Buffer, data: null, size: (bigint | number)): void;
 
     /**
      * Compare two caps with gst_caps_is_equal and fail unless they are
@@ -166,7 +166,7 @@ export namespace GstCheck {
      * @param object_to_unref The {@link GObject.Object} to unref
      * @since 1.6
      */
-    function check_object_destroyed_on_unref(object_to_unref: (any | null)): void;
+    function check_object_destroyed_on_unref(object_to_unref: null): void;
 
     /**
      * Remove a filter that has been added by `gst_check_add_log_filter`.
@@ -374,14 +374,14 @@ export namespace GstCheck {
      * @gir-type Callback
      */
     interface HarnessPrepareBufferFunc {
-        (h: Harness, data: (any | null)): Gst.Buffer;
+        (h: Harness, data: null): Gst.Buffer;
     }
 
     /**
      * @gir-type Callback
      */
     interface HarnessPrepareEventFunc {
-        (h: Harness, data: (any | null)): Gst.Event;
+        (h: Harness, data: null): Gst.Event;
     }
 
     namespace TestClock {

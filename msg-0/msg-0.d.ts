@@ -1499,7 +1499,7 @@ export namespace Msg {
          * @param tls_errors 
          * @param session 
          */
-        static accept_certificate_cb(msg: Soup.Message, tls_cert: Gio.TlsCertificate, tls_errors: Gio.TlsCertificateFlags, session: (any | null)): boolean;
+        static accept_certificate_cb(msg: Soup.Message, tls_cert: Gio.TlsCertificate, tls_errors: Gio.TlsCertificateFlags, session: null): boolean;
 
         static get_https_port(): number;
 
@@ -1803,7 +1803,7 @@ export namespace Msg {
         static $gtype: GObject.GType<_DriveItemFileClass>;
 
         // Fields
-        padding: any[];
+        padding: null[];
     }
 
 
@@ -1814,7 +1814,7 @@ export namespace Msg {
         static $gtype: GObject.GType<_DriveItemFolderClass>;
 
         // Fields
-        padding: any[];
+        padding: null[];
     }
 
 

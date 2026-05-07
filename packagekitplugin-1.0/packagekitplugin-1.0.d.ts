@@ -176,7 +176,7 @@ export namespace PackageKitPlugin {
      * @gir-type Callback
      */
     interface BackendFileChanged {
-        (backend: Backend, data: any): void;
+        (backend: Backend, data: null): void;
     }
 
     /**
@@ -190,7 +190,7 @@ export namespace PackageKitPlugin {
      * @gir-type Callback
      */
     interface BackendJobVFunc {
-        (job: BackendJob, object: any): void;
+        (job: BackendJob, object: null): void;
     }
 
     /**
@@ -574,13 +574,13 @@ export namespace PackageKitPlugin {
          * @param job 
          * @param func 
          */
-        thread_start(job: BackendJob, func: any): void;
+        thread_start(job: BackendJob, func: never): void;
 
         /**
          * @param job 
          * @param func 
          */
-        thread_stop(job: BackendJob, func: any): void;
+        thread_stop(job: BackendJob, func: never): void;
 
         /**
          * Responsible for finalising the external backend object.
@@ -709,7 +709,7 @@ export namespace PackageKitPlugin {
         /**
          * @returns Associated PkBackend instance
          */
-        get_backend(): any;
+        get_backend(): null;
 
         get_background(): HintEnum;
 
@@ -789,7 +789,7 @@ export namespace PackageKitPlugin {
         /**
          * @returns Job user data
          */
-        get_user_data(): any;
+        get_user_data(): null;
 
         /**
          * @param signal_kind 
@@ -852,7 +852,7 @@ export namespace PackageKitPlugin {
         /**
          * @param backend 
          */
-        set_backend(backend: any): void;
+        set_backend(backend: never): void;
 
         /**
          * @param background 
@@ -962,7 +962,7 @@ export namespace PackageKitPlugin {
         /**
          * @param user_data 
          */
-        set_user_data(user_data: any): void;
+        set_user_data(user_data: never): void;
 
         /**
          * Connect backend

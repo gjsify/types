@@ -143,21 +143,21 @@ export namespace Gdaui {
      * @gir-type Callback
      */
     interface CloudWeightFunc {
-        (model: Gda.DataModel, row: number, data: (any | null)): number;
+        (model: Gda.DataModel, row: number, data: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface FormattedEntryInsertFunc {
-        (entry: FormattedEntry, insert_char: string, virt_pos: number, data: (any | null)): void;
+        (entry: FormattedEntry, insert_char: string, virt_pos: number, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface RawGridFormatFunc {
-        (cell: Gtk.CellRenderer, column: Gtk.TreeViewColumn, column_pos: number, model: Gda.DataModel, row: number, data: (any | null)): void;
+        (cell: Gtk.CellRenderer, column: Gtk.TreeViewColumn, column_pos: number, model: Gda.DataModel, row: number, data: null): void;
     }
 
     /**
@@ -290,11 +290,11 @@ export namespace Gdaui {
             entriesAutoDefault: boolean;
             headers_sensitive: boolean;
             headersSensitive: boolean;
-            paramlist: any;
+            paramlist: never;
             show_actions: boolean;
             showActions: boolean;
-            xml_layout: any;
-            xmlLayout: any;
+            xml_layout: never;
+            xmlLayout: never;
         }
     }
 
@@ -333,8 +333,8 @@ export namespace Gdaui {
         get headersSensitive(): boolean;
         set headersSensitive(val: boolean);
 
-        get paramlist(): any;
-        set paramlist(val: any);
+        get paramlist(): null;
+        set paramlist(val: never);
 
         get show_actions(): boolean;
         set show_actions(val: boolean);
@@ -345,12 +345,12 @@ export namespace Gdaui {
         /**
          * @write-only
          */
-        set xml_layout(val: any);
+        set xml_layout(val: never);
 
         /**
          * @write-only
          */
-        set xmlLayout(val: any);
+        set xmlLayout(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1745,7 +1745,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: (any | null), arg2: (any | null)) => void;
+            changed: (arg0: string, arg1: null, arg2: null) => void;
             "notify::data-set": (pspec: GObject.ParamSpec) => void;
             "notify::data-set-source": (pspec: GObject.ParamSpec) => void;
             "notify::set-default-if-invalid": (pspec: GObject.ParamSpec) => void;
@@ -1823,17 +1823,17 @@ export namespace Gdaui {
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
             data_set: Set;
             dataSet: Set;
-            data_set_source: any;
-            dataSetSource: any;
+            data_set_source: never;
+            dataSetSource: never;
             set_default_if_invalid: boolean;
             setDefaultIfInvalid: boolean;
             show_expander: boolean;
             showExpander: boolean;
             to_be_deleted: boolean;
             toBeDeleted: boolean;
-            values: any;
-            values_display: any;
-            valuesDisplay: any;
+            values: never;
+            values_display: never;
+            valuesDisplay: never;
         }
     }
 
@@ -1857,12 +1857,12 @@ export namespace Gdaui {
         /**
          * @construct-only
          */
-        set data_set_source(val: any);
+        set data_set_source(val: never);
 
         /**
          * @construct-only
          */
-        set dataSetSource(val: any);
+        set dataSetSource(val: never);
 
         get set_default_if_invalid(): boolean;
         set set_default_if_invalid(val: boolean);
@@ -1893,17 +1893,17 @@ export namespace Gdaui {
         /**
          * @write-only
          */
-        set values(val: any);
+        set values(val: never);
 
         /**
          * @write-only
          */
-        set values_display(val: any);
+        set values_display(val: never);
 
         /**
          * @write-only
          */
-        set valuesDisplay(val: any);
+        set valuesDisplay(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1973,7 +1973,7 @@ export namespace Gdaui {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
             editable: boolean;
-            group: any;
+            group: never;
             iter: Gda.DataModelIter;
             store: DataStore;
             to_be_deleted: boolean;
@@ -1994,7 +1994,7 @@ export namespace Gdaui {
         /**
          * @construct-only
          */
-        set group(val: any);
+        set group(val: never);
 
         /**
          * @construct-only
@@ -2142,7 +2142,7 @@ export namespace Gdaui {
             to_be_deleted: boolean;
             toBeDeleted: boolean;
             type: GObject.GTypeInput;
-            value: any;
+            value: never;
         }
     }
 
@@ -2186,7 +2186,7 @@ export namespace Gdaui {
         /**
          * @write-only
          */
-        set value(val: any);
+        set value(val: never);
 
         /**
          * Compile-time signal type information.
@@ -2519,10 +2519,10 @@ export namespace Gdaui {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
-            model: any;
+            model: never;
             prepend_null_entry: boolean;
             prependNullEntry: boolean;
-            proxy: any;
+            proxy: never;
         }
     }
 
@@ -2536,7 +2536,7 @@ export namespace Gdaui {
         /**
          * @construct-only
          */
-        get model(): any;
+        get model(): null;
 
         get prepend_null_entry(): boolean;
         set prepend_null_entry(val: boolean);
@@ -2547,7 +2547,7 @@ export namespace Gdaui {
         /**
          * @read-only
          */
-        get proxy(): any;
+        get proxy(): null;
 
         /**
          * Compile-time signal type information.
@@ -9632,7 +9632,7 @@ export namespace Gdaui {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -10136,8 +10136,8 @@ export namespace Gdaui {
             info_cell_visible: boolean;
             infoCellVisible: boolean;
             model: (Gda.DataModel | any);
-            xml_layout: any;
-            xmlLayout: any;
+            xml_layout: never;
+            xmlLayout: never;
         }
     }
 
@@ -10168,12 +10168,12 @@ export namespace Gdaui {
         /**
          * @write-only
          */
-        set xml_layout(val: any);
+        set xml_layout(val: never);
 
         /**
          * @write-only
          */
-        set xmlLayout(val: any);
+        set xmlLayout(val: never);
 
         /**
          * Compile-time signal type information.
@@ -11032,7 +11032,7 @@ export namespace Gdaui {
              * @since 4.2
              * @run-first
              */
-            "source-model-changed": (arg0: (any | null)) => void;
+            "source-model-changed": (arg0: null) => void;
             "notify::set": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11124,7 +11124,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            "drag-can-drop": (arg0: string, arg1: (any | null)) => (boolean | void);
+            "drag-can-drop": (arg0: string, arg1: null) => (boolean | void);
             /**
              * @signal
              * @run-last
@@ -11134,12 +11134,12 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            "drag-drop": (arg0: string, arg1: (any | null)) => (boolean | void);
+            "drag-drop": (arg0: string, arg1: null) => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            "drag-get": (arg0: string, arg1: (any | null)) => (boolean | void);
+            "drag-get": (arg0: string, arg1: null) => (boolean | void);
             "notify::tree": (pspec: GObject.ParamSpec) => void;
         }
 

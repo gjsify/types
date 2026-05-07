@@ -79,7 +79,7 @@ export namespace Abi {
      * @gir-type Callback
      */
     interface Signal {
-        (arg0: Widget, closure: (any | null)): boolean;
+        (arg0: Widget, closure: null): boolean;
     }
 
     namespace Table {

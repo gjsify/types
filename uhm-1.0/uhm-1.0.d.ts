@@ -464,7 +464,7 @@ export namespace Uhm {
          * @param data message data
          * @param user_data user data passed to the {@link Soup.Logger}, or `null`
          */
-        static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data: (any | null)): void;
+        static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data: null): void;
 
         // Virtual methods
         /**

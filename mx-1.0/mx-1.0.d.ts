@@ -10562,11 +10562,11 @@ export namespace Mx {
         interface ConstructorProps extends Clutter.Texture.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps {
             accumulation_enabled: boolean;
             accumulationEnabled: boolean;
-            accumulation_material: any;
-            accumulationMaterial: any;
+            accumulation_material: never;
+            accumulationMaterial: never;
             auto_update: boolean;
             autoUpdate: boolean;
-            buffer: any;
+            buffer: never;
             child: Clutter.Actor;
             pick_child: boolean;
             pickChild: boolean;
@@ -10593,12 +10593,12 @@ export namespace Mx {
         /**
          * @read-only
          */
-        get accumulation_material(): any;
+        get accumulation_material(): null;
 
         /**
          * @read-only
          */
-        get accumulationMaterial(): any;
+        get accumulationMaterial(): null;
 
         get auto_update(): boolean;
         set auto_update(val: boolean);
@@ -10610,7 +10610,7 @@ export namespace Mx {
          * The off-screen buffer used to draw the child.
          * @read-only
          */
-        get buffer(): any;
+        get buffer(): null;
 
         get child(): Clutter.Actor;
         set child(val: Clutter.Actor);
@@ -14392,7 +14392,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns `true` if the data exists, `false` otherwise
          */
-        contains_meta(uri: string, ident: any): boolean;
+        contains_meta(uri: string, ident: never): boolean;
 
         /**
          * This is a wrapper around `mx_texture_cache_get_texture()` which returns
@@ -14421,7 +14421,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns A {@link Cogl.Handle} to a texture, with an added reference. `null` if no image was found.
          */
-        get_meta_cogl_texture(uri: string, ident: any): Cogl.Handle;
+        get_meta_cogl_texture(uri: string, ident: never): Cogl.Handle;
 
         /**
          * Create a new ClutterTexture using the previously added image associated
@@ -14432,7 +14432,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns A newly allocated {@link Clutter.Texture}, or `null` if no image was found
          */
-        get_meta_texture(uri: string, ident: any): Clutter.Texture;
+        get_meta_texture(uri: string, ident: never): Clutter.Texture;
 
         /**
          * Returns the number of items in the texture cache
@@ -14472,7 +14472,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @param texture A {@link Cogl.Handle} to a texture
          */
-        insert_meta(uri: string, ident: any, texture: Cogl.Handle): void;
+        insert_meta(uri: string, ident: never, texture: Cogl.Handle): void;
 
         /**
          * @param filename 

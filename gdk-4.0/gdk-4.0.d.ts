@@ -7338,7 +7338,7 @@ export namespace Gdk {
      * @gir-type Callback
      */
     interface CursorGetTextureCallback {
-        (cursor: Cursor, cursor_size: number, scale: number, data: (any | null)): (Texture | null);
+        (cursor: Cursor, cursor_size: number, scale: number, data: null): (Texture | null);
     }
 
     /**
@@ -8883,13 +8883,13 @@ export namespace Gdk {
          * See {@link Gdk.ContentDeserializer.set_task_data}.
          * @returns the task data for `deserializer`
          */
-        get_task_data(): (any | null);
+        get_task_data(): null;
 
         /**
          * Gets the user data that was passed when the deserializer was registered.
          * @returns the user data for this deserializer
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Gets the {@link GObject.Value} to store the deserialized object in.
@@ -8914,7 +8914,7 @@ export namespace Gdk {
          * Associate data with the current deserialization operation.
          * @param data data to associate with this operation
          */
-        set_task_data(data: (any | null)): void;
+        set_task_data(data: null): void;
 
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
@@ -8928,7 +8928,7 @@ export namespace Gdk {
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag: (any | null)): boolean;
+        is_tagged(source_tag: null): boolean;
 
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
@@ -8955,7 +8955,7 @@ export namespace Gdk {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): (any | null);
+        vfunc_get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -8963,7 +8963,7 @@ export namespace Gdk {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: (any | null)): boolean;
+        vfunc_is_tagged(source_tag: null): boolean;
     }
 
 
@@ -9324,13 +9324,13 @@ export namespace Gdk {
          * See {@link Gdk.ContentSerializer.set_task_data}.
          * @returns the task data for `serializer`
          */
-        get_task_data(): (any | null);
+        get_task_data(): null;
 
         /**
          * Gets the user data that was passed when the serializer was registered.
          * @returns the user data for this serializer
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Gets the {@link GObject.Value} to read the object to serialize from.
@@ -9355,7 +9355,7 @@ export namespace Gdk {
          * Associate data with the current serialization operation.
          * @param data data to associate with this operation
          */
-        set_task_data(data: (any | null)): void;
+        set_task_data(data: null): void;
 
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
@@ -9369,7 +9369,7 @@ export namespace Gdk {
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag: (any | null)): boolean;
+        is_tagged(source_tag: null): boolean;
 
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
@@ -9396,7 +9396,7 @@ export namespace Gdk {
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): (any | null);
+        vfunc_get_user_data(): null;
 
         /**
          * Checks if `res` has the given `source_tag` (generally a function
@@ -9404,7 +9404,7 @@ export namespace Gdk {
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: (any | null)): boolean;
+        vfunc_is_tagged(source_tag: null): boolean;
     }
 
 
@@ -11734,7 +11734,7 @@ export namespace Gdk {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
-        build(data: (any | null)): (Texture | null);
+        build(data: null): (Texture | null);
 
         /**
          * Gets the color state previously set via `gdk_dmabuf_texture_builder_set_color_state()`.
@@ -13523,7 +13523,7 @@ export namespace Gdk {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: GLContext, id: number, width: number, height: number, data: (any | null)): GLTexture;
+        static ["new"](context: GLContext, id: number, width: number, height: number, data: null): GLTexture;
 
         // Signals
         /** @signal */
@@ -13938,7 +13938,7 @@ export namespace Gdk {
             hasMipmap: boolean;
             height: number;
             id: number;
-            sync: (any | null);
+            sync: never;
             update_region: (cairo.Region | null);
             updateRegion: (cairo.Region | null);
             update_texture: (Texture | null);
@@ -14032,8 +14032,8 @@ export namespace Gdk {
          * If this is set, GTK will wait on it before using the texture.
          * @since 4.12
          */
-        get sync(): (any | null);
-        set sync(val: (any | null));
+        get sync(): null;
+        set sync(val: never);
 
         /**
          * The update region for {@link Gdk.GLTextureBuilder.update_texture}.
@@ -14118,7 +14118,7 @@ export namespace Gdk {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture}
          */
-        build(data: (any | null)): Texture;
+        build(data: null): Texture;
 
         /**
          * Gets the color state previously set via `gdk_gl_texture_builder_set_color_state()`.
@@ -14163,7 +14163,7 @@ export namespace Gdk {
          * Gets the `GLsync` previously set via `gdk_gl_texture_builder_set_sync()`.
          * @returns the `GLSync`
          */
-        get_sync(): (any | null);
+        get_sync(): null;
 
         /**
          * Gets the region previously set via `gdk_gl_texture_builder_set_update_region()` or
@@ -14263,7 +14263,7 @@ export namespace Gdk {
          * responsibility to make sure it doesn't leak.
          * @param sync the GLSync object
          */
-        set_sync(sync: (any | null)): void;
+        set_sync(sync: null): void;
 
         /**
          * Sets the region to be updated by this texture. Together with
@@ -19055,8 +19055,8 @@ export namespace Gdk {
             fullscreen_mode: FullscreenMode;
             fullscreenMode: FullscreenMode;
             gravity: Gravity;
-            icon_list: any;
-            iconList: any;
+            icon_list: never;
+            iconList: never;
             modal: boolean;
             shortcuts_inhibited: boolean;
             shortcutsInhibited: boolean;
@@ -19140,14 +19140,14 @@ export namespace Gdk {
         /**
          * A list of textures to use as icon.
          */
-        get icon_list(): any;
-        set icon_list(val: any);
+        get icon_list(): null;
+        set icon_list(val: never);
 
         /**
          * A list of textures to use as icon.
          */
-        get iconList(): any;
-        set iconList(val: any);
+        get iconList(): null;
+        set iconList(val: never);
 
         /**
          * Whether the surface is modal.

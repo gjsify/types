@@ -307,7 +307,7 @@ export namespace TrackerMiner {
         $signals: Decorator.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<Decorator.ConstructorProps>, ...args: any[]);
@@ -568,7 +568,7 @@ export namespace TrackerMiner {
         $signals: DecoratorFS.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<DecoratorFS.ConstructorProps>, ...args: any[]);
@@ -685,7 +685,7 @@ export namespace TrackerMiner {
         $signals: IndexingTree.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<IndexingTree.ConstructorProps>, ...args: any[]);
@@ -977,8 +977,8 @@ export namespace TrackerMiner {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            introspection_handler: any;
-            introspectionHandler: any;
+            introspection_handler: never;
+            introspectionHandler: never;
             introspection_xml: string;
             introspectionXml: string;
             name: string;
@@ -997,11 +997,11 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<Miner>;
 
         // Properties
-        get introspection_handler(): any;
-        set introspection_handler(val: any);
+        get introspection_handler(): null;
+        set introspection_handler(val: never);
 
-        get introspectionHandler(): any;
-        set introspectionHandler(val: any);
+        get introspectionHandler(): null;
+        set introspectionHandler(val: never);
 
         get introspection_xml(): string;
         set introspection_xml(val: string);
@@ -2579,7 +2579,7 @@ export namespace TrackerMiner {
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
              * @virtual
              */
-            vfunc_next(cancellable: (Gio.Cancellable | null)): (any | null);
+            vfunc_next(cancellable: (Gio.Cancellable | null)): null;
 
             /**
              * Precisely the same operation as `tracker_enumerator_next()`
@@ -2612,7 +2612,7 @@ export namespace TrackerMiner {
              * @param result a {@link Gio.AsyncResult}.
              * @virtual
              */
-            vfunc_next_finish(result: Gio.AsyncResult): (any | null);
+            vfunc_next_finish(result: Gio.AsyncResult): null;
         }
 
 
@@ -2639,7 +2639,7 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
-        next(cancellable: (Gio.Cancellable | null)): (any | null);
+        next(cancellable: (Gio.Cancellable | null)): null;
 
         /**
          * Precisely the same operation as `tracker_enumerator_next()`
@@ -2662,7 +2662,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        next_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(any | null)>;
+        next_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
 
         /**
          * Precisely the same operation as `tracker_enumerator_next()`
@@ -2710,7 +2710,7 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        next_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(any | null)> | void);
+        next_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
 
         /**
          * Finishes the asynchronous operation started with
@@ -2718,7 +2718,7 @@ export namespace TrackerMiner {
          * @param result a {@link Gio.AsyncResult}.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
-        next_finish(result: Gio.AsyncResult): (any | null);
+        next_finish(result: Gio.AsyncResult): null;
     }
 
 

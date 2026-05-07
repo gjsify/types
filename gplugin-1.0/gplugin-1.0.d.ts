@@ -188,7 +188,7 @@ export namespace GPlugin {
      * @gir-type Callback
      */
     interface ManagerForeachFunc {
-        (id: string, plugins: Plugin[], data: (any | null)): void;
+        (id: string, plugins: Plugin[], data: null): void;
     }
 
     /**
@@ -461,7 +461,7 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "loading-plugin": (arg0: GObject.Object, arg1: (any | null)) => (boolean | void);
+            "loading-plugin": (arg0: GObject.Object, arg1: null) => (boolean | void);
             /**
              * Emitted when `manager` was asked to unload `plugin`, but `plugin` returned
              * `false` when its unload function was called.
@@ -483,7 +483,7 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "unloading-plugin": (arg0: GObject.Object, arg1: (any | null)) => (boolean | void);
+            "unloading-plugin": (arg0: GObject.Object, arg1: null) => (boolean | void);
         }
 
         // Constructor properties interface

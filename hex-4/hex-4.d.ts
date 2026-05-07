@@ -134,7 +134,7 @@ export namespace Hex {
              * @signal
              * @run-first
              */
-            "document-changed": (arg0: (any | null), arg1: boolean) => void;
+            "document-changed": (arg0: null, arg1: boolean) => void;
             /**
              * @signal
              * @run-first
@@ -254,7 +254,7 @@ export namespace Hex {
          * @param change_data pointer to a {@link Hex.ChangeData} structure
          * @param push_undo whether the undo stack should be pushed to
          */
-        changed(change_data: (any | null), push_undo: boolean): void;
+        changed(change_data: null, push_undo: boolean): void;
 
         /**
          * @param what a pointer to the data to   compare to data within the {@link Hex.Document}
@@ -1439,7 +1439,7 @@ export namespace Hex {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1450,7 +1450,7 @@ export namespace Hex {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1459,7 +1459,7 @@ export namespace Hex {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this

@@ -509,7 +509,7 @@ export namespace Gcr {
      * Unreferences a parsed item which was referenced with `gcr_parsed_ref()`
      * @param parsed a parsed item
      */
-    function parsed_unref(parsed: (any | null)): void;
+    function parsed_unref(parsed: null): void;
 
     /**
      * Add a {@link Gck.Module} to the list of PKCS#11 modules that are used by the
@@ -534,7 +534,7 @@ export namespace Gcr {
      * @param unused unused
      * @returns whether the module was sucessfully added.
      */
-    function pkcs11_add_module_from_file(module_path: string, unused: (any | null)): boolean;
+    function pkcs11_add_module_from_file(module_path: string, unused: null): boolean;
 
     /**
      * List all the PKCS#11 modules that are used by the GCR library.
@@ -2318,7 +2318,7 @@ export namespace Gcr {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -3019,7 +3019,7 @@ export namespace Gcr {
          * `g_spawn_async()`, `g_spawn_async_with_pipes()`.
          * @param askpass a {@link Gcr.SshAskpass} object
          */
-        static child_setup(askpass: (any | null)): void;
+        static child_setup(askpass: null): void;
 
         // Methods
         /**
@@ -4537,7 +4537,7 @@ export namespace Gcr {
 
         transformer: GObject.ValueTransform;
 
-        user_data: any;
+        user_data: null;
     }
 
 
@@ -4581,7 +4581,7 @@ export namespace Gcr {
          * Unreferences a parsed item which was referenced with `gcr_parsed_ref()`
          * @param parsed a parsed item
          */
-        static unref(parsed: (any | null)): void;
+        static unref(parsed: null): void;
 
         // Methods
         /**

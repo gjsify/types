@@ -390,7 +390,7 @@ export namespace St {
      * @gir-type Callback
      */
     interface EntryCursorFunc {
-        (entry: Entry, use_ibeam: boolean, data: (any | null)): void;
+        (entry: Entry, use_ibeam: boolean, data: null): void;
     }
 
     /**

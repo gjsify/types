@@ -495,14 +495,14 @@ export namespace Modulemd {
      * @gir-type Callback
      */
     interface ReadHandler {
-        (data: any, size: number): number;
+        (data: null, size: number): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface WriteHandler {
-        (data: any, size: number): number;
+        (data: null, size: number): number;
     }
 
     namespace BuildConfig {
@@ -3929,21 +3929,21 @@ export namespace Modulemd {
          * stream `self` are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPM packages to demodularize.
          */
-        replace_demodularized_rpms(set: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        replace_demodularized_rpms(set: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Any existing API RPMs associated with module stream `self` are removed and
          * replaced by `set`.
          * @param set A {@link GLib.HashTable} set of binary RPMs present in this module stream that is considered stable public API.
          */
-        replace_rpm_api(set: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        replace_rpm_api(set: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Any existing filtered binary RPM names associated with module stream `self`
          * are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPMs to filter out of this module stream.
          */
-        replace_rpm_filters(set: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        replace_rpm_filters(set: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Set the module community website address.

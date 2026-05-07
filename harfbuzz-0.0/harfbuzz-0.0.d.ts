@@ -2192,7 +2192,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the allocated memory.
      * @since 11.0.0
      */
-    function calloc(nmemb: (bigint | number), size: (bigint | number)): (any | null);
+    function calloc(nmemb: (bigint | number), size: (bigint | number)): null;
 
     /**
      * Fetches the alpha channel of the given `color`.
@@ -2275,7 +2275,7 @@ export namespace HarfBuzz {
      * @param st current draw state
      * @since 4.0.0
      */
-    function draw_close_path(dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t): void;
+    function draw_close_path(dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t): void;
 
     /**
      * Perform a "cubic-to" draw operation.
@@ -2290,7 +2290,7 @@ export namespace HarfBuzz {
      * @param to_y Y component of target point
      * @since 4.0.0
      */
-    function draw_cubic_to(dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, control1_x: number, control1_y: number, control2_x: number, control2_y: number, to_x: number, to_y: number): void;
+    function draw_cubic_to(dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, control1_x: number, control1_y: number, control2_x: number, control2_y: number, to_x: number, to_y: number): void;
 
     /**
      * Creates a new draw callbacks object.
@@ -2375,7 +2375,7 @@ export namespace HarfBuzz {
      * @param to_y Y component of target point
      * @since 4.0.0
      */
-    function draw_line_to(dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, to_x: number, to_y: number): void;
+    function draw_line_to(dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, to_x: number, to_y: number): void;
 
     /**
      * Perform a "move-to" draw operation.
@@ -2386,7 +2386,7 @@ export namespace HarfBuzz {
      * @param to_y Y component of target point
      * @since 4.0.0
      */
-    function draw_move_to(dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, to_x: number, to_y: number): void;
+    function draw_move_to(dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, to_x: number, to_y: number): void;
 
     /**
      * Perform a "quadratic-to" draw operation.
@@ -2399,7 +2399,7 @@ export namespace HarfBuzz {
      * @param to_y Y component of target point
      * @since 4.0.0
      */
-    function draw_quadratic_to(dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, control_x: number, control_y: number, to_x: number, to_y: number): void;
+    function draw_quadratic_to(dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, control_x: number, control_y: number, to_x: number, to_y: number): void;
 
     /**
      * Add table for `tag` with data provided by `blob` to the face.  `face` must
@@ -2810,7 +2810,7 @@ export namespace HarfBuzz {
      * @param draw_data User data to pass to draw callbacks
      * @since 7.0.0
      */
-    function font_draw_glyph(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: (any | null)): void;
+    function font_draw_glyph(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: null): void;
 
     /**
      * Draws the outline that corresponds to a glyph in the specified `font`.
@@ -2827,7 +2827,7 @@ export namespace HarfBuzz {
      * @returns `true` if glyph was drawn, `false` otherwise
      * @since 11.2.0
      */
-    function font_draw_glyph_or_fail(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: (any | null)): bool_t;
+    function font_draw_glyph_or_fail(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: null): bool_t;
 
     /**
      * Creates a new {@link HarfBuzz.font_funcs_t} structure of font functions.
@@ -3331,7 +3331,7 @@ export namespace HarfBuzz {
      * @since 4.0.0
      * @deprecated since 7.0.0: Use `hb_font_draw_glyph()` instead
      */
-    function font_get_glyph_shape(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: (any | null)): void;
+    function font_get_glyph_shape(font: font_t, glyph: codepoint_t, dfuncs: draw_funcs_t, draw_data: null): void;
 
     /**
      * Fetches the advance for a glyph ID in the specified font,
@@ -3628,7 +3628,7 @@ export namespace HarfBuzz {
      * @param foreground The foreground color, unpremultipled
      * @since 7.0.0
      */
-    function font_paint_glyph(font: font_t, glyph: codepoint_t, pfuncs: paint_funcs_t, paint_data: (any | null), palette_index: number, foreground: color_t): void;
+    function font_paint_glyph(font: font_t, glyph: codepoint_t, pfuncs: paint_funcs_t, paint_data: null, palette_index: number, foreground: color_t): void;
 
     /**
      * Paints a color glyph.
@@ -3655,7 +3655,7 @@ export namespace HarfBuzz {
      * @returns `true` if glyph was painted, `false` otherwise
      * @since 11.2.0
      */
-    function font_paint_glyph_or_fail(font: font_t, glyph: codepoint_t, pfuncs: paint_funcs_t, paint_data: (any | null), palette_index: number, foreground: color_t): bool_t;
+    function font_paint_glyph_or_fail(font: font_t, glyph: codepoint_t, pfuncs: paint_funcs_t, paint_data: null, palette_index: number, foreground: color_t): bool_t;
 
     /**
      * Sets `face` as the font-face value of `font`.
@@ -3870,7 +3870,7 @@ export namespace HarfBuzz {
      * @param ptr The pointer to the memory to free.
      * @since 11.0.0
      */
-    function free(ptr: (any | null)): void;
+    function free(ptr: null): void;
 
     /**
      * Creates an {@link HarfBuzz.face_t} face object from the specified
@@ -4070,7 +4070,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the allocated memory.
      * @since 11.0.0
      */
-    function malloc(size: (bigint | number)): (any | null);
+    function malloc(size: (bigint | number)): null;
 
     /**
      * Tests whether memory allocation for a set was successful.
@@ -5462,7 +5462,7 @@ export namespace HarfBuzz {
      * @param color The color to use
      * @since 7.0.0
      */
-    function paint_color(funcs: paint_funcs_t, paint_data: (any | null), is_foreground: bool_t, color: color_t): void;
+    function paint_color(funcs: paint_funcs_t, paint_data: null, is_foreground: bool_t, color: color_t): void;
 
     /**
      * Perform a "color-glyph" paint operation.
@@ -5472,7 +5472,7 @@ export namespace HarfBuzz {
      * @param font the font
      * @since 8.2.0
      */
-    function paint_color_glyph(funcs: paint_funcs_t, paint_data: (any | null), glyph: codepoint_t, font: font_t): bool_t;
+    function paint_color_glyph(funcs: paint_funcs_t, paint_data: null, glyph: codepoint_t, font: font_t): bool_t;
 
     /**
      * Gets the custom palette override color for `color_index`.
@@ -5482,7 +5482,7 @@ export namespace HarfBuzz {
      * @returns `true` if a custom color is provided, `false` otherwise.
      * @since 7.0.0
      */
-    function paint_custom_palette_color(funcs: paint_funcs_t, paint_data: (any | null), color_index: number): [bool_t, color_t];
+    function paint_custom_palette_color(funcs: paint_funcs_t, paint_data: null, color_index: number): [bool_t, color_t];
 
     /**
      * Creates a new {@link HarfBuzz.paint_funcs_t} structure of paint functions.
@@ -5659,7 +5659,7 @@ export namespace HarfBuzz {
      * @param extents the extents of the glyph
      * @since 7.0.0
      */
-    function paint_image(funcs: paint_funcs_t, paint_data: (any | null), image: blob_t, width: number, height: number, format: tag_t, slant: number, extents: (glyph_extents_t | null)): void;
+    function paint_image(funcs: paint_funcs_t, paint_data: null, image: blob_t, width: number, height: number, format: tag_t, slant: number, extents: (glyph_extents_t | null)): void;
 
     /**
      * Perform a "linear-gradient" paint operation.
@@ -5674,7 +5674,7 @@ export namespace HarfBuzz {
      * @param y2 Y coordinate of the third point
      * @since 7.0.0
      */
-    function paint_linear_gradient(funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number): void;
+    function paint_linear_gradient(funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number): void;
 
     /**
      * Perform a "pop-clip" paint operation.
@@ -5682,7 +5682,7 @@ export namespace HarfBuzz {
      * @param paint_data associated data passed by the caller
      * @since 7.0.0
      */
-    function paint_pop_clip(funcs: paint_funcs_t, paint_data: (any | null)): void;
+    function paint_pop_clip(funcs: paint_funcs_t, paint_data: null): void;
 
     /**
      * Perform a "pop-group" paint operation.
@@ -5691,7 +5691,7 @@ export namespace HarfBuzz {
      * @param mode the compositing mode to use
      * @since 7.0.0
      */
-    function paint_pop_group(funcs: paint_funcs_t, paint_data: (any | null), mode: paint_composite_mode_t): void;
+    function paint_pop_group(funcs: paint_funcs_t, paint_data: null, mode: paint_composite_mode_t): void;
 
     /**
      * Perform a "pop-transform" paint operation.
@@ -5699,7 +5699,7 @@ export namespace HarfBuzz {
      * @param paint_data associated data passed by the caller
      * @since 7.0.0
      */
-    function paint_pop_transform(funcs: paint_funcs_t, paint_data: (any | null)): void;
+    function paint_pop_transform(funcs: paint_funcs_t, paint_data: null): void;
 
     /**
      * Perform a "push-clip-glyph" paint operation.
@@ -5709,7 +5709,7 @@ export namespace HarfBuzz {
      * @param font the font
      * @since 7.0.0
      */
-    function paint_push_clip_glyph(funcs: paint_funcs_t, paint_data: (any | null), glyph: codepoint_t, font: font_t): void;
+    function paint_push_clip_glyph(funcs: paint_funcs_t, paint_data: null, glyph: codepoint_t, font: font_t): void;
 
     /**
      * Perform a "push-clip-rect" paint operation.
@@ -5721,7 +5721,7 @@ export namespace HarfBuzz {
      * @param ymax max Y for the rectangle
      * @since 7.0.0
      */
-    function paint_push_clip_rectangle(funcs: paint_funcs_t, paint_data: (any | null), xmin: number, ymin: number, xmax: number, ymax: number): void;
+    function paint_push_clip_rectangle(funcs: paint_funcs_t, paint_data: null, xmin: number, ymin: number, xmax: number, ymax: number): void;
 
     /**
      * Push the transform reflecting the font's scale and slant
@@ -5731,7 +5731,7 @@ export namespace HarfBuzz {
      * @param font a font
      * @since 11.0.0
      */
-    function paint_push_font_transform(funcs: paint_funcs_t, paint_data: (any | null), font: font_t): void;
+    function paint_push_font_transform(funcs: paint_funcs_t, paint_data: null, font: font_t): void;
 
     /**
      * Perform a "push-group" paint operation.
@@ -5739,7 +5739,7 @@ export namespace HarfBuzz {
      * @param paint_data associated data passed by the caller
      * @since 7.0.0
      */
-    function paint_push_group(funcs: paint_funcs_t, paint_data: (any | null)): void;
+    function paint_push_group(funcs: paint_funcs_t, paint_data: null): void;
 
     /**
      * Push the inverse of the transform reflecting the font's
@@ -5749,7 +5749,7 @@ export namespace HarfBuzz {
      * @param font a font
      * @since 11.0.0
      */
-    function paint_push_inverse_font_transform(funcs: paint_funcs_t, paint_data: (any | null), font: font_t): void;
+    function paint_push_inverse_font_transform(funcs: paint_funcs_t, paint_data: null, font: font_t): void;
 
     /**
      * Perform a "push-transform" paint operation.
@@ -5763,7 +5763,7 @@ export namespace HarfBuzz {
      * @param dy dy component of the transform matrix
      * @since 7.0.0
      */
-    function paint_push_transform(funcs: paint_funcs_t, paint_data: (any | null), xx: number, yx: number, xy: number, yy: number, dx: number, dy: number): void;
+    function paint_push_transform(funcs: paint_funcs_t, paint_data: null, xx: number, yx: number, xy: number, yy: number, dx: number, dy: number): void;
 
     /**
      * Perform a "radial-gradient" paint operation.
@@ -5778,7 +5778,7 @@ export namespace HarfBuzz {
      * @param r1 radius of the second circle
      * @since 7.0.0
      */
-    function paint_radial_gradient(funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): void;
+    function paint_radial_gradient(funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): void;
 
     /**
      * Perform a "sweep-gradient" paint operation.
@@ -5791,7 +5791,7 @@ export namespace HarfBuzz {
      * @param end_angle the end angle
      * @since 7.0.0
      */
-    function paint_sweep_gradient(funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, start_angle: number, end_angle: number): void;
+    function paint_sweep_gradient(funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, start_angle: number, end_angle: number): void;
 
     /**
      * Reallocates the memory pointed to by `ptr` to `size` bytes, using the
@@ -5801,7 +5801,7 @@ export namespace HarfBuzz {
      * @returns A pointer to the reallocated memory.
      * @since 11.0.0
      */
-    function realloc(ptr: (any | null), size: (bigint | number)): (any | null);
+    function realloc(ptr: null, size: (bigint | number)): null;
 
     /**
      * Converts an ISO 15924 script tag to a corresponding {@link HarfBuzz.script_t}.
@@ -6536,189 +6536,189 @@ export namespace HarfBuzz {
      * @gir-type Callback
      */
     interface color_line_get_color_stops_func_t {
-        (color_line: color_line_t, color_line_data: (any | null), start: number): number;
+        (color_line: color_line_t, color_line_data: null, start: number): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface color_line_get_extend_func_t {
-        (color_line: color_line_t, color_line_data: (any | null)): paint_extend_t;
+        (color_line: color_line_t, color_line_data: null): paint_extend_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface destroy_func_t {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface draw_close_path_func_t {
-        (dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t): void;
+        (dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface draw_cubic_to_func_t {
-        (dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, control1_x: number, control1_y: number, control2_x: number, control2_y: number, to_x: number, to_y: number): void;
+        (dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, control1_x: number, control1_y: number, control2_x: number, control2_y: number, to_x: number, to_y: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface draw_line_to_func_t {
-        (dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, to_x: number, to_y: number): void;
+        (dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, to_x: number, to_y: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface draw_move_to_func_t {
-        (dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, to_x: number, to_y: number): void;
+        (dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, to_x: number, to_y: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface draw_quadratic_to_func_t {
-        (dfuncs: draw_funcs_t, draw_data: (any | null), st: draw_state_t, control_x: number, control_y: number, to_x: number, to_y: number): void;
+        (dfuncs: draw_funcs_t, draw_data: null, st: draw_state_t, control_x: number, control_y: number, to_x: number, to_y: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_draw_glyph_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: (any | null)): void;
+        (font: font_t, font_data: null, glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_draw_glyph_or_fail_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: (any | null)): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: null): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_font_extents_func_t {
-        (font: font_t, font_data: (any | null)): bool_t;
+        (font: font_t, font_data: null): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_advance_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t): position_t;
+        (font: font_t, font_data: null, glyph: codepoint_t): position_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_advances_func_t {
-        (font: font_t, font_data: (any | null), count: number, first_glyph: codepoint_t, glyph_stride: number, advance_stride: number): void;
+        (font: font_t, font_data: null, count: number, first_glyph: codepoint_t, glyph_stride: number, advance_stride: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_contour_point_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, point_index: number): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t, point_index: number): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_extents_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_from_name_func_t {
-        (font: font_t, font_data: (any | null), name: string[]): bool_t;
+        (font: font_t, font_data: null, name: string[]): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_func_t {
-        (font: font_t, font_data: (any | null), unicode: codepoint_t, variation_selector: codepoint_t): bool_t;
+        (font: font_t, font_data: null, unicode: codepoint_t, variation_selector: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_kerning_func_t {
-        (font: font_t, font_data: (any | null), first_glyph: codepoint_t, second_glyph: codepoint_t): position_t;
+        (font: font_t, font_data: null, first_glyph: codepoint_t, second_glyph: codepoint_t): position_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_name_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_origin_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_origins_func_t {
-        (font: font_t, font_data: (any | null), count: number, first_glyph: codepoint_t, glyph_stride: number, x_stride: number, y_stride: number): bool_t;
+        (font: font_t, font_data: null, count: number, first_glyph: codepoint_t, glyph_stride: number, x_stride: number, y_stride: number): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_glyph_shape_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: (any | null)): void;
+        (font: font_t, font_data: null, glyph: codepoint_t, draw_funcs: draw_funcs_t, draw_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_nominal_glyph_func_t {
-        (font: font_t, font_data: (any | null), unicode: codepoint_t): bool_t;
+        (font: font_t, font_data: null, unicode: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_nominal_glyphs_func_t {
-        (font: font_t, font_data: (any | null), count: number, first_unicode: codepoint_t, unicode_stride: number, glyph_stride: number): number;
+        (font: font_t, font_data: null, count: number, first_unicode: codepoint_t, unicode_stride: number, glyph_stride: number): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_get_variation_glyph_func_t {
-        (font: font_t, font_data: (any | null), unicode: codepoint_t, variation_selector: codepoint_t): bool_t;
+        (font: font_t, font_data: null, unicode: codepoint_t, variation_selector: codepoint_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_paint_glyph_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, paint_funcs: paint_funcs_t, paint_data: (any | null), palette_index: number, foreground: color_t): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t, paint_funcs: paint_funcs_t, paint_data: null, palette_index: number, foreground: color_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface font_paint_glyph_or_fail_func_t {
-        (font: font_t, font_data: (any | null), glyph: codepoint_t, paint_funcs: paint_funcs_t, paint_data: (any | null), palette_index: number, foreground: color_t): bool_t;
+        (font: font_t, font_data: null, glyph: codepoint_t, paint_funcs: paint_funcs_t, paint_data: null, palette_index: number, foreground: color_t): bool_t;
     }
 
     /**
@@ -6732,98 +6732,98 @@ export namespace HarfBuzz {
      * @gir-type Callback
      */
     interface paint_color_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), is_foreground: bool_t, color: color_t): void;
+        (funcs: paint_funcs_t, paint_data: null, is_foreground: bool_t, color: color_t): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_color_glyph_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), glyph: codepoint_t, font: font_t): bool_t;
+        (funcs: paint_funcs_t, paint_data: null, glyph: codepoint_t, font: font_t): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_custom_palette_color_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), color_index: number): bool_t;
+        (funcs: paint_funcs_t, paint_data: null, color_index: number): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_image_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), image: blob_t, width: number, height: number, format: tag_t, slant: number, extents: (glyph_extents_t | null)): bool_t;
+        (funcs: paint_funcs_t, paint_data: null, image: blob_t, width: number, height: number, format: tag_t, slant: number, extents: (glyph_extents_t | null)): bool_t;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_linear_gradient_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number): void;
+        (funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_pop_clip_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null)): void;
+        (funcs: paint_funcs_t, paint_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_pop_group_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), mode: paint_composite_mode_t): void;
+        (funcs: paint_funcs_t, paint_data: null, mode: paint_composite_mode_t): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_pop_transform_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null)): void;
+        (funcs: paint_funcs_t, paint_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_push_clip_glyph_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), glyph: codepoint_t, font: font_t): void;
+        (funcs: paint_funcs_t, paint_data: null, glyph: codepoint_t, font: font_t): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_push_clip_rectangle_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), xmin: number, ymin: number, xmax: number, ymax: number): void;
+        (funcs: paint_funcs_t, paint_data: null, xmin: number, ymin: number, xmax: number, ymax: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_push_group_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null)): void;
+        (funcs: paint_funcs_t, paint_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_push_transform_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), xx: number, yx: number, xy: number, yy: number, dx: number, dy: number): void;
+        (funcs: paint_funcs_t, paint_data: null, xx: number, yx: number, xy: number, yy: number, dx: number, dy: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_radial_gradient_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): void;
+        (funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface paint_sweep_gradient_func_t {
-        (funcs: paint_funcs_t, paint_data: (any | null), color_line: color_line_t, x0: number, y0: number, start_angle: number, end_angle: number): void;
+        (funcs: paint_funcs_t, paint_data: null, color_line: color_line_t, x0: number, y0: number, start_angle: number, end_angle: number): void;
     }
 
     /**
@@ -9434,31 +9434,31 @@ export namespace HarfBuzz {
         static $gtype: GObject.GType<color_line_t>;
 
         // Fields
-        data: any;
+        data: null;
 
         get_color_stops: color_line_get_color_stops_func_t;
 
-        get_color_stops_user_data: any;
+        get_color_stops_user_data: null;
 
         get_extend: color_line_get_extend_func_t;
 
-        get_extend_user_data: any;
+        get_extend_user_data: null;
 
-        reserved0: any;
+        reserved0: null;
 
-        reserved1: any;
+        reserved1: null;
 
-        reserved2: any;
+        reserved2: null;
 
-        reserved3: any;
+        reserved3: null;
 
-        reserved5: any;
+        reserved5: null;
 
-        reserved6: any;
+        reserved6: null;
 
-        reserved7: any;
+        reserved7: null;
 
-        reserved8: any;
+        reserved8: null;
     }
 
 

@@ -64,7 +64,7 @@ export namespace Peas {
      * @gir-type Callback
      */
     interface ExtensionSetForeachFunc {
-        (set: ExtensionSet, info: PluginInfo, exten: Extension, data: (any | null)): void;
+        (set: ExtensionSet, info: PluginInfo, exten: Extension, data: null): void;
     }
 
     /**
@@ -112,8 +112,8 @@ export namespace Peas {
             loadedPlugins: string[];
             nonglobal_loaders: boolean;
             nonglobalLoaders: boolean;
-            plugin_list: any;
-            pluginList: any;
+            plugin_list: never;
+            pluginList: never;
         }
     }
 
@@ -198,7 +198,7 @@ export namespace Peas {
          * Note: the list belongs to the engine and should not be modified or freed.
          * @read-only
          */
-        get plugin_list(): any;
+        get plugin_list(): null;
 
         /**
          * The list of found plugins.
@@ -208,7 +208,7 @@ export namespace Peas {
          * Note: the list belongs to the engine and should not be modified or freed.
          * @read-only
          */
-        get pluginList(): any;
+        get pluginList(): null;
 
         /**
          * Compile-time signal type information.
@@ -567,8 +567,8 @@ export namespace Peas {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            construct_properties: any;
-            constructProperties: any;
+            construct_properties: never;
+            constructProperties: never;
             engine: Engine;
             extension_type: GObject.GTypeInput;
             extensionType: GObject.GTypeInput;
@@ -587,12 +587,12 @@ export namespace Peas {
         /**
          * @construct-only
          */
-        set construct_properties(val: any);
+        set construct_properties(val: never);
 
         /**
          * @construct-only
          */
-        set constructProperties(val: any);
+        set constructProperties(val: never);
 
         /**
          * @construct-only

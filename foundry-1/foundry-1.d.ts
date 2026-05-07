@@ -605,14 +605,14 @@ export namespace Foundry {
      * @param instance 
      * @param action 
      */
-    function action_mixin_get_enabled(instance: (any | null), action: string): boolean;
+    function action_mixin_get_enabled(instance: null, action: string): boolean;
 
     /**
      * @param instance 
      * @param action 
      * @param enabled 
      */
-    function action_mixin_set_enabled(instance: (any | null), action: string, enabled: boolean): void;
+    function action_mixin_set_enabled(instance: null, action: string, enabled: boolean): void;
 
     function build_error_quark(): GLib.Quark;
 
@@ -630,7 +630,7 @@ export namespace Foundry {
      * @param completed 
      * @param user_data 
      */
-    function dap_protocol_unwrap_error(completed: Dex.Future, user_data: (any | null)): Dex.Future;
+    function dap_protocol_unwrap_error(completed: Dex.Future, user_data: null): Dex.Future;
 
     function dup_projects_directory(): string;
 
@@ -1031,7 +1031,7 @@ export namespace Foundry {
      * @gir-type Callback
      */
     interface ActionActivateFunc {
-        (instance: (any | null), action_name: string, param: GLib.Variant): void;
+        (instance: null, action_name: string, param: GLib.Variant): void;
     }
 
     /**
@@ -1045,7 +1045,7 @@ export namespace Foundry {
      * @gir-type Callback
      */
     interface ListModelMapFunc<A = GObject.Object> {
-        (item: A): (any | null);
+        (item: A): null;
     }
 
     /**
@@ -1372,7 +1372,7 @@ export namespace Foundry {
          * @param instance 
          * @param actions 
          */
-        connect_actions(instance: (any | null), actions: Action): void;
+        connect_actions(instance: null, actions: Action): void;
 
         /**
          * Locates the {@link Gio.ActionGroup} inserted as `prefix`.
@@ -14307,7 +14307,7 @@ export namespace Foundry {
         /**
          * @param data 
          */
-        static hash(data: (any | null)): number;
+        static hash(data: null): number;
 
         // Methods
         /**
@@ -20569,7 +20569,7 @@ export namespace Foundry {
         /**
          * @param instance 
          */
-        add(instance: (any | null)): void;
+        add(instance: null): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -29730,7 +29730,7 @@ export namespace Foundry {
          * @param attribute the attribute name
          * @returns the {@link GObject.Object}, or `null`   if not found or not an object
          */
-        dup_attribute_object(attribute: string): (any | null);
+        dup_attribute_object(attribute: string): null;
 
         /**
          * Gets the attribute value as a string. The returned string is owned
@@ -35784,7 +35784,7 @@ export namespace Foundry {
          * @param total_num_bytes 
          * @param user_data 
          */
-        static file_progress(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: (any | null)): void;
+        static file_progress(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: null): void;
 
         // Methods
         /**
@@ -40241,7 +40241,7 @@ export namespace Foundry {
          * @param property 
          * @param flags 
          */
-        bind(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: null, property: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * Like `foundry_settings_bind()` but allows transforming to and from settings storage using
@@ -40255,7 +40255,7 @@ export namespace Foundry {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
 
         /**
          * Gets the underlying {@link Gio.Settings} used for the respective layer.
@@ -49761,7 +49761,7 @@ export namespace Foundry {
         static $gtype: GObject.GType<Action>;
 
         // Fields
-        next: any;
+        next: null;
 
         name: string;
 
@@ -49794,20 +49794,20 @@ export namespace Foundry {
          * @param instance 
          * @param action 
          */
-        static get_enabled(instance: (any | null), action: string): boolean;
+        static get_enabled(instance: null, action: string): boolean;
 
         /**
          * @param instance 
          * @param action 
          * @param enabled 
          */
-        static set_enabled(instance: (any | null), action: string, enabled: boolean): void;
+        static set_enabled(instance: null, action: string, enabled: boolean): void;
 
         // Methods
         /**
          * @param instance 
          */
-        constructed(instance: (any | null)): void;
+        constructed(instance: null): void;
 
         /**
          * @param object_class 

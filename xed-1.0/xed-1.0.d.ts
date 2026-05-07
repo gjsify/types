@@ -188,7 +188,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -198,7 +198,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -208,7 +208,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -218,7 +218,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOXED_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__BOXED_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -228,7 +228,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -238,7 +238,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_BOXED_FLAGS(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__OBJECT_BOXED_FLAGS(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -248,7 +248,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_BOXED_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__OBJECT_BOXED_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -258,7 +258,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT64_UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__UINT64_UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Get the string identifier for `method` at `object_path`.
@@ -286,14 +286,14 @@ export namespace Xed {
      * @gir-type Callback
      */
     interface MessageBusForeach {
-        (message_type: MessageType, userdata: (any | null)): void;
+        (message_type: MessageType, userdata: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface MessageCallback {
-        (bus: MessageBus, message: Message, userdata: (any | null)): void;
+        (bus: MessageBus, message: Message, userdata: null): void;
     }
 
     /**
@@ -2245,7 +2245,7 @@ export namespace Xed {
          */
         get_key_type(key: string): GObject.GType;
 
-        get_message_type(): (any | null);
+        get_message_type(): null;
 
         /**
          * Get the message method.

@@ -6164,7 +6164,7 @@ export namespace NM {
      * @returns the new {@link NM.IPRoutingRule} or `null` on error.
      * @since 1.18
      */
-    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<any, any> | null)): IPRoutingRule;
+    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): IPRoutingRule;
 
     /**
      * Tries to create a NMConnection from a keyfile. The resulting keyfile is
@@ -6493,7 +6493,7 @@ export namespace NM {
      * @param hwaddr2_len size of `hwaddr2`, or -1 if `hwaddr2` is ASCII
      * @returns `true` if `hwaddr1` and `hwaddr2` are equivalent, `false` if they are   different (or either of them is invalid).
      */
-    function utils_hwaddr_matches(hwaddr1: (any | null), hwaddr1_len: (bigint | number), hwaddr2: (any | null), hwaddr2_len: (bigint | number)): boolean;
+    function utils_hwaddr_matches(hwaddr1: null, hwaddr1_len: (bigint | number), hwaddr2: null, hwaddr2_len: (bigint | number)): boolean;
 
     /**
      * Converts `addr` to textual form.
@@ -7136,7 +7136,7 @@ export namespace NM {
      * @gir-type Callback
      */
     interface UtilsCheckFilePredicate {
-        (filename: string, stat: (any | null)): boolean;
+        (filename: string, stat: null): boolean;
     }
 
     /**
@@ -9105,7 +9105,7 @@ export namespace NM {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             connection: RemoteConnection;
-            controller: (Device | null);
+            controller: Device;
             "default": boolean;
             default6: boolean;
             devices: Device[];
@@ -9118,7 +9118,7 @@ export namespace NM {
             ip4Config: IPConfig;
             ip6_config: IPConfig;
             ip6Config: IPConfig;
-            master: (Device | null);
+            master: Device;
             specific_object_path: string;
             specificObjectPath: string;
             state: ActiveConnectionState;
@@ -9149,7 +9149,7 @@ export namespace NM {
          * @since 1.44
          * @read-only
          */
-        get controller(): (Device | null);
+        get controller(): Device;
 
         /**
          * Whether the active connection is the default IPv4 one.
@@ -9231,7 +9231,7 @@ export namespace NM {
          * @deprecated since 1.44
          * @read-only
          */
-        get master(): (Device | null);
+        get master(): Device;
 
         /**
          * The path to the "specific object" of the active connection; see
@@ -9338,7 +9338,7 @@ export namespace NM {
          * deprecated `nm_active_connection_get_master()` method.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
          */
-        get_controller(): (any | null);
+        get_controller(): null;
 
         /**
          * Whether the active connection is the default IPv4 one (that is, is used for
@@ -9396,7 +9396,7 @@ export namespace NM {
          * Gets the controller {@link NM.Device} of the connection.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
          */
-        get_master(): (any | null);
+        get_master(): null;
 
         /**
          * Gets the path of the "specific object" used at activation.
@@ -11951,8 +11951,8 @@ export namespace NM {
             ip6Config: IPConfig;
             ip6_connectivity: ConnectivityState;
             ip6Connectivity: ConnectivityState;
-            lldp_neighbors: any[];
-            lldpNeighbors: any[];
+            lldp_neighbors: never[];
+            lldpNeighbors: never[];
             managed: boolean;
             metered: number;
             mtu: number;
@@ -11961,7 +11961,7 @@ export namespace NM {
             path: string;
             physical_port_id: string;
             physicalPortId: string;
-            ports: any[];
+            ports: never[];
             product: string;
             real: boolean;
             state: DeviceState;
@@ -12223,13 +12223,13 @@ export namespace NM {
          * The LLDP neighbors.
          * @read-only
          */
-        get lldp_neighbors(): any[];
+        get lldp_neighbors(): null[];
 
         /**
          * The LLDP neighbors.
          * @read-only
          */
-        get lldpNeighbors(): any[];
+        get lldpNeighbors(): null[];
 
         /**
          * Whether the device is managed by NetworkManager.
@@ -12305,7 +12305,7 @@ export namespace NM {
          * @since 1.34
          * @read-only
          */
-        get ports(): any[];
+        get ports(): null[];
 
         /**
          * The product string of the device.
@@ -17926,7 +17926,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            addresses: any[];
+            addresses: never[];
             domains: string[];
             family: number;
             gateway: string;
@@ -17949,7 +17949,7 @@ export namespace NM {
          * A {@link GLib.PtrArray} containing the addresses ({@link NM.IPAddress}) of the configuration.
          * @read-only
          */
-        get addresses(): any[];
+        get addresses(): null[];
 
         /**
          * The array containing domain strings of the configuration.
@@ -18091,7 +18091,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            client: (Client | null);
+            client: Client;
             path: string;
         }
     }
@@ -18113,7 +18113,7 @@ export namespace NM {
          * @since 1.34
          * @read-only
          */
-        get client(): (Client | null);
+        get client(): Client;
 
         /**
          * The D-Bus object path.
@@ -18161,7 +18161,7 @@ export namespace NM {
          * object is still alive.
          * @returns the {@link NM.Client} cache in which the object can be found, or `null` if the object is no longer cached.
          */
-        get_client(): (any | null);
+        get_client(): null;
 
         /**
          * Gets the DBus path of the {@link NM.Object}.
@@ -18907,7 +18907,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, any> | null)): [boolean, boolean];
+        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -21315,7 +21315,7 @@ export namespace NM {
          * @param pdata the data pointer
          * @param length the length of the data
          */
-        static check_cert_scheme(pdata: (any | null), length: (bigint | number)): Setting8021xCKScheme;
+        static check_cert_scheme(pdata: null, length: (bigint | number)): Setting8021xCKScheme;
 
         // Methods
         /**
@@ -38448,7 +38448,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, any> | null)): [boolean, boolean];
+        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -39088,14 +39088,14 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<any, any>), secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<never, never>), secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
          */
-        static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
+        static read_vpn_details(fd: number): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
 
         // Virtual methods
         /**
@@ -39445,14 +39445,14 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<any, any>), secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<never, never>), secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
          */
-        static read_vpn_details(fd: number): [boolean, GLib.HashTable<any, any>, GLib.HashTable<any, any>];
+        static read_vpn_details(fd: number): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
 
         // Virtual methods
         /**
@@ -40430,7 +40430,7 @@ export namespace NM {
 
         static ["new"](family: number, addr: string, prefix: number): IPAddress;
 
-        static new_binary(family: number, addr: (any | null), prefix: number): IPAddress;
+        static new_binary(family: number, addr: null, prefix: number): IPAddress;
 
         // Methods
         /**
@@ -40542,7 +40542,7 @@ export namespace NM {
 
         static ["new"](family: number, dest: string, prefix: number, next_hop: (string | null), metric: (bigint | number)): IPRoute;
 
-        static new_binary(family: number, dest: (any | null), prefix: number, next_hop: (any | null), metric: (bigint | number)): IPRoute;
+        static new_binary(family: number, dest: null, prefix: number, next_hop: null, metric: (bigint | number)): IPRoute;
 
         // Static methods
         /**
@@ -40695,7 +40695,7 @@ export namespace NM {
          * @param to_string_flags {@link NM.IPRoutingRuleAsStringFlags} for controlling the   string conversion.
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          */
-        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<any, any> | null)): IPRoutingRule;
+        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): IPRoutingRule;
 
         // Methods
         /**
@@ -40941,7 +40941,7 @@ export namespace NM {
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
          */
-        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<any, any> | null)): string;
+        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): string;
 
         /**
          * Decreases the reference count of the instance and destroys
@@ -42599,7 +42599,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, any> | null)): [boolean, boolean];
+        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This

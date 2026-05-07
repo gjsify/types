@@ -75,8 +75,8 @@ export namespace TelepathyFarstream {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
             channel: TelepathyGLib.Channel;
-            fs_conferences: any[];
-            fsConferences: any[];
+            fs_conferences: never[];
+            fsConferences: never[];
             object_path: string;
             objectPath: string;
         }
@@ -98,12 +98,12 @@ export namespace TelepathyFarstream {
         /**
          * @read-only
          */
-        get fs_conferences(): any[];
+        get fs_conferences(): null[];
 
         /**
          * @read-only
          */
-        get fsConferences(): any[];
+        get fsConferences(): null[];
 
         /**
          * @read-only
@@ -396,7 +396,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "start-receiving": (arg0: any, arg1: number) => (boolean | void);
+            "start-receiving": (arg0: null, arg1: number) => (boolean | void);
             /**
              * This signal is emitted when the connection manager ask to send media.
              * For example, this can be used to open a camera, start recording from a
@@ -412,7 +412,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "stop-receiving": (arg0: any, arg1: number) => void;
+            "stop-receiving": (arg0: null, arg1: number) => void;
             /**
              * This signal is emitted when the connection manager ask to stop
              * sending media

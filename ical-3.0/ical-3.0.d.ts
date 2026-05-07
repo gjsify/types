@@ -1037,13 +1037,13 @@ export namespace ICal {
      * @param array 
      * @param element 
      */
-    function icalarray_append(array: array, element: (any | null)): void;
+    function icalarray_append(array: array, element: null): void;
 
     /**
      * @param array 
      * @param position 
      */
-    function icalarray_element_at(array: array, position: (bigint | number)): (any | null);
+    function icalarray_element_at(array: array, position: (bigint | number)): null;
 
     /**
      * `par` Usage
@@ -1073,7 +1073,7 @@ export namespace ICal {
      * @param array 
      * @param compare 
      */
-    function icalarray_sort(array: array, compare: (any | null)): void;
+    function icalarray_sort(array: array, compare: null): void;
 
     /**
      * @param attach 
@@ -1156,14 +1156,14 @@ export namespace ICal {
      * @param callback 
      * @param callback_data 
      */
-    function icalcomponent_foreach_recurrence(comp: component, start: (any | null), end: (any | null), callback: (any | null), callback_data: (any | null)): void;
+    function icalcomponent_foreach_recurrence(comp: component, start: null, end: null, callback: null, callback_data: null): void;
 
     /**
      * @param comp 
      * @param callback 
      * @param callback_data 
      */
-    function icalcomponent_foreach_tzid(comp: component, callback: (any | null), callback_data: (any | null)): void;
+    function icalcomponent_foreach_tzid(comp: component, callback: null, callback_data: null): void;
 
     /**
      * @param component 
@@ -1183,27 +1183,27 @@ export namespace ICal {
     /**
      * @param comp 
      */
-    function icalcomponent_get_dtend(comp: component): (any | null);
+    function icalcomponent_get_dtend(comp: component): null;
 
     /**
      * @param comp 
      */
-    function icalcomponent_get_dtstamp(comp: component): (any | null);
+    function icalcomponent_get_dtstamp(comp: component): null;
 
     /**
      * @param comp 
      */
-    function icalcomponent_get_dtstart(comp: component): (any | null);
+    function icalcomponent_get_dtstart(comp: component): null;
 
     /**
      * @param comp 
      */
-    function icalcomponent_get_due(comp: component): (any | null);
+    function icalcomponent_get_due(comp: component): null;
 
     /**
      * @param comp 
      */
-    function icalcomponent_get_duration(comp: component): (any | null);
+    function icalcomponent_get_duration(comp: component): null;
 
     /**
      * @param comp 
@@ -1218,7 +1218,7 @@ export namespace ICal {
     /**
      * @param comp 
      */
-    function icalcomponent_get_recurrenceid(comp: component): (any | null);
+    function icalcomponent_get_recurrenceid(comp: component): null;
 
     /**
      * @param comp 
@@ -1233,12 +1233,12 @@ export namespace ICal {
     /**
      * @param comp 
      */
-    function icalcomponent_get_span(comp: component): (any | null);
+    function icalcomponent_get_span(comp: component): null;
 
     /**
      * @param comp 
      */
-    function icalcomponent_get_status(comp: component): (any | null);
+    function icalcomponent_get_status(comp: component): null;
 
     /**
      * @param comp 
@@ -1263,7 +1263,7 @@ export namespace ICal {
     /**
      * @param component 
      */
-    function icalcomponent_isa_component(component: (any | null)): number;
+    function icalcomponent_isa_component(component: null): number;
 
     /**
      * @param kind 
@@ -1314,31 +1314,31 @@ export namespace ICal {
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_dtend(comp: component, v: (any | null)): void;
+    function icalcomponent_set_dtend(comp: component, v: null): void;
 
     /**
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_dtstamp(comp: component, v: (any | null)): void;
+    function icalcomponent_set_dtstamp(comp: component, v: null): void;
 
     /**
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_dtstart(comp: component, v: (any | null)): void;
+    function icalcomponent_set_dtstart(comp: component, v: null): void;
 
     /**
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_due(comp: component, v: (any | null)): void;
+    function icalcomponent_set_due(comp: component, v: null): void;
 
     /**
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_duration(comp: component, v: (any | null)): void;
+    function icalcomponent_set_duration(comp: component, v: null): void;
 
     /**
      * @param comp 
@@ -1362,7 +1362,7 @@ export namespace ICal {
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_recurrenceid(comp: component, v: (any | null)): void;
+    function icalcomponent_set_recurrenceid(comp: component, v: null): void;
 
     /**
      * @param comp 
@@ -1380,7 +1380,7 @@ export namespace ICal {
      * @param comp 
      * @param v 
      */
-    function icalcomponent_set_status(comp: component, v: (any | null)): void;
+    function icalcomponent_set_status(comp: component, v: null): void;
 
     /**
      * @param comp 
@@ -1407,41 +1407,41 @@ export namespace ICal {
     /**
      * @param d 
      */
-    function icaldurationtype_as_ical_string(d: (any | null)): string;
+    function icaldurationtype_as_ical_string(d: null): string;
 
     /**
      * @param d 
      */
-    function icaldurationtype_as_ical_string_r(d: (any | null)): string;
+    function icaldurationtype_as_ical_string_r(d: null): string;
 
     /**
      * @param duration 
      */
-    function icaldurationtype_as_int(duration: (any | null)): number;
+    function icaldurationtype_as_int(duration: null): number;
 
-    function icaldurationtype_bad_duration(): (any | null);
+    function icaldurationtype_bad_duration(): null;
 
     /**
      * @param t 
      */
-    function icaldurationtype_from_int(t: number): (any | null);
+    function icaldurationtype_from_int(t: number): null;
 
     /**
      * @param dur 
      */
-    function icaldurationtype_from_string(dur: string): (any | null);
+    function icaldurationtype_from_string(dur: string): null;
 
     /**
      * @param d 
      */
-    function icaldurationtype_is_bad_duration(d: (any | null)): number;
+    function icaldurationtype_is_bad_duration(d: null): number;
 
     /**
      * @param d 
      */
-    function icaldurationtype_is_null_duration(d: (any | null)): number;
+    function icaldurationtype_is_null_duration(d: null): number;
 
-    function icaldurationtype_null_duration(): (any | null);
+    function icaldurationtype_null_duration(): null;
 
     /**
      * @param major 
@@ -1578,7 +1578,7 @@ export namespace ICal {
     /**
      * @param buf 
      */
-    function icalmemory_add_tmp_buffer(buf: (any | null)): void;
+    function icalmemory_add_tmp_buffer(buf: null): void;
 
     /**
      * @param buf 
@@ -1599,7 +1599,7 @@ export namespace ICal {
     /**
      * @param buf 
      */
-    function icalmemory_free_buffer(buf: (any | null)): void;
+    function icalmemory_free_buffer(buf: null): void;
 
     /**
      * ```
@@ -1609,13 +1609,13 @@ export namespace ICal {
     /**
      * @param size 
      */
-    function icalmemory_new_buffer(size: (bigint | number)): (any | null);
+    function icalmemory_new_buffer(size: (bigint | number)): null;
 
     /**
      * @param buf 
      * @param size 
      */
-    function icalmemory_resize_buffer(buf: (any | null), size: (bigint | number)): (any | null);
+    function icalmemory_resize_buffer(buf: null, size: (bigint | number)): null;
 
     /**
      * @param s 
@@ -1625,7 +1625,7 @@ export namespace ICal {
     /**
      * @param size 
      */
-    function icalmemory_tmp_buffer(size: (bigint | number)): (any | null);
+    function icalmemory_tmp_buffer(size: (bigint | number)): null;
 
     /**
      * @param str 
@@ -1948,7 +1948,7 @@ export namespace ICal {
     /**
      * @param param 
      */
-    function icalparameter_isa_parameter(param: (any | null)): number;
+    function icalparameter_isa_parameter(param: null): number;
 
     /**
      * @param kind 
@@ -2319,41 +2319,41 @@ export namespace ICal {
      * @param parser 
      * @param data 
      */
-    function icalparser_set_gen_data(parser: parser, data: (any | null)): void;
+    function icalparser_set_gen_data(parser: parser, data: null): void;
 
     /**
      * @param out 
      * @param buf_size 
      * @param d 
      */
-    function icalparser_string_line_generator(out: string, buf_size: (bigint | number), d: (any | null)): string;
+    function icalparser_string_line_generator(out: string, buf_size: (bigint | number), d: null): string;
 
     /**
      * @param p 
      */
-    function icalperiodtype_as_ical_string(p: (any | null)): string;
+    function icalperiodtype_as_ical_string(p: null): string;
 
     /**
      * @param p 
      */
-    function icalperiodtype_as_ical_string_r(p: (any | null)): string;
+    function icalperiodtype_as_ical_string_r(p: null): string;
 
     /**
      * @param str 
      */
-    function icalperiodtype_from_string(str: string): (any | null);
+    function icalperiodtype_from_string(str: string): null;
 
     /**
      * @param p 
      */
-    function icalperiodtype_is_null_period(p: (any | null)): number;
+    function icalperiodtype_is_null_period(p: null): number;
 
     /**
      * @param p 
      */
-    function icalperiodtype_is_valid_period(p: (any | null)): number;
+    function icalperiodtype_is_valid_period(p: null): number;
 
-    function icalperiodtype_null_period(): (any | null);
+    function icalperiodtype_null_period(): null;
 
     /**
      * @param prop 
@@ -2405,12 +2405,12 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_acknowledged(prop: property): (any | null);
+    function icalproperty_get_acknowledged(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_action(prop: property): (any | null);
+    function icalproperty_get_action(prop: property): null;
 
     /**
      * @param prop 
@@ -2425,7 +2425,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_busytype(prop: property): (any | null);
+    function icalproperty_get_busytype(prop: property): null;
 
     /**
      * @param prop 
@@ -2455,7 +2455,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_carlevel(prop: property): (any | null);
+    function icalproperty_get_carlevel(prop: property): null;
 
     /**
      * @param prop 
@@ -2465,12 +2465,12 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_class(prop: property): (any | null);
+    function icalproperty_get_class(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_cmd(prop: property): (any | null);
+    function icalproperty_get_cmd(prop: property): null;
 
     /**
      * @param prop 
@@ -2485,7 +2485,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_completed(prop: property): (any | null);
+    function icalproperty_get_completed(prop: property): null;
 
     /**
      * @param prop 
@@ -2505,7 +2505,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_created(prop: property): (any | null);
+    function icalproperty_get_created(prop: property): null;
 
     /**
      * @param prop 
@@ -2515,18 +2515,18 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_datemax(prop: property): (any | null);
+    function icalproperty_get_datemax(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_datemin(prop: property): (any | null);
+    function icalproperty_get_datemin(prop: property): null;
 
     /**
      * @param prop 
      * @param comp 
      */
-    function icalproperty_get_datetime_with_component(prop: property, comp: component): (any | null);
+    function icalproperty_get_datetime_with_component(prop: property, comp: component): null;
 
     /**
      * @param prop 
@@ -2566,37 +2566,37 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_dtend(prop: property): (any | null);
+    function icalproperty_get_dtend(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_dtstamp(prop: property): (any | null);
+    function icalproperty_get_dtstamp(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_dtstart(prop: property): (any | null);
+    function icalproperty_get_dtstart(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_due(prop: property): (any | null);
+    function icalproperty_get_due(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_duration(prop: property): (any | null);
+    function icalproperty_get_duration(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_estimatedduration(prop: property): (any | null);
+    function icalproperty_get_estimatedduration(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_exdate(prop: property): (any | null);
+    function icalproperty_get_exdate(prop: property): null;
 
     /**
      * @param prop 
@@ -2606,17 +2606,17 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_exrule(prop: property): (any | null);
+    function icalproperty_get_exrule(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_freebusy(prop: property): (any | null);
+    function icalproperty_get_freebusy(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_geo(prop: property): (any | null);
+    function icalproperty_get_geo(prop: property): null;
 
     /**
      * @param prop 
@@ -2631,7 +2631,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_lastmodified(prop: property): (any | null);
+    function icalproperty_get_lastmodified(prop: property): null;
 
     /**
      * @param prop 
@@ -2646,7 +2646,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_maxdate(prop: property): (any | null);
+    function icalproperty_get_maxdate(prop: property): null;
 
     /**
      * @param prop 
@@ -2661,12 +2661,12 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_method(prop: property): (any | null);
+    function icalproperty_get_method(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_mindate(prop: property): (any | null);
+    function icalproperty_get_mindate(prop: property): null;
 
     /**
      * @param prop 
@@ -2738,7 +2738,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_pollcompletion(prop: property): (any | null);
+    function icalproperty_get_pollcompletion(prop: property): null;
 
     /**
      * @param prop 
@@ -2748,7 +2748,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_pollmode(prop: property): (any | null);
+    function icalproperty_get_pollmode(prop: property): null;
 
     /**
      * @param prop 
@@ -2793,7 +2793,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_querylevel(prop: property): (any | null);
+    function icalproperty_get_querylevel(prop: property): null;
 
     /**
      * @param prop 
@@ -2803,7 +2803,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_rdate(prop: property): (any | null);
+    function icalproperty_get_rdate(prop: property): null;
 
     /**
      * @param prop 
@@ -2823,12 +2823,12 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_recurrenceid(prop: property): (any | null);
+    function icalproperty_get_recurrenceid(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_refreshinterval(prop: property): (any | null);
+    function icalproperty_get_refreshinterval(prop: property): null;
 
     /**
      * @param prop 
@@ -2853,7 +2853,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_requeststatus(prop: property): (any | null);
+    function icalproperty_get_requeststatus(prop: property): null;
 
     /**
      * @param prop 
@@ -2873,7 +2873,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_rrule(prop: property): (any | null);
+    function icalproperty_get_rrule(prop: property): null;
 
     /**
      * @param prop 
@@ -2893,7 +2893,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_status(prop: property): (any | null);
+    function icalproperty_get_status(prop: property): null;
 
     /**
      * @param prop 
@@ -2913,17 +2913,17 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_taskmode(prop: property): (any | null);
+    function icalproperty_get_taskmode(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_transp(prop: property): (any | null);
+    function icalproperty_get_transp(prop: property): null;
 
     /**
      * @param prop 
      */
-    function icalproperty_get_trigger(prop: property): (any | null);
+    function icalproperty_get_trigger(prop: property): null;
 
     /**
      * @param prop 
@@ -2953,7 +2953,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_tzuntil(prop: property): (any | null);
+    function icalproperty_get_tzuntil(prop: property): null;
 
     /**
      * @param prop 
@@ -3003,7 +3003,7 @@ export namespace ICal {
     /**
      * @param prop 
      */
-    function icalproperty_get_xlicclass(prop: property): (any | null);
+    function icalproperty_get_xlicclass(prop: property): null;
 
     /**
      * @param prop 
@@ -3053,7 +3053,7 @@ export namespace ICal {
     /**
      * @param property 
      */
-    function icalproperty_isa_property(property: (any | null)): number;
+    function icalproperty_isa_property(property: null): number;
 
     /**
      * @param kind 
@@ -3091,7 +3091,7 @@ export namespace ICal {
      * @param dtstart 
      * @param recurtime 
      */
-    function icalproperty_recurrence_is_excluded(comp: component, dtstart: (any | null), recurtime: (any | null)): number;
+    function icalproperty_recurrence_is_excluded(comp: component, dtstart: null, recurtime: null): number;
 
     /**
      * @param prop 
@@ -3122,13 +3122,13 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_acknowledged(prop: property, v: (any | null)): void;
+    function icalproperty_set_acknowledged(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_action(prop: property, v: (any | null)): void;
+    function icalproperty_set_action(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3152,7 +3152,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_busytype(prop: property, v: (any | null)): void;
+    function icalproperty_set_busytype(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3188,7 +3188,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_carlevel(prop: property, v: (any | null)): void;
+    function icalproperty_set_carlevel(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3200,13 +3200,13 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_class(prop: property, v: (any | null)): void;
+    function icalproperty_set_class(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_cmd(prop: property, v: (any | null)): void;
+    function icalproperty_set_cmd(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3224,7 +3224,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_completed(prop: property, v: (any | null)): void;
+    function icalproperty_set_completed(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3248,7 +3248,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_created(prop: property, v: (any | null)): void;
+    function icalproperty_set_created(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3260,13 +3260,13 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_datemax(prop: property, v: (any | null)): void;
+    function icalproperty_set_datemax(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_datemin(prop: property, v: (any | null)): void;
+    function icalproperty_set_datemin(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3314,43 +3314,43 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_dtend(prop: property, v: (any | null)): void;
+    function icalproperty_set_dtend(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_dtstamp(prop: property, v: (any | null)): void;
+    function icalproperty_set_dtstamp(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_dtstart(prop: property, v: (any | null)): void;
+    function icalproperty_set_dtstart(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_due(prop: property, v: (any | null)): void;
+    function icalproperty_set_due(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_duration(prop: property, v: (any | null)): void;
+    function icalproperty_set_duration(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_estimatedduration(prop: property, v: (any | null)): void;
+    function icalproperty_set_estimatedduration(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_exdate(prop: property, v: (any | null)): void;
+    function icalproperty_set_exdate(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3362,19 +3362,19 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_exrule(prop: property, v: (any | null)): void;
+    function icalproperty_set_exrule(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_freebusy(prop: property, v: (any | null)): void;
+    function icalproperty_set_freebusy(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_geo(prop: property, v: (any | null)): void;
+    function icalproperty_set_geo(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3398,7 +3398,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_lastmodified(prop: property, v: (any | null)): void;
+    function icalproperty_set_lastmodified(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3416,7 +3416,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_maxdate(prop: property, v: (any | null)): void;
+    function icalproperty_set_maxdate(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3434,13 +3434,13 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_method(prop: property, v: (any | null)): void;
+    function icalproperty_set_method(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_mindate(prop: property, v: (any | null)): void;
+    function icalproperty_set_mindate(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3531,7 +3531,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_pollcompletion(prop: property, v: (any | null)): void;
+    function icalproperty_set_pollcompletion(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3543,7 +3543,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_pollmode(prop: property, v: (any | null)): void;
+    function icalproperty_set_pollmode(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3585,7 +3585,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_querylevel(prop: property, v: (any | null)): void;
+    function icalproperty_set_querylevel(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3597,7 +3597,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_rdate(prop: property, v: (any | null)): void;
+    function icalproperty_set_rdate(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3621,13 +3621,13 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_recurrenceid(prop: property, v: (any | null)): void;
+    function icalproperty_set_recurrenceid(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_refreshinterval(prop: property, v: (any | null)): void;
+    function icalproperty_set_refreshinterval(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3657,7 +3657,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_requeststatus(prop: property, v: (any | null)): void;
+    function icalproperty_set_requeststatus(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3681,7 +3681,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_rrule(prop: property, v: (any | null)): void;
+    function icalproperty_set_rrule(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3705,7 +3705,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_status(prop: property, v: (any | null)): void;
+    function icalproperty_set_status(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3729,19 +3729,19 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_taskmode(prop: property, v: (any | null)): void;
+    function icalproperty_set_taskmode(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_transp(prop: property, v: (any | null)): void;
+    function icalproperty_set_transp(prop: property, v: null): void;
 
     /**
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_trigger(prop: property, v: (any | null)): void;
+    function icalproperty_set_trigger(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3777,7 +3777,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_tzuntil(prop: property, v: (any | null)): void;
+    function icalproperty_set_tzuntil(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3838,7 +3838,7 @@ export namespace ICal {
      * @param prop 
      * @param v 
      */
-    function icalproperty_set_xlicclass(prop: property, v: (any | null)): void;
+    function icalproperty_set_xlicclass(prop: property, v: null): void;
 
     /**
      * @param prop 
@@ -3934,13 +3934,13 @@ export namespace ICal {
     /**
      * @param arg0 
      */
-    function icalrecur_iterator_next(arg0: recur_iterator): (any | null);
+    function icalrecur_iterator_next(arg0: recur_iterator): null;
 
     /**
      * @param impl 
      * @param start 
      */
-    function icalrecur_iterator_set_start(impl: recur_iterator, start: (any | null)): number;
+    function icalrecur_iterator_set_start(impl: recur_iterator, start: null): number;
 
     /**
      * @param kind 
@@ -3970,22 +3970,22 @@ export namespace ICal {
     /**
      * @param recur 
      */
-    function icalrecurrencetype_as_string(recur: (any | null)): string;
+    function icalrecurrencetype_as_string(recur: null): string;
 
     /**
      * @param recur 
      */
-    function icalrecurrencetype_as_string_r(recur: (any | null)): string;
+    function icalrecurrencetype_as_string_r(recur: null): string;
 
     /**
      * @param r 
      */
-    function icalrecurrencetype_clear(r: (any | null)): void;
+    function icalrecurrencetype_clear(r: null): void;
 
     /**
      * @param day 
      */
-    function icalrecurrencetype_day_day_of_week(day: number): (any | null);
+    function icalrecurrencetype_day_day_of_week(day: number): null;
 
     /**
      * @param day 
@@ -3995,7 +3995,7 @@ export namespace ICal {
     /**
      * @param str 
      */
-    function icalrecurrencetype_from_string(str: string): (any | null);
+    function icalrecurrencetype_from_string(str: string): null;
 
     /**
      * @param month 
@@ -4012,17 +4012,17 @@ export namespace ICal {
     /**
      * @param arg0 
      */
-    function icalreqstattype_as_string(arg0: (any | null)): string;
+    function icalreqstattype_as_string(arg0: null): string;
 
     /**
      * @param arg0 
      */
-    function icalreqstattype_as_string_r(arg0: (any | null)): string;
+    function icalreqstattype_as_string_r(arg0: null): string;
 
     /**
      * @param str 
      */
-    function icalreqstattype_from_string(str: string): (any | null);
+    function icalreqstattype_from_string(str: string): null;
 
     /**
      * @param comp 
@@ -4039,7 +4039,7 @@ export namespace ICal {
      * @param t 
      * @param d 
      */
-    function icaltime_add(t: (any | null), d: (any | null)): (any | null);
+    function icaltime_add(t: null, d: null): null;
 
     /**
      * @param tt 
@@ -4048,47 +4048,47 @@ export namespace ICal {
      * @param minutes 
      * @param seconds 
      */
-    function icaltime_adjust(tt: (any | null), days: number, hours: number, minutes: number, seconds: number): void;
+    function icaltime_adjust(tt: null, days: number, hours: number, minutes: number, seconds: number): void;
 
     /**
      * @param tt 
      */
-    function icaltime_as_ical_string(tt: (any | null)): string;
+    function icaltime_as_ical_string(tt: null): string;
 
     /**
      * @param tt 
      */
-    function icaltime_as_ical_string_r(tt: (any | null)): string;
+    function icaltime_as_ical_string_r(tt: null): string;
 
     /**
      * @param arg0 
      */
-    function icaltime_as_timet(arg0: (any | null)): number;
+    function icaltime_as_timet(arg0: null): number;
 
     /**
      * @param tt 
      * @param zone 
      */
-    function icaltime_as_timet_with_zone(tt: (any | null), zone: timezone): number;
+    function icaltime_as_timet_with_zone(tt: null, zone: timezone): number;
 
     /**
      * @param a 
      * @param b 
      */
-    function icaltime_compare(a: (any | null), b: (any | null)): number;
+    function icaltime_compare(a: null, b: null): number;
 
     /**
      * @param a 
      * @param b 
      */
-    function icaltime_compare_date_only(a: (any | null), b: (any | null)): number;
+    function icaltime_compare_date_only(a: null, b: null): number;
 
     /**
      * @param a 
      * @param b 
      * @param tz 
      */
-    function icaltime_compare_date_only_tz(a: (any | null), b: (any | null), tz: timezone): number;
+    function icaltime_compare_date_only_tz(a: null, b: null, tz: timezone): number;
 
     /**
      * There are several ways to create a new icaltimetype:
@@ -4138,22 +4138,22 @@ export namespace ICal {
      * @param tt 
      * @param zone 
      */
-    function icaltime_convert_to_zone(tt: (any | null), zone: timezone): (any | null);
+    function icaltime_convert_to_zone(tt: null, zone: timezone): null;
 
     /**
      * @param zone 
      */
-    function icaltime_current_time_with_zone(zone: timezone): (any | null);
+    function icaltime_current_time_with_zone(zone: timezone): null;
 
     /**
      * @param t 
      */
-    function icaltime_day_of_week(t: (any | null)): number;
+    function icaltime_day_of_week(t: null): number;
 
     /**
      * @param t 
      */
-    function icaltime_day_of_year(t: (any | null)): number;
+    function icaltime_day_of_year(t: null): number;
 
     /**
      * @param month 
@@ -4170,7 +4170,7 @@ export namespace ICal {
      * @param doy 
      * @param year 
      */
-    function icaltime_from_day_of_year(doy: number, year: number): (any | null);
+    function icaltime_from_day_of_year(doy: number, year: number): null;
 
     /**
      * is the same as that used by `icaldurationtype_from_string()`.
@@ -4185,29 +4185,29 @@ export namespace ICal {
      * ```
      * @param str 
      */
-    function icaltime_from_string(str: string): (any | null);
+    function icaltime_from_string(str: string): null;
 
     /**
      * @param tm 
      * @param is_date 
      * @param zone 
      */
-    function icaltime_from_timet_with_zone(tm: (bigint | number), is_date: number, zone: timezone): (any | null);
+    function icaltime_from_timet_with_zone(tm: (bigint | number), is_date: number, zone: timezone): null;
 
     /**
      * @param t 
      */
-    function icaltime_get_timezone(t: (any | null)): timezone;
+    function icaltime_get_timezone(t: null): timezone;
 
     /**
      * @param t 
      */
-    function icaltime_get_tzid(t: (any | null)): string;
+    function icaltime_get_tzid(t: null): string;
 
     /**
      * @param t 
      */
-    function icaltime_is_date(t: (any | null)): number;
+    function icaltime_is_date(t: null): number;
 
     /**
      * @param year 
@@ -4217,32 +4217,32 @@ export namespace ICal {
     /**
      * @param t 
      */
-    function icaltime_is_null_time(t: (any | null)): number;
+    function icaltime_is_null_time(t: null): number;
 
     /**
      * @param t 
      */
-    function icaltime_is_utc(t: (any | null)): number;
+    function icaltime_is_utc(t: null): number;
 
     /**
      * @param t 
      */
-    function icaltime_is_valid_time(t: (any | null)): number;
+    function icaltime_is_valid_time(t: null): number;
 
     /**
      * @param tt 
      */
-    function icaltime_normalize(tt: (any | null)): (any | null);
+    function icaltime_normalize(tt: null): null;
 
-    function icaltime_null_date(): (any | null);
+    function icaltime_null_date(): null;
 
-    function icaltime_null_time(): (any | null);
+    function icaltime_null_time(): null;
 
     /**
      * @param t 
      * @param zone 
      */
-    function icaltime_set_timezone(t: (any | null), zone: timezone): (any | null);
+    function icaltime_set_timezone(t: null, zone: timezone): null;
 
     /**
      * @param s 
@@ -4255,7 +4255,7 @@ export namespace ICal {
      * @param dtend 
      * @param is_busy 
      */
-    function icaltime_span_new(dtstart: (any | null), dtend: (any | null), is_busy: number): (any | null);
+    function icaltime_span_new(dtstart: null, dtend: null, is_busy: number): null;
 
     /**
      * @param s1 
@@ -4267,20 +4267,20 @@ export namespace ICal {
      * @param t 
      * @param fdow 
      */
-    function icaltime_start_doy_week(t: (any | null), fdow: number): number;
+    function icaltime_start_doy_week(t: null, fdow: number): number;
 
     /**
      * @param t1 
      * @param t2 
      */
-    function icaltime_subtract(t1: (any | null), t2: (any | null)): (any | null);
+    function icaltime_subtract(t1: null, t2: null): null;
 
-    function icaltime_today(): (any | null);
+    function icaltime_today(): null;
 
     /**
      * @param t 
      */
-    function icaltime_week_number(t: (any | null)): number;
+    function icaltime_week_number(t: null): number;
 
     /**
      * @param timezones 
@@ -4298,14 +4298,14 @@ export namespace ICal {
      * @param from_zone 
      * @param to_zone 
      */
-    function icaltimezone_convert_time(tt: (any | null), from_zone: timezone, to_zone: timezone): void;
+    function icaltimezone_convert_time(tt: null, from_zone: timezone, to_zone: timezone): void;
 
     /**
      * @param zone 
      * @param max_year 
      * @param fp 
      */
-    function icaltimezone_dump_changes(zone: timezone, max_year: number, fp: (any | null)): number;
+    function icaltimezone_dump_changes(zone: timezone, max_year: number, fp: null): number;
 
     /**
      * @param comp 
@@ -4369,14 +4369,14 @@ export namespace ICal {
      * @param tt 
      * @param is_daylight 
      */
-    function icaltimezone_get_utc_offset(zone: timezone, tt: (any | null), is_daylight: number): number;
+    function icaltimezone_get_utc_offset(zone: timezone, tt: null, is_daylight: number): number;
 
     /**
      * @param zone 
      * @param tt 
      * @param is_daylight 
      */
-    function icaltimezone_get_utc_offset_of_utc_time(zone: timezone, tt: (any | null), is_daylight: number): number;
+    function icaltimezone_get_utc_offset_of_utc_time(zone: timezone, tt: null, is_daylight: number): number;
 
     function icaltimezone_release_zone_tab(): void;
 
@@ -4409,22 +4409,22 @@ export namespace ICal {
     /**
      * @param reltime 
      */
-    function icaltriggertype_from_int(reltime: number): (any | null);
+    function icaltriggertype_from_int(reltime: number): null;
 
     /**
      * @param str 
      */
-    function icaltriggertype_from_string(str: string): (any | null);
+    function icaltriggertype_from_string(str: string): null;
 
     /**
      * @param tr 
      */
-    function icaltriggertype_is_bad_trigger(tr: (any | null)): number;
+    function icaltriggertype_is_bad_trigger(tr: null): number;
 
     /**
      * @param tr 
      */
-    function icaltriggertype_is_null_trigger(tr: (any | null)): number;
+    function icaltriggertype_is_null_trigger(tr: null): number;
 
     function icaltzutil_get_zone_directory(): string;
 
@@ -4466,7 +4466,7 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_action(value: value): (any | null);
+    function icalvalue_get_action(value: value): null;
 
     /**
      * @param value 
@@ -4481,7 +4481,7 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_busytype(value: value): (any | null);
+    function icalvalue_get_busytype(value: value): null;
 
     /**
      * @param value 
@@ -4491,42 +4491,42 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_carlevel(value: value): (any | null);
+    function icalvalue_get_carlevel(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_class(value: value): (any | null);
+    function icalvalue_get_class(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_cmd(value: value): (any | null);
+    function icalvalue_get_cmd(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_date(value: value): (any | null);
+    function icalvalue_get_date(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_datetime(value: value): (any | null);
+    function icalvalue_get_datetime(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_datetimedate(value: value): (any | null);
+    function icalvalue_get_datetimedate(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_datetimeperiod(value: value): (any | null);
+    function icalvalue_get_datetimeperiod(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_duration(value: value): (any | null);
+    function icalvalue_get_duration(value: value): null;
 
     /**
      * @param value 
@@ -4536,7 +4536,7 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_geo(value: value): (any | null);
+    function icalvalue_get_geo(value: value): null;
 
     /**
      * @param value 
@@ -4546,22 +4546,22 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_method(value: value): (any | null);
+    function icalvalue_get_method(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_period(value: value): (any | null);
+    function icalvalue_get_period(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_pollcompletion(value: value): (any | null);
+    function icalvalue_get_pollcompletion(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_pollmode(value: value): (any | null);
+    function icalvalue_get_pollmode(value: value): null;
 
     /**
      * @param value 
@@ -4571,22 +4571,22 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_querylevel(value: value): (any | null);
+    function icalvalue_get_querylevel(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_recur(value: value): (any | null);
+    function icalvalue_get_recur(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_requeststatus(value: value): (any | null);
+    function icalvalue_get_requeststatus(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_status(value: value): (any | null);
+    function icalvalue_get_status(value: value): null;
 
     /**
      * @param value 
@@ -4596,7 +4596,7 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_taskmode(value: value): (any | null);
+    function icalvalue_get_taskmode(value: value): null;
 
     /**
      * @param value 
@@ -4606,12 +4606,12 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_transp(value: value): (any | null);
+    function icalvalue_get_transp(value: value): null;
 
     /**
      * @param value 
      */
-    function icalvalue_get_trigger(value: value): (any | null);
+    function icalvalue_get_trigger(value: value): null;
 
     /**
      * @param value 
@@ -4631,7 +4631,7 @@ export namespace ICal {
     /**
      * @param value 
      */
-    function icalvalue_get_xlicclass(value: value): (any | null);
+    function icalvalue_get_xlicclass(value: value): null;
 
     /**
      * @param value 
@@ -4646,7 +4646,7 @@ export namespace ICal {
     /**
      * @param arg0 
      */
-    function icalvalue_isa_value(arg0: (any | null)): number;
+    function icalvalue_isa_value(arg0: null): number;
 
     /**
      * @param kind 
@@ -4667,7 +4667,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_action(value: value, v: (any | null)): void;
+    function icalvalue_set_action(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4691,7 +4691,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_busytype(value: value, v: (any | null)): void;
+    function icalvalue_set_busytype(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4703,49 +4703,49 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_carlevel(value: value, v: (any | null)): void;
+    function icalvalue_set_carlevel(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_class(value: value, v: (any | null)): void;
+    function icalvalue_set_class(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_cmd(value: value, v: (any | null)): void;
+    function icalvalue_set_cmd(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_date(value: value, v: (any | null)): void;
+    function icalvalue_set_date(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_datetime(value: value, v: (any | null)): void;
+    function icalvalue_set_datetime(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_datetimedate(value: value, v: (any | null)): void;
+    function icalvalue_set_datetimedate(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_datetimeperiod(value: value, v: (any | null)): void;
+    function icalvalue_set_datetimeperiod(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_duration(value: value, v: (any | null)): void;
+    function icalvalue_set_duration(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4757,7 +4757,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_geo(value: value, v: (any | null)): void;
+    function icalvalue_set_geo(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4769,7 +4769,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_method(value: value, v: (any | null)): void;
+    function icalvalue_set_method(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4781,19 +4781,19 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_period(value: value, v: (any | null)): void;
+    function icalvalue_set_period(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_pollcompletion(value: value, v: (any | null)): void;
+    function icalvalue_set_pollcompletion(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_pollmode(value: value, v: (any | null)): void;
+    function icalvalue_set_pollmode(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4805,25 +4805,25 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_querylevel(value: value, v: (any | null)): void;
+    function icalvalue_set_querylevel(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_recur(value: value, v: (any | null)): void;
+    function icalvalue_set_recur(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_requeststatus(value: value, v: (any | null)): void;
+    function icalvalue_set_requeststatus(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_status(value: value, v: (any | null)): void;
+    function icalvalue_set_status(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4835,7 +4835,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_taskmode(value: value, v: (any | null)): void;
+    function icalvalue_set_taskmode(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4847,13 +4847,13 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_transp(value: value, v: (any | null)): void;
+    function icalvalue_set_transp(value: value, v: null): void;
 
     /**
      * @param value 
      * @param v 
      */
-    function icalvalue_set_trigger(value: value, v: (any | null)): void;
+    function icalvalue_set_trigger(value: value, v: null): void;
 
     /**
      * @param value 
@@ -4877,7 +4877,7 @@ export namespace ICal {
      * @param value 
      * @param v 
      */
-    function icalvalue_set_xlicclass(value: value, v: (any | null)): void;
+    function icalvalue_set_xlicclass(value: value, v: null): void;
 
     /**
      * @param str 
@@ -4888,13 +4888,13 @@ export namespace ICal {
      * @param str 
      * @param data 
      */
-    function print_date_to_string(str: string, data: (any | null)): void;
+    function print_date_to_string(str: string, data: null): void;
 
     /**
      * @param str 
      * @param data 
      */
-    function print_datetime_to_string(str: string, data: (any | null)): void;
+    function print_datetime_to_string(str: string, data: null): void;
 
     /**
      * @param arg0 
@@ -4909,7 +4909,7 @@ export namespace ICal {
     /**
      * @param arg0 
      */
-    function pvl_data(arg0: pvl_elem): (any | null);
+    function pvl_data(arg0: pvl_elem): null;
 
     /**
      * @param arg0 
@@ -4921,42 +4921,42 @@ export namespace ICal {
      * @param e 
      * @param d 
      */
-    function pvl_insert_after(l: pvl_list, e: pvl_elem, d: (any | null)): void;
+    function pvl_insert_after(l: pvl_list, e: pvl_elem, d: null): void;
 
     /**
      * @param l 
      * @param e 
      * @param d 
      */
-    function pvl_insert_before(l: pvl_list, e: pvl_elem, d: (any | null)): void;
+    function pvl_insert_before(l: pvl_list, e: pvl_elem, d: null): void;
 
     /**
      * @param l 
      */
-    function pvl_pop(l: pvl_list): (any | null);
+    function pvl_pop(l: pvl_list): null;
 
     /**
      * @param l 
      * @param d 
      */
-    function pvl_push(l: pvl_list, d: (any | null)): void;
+    function pvl_push(l: pvl_list, d: null): void;
 
     /**
      * @param arg0 
      * @param arg1 
      */
-    function pvl_remove(arg0: pvl_list, arg1: pvl_elem): (any | null);
+    function pvl_remove(arg0: pvl_list, arg1: pvl_elem): null;
 
     /**
      * @param l 
      */
-    function pvl_shift(l: pvl_list): (any | null);
+    function pvl_shift(l: pvl_list): null;
 
     /**
      * @param l 
      * @param d 
      */
-    function pvl_unshift(l: pvl_list, d: (any | null)): void;
+    function pvl_unshift(l: pvl_list, d: null): void;
 
     /**
      * @param newSetting 
@@ -4971,23 +4971,23 @@ export namespace ICal {
     /**
      * @param type 
      */
-    function sspm_encoding_string(type: (any | null)): string;
+    function sspm_encoding_string(type: null): string;
 
     /**
      * @param parts 
      * @param max_parts 
      */
-    function sspm_free_parts(parts: (any | null), max_parts: (bigint | number)): void;
+    function sspm_free_parts(parts: null, max_parts: (bigint | number)): void;
 
     /**
      * @param type 
      */
-    function sspm_major_type_string(type: (any | null)): string;
+    function sspm_major_type_string(type: null): string;
 
     /**
      * @param type 
      */
-    function sspm_minor_type_string(type: (any | null)): string;
+    function sspm_minor_type_string(type: null): string;
 
     /**
      * @param parts 
@@ -4997,7 +4997,7 @@ export namespace ICal {
      * @param get_string_data 
      * @param first_header 
      */
-    function sspm_parse_mime(parts: (any | null), max_parts: (bigint | number), actions: (any | null), get_string: (any | null), get_string_data: (any | null), first_header: (any | null)): number;
+    function sspm_parse_mime(parts: null, max_parts: (bigint | number), actions: null, get_string: null, get_string_data: null, first_header: null): number;
 
     /**
      * @param parts 
@@ -5005,7 +5005,7 @@ export namespace ICal {
      * @param output_string 
      * @param header 
      */
-    function sspm_write_mime(parts: (any | null), num_parts: (bigint | number), output_string: string, header: string): number;
+    function sspm_write_mime(parts: null, num_parts: (bigint | number), output_string: string, header: string): number;
 
     /**
      * @gir-type Callback
@@ -5018,28 +5018,28 @@ export namespace ICal {
      * @gir-type Callback
      */
     interface icalparser_line_gen_func {
-        (s: string, size: number, d: (any | null)): string;
+        (s: string, size: number, d: null): string;
     }
 
     /**
      * @gir-type Callback
      */
     interface pvl_applyf {
-        (a: (any | null), b: (any | null)): void;
+        (a: null, b: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface pvl_comparef {
-        (a: (any | null), b: (any | null)): number;
+        (a: null, b: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface pvl_findf {
-        (a: (any | null), b: (any | null)): number;
+        (a: null, b: null): number;
     }
 
     /**
@@ -5057,7 +5057,7 @@ export namespace ICal {
 
         space_allocated: number;
 
-        chunks: any;
+        chunks: null;
     }
 
 
@@ -5095,15 +5095,15 @@ export namespace ICal {
         static $gtype: GObject.GType<datetimeperiodtype>;
 
         // Fields
-        time: any;
+        time: null;
 
-        period: any;
+        period: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            time: any;
-            period: any;
+            time: null;
+            period: null;
         }>);
     }
 
@@ -5183,18 +5183,18 @@ export namespace ICal {
         static $gtype: GObject.GType<periodtype>;
 
         // Fields
-        start: any;
+        start: null;
 
-        end: any;
+        end: null;
 
-        duration: any;
+        duration: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            start: any;
-            end: any;
-            duration: any;
+            start: null;
+            end: null;
+            duration: null;
         }>);
     }
 
@@ -5224,19 +5224,19 @@ export namespace ICal {
         // Fields
         MAGIC: number;
 
-        d: any;
+        d: null;
 
-        next: any;
+        next: null;
 
-        prior: any;
+        prior: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             MAGIC: number;
-            d: any;
-            next: any;
-            prior: any;
+            d: null;
+            next: null;
+            prior: null;
         }>);
     }
 
@@ -5266,7 +5266,7 @@ export namespace ICal {
         // Fields
         freq: recurrencetype_frequency;
 
-        until: any;
+        until: null;
 
         count: number;
 
@@ -5320,15 +5320,15 @@ export namespace ICal {
         static $gtype: GObject.GType<sspm_action_map>;
 
         // Fields
-        major: any;
+        major: null;
 
-        minor: any;
+        minor: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            major: any;
-            minor: any;
+            major: null;
+            minor: null;
         }>);
     }
 
@@ -5344,9 +5344,9 @@ export namespace ICal {
 
         boundary: string;
 
-        major: any;
+        major: null;
 
-        minor: any;
+        minor: null;
 
         minor_text: string;
 
@@ -5354,13 +5354,13 @@ export namespace ICal {
 
         charset: string;
 
-        encoding: any;
+        encoding: null;
 
         filename: string;
 
         content_id: string;
 
-        error: any;
+        error: null;
 
         error_text: string;
 
@@ -5369,15 +5369,15 @@ export namespace ICal {
         constructor(properties?: Partial<{
             def: number;
             boundary: string;
-            major: any;
-            minor: any;
+            major: null;
+            minor: null;
             minor_text: string;
             content_type_params: string;
             charset: string;
-            encoding: any;
+            encoding: null;
             filename: string;
             content_id: string;
-            error: any;
+            error: null;
             error_text: string;
         }>);
     }
@@ -5390,13 +5390,13 @@ export namespace ICal {
         static $gtype: GObject.GType<sspm_part>;
 
         // Fields
-        header: any;
+        header: null;
 
         level: number;
 
         data_size: number;
 
-        data: any;
+        data: null;
     }
 
 
@@ -5459,7 +5459,7 @@ export namespace ICal {
 
         is_stdandard: number;
 
-        dtstart: any;
+        dtstart: null;
 
         offsetto: number;
 
@@ -5467,7 +5467,7 @@ export namespace ICal {
 
         comment: string;
 
-        rdate: any;
+        rdate: null;
 
         rrule: string;
 
@@ -5476,11 +5476,11 @@ export namespace ICal {
         constructor(properties?: Partial<{
             tzname: string;
             is_stdandard: number;
-            dtstart: any;
+            dtstart: null;
             offsetto: number;
             tzoffsetfrom: number;
             comment: string;
-            rdate: any;
+            rdate: null;
             rrule: string;
         }>);
     }
@@ -5495,19 +5495,19 @@ export namespace ICal {
         // Fields
         tzid: string;
 
-        last_mod: any;
+        last_mod: null;
 
         tzurl: string;
 
-        phases: any;
+        phases: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             tzid: string;
-            last_mod: any;
+            last_mod: null;
             tzurl: string;
-            phases: any;
+            phases: null;
         }>);
     }
 
@@ -5519,15 +5519,15 @@ export namespace ICal {
         static $gtype: GObject.GType<triggertype>;
 
         // Fields
-        time: any;
+        time: null;
 
-        duration: any;
+        duration: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            time: any;
-            duration: any;
+            time: null;
+            duration: null;
         }>);
     }
 

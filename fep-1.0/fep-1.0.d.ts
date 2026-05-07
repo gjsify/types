@@ -133,7 +133,7 @@ export namespace Fep {
              * @signal
              * @run-last
              */
-            "filter-event": (arg0: (any | null)) => (boolean | void);
+            "filter-event": (arg0: null) => (boolean | void);
             /**
              * The ::filter-key-event signal is emitted when key event is dispatched.
              * @signal

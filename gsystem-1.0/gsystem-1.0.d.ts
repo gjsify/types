@@ -1062,14 +1062,14 @@ export namespace GSystem {
 
         fd: number;
 
-        padding_data: any[];
+        padding_data: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
             initialized: boolean;
             fd: number;
-            padding_data: any[];
+            padding_data: null[];
         }>);
     }
 

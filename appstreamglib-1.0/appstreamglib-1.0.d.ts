@@ -1891,7 +1891,7 @@ export namespace AppStreamGlib {
      * @returns A hash table with the locale (e.g. en_GB) as the key
      * @since 0.1.0
      */
-    function node_get_localized(node: GLib.Node, key: string): GLib.HashTable<any, any>;
+    function node_get_localized(node: GLib.Node, key: string): GLib.HashTable<never, never>;
 
     /**
      * Gets the 'best' locale version of a specific data value.
@@ -1930,7 +1930,7 @@ export namespace AppStreamGlib {
      * @returns a hash table of data
      * @since 0.1.0
      */
-    function node_get_localized_unwrap(node: GLib.Node): GLib.HashTable<any, any>;
+    function node_get_localized_unwrap(node: GLib.Node): GLib.HashTable<never, never>;
 
     /**
      * Gets the node name, e.g. "body"
@@ -1957,7 +1957,7 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_hash(parent: GLib.Node, name: string, attr_key: string, hash: ({ [key: string]: any } | GLib.HashTable<any, any>), insert_flags: NodeInsertFlags): void;
+    function node_insert_hash(parent: GLib.Node, name: string, attr_key: string, hash: ({ [key: string]: any } | GLib.HashTable<never, never>), insert_flags: NodeInsertFlags): void;
 
     /**
      * Inserts a localized key into the DOM.
@@ -1967,7 +1967,7 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_localized(parent: GLib.Node, name: string, localized: ({ [key: string]: any } | GLib.HashTable<any, any>), insert_flags: NodeInsertFlags): void;
+    function node_insert_localized(parent: GLib.Node, name: string, localized: ({ [key: string]: any } | GLib.HashTable<never, never>), insert_flags: NodeInsertFlags): void;
 
     /**
      * Converts a node and it's children to XML.
@@ -3486,7 +3486,7 @@ export namespace AppStreamGlib {
          * Gets the comments set for the application.
          * @returns hash table of comments
          */
-        get_comments(): GLib.HashTable<any, any>;
+        get_comments(): GLib.HashTable<never, never>;
 
         /**
          * Returns the desktops where this application is compulsory.
@@ -3518,7 +3518,7 @@ export namespace AppStreamGlib {
          * Gets the descriptions set for the application.
          * @returns hash table of descriptions
          */
-        get_descriptions(): GLib.HashTable<any, any>;
+        get_descriptions(): GLib.HashTable<never, never>;
 
         /**
          * Gets the application developer name for a specific locale.
@@ -3531,7 +3531,7 @@ export namespace AppStreamGlib {
          * Gets the developer_names set for the application.
          * @returns hash table of developer_names
          */
-        get_developer_names(): GLib.HashTable<any, any>;
+        get_developer_names(): GLib.HashTable<never, never>;
 
         /**
          * Gets the IDs that are extended from the addon.
@@ -3709,7 +3709,7 @@ export namespace AppStreamGlib {
          * Gets the names set for the application.
          * @returns hash table of names
          */
-        get_names(): GLib.HashTable<any, any>;
+        get_names(): GLib.HashTable<never, never>;
 
         /**
          * Gets the application origin.
@@ -3899,7 +3899,7 @@ export namespace AppStreamGlib {
          * Gets the URLs set for the application.
          * @returns hash table of URLs
          */
-        get_urls(): GLib.HashTable<any, any>;
+        get_urls(): GLib.HashTable<never, never>;
 
         /**
          * Gets the list of vetos.

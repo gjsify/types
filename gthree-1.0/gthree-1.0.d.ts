@@ -1874,7 +1874,7 @@ export namespace Gthree {
         $signals: Geometry.SignalSignatures;
 
         // Fields
-        influences: any[];
+        influences: null[];
 
         // Constructors
         constructor(properties?: Partial<Geometry.ConstructorProps>, ...args: any[]);
@@ -3140,7 +3140,7 @@ export namespace Gthree {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             geometry: Geometry;
-            materials: any[];
+            materials: never[];
         }
     }
 
@@ -3156,8 +3156,8 @@ export namespace Gthree {
          */
         get geometry(): Geometry;
 
-        get materials(): any[];
-        set materials(val: any[]);
+        get materials(): null[];
+        set materials(val: never[]);
 
         /**
          * Compile-time signal type information.
@@ -7260,7 +7260,7 @@ export namespace Gthree {
         /**
          * @param renderer 
          */
-        get_data_for(renderer: Renderer): (any | null);
+        get_data_for(renderer: Renderer): null;
 
         get_used(): boolean;
 
@@ -9418,7 +9418,7 @@ export namespace Gthree {
 
         type: UniformType;
 
-        value: any;
+        value: null;
     }
 
 

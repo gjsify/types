@@ -309,7 +309,7 @@ export namespace Folks {
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;
             tDestroyFunc: GLib.DestroyNotify;
-            value: any;
+            value: never;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
             id: string;
@@ -354,8 +354,8 @@ export namespace Folks {
          */
         get tDestroyFunc(): GLib.DestroyNotify;
 
-        get value(): any;
-        set value(val: any);
+        get value(): null;
+        set value(val: never);
 
         /**
          * @read-only
@@ -439,13 +439,13 @@ export namespace Folks {
         /**
          * @virtual
          */
-        vfunc_get_value(): any;
+        vfunc_get_value(): never;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_value(value: any): void;
+        vfunc_set_value(value: null): void;
 
         /**
          * @virtual
@@ -514,12 +514,12 @@ export namespace Folks {
 
         hash(): number;
 
-        get_value(): any;
+        get_value(): null;
 
         /**
          * @param value 
          */
-        set_value(value: any): void;
+        set_value(value: never): void;
 
         get_value_type(): GObject.GType;
 
@@ -3695,14 +3695,14 @@ export namespace Folks {
          * @param object 
          * @virtual
          */
-        vfunc_serialise_object(object: any): GLib.Variant;
+        vfunc_serialise_object(object: null): GLib.Variant;
 
         /**
          * @param variant 
          * @param object_version 
          * @virtual
          */
-        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any;
+        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): never;
 
         // Methods
         /**
@@ -3715,13 +3715,13 @@ export namespace Folks {
         /**
          * @param object 
          */
-        serialise_object(object: any): GLib.Variant;
+        serialise_object(object: never): GLib.Variant;
 
         /**
          * @param variant 
          * @param object_version 
          */
-        deserialise_object(variant: GLib.Variant, object_version: number): any;
+        deserialise_object(variant: GLib.Variant, object_version: number): null;
 
         /**
          * @param cancellable 

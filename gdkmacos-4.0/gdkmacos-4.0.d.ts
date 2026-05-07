@@ -381,7 +381,7 @@ export namespace GdkMacos {
 
         // Constructor properties interface
         interface ConstructorProps extends Gdk.Surface.ConstructorProps {
-            "native": any;
+            "native": never;
         }
     }
 
@@ -396,7 +396,7 @@ export namespace GdkMacos {
          * The "native" property contains the underlying NSWindow.
          * @read-only
          */
-        get "native"(): any;
+        get "native"(): null;
 
         /**
          * Compile-time signal type information.
@@ -433,7 +433,7 @@ export namespace GdkMacos {
          * between releases of GTK.
          * @returns a `NSWindow` or `null`
          */
-        get_native_window(): (any | null);
+        get_native_window(): null;
     }
 
 

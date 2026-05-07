@@ -793,7 +793,7 @@ export namespace GoVirt {
             resourceType: GObject.GTypeInput;
             resource_xml_name: string;
             resourceXmlName: string;
-            resources: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            resources: ({ [key: string]: any } | GLib.HashTable<never, never>);
         }
     }
 
@@ -844,8 +844,8 @@ export namespace GoVirt {
          */
         set resourceXmlName(val: string);
 
-        get resources(): GLib.HashTable<any, any>;
-        set resources(val: ({ [key: string]: any } | GLib.HashTable<any, any>));
+        get resources(): GLib.HashTable<never, never>;
+        set resources(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
 
         /**
          * Compile-time signal type information.

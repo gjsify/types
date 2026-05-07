@@ -75,8 +75,8 @@ export namespace GUPnPIgd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            main_context: any;
-            mainContext: any;
+            main_context: never;
+            mainContext: never;
         }
     }
 
@@ -91,12 +91,12 @@ export namespace GUPnPIgd {
         /**
          * @read-only
          */
-        get main_context(): any;
+        get main_context(): null;
 
         /**
          * @read-only
          */
-        get mainContext(): any;
+        get mainContext(): null;
 
         /**
          * Compile-time signal type information.

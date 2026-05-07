@@ -80,7 +80,7 @@ export namespace GdkWin32 {
     /**
      * @param handle 
      */
-    function win32_handle_table_lookup(handle: win32.HWND): (any | null);
+    function win32_handle_table_lookup(handle: win32.HWND): null;
 
     /**
      * @gir-type Callback
@@ -524,11 +524,11 @@ export namespace GdkWin32 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             color_state: (Gdk.ColorState | null);
             colorState: (Gdk.ColorState | null);
-            fence: (any | null);
+            fence: never;
             fence_wait: (bigint | number);
             fenceWait: (bigint | number);
             premultiplied: boolean;
-            resource: (any | null);
+            resource: never;
             update_region: (cairo.Region | null);
             updateRegion: (cairo.Region | null);
             update_texture: (Gdk.Texture | null);
@@ -574,8 +574,8 @@ export namespace GdkWin32 {
          * The optional `ID3D12Fence` to wait on before using the resource.
          * @since 4.20
          */
-        get fence(): (any | null);
-        set fence(val: (any | null));
+        get fence(): null;
+        set fence(val: never);
 
         /**
          * The value the fence should wait on
@@ -607,8 +607,8 @@ export namespace GdkWin32 {
          * The `ID3D12Resource`
          * @since 4.20
          */
-        get resource(): (any | null);
-        set resource(val: (any | null));
+        get resource(): null;
+        set resource(val: never);
 
         /**
          * The update region for {@link Gdk.D3d12TextureBuilder.update_texture}.
@@ -688,7 +688,7 @@ export namespace GdkWin32 {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
-        build(data: (any | null)): (Gdk.Texture | null);
+        build(data: null): (Gdk.Texture | null);
 
         /**
          * Gets the color state previously set via `gdk_d3d12_texture_builder_set_color_state()`.
@@ -845,7 +845,7 @@ export namespace GdkWin32 {
          * Retrieves the EGL display connection object for the given GDK display.
          * @returns the EGL display
          */
-        get_egl_display(): (any | null);
+        get_egl_display(): null;
 
         /**
          * Remove a filter previously added with `gdk_win32_display_add_filter()`.
@@ -1033,7 +1033,7 @@ export namespace GdkWin32 {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             destroyable: boolean;
             display: Gdk.Display;
-            handle: any;
+            handle: never;
         }
     }
 
@@ -1058,7 +1058,7 @@ export namespace GdkWin32 {
         /**
          * @construct-only
          */
-        get handle(): any;
+        get handle(): null;
 
         /**
          * Compile-time signal type information.

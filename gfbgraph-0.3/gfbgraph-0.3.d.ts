@@ -185,7 +185,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
-        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<never, never>;
 
         /**
          * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,
@@ -209,7 +209,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<any, any>);
+        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
 
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -520,7 +520,7 @@ export namespace GFBGraph {
         // Constructor properties interface
         interface ConstructorProps extends Node.ConstructorProps, Connectable.ConstructorProps, Json.Serializable.ConstructorProps {
             height: number;
-            images: any;
+            images: never;
             name: string;
             source: string;
             width: number;
@@ -544,8 +544,8 @@ export namespace GFBGraph {
         /**
          * A list with the available representations of the photo, in differents sizes
          */
-        get images(): any;
-        set images(val: any);
+        get images(): null;
+        set images(val: never);
 
         /**
          * The name of the photo given by his owner.
@@ -663,7 +663,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
-        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<never, never>;
 
         /**
          * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,
@@ -687,7 +687,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<any, any>);
+        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
 
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -1392,7 +1392,7 @@ export namespace GFBGraph {
              * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
              * @virtual
              */
-            vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<any, any>);
+            vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
 
             /**
              * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -1446,7 +1446,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @returns A string based {@link GLib.HashTable} with the params and his values or `null`.
          */
-        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<any, any>;
+        get_connection_post_params(node_type: GObject.GType): GLib.HashTable<never, never>;
 
         /**
          * Check if `self` object, normally a {@link GFBGraph.Node} implementing the {@link GFBGraph.Connectable} interface,

@@ -28,7 +28,7 @@ export namespace Bump {
      * @gir-type Callback
      */
     interface Callback {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): never;
     }
 
     namespace AsyncPriorityQueue {
@@ -142,17 +142,17 @@ export namespace Bump {
         /**
          * @param wait 
          */
-        poll_timed(wait: GLib.TimeSpan): any;
+        poll_timed(wait: GLib.TimeSpan): null;
 
         /**
          * @param wait 
          */
-        peek_timed(wait: GLib.TimeSpan): any;
+        peek_timed(wait: GLib.TimeSpan): null;
 
         /**
          * @param element 
          */
-        offer(element: any): boolean;
+        offer(element: never): boolean;
 
         get_waiting_threads(): number;
     }
@@ -356,10 +356,10 @@ export namespace Bump {
             "notify::triggered": (pspec: GObject.ParamSpec) => void;
         }
     interface Callback {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, arg: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, arg: null): never;
     }
     interface SourceFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, arg: any): boolean;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, arg: null): boolean;
     }
 
         // Constructor properties interface
@@ -467,7 +467,7 @@ export namespace Bump {
         /**
          * @param value 
          */
-        trigger(value: any): void;
+        trigger(value: never): void;
 
         /**
          * @param func 
@@ -483,7 +483,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): any;
+        execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): null;
 
         /**
          * @param r_type 
@@ -492,7 +492,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param r_type 
@@ -512,14 +512,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
          */
-        execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @param r_type 
@@ -528,7 +528,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param r_type 
@@ -548,14 +548,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
          */
-        execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         get_pool(): TaskQueue;
 
@@ -654,7 +654,7 @@ export namespace Bump {
          * @param cancellable 
          * @virtual
          */
-        vfunc_create(priority: number, cancellable: Gio.Cancellable): any;
+        vfunc_create(priority: number, cancellable: Gio.Cancellable): never;
 
         /**
          * @param priority 
@@ -668,7 +668,7 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_create_finish(_res_: Gio.AsyncResult): any;
+        vfunc_create_finish(_res_: Gio.AsyncResult): never;
 
         /**
          * @param priority 
@@ -682,14 +682,14 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_create_background_finish(_res_: Gio.AsyncResult): any;
+        vfunc_create_background_finish(_res_: Gio.AsyncResult): never;
 
         /**
          * @param priority 
          * @param cancellable 
          * @virtual
          */
-        vfunc_acquire(priority: number, cancellable: Gio.Cancellable): any;
+        vfunc_acquire(priority: number, cancellable: Gio.Cancellable): never;
 
         /**
          * @param priority 
@@ -703,7 +703,7 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_acquire_finish(_res_: Gio.AsyncResult): any;
+        vfunc_acquire_finish(_res_: Gio.AsyncResult): never;
 
         /**
          * @param priority 
@@ -717,20 +717,20 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_acquire_background_finish(_res_: Gio.AsyncResult): any;
+        vfunc_acquire_background_finish(_res_: Gio.AsyncResult): never;
 
         // Methods
         /**
          * @param priority 
          * @param cancellable 
          */
-        create(priority: number, cancellable: Gio.Cancellable): any;
+        create(priority: number, cancellable: Gio.Cancellable): null;
 
         /**
          * @param priority 
          * @param cancellable 
          */
-        create_async(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        create_async(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param priority 
@@ -744,18 +744,18 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        create_async(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        create_async(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param _res_ 
          */
-        create_finish(_res_: Gio.AsyncResult): any;
+        create_finish(_res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
          * @param cancellable 
          */
-        create_background(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        create_background(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param priority 
@@ -769,24 +769,24 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        create_background(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        create_background(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param _res_ 
          */
-        create_background_finish(_res_: Gio.AsyncResult): any;
+        create_background_finish(_res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
          * @param cancellable 
          */
-        acquire(priority: number, cancellable: Gio.Cancellable): any;
+        acquire(priority: number, cancellable: Gio.Cancellable): null;
 
         /**
          * @param priority 
          * @param cancellable 
          */
-        acquire_async(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        acquire_async(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param priority 
@@ -800,18 +800,18 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        acquire_async(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        acquire_async(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param _res_ 
          */
-        acquire_finish(_res_: Gio.AsyncResult): any;
+        acquire_finish(_res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
          * @param cancellable 
          */
-        acquire_background(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        acquire_background(priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param priority 
@@ -825,12 +825,12 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        acquire_background(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        acquire_background(priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param _res_ 
          */
-        acquire_background_finish(_res_: Gio.AsyncResult): any;
+        acquire_background_finish(_res_: Gio.AsyncResult): null;
 
         get_construct_properties(): GObject.Parameter[];
 
@@ -864,7 +864,7 @@ export namespace Bump {
             t_destroy_func: GLib.DestroyNotify;
             tDestroyFunc: GLib.DestroyNotify;
             pool: TaskQueue;
-            value: any;
+            value: never;
             is_initialized: boolean;
             isInitialized: boolean;
         }
@@ -915,7 +915,7 @@ export namespace Bump {
         /**
          * @read-only
          */
-        get value(): any;
+        get value(): null;
 
         /**
          * @read-only
@@ -959,7 +959,7 @@ export namespace Bump {
         // Methods
         get_pool(): TaskQueue;
 
-        get_value(): any;
+        get_value(): null;
 
         get_is_initialized(): boolean;
     }
@@ -988,7 +988,7 @@ export namespace Bump {
             t_destroy_func: GLib.DestroyNotify;
             tDestroyFunc: GLib.DestroyNotify;
             pool: ResourcePool;
-            resource: any;
+            resource: never;
         }
     }
 
@@ -1037,7 +1037,7 @@ export namespace Bump {
         /**
          * @read-only
          */
-        get resource(): any;
+        get resource(): null;
 
         /**
          * Compile-time signal type information.
@@ -1074,7 +1074,7 @@ export namespace Bump {
         // Methods
         get_pool(): ResourcePool;
 
-        get_resource(): any;
+        get_resource(): null;
     }
 
 
@@ -1095,7 +1095,7 @@ export namespace Bump {
             "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
         }
     interface Callback {
-        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, resource: any): any;
+        (t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, resource: null): never;
     }
 
         // Constructor properties interface
@@ -1238,13 +1238,13 @@ export namespace Bump {
          * @param resource 
          * @virtual
          */
-        vfunc_release(resource: any): void;
+        vfunc_release(resource: null): void;
 
         // Methods
         /**
          * @param resource 
          */
-        release(resource: any): void;
+        release(resource: never): void;
 
         /**
          * @param r_type 
@@ -1253,7 +1253,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): any;
+        execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): null;
 
         /**
          * @param r_type 
@@ -1262,7 +1262,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param r_type 
@@ -1282,14 +1282,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_async(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
          */
-        execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @param r_type 
@@ -1298,7 +1298,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param r_type 
@@ -1318,14 +1318,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_background(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
          */
-        execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
@@ -1685,7 +1685,7 @@ export namespace Bump {
          * @param cancellable 
          * @virtual
          */
-        vfunc_execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): any;
+        vfunc_execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): never;
 
         /**
          * @param g_type 
@@ -1704,7 +1704,7 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        vfunc_execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): never;
 
         /**
          * @param g_type 
@@ -1723,7 +1723,7 @@ export namespace Bump {
          * @param _res_ 
          * @virtual
          */
-        vfunc_execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        vfunc_execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): never;
 
         // Methods
         /**
@@ -1750,7 +1750,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): any;
+        execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): null;
 
         /**
          * @param g_type 
@@ -1759,7 +1759,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param g_type 
@@ -1779,14 +1779,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_async(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param g_type 
          * @param g_dup_func 
          * @param _res_ 
          */
-        execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @param g_type 
@@ -1795,7 +1795,7 @@ export namespace Bump {
          * @param priority 
          * @param cancellable 
          */
-        execute_background(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<any>;
+        execute_background(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): globalThis.Promise<null>;
 
         /**
          * @param g_type 
@@ -1815,14 +1815,14 @@ export namespace Bump {
          * @param cancellable 
          * @param _callback_ 
          */
-        execute_background(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<any> | void);
+        execute_background(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<null> | void);
 
         /**
          * @param g_type 
          * @param g_dup_func 
          * @param _res_ 
          */
-        execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): any;
+        execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @read-only

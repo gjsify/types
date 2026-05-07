@@ -1428,7 +1428,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_project_points_f3(matrix: Graphene.Matrix, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+    function graphene_matrix_project_points_f3(matrix: Graphene.Matrix, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
     /**
      * Transforms an array of input points and writes the result to
@@ -1471,7 +1471,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: (any | null), stride_out: (bigint | number), points_out: (any | null), n_points: number): void;
+    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
 
     /**
      * Queries the number of bytes per pixel for a given format in the given plane.
@@ -1502,13 +1502,13 @@ export namespace Cogl {
     /**
      * @param data 
      */
-    function set_tracing_disabled_on_thread(data: (any | null)): void;
+    function set_tracing_disabled_on_thread(data: null): void;
 
     /**
      * @param data 
      * @param group 
      */
-    function set_tracing_enabled_on_thread(data: (any | null), group: string): void;
+    function set_tracing_enabled_on_thread(data: null, group: string): void;
 
     /**
      * @param fd 
@@ -1537,7 +1537,7 @@ export namespace Cogl {
      * @gir-type Callback
      */
     interface AtlasUpdatePositionCallback {
-        (user_data: (any | null), new_texture: Texture, rect: Mtk.Rectangle): void;
+        (user_data: null, new_texture: Texture, rect: Mtk.Rectangle): void;
     }
 
     /**
@@ -1743,7 +1743,7 @@ export namespace Cogl {
          * @param height 
          * @param user_data 
          */
-        reserve_space(width: number, height: number, user_data: (any | null)): boolean;
+        reserve_space(width: number, height: number, user_data: null): boolean;
     }
 
 
@@ -2164,7 +2164,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map(access: BufferAccess, hints: BufferMapHint): (any | null);
+        map(access: BufferAccess, hints: BufferMapHint): null;
 
         /**
          * Maps a sub-region of the buffer into the application's address space
@@ -2188,7 +2188,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map_range(offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): (any | null);
+        map_range(offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): null;
 
         /**
          * Updates part of the buffer with new data from `data`. Where to put this new
@@ -2659,8 +2659,8 @@ export namespace Cogl {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             context: Context;
-            driver_config: any;
-            driverConfig: any;
+            driver_config: never;
+            driverConfig: never;
             height: number;
             width: number;
         }
@@ -2681,12 +2681,12 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        get driver_config(): any;
+        get driver_config(): null;
 
         /**
          * @construct-only
          */
-        get driverConfig(): any;
+        get driverConfig(): null;
 
         /**
          * @default -1
@@ -3534,7 +3534,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, type: IndicesType, indices_data: (any | null), n_indices: number): Indices;
+        static ["new"](context: Context, type: IndicesType, indices_data: null, n_indices: number): Indices;
 
         // Signals
         /** @signal */
@@ -3942,7 +3942,7 @@ export namespace Cogl {
          * @param window_out 
          * @virtual
          */
-        vfunc_get_window_handles(device_out: (any | null), window_out: (any | null)): boolean;
+        vfunc_get_window_handles(device_out: null, window_out: null): boolean;
 
         /**
          * Implementation for https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_partial_update.txt
@@ -4054,7 +4054,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        direct_scanout(scanout: Scanout, info: FrameInfo, user_data: (any | null)): boolean;
+        direct_scanout(scanout: Scanout, info: FrameInfo, user_data: null): boolean;
 
         /**
          * Gets the current age of the buffer contents.
@@ -4112,7 +4112,7 @@ export namespace Cogl {
          * @param device_out 
          * @param window_out 
          */
-        get_window_handles(device_out: (any | null), window_out: (any | null)): boolean;
+        get_window_handles(device_out: null, window_out: null): boolean;
 
         /**
          * Implementation for https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_partial_update.txt
@@ -4154,7 +4154,7 @@ export namespace Cogl {
          * @param frame_info 
          * @param user_data 
          */
-        swap_buffers(frame_info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers(frame_info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps the current back buffer being rendered too, to the front for
@@ -4196,7 +4196,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_buffers_with_damage(region: Mtk.Region, info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers_with_damage(region: Mtk.Region, info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps a region of the back buffer being rendered too, to the front for
@@ -4211,7 +4211,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_region(region: Mtk.Region, info: FrameInfo, user_data: (any | null)): void;
+        swap_region(region: Mtk.Region, info: FrameInfo, user_data: null): void;
     }
 
 
@@ -5288,7 +5288,7 @@ export namespace Cogl {
          * @param name the name of the function.
          * @returns a pointer to the requested function or `null` if the   function is not available.
          */
-        get_proc_address(name: string): (any | null);
+        get_proc_address(name: string): null;
 
         /**
          * Queries which window system backend Cogl has chosen to use.
@@ -5937,7 +5937,7 @@ export namespace Cogl {
             context: Context;
             format: PixelFormat;
             height: number;
-            loader: any;
+            loader: never;
             width: number;
         }
     }
@@ -5974,7 +5974,7 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        set loader(val: any);
+        set loader(val: never);
 
         /**
          * @construct-only
@@ -6796,12 +6796,12 @@ export namespace Cogl {
 
         get_width(): number;
 
-        mmap(): (any | null);
+        mmap(): null;
 
         /**
          * @param data 
          */
-        munmap(data: (any | null)): boolean;
+        munmap(data: null): boolean;
 
         sync_read_end(): boolean;
 

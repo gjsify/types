@@ -57,8 +57,8 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            arrow_file_reader: any;
-            arrowFileReader: any;
+            arrow_file_reader: never;
+            arrowFileReader: never;
         }
     }
 
@@ -72,12 +72,12 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set arrow_file_reader(val: any);
+        set arrow_file_reader(val: never);
 
         /**
          * @construct-only
          */
-        set arrowFileReader(val: any);
+        set arrowFileReader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -154,8 +154,8 @@ export namespace Parquet {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            arrow_file_writer: any;
-            arrowFileWriter: any;
+            arrow_file_writer: never;
+            arrowFileWriter: never;
         }
     }
 
@@ -169,12 +169,12 @@ export namespace Parquet {
         /**
          * @construct-only
          */
-        set arrow_file_writer(val: any);
+        set arrow_file_writer(val: never);
 
         /**
          * @construct-only
          */
-        set arrowFileWriter(val: any);
+        set arrowFileWriter(val: never);
 
         /**
          * Compile-time signal type information.

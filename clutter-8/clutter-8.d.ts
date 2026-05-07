@@ -7132,7 +7132,7 @@ export namespace Clutter {
     /**
      * @param func 
      */
-    function set_custom_backend_func(func: (any | null)): void;
+    function set_custom_backend_func(func: null): void;
 
     /**
      * Adds a function to be called whenever there are no higher priority
@@ -15741,7 +15741,7 @@ export namespace Clutter {
          * 
          * @param klass a {@link GObject.ObjectClass} pointer
          */
-        static get_for_class(klass: (any | null)): BindingPool;
+        static get_for_class(klass: null): BindingPool;
 
         // Methods
         /**
@@ -22272,7 +22272,7 @@ export namespace Clutter {
          * the platform Clutter is running on.
          * @param user_data data to be passed to the signal handlers, or `null`
          */
-        connect_signals(user_data: (any | null)): void;
+        connect_signals(user_data: null): void;
 
         /**
          * Connects all the signals defined into a UI definition file to their
@@ -24006,7 +24006,7 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            presented: (arg0: StageView, arg1: (any | null)) => void;
+            presented: (arg0: StageView, arg1: null) => void;
             "notify::key-focus": (pspec: GObject.ParamSpec) => void;
             "notify::perspective": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -25335,7 +25335,7 @@ export namespace Clutter {
              * @action
              * @run-last
              */
-            "insert-text": (arg0: string, arg1: number, arg2: (any | null)) => void;
+            "insert-text": (arg0: string, arg1: number, arg2: null) => void;
             /**
              * The ::text-changed signal is emitted after `actor`'s text changes
              * @signal

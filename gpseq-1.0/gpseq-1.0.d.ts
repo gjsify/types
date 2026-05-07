@@ -264,7 +264,7 @@ export namespace Gpseq {
      * @param combiner 
      * @param identity 
      */
-    function collectors_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, accumulator: FoldFunc, combiner: CombineFunc, identity: any): Collector;
+    function collectors_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, accumulator: FoldFunc, combiner: CombineFunc, identity: never): Collector;
 
     /**
      * @param g_type 
@@ -324,7 +324,7 @@ export namespace Gpseq {
      * @param g_dup_func 
      * @param cmp 
      */
-    function compares_reverse(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, cmp: GLib.CompareDataFunc): [GLib.CompareDataFunc, any];
+    function compares_reverse(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, cmp: GLib.CompareDataFunc): [GLib.CompareDataFunc, null];
 
     /**
      * @param g_type 
@@ -332,7 +332,7 @@ export namespace Gpseq {
      * @param cmp 
      * @param cmp2 
      */
-    function compares_join(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, cmp: GLib.CompareDataFunc, cmp2: GLib.CompareDataFunc): [GLib.CompareDataFunc, any];
+    function compares_join(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, cmp: GLib.CompareDataFunc, cmp2: GLib.CompareDataFunc): [GLib.CompareDataFunc, null];
 
     /**
      * @param a 
@@ -412,7 +412,7 @@ export namespace Gpseq {
      * @param array 
      * @param compare 
      */
-    function parallel_sort(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], compare: GLib.CompareDataFunc): Future;
+    function parallel_sort(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], compare: GLib.CompareDataFunc): Future;
 
     /**
      * @param g_type 
@@ -439,7 +439,7 @@ export namespace Gpseq {
      * @param func 
      * @since 0.2.0-alpha
      */
-    function blocking_get(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): any;
+    function blocking_get(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): null;
 
     /**
      * @param g_type 
@@ -447,7 +447,7 @@ export namespace Gpseq {
      * @param left 
      * @since 0.3.0-alpha
      */
-    function join(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, left: TaskFunc): [any[], number];
+    function join(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, left: TaskFunc): [null[], number];
 
     /**
      * @param atomic 
@@ -505,70 +505,70 @@ export namespace Gpseq {
      * @gir-type Callback
      */
     interface CombineFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, a: any, b: any): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, a: null, b: null): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface EachChunkFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, chunk: any[]): boolean;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, chunk: null[]): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface FlatMapFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): Gee.Iterator;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: null): Gee.Iterator;
     }
 
     /**
      * @gir-type Callback
      */
     interface FoldFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any, a: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: null, a: null): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface Func {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): void;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface MapFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: null): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface Predicate {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: any): boolean;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, g: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface SupplyFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface TaskFunc {
-        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): any;
+        (g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): never;
     }
 
     /**
      * @gir-type Callback
      */
     interface TeeMergeFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, results: GObject.Object[]): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, results: GObject.Object[]): never;
     }
 
     /**
@@ -673,7 +673,7 @@ export namespace Gpseq {
 
         _init(...args: any[]): void;
 
-        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], start: number, stop: number): ArraySpliterator;
+        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], start: number, stop: number): ArraySpliterator;
 
         // Signals
         /** @signal */
@@ -974,7 +974,7 @@ export namespace Gpseq {
 
         get_promise(): Promise;
 
-        join(): any;
+        join(): null;
 
         fork(): void;
 
@@ -1039,12 +1039,12 @@ export namespace Gpseq {
         // Methods
         get_ready(): boolean;
 
-        get_value(): any;
+        get_value(): null;
 
         /**
          * @param value 
          */
-        set_value(value: any): void;
+        set_value(value: never): void;
 
         get_error(): GLib.Error;
 
@@ -1266,7 +1266,7 @@ export namespace Gpseq {
          * @param g_dup_func 
          * @param value 
          */
-        static of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Future;
+        static of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: never): Future;
 
         /**
          * @param g_type 
@@ -1291,13 +1291,13 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_wait(): any;
+        vfunc_wait(): never;
 
         /**
          * @param end_time 
          * @virtual
          */
-        vfunc_wait_until(end_time: number): [boolean, any];
+        vfunc_wait_until(end_time: number): [boolean, never];
 
         /**
          * @param a_type 
@@ -1310,12 +1310,12 @@ export namespace Gpseq {
         // Methods
         get_ready(): boolean;
 
-        wait(): any;
+        wait(): null;
 
         /**
          * @param end_time 
          */
-        wait_until(end_time: (bigint | number)): [boolean, any];
+        wait_until(end_time: (bigint | number)): [boolean, null];
 
         /**
          * @param a_type 
@@ -1329,7 +1329,7 @@ export namespace Gpseq {
         /**
          * @param object 
          */
-        equal_to(object: any): boolean;
+        equal_to(object: never): boolean;
 
         /**
          * @virtual
@@ -1340,11 +1340,11 @@ export namespace Gpseq {
          * @param object 
          * @virtual
          */
-        vfunc_equal_to(object: any): boolean;
+        vfunc_equal_to(object: null): boolean;
 
         get_value_type(): GObject.GType;
 
-        get_value(): any;
+        get_value(): null;
 
         get_exception(): GLib.Error;
 
@@ -1356,11 +1356,11 @@ export namespace Gpseq {
          * @param expected 
          * @param equal 
          */
-        ok_with(expected: any, equal: Gee.EqualDataFunc): Result;
+        ok_with(expected: never, equal: Gee.EqualDataFunc): Result;
 
         future(): Future;
 
-        get(): any;
+        get(): null;
 
         /**
          * @param a_type 
@@ -1409,7 +1409,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get(): any;
+        vfunc_get(): never;
 
         /**
          * @param a_type 
@@ -1530,7 +1530,7 @@ export namespace Gpseq {
 
         _init(...args: any[]): void;
 
-        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], start: number, stop: number): GenericArraySpliterator;
+        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], start: number, stop: number): GenericArraySpliterator;
 
         // Signals
         /** @signal */
@@ -1988,7 +1988,7 @@ export namespace Gpseq {
             gDestroyFunc: GLib.DestroyNotify;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
-            value: any;
+            value: never;
             is_present: boolean;
             isPresent: boolean;
         }
@@ -2044,7 +2044,7 @@ export namespace Gpseq {
         /**
          * @read-only
          */
-        get value(): any;
+        get value(): null;
 
         /**
          * @read-only
@@ -2072,7 +2072,7 @@ export namespace Gpseq {
 
         static empty(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Optional;
 
-        static of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Optional;
+        static of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: never): Optional;
 
         static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Optional;
 
@@ -2092,7 +2092,7 @@ export namespace Gpseq {
         // Methods
         get_value_type(): GObject.GType;
 
-        get_value(): any;
+        get_value(): null;
 
         get_is_present(): boolean;
 
@@ -2106,19 +2106,19 @@ export namespace Gpseq {
         /**
          * @param other 
          */
-        or_else(other: any): any;
+        or_else(other: never): null;
 
         /**
          * @param supplier 
          */
-        or_else_get(supplier: SupplyFunc): any;
+        or_else_get(supplier: SupplyFunc): null;
 
         /**
          * @param error_supplier 
          */
-        or_else_throw(error_supplier: SupplyFunc): any;
+        or_else_throw(error_supplier: SupplyFunc): null;
 
-        or_else_fail(): any;
+        or_else_fail(): null;
 
         /**
          * @param pred 
@@ -2173,7 +2173,7 @@ export namespace Gpseq {
         /**
          * @param value 
          */
-        set_value(value: any): void;
+        set_value(value: never): void;
 
         /**
          * @param exception 
@@ -2326,7 +2326,7 @@ export namespace Gpseq {
          * @param array 
          * @param env 
          */
-        static of_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], env: TaskEnv): Seq;
+        static of_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], env: TaskEnv): Seq;
 
         /**
          * @param g_type 
@@ -2334,7 +2334,7 @@ export namespace Gpseq {
          * @param array 
          * @param env 
          */
-        static of_owned_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], env: TaskEnv): Seq;
+        static of_owned_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], env: TaskEnv): Seq;
 
         /**
          * @param g_type 
@@ -2342,7 +2342,7 @@ export namespace Gpseq {
          * @param array 
          * @param env 
          */
-        static of_generic_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: any[], env: TaskEnv): Seq;
+        static of_generic_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: never[], env: TaskEnv): Seq;
 
         /**
          * @param g_type 
@@ -2394,7 +2394,7 @@ export namespace Gpseq {
          * @param next 
          * @param env 
          */
-        static iterate(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, seed: any, pred: Gee.Predicate, next: Gee.MapFunc, env: TaskEnv): Seq;
+        static iterate(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, seed: never, pred: Gee.Predicate, next: Gee.MapFunc, env: TaskEnv): Seq;
 
         /**
          * @param g_type 
@@ -2498,7 +2498,7 @@ export namespace Gpseq {
          * @param combiner 
          * @param identity 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, accumulator: FoldFunc, combiner: CombineFunc, identity: any): Future;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, accumulator: FoldFunc, combiner: CombineFunc, identity: never): Future;
 
         /**
          * @param accumulator 
@@ -2650,8 +2650,8 @@ export namespace Gpseq {
             isLeaf: boolean;
             is_leftmost: boolean;
             isLeftmost: boolean;
-            empty_result: any;
-            emptyResult: any;
+            empty_result: never;
+            emptyResult: never;
         }
     }
 
@@ -2770,12 +2770,12 @@ export namespace Gpseq {
         /**
          * @read-only
          */
-        get empty_result(): any;
+        get empty_result(): null;
 
         /**
          * @read-only
          */
-        get emptyResult(): any;
+        get emptyResult(): null;
 
         /**
          * Compile-time signal type information.
@@ -2808,19 +2808,19 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_empty_result(): any;
+        vfunc_get_empty_result(): never;
 
         /**
          * @virtual
          */
-        vfunc_leaf_compute(): any;
+        vfunc_leaf_compute(): never;
 
         /**
          * @param left 
          * @param right 
          * @virtual
          */
-        vfunc_merge_results(left: any, right: any): any;
+        vfunc_merge_results(left: null, right: null): never;
 
         /**
          * @param spliterator 
@@ -2841,15 +2841,15 @@ export namespace Gpseq {
 
         cancel_later_nodes(): void;
 
-        get_empty_result(): any;
+        get_empty_result(): null;
 
-        leaf_compute(): any;
+        leaf_compute(): null;
 
         /**
          * @param left 
          * @param right 
          */
-        merge_results(left: any, right: any): any;
+        merge_results(left: never, right: never): null;
 
         /**
          * @param spliterator 
@@ -2935,7 +2935,7 @@ export namespace Gpseq {
 
         _init(...args: any[]): void;
 
-        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, data: any[]): SubArray;
+        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, data: never[]): SubArray;
 
         static from_sub_array(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, array: SubArray, start: number, stop: number): SubArray;
 
@@ -2953,7 +2953,7 @@ export namespace Gpseq {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_data(): any[];
+        get_data(): null[];
 
         /**
          * @param args 
@@ -2966,13 +2966,13 @@ export namespace Gpseq {
         /**
          * @param index 
          */
-        get(index: number): any;
+        get(index: number): null;
 
         /**
          * @param index 
          * @param item 
          */
-        set(index: number, item: any): void;
+        set(index: number, item: never): void;
 
         /**
          * @param args 
@@ -2999,7 +2999,7 @@ export namespace Gpseq {
          * @param src_start 
          * @param count 
          */
-        copy_array(start: number, src: any[], src_start: number, count: number): void;
+        copy_array(start: number, src: never[], src_start: number, count: number): void;
 
         /**
          * @param start 
@@ -3025,7 +3025,7 @@ export namespace Gpseq {
          * @param f 
          * @param seed 
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): null;
 
         /**
          * @param a_type 
@@ -3040,7 +3040,7 @@ export namespace Gpseq {
          * @param f 
          * @param seed 
          */
-        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: never): Gee.Iterator;
 
         /**
          * @param pred 
@@ -3068,7 +3068,7 @@ export namespace Gpseq {
         /**
          * @param pred 
          */
-        first_match(pred: Gee.Predicate): (any | null);
+        first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -3083,12 +3083,12 @@ export namespace Gpseq {
         /**
          * @param compare 
          */
-        max(compare: GLib.CompareDataFunc): any;
+        max(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
          */
-        min(compare: GLib.CompareDataFunc): any;
+        min(compare: GLib.CompareDataFunc): null;
 
         /**
          * @param compare 
@@ -3118,7 +3118,7 @@ export namespace Gpseq {
          * @param seed 
          * @virtual
          */
-        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): never;
 
         /**
          * @param a_type 
@@ -3135,7 +3135,7 @@ export namespace Gpseq {
          * @param seed 
          * @virtual
          */
-        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: null): Gee.Iterator;
 
         /**
          * @param pred 
@@ -3168,7 +3168,7 @@ export namespace Gpseq {
          * @param pred 
          * @virtual
          */
-        vfunc_first_match(pred: Gee.Predicate): (any | null);
+        vfunc_first_match(pred: Gee.Predicate): null;
 
         /**
          * @param pred 
@@ -3186,13 +3186,13 @@ export namespace Gpseq {
          * @param compare 
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): any;
+        vfunc_max(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): any;
+        vfunc_min(compare: GLib.CompareDataFunc): never;
 
         /**
          * @param compare 
@@ -4058,7 +4058,7 @@ export namespace Gpseq {
          * @param g_dup_func 
          * @param func 
          */
-        blocking(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): any;
+        blocking(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): null;
     }
 
 
@@ -4080,7 +4080,7 @@ export namespace Gpseq {
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
             gDestroyFunc: GLib.DestroyNotify;
-            value: any;
+            value: never;
             value_type: GObject.GTypeInput;
             valueType: GObject.GTypeInput;
         }
@@ -4126,7 +4126,7 @@ export namespace Gpseq {
         /**
          * @read-only
          */
-        get value(): any;
+        get value(): null;
 
         /**
          * @read-only
@@ -4152,7 +4152,7 @@ export namespace Gpseq {
 
         _init(...args: any[]): void;
 
-        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Wrapper;
+        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: never): Wrapper;
 
         // Signals
         /** @signal */
@@ -4168,7 +4168,7 @@ export namespace Gpseq {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_value(): any;
+        get_value(): null;
 
         get_value_type(): GObject.GType;
     }
@@ -4629,27 +4629,27 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_create_accumulator(): any;
+            vfunc_create_accumulator(): never;
 
             /**
              * @param g 
              * @param a 
              * @virtual
              */
-            vfunc_accumulate(g: any, a: any): void;
+            vfunc_accumulate(g: null, a: null): void;
 
             /**
              * @param a 
              * @param b 
              * @virtual
              */
-            vfunc_combine(a: any, b: any): any;
+            vfunc_combine(a: null, b: null): never;
 
             /**
              * @param a 
              * @virtual
              */
-            vfunc_finish(a: any): any;
+            vfunc_finish(a: null): never;
         }
 
 
@@ -4677,24 +4677,24 @@ export namespace Gpseq {
         // Methods
         get_features(): CollectorFeatures;
 
-        create_accumulator(): any;
+        create_accumulator(): null;
 
         /**
          * @param g 
          * @param a 
          */
-        accumulate(g: any, a: any): void;
+        accumulate(g: never, a: never): void;
 
         /**
          * @param a 
          * @param b 
          */
-        combine(a: any, b: any): any;
+        combine(a: never, b: never): null;
 
         /**
          * @param a 
          */
-        finish(a: any): any;
+        finish(a: never): null;
     }
 
 
@@ -4832,7 +4832,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get(): any;
+            vfunc_get(): never;
 
             /**
              * @param a_type 
@@ -4892,19 +4892,19 @@ export namespace Gpseq {
         (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, result: Result): Result;
     }
     interface FlatMapFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Result;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: null): Result;
     }
     interface MapFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: null): never;
     }
     interface MapErrorFunc {
         (err: GLib.Error): GLib.Error;
     }
     interface LightMapFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: null): never;
     }
     interface ZipFunc {
-        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, b_type: GObject.GType, b_dup_func: GObject.BoxedCopyFunc, c_type: GObject.GType, c_dup_func: GObject.BoxedCopyFunc, a: any, b: any): any;
+        (a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, b_type: GObject.GType, b_dup_func: GObject.BoxedCopyFunc, c_type: GObject.GType, c_dup_func: GObject.BoxedCopyFunc, a: null, b: null): never;
     }
 
         // Constructor properties interface
@@ -4921,7 +4921,7 @@ export namespace Gpseq {
         * @param g_dup_func 
         * @param value 
         */
-        of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Result;
+        of(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: never): Result;
         /**
         * @param g_type 
         * @param g_dup_func 
@@ -4938,7 +4938,7 @@ export namespace Gpseq {
         // Methods
         get_value_type(): GObject.GType;
 
-        get_value(): any;
+        get_value(): null;
 
         get_exception(): GLib.Error;
 
@@ -4950,11 +4950,11 @@ export namespace Gpseq {
          * @param expected 
          * @param equal 
          */
-        ok_with(expected: any, equal: Gee.EqualDataFunc): Result;
+        ok_with(expected: never, equal: Gee.EqualDataFunc): Result;
 
         future(): Future;
 
-        get(): any;
+        get(): null;
 
         /**
          * @param a_type 
@@ -5020,20 +5020,20 @@ export namespace Gpseq {
              * @param data 
              * @virtual
              */
-            vfunc_send(data: any): Result;
+            vfunc_send(data: null): Result;
 
             /**
              * @param data 
              * @param end_time 
              * @virtual
              */
-            vfunc_send_until(data: any, end_time: number): Result;
+            vfunc_send_until(data: null, end_time: number): Result;
 
             /**
              * @param data 
              * @virtual
              */
-            vfunc_try_send(data: any): Result;
+            vfunc_try_send(data: null): Result;
         }
 
 
@@ -5057,18 +5057,18 @@ export namespace Gpseq {
         /**
          * @param data 
          */
-        send(data: any): Result;
+        send(data: never): Result;
 
         /**
          * @param data 
          * @param end_time 
          */
-        send_until(data: any, end_time: (bigint | number)): Result;
+        send_until(data: never, end_time: (bigint | number)): Result;
 
         /**
          * @param data 
          */
-        try_send(data: any): Result;
+        try_send(data: never): Result;
     }
 
 
@@ -5204,7 +5204,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_supply(): any;
+            vfunc_supply(): never;
         }
 
 
@@ -5230,7 +5230,7 @@ export namespace Gpseq {
     interface Supplier extends GObject.Object, Supplier.Interface {
 
         // Methods
-        supply(): any;
+        supply(): null;
     }
 
 

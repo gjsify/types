@@ -3451,7 +3451,7 @@ export namespace TelepathyGLib {
      * @returns the value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_boxed(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string, type: GObject.GType): (any | null);
+    function asv_get_boxed(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string, type: GObject.GType): null;
 
     /**
      * If a value for `key` in `asv` is present and is an array of bytes
@@ -3731,7 +3731,7 @@ export namespace TelepathyGLib {
      * @param value A GValue pre-initialized to the right type, into which to put  the value
      * @param getter_data The getter_data from the {@link TelepathyGLib.DBusPropertiesMixinPropImpl},  which must be a string containing the GObject property's name
      */
-    function dbus_properties_mixin_getter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), getter_data: (any | null)): void;
+    function dbus_properties_mixin_getter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), getter_data: null): void;
 
     /**
      * Declare that the DBus.Properties interface represented by `g_iface`
@@ -3739,7 +3739,7 @@ export namespace TelepathyGLib {
      * @param g_iface a pointer to a `TpSvcDBusPropertiesClass` structure
      * @param iface_data ignored
      */
-    function dbus_properties_mixin_iface_init(g_iface: (any | null), iface_data: (any | null)): void;
+    function dbus_properties_mixin_iface_init(g_iface: null, iface_data: null): void;
 
     /**
      * Sets a property to the value specified by `value`, as if by
@@ -3766,7 +3766,7 @@ export namespace TelepathyGLib {
      * @param setter_data The setter_data from the {@link TelepathyGLib.DBusPropertiesMixinPropImpl},  which must be a string containing the GObject property's name
      * @returns `true`
      */
-    function dbus_properties_mixin_setter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), setter_data: (any | null)): boolean;
+    function dbus_properties_mixin_setter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), setter_data: null): boolean;
 
     /**
      * Open the given file for writing and duplicate its file descriptor to
@@ -3835,7 +3835,7 @@ export namespace TelepathyGLib {
      * @param ignored not used
      * @since 0.7.1
      */
-    function debug_timestamped_log_handler(log_domain: string, log_level: GLib.LogLevelFlags, message: string, ignored: (any | null)): void;
+    function debug_timestamped_log_handler(log_domain: string, log_level: GLib.LogLevelFlags, message: string, ignored: null): void;
 
     /**
      * <!-- -->
@@ -3885,7 +3885,7 @@ export namespace TelepathyGLib {
      * @param context User data to be passed to the normalization callback
      * @returns the handle corresponding to the given string, or 0 if it is invalid.
      */
-    function handle_ensure(self: HandleRepoIface, id: string, context: (any | null)): Handle;
+    function handle_ensure(self: HandleRepoIface, id: string, context: null): Handle;
 
     /**
      * If the given handle type is valid, return `true`. If not, set `error`
@@ -4190,7 +4190,7 @@ export namespace TelepathyGLib {
      * @param source_tag the source tag for the {@link Gio.SimpleAsyncResult}
      * @since 0.11.9
      */
-    function simple_async_report_success_in_idle(source: (GObject.Object | null), callback: (Gio.AsyncReadyCallback<(GObject.Object | null)> | null), source_tag: (any | null)): void;
+    function simple_async_report_success_in_idle(source: (GObject.Object | null), callback: (Gio.AsyncReadyCallback<(GObject.Object | null)> | null), source_tag: null): void;
 
     /**
      * Declare that `g_interface` implements the given D-Bus interface, with the
@@ -4397,14 +4397,14 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface DBusPropertiesMixinGetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, getter_data: (any | null)): void;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, getter_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface DBusPropertiesMixinSetter<A = GObject.Object> {
-        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, setter_data: (any | null)): boolean;
+        (object: A, iface: GLib.Quark, name: GLib.Quark, value: unknown, setter_data: null): boolean;
     }
 
     /**
@@ -4432,7 +4432,7 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface IntFunc {
-        (i: number, userdata: (any | null)): void;
+        (i: number, userdata: null): void;
     }
 
     /**
@@ -5219,8 +5219,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             connection_error: string;
             connectionError: string;
-            connection_error_details: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            connectionErrorDetails: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            connection_error_details: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            connectionErrorDetails: ({ [key: string]: any } | GLib.HashTable<never, never>);
             connection_manager: string;
             connectionManager: string;
             connection_status: number;
@@ -5586,7 +5586,7 @@ export namespace TelepathyGLib {
          * @since 0.11.7
          * @read-only
          */
-        get connection_error_details(): GLib.HashTable<any, any>;
+        get connection_error_details(): GLib.HashTable<never, never>;
 
         /**
          * A map from string to {@link GObject.Value} containing extensible error details
@@ -5610,7 +5610,7 @@ export namespace TelepathyGLib {
          * @since 0.11.7
          * @read-only
          */
-        get connectionErrorDetails(): GLib.HashTable<any, any>;
+        get connectionErrorDetails(): GLib.HashTable<never, never>;
 
         /**
          * The account's connection manager name.
@@ -6444,7 +6444,7 @@ export namespace TelepathyGLib {
          * @param invert `true` if you wish to invert the value of `target_property`   (i.e. `false` if connected)
          * @returns the {@link GObject.Binding} instance representing the binding   between the `self` and the `target`. The binding is released whenever the   {@link GObject.Binding} reference count reaches zero.
          */
-        bind_connection_status_to_property(target: (any | null), target_property: string, invert: boolean): GObject.Binding;
+        bind_connection_status_to_property(target: null, target_property: string, invert: boolean): GObject.Binding;
 
         /**
          * If the account's connection is not connected, return the D-Bus error name
@@ -8123,7 +8123,7 @@ export namespace TelepathyGLib {
          * Return the {@link TelepathyGLib.AccountChannelRequest.request} construct-only property
          * @returns the value of {@link TelepathyGLib.AccountChannelRequest.request}
          */
-        get_request(): GLib.HashTable<any, any>;
+        get_request(): GLib.HashTable<never, never>;
 
         /**
          * Return the {@link TelepathyGLib.AccountChannelRequest.user_action_time} construct-only property
@@ -8300,7 +8300,7 @@ export namespace TelepathyGLib {
          * instead.
          * @param hints a #TP_HASH_TYPE_STRING_VARIANT_MAP
          */
-        set_hints(hints: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_hints(hints: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Indicate that the contacts listed in `ids` have to be invited to the
@@ -8799,7 +8799,7 @@ export namespace TelepathyGLib {
             automaticStatus: string;
             automatic_status_message: string;
             automaticStatusMessage: string;
-            avatar: any[];
+            avatar: never[];
             avatar_mime_type: string;
             avatarMimeType: string;
             connect_automatically: boolean;
@@ -8929,7 +8929,7 @@ export namespace TelepathyGLib {
          * @since 0.19.1
          * @read-only
          */
-        get avatar(): any[];
+        get avatar(): null[];
 
         /**
          * The mime type of the {@link TelepathyGLib.AccountRequest.avatar} property. To change
@@ -9368,7 +9368,7 @@ export namespace TelepathyGLib {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             account: Account;
-            channels: any[];
+            channels: never[];
             connection: Connection;
             dispatch_operation: ChannelDispatchOperation;
             dispatchOperation: ChannelDispatchOperation;
@@ -9405,7 +9405,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        get channels(): any[];
+        get channels(): null[];
 
         /**
          * A {@link TelepathyGLib.Connection} object representing the Connection of the DispatchOperation
@@ -11044,7 +11044,7 @@ export namespace TelepathyGLib {
 
         // Constructor properties interface
         interface ConstructorProps extends Channel.ConstructorProps {
-            contents: any[];
+            contents: never[];
             flags: number;
             hardware_streaming: boolean;
             hardwareStreaming: boolean;
@@ -11063,8 +11063,8 @@ export namespace TelepathyGLib {
             mutable_contents: boolean;
             mutableContents: boolean;
             state: number;
-            state_details: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            stateDetails: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            state_details: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            stateDetails: ({ [key: string]: any } | GLib.HashTable<never, never>);
             state_reason: CallStateReason;
             stateReason: CallStateReason;
         }
@@ -11088,7 +11088,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get contents(): any[];
+        get contents(): null[];
 
         /**
          * A {@link TelepathyGLib.CallFlags} specifying the flags of the call state.
@@ -11244,7 +11244,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get state_details(): GLib.HashTable<any, any>;
+        get state_details(): GLib.HashTable<never, never>;
 
         /**
          * Detailed infoermation about {@link TelepathyGLib.CallChannel.state}. It is a {@link GLib.HashTable}
@@ -11252,7 +11252,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get stateDetails(): GLib.HashTable<any, any>;
+        get stateDetails(): GLib.HashTable<never, never>;
 
         /**
          * Reason why {@link TelepathyGLib.CallChannel.state} last changed.
@@ -11405,7 +11405,7 @@ export namespace TelepathyGLib {
          * <!-- -->
          * @returns the value of {@link TelepathyGLib.CallChannel.state}
          */
-        get_state(): [CallState, CallFlags | null, GLib.HashTable<any, any> | null, CallStateReason | null];
+        get_state(): [CallState, CallFlags | null, GLib.HashTable<never, never> | null, CallStateReason | null];
 
         /**
          * Request that the call is ended. All contents will be removed from `self` so
@@ -11661,7 +11661,7 @@ export namespace TelepathyGLib {
             media_type: number;
             mediaType: number;
             name: string;
-            streams: any[];
+            streams: never[];
         }
     }
 
@@ -11728,7 +11728,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get streams(): any[];
+        get streams(): null[];
 
         /**
          * Compile-time signal type information.
@@ -14512,7 +14512,7 @@ export namespace TelepathyGLib {
         // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps {
             account: Account;
-            channels: any[];
+            channels: never[];
             connection: Connection;
             possible_handlers: string[];
             possibleHandlers: string[];
@@ -14597,7 +14597,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        get channels(): any[];
+        get channels(): null[];
 
         /**
          * The {@link TelepathyGLib.Connection} with which the channels are associated.
@@ -14653,7 +14653,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<any, any>)): ChannelDispatchOperation;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): ChannelDispatchOperation;
 
         // Signals
         /** @signal */
@@ -15811,7 +15811,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<any, any>)): ChannelRequest;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): ChannelRequest;
 
         // Signals
         /** @signal */
@@ -15860,13 +15860,13 @@ export namespace TelepathyGLib {
          * Return the {@link TelepathyGLib.ChannelRequest.hints} property
          * @returns the value of {@link TelepathyGLib.ChannelRequest.hints}
          */
-        get_hints(): GLib.HashTable<any, any>;
+        get_hints(): GLib.HashTable<never, never>;
 
         /**
          * Return the {@link TelepathyGLib.ChannelRequest.immutable_properties} construct-only property
          * @returns the value of {@link TelepathyGLib.ChannelRequest.immutable_properties}
          */
-        get_immutable_properties(): GLib.HashTable<any, any>;
+        get_immutable_properties(): GLib.HashTable<never, never>;
 
         /**
          * return the {@link TelepathyGLib.ChannelRequest.preferred_handler} construct-only property
@@ -16433,8 +16433,8 @@ export namespace TelepathyGLib {
             balanceScale: number;
             balance_uri: string;
             balanceUri: string;
-            blocked_contacts: any[];
-            blockedContacts: any[];
+            blocked_contacts: never[];
+            blockedContacts: never[];
             can_change_contact_list: boolean;
             canChangeContactList: boolean;
             can_report_abusive: boolean;
@@ -16577,7 +16577,7 @@ export namespace TelepathyGLib {
          * @since 0.17.0
          * @read-only
          */
-        get blocked_contacts(): any[];
+        get blocked_contacts(): null[];
 
         /**
          * A {@link GLib.PtrArray} of blocked {@link TelepathyGLib.Contact}. Changes are notified using the
@@ -16593,7 +16593,7 @@ export namespace TelepathyGLib {
          * @since 0.17.0
          * @read-only
          */
-        get blockedContacts(): any[];
+        get blockedContacts(): null[];
 
         /**
          * If true, presence subscription and publication can be changed using the
@@ -17239,7 +17239,7 @@ export namespace TelepathyGLib {
          * @param invert `true` if you wish to invert the value of `target_property`   (i.e. `false` if connected)
          * @returns the {@link GObject.Binding} instance representing the binding   between the `self` and the `target`. The binding is released whenever the   {@link GObject.Binding} reference count reaches zero.
          */
-        bind_connection_status_to_property(target: (any | null), target_property: string, invert: boolean): GObject.Binding;
+        bind_connection_status_to_property(target: null, target_property: string, invert: boolean): GObject.Binding;
 
         /**
          * Direct the server to block `contacts`.
@@ -20814,7 +20814,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: (GLib.HashTable<any, any> | null)): globalThis.Promise<Gio.DBusConnection>;
+        offer_async(params: (GLib.HashTable<never, never> | null)): globalThis.Promise<Gio.DBusConnection>;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20824,7 +20824,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<any, any> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        offer_async(params: (GLib.HashTable<never, never> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20834,7 +20834,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<any, any> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.DBusConnection> | void);
+        offer_async(params: (GLib.HashTable<never, never> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.DBusConnection> | void);
 
         /**
          * Finishes offering an outgoing D-Bus tube. The returned {@link Gio.DBusConnection}
@@ -21647,10 +21647,10 @@ export namespace TelepathyGLib {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             account: Account;
-            channels: any[];
+            channels: never[];
             connection: Connection;
-            requests_satisfied: any[];
-            requestsSatisfied: any[];
+            requests_satisfied: never[];
+            requestsSatisfied: never[];
             user_action_time: (bigint | number);
             userActionTime: (bigint | number);
         }
@@ -21686,7 +21686,7 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        get channels(): any[];
+        get channels(): null[];
 
         /**
          * A {@link TelepathyGLib.Connection} object representing the Connection of the DispatchOperation
@@ -21708,7 +21708,7 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        get requests_satisfied(): any[];
+        get requests_satisfied(): null[];
 
         /**
          * A {@link GLib.PtrArray} containing {@link TelepathyGLib.ChannelRequest} objects representing the
@@ -21719,7 +21719,7 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        get requestsSatisfied(): any[];
+        get requestsSatisfied(): null[];
 
         /**
          * The time at which user action occurred, or one of the
@@ -22061,7 +22061,7 @@ export namespace TelepathyGLib {
          * @param len a number of bytes
          * @param bytes an array of `len` bytes
          */
-        set_bytes(part: number, key: string, len: number, bytes: (any | null)): void;
+        set_bytes(part: number, key: string, len: number, bytes: null): void;
 
         /**
          * If `handle_or_0` is not zero, reference it with `tp_message_ref_handle()`.
@@ -22163,11 +22163,11 @@ export namespace TelepathyGLib {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             account: Account;
-            channels: any[];
+            channels: never[];
             connection: Connection;
             dispatch_operation: ChannelDispatchOperation;
             dispatchOperation: ChannelDispatchOperation;
-            requests: any[];
+            requests: never[];
         }
     }
 
@@ -22201,7 +22201,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        get channels(): any[];
+        get channels(): null[];
 
         /**
          * A {@link TelepathyGLib.Connection} object representing the Connection that has been passed
@@ -22243,7 +22243,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        get requests(): any[];
+        get requests(): null[];
 
         /**
          * Compile-time signal type information.
@@ -22343,8 +22343,8 @@ export namespace TelepathyGLib {
             addressableVcardFields: string[];
             authentication_types: string[];
             authenticationTypes: string[];
-            avatar_requirements: any;
-            avatarRequirements: any;
+            avatar_requirements: never;
+            avatarRequirements: never;
             capabilities: Capabilities;
             cm_name: string;
             cmName: string;
@@ -22453,7 +22453,7 @@ export namespace TelepathyGLib {
          * @since 0.15.6
          * @read-only
          */
-        get avatar_requirements(): any;
+        get avatar_requirements(): null;
 
         /**
          * A {@link TelepathyGLib.AvatarRequirements} representing the avatar requirements on this
@@ -22462,7 +22462,7 @@ export namespace TelepathyGLib {
          * @since 0.15.6
          * @read-only
          */
-        get avatarRequirements(): any;
+        get avatarRequirements(): null;
 
         /**
          * The classes of channel that can be requested from connections to this
@@ -22645,7 +22645,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<any, any>)): Protocol;
+        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): Protocol;
 
         static new_vardict(dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: GLib.Variant): Protocol;
 
@@ -24048,10 +24048,10 @@ export namespace TelepathyGLib {
 
         // Constructor properties interface
         interface ConstructorProps extends BaseClient.ConstructorProps {
-            callback: any;
-            destroy: any;
-            user_data: any;
-            userData: any;
+            callback: never;
+            destroy: never;
+            user_data: never;
+            userData: never;
         }
     }
 
@@ -24072,7 +24072,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set callback(val: any);
+        set callback(val: never);
 
         /**
          * The {@link GLib.DestroyNotify} function called to free {@link TelepathyGLib.SimpleApprover.user_data}
@@ -24080,21 +24080,21 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set destroy(val: any);
+        set destroy(val: never);
 
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleApprover.callback}.
          * @since 0.11.5
          * @construct-only
          */
-        set user_data(val: any);
+        set user_data(val: never);
 
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleApprover.callback}.
          * @since 0.11.5
          * @construct-only
          */
-        set userData(val: any);
+        set userData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -24488,11 +24488,11 @@ export namespace TelepathyGLib {
         interface ConstructorProps extends BaseClient.ConstructorProps {
             bypass_approval: boolean;
             bypassApproval: boolean;
-            callback: any;
-            destroy: any;
+            callback: never;
+            destroy: never;
             requests: boolean;
-            user_data: any;
-            userData: any;
+            user_data: never;
+            userData: never;
         }
     }
 
@@ -24529,7 +24529,7 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        set callback(val: any);
+        set callback(val: never);
 
         /**
          * The {@link GLib.DestroyNotify} function called to free {@link TelepathyGLib.SimpleHandler.user_data}
@@ -24537,7 +24537,7 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        set destroy(val: any);
+        set destroy(val: never);
 
         /**
          * If `true`, the Handler will implement the Requests interface
@@ -24552,14 +24552,14 @@ export namespace TelepathyGLib {
          * @since 0.11.6
          * @construct-only
          */
-        set user_data(val: any);
+        set user_data(val: never);
 
         /**
          * The user-data pointer passed to {@link TelepathyGLib.SimpleHandler.callback}.
          * @since 0.11.6
          * @construct-only
          */
-        set userData(val: any);
+        set userData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -24613,11 +24613,11 @@ export namespace TelepathyGLib {
 
         // Constructor properties interface
         interface ConstructorProps extends BaseClient.ConstructorProps {
-            callback: any;
-            destroy: any;
+            callback: never;
+            destroy: never;
             recover: boolean;
-            user_data: any;
-            userData: any;
+            user_data: never;
+            userData: never;
         }
     }
 
@@ -24638,7 +24638,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set callback(val: any);
+        set callback(val: never);
 
         /**
          * The {@link GLib.DestroyNotify} function called to free the user-data pointer when
@@ -24646,7 +24646,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set destroy(val: any);
+        set destroy(val: never);
 
         /**
          * The value of the Observer.Recover D-Bus property.
@@ -24662,7 +24662,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set user_data(val: any);
+        set user_data(val: never);
 
         /**
          * The user-data pointer passed to the callback implementing the
@@ -24670,7 +24670,7 @@ export namespace TelepathyGLib {
          * @since 0.11.5
          * @construct-only
          */
-        set userData(val: any);
+        set userData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -24879,7 +24879,7 @@ export namespace TelepathyGLib {
          * the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: (GLib.HashTable<any, any> | null)): globalThis.Promise<boolean>;
+        offer_async(params: (GLib.HashTable<never, never> | null)): globalThis.Promise<boolean>;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24892,7 +24892,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<any, any> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        offer_async(params: (GLib.HashTable<never, never> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24905,7 +24905,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<any, any> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        offer_async(params: (GLib.HashTable<never, never> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
 
         /**
          * Finishes offering an outgoing stream tube.
@@ -25055,8 +25055,8 @@ export namespace TelepathyGLib {
 
         // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps {
-            cert_data: any[];
-            certData: any[];
+            cert_data: never[];
+            certData: never[];
             cert_type: string;
             certType: string;
             parent: Proxy;
@@ -25089,7 +25089,7 @@ export namespace TelepathyGLib {
          * @since 0.19.0
          * @read-only
          */
-        get cert_data(): any[];
+        get cert_data(): null[];
 
         /**
          * The raw data of the certificate or certificate chain, represented
@@ -25106,7 +25106,7 @@ export namespace TelepathyGLib {
          * @since 0.19.0
          * @read-only
          */
-        get certData(): any[];
+        get certData(): null[];
 
         /**
          * The type of the certificate, typically either "x509" or "pgp".
@@ -27093,9 +27093,9 @@ export namespace TelepathyGLib {
         // Fields
         name: string;
 
-        getter_data: any;
+        getter_data: null;
 
-        setter_data: any;
+        setter_data: null;
     }
 
 

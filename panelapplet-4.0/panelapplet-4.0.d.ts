@@ -176,8 +176,8 @@ export namespace PanelApplet {
             settings_path: string;
             settingsPath: string;
             size: number;
-            size_hints: any;
-            sizeHints: any;
+            size_hints: never;
+            sizeHints: never;
         }
     }
 
@@ -261,14 +261,14 @@ export namespace PanelApplet {
         /**
          * The size hints set for the applet. See `panel_applet_set_size_hints()`.
          */
-        get size_hints(): any;
-        set size_hints(val: any);
+        get size_hints(): null;
+        set size_hints(val: never);
 
         /**
          * The size hints set for the applet. See `panel_applet_set_size_hints()`.
          */
-        get sizeHints(): any;
-        set sizeHints(val: any);
+        get sizeHints(): null;
+        set sizeHints(val: never);
 
         /**
          * Compile-time signal type information.

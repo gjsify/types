@@ -15157,7 +15157,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns `true` if the data exists, `false` otherwise
          */
-        contains_meta(uri: string, ident: any): boolean;
+        contains_meta(uri: string, ident: never): boolean;
 
         /**
          * This is a wrapper around `mx_texture_cache_get_texture()` which returns
@@ -15186,7 +15186,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns A {@link Cogl.Handle} to a texture, with an added reference. `null` if no image was found.
          */
-        get_meta_cogl_texture(uri: string, ident: any): Cogl.Handle;
+        get_meta_cogl_texture(uri: string, ident: never): Cogl.Handle;
 
         /**
          * Create a new ClutterTexture using the previously added image associated
@@ -15197,7 +15197,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @returns A newly allocated {@link Clutter.Texture}, or `null` if no image was found
          */
-        get_meta_texture(uri: string, ident: any): Clutter.Texture;
+        get_meta_texture(uri: string, ident: never): Clutter.Texture;
 
         /**
          * Returns the number of items in the texture cache
@@ -15237,7 +15237,7 @@ export namespace Mx {
          * @param ident A unique identifier
          * @param texture A {@link Cogl.Handle} to a texture
          */
-        insert_meta(uri: string, ident: any, texture: Cogl.Handle): void;
+        insert_meta(uri: string, ident: never, texture: Cogl.Handle): void;
 
         /**
          * @param filename 

@@ -336,7 +336,7 @@ export namespace DbusmenuGtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -352,7 +352,7 @@ export namespace DbusmenuGtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count

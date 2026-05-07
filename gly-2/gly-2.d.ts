@@ -238,7 +238,7 @@ export namespace Gly {
      * @gir-type Callback
      */
     interface LoaderGetMimeTypesDoneFunc {
-        (mime_types: string[], data: (any | null)): void;
+        (mime_types: string[], data: null): void;
     }
 
     /**

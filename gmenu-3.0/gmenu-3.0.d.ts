@@ -163,12 +163,12 @@ export namespace GMenu {
         /**
          * @param item a `GMenuTreeItem`
          */
-        static item_ref(item: (any | null)): (any | null);
+        static item_ref(item: null): null;
 
         /**
          * @param item 
          */
-        static item_unref(item: (any | null)): void;
+        static item_unref(item: null): void;
 
         // Methods
         /**

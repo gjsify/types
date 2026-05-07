@@ -115,7 +115,7 @@ export namespace PolkitAgent {
          * Unregisters `listener`.
          * @param registration_handle A handle obtained from `polkit_agent_listener_register()`.
          */
-        static unregister(registration_handle: (any | null)): void;
+        static unregister(registration_handle: null): void;
 
         // Virtual methods
         /**
@@ -274,7 +274,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
-        register(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: (Gio.Cancellable | null)): (any | null);
+        register(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: (Gio.Cancellable | null)): null;
 
         /**
          * Like `polkit_agent_listener_register()` but takes options to influence registration. See the
@@ -286,7 +286,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
-        register_with_options(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): (any | null);
+        register_with_options(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): null;
     }
 
 

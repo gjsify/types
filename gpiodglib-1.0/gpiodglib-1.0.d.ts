@@ -937,8 +937,8 @@ export namespace Gpiodglib {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            configured_offsets: any[];
-            configuredOffsets: any[];
+            configured_offsets: never[];
+            configuredOffsets: never[];
         }
     }
 
@@ -957,13 +957,13 @@ export namespace Gpiodglib {
          * Array of offsets for which line settings have been set.
          * @read-only
          */
-        get configured_offsets(): any[];
+        get configured_offsets(): null[];
 
         /**
          * Array of offsets for which line settings have been set.
          * @read-only
          */
-        get configuredOffsets(): any[];
+        get configuredOffsets(): null[];
 
         /**
          * Compile-time signal type information.
@@ -1001,13 +1001,13 @@ export namespace Gpiodglib {
          * @param settings {@link Gpiodglib.LineSettings} to apply.
          * @returns TRUE on success, FALSE on failure.
          */
-        add_line_settings(offsets: any[][], settings: LineSettings): boolean;
+        add_line_settings(offsets: never[][], settings: LineSettings): boolean;
 
         /**
          * Get configured offsets.
          * @returns GArray containing the offsets for which configuration has been set.
          */
-        get_configured_offsets(): any[][];
+        get_configured_offsets(): null[][];
 
         /**
          * Get line settings for offset.
@@ -1026,7 +1026,7 @@ export namespace Gpiodglib {
          * @param values GArray containing the output values.
          * @returns TRUE on success, FALSE on error.
          */
-        set_output_values(values: any[][]): boolean;
+        set_output_values(values: never[][]): boolean;
     }
 
 
@@ -1322,8 +1322,8 @@ export namespace Gpiodglib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             chip_name: string;
             chipName: string;
-            requested_offsets: any[];
-            requestedOffsets: any[];
+            requested_offsets: never[];
+            requestedOffsets: never[];
         }
     }
 
@@ -1353,13 +1353,13 @@ export namespace Gpiodglib {
          * Array of requested offsets.
          * @read-only
          */
-        get requested_offsets(): any[];
+        get requested_offsets(): null[];
 
         /**
          * Array of requested offsets.
          * @read-only
          */
-        get requestedOffsets(): any[];
+        get requestedOffsets(): null[];
 
         /**
          * Compile-time signal type information.
@@ -1399,7 +1399,7 @@ export namespace Gpiodglib {
          * Get the offsets of the lines in the request.
          * @returns Array containing the requested offsets.
          */
-        get_requested_offsets(): any[][];
+        get_requested_offsets(): null[][];
 
         /**
          * Get the value of a single requested line.
@@ -1414,7 +1414,7 @@ export namespace Gpiodglib {
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
          */
-        get_values(values: any[][]): boolean;
+        get_values(values: never[][]): boolean;
 
         /**
          * Get the values of a subset of requested lines.
@@ -1422,7 +1422,7 @@ export namespace Gpiodglib {
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
          */
-        get_values_subset(offsets: any[][], values: any[][]): boolean;
+        get_values_subset(offsets: never[][], values: never[][]): boolean;
 
         /**
          * Check if this request was released.
@@ -1459,7 +1459,7 @@ export namespace Gpiodglib {
          * @param values Array containing the values to set. Must be sized to contain the number of values equal to the number of requested lines. Each value is associated with the line identified by the corresponding entry in the offset array filled by `gpiodglib_line_request_get_requested_offsets`.
          * @returns TRUE on success, FALSE on failure.
          */
-        set_values(values: any[][]): boolean;
+        set_values(values: never[][]): boolean;
 
         /**
          * Set the values of a subset of requested lines.
@@ -1467,7 +1467,7 @@ export namespace Gpiodglib {
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
          */
-        set_values_subset(offsets: any[][], values: any[][]): boolean;
+        set_values_subset(offsets: never[][], values: never[][]): boolean;
     }
 
 

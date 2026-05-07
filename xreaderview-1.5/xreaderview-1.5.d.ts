@@ -582,7 +582,7 @@ export namespace XreaderView {
         $signals: JobAnnots.SignalSignatures;
 
         // Fields
-        annots: any[];
+        annots: null[];
 
         // Constructors
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
@@ -633,7 +633,7 @@ export namespace XreaderView {
         $signals: JobAttachments.SignalSignatures;
 
         // Fields
-        attachments: any[];
+        attachments: null[];
 
         // Constructors
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
@@ -756,7 +756,7 @@ export namespace XreaderView {
 
         total_count: number;
 
-        pages: any[];
+        pages: null[];
 
         results: number;
 
@@ -1514,7 +1514,7 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            popup: (arg0: (any | null)) => void;
+            popup: (arg0: null) => void;
             /**
              * @signal
              * @action
@@ -1526,7 +1526,7 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            "sync-source": (arg0: (any | null)) => void;
+            "sync-source": (arg0: null) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
@@ -2057,7 +2057,7 @@ export namespace XreaderView {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2067,7 +2067,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2076,7 +2076,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2150,7 +2150,7 @@ export namespace XreaderView {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2161,7 +2161,7 @@ export namespace XreaderView {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2170,7 +2170,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

@@ -967,26 +967,26 @@ export namespace Gda {
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Binary} which contains a copy of information in `boxed`. Free-function: gda_binary_free
      */
-    function binary_copy(boxed: (any | null)): (any | null);
+    function binary_copy(boxed: null): null;
 
     /**
      * Deallocates all memory associated to the given {@link Gda.Binary}.
      * @param boxed {@link Gda.Binary} to free.
      */
-    function binary_free(boxed: (any | null)): void;
+    function binary_free(boxed: null): void;
 
     /**
      * Creates a new {@link Gda.Blob} structure from an existing one.
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Blob} which contains a copy of information in `boxed`. Free-function: gda_blob_free
      */
-    function blob_copy(boxed: (any | null)): (any | null);
+    function blob_copy(boxed: null): null;
 
     /**
      * Deallocates all memory associated to the given {@link Gda.Blob}.
      * @param boxed {@link Gda.Blob} to free.
      */
-    function blob_free(boxed: (any | null)): void;
+    function blob_free(boxed: null): void;
 
     /**
      * Creates an array of strings (terminated by a `null`) corresponding to possible completions.
@@ -1100,12 +1100,12 @@ export namespace Gda {
     /**
      * @param boxed 
      */
-    function geometricpoint_copy(boxed: (any | null)): (any | null);
+    function geometricpoint_copy(boxed: null): null;
 
     /**
      * @param boxed 
      */
-    function geometricpoint_free(boxed: (any | null)): void;
+    function geometricpoint_free(boxed: null): void;
 
     /**
      * Find the path to the application identified by `app_name`. For example if the application
@@ -1557,22 +1557,22 @@ export namespace Gda {
     /**
      * @param boxed 
      */
-    function time_copy(boxed: (any | null)): (any | null);
+    function time_copy(boxed: null): null;
 
     /**
      * @param boxed 
      */
-    function time_free(boxed: (any | null)): void;
+    function time_free(boxed: null): void;
 
     /**
      * @param boxed 
      */
-    function timestamp_copy(boxed: (any | null)): (any | null);
+    function timestamp_copy(boxed: null): null;
 
     /**
      * @param boxed 
      */
-    function timestamp_free(boxed: (any | null)): void;
+    function timestamp_free(boxed: null): void;
 
     /**
      * Check the column types of a GdaDataModel.
@@ -1665,28 +1665,28 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface AttributesManagerFunc {
-        (att_name: string, value: unknown, data: (any | null)): void;
+        (att_name: string, value: unknown, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: unknown, data: (any | null)): void;
+        (obj: A, att_name: string, value: unknown, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ServerProviderAsyncCallback {
-        (provider: ServerProvider, cnc: Connection, task_id: number, result_status: boolean, error: GLib.Error, data: (any | null)): void;
+        (provider: ServerProvider, cnc: Connection, task_id: number, result_status: boolean, error: GLib.Error, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ServerProviderExecCallback<A = GObject.Object> {
-        (provider: ServerProvider, cnc: Connection, task_id: number, result_obj: A, error: GLib.Error, data: (any | null)): void;
+        (provider: ServerProvider, cnc: Connection, task_id: number, result_obj: A, error: GLib.Error, data: null): void;
     }
 
     /**
@@ -1707,21 +1707,21 @@ export namespace Gda {
      * @gir-type Callback
      */
     interface ThreadWrapperCallback {
-        (wrapper: ThreadWrapper, instance: (any | null), signame: string, n_param_values: number, param_values: unknown, gda_reserved: (any | null), data: (any | null)): void;
+        (wrapper: ThreadWrapper, instance: null, signame: string, n_param_values: number, param_values: unknown, gda_reserved: null, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperFunc {
-        (arg: (any | null)): (any | null);
+        (arg: null): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperVoidFunc {
-        (arg: (any | null)): void;
+        (arg: null): void;
     }
 
     /**
@@ -2440,25 +2440,25 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "dsn-added": (arg0: (any | null)) => void;
+            "dsn-added": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN's definition has been changed
              * @signal
              * @run-first
              */
-            "dsn-changed": (arg0: (any | null)) => void;
+            "dsn-changed": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN has been removed
              * @signal
              * @run-first
              */
-            "dsn-removed": (arg0: (any | null)) => void;
+            "dsn-removed": (arg0: null) => void;
             /**
              * Gets emitted whenever a DSN is about to be removed
              * @signal
              * @run-first
              */
-            "dsn-to-be-removed": (arg0: (any | null)) => void;
+            "dsn-to-be-removed": (arg0: null) => void;
             "notify::system-filename": (pspec: GObject.ParamSpec) => void;
             "notify::user-filename": (pspec: GObject.ParamSpec) => void;
         }
@@ -2744,8 +2744,8 @@ export namespace Gda {
             monitor_wrapped_in_mainloop: boolean;
             monitorWrappedInMainloop: boolean;
             provider: ServerProvider;
-            thread_owner: any;
-            threadOwner: any;
+            thread_owner: never;
+            threadOwner: never;
         }
     }
 
@@ -2872,11 +2872,11 @@ export namespace Gda {
         get provider(): ServerProvider;
         set provider(val: ServerProvider);
 
-        get thread_owner(): any;
-        set thread_owner(val: any);
+        get thread_owner(): null;
+        set thread_owner(val: never);
 
-        get threadOwner(): any;
-        set threadOwner(val: any);
+        get threadOwner(): null;
+        set threadOwner(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4036,7 +4036,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -4710,7 +4710,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "diff-computed": (arg0: (any | null)) => (boolean | void);
+            "diff-computed": (arg0: null) => (boolean | void);
             "notify::new-model": (pspec: GObject.ParamSpec) => void;
             "notify::old-model": (pspec: GObject.ParamSpec) => void;
         }
@@ -5013,7 +5013,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -5853,7 +5853,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -6540,8 +6540,8 @@ export namespace Gda {
             random_access: boolean;
             randomAccess: boolean;
             strict: boolean;
-            xml_node: any;
-            xmlNode: any;
+            xml_node: never;
+            xmlNode: never;
         }
     }
 
@@ -6603,13 +6603,13 @@ export namespace Gda {
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
          */
-        get xml_node(): any;
+        get xml_node(): null;
 
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
          */
-        get xmlNode(): any;
+        get xmlNode(): null;
 
         /**
          * Compile-time signal type information.
@@ -6797,7 +6797,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -7928,7 +7928,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -8807,7 +8807,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -9998,7 +9998,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -11129,7 +11129,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
@@ -15302,7 +15302,7 @@ export namespace Gda {
              * @since 4.2
              * @run-first
              */
-            "source-model-changed": (arg0: (any | null)) => void;
+            "source-model-changed": (arg0: null) => void;
             /**
              * Gets emitted when a {@link Gda.Holder}'s in `set` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
@@ -15327,7 +15327,7 @@ export namespace Gda {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
-            holders: any;
+            holders: never;
             id: string;
             name: string;
             validate_changes: boolean;
@@ -15348,7 +15348,7 @@ export namespace Gda {
         /**
          * @construct-only
          */
-        set holders(val: any);
+        set holders(val: never);
 
         get id(): string;
         set id(val: string);
@@ -16145,7 +16145,7 @@ export namespace Gda {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            structure: any;
+            structure: never;
         }
     }
 
@@ -16156,8 +16156,8 @@ export namespace Gda {
         static $gtype: GObject.GType<Statement>;
 
         // Properties
-        get structure(): any;
-        set structure(val: any);
+        get structure(): null;
+        set structure(val: never);
 
         /**
          * Compile-time signal type information.
@@ -16385,7 +16385,7 @@ export namespace Gda {
          * @param callback a {@link Gda.ThreadWrapperCallback} function
          * @returns the handler ID
          */
-        connect_raw(instance: (any | null), sig_name: string, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number;
+        connect_raw(instance: null, sig_name: string, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number;
 
         /**
          * Disconnects the emission of a signal, does the opposite of `gda_thread_wrapper_connect_raw()`.
@@ -16419,7 +16419,7 @@ export namespace Gda {
          * @param arg argument to pass to `func`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute(func: ThreadWrapperFunc, arg: (any | null)): number;
+        execute(func: ThreadWrapperFunc, arg: null): number;
 
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
@@ -16439,7 +16439,7 @@ export namespace Gda {
          * @param arg argument to pass to `func`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute_void(func: ThreadWrapperVoidFunc, arg: (any | null)): number;
+        execute_void(func: ThreadWrapperVoidFunc, arg: null): number;
 
         /**
          * Use this method to check if the execution of a function is finished. The function's execution must have
@@ -16448,7 +16448,7 @@ export namespace Gda {
          * @param exp_id ID of the job for which a result is expected
          * @returns the pointer returned by the execution, or `null` if no result is available
          */
-        fetch_result(may_lock: boolean, exp_id: number): (any | null);
+        fetch_result(may_lock: boolean, exp_id: number): null;
 
         /**
          * Allow `wrapper` to notify when an execution job is finished, by making its exec ID
@@ -16729,7 +16729,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
          */
-        dump(node: (TreeNode | null), stream: (any | null)): void;
+        dump(node: (TreeNode | null), stream: null): void;
 
         /**
          * Locates a {@link Gda.TreeNode} using the `tree_path` path.
@@ -16804,7 +16804,7 @@ export namespace Gda {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            func: any;
+            func: never;
             recursive: boolean;
         }
     }
@@ -16820,8 +16820,8 @@ export namespace Gda {
          * This property specifies the function which needs to be called when the list of {@link Gda.TreeNode} nodes
          * managed has to be updated
          */
-        get func(): any;
-        set func(val: any);
+        get func(): null;
+        set func(val: never);
 
         /**
          * This property specifies if, when initially creating nodes or updating the list of nodes,
@@ -17783,13 +17783,13 @@ export namespace Gda {
          * Creates a new {@link Gda.Binary} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed: (any | null)): (any | null);
+        static copy(boxed: null): null;
 
         /**
          * Deallocates all memory associated to the given {@link Gda.Binary}.
          * @param boxed {@link Gda.Binary} to free.
          */
-        static free(boxed: (any | null)): void;
+        static free(boxed: null): void;
 
         // Methods
         /**
@@ -17828,13 +17828,13 @@ export namespace Gda {
          * Creates a new {@link Gda.Blob} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed: (any | null)): (any | null);
+        static copy(boxed: null): null;
 
         /**
          * Deallocates all memory associated to the given {@link Gda.Blob}.
          * @param boxed {@link Gda.Blob} to free.
          */
-        static free(boxed: (any | null)): void;
+        static free(boxed: null): void;
 
         // Methods
         /**
@@ -18135,12 +18135,12 @@ export namespace Gda {
         /**
          * @param boxed 
          */
-        static copy(boxed: (any | null)): (any | null);
+        static copy(boxed: null): null;
 
         /**
          * @param boxed 
          */
-        static free(boxed: (any | null)): void;
+        static free(boxed: null): void;
     }
 
 
@@ -18767,7 +18767,7 @@ export namespace Gda {
 
         param: Holder;
 
-        priv: any;
+        priv: null;
     }
 
 
@@ -19276,12 +19276,12 @@ export namespace Gda {
         /**
          * @param boxed 
          */
-        static copy(boxed: (any | null)): (any | null);
+        static copy(boxed: null): null;
 
         /**
          * @param boxed 
          */
-        static free(boxed: (any | null)): void;
+        static free(boxed: null): void;
 
         // Methods
         /**
@@ -19329,12 +19329,12 @@ export namespace Gda {
         /**
          * @param boxed 
          */
-        static copy(boxed: (any | null)): (any | null);
+        static copy(boxed: null): null;
 
         /**
          * @param boxed 
          */
-        static free(boxed: (any | null)): void;
+        static free(boxed: null): void;
 
         // Methods
         /**
@@ -20132,7 +20132,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: (any | null)): void;
+        dump(to_stream: null): void;
 
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that

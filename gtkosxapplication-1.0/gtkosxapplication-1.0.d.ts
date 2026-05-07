@@ -447,7 +447,7 @@ export namespace GtkosxApplication {
         static $gtype: GObject.GType<ApplicationMenuGroup>;
 
         // Fields
-        items: any[];
+        items: null[];
 
         // Constructors
 

@@ -791,7 +791,7 @@ export namespace Cogl {
      * @returns `true` if the two colors are the same.
      * @since 1.0
      */
-    function color_equal(v1: (any | null), v2: (any | null)): boolean;
+    function color_equal(v1: null, v2: null): boolean;
 
     /**
      * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -921,7 +921,7 @@ export namespace Cogl {
      * @returns `true` if the passed `object` represents a bitmap,   and `false` otherwise
      * @since 1.0
      */
-    function is_bitmap(object: (any | null)): boolean;
+    function is_bitmap(object: null): boolean;
 
     /**
      * Gets whether the given object references an existing context object.
@@ -929,7 +929,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Context},   `false` otherwise
      * @since 1.10
      */
-    function is_context(object: (any | null)): boolean;
+    function is_context(object: null): boolean;
 
     /**
      * Gets whether the given object references a {@link Cogl.FrameInfo}.
@@ -937,7 +937,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.FrameInfo}   and `false` otherwise.
      * @since 2.0
      */
-    function is_frame_info(object: (any | null)): boolean;
+    function is_frame_info(object: null): boolean;
 
     /**
      * Gets whether the given object references a {@link Cogl.Framebuffer}.
@@ -945,7 +945,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Framebuffer}   and `false` otherwise.
      * @since 1.10
      */
-    function is_framebuffer(object: (any | null)): boolean;
+    function is_framebuffer(object: null): boolean;
 
     /**
      * Gets whether the given `object` references an existing pipeline object.
@@ -953,7 +953,7 @@ export namespace Cogl {
      * @returns `true` if the `object` references a {@link Cogl.Pipeline},   `false` otherwise
      * @since 2.0
      */
-    function is_pipeline(object: (any | null)): boolean;
+    function is_pipeline(object: null): boolean;
 
     /**
      * Gets whether the given handle references an existing program object.
@@ -976,7 +976,7 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object} pointer
      * @returns `true` if the `object` references a texture, and   `false` otherwise
      */
-    function is_texture(object: (any | null)): boolean;
+    function is_texture(object: null): boolean;
 
     /**
      * Gets whether the given object references an existing {@link Cogl.Texture2D}
@@ -984,7 +984,7 @@ export namespace Cogl {
      * @param object A {@link Cogl.Object}
      * @returns `true` if the object references a {@link Cogl.Texture2D},   `false` otherwise
      */
-    function is_texture_2d(object: (any | null)): boolean;
+    function is_texture_2d(object: null): boolean;
 
     /**
      * Gets whether the given object references a {@link Cogl.Texture2DSliced}.
@@ -992,7 +992,7 @@ export namespace Cogl {
      * @returns `true` if the object references a {@link Cogl.Texture2DSliced}   and `false` otherwise.
      * @since 1.10
      */
-    function is_texture_2d_sliced(object: (any | null)): boolean;
+    function is_texture_2d_sliced(object: null): boolean;
 
     /**
      * Queries the number of bytes per pixel for a given format in the given plane.
@@ -1735,8 +1735,8 @@ export namespace Cogl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            driver_config: any;
-            driverConfig: any;
+            driver_config: never;
+            driverConfig: never;
             height: number;
             width: number;
         }
@@ -1752,12 +1752,12 @@ export namespace Cogl {
         /**
          * @construct-only
          */
-        get driver_config(): any;
+        get driver_config(): null;
 
         /**
          * @construct-only
          */
-        get driverConfig(): any;
+        get driverConfig(): null;
 
         get height(): number;
         set height(val: number);
@@ -3023,7 +3023,7 @@ export namespace Cogl {
          * @param frame_info 
          * @param user_data 
          */
-        swap_buffers(frame_info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers(frame_info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps the current back buffer being rendered too, to the front for
@@ -3068,7 +3068,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_buffers_with_damage(rectangles: number, n_rectangles: number, info: FrameInfo, user_data: (any | null)): void;
+        swap_buffers_with_damage(rectangles: number, n_rectangles: number, info: FrameInfo, user_data: null): void;
 
         /**
          * Swaps a region of the back buffer being rendered too, to the front for
@@ -3085,7 +3085,7 @@ export namespace Cogl {
          * @param info 
          * @param user_data 
          */
-        swap_region(rectangles: number, n_rectangles: number, info: FrameInfo, user_data: (any | null)): void;
+        swap_region(rectangles: number, n_rectangles: number, info: FrameInfo, user_data: null): void;
     }
 
 
@@ -3815,7 +3815,7 @@ export namespace Cogl {
         /**
          * @param user_data 
          */
-        egl_image_external_alloc_finish(user_data: (any | null)): void;
+        egl_image_external_alloc_finish(user_data: null): void;
 
         egl_image_external_bind(): void;
 
@@ -4325,7 +4325,7 @@ export namespace Cogl {
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
          */
-        static equal(v1: (any | null), v2: (any | null)): boolean;
+        static equal(v1: null, v2: null): boolean;
 
         /**
          * Converts a color expressed in HLS (hue, luminance and saturation)
@@ -5063,7 +5063,7 @@ export namespace Cogl {
      * a fully opaque type without any public data members.
      * @gir-type Alias
      */
-    type Handle = any;
+    type Handle = never;
 
     /**
      * @gir-type Alias

@@ -1244,7 +1244,7 @@ export namespace GTop {
          * @param recv_size 
          * @param recv_buf 
          */
-        call_l(command: number, send_size: (bigint | number), send_buf: (any | null), recv_size: (bigint | number), recv_buf: (any | null)): (any | null);
+        call_l(command: number, send_size: (bigint | number), send_buf: null, recv_size: (bigint | number), recv_buf: null): null;
 
         /**
          * @param command 
@@ -1253,7 +1253,7 @@ export namespace GTop {
          * @param recv_size 
          * @param recv_buf 
          */
-        call_s(command: number, send_size: (bigint | number), send_buf: (any | null), recv_size: (bigint | number), recv_buf: (any | null)): (any | null);
+        call_s(command: number, send_size: (bigint | number), send_buf: null, recv_size: (bigint | number), recv_buf: null): null;
 
         close_p(): void;
 
@@ -1362,7 +1362,7 @@ export namespace GTop {
          * @param data_ptr 
          * @param data_size 
          */
-        get_parameter_l(parameter: number, data_ptr: (any | null), data_size: (bigint | number)): number;
+        get_parameter_l(parameter: number, data_ptr: null, data_size: (bigint | number)): number;
 
         /**
          * @param buf 
@@ -1614,7 +1614,7 @@ export namespace GTop {
          * @param data_ptr 
          * @param data_size 
          */
-        set_parameter_l(parameter: number, data_ptr: (any | null), data_size: (bigint | number)): void;
+        set_parameter_l(parameter: number, data_ptr: null, data_size: (bigint | number)): void;
     }
 
 
@@ -1710,7 +1710,7 @@ export namespace GTop {
         static $gtype: GObject.GType<glibtop_entry>;
 
         // Fields
-        labels: any[];
+        labels: null[];
     }
 
 

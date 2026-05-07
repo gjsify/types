@@ -7290,35 +7290,35 @@ export namespace Gdk {
      * @gir-type Callback
      */
     interface DestroyNotify {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface EventFunc {
-        (event: Event, data: (any | null)): void;
+        (event: Event, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface FilterFunc {
-        (xevent: XEvent, event: Event, data: (any | null)): FilterReturn;
+        (xevent: XEvent, event: Event, data: null): FilterReturn;
     }
 
     /**
      * @gir-type Callback
      */
     interface InputFunction {
-        (data: (any | null), source: number, condition: InputCondition): void;
+        (data: null, source: number, condition: InputCondition): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SpanFunc {
-        (span: Span, data: (any | null)): void;
+        (span: Span, data: null): void;
     }
 
     /**
@@ -8423,7 +8423,7 @@ export namespace Gdk {
 
         dest_window: Window;
 
-        targets: any[];
+        targets: null[];
 
         actions: DragAction;
 
@@ -8782,7 +8782,7 @@ export namespace Gdk {
          * @param key name the data was stored under
          * @returns the data stored at `key`
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Obtains the bit depth of the drawable, that is, the number of bits
@@ -8821,7 +8821,7 @@ export namespace Gdk {
          * @param key name to store the data under
          * @param data arbitrary data
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Deprecated equivalent of calling `g_object_unref()` on `drawable`.
@@ -9196,7 +9196,7 @@ export namespace Gdk {
 
         bits_per_pixel: number;
 
-        mem: any;
+        mem: null;
 
         colormap: Colormap;
 
@@ -9273,7 +9273,7 @@ export namespace Gdk {
          * Returns a pointer to the pixel data of the image.
          * @returns the pixel data of the image
          */
-        get_pixels(): (any | null);
+        get_pixels(): null;
 
         /**
          * Determines the width of the image.
@@ -9810,8 +9810,8 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            font_options: any;
-            fontOptions: any;
+            font_options: never;
+            fontOptions: never;
             resolution: number;
         }
     }
@@ -9823,11 +9823,11 @@ export namespace Gdk {
         static $gtype: GObject.GType<Screen>;
 
         // Properties
-        get font_options(): any;
-        set font_options(val: any);
+        get font_options(): null;
+        set font_options(val: never);
 
-        get fontOptions(): any;
-        set fontOptions(val: any);
+        get fontOptions(): null;
+        set fontOptions(val: never);
 
         /**
          * @default -1
@@ -11005,7 +11005,7 @@ export namespace Gdk {
          * Retrieves the user data for `window`, which is normally the widget
          * that `window` belongs to. See `gdk_window_set_user_data()`.
          */
-        get_user_data(): any;
+        get_user_data(): null;
 
         /**
          * Returns the width of the given `window`.
@@ -11114,7 +11114,7 @@ export namespace Gdk {
          * @param child_func function to use to decide if to recurse to a child,              `null` means never recurse.
          * @param user_data data passed to `child_func`
          */
-        invalidate_maybe_recurse(region: Region, child_func: (any | null), user_data: (any | null)): void;
+        invalidate_maybe_recurse(region: Region, child_func: null, user_data: null): void;
 
         /**
          * A convenience wrapper around `gdk_window_invalidate_region()` which
@@ -11836,7 +11836,7 @@ export namespace Gdk {
          * user data is a `GtkWidget`, and forward the event to that widget.
          * @param user_data user data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
 
         /**
          * Applies a shape mask to `window`. Pixels in `window` corresponding to

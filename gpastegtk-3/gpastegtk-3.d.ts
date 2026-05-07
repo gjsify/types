@@ -81,7 +81,7 @@ export namespace GPasteGtk {
      * @gir-type Callback
      */
     interface ResetCallback {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**

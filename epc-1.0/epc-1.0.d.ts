@@ -176,7 +176,7 @@ export namespace Epc {
      * @param hooks 
      * @param user_data 
      */
-    function shell_set_progress_hooks(hooks: ShellProgressHooks, user_data: any): void;
+    function shell_set_progress_hooks(hooks: ShellProgressHooks, user_data: never): void;
 
     /**
      * @param id 
@@ -220,7 +220,7 @@ export namespace Epc {
      * @gir-type Callback
      */
     interface ContentsReadFunc {
-        (contents: Contents, buffer: any, length: number): boolean;
+        (contents: Contents, buffer: null, length: number): boolean;
     }
 
     /**
@@ -645,7 +645,7 @@ export namespace Epc {
          * @param data 
          * @param length 
          */
-        add(key: string, data: any, length: (bigint | number)): void;
+        add(key: string, data: never, length: (bigint | number)): void;
 
         /**
          * @param key 
@@ -920,11 +920,11 @@ export namespace Epc {
         static $gtype: GObject.GType<Contents>;
 
         // Constructors
-        constructor(type: string, data: any, length: (bigint | number));
+        constructor(type: string, data: never, length: (bigint | number));
 
-        static ["new"](type: string, data: any, length: (bigint | number)): Contents;
+        static ["new"](type: string, data: never, length: (bigint | number)): Contents;
 
-        static new_dup(type: string, data: any, length: (bigint | number)): Contents;
+        static new_dup(type: string, data: never, length: (bigint | number)): Contents;
 
         static stream_new(type: string, callback: ContentsReadFunc): Contents;
 

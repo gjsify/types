@@ -85,7 +85,7 @@ export namespace InputPad {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function BOOLEAN__STRING_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function BOOLEAN__STRING_UINT_UINT_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -95,7 +95,7 @@ export namespace InputPad {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -105,7 +105,7 @@ export namespace InputPad {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function VOID__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function VOID__STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param window 
@@ -156,19 +156,19 @@ export namespace InputPad {
     /**
      * @param window_data 
      */
-    function window_activate(window_data: (any | null)): void;
+    function window_activate(window_data: null): void;
 
     /**
      * @param window_data 
      * @param padfile 
      * @param domain 
      */
-    function window_append_padfile(window_data: (any | null), padfile: string, domain: string): void;
+    function window_append_padfile(window_data: null, padfile: string, domain: string): void;
 
     /**
      * @param window_data 
      */
-    function window_destroy(window_data: (any | null)): void;
+    function window_destroy(window_data: null): void;
 
     /**
      * @param index 
@@ -190,17 +190,17 @@ export namespace InputPad {
     /**
      * @param window_data 
      */
-    function window_get_visible(window_data: (any | null)): number;
+    function window_get_visible(window_data: null): number;
 
     /**
      * @param window_data 
      */
-    function window_get_window(window_data: (any | null)): (any | null);
+    function window_get_window(window_data: null): null;
 
     /**
      * @param window_data 
      */
-    function window_hide(window_data: (any | null)): void;
+    function window_hide(window_data: null): void;
 
     /**
      * @param argv Address of the argv
@@ -212,50 +212,50 @@ export namespace InputPad {
     /**
      * @param window_data 
      */
-    function window_main(window_data: (any | null)): number;
+    function window_main(window_data: null): number;
 
-    function window_new(): (any | null);
+    function window_new(): null;
 
     /**
      * @param window_data 
      */
-    function window_reorder_button_pressed(window_data: (any | null)): void;
+    function window_reorder_button_pressed(window_data: null): void;
 
     /**
      * @param window_data 
      * @param sensitive 
      */
-    function window_set_char_button_sensitive(window_data: (any | null), sensitive: number): void;
+    function window_set_char_button_sensitive(window_data: null, sensitive: number): void;
 
     /**
      * @param window_data 
      * @param name 
      */
-    function window_set_kbdui_name(window_data: (any | null), name: string): void;
+    function window_set_kbdui_name(window_data: null, name: string): void;
 
     /**
      * @param window_data 
      * @param paddir 
      * @param domain 
      */
-    function window_set_paddir(window_data: (any | null), paddir: string, domain: string): void;
+    function window_set_paddir(window_data: null, paddir: string, domain: string): void;
 
     /**
      * @param window_data 
      * @param type 
      */
-    function window_set_show_layout(window_data: (any | null), type: WindowShowLayoutType): void;
+    function window_set_show_layout(window_data: null, type: WindowShowLayoutType): void;
 
     /**
      * @param window_data 
      * @param type 
      */
-    function window_set_show_table(window_data: (any | null), type: WindowShowTableType): void;
+    function window_set_show_table(window_data: null, type: WindowShowTableType): void;
 
     /**
      * @param window_data 
      */
-    function window_show(window_data: (any | null)): void;
+    function window_show(window_data: null): void;
 
     namespace GtkApplication {
         // Signal signatures
@@ -2415,12 +2415,12 @@ export namespace InputPad {
         static $gtype: GObject.GType<GroupPrivate>;
 
         // Fields
-        signal_window: any;
+        signal_window: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            signal_window: any;
+            signal_window: null;
         }>);
     }
 
@@ -2537,7 +2537,7 @@ export namespace InputPad {
 
         type: TableType;
 
-        data: any;
+        data: null;
 
         priv: TablePrivate;
     }
@@ -2572,13 +2572,13 @@ export namespace InputPad {
         // Fields
         inited: number;
 
-        signal_window: any;
+        signal_window: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             inited: number;
-            signal_window: any;
+            signal_window: null;
         }>);
     }
 
@@ -2613,24 +2613,24 @@ export namespace InputPad {
         static $gtype: GObject.GType<TableXXX>;
 
         // Fields
-        reserved1: any;
+        reserved1: null;
 
-        reserved2: any;
+        reserved2: null;
 
-        reserved3: any;
+        reserved3: null;
 
-        reserved4: any;
+        reserved4: null;
 
-        reserved5: any;
+        reserved5: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            reserved1: any;
-            reserved2: any;
-            reserved3: any;
-            reserved4: any;
-            reserved5: any;
+            reserved1: null;
+            reserved2: null;
+            reserved3: null;
+            reserved4: null;
+            reserved5: null;
         }>);
     }
 

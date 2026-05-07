@@ -363,7 +363,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "location-request": (arg0: (any | null), arg1: number) => number;
+            "location-request": (arg0: null, arg1: number) => number;
             /**
              * @signal
              * @run-last
@@ -2320,7 +2320,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "source-loaded": (arg0: (any | null)) => void;
+            "source-loaded": (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -2335,7 +2335,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-first
              */
-            "unreadable-uri": (arg0: (any | null), arg1: string) => void;
+            "unreadable-uri": (arg0: null, arg1: string) => void;
         }
 
         // Constructor properties interface

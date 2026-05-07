@@ -33,7 +33,7 @@ export namespace Plasma {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            client: any;
+            client: never;
         }
     }
 
@@ -47,7 +47,7 @@ export namespace Plasma {
         /**
          * @construct-only
          */
-        set client(val: any);
+        set client(val: never);
 
         /**
          * Compile-time signal type information.
@@ -331,10 +331,10 @@ export namespace Plasma {
             gpuDevice: number;
             id: ObjectID;
             metadata: Arrow.Buffer;
-            raw_data: any;
-            rawData: any;
-            raw_metadata: any;
-            rawMetadata: any;
+            raw_data: never;
+            rawData: never;
+            raw_metadata: never;
+            rawMetadata: never;
         }
     }
 
@@ -378,22 +378,22 @@ export namespace Plasma {
         /**
          * @construct-only
          */
-        set raw_data(val: any);
+        set raw_data(val: never);
 
         /**
          * @construct-only
          */
-        set rawData(val: any);
+        set rawData(val: never);
 
         /**
          * @construct-only
          */
-        set raw_metadata(val: any);
+        set raw_metadata(val: never);
 
         /**
          * @construct-only
          */
-        set rawMetadata(val: any);
+        set rawMetadata(val: never);
 
         /**
          * Compile-time signal type information.

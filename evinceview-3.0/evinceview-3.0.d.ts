@@ -695,7 +695,7 @@ export namespace EvinceView {
         $signals: JobAnnots.SignalSignatures;
 
         // Fields
-        annots: any[];
+        annots: null[];
 
         // Constructors
         constructor(properties?: Partial<JobAnnots.ConstructorProps>, ...args: any[]);
@@ -746,7 +746,7 @@ export namespace EvinceView {
         $signals: JobAttachments.SignalSignatures;
 
         // Fields
-        attachments: any[];
+        attachments: null[];
 
         // Constructors
         constructor(properties?: Partial<JobAttachments.ConstructorProps>, ...args: any[]);
@@ -867,7 +867,7 @@ export namespace EvinceView {
 
         n_pages: number;
 
-        pages: any[];
+        pages: null[];
 
         text: string;
 
@@ -1946,7 +1946,7 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            popup: (arg0: (any | null)) => void;
+            popup: (arg0: null) => void;
             /**
              * @signal
              * @action
@@ -2615,7 +2615,7 @@ export namespace EvinceView {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2625,7 +2625,7 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2634,7 +2634,7 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2708,7 +2708,7 @@ export namespace EvinceView {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2719,7 +2719,7 @@ export namespace EvinceView {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2728,7 +2728,7 @@ export namespace EvinceView {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

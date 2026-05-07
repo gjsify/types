@@ -2766,7 +2766,7 @@ export namespace RygelCore {
          * @param href 
          * @param prefix 
          */
-        static get_namespace(root: (any | null), href: string, prefix: string): (any | null);
+        static get_namespace(root: null, href: string, prefix: string): null;
     }
 
 
@@ -2788,7 +2788,7 @@ export namespace RygelCore {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](node: (any | null)): XMLUtilsIterator;
+        static ["new"](node: null): XMLUtilsIterator;
 
         // Signals
         /** @signal */
@@ -2808,7 +2808,7 @@ export namespace RygelCore {
 
         next(): boolean;
 
-        get(): (any | null);
+        get(): null;
     }
 
 
@@ -2827,7 +2827,7 @@ export namespace RygelCore {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](node: (any | null)): XMLUtilsChildIterator;
+        static ["new"](node: null): XMLUtilsChildIterator;
 
         // Signals
         /** @signal */

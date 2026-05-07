@@ -208,7 +208,7 @@ export namespace GstVa {
      * @returns whether a {@link GstVa.VaDisplay} exists in `display_ptr`
      * @since 1.22
      */
-    function va_ensure_element_data(element: (any | null), render_device_path: string): [boolean, VaDisplay];
+    function va_ensure_element_data(element: null, render_device_path: string): [boolean, VaDisplay];
 
     /**
      * Used by elements when processing their pad's queries, propagating
@@ -360,8 +360,8 @@ export namespace GstVa {
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             description: string;
-            va_display: any;
-            vaDisplay: any;
+            va_display: never;
+            vaDisplay: never;
         }
     }
 
@@ -391,12 +391,12 @@ export namespace GstVa {
         /**
          * @construct-only
          */
-        get va_display(): any;
+        get va_display(): null;
 
         /**
          * @construct-only
          */
-        get vaDisplay(): any;
+        get vaDisplay(): null;
 
         /**
          * Compile-time signal type information.
@@ -431,7 +431,7 @@ export namespace GstVa {
          * VADisplay.
          * @virtual
          */
-        vfunc_create_va_display(): (any | null);
+        vfunc_create_va_display(): null;
 
         // Methods
         /**
@@ -451,7 +451,7 @@ export namespace GstVa {
          * Get the VA display handle of the `self`.
          * @returns the VA display handle.
          */
-        get_va_dpy(): (any | null);
+        get_va_dpy(): null;
 
         /**
          * If the display is set by the user (foreign) it is assumed that the
@@ -568,7 +568,7 @@ export namespace GstVa {
 
         _init(...args: any[]): void;
 
-        static ["new"](handle: (any | null)): VaDisplayWrapped;
+        static ["new"](handle: null): VaDisplayWrapped;
 
         // Signals
         /** @signal */

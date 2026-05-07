@@ -3420,7 +3420,7 @@ export namespace Colord {
          * are using native LCMS calls and then `cd_icc_load_handle()`.
          * @returns Do not call cmsDeleteContext() on this value!
          */
-        get_context(): (any | null);
+        get_context(): null;
 
         /**
          * Gets the profile copyright.
@@ -3465,7 +3465,7 @@ export namespace Colord {
          * are using the profile in a transform.
          * @returns Do not call cmsCloseProfile() on this value!
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Gets the profile kind.
@@ -3486,7 +3486,7 @@ export namespace Colord {
          * Gets all the metadata from the ICC profile.
          * @returns The profile metadata
          */
-        get_metadata(): GLib.HashTable<any, any>;
+        get_metadata(): GLib.HashTable<never, never>;
 
         /**
          * Gets an item of data from the ICC metadata store.
@@ -3622,7 +3622,7 @@ export namespace Colord {
          * @param handle a cmsHPROFILE instance
          * @param flags a set of {@link Colord.IccLoadFlags}
          */
-        load_handle(handle: (any | null), flags: IccLoadFlags): boolean;
+        load_handle(handle: null, flags: IccLoadFlags): boolean;
 
         /**
          * Removes an item of metadata.
@@ -3680,7 +3680,7 @@ export namespace Colord {
          * Sets the profile copyrights for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_copyright_items(values: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_copyright_items(values: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Sets the ICC creation date and time.
@@ -3699,7 +3699,7 @@ export namespace Colord {
          * Sets the profile descriptions for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_description_items(values: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_description_items(values: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Sets the filename, which may be required if the ICC profile has been loaded
@@ -3725,7 +3725,7 @@ export namespace Colord {
          * Sets the profile manufacturers for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_manufacturer_items(values: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_manufacturer_items(values: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Sets the profile model for a specific locale.
@@ -3738,7 +3738,7 @@ export namespace Colord {
          * Sets the profile models for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_model_items(values: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_model_items(values: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * Sets the raw data for the specific tag.

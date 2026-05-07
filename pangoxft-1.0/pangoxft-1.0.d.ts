@@ -150,7 +150,7 @@ export namespace PangoXft {
      * @gir-type Callback
      */
     interface SubstituteFunc {
-        (pattern: fontconfig.Pattern, data: (any | null)): void;
+        (pattern: fontconfig.Pattern, data: null): void;
     }
 
     namespace Font {
@@ -400,7 +400,7 @@ export namespace PangoXft {
 
         // Constructor properties interface
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
-            display: any;
+            display: never;
             screen: number;
         }
     }
@@ -420,7 +420,7 @@ export namespace PangoXft {
         /**
          * @construct-only
          */
-        set display(val: any);
+        set display(val: never);
 
         /**
          * @construct-only

@@ -202,7 +202,7 @@ export namespace Gom {
          * Fetches the sqlite3 structure used by the adapter.
          * @returns A handle to the #sqlite3 structure. Side effects: None.
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Opens the database pointed to by `uri`. `uri` can be in any format understood
@@ -559,7 +559,7 @@ export namespace Gom {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            statement: any;
+            statement: never;
         }
     }
 
@@ -573,7 +573,7 @@ export namespace Gom {
         /**
          * @construct-only
          */
-        get statement(): any;
+        get statement(): null;
 
         /**
          * Compile-time signal type information.
@@ -754,7 +754,7 @@ export namespace Gom {
         /**
          * @param table_map 
          */
-        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
+        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
 
         /**
          * Fetches the list of values that should be applied in order when building
@@ -1518,7 +1518,7 @@ export namespace Gom {
          * @param table_map A {@link GLib.HashTable}.
          * @returns A string containing the SQL query corresponding                           to this `sorting`.
          */
-        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
+        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
     }
 
 

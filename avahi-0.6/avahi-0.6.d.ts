@@ -338,7 +338,7 @@ export namespace Avahi {
          * @param rdata 
          * @param size 
          */
-        add_record(flags: AvahiCore.PublishFlags, name: string, type: number, ttl: number, rdata: (any | null), size: (bigint | number)): boolean;
+        add_record(flags: AvahiCore.PublishFlags, name: string, type: number, ttl: number, rdata: null, size: (bigint | number)): boolean;
 
         /**
          * @param _interface 
@@ -351,7 +351,7 @@ export namespace Avahi {
          * @param rdata 
          * @param size 
          */
-        add_record_full(_interface: AvahiCore.IfIndex, protocol: AvahiCore.Protocol, flags: AvahiCore.PublishFlags, name: string, clazz: number, type: number, ttl: number, rdata: (any | null), size: (bigint | number)): boolean;
+        add_record_full(_interface: AvahiCore.IfIndex, protocol: AvahiCore.Protocol, flags: AvahiCore.PublishFlags, name: string, clazz: number, type: number, ttl: number, rdata: null, size: (bigint | number)): boolean;
 
         /**
          * @param client 
@@ -381,17 +381,17 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: (any | null)) => void;
+            failure: (arg0: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "new-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: (any | null), arg6: number, arg7: LookupResultFlags) => void;
+            "new-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: null, arg6: number, arg7: LookupResultFlags) => void;
             /**
              * @signal
              * @run-last
              */
-            "removed-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: (any | null), arg6: number, arg7: LookupResultFlags) => void;
+            "removed-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: null, arg6: number, arg7: LookupResultFlags) => void;
             "notify::class": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::interface": (pspec: GObject.ParamSpec) => void;
@@ -510,7 +510,7 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: (any | null)) => void;
+            failure: (arg0: null) => void;
             /**
              * @signal
              * @run-last
@@ -621,12 +621,12 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: (any | null)) => void;
+            failure: (arg0: null) => void;
             /**
              * @signal
              * @run-last
              */
-            found: (arg0: number, arg1: Protocol, arg2: string, arg3: string, arg4: string, arg5: string, arg6: (any | null), arg7: number, arg8: (any | null), arg9: LookupResultFlags) => void;
+            found: (arg0: number, arg1: Protocol, arg2: string, arg3: string, arg4: string, arg5: string, arg6: null, arg7: number, arg8: null, arg9: LookupResultFlags) => void;
             "notify::aprotocol": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;

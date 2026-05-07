@@ -4022,7 +4022,7 @@ export namespace Gtk {
     /**
      * @param data 
      */
-    function idle_remove_by_data(data: (any | null)): void;
+    function idle_remove_by_data(data: null): void;
 
     /**
      * Call this function before using any other GTK+ functions in your GUI
@@ -4120,7 +4120,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4130,7 +4130,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__POINTER_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__POINTER_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4140,7 +4140,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__POINTER_INT_INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__POINTER_INT_INT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4150,7 +4150,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__POINTER_POINTER_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__POINTER_POINTER_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4160,7 +4160,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__POINTER_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__POINTER_STRING_STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4170,7 +4170,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4180,7 +4180,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_ENUM__ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_ENUM__ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4190,7 +4190,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_INT__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_INT__POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4200,7 +4200,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_INT__POINTER_CHAR_CHAR(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_INT__POINTER_CHAR_CHAR(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4210,7 +4210,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__ENUM_FLOAT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__ENUM_FLOAT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4220,7 +4220,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__ENUM_FLOAT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__ENUM_FLOAT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4230,7 +4230,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4240,7 +4240,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__INT_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__INT_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4250,7 +4250,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4260,7 +4260,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_INT_INT_POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_INT_INT_POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4270,7 +4270,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4280,7 +4280,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_POINTER_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4290,7 +4290,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4300,7 +4300,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_STRING_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4310,7 +4310,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4320,7 +4320,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_UINT_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_UINT_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4330,7 +4330,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__POINTER_UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4340,7 +4340,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__STRING_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__STRING_INT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4350,7 +4350,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT_POINTER_UINT_ENUM_ENUM_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__UINT_POINTER_UINT_ENUM_ENUM_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4360,7 +4360,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT_POINTER_UINT_UINT_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__UINT_POINTER_UINT_UINT_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -4370,7 +4370,7 @@ export namespace Gtk {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+    function marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
 
     /**
      * Draws an arrow in the given rectangle on `window` using the given
@@ -4839,7 +4839,7 @@ export namespace Gtk {
     /**
      * @param data 
      */
-    function quit_remove_by_data(data: (any | null)): void;
+    function quit_remove_by_data(data: null): void;
 
     /**
      * @param rc_style 
@@ -5638,7 +5638,7 @@ export namespace Gtk {
      * @returns pointer to the class.
      * @deprecated since 2.14: Use `g_type_class_peek()` or `g_type_class_ref()` instead.
      */
-    function type_class(type: Type): (any | null);
+    function type_class(type: Type): null;
 
     /**
      * @param debug_flags 
@@ -5648,7 +5648,7 @@ export namespace Gtk {
     /**
      * @param type 
      */
-    function type_new(type: Type): (any | null);
+    function type_new(type: Type): null;
 
     /**
      * @param parent_type 
@@ -5660,7 +5660,7 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface AboutDialogActivateLinkFunc {
-        (about: AboutDialog, link_: string, data: (any | null)): void;
+        (about: AboutDialog, link_: string, data: null): void;
     }
 
     /**
@@ -5674,21 +5674,21 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface AccelGroupFindFunc {
-        (key: AccelKey, closure: GObject.Closure, data: (any | null)): boolean;
+        (key: AccelKey, closure: GObject.Closure, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface AccelMapForeach {
-        (data: (any | null), accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, changed: boolean): void;
+        (data: null, accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, changed: boolean): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface AssistantPageFunc {
-        (current_page: number, data: (any | null)): number;
+        (current_page: number, data: null): number;
     }
 
     /**
@@ -5702,7 +5702,7 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface CListCompareFunc {
-        (clist: CList, ptr1: (any | null), ptr2: (any | null)): number;
+        (clist: CList, ptr1: null, ptr2: null): number;
     }
 
     /**
@@ -5716,14 +5716,14 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface CTreeFunc {
-        (ctree: CTree, node: CTreeNode, data: (any | null)): void;
+        (ctree: CTree, node: CTreeNode, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface CTreeGNodeFunc {
-        (ctree: CTree, depth: number, gnode: GLib.Node, cnode: CTreeNode, data: (any | null)): boolean;
+        (ctree: CTree, depth: number, gnode: GLib.Node, cnode: CTreeNode, data: null): boolean;
     }
 
     /**
@@ -5737,77 +5737,77 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface Callback {
-        (widget: Widget, data: (any | null)): void;
+        (widget: Widget, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface CallbackMarshal {
-        (object: Object, data: (any | null), n_args: number, args: Arg): void;
+        (object: Object, data: null, n_args: number, args: Arg): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface CellLayoutDataFunc {
-        (cell_layout: CellLayout, cell: CellRenderer, tree_model: TreeModel, iter: TreeIter, data: (any | null)): void;
+        (cell_layout: CellLayout, cell: CellRenderer, tree_model: TreeModel, iter: TreeIter, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardClearFunc {
-        (clipboard: Clipboard, user_data_or_owner: (any | null)): void;
+        (clipboard: Clipboard, user_data_or_owner: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardGetFunc {
-        (clipboard: Clipboard, selection_data: SelectionData, info: number, user_data_or_owner: (any | null)): void;
+        (clipboard: Clipboard, selection_data: SelectionData, info: number, user_data_or_owner: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardImageReceivedFunc {
-        (clipboard: Clipboard, pixbuf: GdkPixbuf.Pixbuf, data: (any | null)): void;
+        (clipboard: Clipboard, pixbuf: GdkPixbuf.Pixbuf, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardReceivedFunc {
-        (clipboard: Clipboard, selection_data: SelectionData, data: (any | null)): void;
+        (clipboard: Clipboard, selection_data: SelectionData, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardRichTextReceivedFunc {
-        (clipboard: Clipboard, format: Gdk.Atom, text: number, length: number, data: (any | null)): void;
+        (clipboard: Clipboard, format: Gdk.Atom, text: number, length: number, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardTargetsReceivedFunc {
-        (clipboard: Clipboard, atoms: Gdk.Atom, n_atoms: number, data: (any | null)): void;
+        (clipboard: Clipboard, atoms: Gdk.Atom, n_atoms: number, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardTextReceivedFunc {
-        (clipboard: Clipboard, text: string, data: (any | null)): void;
+        (clipboard: Clipboard, text: string, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClipboardURIReceivedFunc {
-        (clipboard: Clipboard, uris: string, data: (any | null)): void;
+        (clipboard: Clipboard, uris: string, data: null): void;
     }
 
     /**
@@ -5828,7 +5828,7 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface DestroyNotify {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     /**
@@ -5842,21 +5842,21 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface FileFilterFunc {
-        (filter_info: FileFilterInfo, data: (any | null)): boolean;
+        (filter_info: FileFilterInfo, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface Function {
-        (data: (any | null)): boolean;
+        (data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface IconViewForeachFunc {
-        (icon_view: IconView, path: TreePath, data: (any | null)): void;
+        (icon_view: IconView, path: TreePath, data: null): void;
     }
 
     /**
@@ -5870,21 +5870,21 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface ItemFactoryCallback1 {
-        (callback_data: (any | null), callback_action: number, widget: Widget): void;
+        (callback_data: null, callback_action: number, widget: Widget): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface ItemFactoryCallback2 {
-        (widget: Widget, callback_data: (any | null), callback_action: number): void;
+        (widget: Widget, callback_data: null, callback_action: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface KeySnoopFunc {
-        (grab_widget: Widget, event: Gdk.EventKey, func_data: (any | null)): number;
+        (grab_widget: Widget, event: Gdk.EventKey, func_data: null): number;
     }
 
     /**
@@ -5933,14 +5933,14 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface PageSetupDoneFunc {
-        (page_setup: PageSetup, data: (any | null)): void;
+        (page_setup: PageSetup, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface PrintFunc {
-        (func_data: (any | null), str: string): void;
+        (func_data: null, str: string): void;
     }
 
     /**
@@ -6010,21 +6010,21 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface TextTagTableForeach {
-        (tag: TextTag, data: (any | null)): void;
+        (tag: TextTag, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TranslateFunc {
-        (path: string, func_data: (any | null)): string;
+        (path: string, func_data: null): string;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeCellDataFunc {
-        (tree_column: TreeViewColumn, cell: CellRenderer, tree_model: TreeModel, iter: TreeIter, data: (any | null)): void;
+        (tree_column: TreeViewColumn, cell: CellRenderer, tree_model: TreeModel, iter: TreeIter, data: null): void;
     }
 
     /**
@@ -6045,42 +6045,42 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface TreeModelFilterModifyFunc {
-        (model: TreeModel, iter: TreeIter, value: unknown, column: number, data: (any | null)): void;
+        (model: TreeModel, iter: TreeIter, value: unknown, column: number, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeModelFilterVisibleFunc {
-        (model: TreeModel, iter: TreeIter, data: (any | null)): boolean;
+        (model: TreeModel, iter: TreeIter, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeModelForeachFunc {
-        (model: TreeModel, path: TreePath, iter: TreeIter, data: (any | null)): boolean;
+        (model: TreeModel, path: TreePath, iter: TreeIter, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeSelectionForeachFunc {
-        (model: TreeModel, path: TreePath, iter: TreeIter, data: (any | null)): void;
+        (model: TreeModel, path: TreePath, iter: TreeIter, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeSelectionFunc {
-        (selection: TreeSelection, model: TreeModel, path: TreePath, path_currently_selected: boolean, data: (any | null)): boolean;
+        (selection: TreeSelection, model: TreeModel, path: TreePath, path_currently_selected: boolean, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeViewColumnDropFunc {
-        (tree_view: TreeView, column: TreeViewColumn, prev_column: TreeViewColumn, next_column: TreeViewColumn, data: (any | null)): boolean;
+        (tree_view: TreeView, column: TreeViewColumn, prev_column: TreeViewColumn, next_column: TreeViewColumn, data: null): boolean;
     }
 
     /**
@@ -6094,14 +6094,14 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface TreeViewRowSeparatorFunc {
-        (model: TreeModel, iter: TreeIter, data: (any | null)): boolean;
+        (model: TreeModel, iter: TreeIter, data: null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface TreeViewSearchEqualFunc {
-        (model: TreeModel, column: number, key: string, iter: TreeIter, search_data: (any | null)): boolean;
+        (model: TreeModel, column: number, key: string, iter: TreeIter, search_data: null): boolean;
     }
 
     /**
@@ -6115,7 +6115,7 @@ export namespace Gtk {
      * @gir-type Callback
      */
     interface WindowKeysForeachFunc {
-        (window: Window, keyval: number, modifiers: Gdk.ModifierType, is_mnemonic: boolean, data: (any | null)): void;
+        (window: Window, keyval: number, modifiers: Gdk.ModifierType, is_mnemonic: boolean, data: null): void;
     }
 
     /**
@@ -7300,7 +7300,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -7316,7 +7316,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -7465,7 +7465,7 @@ export namespace Gtk {
         // Fields
         lock_count: number;
 
-        acceleratables: any[];
+        acceleratables: null[];
 
         n_accels: number;
 
@@ -7833,7 +7833,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -7849,7 +7849,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -8897,7 +8897,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -8907,7 +8907,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -8916,7 +8916,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -8980,7 +8980,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -8991,7 +8991,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -9000,7 +9000,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -9210,7 +9210,7 @@ export namespace Gtk {
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
          */
-        add_actions(entries: ActionEntry, n_entries: number, user_data: (any | null)): void;
+        add_actions(entries: ActionEntry, n_entries: number, user_data: null): void;
 
         /**
          * This variant of `gtk_action_group_add_actions()` adds a {@link GLib.DestroyNotify}
@@ -9219,7 +9219,7 @@ export namespace Gtk {
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
          */
-        add_actions_full(entries: ActionEntry, n_entries: number, user_data: (any | null)): void;
+        add_actions_full(entries: ActionEntry, n_entries: number, user_data: null): void;
 
         /**
          * This variant of `gtk_action_group_add_radio_actions()` adds a
@@ -9242,7 +9242,7 @@ export namespace Gtk {
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
          */
-        add_toggle_actions(entries: ToggleActionEntry, n_entries: number, user_data: (any | null)): void;
+        add_toggle_actions(entries: ToggleActionEntry, n_entries: number, user_data: null): void;
 
         /**
          * This variant of `gtk_action_group_add_toggle_actions()` adds a
@@ -9251,7 +9251,7 @@ export namespace Gtk {
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
          */
-        add_toggle_actions_full(entries: ToggleActionEntry, n_entries: number, user_data: (any | null)): void;
+        add_toggle_actions_full(entries: ToggleActionEntry, n_entries: number, user_data: null): void;
 
         /**
          * Looks up an action in the action group by name.
@@ -9365,7 +9365,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -9375,7 +9375,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -9384,7 +9384,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -9448,7 +9448,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -9459,7 +9459,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -9468,7 +9468,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -10048,7 +10048,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -10064,7 +10064,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -10217,7 +10217,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -10233,7 +10233,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -10402,7 +10402,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -10418,7 +10418,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -10803,7 +10803,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -10819,7 +10819,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -10932,7 +10932,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -10948,7 +10948,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -11036,7 +11036,7 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
         // Constructors
         constructor(properties?: Partial<Box.ConstructorProps>, ...args: any[]);
@@ -11193,7 +11193,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -11209,7 +11209,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -11387,7 +11387,7 @@ export namespace Gtk {
          * gmodule-export-2.0.
          * @param user_data a pointer to a structure sent in as user data to all signals
          */
-        connect_signals(user_data: (any | null)): void;
+        connect_signals(user_data: null): void;
 
         /**
          * This function can be thought of the interpreted language binding
@@ -12034,7 +12034,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -12050,7 +12050,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -12248,7 +12248,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -12264,7 +12264,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -12546,9 +12546,9 @@ export namespace Gtk {
 
         flags: number;
 
-        reserved1: any;
+        reserved1: null;
 
-        reserved2: any;
+        reserved2: null;
 
         freeze_count: number;
 
@@ -12556,9 +12556,9 @@ export namespace Gtk {
 
         rows: number;
 
-        row_list: any[];
+        row_list: null[];
 
-        row_list_end: any[];
+        row_list_end: null[];
 
         columns: number;
 
@@ -12576,11 +12576,11 @@ export namespace Gtk {
 
         voffset: number;
 
-        selection: any[];
+        selection: null[];
 
-        selection_end: any[];
+        selection_end: null[];
 
-        undo_unselection: any[];
+        undo_unselection: null[];
 
         undo_anchor: number;
 
@@ -12859,7 +12859,7 @@ export namespace Gtk {
         /**
          * @param data 
          */
-        find_row_from_data(data: (any | null)): number;
+        find_row_from_data(data: null): number;
 
         freeze(): void;
 
@@ -12895,7 +12895,7 @@ export namespace Gtk {
         /**
          * @param row 
          */
-        get_row_data(row: number): (any | null);
+        get_row_data(row: number): null;
 
         /**
          * @param row 
@@ -13087,13 +13087,13 @@ export namespace Gtk {
          * @param row 
          * @param data 
          */
-        set_row_data(row: number, data: (any | null)): void;
+        set_row_data(row: number, data: null): void;
 
         /**
          * @param row 
          * @param data 
          */
-        set_row_data_full(row: number, data: (any | null)): void;
+        set_row_data_full(row: number, data: null): void;
 
         /**
          * @param height 
@@ -13182,7 +13182,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -13198,7 +13198,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -13518,7 +13518,7 @@ export namespace Gtk {
          * @param node 
          * @param data 
          */
-        find_by_row_data(node: CTreeNode, data: (any | null)): CTreeNode;
+        find_by_row_data(node: CTreeNode, data: null): CTreeNode;
 
         /**
          * @param ctree_row 
@@ -13614,7 +13614,7 @@ export namespace Gtk {
         /**
          * @param node 
          */
-        node_get_row_data(node: CTreeNode): (any | null);
+        node_get_row_data(node: CTreeNode): null;
 
         /**
          * @param node 
@@ -13687,13 +13687,13 @@ export namespace Gtk {
          * @param node 
          * @param data 
          */
-        node_set_row_data(node: CTreeNode, data: (any | null)): void;
+        node_set_row_data(node: CTreeNode, data: null): void;
 
         /**
          * @param node 
          * @param data 
          */
-        node_set_row_data_full(node: CTreeNode, data: (any | null)): void;
+        node_set_row_data_full(node: CTreeNode, data: null): void;
 
         /**
          * @param node 
@@ -13816,7 +13816,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -13832,7 +13832,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -14348,7 +14348,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -14358,7 +14358,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -14367,7 +14367,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -14441,7 +14441,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -14452,7 +14452,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -14461,7 +14461,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -14513,7 +14513,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -14529,7 +14529,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -17004,7 +17004,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17014,7 +17014,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -17023,7 +17023,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -17097,7 +17097,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17108,7 +17108,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -17117,7 +17117,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -17318,7 +17318,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -17334,7 +17334,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -17453,7 +17453,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -17469,7 +17469,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -17820,7 +17820,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -17836,7 +17836,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -18486,7 +18486,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -18502,7 +18502,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -18632,7 +18632,7 @@ export namespace Gtk {
         $signals: ColorSelection.SignalSignatures;
 
         // Fields
-        private_data: any;
+        private_data: null;
 
         // Constructors
         constructor(properties?: Partial<ColorSelection.ConstructorProps>, ...args: any[]);
@@ -18780,7 +18780,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -18796,7 +18796,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -18984,7 +18984,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -19000,7 +19000,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -19207,7 +19207,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -19223,7 +19223,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -20125,7 +20125,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -20141,7 +20141,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -20508,7 +20508,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -20524,7 +20524,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -20936,7 +20936,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -20952,7 +20952,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -21477,7 +21477,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -21487,7 +21487,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -21496,7 +21496,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21570,7 +21570,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -21581,7 +21581,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -21590,7 +21590,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21642,7 +21642,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -21658,7 +21658,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -21888,7 +21888,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -21904,7 +21904,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -22244,7 +22244,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -22260,7 +22260,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -22328,7 +22328,7 @@ export namespace Gtk {
         // Fields
         widget: Widget;
 
-        draw_data: any;
+        draw_data: null;
 
         // Constructors
         constructor(properties?: Partial<DrawingArea.ConstructorProps>, ...args: any[]);
@@ -22385,7 +22385,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -22395,7 +22395,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -22404,7 +22404,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -22478,7 +22478,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -22489,7 +22489,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -22498,7 +22498,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -22550,7 +22550,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -22566,7 +22566,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -24382,7 +24382,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -24392,7 +24392,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -24401,7 +24401,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -24475,7 +24475,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -24486,7 +24486,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -24495,7 +24495,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -24673,7 +24673,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -24689,7 +24689,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -25464,7 +25464,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -25474,7 +25474,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -25483,7 +25483,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -25557,7 +25557,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -25568,7 +25568,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -25577,7 +25577,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -25954,7 +25954,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -25970,7 +25970,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -26271,7 +26271,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -26287,7 +26287,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -27278,7 +27278,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -27294,7 +27294,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -28221,7 +28221,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -28237,7 +28237,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -29157,7 +29157,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -29173,7 +29173,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -29465,7 +29465,7 @@ export namespace Gtk {
 
         history_menu: Widget;
 
-        history_list: any[];
+        history_list: null[];
 
         fileop_dialog: Widget;
 
@@ -29473,7 +29473,7 @@ export namespace Gtk {
 
         fileop_file: string;
 
-        cmpl_state: any;
+        cmpl_state: null;
 
         fileop_c_dir: Widget;
 
@@ -29563,7 +29563,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -29579,7 +29579,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -29650,7 +29650,7 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
         // Constructors
         constructor(properties?: Partial<Fixed.ConstructorProps>, ...args: any[]);
@@ -29712,7 +29712,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -29728,7 +29728,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -30195,7 +30195,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -30211,7 +30211,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -30466,7 +30466,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -30482,7 +30482,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -30672,7 +30672,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -30688,7 +30688,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -30922,7 +30922,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -30938,7 +30938,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31048,7 +31048,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31064,7 +31064,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31190,7 +31190,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31206,7 +31206,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31320,7 +31320,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31336,7 +31336,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31458,7 +31458,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31474,7 +31474,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31594,7 +31594,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31610,7 +31610,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -31687,7 +31687,7 @@ export namespace Gtk {
         $signals: HSV.SignalSignatures;
 
         // Fields
-        priv: any;
+        priv: null;
 
         // Constructors
         constructor(properties?: Partial<HSV.ConstructorProps>, ...args: any[]);
@@ -31797,7 +31797,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -31807,7 +31807,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -31816,7 +31816,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -31890,7 +31890,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -31901,7 +31901,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -31910,7 +31910,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -31962,7 +31962,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -31978,7 +31978,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -32085,7 +32085,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -32101,7 +32101,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -32203,7 +32203,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -32219,7 +32219,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -32334,7 +32334,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -32350,7 +32350,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -32613,7 +32613,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -32629,7 +32629,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -33110,7 +33110,7 @@ export namespace Gtk {
         // Fields
         object: IMContext;
 
-        tables: any[];
+        tables: null[];
 
         compose_buffer: number[];
 
@@ -33370,7 +33370,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -33380,7 +33380,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -33389,7 +33389,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -33463,7 +33463,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -33474,7 +33474,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -33483,7 +33483,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -35006,7 +35006,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -35022,7 +35022,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -35569,7 +35569,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -35585,7 +35585,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -35966,7 +35966,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -35982,7 +35982,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -36292,7 +36292,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -36308,7 +36308,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -36475,7 +36475,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -36491,7 +36491,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -36629,7 +36629,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -36639,7 +36639,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -36648,7 +36648,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -36722,7 +36722,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -36733,7 +36733,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -36742,7 +36742,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -36794,7 +36794,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -36810,7 +36810,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -36950,7 +36950,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -36966,7 +36966,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -37017,11 +37017,11 @@ export namespace Gtk {
 
         widget: Widget;
 
-        items: any[];
+        items: null[];
 
         translate_func: TranslateFunc;
 
-        translate_data: any;
+        translate_data: null;
 
         translate_notify: GLib.DestroyNotify;
 
@@ -37084,7 +37084,7 @@ export namespace Gtk {
          * is popped down again.
          * @param widget a widget
          */
-        static popup_data_from_widget(widget: Widget): (any | null);
+        static popup_data_from_widget(widget: Widget): null;
 
         // Methods
         /**
@@ -37101,7 +37101,7 @@ export namespace Gtk {
          * @param callback_data data passed to the callback function of `entry`
          * @param callback_type 1 if the callback function of `entry` is of type    {@link Gtk.ItemFactoryCallback1}, 2 if it is of type {@link Gtk.ItemFactoryCallback2}
          */
-        create_item(entry: ItemFactoryEntry, callback_data: (any | null), callback_type: number): void;
+        create_item(entry: ItemFactoryEntry, callback_data: null, callback_type: number): void;
 
         /**
          * Creates the menu items from the `entries`.
@@ -37109,7 +37109,7 @@ export namespace Gtk {
          * @param entries an array of {@link Gtk.ItemFactoryEntry}<!-- -->s whose `callback` members    must by of type {@link Gtk.ItemFactoryCallback1}
          * @param callback_data data passed to the callback functions of all entries
          */
-        create_items(n_entries: number, entries: ItemFactoryEntry, callback_data: (any | null)): void;
+        create_items(n_entries: number, entries: ItemFactoryEntry, callback_data: null): void;
 
         /**
          * Creates the menu items from the `entries`.
@@ -37118,7 +37118,7 @@ export namespace Gtk {
          * @param callback_data data passed to the callback functions of all entries
          * @param callback_type 1 if the callback functions in `entries` are of type    {@link Gtk.ItemFactoryCallback1}, 2 if they are of type {@link Gtk.ItemFactoryCallback2}
          */
-        create_items_ac(n_entries: number, entries: ItemFactoryEntry, callback_data: (any | null), callback_type: number): void;
+        create_items_ac(n_entries: number, entries: ItemFactoryEntry, callback_data: null, callback_type: number): void;
 
         /**
          * Deletes the menu items which were created from the `entries` by the given
@@ -37169,7 +37169,7 @@ export namespace Gtk {
          * is popped down again.
          * @returns `popup_data` associated with `ifactory`
          */
-        popup_data(): (any | null);
+        popup_data(): null;
 
         /**
          * Pops up the menu constructed from the item factory at (`x`, `y`). Callbacks
@@ -37193,7 +37193,7 @@ export namespace Gtk {
          * @param mouse_button the mouse button which was pressed to initiate the popup
          * @param time_ the time at which the activation event occurred
          */
-        popup_with_data(popup_data: (any | null), x: number, y: number, mouse_button: number, time_: number): void;
+        popup_with_data(popup_data: null, x: number, y: number, mouse_button: number, time_: number): void;
 
         /**
          * Sets a function to be used for translating the path elements before they
@@ -38047,7 +38047,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -38063,7 +38063,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -38169,7 +38169,7 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
         bin_window: Gdk.Window;
 
@@ -38292,7 +38292,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -38308,7 +38308,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -38615,7 +38615,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -38631,7 +38631,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -38732,11 +38732,11 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
-        selection: any[];
+        selection: null[];
 
-        undo_unselection: any[];
+        undo_unselection: null[];
 
         last_focus_child: Widget;
 
@@ -38876,7 +38876,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -38892,7 +38892,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -39113,7 +39113,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -39129,7 +39129,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -39363,7 +39363,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -39373,7 +39373,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -39382,7 +39382,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -39456,7 +39456,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -39467,7 +39467,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -39476,7 +39476,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -40379,7 +40379,7 @@ export namespace Gtk {
 
         position_func: MenuPositionFunc;
 
-        position_func_data: any;
+        position_func_data: null;
 
         toggle_size: number;
 
@@ -40612,7 +40612,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -40628,7 +40628,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -40794,7 +40794,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -40810,7 +40810,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -40848,7 +40848,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "toggle-size-request": (arg0: (any | null)) => void;
+            "toggle-size-request": (arg0: null) => void;
             "notify::accel-path": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::right-justified": (pspec: GObject.ParamSpec) => void;
@@ -41327,7 +41327,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -41343,7 +41343,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -41491,7 +41491,7 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
         active_menu_item: Widget;
 
@@ -41672,7 +41672,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -41688,7 +41688,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -41859,7 +41859,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -41875,7 +41875,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -42205,7 +42205,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -42221,7 +42221,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -42392,7 +42392,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -42402,7 +42402,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -42411,7 +42411,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -42485,7 +42485,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -42496,7 +42496,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -42505,7 +42505,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -42557,7 +42557,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -42573,7 +42573,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -42779,7 +42779,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "switch-page": (arg0: (any | null), arg1: number) => void;
+            "switch-page": (arg0: null, arg1: number) => void;
             "notify::enable-popup": (pspec: GObject.ParamSpec) => void;
             "notify::group": (pspec: GObject.ParamSpec) => void;
             "notify::group-id": (pspec: GObject.ParamSpec) => void;
@@ -42826,7 +42826,7 @@ export namespace Gtk {
         interface ConstructorProps extends Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Buildable.ConstructorProps {
             enable_popup: boolean;
             enablePopup: boolean;
-            group: (any | null);
+            group: never;
             group_id: number;
             groupId: number;
             group_name: string;
@@ -42873,8 +42873,8 @@ export namespace Gtk {
          * @since 2.12
          * @deprecated since 2.24: Use {@link Gtk.Notebook.group_name} instead
          */
-        get group(): (any | null);
-        set group(val: (any | null));
+        get group(): null;
+        set group(val: never);
 
         /**
          * @default -1
@@ -43006,11 +43006,11 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
-        first_tab: any[];
+        first_tab: null[];
 
-        focus_tab: any[];
+        focus_tab: null[];
 
         menu: Widget;
 
@@ -43144,7 +43144,7 @@ export namespace Gtk {
          * Gets the current group identificator pointer for `notebook`.
          * @returns the group identificator,     or `null` if none is set.
          */
-        get_group(): (any | null);
+        get_group(): null;
 
         /**
          * Gets the current group identificator for `notebook`.
@@ -43389,7 +43389,7 @@ export namespace Gtk {
          * not be able to exchange tabs with any other notebook.
          * @param group a pointer to identify the notebook group, or `null` to unset it
          */
-        set_group(group: (any | null)): void;
+        set_group(group: null): void;
 
         /**
          * Sets an group identificator for `notebook`, notebooks sharing
@@ -43563,7 +43563,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -43579,7 +43579,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -43607,8 +43607,8 @@ export namespace Gtk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            user_data: (any | null);
-            userData: (any | null);
+            user_data: never;
+            userData: never;
         }
     }
 
@@ -43619,11 +43619,11 @@ export namespace Gtk {
         static $gtype: GObject.GType<Object>;
 
         // Properties
-        get user_data(): (any | null);
-        set user_data(val: (any | null));
+        get user_data(): null;
+        set user_data(val: never);
 
-        get userData(): (any | null);
-        set userData(val: (any | null));
+        get userData(): null;
+        set userData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -43690,14 +43690,14 @@ export namespace Gtk {
         /**
          * @param key 
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param data_id 
          */
-        get_data_by_id(data_id: GLib.Quark): (any | null);
+        get_data_by_id(data_id: GLib.Quark): null;
 
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * @param key 
@@ -43723,30 +43723,30 @@ export namespace Gtk {
          * @param key 
          * @param data 
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param data_id 
          * @param data 
          */
-        set_data_by_id(data_id: GLib.Quark, data: (any | null)): void;
+        set_data_by_id(data_id: GLib.Quark, data: null): void;
 
         /**
          * @param data_id 
          * @param data 
          */
-        set_data_by_id_full(data_id: GLib.Quark, data: (any | null)): void;
+        set_data_by_id_full(data_id: GLib.Quark, data: null): void;
 
         /**
          * @param key 
          * @param data 
          */
-        set_data_full(key: string, data: (any | null)): void;
+        set_data_full(key: string, data: null): void;
 
         /**
          * @param data 
          */
-        set_user_data(data: (any | null)): void;
+        set_user_data(data: null): void;
 
         sink(): void;
 
@@ -43755,12 +43755,12 @@ export namespace Gtk {
         /**
          * @param data 
          */
-        weakref(data: (any | null)): void;
+        weakref(data: null): void;
 
         /**
          * @param data 
          */
-        weakunref(data: (any | null)): void;
+        weakunref(data: null): void;
     }
 
 
@@ -43911,7 +43911,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -43927,7 +43927,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -44267,7 +44267,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -44277,7 +44277,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -44286,7 +44286,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -44360,7 +44360,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -44371,7 +44371,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -44380,7 +44380,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -44551,7 +44551,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -44567,7 +44567,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -44859,7 +44859,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -44875,7 +44875,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -45464,7 +45464,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -45480,7 +45480,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -45607,7 +45607,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -45623,7 +45623,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -45850,7 +45850,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -45866,7 +45866,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -46069,7 +46069,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -46079,7 +46079,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -46088,7 +46088,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -46162,7 +46162,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -46173,7 +46173,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -46182,7 +46182,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -46234,7 +46234,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -46250,7 +46250,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -48353,7 +48353,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -48363,7 +48363,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -48372,7 +48372,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -48446,7 +48446,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -48457,7 +48457,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -48466,7 +48466,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -48518,7 +48518,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -48534,7 +48534,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -48870,7 +48870,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -48886,7 +48886,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -49213,7 +49213,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -49229,7 +49229,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -49382,7 +49382,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -49398,7 +49398,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -49524,7 +49524,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -49540,7 +49540,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -50146,7 +50146,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -50156,7 +50156,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -50165,7 +50165,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -50239,7 +50239,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -50250,7 +50250,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -50259,7 +50259,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -50323,7 +50323,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -50339,7 +50339,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -50759,7 +50759,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -50769,7 +50769,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -50778,7 +50778,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -50852,7 +50852,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -50863,7 +50863,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -50872,7 +50872,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -51854,7 +51854,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -51870,7 +51870,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -52654,7 +52654,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -52670,7 +52670,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -53278,7 +53278,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -53294,7 +53294,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -53879,7 +53879,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -53889,7 +53889,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -53898,7 +53898,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -53972,7 +53972,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -53983,7 +53983,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -53992,7 +53992,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -54056,7 +54056,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -54072,7 +54072,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -54364,7 +54364,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -54380,7 +54380,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -54796,7 +54796,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -54812,7 +54812,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -54934,7 +54934,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -54950,7 +54950,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -55302,7 +55302,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -55318,7 +55318,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -55442,7 +55442,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -55452,7 +55452,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -55461,7 +55461,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -55535,7 +55535,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -55546,7 +55546,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -55555,7 +55555,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -55619,7 +55619,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -55635,7 +55635,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -55881,7 +55881,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -55897,7 +55897,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -56162,7 +56162,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -56178,7 +56178,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -56269,8 +56269,8 @@ export namespace Gtk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            color_hash: ({ [key: string]: any } | GLib.HashTable<any, any>);
-            colorHash: ({ [key: string]: any } | GLib.HashTable<any, any>);
+            color_hash: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            colorHash: ({ [key: string]: any } | GLib.HashTable<never, never>);
             gtk_alternative_button_order: boolean;
             gtkAlternativeButtonOrder: boolean;
             gtk_alternative_sort_arrows: boolean;
@@ -56423,7 +56423,7 @@ export namespace Gtk {
          * @since 2.10
          * @read-only
          */
-        get color_hash(): GLib.HashTable<any, any>;
+        get color_hash(): GLib.HashTable<never, never>;
 
         /**
          * Holds a hash table representation of the {@link Gtk.Settings.gtk_color_scheme}
@@ -56431,7 +56431,7 @@ export namespace Gtk {
          * @since 2.10
          * @read-only
          */
-        get colorHash(): GLib.HashTable<any, any>;
+        get colorHash(): GLib.HashTable<never, never>;
 
         /**
          * @default false
@@ -57802,7 +57802,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -57812,7 +57812,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -57821,7 +57821,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -57895,7 +57895,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -57906,7 +57906,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -57915,7 +57915,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -58212,7 +58212,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -58228,7 +58228,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -58256,7 +58256,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            input: (arg0: (any | null)) => number;
+            input: (arg0: null) => number;
             /**
              * The ::output signal can be used to change to formatting
              * of the value that is displayed in the spin buttons entry.
@@ -58879,7 +58879,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -58895,7 +58895,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -59028,7 +59028,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -59044,7 +59044,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -59464,7 +59464,7 @@ export namespace Gtk {
          * @param push_in whether the first menu item should be offset (pushed in) to be           aligned with the menu popup position (only useful for GtkOptionMenu).
          * @param user_data the status icon to position the menu on
          */
-        static position_menu(menu: Menu, x: number, y: number, push_in: boolean, user_data: (any | null)): void;
+        static position_menu(menu: Menu, x: number, y: number, push_in: boolean, user_data: null): void;
 
         // Virtual methods
         /**
@@ -59873,9 +59873,9 @@ export namespace Gtk {
 
         label: Widget;
 
-        messages: any[];
+        messages: null[];
 
-        keys: any[];
+        keys: null[];
 
         seq_context_id: number;
 
@@ -59992,7 +59992,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -60008,7 +60008,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -60737,7 +60737,7 @@ export namespace Gtk {
         // Fields
         container: Container;
 
-        children: any[];
+        children: null[];
 
         rows: TableRowCol;
 
@@ -60872,7 +60872,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -60888,7 +60888,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -61136,7 +61136,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -61152,7 +61152,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -61466,9 +61466,9 @@ export namespace Gtk {
         $signals: TextBuffer.SignalSignatures;
 
         // Fields
-        clipboard_contents_buffers: any[];
+        clipboard_contents_buffers: null[];
 
-        selection_clipboards: any[];
+        selection_clipboards: null[];
 
         user_action_count: number;
 
@@ -62412,7 +62412,7 @@ export namespace Gtk {
         $signals: TextChildAnchor.SignalSignatures;
 
         // Fields
-        segment: any;
+        segment: null;
 
         // Constructors
         constructor(properties?: Partial<TextChildAnchor.ConstructorProps>, ...args: any[]);
@@ -62940,7 +62940,7 @@ export namespace Gtk {
         $signals: TextMark.SignalSignatures;
 
         // Fields
-        segment: any;
+        segment: null;
 
         // Constructors
         constructor(properties?: Partial<TextMark.ConstructorProps>, ...args: any[]);
@@ -64020,11 +64020,11 @@ export namespace Gtk {
         $signals: TextTagTable.SignalSignatures;
 
         // Fields
-        anonymous: any[];
+        anonymous: null[];
 
         anon_count: number;
 
-        buffers: any[];
+        buffers: null[];
 
         // Constructors
         constructor(properties?: Partial<TextTagTable.ConstructorProps>, ...args: any[]);
@@ -64134,7 +64134,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -64144,7 +64144,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -64153,7 +64153,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -64227,7 +64227,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -64238,7 +64238,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -64247,7 +64247,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -64754,7 +64754,7 @@ export namespace Gtk {
         $signals: TextView.SignalSignatures;
 
         // Fields
-        layout: any;
+        layout: null;
 
         selection_drag_handler: number;
 
@@ -64808,7 +64808,7 @@ export namespace Gtk {
 
         drag_start_y: number;
 
-        children: any[];
+        children: null[];
 
         pending_place_cursor_button: number;
 
@@ -65504,7 +65504,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -65520,7 +65520,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -65756,7 +65756,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -65772,7 +65772,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -65952,7 +65952,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -65962,7 +65962,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -65971,7 +65971,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -66045,7 +66045,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -66056,7 +66056,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -66065,7 +66065,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -66443,7 +66443,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -66459,7 +66459,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -66601,7 +66601,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -66617,7 +66617,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -67059,7 +67059,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -67075,7 +67075,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -67697,7 +67697,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -67713,7 +67713,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -68113,7 +68113,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -68129,7 +68129,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -68577,7 +68577,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -68593,7 +68593,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -68789,7 +68789,7 @@ export namespace Gtk {
 
         num_children: number;
 
-        children: any[];
+        children: null[];
 
         orientation: Orientation;
 
@@ -69171,7 +69171,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -69187,7 +69187,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -71017,15 +71017,15 @@ export namespace Gtk {
         // Fields
         stamp: number;
 
-        root: any;
+        root: null;
 
-        last: any;
+        last: null;
 
         n_columns: number;
 
         sort_column_id: number;
 
-        sort_list: any[];
+        sort_list: null[];
 
         order: SortType;
 
@@ -71033,7 +71033,7 @@ export namespace Gtk {
 
         default_sort_func: TreeIterCompareFunc;
 
-        default_sort_data: any;
+        default_sort_data: null;
 
         default_sort_destroy: GLib.DestroyNotify;
 
@@ -71273,7 +71273,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -71283,7 +71283,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -71292,7 +71292,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -71366,7 +71366,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -71377,7 +71377,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -71386,7 +71386,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -73510,7 +73510,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -73526,7 +73526,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -73780,7 +73780,7 @@ export namespace Gtk {
 
         drag_y: number;
 
-        cell_list: any[];
+        cell_list: null[];
 
         sort_clicked_signal: number;
 
@@ -74216,7 +74216,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -74226,7 +74226,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -74235,7 +74235,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -74309,7 +74309,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -74320,7 +74320,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -74329,7 +74329,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -74473,7 +74473,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -74489,7 +74489,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -74894,7 +74894,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -74904,7 +74904,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -74913,7 +74913,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -74987,7 +74987,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -74998,7 +74998,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -75007,7 +75007,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -75167,7 +75167,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75183,7 +75183,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75307,7 +75307,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75323,7 +75323,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75449,7 +75449,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75465,7 +75465,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75598,7 +75598,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75614,7 +75614,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75726,7 +75726,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75742,7 +75742,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75850,7 +75850,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -75866,7 +75866,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -75984,7 +75984,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -76000,7 +76000,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -76203,7 +76203,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -76219,7 +76219,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -76350,7 +76350,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -76366,7 +76366,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -80201,7 +80201,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -80211,7 +80211,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -80220,7 +80220,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -80278,7 +80278,7 @@ export namespace Gtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -80289,7 +80289,7 @@ export namespace Gtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -80298,7 +80298,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -80350,7 +80350,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -80366,7 +80366,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
     }
 
 
@@ -82192,7 +82192,7 @@ export namespace Gtk {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -82208,7 +82208,7 @@ export namespace Gtk {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -82250,7 +82250,7 @@ export namespace Gtk {
         $signals: WindowGroup.SignalSignatures;
 
         // Fields
-        grabs: any[];
+        grabs: null[];
 
         // Constructors
         constructor(properties?: Partial<WindowGroup.ConstructorProps>, ...args: any[]);
@@ -82535,11 +82535,11 @@ export namespace Gtk {
 
         priority: number;
 
-        widget_path_pspecs: any[];
+        widget_path_pspecs: null[];
 
-        widget_class_pspecs: any[];
+        widget_class_pspecs: null[];
 
-        class_branch_pspecs: any[];
+        class_branch_pspecs: null[];
 
         parsed: number;
 
@@ -82776,7 +82776,7 @@ export namespace Gtk {
 
         style: Style;
 
-        data: any;
+        data: null;
 
         destroy: GLib.DestroyNotify;
 
@@ -82800,12 +82800,12 @@ export namespace Gtk {
         static $gtype: GObject.GType<CTreeNode>;
 
         // Fields
-        list: any[];
+        list: null[];
 
         // Constructors
 
         constructor(properties?: Partial<{
-            list: any[];
+            list: null[];
         }>);
     }
 
@@ -84009,7 +84009,7 @@ export namespace Gtk {
 
         item_type: string;
 
-        extra_data: any;
+        extra_data: null;
     }
 
 
@@ -84022,7 +84022,7 @@ export namespace Gtk {
         // Fields
         path: string;
 
-        widgets: any[];
+        widgets: null[];
 
         // Constructors
 
@@ -84101,7 +84101,7 @@ export namespace Gtk {
 
         callback: MenuCallback;
 
-        callback_data: any;
+        callback_data: null;
 
         widget: Widget;
     }
@@ -85405,7 +85405,7 @@ export namespace Gtk {
         static $gtype: GObject.GType<TargetList>;
 
         // Fields
-        list: any[];
+        list: null[];
 
         ref_count: number;
 
@@ -86607,9 +86607,9 @@ export namespace Gtk {
         // Fields
         layout: Pango.Layout;
 
-        cursors: any[];
+        cursors: null[];
 
-        shaped_objects: any[];
+        shaped_objects: null[];
 
         direction: TextDirection;
 
@@ -86884,19 +86884,19 @@ export namespace Gtk {
         // Fields
         stamp: number;
 
-        user_data: any;
+        user_data: null;
 
-        user_data2: any;
+        user_data2: null;
 
-        user_data3: any;
+        user_data3: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             stamp: number;
-            user_data: any;
-            user_data2: any;
-            user_data3: any;
+            user_data: null;
+            user_data2: null;
+            user_data3: null;
         }>);
 
         // Methods
@@ -87186,9 +87186,9 @@ export namespace Gtk {
 
         object_init_func: ObjectInitFunc;
 
-        reserved_1: any;
+        reserved_1: null;
 
-        reserved_2: any;
+        reserved_2: null;
 
         base_class_init_func: ClassInitFunc;
     }
@@ -87789,7 +87789,7 @@ export namespace Gtk {
              * @param data user data created in custom_tag_start
              * @virtual
              */
-            vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+            vfunc_custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
             /**
              * This is called at the end of each custom element handled by
@@ -87800,7 +87800,7 @@ export namespace Gtk {
              * @param data user data that will be passed in to parser functions
              * @virtual
              */
-            vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+            vfunc_custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
             /**
              * This is called for each unknown element under &lt;child&gt;.
@@ -87809,7 +87809,7 @@ export namespace Gtk {
              * @param tagname name of tag
              * @virtual
              */
-            vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+            vfunc_custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
             /**
              * Get the internal child called `childname` of the `buildable` object.
@@ -87913,7 +87913,7 @@ export namespace Gtk {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -87923,7 +87923,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -87932,7 +87932,7 @@ export namespace Gtk {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

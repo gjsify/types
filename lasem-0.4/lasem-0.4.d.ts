@@ -342,7 +342,7 @@ export namespace Lasem {
 
         _init(...args: any[]): void;
 
-        static new_from_memory(buffer: (any | null), size: number): DomDocument;
+        static new_from_memory(buffer: null, size: number): DomDocument;
 
         static new_from_path(path: string): DomDocument;
 
@@ -394,7 +394,7 @@ export namespace Lasem {
          * @param buffer a memory buffer holding xml data
          * @param size size of the xml data, in bytes
          */
-        append_from_memory(node: DomNode, buffer: (any | null), size: number): void;
+        append_from_memory(node: DomNode, buffer: null, size: number): void;
 
         /**
          * @param tag_name name of the element to create
@@ -429,7 +429,7 @@ export namespace Lasem {
          * @param size placeholder for the size of the returned data
          * @returns a newly allocated buffer containing the requested data.
          */
-        get_href_data(href: string, size: (bigint | number)): (any | null);
+        get_href_data(href: string, size: (bigint | number)): null;
 
         get_url(): string;
 
@@ -443,7 +443,7 @@ export namespace Lasem {
          * @param buffer 
          * @param size 
          */
-        save_to_memory(buffer: (any | null), size: number): void;
+        save_to_memory(buffer: null, size: number): void;
 
         /**
          * @param path 
@@ -1222,7 +1222,7 @@ export namespace Lasem {
 
         attribute_offset: number;
 
-        trait_default: any;
+        trait_default: null;
     }
 
 
@@ -1247,7 +1247,7 @@ export namespace Lasem {
         /**
          * @param instance 
          */
-        clean_attributes(instance: (any | null)): void;
+        clean_attributes(instance: null): void;
 
         duplicate(): AttributeManager;
 
@@ -1255,21 +1255,21 @@ export namespace Lasem {
          * @param instance 
          * @param name 
          */
-        get_attribute(instance: (any | null), name: string): string;
+        get_attribute(instance: null, name: string): string;
 
         ref(): AttributeManager;
 
         /**
          * @param instance 
          */
-        serialize(instance: (any | null)): string;
+        serialize(instance: null): string;
 
         /**
          * @param instance 
          * @param name 
          * @param value 
          */
-        set_attribute(instance: (any | null), name: string, value: string): boolean;
+        set_attribute(instance: null, name: string, value: string): boolean;
 
         unref(): void;
     }
@@ -1410,7 +1410,7 @@ export namespace Lasem {
         static $gtype: GObject.GType<PropertyBag>;
 
         // Fields
-        properties: any[];
+        properties: null[];
 
         // Constructors
 
@@ -1455,7 +1455,7 @@ export namespace Lasem {
          * @param style 
          * @param parent_style 
          */
-        apply_property_bag(property_bag: PropertyBag, style: (any | null), parent_style: (any | null)): void;
+        apply_property_bag(property_bag: PropertyBag, style: null, parent_style: null): void;
 
         /**
          * @param property_bag 
@@ -1471,7 +1471,7 @@ export namespace Lasem {
         /**
          * @param style 
          */
-        init_default_style(style: (any | null)): void;
+        init_default_style(style: null): void;
 
         ref(): PropertyManager;
 

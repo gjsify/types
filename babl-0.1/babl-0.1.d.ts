@@ -90,7 +90,7 @@ export namespace Babl {
      * @param destination_format 
      * @param performance 
      */
-    function fast_fish(source_format: (any | null), destination_format: (any | null), performance: string): Object;
+    function fast_fish(source_format: null, destination_format: null, performance: string): Object;
 
     /**
      * Create a babl fish capable of converting from source_format to
@@ -99,7 +99,7 @@ export namespace Babl {
      * @param source_format 
      * @param destination_format 
      */
-    function fish(source_format: (any | null), destination_format: (any | null)): Object;
+    function fish(source_format: null, destination_format: null): Object;
 
     /**
      * Returns the babl object representing the color format given by
@@ -307,7 +307,7 @@ export namespace Babl {
      * @param destination 
      * @param n 
      */
-    function process(babl_fish: Object, source: (any | null), destination: (any | null), n: (bigint | number)): number;
+    function process(babl_fish: Object, source: null, destination: null, n: (bigint | number)): number;
 
     /**
      * @param babl_fish 
@@ -318,7 +318,7 @@ export namespace Babl {
      * @param n 
      * @param rows 
      */
-    function process_rows(babl_fish: Object, source: (any | null), source_stride: number, dest: (any | null), dest_stride: number, n: (bigint | number), rows: number): number;
+    function process_rows(babl_fish: Object, source: null, source_stride: number, dest: null, dest_stride: number, n: (bigint | number), rows: number): number;
 
     /**
      * Returns the babl object representing the `horizontal` and `vertical`
@@ -485,7 +485,7 @@ export namespace Babl {
      * @gir-type Callback
      */
     interface FishProcess {
-        (babl: Object, src: string, dst: string, n: number, data: (any | null)): void;
+        (babl: Object, src: string, dst: string, n: number, data: null): void;
     }
 
     /**

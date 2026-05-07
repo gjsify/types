@@ -661,7 +661,7 @@ export namespace GstHip {
          * @param address_mode address mode
          * @returns `true` if succeeded
          */
-        get_texture(plane: number, filter_mode: number, address_mode: number): [boolean, any];
+        get_texture(plane: number, filter_mode: number, address_mode: number): [boolean, null];
 
         /**
          * Sets `event` to `mem` for later synchronization operation
@@ -720,7 +720,7 @@ export namespace GstHip {
          * Gets hipStream_t handle owned by `stream`
          * @returns hipStream_t handle
          */
-        get_handle(): (any | null);
+        get_handle(): null;
 
         /**
          * Gets device vendor of `stream` object

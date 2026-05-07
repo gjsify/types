@@ -320,14 +320,14 @@ export namespace GnomeAutoar {
      * @gir-type Callback
      */
     interface FilterFunc {
-        (a: (any | null)): number;
+        (a: null): number;
     }
 
     /**
      * @gir-type Callback
      */
     interface FormatFunc {
-        (a: (any | null)): number;
+        (a: null): number;
     }
 
     namespace Compressor {
@@ -399,8 +399,8 @@ export namespace GnomeAutoar {
             output_is_dest: boolean;
             outputIsDest: boolean;
             size: (bigint | number);
-            source_files: any;
-            sourceFiles: any;
+            source_files: never;
+            sourceFiles: never;
         }
     }
 
@@ -496,12 +496,12 @@ export namespace GnomeAutoar {
         /**
          * @construct-only
          */
-        get source_files(): any;
+        get source_files(): null;
 
         /**
          * @construct-only
          */
-        get sourceFiles(): any;
+        get sourceFiles(): null;
 
         /**
          * Compile-time signal type information.
@@ -681,12 +681,12 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            conflict: (arg0: Gio.File, arg1: (any | null)) => number;
+            conflict: (arg0: Gio.File, arg1: null) => number;
             /**
              * @signal
              * @run-last
              */
-            "decide-destination": (arg0: Gio.File, arg1: (any | null)) => GObject.Object;
+            "decide-destination": (arg0: Gio.File, arg1: null) => GObject.Object;
             /**
              * This signal is emitted when error occurs and all jobs should be terminated.
              * Possible error domains are `AUTOAR_EXTRACTOR_ERROR`, `G_IO_ERROR`, and

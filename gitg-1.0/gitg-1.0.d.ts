@@ -725,12 +725,6 @@ export namespace Gitg {
 
         get_owner(): Repository;
 
-        /**
-         * @param args 
-         */
-        // Conflicted with Ggit.Ref.get_owner
-        get_owner(...args: never[]): any;
-
         get_d_parsed_name(): ParsedRefName;
 
         /**
@@ -813,12 +807,6 @@ export namespace Gitg {
         vfunc_set_working(value: boolean): void;
 
         get_upstream(): Ref;
-
-        /**
-         * @param args 
-         */
-        // Conflicted with Ggit.Branch.get_upstream
-        get_upstream(...args: never[]): any;
 
         /**
          * @virtual
@@ -3117,7 +3105,7 @@ export namespace Gitg {
          * @param font 
          * @param labels 
          */
-        static width(widget: Gtk.Widget, font: (any | null), labels: Ref[]): number;
+        static width(widget: Gtk.Widget, font: null, labels: Ref[]): number;
 
         /**
          * @param widget 
@@ -3529,12 +3517,6 @@ export namespace Gitg {
         set working(val: boolean);
 
         get_owner(): Repository;
-
-        /**
-         * @param args 
-         */
-        // Conflicted with Ggit.Ref.get_owner
-        get_owner(...args: never[]): any;
 
         get_d_parsed_name(): ParsedRefName;
 
@@ -4487,12 +4469,6 @@ export namespace Gitg {
          */
         static init_repository(location: Gio.File, is_bare: boolean): Repository;
 
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.init_repository
-        static init_repository(...args: never[]): any;
-
         // Methods
         clear_refs_cache(): void;
 
@@ -4506,7 +4482,7 @@ export namespace Gitg {
          * @param t_dup_func 
          * @param id 
          */
-        lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): (any | null);
+        lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): null;
 
         /**
          * @param args 
@@ -4520,21 +4496,9 @@ export namespace Gitg {
         lookup_reference(name: string): Ref;
 
         /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.lookup_reference
-        lookup_reference(...args: never[]): any;
-
-        /**
          * @param short_name 
          */
         lookup_reference_dwim(short_name: string): Ref;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.lookup_reference_dwim
-        lookup_reference_dwim(...args: never[]): any;
 
         /**
          * @param name 
@@ -4544,23 +4508,11 @@ export namespace Gitg {
         create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
 
         /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.create_branch
-        create_branch(...args: never[]): any;
-
-        /**
          * @param name 
          * @param oid 
          * @param message 
          */
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.create_reference
-        create_reference(...args: never[]): any;
 
         /**
          * @param name 
@@ -4569,19 +4521,7 @@ export namespace Gitg {
          */
         create_symbolic_reference(name: string, target: string, message: string): Ref;
 
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.create_symbolic_reference
-        create_symbolic_reference(...args: never[]): any;
-
         get_head(): Ref;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Repository.get_head
-        get_head(...args: never[]): any;
 
         /**
          * @param env 
@@ -4964,7 +4904,7 @@ export namespace Gitg {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps {
-            model: (SidebarStore | any);
+            model: SidebarStore;
         }
     }
 
@@ -4975,10 +4915,8 @@ export namespace Gitg {
         static $gtype: GObject.GType<Sidebar>;
 
         // Properties
-    // This accessor conflicts with another accessor's type in a parent class or interface.
-        get model(): (SidebarStore | any);
-    // This accessor conflicts with another accessor's type in a parent class or interface.
-        set model(val: (SidebarStore | any));
+        get model(): SidebarStore;
+        set model(val: SidebarStore);
 
         /**
          * Compile-time signal type information.
@@ -5045,12 +4983,12 @@ export namespace Gitg {
          * @param t_type 
          * @param t_dup_func 
          */
-        get_selected_item(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): (any | null);
+        get_selected_item(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): null;
 
         /**
          * @param t_dup_func 
          */
-        get_selected_items(t_dup_func: GObject.BoxedCopyFunc): [any[], number];
+        get_selected_items(t_dup_func: GObject.BoxedCopyFunc): [null[], number];
 
         /**
          * @param item 
@@ -5065,21 +5003,9 @@ export namespace Gitg {
         get_model(): SidebarStore;
 
         /**
-         * @param args 
-         */
-    // Conflicted with Gtk.TreeView.get_model
-        get_model(...args: never[]): any;
-
-        /**
          * @param value 
          */
         set_model(value: SidebarStore): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Gtk.TreeView.set_model
-        set_model(...args: never[]): any;
     }
 
 
@@ -6958,12 +6884,6 @@ export namespace Gitg {
 
         // Methods
         get_upstream(): Ref;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Branch.get_upstream
-        get_upstream(...args: never[]): any;
     }
 
 
@@ -7071,12 +6991,6 @@ export namespace Gitg {
 
         // Methods
         get_owner(): Repository;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with Ggit.Ref.get_owner
-        get_owner(...args: never[]): any;
 
         get_d_parsed_name(): ParsedRefName;
 

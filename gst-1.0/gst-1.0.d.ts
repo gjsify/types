@@ -3544,7 +3544,7 @@ export namespace Gst {
      * @param message the actual message
      * @param user_data the FILE* to log to
      */
-    function debug_log_default(category: DebugCategory, level: DebugLevel, file: string, _function: string, line: number, object: (GObject.Object | null), message: DebugMessage, user_data: (any | null)): void;
+    function debug_log_default(category: DebugCategory, level: DebugLevel, file: string, _function: string, line: number, object: (GObject.Object | null), message: DebugMessage, user_data: null): void;
 
     /**
      * Returns the string representation for the specified debug log message
@@ -3636,7 +3636,7 @@ export namespace Gst {
      * @returns a string containing a string     representation of the object
      * @since 1.26
      */
-    function debug_print_object(ptr: (any | null)): string;
+    function debug_print_object(ptr: null): string;
 
     /**
      * Returns a string that represents `segments`.
@@ -3667,7 +3667,7 @@ export namespace Gst {
      * @param data user data of the log function to remove
      * @returns How many instances of the function were removed
      */
-    function debug_remove_log_function_by_data(data: (any | null)): number;
+    function debug_remove_log_function_by_data(data: null): number;
 
     /**
      * Removes any previously added ring buffer logger with
@@ -3941,7 +3941,7 @@ export namespace Gst {
      * @param obj 
      * @returns `true` if `obj` is a {@link Gst.CapsFeatures} `false` otherwise
      */
-    function is_caps_features(obj: (any | null)): boolean;
+    function is_caps_features(obj: null): boolean;
 
     /**
      * Use this function to check if GStreamer has been initialized with `gst_init()`
@@ -4716,7 +4716,7 @@ export namespace Gst {
      * @param search_data element that should be found
      * @returns The address of the found element or `null` if nothing was found
      */
-    function util_array_binary_search(array: (any | null), num_elements: number, element_size: (bigint | number), search_func: GLib.CompareDataFunc, mode: SearchMode, search_data: (any | null)): (any | null);
+    function util_array_binary_search(array: null, num_elements: number, element_size: (bigint | number), search_func: GLib.CompareDataFunc, mode: SearchMode, search_data: null): null;
 
     /**
      * Returns smallest integral value not less than log2(v).
@@ -5492,7 +5492,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface CallAsyncFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
@@ -5548,7 +5548,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface CustomMetaTransformFunction {
-        (transbuf: Buffer, meta: CustomMeta, buffer: Buffer, type: GLib.Quark, data: (any | null)): boolean;
+        (transbuf: Buffer, meta: CustomMeta, buffer: Buffer, type: GLib.Quark, data: null): boolean;
     }
 
     /**
@@ -5646,14 +5646,14 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface MemoryMapFullFunction {
-        (mem: Memory, info: MapInfo, maxsize: number): (any | null);
+        (mem: Memory, info: MapInfo, maxsize: number): null;
     }
 
     /**
      * @gir-type Callback
      */
     interface MemoryMapFunction {
-        (mem: Memory, maxsize: number, flags: MapFlags): (any | null);
+        (mem: Memory, maxsize: number, flags: MapFlags): null;
     }
 
     /**
@@ -5702,7 +5702,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface MetaInitFunction {
-        (meta: Meta, params: (any | null), buffer: Buffer): boolean;
+        (meta: Meta, params: null, buffer: Buffer): boolean;
     }
 
     /**
@@ -5716,7 +5716,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface MetaTransformFunction {
-        (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data: (any | null)): boolean;
+        (transbuf: Buffer, meta: Meta, buffer: Buffer, type: GLib.Quark, data: null): boolean;
     }
 
     /**
@@ -5744,7 +5744,7 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface MiniObjectNotify {
-        (user_data: (any | null), obj: MiniObject): void;
+        (user_data: null, obj: MiniObject): void;
     }
 
     /**
@@ -5947,14 +5947,14 @@ export namespace Gst {
      * @gir-type Callback
      */
     interface TaskFunction {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface TaskPoolFunction {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
@@ -9457,7 +9457,7 @@ export namespace Gst {
          * @param data user data
          * @returns `true`
          */
-        async_signal_func(message: Message, data: (any | null)): boolean;
+        async_signal_func(message: Message, data: null): boolean;
 
         /**
          * Create watch for this bus. The {@link GLib.Source} will be dispatched whenever
@@ -9633,7 +9633,7 @@ export namespace Gst {
          * @param data user data
          * @returns {@link Gst.BusSyncReply.PASS}
          */
-        sync_signal_handler(message: Message, data: (any | null)): BusSyncReply;
+        sync_signal_handler(message: Message, data: null): BusSyncReply;
 
         /**
          * Gets a message from the bus, waiting up to the specified timeout.
@@ -9840,7 +9840,7 @@ export namespace Gst {
          * @param id1 A {@link Gst.ClockID}
          * @param id2 A {@link Gst.ClockID} to compare with
          */
-        static id_compare_func(id1: (any | null), id2: (any | null)): number;
+        static id_compare_func(id1: null, id2: null): number;
 
         /**
          * This function returns the underlying clock.
@@ -10938,7 +10938,7 @@ export namespace Gst {
         $signals: DeviceProvider.SignalSignatures;
 
         // Fields
-        devices: any[];
+        devices: null[];
 
         // Constructors
         constructor(properties?: Partial<DeviceProvider.ConstructorProps>, ...args: any[]);
@@ -13824,7 +13824,7 @@ export namespace Gst {
         // Fields
         object: Object;
 
-        element_private: any;
+        element_private: null;
 
         padtemplate: PadTemplate;
 
@@ -14038,7 +14038,7 @@ export namespace Gst {
          * No locking is performed in this function.
          * @returns a `gpointer` to the private data.
          */
-        get_element_private(): (any | null);
+        get_element_private(): null;
 
         /**
          * Gets the {@link Gst.FlowReturn} return from the last data passed by this pad.
@@ -14615,7 +14615,7 @@ export namespace Gst {
          * No locking is performed in this function.
          * @param priv The private data to attach to the pad.
          */
-        set_element_private(priv: (any | null)): void;
+        set_element_private(priv: null): void;
 
         /**
          * Sets the given event handler for the pad.
@@ -15758,7 +15758,7 @@ export namespace Gst {
          * @param p1 a {@link Gst.PluginFeature}
          * @param p2 a {@link Gst.PluginFeature}
          */
-        static rank_compare_func(p1: (any | null), p2: (any | null)): number;
+        static rank_compare_func(p1: null, p2: null): number;
 
         // Methods
         /**
@@ -16789,7 +16789,7 @@ export namespace Gst {
 
         func: TaskFunction;
 
-        user_data: any;
+        user_data: null;
 
         
     // This field conflicts with a function in a parent class or interface.
@@ -17016,7 +17016,7 @@ export namespace Gst {
          * @param id the id
          * @virtual
          */
-        vfunc_dispose_handle(id: (any | null)): void;
+        vfunc_dispose_handle(id: null): void;
 
         /**
          * Join a task and/or return it to the pool. `id` is the id obtained from
@@ -17028,7 +17028,7 @@ export namespace Gst {
          * @param id the id
          * @virtual
          */
-        vfunc_join(id: (any | null)): void;
+        vfunc_join(id: null): void;
 
         /**
          * Prepare the taskpool for accepting `gst_task_pool_push()` operations.
@@ -17043,7 +17043,7 @@ export namespace Gst {
          * @param func the function to call
          * @virtual
          */
-        vfunc_push(func: TaskPoolFunction): (any | null);
+        vfunc_push(func: TaskPoolFunction): null;
 
         // Methods
         /**
@@ -17066,7 +17066,7 @@ export namespace Gst {
          * `id`.
          * @param id the id
          */
-        dispose_handle(id: (any | null)): void;
+        dispose_handle(id: null): void;
 
         /**
          * Join a task and/or return it to the pool. `id` is the id obtained from
@@ -17077,7 +17077,7 @@ export namespace Gst {
          * `id`.
          * @param id the id
          */
-        join(id: (any | null)): void;
+        join(id: null): void;
 
         /**
          * Prepare the taskpool for accepting `gst_task_pool_push()` operations.
@@ -17091,7 +17091,7 @@ export namespace Gst {
          * @param func the function to call
          * @returns a pointer that should be used for the gst_task_pool_join function. This pointer can be `null`, you must check `error` to detect errors. If the pointer is not `null` and `gst_task_pool_join()` is not used, call `gst_task_pool_dispose_handle()` instead.
          */
-        push(func: TaskPoolFunction): (any | null);
+        push(func: TaskPoolFunction): null;
     }
 
 
@@ -17765,19 +17765,19 @@ export namespace Gst {
          * Peek the head element of the queue without removing it from the queue.
          * @returns the head element of `queue` or `null` when the queue is empty.
          */
-        peek(): (any | null);
+        peek(): null;
 
         /**
          * Get the head element of the queue.
          * @returns the head element of `queue` or `null` when the queue is empty.
          */
-        pop(): (any | null);
+        pop(): null;
 
         /**
          * Append `data` to the tail of the queue.
          * @param data the data
          */
-        push(data: (any | null)): void;
+        push(data: null): void;
 
         /**
          * Increase the refcount of `queue`.
@@ -17960,7 +17960,7 @@ export namespace Gst {
          * @param params params for `info`
          * @returns the metadata for the api in `info` on `buffer`.
          */
-        add_meta(info: MetaInfo, params: (any | null)): (Meta | null);
+        add_meta(info: MetaInfo, params: null): (Meta | null);
 
         /**
          * Adds a {@link Gst.ParentBufferMeta} to `buffer` that holds a reference on
@@ -20556,7 +20556,7 @@ export namespace Gst {
         size: number;
 
         // Constructors
-        constructor(size: number, type: GObject.GType, lock: GLib.Mutex, master_cookie: (any | null), copy: IteratorCopyFunction, next: IteratorNextFunction, item: IteratorItemFunction, resync: IteratorResyncFunction, free: IteratorFreeFunction);
+        constructor(size: number, type: GObject.GType, lock: GLib.Mutex, master_cookie: null, copy: IteratorCopyFunction, next: IteratorNextFunction, item: IteratorItemFunction, resync: IteratorResyncFunction, free: IteratorFreeFunction);
 
         static new_single(type: GObject.GType, object: (GObject.Value | any)): Iterator;
 
@@ -20783,7 +20783,7 @@ export namespace Gst {
 
         maxsize: number;
 
-        user_data: any[];
+        user_data: null[];
 
         // Methods
         /**
@@ -22026,7 +22026,7 @@ export namespace Gst {
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @returns The user data pointer set, or `null`
          */
-        get_qdata(quark: GLib.Quark): (any | null);
+        get_qdata(quark: GLib.Quark): null;
 
         /**
          * If `mini_object` has the LOCKABLE flag set, check if the current EXCLUSIVE
@@ -22086,7 +22086,7 @@ export namespace Gst {
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @param data An opaque user data pointer
          */
-        set_qdata(quark: GLib.Quark, data: (any | null)): void;
+        set_qdata(quark: GLib.Quark, data: null): void;
 
         /**
          * This function gets back user data pointers stored via `gst_mini_object_set_qdata()`
@@ -22095,7 +22095,7 @@ export namespace Gst {
          * @param quark A {@link GLib.Quark}, naming the user data pointer
          * @returns The user data pointer set, or `null`
          */
-        steal_qdata(quark: GLib.Quark): (any | null);
+        steal_qdata(quark: GLib.Quark): null;
 
         /**
          * Unlock the mini-object with the specified access mode in `flags`.
@@ -22141,7 +22141,7 @@ export namespace Gst {
 
         id: number;
 
-        data: any;
+        data: null;
 
         offset: number;
 
@@ -25086,7 +25086,7 @@ export namespace Gst {
          * @param tag tag to read out
          * @returns `true`, if a value was copied, `false` if the tag didn't exist in the              given list.
          */
-        get_pointer(tag: string): [boolean, any];
+        get_pointer(tag: string): [boolean, null];
 
         /**
          * Gets the value that is at the given index for the given tag in the given
@@ -25095,7 +25095,7 @@ export namespace Gst {
          * @param index number of entry to read out
          * @returns `true`, if a value was copied, `false` if the tag didn't exist in the              given list.
          */
-        get_pointer_index(tag: string, index: number): [boolean, any];
+        get_pointer_index(tag: string, index: number): [boolean, null];
 
         /**
          * Copies the first sample for the given tag in the taglist into the variable
@@ -25615,12 +25615,12 @@ export namespace Gst {
         static $gtype: GObject.GType<TypeFind>;
 
         // Fields
-        data: any;
+        data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            data: any;
+            data: null;
         }>);
 
         // Static methods
@@ -26783,7 +26783,7 @@ export namespace Gst {
      * A datatype to hold the handle to an outstanding sync or async clock callback.
      * @gir-type Alias
      */
-    type ClockID = any;
+    type ClockID = never;
 
     /**
      * A datatype to hold a time, measured in nanoseconds.

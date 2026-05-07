@@ -103,7 +103,7 @@ export namespace CoglPango {
 
         // Constructor properties interface
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
-            context: any;
+            context: never;
         }
     }
 
@@ -117,7 +117,7 @@ export namespace CoglPango {
         /**
          * @construct-only
          */
-        set context(val: any);
+        set context(val: never);
 
         /**
          * Compile-time signal type information.

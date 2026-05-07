@@ -1500,8 +1500,8 @@ export namespace GstPlay {
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayVideoRenderer.ConstructorProps {
             video_sink: Gst.Element;
             videoSink: Gst.Element;
-            window_handle: (any | null);
-            windowHandle: (any | null);
+            window_handle: never;
+            windowHandle: never;
         }
     }
 
@@ -1519,11 +1519,11 @@ export namespace GstPlay {
         get videoSink(): Gst.Element;
         set videoSink(val: Gst.Element);
 
-        get window_handle(): (any | null);
-        set window_handle(val: (any | null));
+        get window_handle(): null;
+        set window_handle(val: never);
 
-        get windowHandle(): (any | null);
-        set windowHandle(val: (any | null));
+        get windowHandle(): null;
+        set windowHandle(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1556,13 +1556,13 @@ export namespace GstPlay {
         /**
          * @param window_handle Window handle to use or `null`
          */
-        static ["new"](window_handle: (any | null)): PlayVideoRenderer;
+        static ["new"](window_handle: null): PlayVideoRenderer;
 
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
          */
-        static new_with_sink(window_handle: (any | null), video_sink: Gst.Element): PlayVideoRenderer;
+        static new_with_sink(window_handle: null, video_sink: Gst.Element): PlayVideoRenderer;
 
         // Methods
         /**
@@ -1580,7 +1580,7 @@ export namespace GstPlay {
         /**
          * @returns The currently set, platform specific window handle
          */
-        get_window_handle(): (any | null);
+        get_window_handle(): null;
 
         /**
          * Configure a subregion as a video target within the window set by
@@ -1605,7 +1605,7 @@ export namespace GstPlay {
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
          */
-        set_window_handle(window_handle: (any | null)): void;
+        set_window_handle(window_handle: null): void;
     }
 
 

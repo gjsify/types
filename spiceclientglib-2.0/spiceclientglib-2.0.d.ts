@@ -626,7 +626,7 @@ export namespace SpiceClientGLib {
      * @param time stream timestamp
      * @deprecated since 0.35: use `spice_record_channel_send_data()` instead.
      */
-    function record_send_data(channel: RecordChannel, data: (any | null), bytes: (bigint | number), time: number): void;
+    function record_send_data(channel: RecordChannel, data: null, bytes: (bigint | number), time: number): void;
 
     /**
      * Set various properties on `session`, according to the commandline
@@ -1177,7 +1177,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.34: Use {@link SpiceClientGLib.CursorChannel.cursor} notify instead.
              * @run-first
              */
-            "cursor-set": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: (any | null)) => void;
+            "cursor-set": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: null) => void;
             "notify::cursor": (pspec: GObject.ParamSpec) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
             "notify::channel-type": (pspec: GObject.ParamSpec) => void;
@@ -1256,7 +1256,7 @@ export namespace SpiceClientGLib {
          * @param rgba 
          * @virtual
          */
-        vfunc_cursor_set(width: number, height: number, hot_x: number, hot_y: number, rgba: (any | null)): void;
+        vfunc_cursor_set(width: number, height: number, hot_x: number, hot_y: number, rgba: null): void;
     }
 
 
@@ -1285,7 +1285,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "display-primary-create": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: (any | null)) => void;
+            "display-primary-create": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: null) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_destroy | SpiceClientGLib.DisplayChannel::display-primary-destroy} signal is
              * emitted when the primary surface is freed and should not be
@@ -1317,7 +1317,7 @@ export namespace SpiceClientGLib {
              * @since 0.35
              * @deprecated since 0.36: use {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} instead
              */
-            "streaming-mode": (arg0: boolean) => (any | null);
+            "streaming-mode": (arg0: boolean) => null;
             "notify::gl-scanout": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::monitors": (pspec: GObject.ParamSpec) => void;
@@ -1335,7 +1335,7 @@ export namespace SpiceClientGLib {
             gl_scanout: GlScanout;
             glScanout: GlScanout;
             height: number;
-            monitors: any[];
+            monitors: never[];
             monitors_max: number;
             monitorsMax: number;
             width: number;
@@ -1374,7 +1374,7 @@ export namespace SpiceClientGLib {
          * @since 0.13
          * @read-only
          */
-        get monitors(): any[];
+        get monitors(): null[];
 
         /**
          * The maximum number of monitors the server or guest supports.
@@ -1729,7 +1729,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection instead.
              * @run-last
              */
-            "main-clipboard": (arg0: number, arg1: (any | null), arg2: number) => void;
+            "main-clipboard": (arg0: number, arg1: null, arg2: number) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1737,7 +1737,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
              * @run-last
              */
-            "main-clipboard-grab": (arg0: (any | null), arg1: number) => (boolean | void);
+            "main-clipboard-grab": (arg0: null, arg1: number) => (boolean | void);
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1759,7 +1759,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection": (arg0: number, arg1: number, arg2: (any | null), arg3: number) => void;
+            "main-clipboard-selection": (arg0: number, arg1: number, arg2: null, arg3: number) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1767,7 +1767,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-grab": (arg0: number, arg1: (any | null), arg2: number) => (boolean | void);
+            "main-clipboard-selection-grab": (arg0: number, arg1: null, arg2: number) => (boolean | void);
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -2190,7 +2190,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "playback-data": (arg0: (any | null), arg1: number) => void;
+            "playback-data": (arg0: null, arg1: number) => void;
             /**
              * Notify when the current playback delay is requested
              * @signal
@@ -2227,7 +2227,7 @@ export namespace SpiceClientGLib {
             minLatency: number;
             mute: boolean;
             nchannels: number;
-            volume: any;
+            volume: never;
         }
     }
 
@@ -2251,8 +2251,8 @@ export namespace SpiceClientGLib {
         get nchannels(): number;
         set nchannels(val: number);
 
-        get volume(): any;
-        set volume(val: any);
+        get volume(): null;
+        set volume(val: never);
 
         /**
          * Compile-time signal type information.
@@ -2283,7 +2283,7 @@ export namespace SpiceClientGLib {
          * @param size 
          * @virtual
          */
-        vfunc_playback_data(data: (any | null), size: number): void;
+        vfunc_playback_data(data: null, size: number): void;
 
         /**
          * @param format 
@@ -2317,7 +2317,7 @@ export namespace SpiceClientGLib {
              * @since 0.15
              * @run-last
              */
-            "port-data": (arg0: (any | null), arg1: number) => void;
+            "port-data": (arg0: null, arg1: number) => void;
             /**
              * The {@link SpiceClientGLib.PortChannel.SignalSignatures.port_event | SpiceClientGLib.PortChannel::port-event} signal is emitted when new
              * port event is received.
@@ -2456,7 +2456,7 @@ export namespace SpiceClientGLib {
              * @since 0.36
              * @run-first
              */
-            event: (arg0: string, arg1: (any | null)) => void;
+            event: (arg0: string, arg1: null) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
         }
@@ -2611,7 +2611,7 @@ export namespace SpiceClientGLib {
         interface ConstructorProps extends Channel.ConstructorProps {
             mute: boolean;
             nchannels: number;
-            volume: any;
+            volume: never;
         }
     }
 
@@ -2629,8 +2629,8 @@ export namespace SpiceClientGLib {
         get nchannels(): number;
         set nchannels(val: number);
 
-        get volume(): any;
-        set volume(val: any);
+        get volume(): null;
+        set volume(val: never);
 
         /**
          * Compile-time signal type information.
@@ -2661,7 +2661,7 @@ export namespace SpiceClientGLib {
          * @param size 
          * @virtual
          */
-        vfunc_record_data(data: (any | null), size: number): void;
+        vfunc_record_data(data: null, size: number): void;
 
         /**
          * @param format 
@@ -2683,7 +2683,7 @@ export namespace SpiceClientGLib {
          * @param bytes size of `data`
          * @param time stream timestamp
          */
-        send_data(data: (any | null), bytes: (bigint | number), time: number): void;
+        send_data(data: null, bytes: (bigint | number), time: number): void;
     }
 
 
@@ -2808,7 +2808,7 @@ export namespace SpiceClientGLib {
             unixPath: string;
             uri: string;
             username: string;
-            uuid: any;
+            uuid: never;
             verify: SessionVerify;
         }
     }
@@ -3192,7 +3192,7 @@ export namespace SpiceClientGLib {
          * @since 0.11
          * @read-only
          */
-        get uuid(): any;
+        get uuid(): null;
 
         /**
          * {@link SpiceClientGLib.SessionVerify} bit field indicating which parts of the peer
@@ -4207,7 +4207,7 @@ export namespace SpiceClientGLib {
 
         hot_spot_y: number;
 
-        data: any;
+        data: null;
 
         // Constructors
 
@@ -4217,7 +4217,7 @@ export namespace SpiceClientGLib {
             height: number;
             hot_spot_x: number;
             hot_spot_y: number;
-            data: any;
+            data: null;
         }>);
     }
 
@@ -4276,7 +4276,7 @@ export namespace SpiceClientGLib {
         static $gtype: GObject.GType<DisplayPrimary>;
 
         // Fields
-        format: any;
+        format: null;
 
         width: number;
 
@@ -4293,7 +4293,7 @@ export namespace SpiceClientGLib {
         // Constructors
 
         constructor(properties?: Partial<{
-            format: any;
+            format: null;
             width: number;
             height: number;
             stride: number;
@@ -4588,7 +4588,7 @@ export namespace SpiceClientGLib {
          * Finds the %libusb_device associated with the `device`.
          * @returns the %libusb_device associated to %SpiceUsbDevice.
          */
-        get_libusb_device(): (any | null);
+        get_libusb_device(): null;
     }
 
 

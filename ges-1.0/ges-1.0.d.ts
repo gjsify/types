@@ -1062,12 +1062,12 @@ export namespace GES {
      * @param key_spec_1 
      * @param key_spec_2 
      */
-    function pspec_equal(key_spec_1: (any | null), key_spec_2: (any | null)): boolean;
+    function pspec_equal(key_spec_1: null, key_spec_2: null): boolean;
 
     /**
      * @param key_spec 
      */
-    function pspec_hash(key_spec: (any | null)): number;
+    function pspec_hash(key_spec: null): number;
 
     /**
      * @param type 
@@ -11426,7 +11426,7 @@ export namespace GES {
         // Fields
         layers: Layer[];
 
-        tracks: any[];
+        tracks: null[];
 
         // Constructors
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);

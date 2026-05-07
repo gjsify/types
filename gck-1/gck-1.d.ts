@@ -154,7 +154,7 @@ export namespace Gck {
      * stack.
      * @param builder the builder
      */
-    function builder_unref(builder: (any | null)): void;
+    function builder_unref(builder: null): void;
 
     function error_get_quark(): GLib.Quark;
 
@@ -337,7 +337,7 @@ export namespace Gck {
      * @gir-type Callback
      */
     interface Allocator {
-        (data: (any | null), length: number): (any | null);
+        (data: null, length: number): null;
     }
 
     /**
@@ -598,21 +598,21 @@ export namespace Gck {
              * @deprecated Since 3.4
              * @run-last
              */
-            "authenticate-object": (arg0: Object, arg1: string, arg2: (any | null)) => (boolean | void);
+            "authenticate-object": (arg0: Object, arg1: string, arg2: null) => (boolean | void);
             /**
              * Use `gck_session_set_interaction()` instead of connecting to this signal.
              * @signal
              * @deprecated Since 3.4
              * @run-last
              */
-            "authenticate-slot": (arg0: Slot, arg1: string, arg2: (any | null)) => (boolean | void);
+            "authenticate-slot": (arg0: Slot, arg1: string, arg2: null) => (boolean | void);
             "notify::functions": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            functions: any;
+            functions: never;
             path: string;
         }
     }
@@ -636,7 +636,7 @@ export namespace Gck {
          * This points to a CK_FUNCTION_LIST structure.
          * @construct-only
          */
-        get functions(): any;
+        get functions(): null;
 
         /**
          * The PKCS&num;11 module file path.
@@ -1407,8 +1407,8 @@ export namespace Gck {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            app_data: any;
-            appData: any;
+            app_data: never;
+            appData: never;
             handle: (bigint | number);
             interaction: (Gio.TlsInteraction | null);
             module: Module;
@@ -1434,13 +1434,13 @@ export namespace Gck {
          * Raw PKCS#11 application data used to open the PKCS#11 session.
          * @construct-only
          */
-        set app_data(val: any);
+        set app_data(val: never);
 
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
          * @construct-only
          */
-        set appData(val: any);
+        set appData(val: never);
 
         /**
          * The raw CK_SESSION_HANDLE handle of this session.
@@ -3342,7 +3342,7 @@ export namespace Gck {
          * stack.
          * @param builder the builder
          */
-        static unref(builder: (any | null)): void;
+        static unref(builder: null): void;
 
         // Methods
         /**
@@ -3706,7 +3706,7 @@ export namespace Gck {
         // Fields
         type: number;
 
-        parameter: any;
+        parameter: null;
 
         n_parameter: number;
     }

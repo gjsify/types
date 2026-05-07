@@ -1370,7 +1370,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -1501,7 +1501,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -1523,7 +1523,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -2248,7 +2248,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -2518,7 +2518,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -2540,7 +2540,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -3715,7 +3715,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -4920,7 +4920,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -5115,7 +5115,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -5314,7 +5314,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -6238,7 +6238,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -6346,7 +6346,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -19778,7 +19778,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
     }
 
 
@@ -20005,8 +20005,8 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            core_object: any;
-            coreObject: any;
+            core_object: never;
+            coreObject: never;
         }
     }
 
@@ -20020,12 +20020,12 @@ export namespace WebKit2WebExtension {
         /**
          * @construct-only
          */
-        set core_object(val: any);
+        set core_object(val: never);
 
         /**
          * @construct-only
          */
-        set coreObject(val: any);
+        set coreObject(val: never);
 
         /**
          * Compile-time signal type information.
@@ -20149,7 +20149,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -20171,7 +20171,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -20786,7 +20786,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * @param args 
@@ -20808,7 +20808,7 @@ export namespace WebKit2WebExtension {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * @param args 
@@ -23907,7 +23907,7 @@ export namespace WebKit2WebExtension {
              * @param use_capture A `gboolean`
              * @virtual
              */
-            vfunc_remove_event_listener(event_name: string, handler: (any | null), use_capture: boolean): boolean;
+            vfunc_remove_event_listener(event_name: string, handler: null, use_capture: boolean): boolean;
         }
 
 

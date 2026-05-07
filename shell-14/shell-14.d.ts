@@ -412,7 +412,7 @@ export namespace Shell {
      * @gir-type Callback
      */
     interface LeisureFunction {
-        (data: (any | null)): void;
+        (data: null): void;
     }
 
     /**
@@ -426,7 +426,7 @@ export namespace Shell {
      * @gir-type Callback
      */
     interface PerfStatisticsCallback {
-        (perf_log: PerfLog, data: (any | null)): void;
+        (perf_log: PerfLog, data: null): void;
     }
 
     /**

@@ -2045,7 +2045,7 @@ export namespace Soup {
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
          * @virtual
          */
-        vfunc_update(msg: Message, auth_header: GLib.HashTable<any, any>): boolean;
+        vfunc_update(msg: Message, auth_header: GLib.HashTable<never, never>): boolean;
 
         // Methods
         /**
@@ -2281,12 +2281,12 @@ export namespace Soup {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filter: AuthDomainFilter;
-            filter_data: any;
-            filterData: any;
+            filter_data: never;
+            filterData: never;
             generic_auth_callback: AuthDomainGenericAuthCallback;
             genericAuthCallback: AuthDomainGenericAuthCallback;
-            generic_auth_data: any;
-            genericAuthData: any;
+            generic_auth_data: never;
+            genericAuthData: never;
             proxy: boolean;
             realm: string;
         }
@@ -2325,14 +2325,14 @@ export namespace Soup {
         /**
          * Data to pass to the {@link AuthDomainFilter}.
          */
-        get filter_data(): any;
-        set filter_data(val: any);
+        get filter_data(): null;
+        set filter_data(val: never);
 
         /**
          * Data to pass to the {@link AuthDomainFilter}.
          */
-        get filterData(): any;
-        set filterData(val: any);
+        get filterData(): null;
+        set filterData(val: never);
 
         /**
          * The {@link AuthDomainGenericAuthCallback}.
@@ -2349,14 +2349,14 @@ export namespace Soup {
         /**
          * The data to pass to the {@link AuthDomainGenericAuthCallback}.
          */
-        get generic_auth_data(): any;
-        set generic_auth_data(val: any);
+        get generic_auth_data(): null;
+        set generic_auth_data(val: never);
 
         /**
          * The data to pass to the {@link AuthDomainGenericAuthCallback}.
          */
-        get genericAuthData(): any;
-        set genericAuthData(val: any);
+        get genericAuthData(): null;
+        set genericAuthData(val: never);
 
         /**
          * Whether or not this is a proxy auth domain.
@@ -2579,8 +2579,8 @@ export namespace Soup {
         interface ConstructorProps extends AuthDomain.ConstructorProps {
             auth_callback: AuthDomainBasicAuthCallback;
             authCallback: AuthDomainBasicAuthCallback;
-            auth_data: any;
-            authData: any;
+            auth_data: never;
+            authData: never;
         }
     }
 
@@ -2610,14 +2610,14 @@ export namespace Soup {
         /**
          * The data to pass to the {@link AuthDomainBasicAuthCallback}.
          */
-        get auth_data(): any;
-        set auth_data(val: any);
+        get auth_data(): null;
+        set auth_data(val: never);
 
         /**
          * The data to pass to the {@link AuthDomainBasicAuthCallback}.
          */
-        get authData(): any;
-        set authData(val: any);
+        get authData(): null;
+        set authData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -2682,8 +2682,8 @@ export namespace Soup {
         interface ConstructorProps extends AuthDomain.ConstructorProps {
             auth_callback: AuthDomainDigestAuthCallback;
             authCallback: AuthDomainDigestAuthCallback;
-            auth_data: any;
-            authData: any;
+            auth_data: never;
+            authData: never;
         }
     }
 
@@ -2713,14 +2713,14 @@ export namespace Soup {
         /**
          * The data to pass to the {@link AuthDomainDigestAuthCallback}.
          */
-        get auth_data(): any;
-        set auth_data(val: any);
+        get auth_data(): null;
+        set auth_data(val: never);
 
         /**
          * The data to pass to the {@link AuthDomainDigestAuthCallback}.
          */
-        get authData(): any;
-        set authData(val: any);
+        get authData(): null;
+        set authData(val: never);
 
         /**
          * Compile-time signal type information.
@@ -7473,7 +7473,7 @@ export namespace Soup {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection_type: WebsocketConnectionType;
             connectionType: WebsocketConnectionType;
-            extensions: any;
+            extensions: never;
             io_stream: Gio.IOStream;
             ioStream: Gio.IOStream;
             keepalive_interval: number;
@@ -7535,7 +7535,7 @@ export namespace Soup {
          * List of {@link WebsocketExtension} objects that are active in the connection.
          * @construct-only
          */
-        get extensions(): any;
+        get extensions(): null;
 
         /**
          * The underlying IO stream the WebSocket is communicating
@@ -7896,7 +7896,7 @@ export namespace Soup {
          * @param params the parameters
          * @virtual
          */
-        vfunc_configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<any, any> | null)): boolean;
+        vfunc_configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<never, never> | null)): boolean;
 
         /**
          * Get the parameters strings to be included in the request header.
@@ -7951,7 +7951,7 @@ export namespace Soup {
          * @param params the parameters
          * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
          */
-        configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<any, any> | null)): boolean;
+        configure(connection_type: WebsocketConnectionType, params: (GLib.HashTable<never, never> | null)): boolean;
 
         /**
          * Get the parameters strings to be included in the request header.

@@ -770,7 +770,7 @@ export namespace Ide {
      * @param task 
      * @param value 
      */
-    function g_task_return_pointer_from_main(task: Gio.Task, value: (any | null)): void;
+    function g_task_return_pointer_from_main(task: Gio.Task, value: null): void;
 
     function get_program_name(): string;
 
@@ -1050,7 +1050,7 @@ export namespace Ide {
      * @gir-type Callback
      */
     interface ThreadFunc {
-        (user_data: (any | null)): void;
+        (user_data: null): void;
     }
 
     /**
@@ -13184,7 +13184,7 @@ export namespace Ide {
          * @param instance 
          * @param pspec 
          */
-        static notify_in_main(instance: (any | null), pspec: GObject.ParamSpec): void;
+        static notify_in_main(instance: null, pspec: GObject.ParamSpec): void;
 
         // Virtual methods
         /**
@@ -14525,7 +14525,7 @@ export namespace Ide {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<any, any>)): void;
+        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
 
         /**
          * @param page_name 
@@ -14652,7 +14652,7 @@ export namespace Ide {
          * @param map 
          * @virtual
          */
-        vfunc_set_page(page_name: string, map: GLib.HashTable<any, any>): void;
+        vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
 
         /**
          * This interface method is called when the workbench would like to shutdown.
@@ -14928,7 +14928,7 @@ export namespace Ide {
          * @param total_num_bytes 
          * @param user_data 
          */
-        static file_progress_callback(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: (any | null)): void;
+        static file_progress_callback(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: null): void;
 
         /**
          * @param status 
@@ -14936,7 +14936,7 @@ export namespace Ide {
          * @param estimating 
          * @param user_data 
          */
-        static flatpak_progress_callback(status: string, progress: number, estimating: boolean, user_data: (any | null)): void;
+        static flatpak_progress_callback(status: string, progress: number, estimating: boolean, user_data: null): void;
 
         // Methods
         get_fraction(): number;
@@ -17839,7 +17839,7 @@ export namespace Ide {
          * @param property 
          * @param flags 
          */
-        bind(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags): void;
+        bind(key: string, object: null, property: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * Like `ide_settings_bind()` but allows transforming to and from settings storage using
@@ -17853,7 +17853,7 @@ export namespace Ide {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: (any | null), property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
 
         /**
          * @param key 
@@ -20482,7 +20482,7 @@ export namespace Ide {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20492,7 +20492,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20501,7 +20501,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20565,7 +20565,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20576,7 +20576,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20585,7 +20585,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -23962,7 +23962,7 @@ export namespace Ide {
          * @param word 
          * @param tag 
          */
-        insert(word: string, tag: (any | null)): void;
+        insert(word: string, tag: null): void;
 
         /**
          * Gets the pointer tag that was registered for `word`, or `null`.  This can be
@@ -23971,7 +23971,7 @@ export namespace Ide {
          * @param word 
          * @returns Highlighter specific tag.
          */
-        lookup(word: string): (any | null);
+        lookup(word: string): null;
 
         ref(): HighlightIndex;
 

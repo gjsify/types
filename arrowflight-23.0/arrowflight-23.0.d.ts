@@ -143,7 +143,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            client: any;
+            client: never;
         }
     }
 
@@ -157,7 +157,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set client(val: any);
+        set client(val: never);
 
         /**
          * Compile-time signal type information.
@@ -527,7 +527,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            stream: any;
+            stream: never;
         }
     }
 
@@ -541,7 +541,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set stream(val: any);
+        set stream(val: never);
 
         /**
          * Compile-time signal type information.
@@ -580,7 +580,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            descriptor: any;
+            descriptor: never;
         }
     }
 
@@ -594,7 +594,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set descriptor(val: any);
+        set descriptor(val: never);
 
         /**
          * Compile-time signal type information.
@@ -648,7 +648,7 @@ export namespace ArrowFlight {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             reader: MetadataReader;
-            result: any;
+            result: never;
             writer: StreamWriter;
         }
     }
@@ -670,7 +670,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set result(val: any);
+        set result(val: never);
 
         /**
          * A writer to write record batches to.
@@ -785,7 +785,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            info: any;
+            info: never;
         }
     }
 
@@ -799,7 +799,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set info(val: any);
+        set info(val: never);
 
         /**
          * Compile-time signal type information.
@@ -992,7 +992,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            reader: any;
+            reader: never;
         }
     }
 
@@ -1006,7 +1006,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set reader(val: any);
+        set reader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1051,7 +1051,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            writer: any;
+            writer: never;
         }
     }
 
@@ -1065,7 +1065,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set writer(val: any);
+        set writer(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1170,7 +1170,7 @@ export namespace ArrowFlight {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_owner: boolean;
             isOwner: boolean;
-            reader: any;
+            reader: never;
         }
     }
 
@@ -1196,7 +1196,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set reader(val: any);
+        set reader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1509,7 +1509,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            handler: any;
+            handler: never;
         }
     }
 
@@ -1523,7 +1523,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set handler(val: any);
+        set handler(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1562,7 +1562,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            reader: any;
+            reader: never;
         }
     }
 
@@ -1576,7 +1576,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set reader(val: any);
+        set reader(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1622,7 +1622,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            sender: any;
+            sender: never;
         }
     }
 
@@ -1636,7 +1636,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set sender(val: any);
+        set sender(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1683,8 +1683,8 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            call_context: any;
-            callContext: any;
+            call_context: never;
+            callContext: never;
         }
     }
 
@@ -1698,12 +1698,12 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set call_context(val: any);
+        set call_context(val: never);
 
         /**
          * @construct-only
          */
-        set callContext(val: any);
+        set callContext(val: never);
 
         /**
          * Compile-time signal type information.
@@ -1907,7 +1907,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            chunk: any;
+            chunk: never;
         }
     }
 
@@ -1921,7 +1921,7 @@ export namespace ArrowFlight {
         /**
          * @construct-only
          */
-        set chunk(val: any);
+        set chunk(val: never);
 
         /**
          * Compile-time signal type information.

@@ -227,7 +227,7 @@ export namespace GnomeKeyring {
      * @param request The request returned from the asynchronous call function.
      * @deprecated When using libsecret, use `GCancellable` to cancel asynchronous             requests.
      */
-    function cancel_request(request: any): void;
+    function cancel_request(request: never): void;
 
     /**
      * Change the password for `keyring`. In most cases you would specify `null` for

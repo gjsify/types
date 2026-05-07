@@ -1508,7 +1508,7 @@ export namespace OsmGpsMap {
             shade_alpha: number;
             shadeAlpha: number;
             shaded: boolean;
-            track: any;
+            track: never;
             visible: boolean;
         }
     }
@@ -1550,8 +1550,8 @@ export namespace OsmGpsMap {
         get shaded(): boolean;
         set shaded(val: boolean);
 
-        get track(): any;
-        set track(val: any);
+        get track(): null;
+        set track(val: never);
 
         /**
          * @default true
@@ -1637,7 +1637,7 @@ export namespace OsmGpsMap {
             editable: boolean;
             line_width: number;
             lineWidth: number;
-            track: any;
+            track: never;
             visible: boolean;
         }
     }
@@ -1679,7 +1679,7 @@ export namespace OsmGpsMap {
         /**
          * @construct-only
          */
-        get track(): any;
+        get track(): null;
 
         /**
          * @default true
@@ -1823,23 +1823,23 @@ export namespace OsmGpsMap {
 
         rlon: number;
 
-        user_data: any;
+        user_data: null;
 
         // Constructors
 
         constructor(properties?: Partial<{
             rlat: number;
             rlon: number;
-            user_data: any;
+            user_data: null;
         }>);
 
         static new_degrees(lat: number, lon: number): MapPoint;
 
-        static new_degrees_with_user_data(lat: number, lon: number, user_data: (any | null)): MapPoint;
+        static new_degrees_with_user_data(lat: number, lon: number, user_data: null): MapPoint;
 
         static new_radians(rlat: number, rlon: number): MapPoint;
 
-        static new_radians_with_user_data(rlat: number, rlon: number, user_data: (any | null)): MapPoint;
+        static new_radians_with_user_data(rlat: number, rlon: number, user_data: null): MapPoint;
 
         // Methods
         /**
@@ -1867,7 +1867,7 @@ export namespace OsmGpsMap {
          * Get user data stored in point
          * @returns The {@link OsmGpsMap.MapPoint} user data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Sets the lagitude and longitude in degrees.
@@ -1887,7 +1887,7 @@ export namespace OsmGpsMap {
          * Store user data in point
          * @param user_data user data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 

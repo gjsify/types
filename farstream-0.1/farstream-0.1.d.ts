@@ -1607,7 +1607,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            "known-source-packet-received": (arg0: number, arg1: any) => void;
+            "known-source-packet-received": (arg0: number, arg1: null) => void;
             /**
              * This signal is emitted when all local candidates have been
              * prepared, an ICE implementation would send its SDP offer or answer.

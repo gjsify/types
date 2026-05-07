@@ -353,7 +353,7 @@ export namespace GstValidate {
      * @param in_string 
      * @param flags 
      */
-    function replace_variables_in_string(incom: (any | null), local_vars: Gst.Structure, in_string: string, flags: StructureResolveVariablesFlags): string;
+    function replace_variables_in_string(incom: null, local_vars: Gst.Structure, in_string: string, flags: StructureResolveVariablesFlags): string;
 
     function report_init(): void;
 
@@ -386,7 +386,7 @@ export namespace GstValidate {
      * @param local_variables 
      * @param flags 
      */
-    function structure_resolve_variables(source: (any | null), structure: Gst.Structure, local_variables: Gst.Structure, flags: StructureResolveVariablesFlags): void;
+    function structure_resolve_variables(source: null, structure: Gst.Structure, local_variables: Gst.Structure, flags: StructureResolveVariablesFlags): void;
 
     /**
      * @param vars 
@@ -748,7 +748,7 @@ export namespace GstValidate {
         $signals: BinMonitor.SignalSignatures;
 
         // Fields
-        element_monitors: any[];
+        element_monitors: null[];
 
         scenario: Scenario;
 
@@ -3194,9 +3194,9 @@ export namespace GstValidate {
 
         message: string;
 
-        shadow_reports: any[];
+        shadow_reports: null[];
 
-        repeated_reports: any[];
+        repeated_reports: null[];
 
         reporting_level: ReportingDetails;
 

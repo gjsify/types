@@ -3061,7 +3061,7 @@ export namespace GstVideo {
      * @param lines pixel lines
      * @param width the number of pixels on one line
      */
-    function video_chroma_resample(resample: VideoChromaResample, lines: (any | null), width: number): void;
+    function video_chroma_resample(resample: VideoChromaResample, lines: null, width: number): void;
 
     /**
      * Convert `s` to a {@link GstVideo.VideoChromaSite}
@@ -3455,7 +3455,7 @@ export namespace GstVideo {
      * @returns the default palette of `format` or `null` when `format` does not have a palette.
      * @since 1.2
      */
-    function video_format_get_palette(format: VideoFormat): [(any | null), number];
+    function video_format_get_palette(format: VideoFormat): [null, number];
 
     /**
      * Converts a {@link GstVideo.VideoFormat} value into the corresponding FOURCC.  Only
@@ -3934,14 +3934,14 @@ export namespace GstVideo {
      * @gir-type Callback
      */
     interface VideoFormatPack {
-        (info: VideoFormatInfo, flags: VideoPackFlags, src: (any | null), sstride: number, data: (any | null), stride: number, chroma_site: VideoChromaSite, y: number, width: number): void;
+        (info: VideoFormatInfo, flags: VideoPackFlags, src: null, sstride: number, data: null, stride: number, chroma_site: VideoChromaSite, y: number, width: number): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface VideoFormatUnpack {
-        (info: VideoFormatInfo, flags: VideoPackFlags, dest: (any | null), data: (any | null), stride: number, x: number, y: number, width: number): void;
+        (info: VideoFormatInfo, flags: VideoPackFlags, dest: null, data: null, stride: number, x: number, y: number, width: number): void;
     }
 
     /**
@@ -7236,7 +7236,7 @@ export namespace GstVideo {
          * `gst_video_codec_frame_set_user_data()` previously.
          * @returns The previously set user_data
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Increases the refcount of the given frame by one.
@@ -7252,7 +7252,7 @@ export namespace GstVideo {
          * before the `user_data` is replaced.
          * @param user_data private data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
 
         /**
          * Decreases the refcount of the frame. If the refcount reaches 0, the frame
@@ -7573,7 +7573,7 @@ export namespace GstVideo {
          * @param y y coordinate
          * @param width the width
          */
-        line(line: (any | null), x: number, y: number, width: number): void;
+        line(line: null, x: number, y: number, width: number): void;
     }
 
 
@@ -7677,11 +7677,11 @@ export namespace GstVideo {
         // Fields
         flags: VideoFrameFlags;
 
-        meta: any;
+        meta: null;
 
         id: number;
 
-        data: any[];
+        data: null[];
 
         map: Gst.MapInfo[];
 
@@ -8206,7 +8206,7 @@ export namespace GstVideo {
          * @param flags `GstMapFlags`
          * @returns TRUE if the map operation was successful.
          */
-        map(plane: number, info: Gst.MapInfo, flags: Gst.MapFlags): [boolean, any, number];
+        map(plane: number, info: Gst.MapInfo, flags: Gst.MapFlags): [boolean, null, number];
 
         /**
          * Set the alignment of `meta` to `alignment`. This function checks that
@@ -8555,7 +8555,7 @@ export namespace GstVideo {
 
         h: number;
 
-        params: any[];
+        params: null[];
 
         // Static methods
         static get_info(): Gst.MetaInfo;
@@ -8693,7 +8693,7 @@ export namespace GstVideo {
          * @param width the number of output pixels to scale
          * @param height the number of output lines to scale
          */
-        ["2d"](vscale: VideoScaler, format: VideoFormat, src: (any | null), src_stride: number, dest: (any | null), dest_stride: number, x: number, y: number, width: number, height: number): void;
+        ["2d"](vscale: VideoScaler, format: VideoFormat, src: null, src_stride: number, dest: null, dest_stride: number, x: number, y: number, width: number, height: number): void;
 
         /**
          * Free a previously allocated {@link GstVideo.VideoScaler} `scale`.
@@ -8726,7 +8726,7 @@ export namespace GstVideo {
          * @param dest_offset the horizontal destination offset
          * @param width the number of pixels to scale
          */
-        horizontal(format: VideoFormat, src: (any | null), dest: (any | null), dest_offset: number, width: number): void;
+        horizontal(format: VideoFormat, src: null, dest: null, dest_offset: number, width: number): void;
 
         /**
          * Vertically combine `width` pixels in the lines in `src_lines` to `dest`.
@@ -8738,7 +8738,7 @@ export namespace GstVideo {
          * @param dest_offset the vertical destination offset
          * @param width the number of pixels to scale
          */
-        vertical(format: VideoFormat, src_lines: (any | null), dest: (any | null), dest_offset: number, width: number): void;
+        vertical(format: VideoFormat, src_lines: null, dest: null, dest_offset: number, width: number): void;
     }
 
 

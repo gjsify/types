@@ -729,7 +729,7 @@ export namespace Gegl {
      * @gir-type Callback
      */
     interface LookupFunction {
-        (value: number, data: (any | null)): number;
+        (value: number, data: null): number;
     }
 
     /**
@@ -764,7 +764,7 @@ export namespace Gegl {
      * @gir-type Callback
      */
     interface SamplerGetFun {
-        (self: Sampler, x: number, y: number, scale: BufferMatrix2, output: (any | null), repeat_mode: AbyssPolicy): void;
+        (self: Sampler, x: number, y: number, scale: BufferMatrix2, output: null, repeat_mode: AbyssPolicy): void;
     }
 
     /**
@@ -778,7 +778,7 @@ export namespace Gegl {
      * @gir-type Callback
      */
     interface TileSourceCommand {
-        (gegl_tile_source: TileSource, command: TileCommand, x: number, y: number, z: number, data: (any | null)): (any | null);
+        (gegl_tile_source: TileSource, command: TileCommand, x: number, y: number, z: number, data: null): null;
     }
 
     /**
@@ -967,7 +967,7 @@ export namespace Gegl {
             abyss_y: number;
             abyssY: number;
             backend: TileBackend;
-            format: any;
+            format: never;
             height: number;
             initialized: boolean;
             path: string;
@@ -1048,8 +1048,8 @@ export namespace Gegl {
          */
         get backend(): TileBackend;
 
-        get format(): any;
-        set format(val: any);
+        get format(): null;
+        set format(val: never);
 
         /**
          * @default -1
@@ -1230,7 +1230,7 @@ export namespace Gegl {
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        add_handler(handler: (any | null)): void;
+        add_handler(handler: null): void;
 
         /**
          * Clears the provided rectangular region by setting all the associated memory
@@ -1336,13 +1336,13 @@ export namespace Gegl {
          * the same buffer (both raw access and converted).
          * @param linear a previously returned buffer.
          */
-        linear_close(linear: (any | null)): void;
+        linear_close(linear: null): void;
 
         /**
          * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
          * @param handler a {@link Gegl.TileHandler}
          */
-        remove_handler(handler: (any | null)): void;
+        remove_handler(handler: null): void;
 
         /**
          * Clean up resources used by sampling framework of buffer.
@@ -1377,7 +1377,7 @@ export namespace Gegl {
          * @param pixel pointer to the data of a single pixel
          * @param pixel_format the babl format of the pixel, if missing - the soft format of dst.
          */
-        set_color_from_pixel(rect: Rectangle, pixel: (any | null), pixel_format: Babl.Object): void;
+        set_color_from_pixel(rect: Rectangle, pixel: null, pixel_format: Babl.Object): void;
 
         /**
          * Changes the size and position that is considered active in a buffer, this
@@ -3909,7 +3909,7 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            changed: (arg0: (any | null)) => void;
+            changed: (arg0: null) => void;
         }
 
         // Constructor properties interface
@@ -4123,7 +4123,7 @@ export namespace Gegl {
             chunksize: number;
             node: Node;
             progress: number;
-            rectangle: any;
+            rectangle: never;
         }
     }
 
@@ -4151,8 +4151,8 @@ export namespace Gegl {
         get progress(): number;
         set progress(val: number);
 
-        get rectangle(): any;
-        set rectangle(val: any);
+        get rectangle(): null;
+        set rectangle(val: never);
 
         /**
          * Compile-time signal type information.
@@ -4599,7 +4599,7 @@ export namespace Gegl {
         interface ConstructorProps extends TileSource.ConstructorProps {
             flush_on_destroy: boolean;
             flushOnDestroy: boolean;
-            format: any;
+            format: never;
             px_size: number;
             pxSize: number;
             tile_height: number;
@@ -4633,7 +4633,7 @@ export namespace Gegl {
         /**
          * @construct-only
          */
-        get format(): any;
+        get format(): null;
 
         /**
          * @read-only
@@ -4865,7 +4865,7 @@ export namespace Gegl {
         // Fields
         command: TileSourceCommand;
 
-        padding: any[];
+        padding: null[];
 
         // Constructors
         constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
@@ -4920,14 +4920,14 @@ export namespace Gegl {
         static $gtype: GObject.GType<BufferIteratorItem>;
 
         // Fields
-        data: any;
+        data: null;
 
         roi: Rectangle;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            data: any;
+            data: null;
             roi: Rectangle;
         }>);
     }
@@ -4992,7 +4992,7 @@ export namespace Gegl {
         // Fields
         "function": LookupFunction;
 
-        data: any;
+        data: null;
 
         shift: number;
 
@@ -5239,7 +5239,7 @@ export namespace Gegl {
         static $gtype: GObject.GType<ParamSpecEnum>;
 
         // Fields
-        excluded_values: any[];
+        excluded_values: null[];
 
         // Methods
         /**
@@ -5367,14 +5367,14 @@ export namespace Gegl {
         static $gtype: GObject.GType<PathList>;
 
         // Fields
-        next: any;
+        next: null;
 
         d: PathItem;
 
         // Constructors
 
         constructor(properties?: Partial<{
-            next: any;
+            next: null;
             d: PathItem;
         }>);
 
@@ -5704,7 +5704,7 @@ export namespace Gegl {
          * @param output memory location for output data.
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          */
-        get(x: number, y: number, scale: BufferMatrix2, output: (any | null), repeat_mode: AbyssPolicy): void;
+        get(x: number, y: number, scale: BufferMatrix2, output: null, repeat_mode: AbyssPolicy): void;
 
         /**
          * @returns The context rectangle of the given `sampler`.

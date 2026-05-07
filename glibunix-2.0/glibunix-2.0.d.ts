@@ -67,7 +67,7 @@ export namespace GLibUnix {
     /**
      * @param user_name 
      */
-    function get_passwd_entry(user_name: string): (any | null);
+    function get_passwd_entry(user_name: string): null;
 
     /**
      * @param fds 

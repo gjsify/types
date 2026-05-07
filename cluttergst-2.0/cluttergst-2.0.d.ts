@@ -814,7 +814,7 @@ export namespace ClutterGst {
          * @read-only
           * @category Inherited from ClutterGst.Player
          */
-        get audio_streams(): any;
+        get audio_streams(): null;
 
         /**
          * List of audio streams available on the current media.
@@ -822,7 +822,7 @@ export namespace ClutterGst {
          * @read-only
           * @category Inherited from ClutterGst.Player
          */
-        get audioStreams(): any;
+        get audioStreams(): null;
 
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
@@ -876,13 +876,13 @@ export namespace ClutterGst {
          * @read-only
           * @category Inherited from ClutterGst.Player
          */
-        get subtitle_tracks(): any;
+        get subtitle_tracks(): null;
 
         /**
          * @read-only
           * @category Inherited from ClutterGst.Player
          */
-        get subtitleTracks(): any;
+        get subtitleTracks(): null;
 
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.
@@ -1337,8 +1337,8 @@ export namespace ClutterGst {
         interface ConstructorProps extends Clutter.Media.ConstructorProps {
             audio_stream: number;
             audioStream: number;
-            audio_streams: any;
-            audioStreams: any;
+            audio_streams: never;
+            audioStreams: never;
             idle: boolean;
             in_seek: boolean;
             inSeek: boolean;
@@ -1346,8 +1346,8 @@ export namespace ClutterGst {
             seekFlags: SeekFlags;
             subtitle_track: number;
             subtitleTrack: number;
-            subtitle_tracks: any;
-            subtitleTracks: any;
+            subtitle_tracks: never;
+            subtitleTracks: never;
             user_agent: string;
             userAgent: string;
         }
@@ -1393,14 +1393,14 @@ export namespace ClutterGst {
          * @since 1.4
          * @read-only
          */
-        get audio_streams(): any;
+        get audio_streams(): null;
 
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
-        get audioStreams(): any;
+        get audioStreams(): null;
 
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
@@ -1446,12 +1446,12 @@ export namespace ClutterGst {
         /**
          * @read-only
          */
-        get subtitle_tracks(): any;
+        get subtitle_tracks(): null;
 
         /**
          * @read-only
          */
-        get subtitleTracks(): any;
+        get subtitleTracks(): null;
 
         /**
          * The User Agent used by {@link ClutterGst.Player} with network protocols.

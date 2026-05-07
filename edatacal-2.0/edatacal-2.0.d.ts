@@ -53,7 +53,7 @@ export namespace EDataCal {
      * @param change an {@link EDataCal.CalCacheOfflineChange}
      * @since 3.26
      */
-    function cal_cache_offline_change_free(change: (any | null)): void;
+    function cal_cache_offline_change_free(change: null): void;
 
     /**
      * Frees the `ptr` structure, previously allocated with `e_cal_cache_search_data_new()`
@@ -61,7 +61,7 @@ export namespace EDataCal {
      * @param ptr an {@link EDataCal.CalCacheSearchData}
      * @since 3.26
      */
-    function cal_cache_search_data_free(ptr: (any | null)): void;
+    function cal_cache_search_data_free(ptr: null): void;
 
     /**
      * Frees the `ptr` structure, previously allocated with `e_cal_meta_backend_info_new()`
@@ -69,7 +69,7 @@ export namespace EDataCal {
      * @param ptr an {@link EDataCal.CalMetaBackendInfo}
      * @since 3.26
      */
-    function cal_meta_backend_info_free(ptr: (any | null)): void;
+    function cal_meta_backend_info_free(ptr: null): void;
 
     /**
      * @param queue 
@@ -2169,7 +2169,7 @@ export namespace EDataCal {
          * @param cal_cache an {@link EDataCal.CalCache}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        static resolve_timezone_cb(tzid: string, cal_cache: (any | null), cancellable: (Gio.Cancellable | null)): (ICalGLib.Timezone | null);
+        static resolve_timezone_cb(tzid: string, cal_cache: null, cancellable: (Gio.Cancellable | null)): (ICalGLib.Timezone | null);
 
         // Virtual methods
         /**
@@ -3829,7 +3829,7 @@ export namespace EDataCal {
             connection: Gio.DBusConnection;
             object_path: string;
             objectPath: string;
-            sexp: (CalBackendSExp | null);
+            sexp: CalBackendSExp;
         }
     }
 
@@ -3870,7 +3870,7 @@ export namespace EDataCal {
          * The query expression for this view
          * @construct-only
          */
-        get sexp(): (CalBackendSExp | null);
+        get sexp(): CalBackendSExp;
 
         /**
          * Compile-time signal type information.
@@ -3886,7 +3886,7 @@ export namespace EDataCal {
 
         _init(...args: any[]): void;
 
-        static ["new"](backend: (any | null), sexp: (any | null), connection: Gio.DBusConnection, object_path: string): DataCalView;
+        static ["new"](backend: null, sexp: null, connection: Gio.DBusConnection, object_path: string): DataCalView;
 
         // Signals
         /** @signal */
@@ -3929,7 +3929,7 @@ export namespace EDataCal {
         /**
          * @returns Hash table of field names which the listener is interested in. Backends can return fully populated objects, but the listener advertised that it will use only these. Returns `null` for all available fields. Note: The data pointer in the hash table has no special meaning, it's only GINT_TO_POINTER(1) for easier checking. Also, field names are compared case insensitively.
          */
-        get_fields_of_interest(): (GLib.HashTable<any, any> | null);
+        get_fields_of_interest(): (GLib.HashTable<never, never> | null);
 
         /**
          * Gets the {@link ECal.ClientViewFlags} that control the behaviour of `view`.
@@ -3948,7 +3948,7 @@ export namespace EDataCal {
          * Get the {@link EDataCal.CalBackendSExp} object used for the given view.
          * @returns The expression object used to search.
          */
-        get_sexp(): (any | null);
+        get_sexp(): null;
 
         /**
          * Checks whether the given view is already completed. Being completed means the initial
@@ -4438,7 +4438,7 @@ export namespace EDataCal {
          * or `e_cal_cache_offline_change_copy()`.
          * @param change an {@link EDataCal.CalCacheOfflineChange}
          */
-        static free(change: (any | null)): void;
+        static free(change: null): void;
 
         // Methods
         /**
@@ -4498,7 +4498,7 @@ export namespace EDataCal {
          * or `e_cal_cache_search_data_copy()`.
          * @param ptr an {@link EDataCal.CalCacheSearchData}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**
@@ -4545,7 +4545,7 @@ export namespace EDataCal {
          * or `e_cal_meta_backend_info_copy()`.
          * @param ptr an {@link EDataCal.CalMetaBackendInfo}
          */
-        static free(ptr: (any | null)): void;
+        static free(ptr: null): void;
 
         // Methods
         /**

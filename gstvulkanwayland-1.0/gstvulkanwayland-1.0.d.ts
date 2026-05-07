@@ -59,15 +59,15 @@ export namespace GstVulkanWayland {
         $signals: VulkanDisplayWayland.SignalSignatures;
 
         // Fields
-        display: any;
+        display: null;
 
-        registry: any;
+        registry: null;
 
-        compositor: any;
+        compositor: null;
 
-        subcompositor: any;
+        subcompositor: null;
 
-        shell: any;
+        shell: null;
 
         // Constructors
         constructor(properties?: Partial<VulkanDisplayWayland.ConstructorProps>, ...args: any[]);
@@ -79,7 +79,7 @@ export namespace GstVulkanWayland {
         // Conflicted with GstVulkan.VulkanDisplay.new
         static ["new"](...args: never[]): any;
 
-        static new_with_display(display: (any | null)): VulkanDisplayWayland;
+        static new_with_display(display: null): VulkanDisplayWayland;
 
         // Signals
         /** @signal */

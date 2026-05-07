@@ -160,14 +160,14 @@ export namespace GtkSource {
      * @gir-type Callback
      */
     interface GutterDataFunc {
-        (gutter: Gutter, cell: Gtk.CellRenderer, line_number: number, current_line: boolean, data: (any | null)): void;
+        (gutter: Gutter, cell: Gtk.CellRenderer, line_number: number, current_line: boolean, data: null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface GutterSizeFunc {
-        (gutter: Gutter, cell: Gtk.CellRenderer, data: (any | null)): void;
+        (gutter: Gutter, cell: Gtk.CellRenderer, data: null): void;
     }
 
     /**
@@ -817,7 +817,7 @@ export namespace GtkSource {
             showHeaders: boolean;
             show_icons: boolean;
             showIcons: boolean;
-            view: (View | null);
+            view: View;
         }
     }
 
@@ -949,7 +949,7 @@ export namespace GtkSource {
          * The {@link GtkSource.View} bound to the completion object.
          * @construct-only
          */
-        get view(): (View | null);
+        get view(): View;
 
         /**
          * Compile-time signal type information.
@@ -1054,7 +1054,7 @@ export namespace GtkSource {
          * The {@link GtkSource.View} associated with `completion`.
          * @returns The {@link GtkSource.View} associated with `completion`.
          */
-        get_view(): (any | null);
+        get_view(): null;
 
         /**
          * Hides the completion if it is active (visible).
@@ -1393,7 +1393,7 @@ export namespace GtkSource {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -1409,7 +1409,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count
@@ -4039,7 +4039,7 @@ export namespace GtkSource {
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): (any | null);
+        get_data(key: string): null;
 
         /**
          * Each object carries around a table of associations from
@@ -4055,7 +4055,7 @@ export namespace GtkSource {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: (any | null)): void;
+        set_data(key: string, data: null): void;
 
         /**
          * Decreases the reference count of `object`. When its reference count

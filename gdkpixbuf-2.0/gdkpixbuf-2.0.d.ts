@@ -281,21 +281,21 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleIncrementLoadFunc {
-        (context: (any | null), buf: Uint8Array): boolean;
+        (context: null, buf: Uint8Array): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface PixbufModuleLoadAnimationFunc {
-        (f: (any | null)): PixbufAnimation;
+        (f: null): PixbufAnimation;
     }
 
     /**
      * @gir-type Callback
      */
     interface PixbufModuleLoadFunc {
-        (f: (any | null)): Pixbuf;
+        (f: null): Pixbuf;
     }
 
     /**
@@ -316,7 +316,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleSaveFunc {
-        (f: (any | null), pixbuf: Pixbuf, param_keys: (string[] | null), param_values: (string[] | null)): boolean;
+        (f: null, pixbuf: Pixbuf, param_keys: (string[] | null), param_values: (string[] | null)): boolean;
     }
 
     /**
@@ -337,7 +337,7 @@ export namespace GdkPixbuf {
      * @gir-type Callback
      */
     interface PixbufModuleStopLoadFunc {
-        (context: (any | null)): boolean;
+        (context: null): boolean;
     }
 
     /**
@@ -403,7 +403,7 @@ export namespace GdkPixbuf {
             nChannels: number;
             pixel_bytes: (GLib.Bytes | Uint8Array);
             pixelBytes: (GLib.Bytes | Uint8Array);
-            pixels: any;
+            pixels: never;
             rowstride: number;
             width: number;
         }
@@ -628,7 +628,7 @@ export namespace GdkPixbuf {
          * A pointer to the pixel data of the pixbuf.
          * @construct-only
          */
-        get pixels(): any;
+        get pixels(): null;
 
         /**
          * The number of bytes between the start of a row and

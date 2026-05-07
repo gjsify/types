@@ -1008,7 +1008,7 @@ export namespace AppStreamCompose {
 
         static ["new"](): Image;
 
-        static new_from_data(data: (any | null), len: (bigint | number), dest_width: number, dest_height: number, flags: ImageLoadFlags, format_hint: ImageFormat): Image;
+        static new_from_data(data: null, len: (bigint | number), dest_width: number, dest_height: number, flags: ImageLoadFlags, format_hint: ImageFormat): Image;
 
         static new_from_file(fname: string, dest_width: number, dest_height: number, flags: ImageLoadFlags): Image;
 
@@ -1030,7 +1030,7 @@ export namespace AppStreamCompose {
          * Get a set of image format names we can currently read
          * (via GdkPixbuf).
          */
-        static supported_format_names(): GLib.HashTable<any, any>;
+        static supported_format_names(): GLib.HashTable<never, never>;
 
         // Methods
         /**
@@ -1468,7 +1468,7 @@ export namespace AppStreamCompose {
          * Get user-defined data. This is a helper
          * function for bindings.
          */
-        get_user_data(): (any | null);
+        get_user_data(): null;
 
         /**
          * Open this unit, populating its content listing.
@@ -1504,7 +1504,7 @@ export namespace AppStreamCompose {
          * function for bindings.
          * @param user_data the user data
          */
-        set_user_data(user_data: (any | null)): void;
+        set_user_data(user_data: null): void;
     }
 
 
