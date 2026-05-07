@@ -79,10 +79,9 @@ export namespace PangoCairo {
      * See {@link PangoCairo.ShapeRendererFunc} for details.
      * @param context a {@link Pango.Context}, from a pangocairo font map
      * @param func Callback function for rendering attributes of   type {@link Pango.AttrType.SHAPE}, or `null` to disable shape rendering.
-     * @param dnotify Callback that will be called when the   context is freed to release `data`
      * @since 1.18
      */
-    function context_set_shape_renderer(context: Pango.Context, func: (ShapeRendererFunc | null), dnotify: (GLib.DestroyNotify | null)): void;
+    function context_set_shape_renderer(context: Pango.Context, func: (ShapeRendererFunc | null)): void;
 
     /**
      * Creates a context object set up to match the current transformation

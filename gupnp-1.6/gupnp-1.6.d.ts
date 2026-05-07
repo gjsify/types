@@ -512,9 +512,8 @@ export namespace GUPnP {
          * @param use_acl `true`, if the path should query the GUPnPContext::acl before serving the resource, `false` otherwise.
          * @param path the toplevel path for the handler.
          * @param callback callback to invoke for requests under `path`
-         * @param destroy A {@link GLib.DestroyNotify} for `user_data` or `null` if none.
          */
-        add_server_handler(use_acl: boolean, path: string, callback: Soup.ServerCallback, destroy: (GLib.DestroyNotify | null)): void;
+        add_server_handler(use_acl: boolean, path: string, callback: Soup.ServerCallback): void;
 
         /**
          * Access the {@link GUPnP.Acl} associated with this client. If there isn't any,
@@ -2983,10 +2982,9 @@ export namespace GUPnP {
          * @param variable The variable to add notification for
          * @param type The type of the variable
          * @param callback The callback to call when `variable` changes
-         * @param notify Function to call when the notification is removed, or `null`
          * @returns `true` on success.
          */
-        add_notify(variable: string, type: GObject.GType, callback: ServiceProxyNotifyCallback, notify: (GLib.DestroyNotify | null)): boolean;
+        add_notify(variable: string, type: GObject.GType, callback: ServiceProxyNotifyCallback): boolean;
 
         /**
          * Get a notification for anything that happens on the peer.
@@ -2994,10 +2992,9 @@ export namespace GUPnP {
          * `value` in `callback` will be of type G_TYPE_POINTER and contain the pre-parsed
          * {@link libxml2.Doc}. Do NOT free or modify this document.
          * @param callback The callback to call when the peer issues any variable notification.
-         * @param notify A {@link GLib.DestroyNotify} for `user_data`
          * @returns `true` on success.
          */
-        add_raw_notify(callback: ServiceProxyNotifyCallback, notify: (GLib.DestroyNotify | null)): boolean;
+        add_raw_notify(callback: ServiceProxyNotifyCallback): boolean;
 
         /**
          * Synchronously call the `action` on the remote UPnP service.

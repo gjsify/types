@@ -3528,9 +3528,8 @@ export namespace Eog {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -3553,9 +3552,8 @@ export namespace Eog {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -3590,10 +3588,9 @@ export namespace Eog {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -3617,10 +3614,9 @@ export namespace Eog {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_sort_func(sort_column_id: number, sort_func: Gtk.TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.

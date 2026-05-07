@@ -10531,9 +10531,8 @@ export namespace Gdaui {
          * whenever the rendering of a cell in `grid` needs to be done. It is similar in purpose
          * to the `gtk_tree_view_column_set_cell_data_func()` function.
          * @param func a {@link Gdaui.RawGridFormatFunc} function pointer
-         * @param dnotify destroy notifier for `data`
          */
-        add_formatting_function(func: RawGridFormatFunc, dnotify: (GLib.DestroyNotify | null)): void;
+        add_formatting_function(func: RawGridFormatFunc): void;
 
         /**
          * This function undoes what has been specified before by `gdaui_raw_grid_add_formatting_function()`

@@ -1772,9 +1772,8 @@ export namespace GtkSource {
          * used to setup the cell renderer properties for rendering the current cell.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterDataFunc} to use.
-         * @param destroy the destroy notification for `func_data`.
          */
-        set_cell_data_func(renderer: Gtk.CellRenderer, func: (GutterDataFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_cell_data_func(renderer: Gtk.CellRenderer, func: (GutterDataFunc | null)): void;
 
         /**
          * Sets the {@link GtkSource.GutterSizeFunc} to use for `renderer`. This function is
@@ -1782,9 +1781,8 @@ export namespace GtkSource {
          * of the cell.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterSizeFunc} to use.
-         * @param destroy the destroy notification for `func_data`.
          */
-        set_cell_size_func(renderer: Gtk.CellRenderer, func: (GutterSizeFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_cell_size_func(renderer: Gtk.CellRenderer, func: (GutterSizeFunc | null)): void;
     }
 
 
@@ -3989,17 +3987,15 @@ export namespace GtkSource {
          * ]]></programlisting></informalexample>
          * @param category a mark category.
          * @param func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
-         * @param user_data_notify a function to free the memory allocated for `user_data` or `null` if you do not want to supply such a function.
          */
-        set_mark_category_tooltip_func(category: string, func: (ViewMarkTooltipFunc | null), user_data_notify: (GLib.DestroyNotify | null)): void;
+        set_mark_category_tooltip_func(category: string, func: (ViewMarkTooltipFunc | null)): void;
 
         /**
          * See `gtk_source_view_set_mark_category_tooltip_func()` for more information.
          * @param category a mark category.
          * @param markup_func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
-         * @param user_data_notify a function to free the memory allocated for `user_data` or `null` if you do not want to supply such a function.
          */
-        set_mark_category_tooltip_markup_func(category: string, markup_func: (ViewMarkTooltipFunc | null), user_data_notify: (GLib.DestroyNotify | null)): void;
+        set_mark_category_tooltip_markup_func(category: string, markup_func: (ViewMarkTooltipFunc | null)): void;
 
         /**
          * Sets the position of the right margin in the given `view`.

@@ -1447,9 +1447,8 @@ export namespace EDataCal {
          * then left the error unchanged and notify about errors manually.
          * @param use_cancellable an optional {@link Gio.Cancellable} to use for `func`
          * @param func a function to call in a dedicated thread
-         * @param user_data_free optional destroy call back for `user_data`
          */
-        schedule_custom_operation(use_cancellable: (Gio.Cancellable | null), func: CalBackendCustomOpFunc, user_data_free: (GLib.DestroyNotify | null)): void;
+        schedule_custom_operation(use_cancellable: (Gio.Cancellable | null), func: CalBackendCustomOpFunc): void;
 
         /**
          * Asynchronously sends meeting information in `calobj`.  The `backend` may

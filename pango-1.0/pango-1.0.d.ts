@@ -1991,11 +1991,10 @@ export namespace Pango {
      * @param logical_rect logical rectangle to assign to each character
      * @param data user data pointer
      * @param copy_func function to copy `data` when the   attribute is copied. If `null`, `data` is simply copied   as a pointer
-     * @param destroy_func function to free `data` when the   attribute is freed
      * @returns the newly allocated   {@link Pango.Attribute}, which should be freed with   {@link Pango.Attribute.destroy}
      * @since 1.8
      */
-    function attr_shape_new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: (any | null), copy_func: (AttrDataCopyFunc | null), destroy_func: (GLib.DestroyNotify | null)): Attribute;
+    function attr_shape_new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: (any | null), copy_func: (AttrDataCopyFunc | null)): Attribute;
 
     /**
      * Create a new attribute that influences how invisible
@@ -6680,9 +6679,8 @@ export namespace Pango {
          * @param logical_rect logical rectangle to assign to each character
          * @param data user data pointer
          * @param copy_func function to copy `data` when the   attribute is copied. If `null`, `data` is simply copied   as a pointer
-         * @param destroy_func function to free `data` when the   attribute is freed
          */
-        static new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: (any | null), copy_func: (AttrDataCopyFunc | null), destroy_func: (GLib.DestroyNotify | null)): Attribute;
+        static new_with_data(ink_rect: Rectangle, logical_rect: Rectangle, data: (any | null), copy_func: (AttrDataCopyFunc | null)): Attribute;
     }
 
 

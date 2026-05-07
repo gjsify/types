@@ -2384,9 +2384,8 @@ export namespace Gda {
          * SELECT statement).
          * @param attribute attribute name as a static string
          * @param value a {@link GObject.Value}, or `null`
-         * @param destroy a function to be called when `attribute` is not needed anymore, or `null`
          */
-        set_attribute(attribute: string, value: (GObject.Value | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_attribute(attribute: string, value: (GObject.Value | null)): void;
 
         /**
          * Sets the auto increment flag for the given column.
@@ -16418,10 +16417,9 @@ export namespace Gda {
          * If an error occurred in this function, then the `arg_destroy_func` function is not called to free `arg`.
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`, or `null`
-         * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute(func: ThreadWrapperFunc, arg: (any | null), arg_destroy_func: (GLib.DestroyNotify | null)): number;
+        execute(func: ThreadWrapperFunc, arg: (any | null)): number;
 
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
@@ -16439,10 +16437,9 @@ export namespace Gda {
          * If an error occurred in this function, then the `arg_destroy_func` function is not called to free `arg`.
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`
-         * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute_void(func: ThreadWrapperVoidFunc, arg: (any | null), arg_destroy_func: (GLib.DestroyNotify | null)): number;
+        execute_void(func: ThreadWrapperVoidFunc, arg: (any | null)): number;
 
         /**
          * Use this method to check if the execution of a function is finished. The function's execution must have
@@ -18485,9 +18482,8 @@ export namespace Gda {
          * the functions which will free it (typically `g_free()`). If `attribute` does not need to be freed, then `destroy` can be `null`.
          * @param attribute attribute name as a static string
          * @param value a {@link GObject.Value}, or `null`
-         * @param destroy function called when `attribute` has to be freed, or `null`
          */
-        set_attribute(attribute: string, value: (GObject.Value | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_attribute(attribute: string, value: (GObject.Value | null)): void;
     }
 
 

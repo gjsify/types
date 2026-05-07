@@ -1384,9 +1384,8 @@ export namespace GstRtspServer {
          * It is only allowed to set either a `send_func` or a `send_messages_func`
          * but not both at the same time.
          * @param func a {@link GstRtspServer.RTSPClientSendFunc}
-         * @param notify called when `user_data` is no longer in use
          */
-        set_send_func(func: RTSPClientSendFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_send_func(func: RTSPClientSendFunc): void;
 
         /**
          * Set `func` as the callback that will be called when new messages needs to be
@@ -1399,9 +1398,8 @@ export namespace GstRtspServer {
          * It is only allowed to set either a `send_func` or a `send_messages_func`
          * but not both at the same time.
          * @param func a {@link GstRtspServer.RTSPClientSendMessagesFunc}
-         * @param notify called when `user_data` is no longer in use
          */
-        set_send_messages_func(func: RTSPClientSendMessagesFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_send_messages_func(func: RTSPClientSendMessagesFunc): void;
 
         /**
          * Set `pool` as the sessionpool for `client` which it will use to find
@@ -5290,40 +5288,35 @@ export namespace GstRtspServer {
          * to a client. This is usually used when sending RTP/RTCP over TCP.
          * @param send_rtp a callback called when RTP should be sent
          * @param send_rtcp a callback called when RTCP should be sent
-         * @param notify called with the user_data when no longer needed.
          */
-        set_callbacks(send_rtp: RTSPSendFunc, send_rtcp: RTSPSendFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_callbacks(send_rtp: RTSPSendFunc, send_rtcp: RTSPSendFunc): void;
 
         /**
          * Install callbacks that will be called when RTCP packets are received from the
          * receiver of `trans`.
          * @param keep_alive a callback called when the receiver is active
-         * @param notify called with the user_data when no longer needed.
          */
-        set_keepalive(keep_alive: RTSPKeepAliveFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_keepalive(keep_alive: RTSPKeepAliveFunc): void;
 
         /**
          * Install callbacks that will be called when data for a stream should be sent
          * to a client. This is usually used when sending RTP/RTCP over TCP.
          * @param send_rtp_list a callback called when RTP should be sent
          * @param send_rtcp_list a callback called when RTCP should be sent
-         * @param notify called with the user_data when no longer needed.
          */
-        set_list_callbacks(send_rtp_list: RTSPSendListFunc, send_rtcp_list: RTSPSendListFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_list_callbacks(send_rtp_list: RTSPSendListFunc, send_rtcp_list: RTSPSendListFunc): void;
 
         /**
          * Install a callback that will be called when a message has been sent on `trans`.
          * @param message_sent a callback called when a message has been sent
-         * @param notify called with the user_data when no longer needed
          */
-        set_message_sent(message_sent: RTSPMessageSentFunc, notify: (GLib.DestroyNotify | null)): void;
+        set_message_sent(message_sent: RTSPMessageSentFunc): void;
 
         /**
          * Install a callback that will be called when a message has been sent on `trans`.
          * @param message_sent a callback called when a message has been sent
-         * @param notify called with the user_data when no longer needed
          */
-        set_message_sent_full(message_sent: RTSPMessageSentFuncFull, notify: (GLib.DestroyNotify | null)): void;
+        set_message_sent_full(message_sent: RTSPMessageSentFuncFull): void;
 
         /**
          * Set the timed out state of `trans` to `timedout`

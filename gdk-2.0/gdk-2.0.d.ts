@@ -7096,11 +7096,10 @@ export namespace Gdk {
      * 
      * @param priority the priority of the idle source. Typically this will be in the            range btweeen #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE
      * @param _function function to call
-     * @param notify function to call when the idle is removed, or `null`
      * @returns the ID (greater than 0) of the event source.
      * @since 2.12
      */
-    function threads_add_idle_full(priority: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_idle_full(priority: number, _function: GLib.SourceFunc): number;
 
     /**
      * Sets a function to be called at regular intervals holding the GDK lock,
@@ -7151,11 +7150,10 @@ export namespace Gdk {
      * @param priority the priority of the timeout source. Typically this will be in the            range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
      * @param interval the time between calls to the function, in milliseconds             (1/1000ths of a second)
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @returns the ID (greater than 0) of the event source.
      * @since 2.12
      */
-    function threads_add_timeout_full(priority: number, interval: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_timeout_full(priority: number, interval: number, _function: GLib.SourceFunc): number;
 
     /**
      * A variant of `gdk_threads_add_timout_full()` with second-granularity.
@@ -7166,10 +7164,9 @@ export namespace Gdk {
      * @param priority the priority of the timeout source. Typically this will be in the            range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
      * @param interval the time between calls to the function, in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @since 2.14
      */
-    function threads_add_timeout_seconds_full(priority: number, interval: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_timeout_seconds_full(priority: number, interval: number, _function: GLib.SourceFunc): number;
 
     function threads_enter(): void;
 
@@ -8823,15 +8820,8 @@ export namespace Gdk {
          * the {@link GObject.Object} variant should be used instead.
          * @param key name to store the data under
          * @param data arbitrary data
-         * @param destroy_func function to free `data`, or `null`
          */
-        set_data(key: string, data: (any | null), destroy_func: (GLib.DestroyNotify | null)): void;
-
-        /**
-         * @param args 
-         */
-    // Conflicted with GObject.Object.set_data
-        set_data(...args: never[]): any;
+        set_data(key: string, data: (any | null)): void;
 
         /**
          * Deprecated equivalent of calling `g_object_unref()` on `drawable`.

@@ -20781,11 +20781,9 @@ export namespace Gda {
          * @param out_result a place to store the result, if any, of `func`'s execution, or `null`
          * @param out_job_id a place to store the ID of the job having been submitted, or `null`
          * @param func the function to call from the worker thread
-         * @param data_destroy_func a function to destroy `data`, or `null`
-         * @param result_destroy_func a function to destroy the result, if any, of `func`'s execution, or `null`
          * @returns `true` if no error occurred
          */
-        do_job(context: (GLib.MainContext | null), timeout_ms: number, out_result: (any | null), out_job_id: (number | null), func: WorkerFunc, data_destroy_func: (GLib.DestroyNotify | null), result_destroy_func: (GLib.DestroyNotify | null)): boolean;
+        do_job(context: (GLib.MainContext | null), timeout_ms: number, out_result: (any | null), out_job_id: (number | null), func: WorkerFunc): boolean;
 
         /**
          * Fetch the value returned by execution the `job_id` job.
@@ -20863,11 +20861,9 @@ export namespace Gda {
          * </itemizedlist>
          * @param callback_context a {@link GLib.MainContext}, or `null` (ignored if no setting has been defined with `gda_worker_set_callback()`)
          * @param func the function to call from the worker thread
-         * @param data_destroy_func a function to destroy `data`, or `null`
-         * @param result_destroy_func a function to destroy the result, if any, of the execution of `func`, or `null`
          * @returns a job ID, or %0 if an error occurred
          */
-        submit_job(callback_context: (GLib.MainContext | null), func: WorkerFunc, data_destroy_func: (GLib.DestroyNotify | null), result_destroy_func: (GLib.DestroyNotify | null)): number;
+        submit_job(callback_context: (GLib.MainContext | null), func: WorkerFunc): number;
 
         /**
          * Tells if the thread from which this function is called is `worker`'s worker thread.
@@ -20891,10 +20887,9 @@ export namespace Gda {
          * Note: it's up to the caller to free the result, the {@link Gda.Worker} object will not do it (ownership of the result is
          * transfered to the caller).
          * @param func the function to call from the worker thread
-         * @param data_destroy_func a function to destroy `data`, or `null`
          * @returns the result of `func`'s execution
          */
-        wait_job(func: WorkerFunc, data_destroy_func: (GLib.DestroyNotify | null)): (any | null);
+        wait_job(func: WorkerFunc): (any | null);
     }
 
 

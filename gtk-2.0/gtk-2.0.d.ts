@@ -19889,9 +19889,8 @@ export namespace Gtk {
          * whether a row should be drawn as a separator. If the row separator
          * function is `null`, no separators are drawn. This is the default value.
          * @param func a {@link Gtk.TreeViewRowSeparatorFunc}
-         * @param destroy destroy notifier for `data`, or `null`
          */
-        set_row_separator_func(func: TreeViewRowSeparatorFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_row_separator_func(func: TreeViewRowSeparatorFunc): void;
 
         /**
          * Sets the column with row span information for `combo_box` to be `row_span`.
@@ -40058,9 +40057,8 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_default_sort_func(sort_func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -40088,9 +40086,8 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -40127,10 +40124,9 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_default_sort_func(func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -40159,10 +40155,9 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -51123,9 +51118,8 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
-         * @param data_destroy destroy notifier for `sort_data`, or `null`
          */
-        set_sort_func(sort_func: RecentSortFunc, data_destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Changes the sorting order of the recently used resources list displayed by
@@ -51738,9 +51732,8 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
-         * @param data_destroy destroy notifier for `sort_data`, or `null`
          */
-        set_sort_func(sort_func: RecentSortFunc, data_destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Changes the sorting order of the recently used resources list displayed by
@@ -52539,9 +52532,8 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
-         * @param data_destroy destroy notifier for `sort_data`, or `null`
          */
-        set_sort_func(sort_func: RecentSortFunc, data_destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Changes the sorting order of the recently used resources list displayed by
@@ -53164,9 +53156,8 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
-         * @param data_destroy destroy notifier for `sort_data`, or `null`
          */
-        set_sort_func(sort_func: RecentSortFunc, data_destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Changes the sorting order of the recently used resources list displayed by
@@ -69581,9 +69572,8 @@ export namespace Gtk {
          * modify function.
          * @param types The {@link GObject.GType}<!-- -->s of the columns.
          * @param func A {@link Gtk.TreeModelFilterModifyFunc}
-         * @param destroy Destroy notifier of `data`, or `null`.
          */
-        set_modify_func(types: GObject.GType[], func: TreeModelFilterModifyFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_modify_func(types: GObject.GType[], func: TreeModelFilterModifyFunc): void;
 
         /**
          * Sets `column` of the child_model to be the column where `filter` should
@@ -69627,9 +69617,8 @@ export namespace Gtk {
          * }
          * </programlisting></informalexample>
          * @param func A {@link Gtk.TreeModelFilterVisibleFunc}, the visible function.
-         * @param destroy Destroy notifier of `data`, or `null`.
          */
-        set_visible_func(func: TreeModelFilterVisibleFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_visible_func(func: TreeModelFilterVisibleFunc): void;
 
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
@@ -70694,9 +70683,8 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_default_sort_func(sort_func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -70724,9 +70712,8 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -70763,10 +70750,9 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_default_sort_func(func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -70795,10 +70781,9 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -71982,9 +71967,8 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_default_sort_func(sort_func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -72012,9 +71996,8 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -72051,10 +72034,9 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_default_sort_func(func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -72083,10 +72065,9 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param func 
-         * @param destroy Destroy notifier of `user_data`, or `null`
          * @virtual
          */
-        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -73185,9 +73166,8 @@ export namespace Gtk {
          * `tree_view` reverts to the default behavior of allowing all columns to be
          * dropped everywhere.
          * @param func A function to determine which columns are reorderable, or `null`.
-         * @param destroy Destroy notifier for `user_data`, or `null`
          */
-        set_column_drag_function(func: (TreeViewColumnDropFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_column_drag_function(func: (TreeViewColumnDropFunc | null)): void;
 
         /**
          * Sets the current keyboard focus to be at `path`, and selects it.  This is
@@ -73234,9 +73214,8 @@ export namespace Gtk {
          * ATK for determining the number of visible children that are removed when the
          * user collapses a row, or a row is deleted.
          * @param func Function to be called when a view row is destroyed, or `null`
-         * @param destroy Destroy notifier for `data`, or `null`
          */
-        set_destroy_count_func(func: (TreeDestroyCountFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_destroy_count_func(func: (TreeDestroyCountFunc | null)): void;
 
         /**
          * Sets the row that is highlighted for feedback.
@@ -73365,9 +73344,8 @@ export namespace Gtk {
          * whether a row should be drawn as a separator. If the row separator
          * function is `null`, no separators are drawn. This is the default value.
          * @param func a {@link Gtk.TreeViewRowSeparatorFunc}
-         * @param destroy destroy notifier for `data`, or `null`
          */
-        set_row_separator_func(func: TreeViewRowSeparatorFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_row_separator_func(func: TreeViewRowSeparatorFunc): void;
 
         /**
          * Enables or disables rubber banding in `tree_view`.  If the selection mode
@@ -73423,16 +73401,14 @@ export namespace Gtk {
          * that somewhat like `strcmp()` returning 0 for equality
          * {@link Gtk.TreeViewSearchEqualFunc} returns `false` on matches.
          * @param search_equal_func the compare function to use during the search
-         * @param search_destroy Destroy notifier for `search_user_data`, or `null`
          */
-        set_search_equal_func(search_equal_func: TreeViewSearchEqualFunc, search_destroy: (GLib.DestroyNotify | null)): void;
+        set_search_equal_func(search_equal_func: TreeViewSearchEqualFunc): void;
 
         /**
          * Sets the function to use when positioning the search dialog.
          * @param func the function to use to position the search dialog, or `null`    to use the default search position function
-         * @param destroy Destroy notifier for `data`, or `null`
          */
-        set_search_position_func(func: (TreeViewSearchPositionFunc | null), destroy: (GLib.DestroyNotify | null)): void;
+        set_search_position_func(func: (TreeViewSearchPositionFunc | null)): void;
 
         /**
          * Sets whether to draw and enable expanders and indent child rows in
@@ -90446,9 +90422,8 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
-         * @param data_destroy destroy notifier for `sort_data`, or `null`
          */
-        set_sort_func(sort_func: RecentSortFunc, data_destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Changes the sorting order of the recently used resources list displayed by
@@ -91296,10 +91271,9 @@ export namespace Gtk {
              * default state. In this case, when the current sort column id of `sortable`
              * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
              * @param func 
-             * @param destroy Destroy notifier of `user_data`, or `null`
              * @virtual
              */
-            vfunc_set_default_sort_func(func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+            vfunc_set_default_sort_func(func: TreeIterCompareFunc): void;
 
             /**
              * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -91328,10 +91302,9 @@ export namespace Gtk {
              * the model will sort using this function.
              * @param sort_column_id the sort column id to set the function for
              * @param func 
-             * @param destroy Destroy notifier of `user_data`, or `null`
              * @virtual
              */
-            vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+            vfunc_set_sort_func(sort_column_id: number, func: TreeIterCompareFunc): void;
 
             /**
              * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
@@ -91387,9 +91360,8 @@ export namespace Gtk {
          * default state. In this case, when the current sort column id of `sortable`
          * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_default_sort_func(sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_default_sort_func(sort_func: TreeIterCompareFunc): void;
 
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
@@ -91417,9 +91389,8 @@ export namespace Gtk {
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of `user_data`, or `null`
          */
-        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc, destroy: (GLib.DestroyNotify | null)): void;
+        set_sort_func(sort_column_id: number, sort_func: TreeIterCompareFunc): void;
 
         /**
          * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.

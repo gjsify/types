@@ -1620,9 +1620,8 @@ export namespace EDataBook {
          * then left the error unchanged and notify about errors manually.
          * @param use_cancellable an optional {@link Gio.Cancellable} to use for `func`
          * @param func a function to call in a dedicated thread
-         * @param user_data_free optional destroy call back for `user_data`
          */
-        schedule_custom_operation(use_cancellable: (Gio.Cancellable | null), func: BookBackendCustomOpFunc, user_data_free: (GLib.DestroyNotify | null)): void;
+        schedule_custom_operation(use_cancellable: (Gio.Cancellable | null), func: BookBackendCustomOpFunc): void;
 
         /**
          * Sets the cache directory path for use by `backend`.
@@ -3362,7 +3361,7 @@ export namespace EDataBook {
 
         static ["new"](path: string, source: (EDataServer.Source | null), cancellable: (Gio.Cancellable | null)): BookSqlite;
 
-        static new_full(path: string, source: (EDataServer.Source | null), setup: (EBookContacts.SourceBackendSummarySetup | null), vcard_callback: (bSqlVCardCallback | null), change_callback: (bSqlChangeCallback | null), user_data_destroy: (GLib.DestroyNotify | null), cancellable: (Gio.Cancellable | null)): BookSqlite;
+        static new_full(path: string, source: (EDataServer.Source | null), setup: (EBookContacts.SourceBackendSummarySetup | null), vcard_callback: (bSqlVCardCallback | null), change_callback: (bSqlChangeCallback | null), cancellable: (Gio.Cancellable | null)): BookSqlite;
 
         // Signals
         /** @signal */

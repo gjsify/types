@@ -559,11 +559,10 @@ export namespace JavaScriptCore {
          * `jsc_context_register_class()` is responsible for disposing of it.
          * @param name the constructor name or `null`
          * @param callback a {@link GObject.Callback} to be called to create an instance of `jsc_class`
-         * @param destroy_notify destroy notifier for `user_data`
          * @param return_type the {@link GObject.GType} of the constructor return value
          * @returns a {@link JavaScriptCore.Value} representing the class constructor.
          */
-        add_constructor_variadic(name: (string | null), callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType): Value;
+        add_constructor_variadic(name: (string | null), callback: GObject.Callback, return_type: GObject.GType): Value;
 
         /**
          * Add a constructor to `jsc_class`. If `name` is `null`, the class name will be used. When <function>new</function>
@@ -578,12 +577,11 @@ export namespace JavaScriptCore {
          * `jsc_context_register_class()` is responsible for disposing of it.
          * @param name the constructor name or `null`
          * @param callback a {@link GObject.Callback} to be called to create an instance of `jsc_class`
-         * @param destroy_notify destroy notifier for `user_data`
          * @param return_type the {@link GObject.GType} of the constructor return value
          * @param parameter_types a list of {@link GObject.GType}<!-- -->s, one for each parameter, or `null`
          * @returns a {@link JavaScriptCore.Value} representing the class constructor.
          */
-        add_constructor(name: (string | null), callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
+        add_constructor(name: (string | null), callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
 
         /**
          * Add method with `name` to `jsc_class`. When the method is called by JavaScript or `jsc_value_object_invoke_method()`,
@@ -597,10 +595,9 @@ export namespace JavaScriptCore {
          * with `jsc_value_new_object()` that receives the copy as the instance parameter.
          * @param name the method name
          * @param callback a {@link GObject.Callback} to be called to invoke method `name` of `jsc_class`
-         * @param destroy_notify destroy notifier for `user_data`
          * @param return_type the {@link GObject.GType} of the method return value, or `G_TYPE_NONE` if the method is void.
          */
-        add_method_variadic(name: string, callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType): void;
+        add_method_variadic(name: string, callback: GObject.Callback, return_type: GObject.GType): void;
 
         /**
          * Add method with `name` to `jsc_class`. When the method is called by JavaScript or `jsc_value_object_invoke_method()`,
@@ -614,11 +611,10 @@ export namespace JavaScriptCore {
          * with `jsc_value_new_object()` that receives the copy as the instance parameter.
          * @param name the method name
          * @param callback a {@link GObject.Callback} to be called to invoke method `name` of `jsc_class`
-         * @param destroy_notify destroy notifier for `user_data`
          * @param return_type the {@link GObject.GType} of the method return value, or `G_TYPE_NONE` if the method is void.
          * @param parameter_types a list of {@link GObject.GType}<!-- -->s, one for each parameter, or `null`
          */
-        add_method(name: string, callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): void;
+        add_method(name: string, callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): void;
 
         /**
          * Add a property with `name` to `jsc_class`. When the property value needs to be getted, `getter` is called
@@ -635,9 +631,8 @@ export namespace JavaScriptCore {
          * @param property_type the {@link GObject.GType} of the property value
          * @param getter a {@link GObject.Callback} to be called to get the property value
          * @param setter a {@link GObject.Callback} to be called to set the property value
-         * @param destroy_notify destroy notifier for `user_data`
          */
-        add_property(name: string, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null), destroy_notify: (GLib.DestroyNotify | null)): void;
+        add_property(name: string, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null)): void;
 
         /**
          * Get the class name of `jsc_class`
@@ -827,9 +822,8 @@ export namespace JavaScriptCore {
          * `jsc_context_pop_exception_handler()` to remove it and set the previous one. When `handler`
          * is removed from the context, `destroy_notify` i called with `user_data` as parameter.
          * @param handler a {@link JavaScriptCore.ExceptionHandler}
-         * @param destroy_notify destroy notifier for `user_data`
          */
-        push_exception_handler(handler: ExceptionHandler, destroy_notify: (GLib.DestroyNotify | null)): void;
+        push_exception_handler(handler: ExceptionHandler): void;
 
         /**
          * Register a custom class in `context` using the given `name`. If the new class inherits from
@@ -841,10 +835,9 @@ export namespace JavaScriptCore {
          * @param name the class name
          * @param parent_class a {@link JavaScriptCore.Class} or `null`
          * @param vtable an optional {@link JavaScriptCore.ClassVTable} or `null`
-         * @param destroy_notify a destroy notifier for class instances
          * @returns a {@link JavaScriptCore.Class}
          */
-        register_class(name: string, parent_class: (Class | null), vtable: (ClassVTable | null), destroy_notify: (GLib.DestroyNotify | null)): Class;
+        register_class(name: string, parent_class: (Class | null), vtable: (ClassVTable | null)): Class;
 
         /**
          * Set a property of `context` global object with `name` and `value`.
@@ -1028,9 +1021,9 @@ export namespace JavaScriptCore {
 
         static new_from_json(context: Context, json: string): Value;
 
-        static new_function_variadic(context: Context, name: (string | null), callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType): Value;
+        static new_function_variadic(context: Context, name: (string | null), callback: GObject.Callback, return_type: GObject.GType): Value;
 
-        static new_function(context: Context, name: (string | null), callback: GObject.Callback, destroy_notify: (GLib.DestroyNotify | null), return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
+        static new_function(context: Context, name: (string | null), callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
 
         static new_null(context: Context): Value;
 
@@ -1222,9 +1215,8 @@ export namespace JavaScriptCore {
          * @param property_type the {@link GObject.GType} of the property
          * @param getter a {@link GObject.Callback} to be called to get the property value
          * @param setter a {@link GObject.Callback} to be called to set the property value
-         * @param destroy_notify destroy notifier for `user_data`
          */
-        object_define_property_accessor(property_name: string, flags: ValuePropertyFlags, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null), destroy_notify: (GLib.DestroyNotify | null)): void;
+        object_define_property_accessor(property_name: string, flags: ValuePropertyFlags, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null)): void;
 
         /**
          * Define or modify a property with `property_name` in object referenced by `value`. This is equivalent to

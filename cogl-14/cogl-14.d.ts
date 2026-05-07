@@ -4498,10 +4498,9 @@ export namespace Cogl {
          * the dirty region to ensure that the framebuffer is actually ready
          * for rendering.
          * @param callback A callback function to call for dirty events
-         * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenDirtyClosure} pointer that can be          used to remove the callback and associated `user_data` later.
          */
-        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: (GLib.DestroyNotify | null)): OnscreenDirtyClosure;
+        add_dirty_callback(callback: OnscreenDirtyCallback): OnscreenDirtyClosure;
 
         /**
          * Installs a `callback` function that will be called for significant
@@ -4528,10 +4527,9 @@ export namespace Cogl {
          * wasting resources, drawing more frames than your system compositor
          * can display.
          * @param callback A callback function to call for frame events
-         * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to          remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy: (GLib.DestroyNotify | null)): FrameClosure;
+        add_frame_callback(callback: FrameCallback): FrameClosure;
 
         /**
          * @param info A {@link Cogl.FrameInfo}

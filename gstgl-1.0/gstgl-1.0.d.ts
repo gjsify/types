@@ -4682,9 +4682,8 @@ export namespace GstGL {
          * @param params the `GstAllocationParams` to initialize with
          * @param size the number of bytes to be allocated
          * @param user_data user data to call `notify` with
-         * @param notify a {@link GLib.DestroyNotify}
          */
-        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, params: (Gst.AllocationParams | null), size: (bigint | number), user_data: (any | null), notify: (GLib.DestroyNotify | null)): void;
+        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, params: (Gst.AllocationParams | null), size: (bigint | number), user_data: (any | null)): void;
 
         /**
          * @param dest the destination {@link GstGL.GLBaseMemory}
@@ -4971,9 +4970,8 @@ export namespace GstGL {
          * @param plane the plane number (starting from 0) for this {@link GstGL.GLMemory}
          * @param valign optional {@link GstVideo.VideoAlignment} parameters
          * @param user_data user data to call `notify` with
-         * @param notify a {@link GLib.DestroyNotify}
          */
-        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, target: GLTextureTarget, tex_format: GLFormat, params: (Gst.AllocationParams | null), info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), user_data: (any | null), notify: (GLib.DestroyNotify | null)): void;
+        init(allocator: Gst.Allocator, parent: (Gst.Memory | null), context: GLContext, target: GLTextureTarget, tex_format: GLFormat, params: (Gst.AllocationParams | null), info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), user_data: (any | null)): void;
 
         /**
          * Reads the texture in {@link GstGL.GLMemory} into `write_pointer` if no buffer is bound
@@ -5211,7 +5209,7 @@ export namespace GstGL {
 
         static ["new"](context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number): GLRenderbufferAllocationParams;
 
-        static new_wrapped(context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number, gl_handle: (any | null), user_data: (any | null), notify: (GLib.DestroyNotify | null)): GLRenderbufferAllocationParams;
+        static new_wrapped(context: GLContext, alloc_params: (Gst.AllocationParams | null), renderbuffer_format: GLFormat, width: number, height: number, gl_handle: (any | null), user_data: (any | null)): GLRenderbufferAllocationParams;
     }
 
 
@@ -5319,11 +5317,11 @@ export namespace GstGL {
 
         static ["new"](context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat): GLVideoAllocationParams;
 
-        static new_wrapped_data(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, wrapped_data: (any | null), user_data: (any | null), notify: (GLib.DestroyNotify | null)): GLVideoAllocationParams;
+        static new_wrapped_data(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, wrapped_data: (any | null), user_data: (any | null)): GLVideoAllocationParams;
 
-        static new_wrapped_gl_handle(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, gl_handle: (any | null), user_data: (any | null), notify: (GLib.DestroyNotify | null)): GLVideoAllocationParams;
+        static new_wrapped_gl_handle(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, gl_handle: (any | null), user_data: (any | null)): GLVideoAllocationParams;
 
-        static new_wrapped_texture(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, tex_id: number, user_data: (any | null), notify: (GLib.DestroyNotify | null)): GLVideoAllocationParams;
+        static new_wrapped_texture(context: GLContext, alloc_params: (Gst.AllocationParams | null), v_info: GstVideo.VideoInfo, plane: number, valign: (GstVideo.VideoAlignment | null), target: GLTextureTarget, tex_format: GLFormat, tex_id: number, user_data: (any | null)): GLVideoAllocationParams;
 
         // Methods
         /**

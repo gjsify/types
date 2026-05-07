@@ -641,11 +641,10 @@ export namespace Vte {
          * @param argv child's argument vector
          * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
-         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        spawn_async(working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup_data_destroy: (GLib.DestroyNotify | null), timeout: number, cancellable: (Gio.Cancellable | null)): void;
+        spawn_async(working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: (Gio.Cancellable | null)): void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -691,11 +690,10 @@ export namespace Vte {
          * @param fds an array of file descriptors, or `null`
          * @param map_fds an array of integers, or `null`
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
-         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        spawn_with_fds_async(working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, child_setup_data_destroy: (GLib.DestroyNotify | null), timeout: number, cancellable: (Gio.Cancellable | null)): void;
+        spawn_with_fds_async(working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: (Gio.Cancellable | null)): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -2733,11 +2731,10 @@ export namespace Vte {
          * @param argv child's argument vector
          * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
-         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        spawn_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup_data_destroy: (GLib.DestroyNotify | null), timeout: number, cancellable: (Gio.Cancellable | null)): void;
+        spawn_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: (Gio.Cancellable | null)): void;
 
         /**
          * Starts the specified command under a newly-allocated controlling
@@ -2826,11 +2823,10 @@ export namespace Vte {
          * @param fds an array of file descriptors, or `null`
          * @param map_fds an array of integers, or `null`
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
-         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        spawn_with_fds_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, child_setup_data_destroy: (GLib.DestroyNotify | null), timeout: number, cancellable: (Gio.Cancellable | null)): void;
+        spawn_with_fds_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: (Gio.Cancellable | null)): void;
 
         /**
          * Clears the current selection.

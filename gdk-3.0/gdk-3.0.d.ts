@@ -7803,11 +7803,10 @@ export namespace Gdk {
      * 
      * @param priority the priority of the idle source. Typically this will be in the            range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE
      * @param _function function to call
-     * @param notify function to call when the idle is removed, or `null`
      * @returns the ID (greater than 0) of the event source.
      * @since 2.12
      */
-    function threads_add_idle(priority: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_idle(priority: number, _function: GLib.SourceFunc): number;
 
     /**
      * Sets a function to be called at regular intervals holding the GDK lock,
@@ -7858,11 +7857,10 @@ export namespace Gdk {
      * @param priority the priority of the timeout source. Typically this will be in the            range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
      * @param interval the time between calls to the function, in milliseconds             (1/1000ths of a second)
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @returns the ID (greater than 0) of the event source.
      * @since 2.12
      */
-    function threads_add_timeout(priority: number, interval: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_timeout(priority: number, interval: number, _function: GLib.SourceFunc): number;
 
     /**
      * A variant of `gdk_threads_add_timeout_full()` with second-granularity.
@@ -7871,11 +7869,10 @@ export namespace Gdk {
      * @param priority the priority of the timeout source. Typically this will be in the            range between #G_PRIORITY_DEFAULT_IDLE and #G_PRIORITY_HIGH_IDLE.
      * @param interval the time between calls to the function, in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or `null`
      * @returns the ID (greater than 0) of the event source.
      * @since 2.14
      */
-    function threads_add_timeout_seconds(priority: number, interval: number, _function: GLib.SourceFunc, notify: (GLib.DestroyNotify | null)): number;
+    function threads_add_timeout_seconds(priority: number, interval: number, _function: GLib.SourceFunc): number;
 
     /**
      * This function marks the beginning of a critical section in which

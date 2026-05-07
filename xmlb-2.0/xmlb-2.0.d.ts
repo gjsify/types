@@ -2411,9 +2411,8 @@ export namespace Xmlb {
          * some point before the {@link Xmlb.ValueBindings} is cleared or freed.
          * @param idx 0-based index to bind to
          * @param str a string to bind to `idx`
-         * @param destroy_func function to free `str`
          */
-        bind_str(idx: number, str: string, destroy_func: (GLib.DestroyNotify | null)): void;
+        bind_str(idx: number, str: string): void;
 
         /**
          * Bind `val` to `idx` in the value bindings.
