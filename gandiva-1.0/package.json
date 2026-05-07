@@ -1,6 +1,6 @@
 {
     "name": "@girs/gandiva-1.0",
-    "version": "3.0.0-4.0.0-rc.12",
+    "version": "3.0.0-4.0.0-rc.13",
     "description": "GJS TypeScript type definitions for Gandiva-1.0, generated from library version 3.0.0",
     "type": "module",
     "module": "gandiva-1.0.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.12",
-      "@girs/arrow-1.0": "16.1.0-4.0.0-rc.12",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.12",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.12",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.12",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.12"    },
+      "@girs/gjs": "4.0.0-rc.13",
+      "@girs/arrow-1.0": "16.1.0-4.0.0-rc.13",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.13",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.13",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.13",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.13"    },
     "devDependencies": {
       "typescript": "*"
     },

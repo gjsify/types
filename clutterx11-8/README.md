@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clutterx11-8)
 
 
-GJS TypeScript type definitions for ClutterX11-8, generated from library version 8.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.12.
+GJS TypeScript type definitions for ClutterX11-8, generated from library version 8.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-rc.13.
 
 ## Install
 
