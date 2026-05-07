@@ -21,7 +21,7 @@ export namespace GstBase {
 
 // Workaround
 /** @ignore */
-export module BaseSink {
+export namespace BaseSink {
     export type ConstructorProps = Gst.BaseSink.ConstructorProps;
 }
 

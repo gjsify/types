@@ -30,7 +30,7 @@ export namespace Granite {
 
 // Workaround
 /** @ignore */
-export module GraniteServicesSettingsSerializable {
+export namespace GraniteServicesSettingsSerializable {
     export interface ConstructorProps extends ServicesSettingsSerializable.ConstructorProps {}
 }
 /** @ignore */
