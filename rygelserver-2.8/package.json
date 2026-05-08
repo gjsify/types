@@ -1,6 +1,6 @@
 {
     "name": "@girs/rygelserver-2.8",
-    "version": "2.8.0-4.0.0-rc.13",
+    "version": "2.8.0-4.0.0-rc.14",
     "description": "GJS TypeScript type definitions for RygelServer-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "rygelserver-2.8.js",
@@ -31,18 +31,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.13",
-      "@girs/rygelcore-2.8": "2.8.0-4.0.0-rc.13",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.13",
-      "@girs/gee-0.8": "0.8.0-4.0.0-rc.13",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.13",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.13",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.13",
-      "@girs/gupnp-1.6": "1.6.0-4.0.0-rc.13",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.13",
-      "@girs/soup-3.0": "3.6.6-4.0.0-rc.13",
-      "@girs/gssdp-1.6": "1.6.0-4.0.0-rc.13",
-      "@girs/gupnpav-1.0": "1.0.0-4.0.0-rc.13"    },
+      "@girs/gjs": "4.0.0-rc.14",
+      "@girs/rygelcore-2.8": "2.8.0-4.0.0-rc.14",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.14",
+      "@girs/gee-0.8": "0.8.0-4.0.0-rc.14",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.14",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.14",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.14",
+      "@girs/gupnp-1.6": "1.6.0-4.0.0-rc.14",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.14",
+      "@girs/soup-3.0": "3.6.6-4.0.0-rc.14",
+      "@girs/gssdp-1.6": "1.6.0-4.0.0-rc.14",
+      "@girs/gupnpav-1.0": "1.0.0-4.0.0-rc.14"    },
     "devDependencies": {
       "typescript": "*"
     },
