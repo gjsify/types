@@ -1,6 +1,6 @@
 {
     "name": "@girs/vgpg-1",
-    "version": "1.0.0-4.0.0-rc.14",
+    "version": "1.0.0-4.0.0-rc.15",
     "description": "GJS TypeScript type definitions for Vgpg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vgpg-1.js",
@@ -31,18 +31,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.14",
-      "@girs/vda-1": "1.0.0-4.0.0-rc.14",
-      "@girs/gcalc-2": "2.0.0-4.0.0-rc.14",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.14",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.14",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.14",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.14",
-      "@girs/gee-0.8": "0.8.0-4.0.0-rc.14",
-      "@girs/json-1.0": "1.10.8-4.0.0-rc.14",
-      "@girs/gxml-0.20": "0.20.0-4.0.0-rc.14",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.14",
-      "@girs/vgda-1": "1.0.0-4.0.0-rc.14"    },
+      "@girs/gjs": "4.0.0-rc.15",
+      "@girs/vda-1": "1.0.0-4.0.0-rc.15",
+      "@girs/gcalc-2": "2.0.0-4.0.0-rc.15",
+      "@girs/gio-2.0": "2.88.0-4.0.0-rc.15",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.15",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.15",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.15",
+      "@girs/gee-0.8": "0.8.0-4.0.0-rc.15",
+      "@girs/json-1.0": "1.10.8-4.0.0-rc.15",
+      "@girs/gxml-0.20": "0.20.0-4.0.0-rc.15",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.15",
+      "@girs/vgda-1": "1.0.0-4.0.0-rc.15"    },
     "devDependencies": {
       "typescript": "*"
     },
